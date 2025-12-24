@@ -7,9 +7,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- BG Triangles (dynamic mesh) -->
+  <canvas id="bg-triangles"></canvas>
+  
+  <!-- Scanlines effect -->
+  <div class="scanlines"></div>
+
   <header class="header">
-    <h1 class="logo" data-text="DEDSEC">DEDSEC</h1>
-    <p class="subtitle">AR APPLICATION</p>
+    <img src="assets/Banners/Home.jpg" alt="DEDSEC" class="header-image">
+    <div class="header-overlay">
+      <h1 class="logo glitch" data-text="DEDSEC">DEDSEC</h1>
+      <p class="subtitle">AR APPLICATION</p>
+    </div>
   </header>
 
   <main class="page-content">
@@ -21,7 +30,7 @@
     </div>
 
     <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-accent);">SOBRE O APP</h2>
+      <h2 style="margin-bottom: 1rem; color: #ff0000;">SOBRE O APP</h2>
       <p style="line-height: 1.8; opacity: 0.9; margin-bottom: 2rem;">
         ARt é um aplicativo inovador de Realidade Aumentada que permite criar e visualizar 
         arte em ambientes virtuais. Explore novas dimensões artísticas através da tecnologia AR.
@@ -29,19 +38,19 @@
     </div>
 
     <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-accent);">DOWNLOAD</h2>
+      <h2 style="margin-bottom: 1rem; color: #ff0000;">DOWNLOAD</h2>
       <p style="line-height: 1.8; opacity: 0.9; margin-bottom: 2rem;">
         O botão de download será adicionado aqui. Esta área está reservada para o link 
         de download do aplicativo ARt.
       </p>
       <!-- Espaço reservado para botão de download -->
-      <div style="text-align: center; padding: 2rem; border: 2px dashed var(--color-accent); opacity: 0.5;">
+      <div style="text-align: center; padding: 2rem; border: 2px dashed #ff0000; opacity: 0.5;">
         <p style="opacity: 0.7;">[Botão de Download será inserido aqui]</p>
       </div>
     </div>
 
     <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-accent);">RECURSOS</h2>
+      <h2 style="margin-bottom: 1rem; color: #ff0000;">RECURSOS</h2>
       <ul style="line-height: 2; opacity: 0.9; list-style: none; padding-left: 0;">
         <li style="margin-bottom: 0.5rem;">• Visualização em Realidade Aumentada</li>
         <li style="margin-bottom: 0.5rem;">• Criação de arte interativa</li>
@@ -54,6 +63,104 @@
   <footer class="footer">
     <p>DEDSEC © 2024 | EXPECT US</p>
   </footer>
+
+  <script>
+    // Background Triangles Animation
+    const triCanvas = document.getElementById('bg-triangles');
+    const triCtx = triCanvas ? triCanvas.getContext('2d') : null;
+
+    const TRI_CONFIG = {
+      rows: 2,
+      cols: 4,
+      amplitude: 90,
+      speed: 0.0002
+    };
+
+    let triPoints = [];
+    let triStartTime = performance.now();
+
+    function initTriangles() {
+      if (!triCanvas || !triCtx) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      triCanvas.width = w;
+      triCanvas.height = h;
+
+      triPoints = [];
+      const { rows, cols } = TRI_CONFIG;
+      const margin = 0.18;
+      const spanX = 1 + margin * 2;
+      const spanY = 1 + margin * 2;
+      for (let y = 0; y <= rows; y++) {
+        for (let x = 0; x <= cols; x++) {
+          const px = (-margin + (x / cols) * spanX) * w;
+          const py = (-margin + (y / rows) * spanY) * h;
+          const phase = Math.random() * Math.PI * 2;
+          triPoints.push({ baseX: px, baseY: py, phase });
+        }
+      }
+    }
+
+    function getAccentColor() {
+      const cs = getComputedStyle(document.documentElement);
+      const c = cs.getPropertyValue('--accent-color').trim();
+      return c || '#ffffff';
+    }
+
+    function drawTriangles(time) {
+      if (!triCanvas || !triCtx || !triPoints.length) return;
+      const w = triCanvas.width;
+      const h = triCanvas.height;
+      triCtx.clearRect(0, 0, w, h);
+
+      const color = getAccentColor();
+      triCtx.strokeStyle = color;
+      triCtx.lineWidth = 0.7;
+      triCtx.globalAlpha = 0.35;
+
+      const { rows, cols, amplitude, speed } = TRI_CONFIG;
+      const t = (time - triStartTime);
+
+      const animated = triPoints.map(p => {
+        const offset = Math.sin(t * speed + p.phase);
+        const x = p.baseX + offset * amplitude;
+        const y = p.baseY + Math.cos(t * speed * 1.3 + p.phase) * amplitude * 0.6;
+        return { x, y };
+      });
+
+      const idx = (x, y) => y * (cols + 1) + x;
+
+      triCtx.beginPath();
+      for (let y = 0; y < TRI_CONFIG.rows; y++) {
+        for (let x = 0; x < TRI_CONFIG.cols; x++) {
+          const p0 = animated[idx(x, y)];
+          const p1 = animated[idx(x + 1, y)];
+          const p2 = animated[idx(x, y + 1)];
+          const p3 = animated[idx(x + 1, y + 1)];
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p1.x, p1.y);
+          triCtx.lineTo(p3.x, p3.y);
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p3.x, p3.y);
+          triCtx.lineTo(p2.x, p2.y);
+        }
+      }
+      triCtx.stroke();
+      triCtx.globalAlpha = 1;
+    }
+
+    function animateTriangles(time) {
+      drawTriangles(time || performance.now());
+      requestAnimationFrame(animateTriangles);
+    }
+
+    if (triCanvas && triCtx) {
+      initTriangles();
+      window.addEventListener('resize', initTriangles);
+      requestAnimationFrame(animateTriangles);
+    }
+  </script>
 </body>
 </html>
-
