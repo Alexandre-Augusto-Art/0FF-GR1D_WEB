@@ -44,12 +44,20 @@ async function loadMotivations() {
 
 // Função para formatar data
 function formatDate(dateString) {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('pt-BR', { 
-    day: '2-digit', 
-    month: '2-digit', 
-    year: 'numeric' 
-  });
+  if (!dateString) return 'Data não disponível';
+  try {
+    const date = new Date(dateString + 'T00:00:00');
+    if (isNaN(date.getTime())) {
+      return dateString; // Retorna a string original se a data for inválida
+    }
+    return date.toLocaleDateString('pt-BR', { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric' 
+    });
+  } catch (e) {
+    return dateString; // Retorna a string original em caso de erro
+  }
 }
 
 // Função para renderizar reflexões na página news.html (W4K3 PR0T0C0L)
@@ -65,6 +73,12 @@ function renderReflections(reflections) {
     reflectionContainer.innerHTML = '';
   }
   
+  // Debug: verificar se reflections é válido
+  if (!reflections || !Array.isArray(reflections) || reflections.length === 0) {
+    reflectionContainer.innerHTML = '<p style="line-height: 1.8; opacity: 0.9;">Nenhuma reflexão disponível.</p>';
+    return;
+  }
+  
   // Pegar a reflexão mais recente (primeira do array)
   const latest = reflections[0];
   
@@ -78,36 +92,46 @@ function renderReflections(reflections) {
   
   if (hasNewStructure) {
     // Nova estrutura: reflexão sobre notícia
+    const dateStr = latest.date ? formatDate(latest.date) : 'Data não disponível';
+    const reflectionTitle = (latest.reflection && latest.reflection.title) ? latest.reflection.title : 'Reflexão sobre Notícia';
+    const newsTitle = (latest.news && latest.news.title) ? latest.news.title : 'Notícia não disponível';
+    const newsLink = (latest.news && latest.news.link) ? latest.news.link : '#';
+    const newsSummary = (latest.news && latest.news.summary) ? latest.news.summary : '';
+    const newsSource = (latest.news && latest.news.source) ? latest.news.source : 'Fonte desconhecida';
+    const newsDate = (latest.news && latest.news.publishedDate) ? formatDate(latest.news.publishedDate) : '';
+    const reflectionContent = (latest.reflection && latest.reflection.content) ? latest.reflection.content : 'Conteúdo não disponível';
+    const reflectionExcerpt = (latest.reflection && latest.reflection.excerpt) ? latest.reflection.excerpt : '';
+    
     const reflectionHTML = `
       <div class="reflection-item" style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(0, 0, 0, 0.3); border-left: 3px solid var(--color-primary);">
         <div style="margin-bottom: 0.5rem; color: var(--color-secondary); font-size: 0.9rem; opacity: 0.7;">
-          ${formatDate(latest.date)}
+          ${dateStr}
         </div>
         <h2 style="margin-bottom: 1rem; color: var(--color-primary); font-size: 1.5rem;">
-          ${latest.reflection.title || 'Reflexão sobre Notícia'}
+          ${reflectionTitle}
         </h2>
         <div style="margin-bottom: 1rem; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 2px solid var(--color-secondary);">
           <div style="font-size: 0.85rem; color: var(--color-secondary); opacity: 0.8; margin-bottom: 0.5rem;">
             NOTÍCIA BASE:
           </div>
-          <a href="${latest.news.link}" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline; font-weight: 500;">
-            ${latest.news.title}
+          <a href="${newsLink}" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline; font-weight: 500;">
+            ${newsTitle}
           </a>
-          ${latest.news.summary ? `
+          ${newsSummary ? `
             <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.85; line-height: 1.6;">
-              ${latest.news.summary.substring(0, 200)}${latest.news.summary.length > 200 ? '...' : ''}
+              ${newsSummary.substring(0, 200)}${newsSummary.length > 200 ? '...' : ''}
             </p>
           ` : ''}
           <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">
-            Fonte: ${latest.news.source} | ${formatDate(latest.news.publishedDate)}
+            Fonte: ${newsSource}${newsDate ? ' | ' + newsDate : ''}
           </div>
         </div>
         <div style="line-height: 1.8; opacity: 0.9; white-space: pre-wrap; margin-top: 1.5rem;">
-          ${latest.reflection.content}
+          ${reflectionContent}
         </div>
-        ${latest.reflection.excerpt && latest.reflection.excerpt !== latest.reflection.content ? `
+        ${reflectionExcerpt && reflectionExcerpt !== reflectionContent ? `
           <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-style: italic; opacity: 0.8;">
-            ${latest.reflection.excerpt}
+            ${reflectionExcerpt}
           </div>
         ` : ''}
       </div>
