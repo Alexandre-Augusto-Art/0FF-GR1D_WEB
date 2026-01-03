@@ -343,12 +343,22 @@
     // Load tarot cards from JSON
     async function loadTarotCards() {
       try {
-        // Get base path - works for both local and GitHub Pages
-        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-        const jsonPath = basePath + 'data/tarot.json';
+        // Try multiple path options
+        let jsonPath = 'data/tarot.json';
+        let response = await fetch(jsonPath);
         
-        console.log('Tentando carregar JSON de:', jsonPath);
-        const response = await fetch(jsonPath);
+        // If that fails, try with base path
+        if (!response.ok) {
+          const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+          jsonPath = basePath + 'data/tarot.json';
+          response = await fetch(jsonPath);
+        }
+        
+        // If still fails, try absolute path
+        if (!response.ok) {
+          jsonPath = '/0FF-GR1D_WEB/data/tarot.json';
+          response = await fetch(jsonPath);
+        }
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -358,7 +368,8 @@
         console.log('Cartas carregadas com sucesso:', tarotCards.length);
       } catch (error) {
         console.error('Erro ao carregar cartas de tarot:', error);
-        console.error('URL tentada:', window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + 'data/tarot.json');
+        console.error('URL atual:', window.location.href);
+        console.error('Pathname:', window.location.pathname);
         alert('Erro ao carregar as cartas de tarot. Verifique o console para mais detalhes.');
       }
     }
@@ -412,8 +423,12 @@
     // Event listeners
     playButton.addEventListener('click', drawCard);
 
-    // Initialize
-    loadTarotCards();
+    // Initialize when page is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadTarotCards);
+    } else {
+      loadTarotCards();
+    }
   </script>
 </body>
 </html>
