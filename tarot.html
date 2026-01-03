@@ -379,12 +379,15 @@
           cardImage.src = selectedCard.image;
           cardImage.style.display = 'block';
           cardImagePlaceholder.style.display = 'none';
+          console.log('Imagem carregada:', selectedCard.image);
         };
         img.onerror = function() {
           cardImage.style.display = 'none';
           cardImagePlaceholder.style.display = 'flex';
           cardImagePlaceholder.textContent = selectedCard.name;
+          console.error('Erro ao carregar imagem:', selectedCard.image);
         };
+        console.log('Tentando carregar imagem:', selectedCard.image);
         img.src = selectedCard.image;
 
         // Show card display

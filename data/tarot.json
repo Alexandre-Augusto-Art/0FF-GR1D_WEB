@@ -143,17 +143,5 @@
     "meaning": "O Rei de Pentáculos é imperioso. Representa empreendimento, pragmatismo, mas também apego. De tal pessoa pode-se esperar frieza ou apego a posses materiais; é provável que vire seu mundo de cabeça para baixo mais cedo ou mais tarde.",
     "type": "Minor Arcana"
   },
-  {
-    "name": "King of Wands",
-    "image": "data/Tarot/King_of_Wands.png",
-    "meaning": "O mestre do planejamento e ideias não convencionais. Um indivíduo que une pessoas e irradia inspiração para aqueles que considera amigos. No entanto, seus inimigos logo descobrirão que são uma força impulsiva e devastadora da natureza, capaz de quebrar juramentos e cruzar qualquer linha, apenas para ver seus objetivos alcançados.",
-    "type": "Minor Arcana"
-  },
-  {
-    "name": "King of Swords",
-    "image": "data/Tarot/King_of_Swords.png",
-    "meaning": "Duas coisas importam acima de tudo para um Rei de Espadas: lógica e convicção. Representam uma pessoa com uma bússola moral precisa, conhecida por seu comportamento carinhoso. No entanto, inimigos, cuidado - o Rei de Espadas é um oponente implacável, que não descansará até que você seja punido e deixado para ser dilacerado pelos cães do destino.",
-    "type": "Minor Arcana"
-  }
 ]
 
