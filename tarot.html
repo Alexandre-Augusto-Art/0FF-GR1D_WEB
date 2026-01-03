@@ -343,11 +343,23 @@
     // Load tarot cards from JSON
     async function loadTarotCards() {
       try {
-        const response = await fetch('data/tarot.json');
+        // Get base path - works for both local and GitHub Pages
+        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const jsonPath = basePath + 'data/tarot.json';
+        
+        console.log('Tentando carregar JSON de:', jsonPath);
+        const response = await fetch(jsonPath);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         tarotCards = await response.json();
+        console.log('Cartas carregadas com sucesso:', tarotCards.length);
       } catch (error) {
         console.error('Erro ao carregar cartas de tarot:', error);
-        alert('Erro ao carregar as cartas de tarot. Verifique se o arquivo data/tarot.json existe.');
+        console.error('URL tentada:', window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1) + 'data/tarot.json');
+        alert('Erro ao carregar as cartas de tarot. Verifique o console para mais detalhes.');
       }
     }
 
