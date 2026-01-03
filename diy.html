@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEDSEC - HUB</title>
+  <title>DIY - DEDSEC</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,74 +13,81 @@
   <!-- Scanlines effect -->
   <div class="scanlines"></div>
 
-  <!-- Header com imagem Home -->
   <header class="header">
     <img src="assets/Banners/Home.jpg" alt="DEDSEC" class="header-image">
     <div class="header-overlay">
       <h1 class="logo glitch" data-text="DEDSEC">DEDSEC</h1>
-      <p class="subtitle">ACCESS GRANTED</p>
+      <p class="subtitle">DIY PROJECTS</p>
     </div>
   </header>
 
-  <main class="main-container">
-    <div class="banner-grid">
-      <!-- Banner News -->
-      <a href="news.html" class="banner-card banner-news">
-        <img src="assets/Banners/WakeUp.png" alt="NEWS" class="banner-image">
-        <div class="banner-overlay">
-          <h2 class="banner-title">NEWS</h2>
-          <p class="banner-subtitle">Últimas atualizações</p>
-        </div>
-      </a>
+  <main class="page-content">
+    <a href="index.html" class="back-button">← VOLTAR</a>
 
-      <!-- Banner Motivação -->
-      <a href="motivacao.html" class="banner-card banner-motivacao">
-        <img src="assets/Banners/Motivation.png" alt="MOTIVAÇÃO DIÁRIA" class="banner-image">
-        <div class="banner-overlay">
-          <h2 class="banner-title">MOTIVAÇÃO DIÁRIA</h2>
-          <p class="banner-subtitle">Energize seu dia</p>
-        </div>
-      </a>
+    <div class="page-header">
+      <h1 class="page-title">DIY</h1>
+      <p class="page-subtitle">Projetos para você fazer</p>
+    </div>
 
-      <!-- Banner Catálogo -->
-      <a href="catalogo.html" class="banner-card banner-catalogo">
-        <img src="assets/Banners/Catalog.png" alt="CATÁLOGO" class="banner-image">
-        <div class="banner-overlay">
-          <h2 class="banner-title">CATÁLOGO</h2>
-          <p class="banner-subtitle">Explore nossa coleção</p>
-        </div>
-      </a>
+    <div class="content-section">
+      <h2 style="margin-bottom: 1rem; color: #facc15;">PROJETOS DISPONÍVEIS</h2>
+      <p style="line-height: 1.8; opacity: 0.9; margin-bottom: 2rem;">
+        Explore nossa coleção de projetos DIY disponíveis no Google Drive. 
+        Baixe os arquivos e comece a criar seus próprios projetos!
+      </p>
+      
+      <div style="text-align: center; margin: 3rem 0;">
+        <a 
+          href="https://drive.google.com/drive/folders/1-bHrhT3gjvoJf5ona6QzftAIO_lcfEsl?usp=sharing" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style="
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: rgba(250, 204, 21, 0.1);
+            border: 3px solid #facc15;
+            color: #facc15;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+          "
+          onmouseover="this.style.background='rgba(250, 204, 21, 0.2)'; this.style.boxShadow='0 0 30px rgba(250, 204, 21, 0.6)'; this.style.transform='translateY(-3px)';"
+          onmouseout="this.style.background='rgba(250, 204, 21, 0.1)'; this.style.boxShadow='0 0 20px rgba(250, 204, 21, 0.3)'; this.style.transform='translateY(0)';"
+        >
+          📁 ACESSAR PASTA DO DRIVE
+        </a>
+      </div>
+    </div>
 
-      <!-- Banner ARt -->
-      <a href="art.html" class="banner-card banner-art">
-        <img src="assets/Banners/ARt.png" alt="ARt" class="banner-image">
-        <div class="banner-overlay">
-          <h2 class="banner-title">ARt</h2>
-          <p class="banner-subtitle">Aplicativo AR</p>
-        </div>
-      </a>
-
-      <!-- Banner Tarot -->
-      <a href="tarot.html" class="banner-card banner-tarot">
-        <div class="banner-image" style="background: linear-gradient(135deg, #1a0a2e 0%, #16213e 50%, #0f3460 100%); min-height: 300px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-size: 4rem; color: #facc15; text-shadow: 0 0 20px rgba(250, 204, 21, 0.8);">🔮</span>
-        </div>
-        <div class="banner-overlay">
-          <h2 class="banner-title">TAROT</h2>
-          <p class="banner-subtitle">Descubra seu destino</p>
-        </div>
-      </a>
-
-      <!-- Banner DIY -->
-      <a href="diy.html" class="banner-card banner-diy">
-        <div class="banner-image" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); min-height: 300px; display: flex; align-items: center; justify-content: center;">
-          <span style="font-size: 4rem; color: #facc15; text-shadow: 0 0 20px rgba(250, 204, 21, 0.8);">🔧</span>
-        </div>
-        <div class="banner-overlay">
-          <h2 class="banner-title">DIY</h2>
-          <p class="banner-subtitle">Projetos para fazer</p>
-        </div>
-      </a>
+    <div class="content-section">
+      <h2 style="margin-bottom: 1rem; color: #facc15;">COMO USAR</h2>
+      <ul style="line-height: 2; opacity: 0.9; list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: #facc15;">▶</span>
+          Clique no botão acima para acessar a pasta do Google Drive
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: #facc15;">▶</span>
+          Navegue pelos projetos disponíveis na pasta
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: #facc15;">▶</span>
+          Baixe os arquivos do projeto que deseja fazer
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: #facc15;">▶</span>
+          Siga as instruções incluídas em cada projeto
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: #facc15;">▶</span>
+          Compartilhe suas criações conosco!
+        </li>
+      </ul>
     </div>
   </main>
 
@@ -89,7 +96,7 @@
   </footer>
 
   <script>
-    // Background Triangles Animation (from GachaProject)
+    // Background Triangles Animation
     const triCanvas = document.getElementById('bg-triangles');
     const triCtx = triCanvas ? triCanvas.getContext('2d') : null;
 
@@ -188,3 +195,4 @@
   </script>
 </body>
 </html>
+

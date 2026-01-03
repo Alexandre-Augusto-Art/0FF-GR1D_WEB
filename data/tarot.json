@@ -1,0 +1,159 @@
+[
+  {
+    "name": "The Fool",
+    "image": "data/Tarot/The_Fool.jpg",
+    "meaning": "O Louco é todos nós. Cada passo que ele dá em sua jornada parece um novo mundo corajoso. No final, a jornada o mudará. Mas, como mostra a carta, ele é um rapaz confiável cuja esperança incansável o impulsiona em direção ao seu objetivo.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Magician",
+    "image": "data/Tarot/The_Magician.jpg",
+    "meaning": "O Mago é a carta da autoconfiança e da adaptação às situações através do intelecto e pura vontade. O Mago é um estrategista que sempre tem um último truque na manga, que, apesar de tudo, consegue se manter à tona e permanecer no controle de seu próprio destino.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The High Priestess",
+    "image": "data/Tarot/The_High_Priestess.jpg",
+    "meaning": "A Alta Sacerdotisa representa intuição, mistério e conhecimento oculto. Ela é a guardiã dos segredos e da sabedoria interior, simbolizando a conexão com o subconsciente e os mistérios da vida.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Empress",
+    "image": "data/Tarot/The_Empress.jpg",
+    "meaning": "A Imperatriz representa fertilidade, abundância e natureza. Ela simboliza crescimento, criatividade e o poder feminino de nutrir e criar.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Emperor",
+    "image": "data/Tarot/The_Emperor.jpg",
+    "meaning": "O Imperador representa autoridade, estrutura e ordem. Ele simboliza liderança, disciplina e o estabelecimento de fundamentos sólidos para o futuro.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Hierophant",
+    "image": "data/Tarot/The_Hierophant.jpg",
+    "meaning": "O Hierofante representa tradição, espiritualidade e ensino. Ele simboliza a busca por significado através de sistemas estabelecidos e a transmissão de conhecimento sagrado.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Lovers",
+    "image": "data/Tarot/The_Lovers.jpg",
+    "meaning": "Os Amantes representam amor, união e escolhas importantes. A carta simboliza relacionamentos, decisões que envolvem o coração e o equilíbrio entre diferentes aspectos da vida.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Chariot",
+    "image": "data/Tarot/The_Chariot.jpg",
+    "meaning": "O Carro representa determinação, controle e vitória. Ele simboliza a capacidade de superar obstáculos através da força de vontade e do foco direcionado.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Strength",
+    "image": "data/Tarot/Strength.jpg",
+    "meaning": "A Força representa coragem, paciência e controle emocional. Ela simboliza a força interior que vem da compaixão e da compreensão, não apenas da força física.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Hermit",
+    "image": "data/Tarot/The_Hermit.jpg",
+    "meaning": "O Eremita representa introspecção, busca interior e orientação espiritual. Ele simboliza a jornada solitária em busca da verdade e da iluminação pessoal.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Wheel of Fortune",
+    "image": "data/Tarot/Wheel_of_Fortune.jpg",
+    "meaning": "A Roda da Fortuna representa ciclos, mudanças e destino. Ela simboliza os altos e baixos da vida, a natureza cíclica da existência e como o destino pode mudar rapidamente.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Justice",
+    "image": "data/Tarot/Justice.jpg",
+    "meaning": "A Justiça representa equilíbrio, verdade e responsabilidade. Ela simboliza a necessidade de fazer escolhas justas e aceitar as consequências de nossas ações.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Hanged Man",
+    "image": "data/Tarot/The_Hanged_Man.jpg",
+    "meaning": "O Enforcado representa sacrifício, paciência e novas perspectivas. Ele simboliza a necessidade de parar, refletir e ver as coisas de um ângulo diferente.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Death",
+    "image": "data/Tarot/Death.jpg",
+    "meaning": "A Morte representa transformação, fim de ciclos e renascimento. Ela simboliza mudanças profundas, o fim de uma fase e o começo de algo novo.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Temperance",
+    "image": "data/Tarot/Temperance.jpg",
+    "meaning": "A Temperança representa equilíbrio, moderação e harmonia. Ela simboliza a necessidade de encontrar o meio-termo e combinar diferentes elementos de forma harmoniosa.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Devil",
+    "image": "data/Tarot/The_Devil.jpg",
+    "meaning": "O Diabo representa tentação, vício e escravidão. Ele simboliza as amarras que criamos para nós mesmos, os desejos que nos controlam e a necessidade de quebrar essas correntes.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Tower",
+    "image": "data/Tarot/The_Tower.jpg",
+    "meaning": "A Torre representa destruição súbita, revelação e mudança radical. Ela simboliza o colapso de estruturas falsas e a necessidade de reconstruir sobre bases mais sólidas.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Star",
+    "image": "data/Tarot/The_Star.jpg",
+    "meaning": "A Estrela representa esperança, inspiração e renovação. Ela simboliza a luz após a escuridão, a fé no futuro e a conexão com algo maior que nós mesmos.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Moon",
+    "image": "data/Tarot/The_Moon.jpg",
+    "meaning": "A Lua representa ilusão, medo e o subconsciente. Ela simboliza os mistérios que nos assombram, os medos ocultos e a necessidade de navegar através da incerteza.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The Sun",
+    "image": "data/Tarot/The_Sun.jpg",
+    "meaning": "O Sol representa alegria, sucesso e vitalidade. Ele simboliza a realização, a felicidade genuína e a energia positiva que ilumina nosso caminho.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "Judgement",
+    "image": "data/Tarot/Judgement.jpg",
+    "meaning": "O Julgamento representa reflexão, avaliação e renascimento. Ele simboliza o momento de fazer um balanço da vida, aprender com o passado e se preparar para um novo começo.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "The World",
+    "image": "data/Tarot/The_World.jpg",
+    "meaning": "O Mundo representa completude, realização e jornada concluída. Ele simboliza o alcance de objetivos, a integração de todas as experiências e o começo de uma nova jornada em um nível superior.",
+    "type": "Major Arcana"
+  },
+  {
+    "name": "King of Cups",
+    "image": "data/Tarot/King_of_Cups.jpg",
+    "meaning": "O Rei de Copas é uma pessoa criativa e emocionalmente guiada. São indivíduos fortes que compreendem a importância dos sentimentos. A intuição os ajuda a navegar pela vida. Quando o destino está a seu favor, a compaixão guia suas ações. Quando estão em desacordo com o destino, não seria sábio confiar neles.",
+    "type": "Minor Arcana"
+  },
+  {
+    "name": "King of Pentacles",
+    "image": "data/Tarot/King_of_Pentacles.jpg",
+    "meaning": "O Rei de Pentáculos é imperioso. Representa empreendimento, pragmatismo, mas também apego. De tal pessoa pode-se esperar frieza ou apego a posses materiais; é provável que vire seu mundo de cabeça para baixo mais cedo ou mais tarde.",
+    "type": "Minor Arcana"
+  },
+  {
+    "name": "King of Wands",
+    "image": "data/Tarot/King_of_Wands.jpg",
+    "meaning": "O mestre do planejamento e ideias não convencionais. Um indivíduo que une pessoas e irradia inspiração para aqueles que considera amigos. No entanto, seus inimigos logo descobrirão que são uma força impulsiva e devastadora da natureza, capaz de quebrar juramentos e cruzar qualquer linha, apenas para ver seus objetivos alcançados.",
+    "type": "Minor Arcana"
+  },
+  {
+    "name": "King of Swords",
+    "image": "data/Tarot/King_of_Swords.jpg",
+    "meaning": "Duas coisas importam acima de tudo para um Rei de Espadas: lógica e convicção. Representam uma pessoa com uma bússola moral precisa, conhecida por seu comportamento carinhoso. No entanto, inimigos, cuidado - o Rei de Espadas é um oponente implacável, que não descansará até que você seja punido e deixado para ser dilacerado pelos cães do destino.",
+    "type": "Minor Arcana"
+  }
+]
+

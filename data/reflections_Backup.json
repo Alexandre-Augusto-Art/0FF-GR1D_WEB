@@ -1,0 +1,44 @@
+[
+  {
+    "id": "2025-12-27",
+    "date": "2025-12-27",
+    "news": {
+      "title": "Google AI Releases FunctionGemma: Compact AI for Edge Devices",
+      "link": "https://www.marktechpost.com/2025/12/26/from-gemma-3-270m-to-functiongemma-how-google-ai-built-a-compact-function-calling-specialist-for-edge-workloads/",
+      "summary": "Google has released FunctionGemma, a specialized version of the Gemma 3 270M model that is trained specifically for function calling and designed to run as an edge agent.",
+      "source": "RSS Feed",
+      "publishedDate": "2025-12-26"
+    },
+    "reflection": {
+      "title": "A Máquina que Mapeia Nossas Palavras ao Serviço Digital: O Novo Papel das Grandes Corporações na Domesticação da Inteligência Artificial",
+      "content": "Com o lançamento do FunctionGemma pela Google, somos confrontados com a soberania dos gigantes tecnológicos sobre a evolução da inteligência artificial (IA). Este modelo de IA é uma versão enxuta e altamente especializada para ser usada como agente em dispositivos na 'edge' – um termo técnico que se refere aos limites das redes ou às extremidades, onde os dados são processados sem necessidade de ir até a nuvem.\n\nO que se percebe com esta novidade é uma técnica cada vez mais clara de transformar as pessoas em consumidores passivos da tecnologia, em detrimento do poder criativo e crítico das mentes humanas. Essa especialização extremamente direcionada da IA para funções específicas nas bordas das redes pode ser vista como um meio de manter o controle sobre a experiência digital dos usuários, limitando assim as possibilidades de inovação e empoderamento fora do contexto corporativo.\n\nEssa notícia, em vez de ser apenas um avanço tecnológico, é um sinal claro da crescente dominação das grandes corporações sobre nossos relacionamentos com a IA. Se somos condicionados a consumir IA como um produto finalizado e não participamos da sua criação, onde fica nosso poder crítico e criativo?\n\nEntão, pergunta-se: Onde está a resistência? Se somos condicionados para consumir IA como um produto finalizado e não participamos da sua criação, onde fica nosso poder crítico e criativo?\n\nA resposta é clara: estamos diante de uma nova era digital em que as grandes corporações se posicionam cada vez mais como curadoras dos nossos relacionamentos com a IA. É hora de repensar essa relação dominadora e buscar formas alternativas, colaborativas e empoderadoras para o desenvolvimento da inteligência artificial.",
+      "excerpt": "A notícia sobre o lançamento do FunctionGemma pela Google revela problemas estruturais na forma como grandes corporações moldam a evolução da IA, limitando nosso poder criativo e crítico."
+    },
+    "sources": [
+      {
+        "title": "Google AI Releases FunctionGemma: Compact AI for Edge Devices",
+        "link": "https://www.marktechpost.com/2025/12/26/from-gemma-3-270m-to-functiongemma-how-google-ai-built-a-compact-function-calling-specialist-for-edge-workloads/",
+        "source": "RSS Feed",
+        "date": "2025-12-26"
+      },
+      {
+        "title": "A Coding Implementation on Building Self-Organizing Zettelkasten Knowledge Graphs",
+        "link": "https://www.marktechpost.com/2025/12/25/a-coding-implementation-on-building-self-organizing-zettelkasten-knowledge-graphs-and-sleep-consolidation-mechanisms/",
+        "source": "RSS Feed",
+        "date": "2025-12-26"
+      },
+      {
+        "title": "Windsurf Wave 13 brings free SWE-1.5 and new upgrades",
+        "link": "https://www.testingcatalog.com/windsurf-wave-13-brings-free-swe-1-5-and-new-upgrades/",
+        "source": "RSS Feed",
+        "date": "2025-12-25"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica"
+    ]
+  }
+]
