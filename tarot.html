@@ -364,13 +364,23 @@
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        tarotCards = await response.json();
-        console.log('Cartas carregadas com sucesso:', tarotCards.length);
+        const text = await response.text();
+        console.log('JSON recebido (primeiros 200 chars):', text.substring(0, 200));
+        
+        // Try to parse JSON
+        try {
+          tarotCards = JSON.parse(text);
+          console.log('Cartas carregadas com sucesso:', tarotCards.length);
+        } catch (parseError) {
+          console.error('Erro ao fazer parse do JSON:', parseError);
+          console.error('Últimos 100 caracteres do JSON:', text.substring(text.length - 100));
+          throw new Error('JSON inválido: ' + parseError.message);
+        }
       } catch (error) {
         console.error('Erro ao carregar cartas de tarot:', error);
         console.error('URL atual:', window.location.href);
         console.error('Pathname:', window.location.pathname);
-        alert('Erro ao carregar as cartas de tarot. Verifique o console para mais detalhes.');
+        alert('Erro ao carregar as cartas de tarot. Verifique o console para mais detalhes. Se o problema persistir, pode ser cache do GitHub Pages - aguarde alguns minutos.');
       }
     }
 
