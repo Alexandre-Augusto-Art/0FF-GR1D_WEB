@@ -46,3 +46,4 @@ As imagens devem ser nomeadas exatamente como listado abaixo e salvas nesta past
 
 Se uma imagem não for encontrada, a página exibirá o nome da carta como placeholder.
 
+
