@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEWS - DEDSEC</title>
+  <title>W4K3 PR0T0C0L - DEDSEC</title>
   <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <img src="assets/Banners/Home.jpg" alt="DEDSEC" class="header-image">
     <div class="header-overlay">
       <h1 class="logo glitch" data-text="DEDSEC">DEDSEC</h1>
-      <p class="subtitle">NEWS FEED</p>
+      <p class="subtitle">W4K3 PR0T0C0L</p>
     </div>
   </header>
 
@@ -25,23 +25,19 @@
     <a href="index.html" class="back-button">← VOLTAR</a>
 
     <div class="page-header">
-      <h1 class="page-title">NEWS</h1>
-      <p class="page-subtitle">Últimas atualizações e notícias</p>
+      <h1 class="page-title">W4K3 PR0T0C0L</h1>
+      <p class="page-subtitle">Protocolo de Despertar - Últimas atualizações</p>
     </div>
 
-    <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-primary);">NOTÍCIAS RECENTES</h2>
-      <p style="line-height: 1.8; opacity: 0.9;">
-        Conteúdo de notícias será adicionado aqui. Esta seção está preparada para exibir 
-        artigos, atualizações e informações relevantes.
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-primary);">ATUALIZAÇÕES DO SISTEMA</h2>
-      <p style="line-height: 1.8; opacity: 0.9;">
-        Informações sobre atualizações, melhorias e novos recursos serão publicadas nesta área.
-      </p>
+    <!-- Container para notícias carregadas dinamicamente -->
+    <div id="noticias-container" class="noticias-container">
+      <!-- Notícias serão carregadas aqui via JavaScript -->
+      <div class="content-section">
+        <h2 style="margin-bottom: 1rem; color: var(--color-primary);">CARREGANDO NOTÍCIAS...</h2>
+        <p style="line-height: 1.8; opacity: 0.9;">
+          Aguarde enquanto carregamos as últimas atualizações...
+        </p>
+      </div>
     </div>
   </main>
 
@@ -146,6 +142,58 @@
       window.addEventListener('resize', initTriangles);
       requestAnimationFrame(animateTriangles);
     }
+
+    // Carregar notícias do JSON gerado pelo n8n
+    fetch('data/daily-content.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Arquivo não encontrado');
+        return res.json();
+      })
+      .then(data => {
+        const container = document.getElementById('noticias-container');
+        container.innerHTML = ''; // Limpar conteúdo de carregamento
+
+        if (data.noticias && data.noticias.length > 0) {
+          data.noticias.forEach((noticia, index) => {
+            const section = document.createElement('div');
+            section.className = 'content-section';
+            section.style.animationDelay = `${index * 0.1}s`;
+            section.innerHTML = `
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <h2 style="margin: 0; color: var(--color-primary); flex: 1;">${noticia.titulo || 'Notícia'}</h2>
+                <small style="opacity: 0.6; font-size: 0.8rem; margin-left: 1rem; white-space: nowrap;">${new Date(noticia.data || data.date).toLocaleDateString('pt-BR')}</small>
+              </div>
+              <p style="line-height: 1.8; opacity: 0.9; white-space: pre-line;">${noticia.conteudo || 'Conteúdo não disponível.'}</p>
+            `;
+            container.appendChild(section);
+          });
+        } else {
+          container.innerHTML = `
+            <div class="content-section">
+              <h2 style="margin-bottom: 1rem; color: var(--color-primary);">NENHUMA NOTÍCIA DISPONÍVEL</h2>
+              <p style="line-height: 1.8; opacity: 0.9;">
+                As notícias serão atualizadas em breve. Verifique novamente mais tarde.
+              </p>
+            </div>
+          `;
+        }
+      })
+      .catch(err => {
+        console.error('Erro ao carregar notícias:', err);
+        const container = document.getElementById('noticias-container');
+        container.innerHTML = `
+          <div class="content-section">
+            <h2 style="margin-bottom: 1rem; color: var(--color-primary);">ERRO AO CARREGAR NOTÍCIAS</h2>
+            <p style="line-height: 1.8; opacity: 0.9;">
+              Não foi possível carregar as notícias no momento. Verifique se o arquivo data/daily-content.json existe e está acessível.
+            </p>
+            <p style="line-height: 1.8; opacity: 0.7; margin-top: 1rem; font-size: 0.9rem;">
+              Erro: ${err.message}
+            </p>
+          </div>
+        `;
+      });
   </script>
 </body>
 </html>
+

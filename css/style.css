@@ -179,27 +179,15 @@ body {
 /* Banner Grid */
 .banner-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin: 2rem 0;
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .banner-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .banner-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1600px) {
-  .banner-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -456,6 +444,25 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   color: var(--color-text);
+}
+
+/* Notícias Container */
+.noticias-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.noticias-container .content-section {
+  animation: fadeIn 0.5s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* Products Grid */
