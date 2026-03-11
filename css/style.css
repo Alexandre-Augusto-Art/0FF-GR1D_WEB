@@ -179,14 +179,27 @@ body {
 /* Banner Grid */
 .banner-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin: 2rem 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
   .banner-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .banner-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -202,6 +215,14 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 30px) 0,
+    100% 30px,
+    100% 100%,
+    30px 100%,
+    0 calc(100% - 30px)
+  );
 }
 
 .banner-card::before {
@@ -324,22 +345,22 @@ body {
     0 0 40px rgba(255, 0, 0, 0.3);
 }
 
-.banner-diy {
+.banner-tarot {
   border-color: #facc15;
 }
 
-.banner-diy:hover {
+.banner-tarot:hover {
   border-color: #facc15;
   box-shadow: 
     0 0 20px rgba(250, 204, 21, 0.5),
     0 0 40px rgba(250, 204, 21, 0.3);
 }
 
-.banner-tarot {
+.banner-diy {
   border-color: #facc15;
 }
 
-.banner-tarot:hover {
+.banner-diy:hover {
   border-color: #facc15;
   box-shadow: 
     0 0 20px rgba(250, 204, 21, 0.5),
@@ -384,6 +405,14 @@ body {
   border: 2px solid var(--color-border);
   padding: 2rem;
   margin-bottom: 2rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
 }
 
 .back-button {
@@ -399,6 +428,14 @@ body {
   text-transform: uppercase;
   transition: all 0.3s ease;
   margin-bottom: 2rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
 }
 
 .back-button:hover {
