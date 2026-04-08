@@ -179,17 +179,12 @@ body {
 /* Banner Grid */
 .banner-grid {
   display: grid;
-<<<<<<< HEAD
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-=======
-  grid-template-columns: repeat(2, 1fr);
->>>>>>> parent of bfe904b (Upddate)
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin: 2rem 0;
   width: 100%;
 }
 
-<<<<<<< HEAD
 @media (min-width: 768px) {
   .banner-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -199,17 +194,6 @@ body {
 @media (min-width: 1200px) {
   .banner-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1600px) {
-  .banner-grid {
-    grid-template-columns: repeat(4, 1fr);
-=======
-@media (max-width: 768px) {
-  .banner-grid {
-    grid-template-columns: 1fr;
->>>>>>> parent of bfe904b (Upddate)
   }
 }
 
@@ -468,8 +452,6 @@ body {
   color: var(--color-text);
 }
 
-<<<<<<< HEAD
-=======
 /* Notícias Container */
 .noticias-container {
   display: flex;
@@ -488,8 +470,6 @@ body {
     opacity: 1;
   }
 }
-
->>>>>>> parent of bfe904b (Upddate)
 /* Products Grid */
 .products-grid {
   display: grid;
