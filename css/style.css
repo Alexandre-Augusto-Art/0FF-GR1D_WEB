@@ -361,6 +361,39 @@ body {
     0 0 40px rgba(250, 204, 21, 0.3);
 }
 
+.banner-gacha {
+  border-color: #38bdf8;
+}
+
+.banner-gacha:hover {
+  border-color: #38bdf8;
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.5),
+    0 0 40px rgba(56, 189, 248, 0.3);
+}
+
+.banner-breach {
+  border-color: #22c55e;
+}
+
+.banner-breach:hover {
+  border-color: #22c55e;
+  box-shadow:
+    0 0 20px rgba(34, 197, 94, 0.5),
+    0 0 40px rgba(34, 197, 94, 0.3);
+}
+
+.banner-combate {
+  border-color: #a78bfa;
+}
+
+.banner-combate:hover {
+  border-color: #a78bfa;
+  box-shadow:
+    0 0 20px rgba(167, 139, 250, 0.5),
+    0 0 40px rgba(167, 139, 250, 0.3);
+}
+
 /* Page Content */
 .page-content {
   position: relative;
