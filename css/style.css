@@ -742,3 +742,143 @@ body {
     letter-spacing: 0.12em;
   }
 }
+
+/* ===== Feeds diários (W4K3, Motivação) ===== */
+.feed-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.feed-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.feed-stale {
+  border-color: #facc15;
+  color: #facc15;
+}
+
+.feed-title {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.feed-title-green {
+  color: var(--color-secondary);
+}
+
+.feed-text {
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.feed-italic {
+  font-style: italic;
+}
+
+.feed-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.reflection-body {
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+.reflection-body p + p {
+  margin-top: 1rem;
+}
+
+.reflection-body a,
+.news-base-title,
+.source-title {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.news-base {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 2px solid var(--color-secondary);
+}
+
+.news-base-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.news-base-meta,
+.source-meta {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.35rem;
+}
+
+.feed-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.feed-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.source-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.source-list li,
+.history-item {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 2px solid var(--color-secondary);
+}
+
+.history-item + .history-item {
+  margin-top: 1rem;
+}
+
+.history-title {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.motivation-quote {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.motivation-author {
+  margin-top: 0.75rem;
+  opacity: 0.7;
+  font-family: 'Share Tech Mono', monospace;
+}

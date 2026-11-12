@@ -1,0 +1,25 @@
+name: Validar feeds
+
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'automation/**'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'automation/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node automation/validate.js

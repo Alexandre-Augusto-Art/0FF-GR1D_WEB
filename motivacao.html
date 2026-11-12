@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MOTIVAÇÃO DIÁRIA - DEDSEC</title>
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <!-- BG Triangles (dynamic mesh) -->
@@ -29,19 +29,11 @@
       <p class="page-subtitle">Energize seu dia com inspiração</p>
     </div>
 
-    <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-secondary);">MENSAGEM DO DIA</h2>
-      <p style="line-height: 1.8; opacity: 0.9; font-size: 1.2rem;">
-        "O código que você escreve hoje é o futuro que você constrói amanhã."
-      </p>
-    </div>
-
-    <div class="content-section">
-      <h2 style="margin-bottom: 1rem; color: var(--color-secondary);">FRASES INSPIRADORAS</h2>
-      <p style="line-height: 1.8; opacity: 0.9;">
-        Conteúdo de motivação diária será adicionado aqui. Esta seção está preparada para 
-        exibir mensagens inspiradoras, citações e conteúdo motivacional atualizado diariamente.
-      </p>
+    <div id="motivacao-feed" class="feed-container" aria-live="polite">
+      <div class="content-section">
+        <h2 class="feed-title">CARREGANDO...</h2>
+        <p class="feed-text">Aguarde enquanto buscamos o conteúdo de hoje.</p>
+      </div>
     </div>
   </main>
 
@@ -147,6 +139,7 @@
       requestAnimationFrame(animateTriangles);
     }
   </script>
+  <script src="js/content-loader.js?v=2" defer></script>
   <script src="js/chatbot.js" defer></script>
 </body>
 </html>
