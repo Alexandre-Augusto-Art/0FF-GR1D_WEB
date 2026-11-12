@@ -1,34 +1,62 @@
 # Fluxos n8n do 0FF-GR1D_WEB (W4K3 PR0T0C0L)
 
 Guia para o Claude (e para humanos) entenderem como o conteúdo dinâmico deste site
-é gerado pelo n8n. Levantamento feito em 2026-11-12 olhando o PC local e o histórico do git.
+é gerado pelo n8n. Levantamento feito em 2026-11-12 olhando o PC local e o histórico do git,
+atualizado depois do commit `796c1f0` ("Reconnect W4K3 and Motivação to n8n feeds…").
+
+O **passo a passo de configuração** (nó de validação, `addEntry`, aviso de erro, export dos
+fluxos) está em [`automation/n8n/README.md`](../automation/n8n/README.md). Este documento
+descreve **o estado real**: quais fluxos existem, onde estão e o que está ou não rodando.
 
 ## Resumo em 30 segundos
 
-- O site é estático (GitHub Pages). As páginas leem arquivos JSON em `data/` via `fetch()`.
+- O site é estático (GitHub Pages). As páginas leem arquivos JSON em `data/` via `fetch()`
+  em `js/content-loader.js`.
 - Um fluxo n8n busca notícias de IA por RSS, pede para um modelo local (Ollama `qwen2.5:14b`)
   escrever uma reflexão e **faz commit direto no GitHub** em `data/reflections.json`
   (nó GitHub "Edit a file"). Não depende do clone local.
 - **Estado atual: parado.** Os últimos commits automáticos são de 2026-02-04.
   Os fluxos têm só gatilho manual (ou webhook), nenhum agendamento ativo, e o n8n não fica
-  rodando no PC.
-- `data/daily-content.json` (página W4K3 Protocol / motivação diária) e `data/motivations.json`
-  **não têm fluxo n8n**: o primeiro ainda é o conteúdo de exemplo de 2024, o segundo é `[]`.
+  rodando no PC. Como as páginas avisam quando o conteúdo tem mais de 2 dias, a página
+  W4K3 mostra hoje "SEM ATUALIZAÇÃO HÁ N DIAS".
+- **Motivação Diária e Organize-se não têm fluxo n8n ainda.** `data/motivations.json` tem só
+  uma frase inicial colocada à mão (2026-11-12) e `data/organize.json` tem só a estrutura,
+  sem eventos.
 
 ## Quem lê o quê no site
 
-| Página / script | Arquivo lido | Quem escreve |
+| Página | Arquivo lido | Quem escreve hoje |
 |---|---|---|
-| `js/content-loader.js` (home / news) | `data/reflections.json` | n8n (fluxos W4K3) |
-| `js/content-loader.js` | `data/motivations.json` | ninguém (vazio) |
-| `w4k3-protocol.html` | `data/daily-content.json` | ninguém (placeholder manual) |
-| `js/blog-loader.js` | `posts/index.json` | manual |
+| `w4k3-protocol.html` (`#w4k3-feed`) | `data/reflections.json` | n8n (fluxos W4K3), parado desde 2026-02-04 |
+| `motivacao.html` (`#motivacao-feed`) | `data/motivations.json` | manual (só a frase inicial); fluxo a criar |
+| `organize-se.html` (a fazer) | `data/organize.json` | ninguém ainda; fluxo a criar |
+| blog (`js/blog-loader.js`) | `posts/index.json` | manual |
 | `tarot.html` | `data/tarot.json` | manual |
 | chatbot (`js/chatbot.js`) | `data/chatbot.json` | manual |
 
+As páginas W4K3 e Motivação mostram o selo "ATUALIZADO EM" (data da entrada mais recente) e
+o aviso de conteúdo velho depois de `STALE_DAYS = 2` dias. O HTML gerado pela IA passa por uma
+lista de tags permitidas antes de ser exibido.
+
+`data/daily-content.json` **não é mais lido por nenhuma página**: é o placeholder de 2024 e
+pode ser apagado.
+
+## Validação (já no repo)
+
+- `automation/validators.js` define o formato de cada feed (`validateW4K3`,
+  `validateMotivacao`, `validateOrganize`) e a função `addEntry`, que põe a entrada nova no
+  topo, substitui a do mesmo dia e guarda as 60 mais recentes.
+- `node automation/validate.js` valida `data/` e procura chaves de API nos fluxos exportados
+  em `automation/n8n/workflows/`.
+- O GitHub Action `.github/workflows/validate-data.yml` roda esse script a cada push que mexe em
+  `data/` ou `automation/`.
+- **Os fluxos ainda não usam isso.** Os exports abaixo não têm o nó Code de validação nem o
+  `addEntry`; é preciso adicionar ao reativar (veja o README de automação).
+
 ## Onde estão os fluxos
 
-Não estão versionados neste repo. Existem como exports JSON em `C:\Users\AAA-DESKTOP\Downloads\`:
+A pasta `automation/n8n/workflows/` existe para guardá-los, mas **está vazia**. Os fluxos só
+existem como exports JSON em `C:\Users\AAA-DESKTOP\Downloads\`:
 
 | Arquivo | Data | O que faz | Saída |
 |---|---|---|---|
@@ -38,9 +66,11 @@ Não estão versionados neste repo. Existem como exports JSON em `C:\Users\AAA-D
 | `W4K3 PR0T0C0L - Gerador de Reflexões sobre Notícias.json` e `(1)` | 2025-12-26 | Versões antigas: gravam no disco local | disco |
 | `daily-content-generator V2.json` | 2025-12-26 | Junta RSS em markdown; agendado seg 07h. Apesar do nome, grava em `data/reflections.json` no disco | disco |
 
-Todos os W4K3 têm o mesmo id de workflow (`OVuF9tjS4s7AnbBD`) — são versões do mesmo fluxo.
+Todos os W4K3 têm o mesmo id de workflow (`OVuF9tjS4s7AnbBD`): são versões do mesmo fluxo.
+Antes de copiar um export para `automation/n8n/workflows/`, rode `node automation/validate.js`
+para garantir que não há chave colada em nenhum nó (o repositório é público).
 
-## Fluxo 1 — Gerador de Reflexões (commit "W4K3 PR0T0C0L: nova reflexão")
+## Fluxo 1: Gerador de Reflexões (commit "W4K3 PR0T0C0L: nova reflexão")
 
 ```
 Gatilho manual
@@ -56,7 +86,7 @@ Gatilho manual
   → GitHub "Edit a file" data/reflections.json
 ```
 
-## Fluxo 2 — IA como Editor-Chefe (commit "W4K3 PR0T0C0L: post Editor-Chefe")
+## Fluxo 2: IA como Editor-Chefe (commit "W4K3 PR0T0C0L: post Editor-Chefe")
 
 Recebe uma reflexão escrita pelo autor e transforma em post.
 
@@ -73,22 +103,34 @@ Webhook POST /editor-chefe  { "reflection": "texto" }   (ou manual → "Set Refl
 
 Observação: nos commits do Editor-Chefe (2026-02-04) o `reflections.json` encolheu e hoje tem
 **só 1 entrada**. Provavelmente o "Build Full JSON" não conseguiu ler o conteúdo existente e
-sobrescreveu o arquivo. Vale revisar antes de reativar.
+sobrescreveu o arquivo. Ao reativar, troque essa montagem por `addEntry` de
+`automation/validators.js`.
 
-## Formato de `data/reflections.json`
+## Formatos dos arquivos
 
-Array de objetos, mais recente primeiro:
+A referência oficial é o comentário de cada validador em `automation/validators.js`. Resumo:
+
+`data/reflections.json` (W4K3): lista, mais recente primeiro, datas sem repetir.
 
 ```json
 {
   "id": "AAAA-MM-DD",
   "date": "AAAA-MM-DD",
   "news": { "title": "", "link": "", "summary": "", "source": "", "publishedDate": "" },
-  "reflection": { "title": "", "content": "<p>HTML</p>" },
+  "reflection": { "title": "", "content": "<p>HTML simples, 50+ caracteres</p>", "excerpt": "" },
   "sources": [ { "title": "", "link": "", "source": "", "date": "" } ],
   "tags": []
 }
 ```
+
+`data/motivations.json` (Motivação): lista, mais recente primeiro.
+
+```json
+{ "date": "AAAA-MM-DD", "content": "frase de 10 a 500 caracteres", "author": "DEDSEC" }
+```
+
+`data/organize.json` (Organize-se): objeto com `updatedAt`, `dicasGerais` e `eventos`
+(cada evento precisa de `uf`, `cidade`, `data` e `fonte.url`).
 
 ## Onde o n8n roda (e por que não está rodando)
 
@@ -100,7 +142,7 @@ Array de objetos, mais recente primeiro:
   essa instalação. Ou seja, os fluxos rodaram em **outra instância n8n** (outro diretório de
   dados, outra máquina ou n8n Cloud) que não está ativa neste PC.
 - Ollama está instalado e sobe com o Windows (atalho em Startup). Os fluxos usam a credencial
-  "Ollama account" (normalmente `http://localhost:11434`) — então a instância n8n precisa
+  "Ollama account" (normalmente `http://localhost:11434`), então a instância n8n precisa
   enxergar o Ollama deste PC.
 - Credenciais necessárias no n8n: **GitHub account** (token com permissão de escrita no repo)
   e **Ollama account**. Ao importar os JSONs elas precisam ser recriadas.
@@ -110,17 +152,19 @@ Array de objetos, mais recente primeiro:
 1. Rodar `n8n` neste PC e abrir `http://localhost:5678`.
 2. Importar `IA como Editor-Chefe + GitHub.json` (Workflows → Import from file).
 3. Criar as credenciais GitHub e Ollama e associar aos nós.
-4. Corrigir/testar o "Build Full JSON" para não apagar entradas antigas.
-5. Para rodar sozinho: trocar o gatilho manual por um **Schedule Trigger**, ativar o workflow
-   e deixar o n8n sempre ligado (ex.: tarefa agendada do Windows rodando `n8n start` no logon).
-6. Se quiser motivação diária / `daily-content.json` automáticos, é preciso criar um fluxo novo —
-   hoje não existe.
+4. Trocar o "Build Full JSON" por `addEntry` e pôr o nó Code de validação antes do nó do GitHub
+   (código pronto em `automation/n8n/README.md`).
+5. Para rodar sozinho: trocar o gatilho manual por um **Schedule Trigger** diário, ativar o
+   workflow e deixar o n8n sempre ligado (ex.: tarefa agendada do Windows rodando `n8n start`
+   no logon). Configurar um Error workflow para receber aviso de falha.
+6. Exportar o fluxo para `automation/n8n/workflows/` e commitar.
+7. Criar os fluxos novos de Motivação (`data/motivations.json`) e Organize-se
+   (`data/organize.json`) seguindo o mesmo padrão.
 
 ## Dicas para o Claude
 
-- Nunca editar `data/reflections.json` à mão sem preservar o formato acima — o site e o n8n
-  dependem dele.
+- Não editar os arquivos de `data/` à mão sem respeitar os formatos acima; rode
+  `node automation/validate.js` antes de commitar.
 - O clone local costuma ficar atrás do `origin/main` porque o n8n commita direto no GitHub:
   faça `git pull` antes de mexer.
-- Os exports em Downloads podem conter IDs de credenciais (não os segredos). Não commitar
-  `~/.n8n/config` (tem a encryptionKey).
+- Não commitar `~/.n8n/config` (tem a encryptionKey) nem exports com chaves coladas nos nós.
