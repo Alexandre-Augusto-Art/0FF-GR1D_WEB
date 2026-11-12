@@ -676,3 +676,69 @@ body {
     min-width: 0;
   }
 }
+
+/* Fact Check / Organize-se banners */
+.banner-factcheck {
+  border-color: #22d3ee;
+}
+
+.banner-factcheck:hover {
+  border-color: #22d3ee;
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.5),
+    0 0 40px rgba(34, 211, 238, 0.3);
+}
+
+.banner-organize {
+  border-color: #f43f5e;
+}
+
+.banner-organize:hover {
+  border-color: #f43f5e;
+  box-shadow:
+    0 0 20px rgba(244, 63, 94, 0.5),
+    0 0 40px rgba(244, 63, 94, 0.3);
+}
+
+/* Section dividers */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 0;
+}
+
+.section-divider:first-child {
+  margin-top: 0;
+}
+
+.section-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-primary);
+  text-shadow: 0 0 10px var(--color-glow);
+  white-space: nowrap;
+}
+
+.section-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-primary), transparent);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+  }
+}
