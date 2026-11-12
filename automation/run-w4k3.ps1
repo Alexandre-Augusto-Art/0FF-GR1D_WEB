@@ -13,22 +13,29 @@
   Uso:
     powershell -ExecutionPolicy Bypass -File run-w4k3.ps1            # roda e publica
     powershell -ExecutionPolicy Bypass -File run-w4k3.ps1 -DryRun    # roda, mas não faz commit/push
+    powershell -ExecutionPolicy Bypass -File run-w4k3.ps1 -Url https://site/noticia   # reflexão a partir de um link
     powershell -ExecutionPolicy Bypass -File run-w4k3.ps1 -KeepAwakeMinutes 15   # só segura o PC acordado
+
+  O site mostra uma reflexão por dia. Um link enviado substitui a reflexão do dia; a execução
+  automática das 09:00 não roda se o dia já tiver reflexão (use -Force para rodar mesmo assim).
 
   Log: %USERPROFILE%\.w4k3\logs\AAAA-MM-DD.log
 #>
 param(
+  [string]$Url,
   [switch]$DryRun,
+  [switch]$Force,
   [int]$KeepAwakeMinutes = 0
 )
 
 $ErrorActionPreference = 'Stop'
-$WorkflowId = 'W4K3gerador09h01'
+if ($Url) { $WorkflowId = 'W4K3linkNoticia1'; $WorkflowFile = 'w4k3-link.json' }
+else      { $WorkflowId = 'W4K3gerador09h01'; $WorkflowFile = 'w4k3-gerador.json' }
 $RepoUrl    = 'https://github.com/Alexandre-Augusto-Art/0FF-GR1D_WEB.git'
 $Base       = Join-Path $env:USERPROFILE '.w4k3'
 $Clone      = Join-Path $Base '0FF-GR1D_WEB'
 $IO         = Join-Path $env:USERPROFILE '.n8n-files\w4k3'
-$Workflow   = Join-Path $PSScriptRoot 'n8n\workflows\w4k3-gerador.json'
+$Workflow   = Join-Path $PSScriptRoot "n8n\workflows\$WorkflowFile"
 
 # Impede o Windows de voltar a dormir enquanto este processo estiver vivo
 Add-Type -Namespace W4K3 -Name Power -MemberDefinition @'
@@ -46,16 +53,25 @@ New-Item -ItemType Directory -Force -Path (Join-Path $Base 'logs'), $IO | Out-Nu
 $log = Join-Path $Base ("logs\{0:yyyy-MM-dd}.log" -f (Get-Date))
 Start-Transcript -Path $log -Append | Out-Null
 
-function Invoke-Native([string]$what, [scriptblock]$cmd) {
+# Uma execução por vez (agendada, link pelo Telegram, manual)
+$mutex = New-Object System.Threading.Mutex($false, 'Local\W4K3-PR0T0C0L')
+if (-not $mutex.WaitOne([TimeSpan]::FromMinutes(30))) { Write-Host 'Outra execução não terminou em 30 min.'; Stop-Transcript | Out-Null; exit 1 }
+
+function Invoke-Native([string]$what, [scriptblock]$cmd, [switch]$Quiet) {
   Write-Host "`n>> $what"
   # git e n8n escrevem progresso no stderr; no PowerShell 5.1 isso não pode virar erro fatal
   $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
-  try { & $cmd 2>&1 | ForEach-Object { "$_" } | Write-Host } finally { $ErrorActionPreference = $prev }
+  try { $lines = & $cmd 2>&1 | ForEach-Object { "$_" } } finally { $ErrorActionPreference = $prev }
+  # -Quiet: o n8n imprime a execução inteira (HTML das páginas etc.); no log fica só o fim
+  if ($Quiet -and $LASTEXITCODE -eq 0) { Write-Host '(ok)' }
+  elseif ($Quiet) { $lines | Select-Object -Last 25 | Write-Host }
+  else { $lines | Write-Host }
   if ($LASTEXITCODE -ne 0) { throw "$what falhou (código $LASTEXITCODE)" }
 }
 
 try {
-  Write-Host "W4K3 PR0T0C0L - início $(Get-Date -Format s)  DryRun=$DryRun"
+  Write-Host "W4K3 PR0T0C0L - início $(Get-Date -Format s)  DryRun=$DryRun  Url=$Url"
+  if ($Url -and $Url -notmatch '^https?://\S+$') { throw "Link inválido: $Url" }
 
   # Ollama (sobe com o Windows; se não estiver no ar, tenta iniciar)
   $ok = $false
@@ -81,12 +97,21 @@ try {
   Invoke-Native 'git fetch' { git -C $Clone fetch origin main }
   Invoke-Native 'git reset' { git -C $Clone checkout -B main origin/main --force }
 
-  Copy-Item (Join-Path $Clone 'data\reflections.json') (Join-Path $IO 'current.json') -Force
+  $current = Join-Path $Clone 'data\reflections.json'
+  $today = (Get-Date).ToString('yyyy-MM-dd')   # o PC está no horário de Brasília
+  if (-not $Url -and -not $Force) {
+    $latest = (Get-Content $current -Raw -Encoding UTF8 | ConvertFrom-Json)[0]
+    if ($latest.date -eq $today) { Write-Host "Já existe reflexão de $today, nada a fazer (use -Force)."; return }
+  }
+  Copy-Item $current (Join-Path $IO 'current.json') -Force
   Remove-Item (Join-Path $IO 'reflections.json') -ErrorAction SilentlyContinue
+  if ($Url) {
+    [IO.File]::WriteAllText((Join-Path $IO 'link.json'), (@{ url = $Url } | ConvertTo-Json -Compress), (New-Object System.Text.UTF8Encoding($false)))
+  }
 
   Invoke-Native 'n8n import:workflow' { n8n import:workflow "--input=$Workflow" }
   $started = Get-Date
-  Invoke-Native 'n8n execute' { n8n execute "--id=$WorkflowId" }
+  Invoke-Native 'n8n execute' { n8n execute "--id=$WorkflowId" } -Quiet
 
   $out = Get-Item (Join-Path $IO 'reflections.json') -ErrorAction SilentlyContinue
   if (-not $out -or $out.LastWriteTime -lt $started) { throw 'O fluxo terminou sem gravar reflections.json' }
@@ -94,7 +119,10 @@ try {
   Copy-Item $out.FullName (Join-Path $Clone 'data\reflections.json') -Force
   Invoke-Native 'validate.js' { node (Join-Path $Clone 'automation\validate.js') }
 
-  $date = (Get-Content $out.FullName -Raw -Encoding UTF8 | ConvertFrom-Json)[0].date
+  $first = (Get-Content $out.FullName -Raw -Encoding UTF8 | ConvertFrom-Json)[0]
+  $date = $first.date
+  # Resumo para quem chamou (o receptor do Telegram lê esta linha)
+  Write-Host ("RESULTADO|{0}|{1}" -f $date, $first.reflection.title)
   Invoke-Native 'git add' { git -C $Clone add data/reflections.json }
   git -C $Clone diff --cached --quiet 2>$null
   if ($LASTEXITCODE -eq 0) { Write-Host 'Nada mudou, sem commit.'; return }
@@ -105,7 +133,7 @@ try {
     git -C $Clone reset -q
     return
   }
-  Invoke-Native 'git commit' { git -C $Clone commit -m "W4K3 PR0T0C0L: nova reflexão $date" }
+  Invoke-Native 'git commit' { git -C $Clone commit -m $(if ($Url) { "W4K3 PR0T0C0L: reflexão a partir de link $date" } else { "W4K3 PR0T0C0L: nova reflexão $date" }) }
   Invoke-Native 'git push' { git -C $Clone push origin main }
   Write-Host "`nPublicado: reflexão de $date"
 }
@@ -115,6 +143,7 @@ catch {
   exit 1
 }
 finally {
+  if ($mutex) { try { $mutex.ReleaseMutex() } catch {} }
   Write-Host "Fim $(Get-Date -Format s)"
   Stop-Transcript | Out-Null
 }

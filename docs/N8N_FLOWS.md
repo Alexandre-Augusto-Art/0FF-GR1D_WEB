@@ -131,6 +131,21 @@ sobrescreveu o arquivo. Ao reativar, troque essa montagem por `addEntry` de
   sozinho a partir do desligado é preciso ativar "Power On By RTC" na BIOS (ASUS: Advanced →
   APM Configuration) e entrar no Windows (a tarefa roda na sua sessão).
 
+### Reflexão a partir de um link (desde 2026-11-12)
+
+Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`):
+`link.json → Baixar notícia (HTTP) → Extrair notícia (og:title, og:description, data, parágrafos)
+→ Prepare Prompt (com o texto da matéria) → AI Agent → … → Validar e montar → Gravar saída`.
+A entrada recebe a tag `link-enviado` e o commit sai como "W4K3 PR0T0C0L: reflexão a partir de link".
+
+- Pelo terminal: `powershell -ExecutionPolicy Bypass -File %USERPROFILE%\.w4k3\bin\run-w4k3.ps1 -Url <link>`
+- Pelo Telegram: `automation/telegram-w4k3.ps1` fica ouvindo o seu bot (tarefa "W4K3 - Telegram",
+  inicia ao entrar no Windows). Configurar uma vez com
+  `install-w4k3-task.ps1 -TelegramToken "<token do @BotFather>"`; o token fica só em
+  `%USERPROFILE%\.w4k3\telegram.json`. O primeiro chat que falar com o bot vira o dono.
+- Uma reflexão por dia: o link substitui a do dia, e a execução das 09:00 não roda se o dia já
+  tiver reflexão (`-Force` força). Execuções simultâneas esperam a anterior terminar.
+
 ### O que foi corrigido em relação ao export de 2026-02-04
 
 - O gatilho manual estava ligado só ao Editor-Chefe: os 3 RSS do Gerador não tinham gatilho.
