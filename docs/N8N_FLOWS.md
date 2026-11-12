@@ -133,18 +133,32 @@ sobrescreveu o arquivo. Ao reativar, troque essa montagem por `addEntry` de
 
 ### Reflexão a partir de um link (desde 2026-11-12)
 
-Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`):
-`link.json → Baixar notícia (HTTP) → Extrair notícia (og:title, og:description, data, parágrafos)
-→ Prepare Prompt (com o texto da matéria) → AI Agent → … → Validar e montar → Gravar saída`.
-A entrada recebe a tag `link-enviado` e o commit sai como "W4K3 PR0T0C0L: reflexão a partir de link".
+Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só um **rascunho**:
+`link.json {url, direction, feedback?, previousDraft?} → Baixar notícia (HTTP) → Extrair notícia
+(og:title, og:description, data, parágrafos) → Prepare Prompt (texto da matéria + direcionamento
++ versão anterior e ajustes) → AI Agent → Format and Save1 → Validar rascunho → draft.json`.
+Quem publica é o `run-w4k3.ps1 -Publish` (usa `automation/publish-entry.js`: data de hoje,
+`addEntry`, validação). A entrada recebe a tag `link-enviado`.
 
-- Pelo terminal: `powershell -ExecutionPolicy Bypass -File %USERPROFILE%\.w4k3\bin\run-w4k3.ps1 -Url <link>`
-- Pelo Telegram: `automation/telegram-w4k3.ps1` fica ouvindo o seu bot (tarefa "W4K3 - Telegram",
-  inicia ao entrar no Windows). Configurar uma vez com
-  `install-w4k3-task.ps1 -TelegramToken "<token do @BotFather>"`; o token fica só em
-  `%USERPROFILE%\.w4k3\telegram.json`. O primeiro chat que falar com o bot vira o dono.
-- Uma reflexão por dia: o link substitui a do dia, e a execução das 09:00 não roda se o dia já
-  tiver reflexão (`-Force` força). Execuções simultâneas esperam a anterior terminar.
+**Bot do Telegram** (`automation/telegram-w4k3.ps1`, tarefa "W4K3 - Telegram", inicia ao entrar
+no Windows; log em `%USERPROFILE%\.w4k3\logs\telegram.log`):
+
+```
+você: <link> + o que quer que ele fale      → bot: rascunho
+você: ajustes em texto livre (n vezes)      → bot: rascunho reescrito
+você: ✅ Aprovar (ou "ok")                   → bot: publicar agora ou às 09:00?
+  🚀 agora   → run-w4k3.ps1 -Publish          (commit "reflexão aprovada")
+  ⏰ 09:00   → %USERPROFILE%\.w4k3\pending.json; a execução das 09h publica ele no lugar
+               da reflexão automática e avisa no Telegram
+```
+Comandos: `/status`, `/cancelar`, `/ajuda`. Configurar uma vez com
+`install-w4k3-task.ps1 -TelegramToken "<token do @BotFather>"`; o token fica só em
+`%USERPROFILE%\.w4k3\telegram.json` e o primeiro chat que falar com o bot vira o dono.
+
+Pelo terminal: `run-w4k3.ps1 -Url <link> [-Direction "..."]` gera e publica sem revisão;
+`-Request pedido.json` só gera o rascunho; `-Publish draft.json` publica.
+Uma reflexão por dia: publicar de novo no mesmo dia substitui; a execução das 09:00 não roda se
+o dia já tiver reflexão (`-Force` força). Execuções simultâneas esperam a anterior terminar.
 
 ### O que foi corrigido em relação ao export de 2026-02-04
 

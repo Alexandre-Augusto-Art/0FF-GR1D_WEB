@@ -1,6 +1,6 @@
 {
   "id": "W4K3linkNoticia1",
-  "name": "W4K3 PR0T0C0L - Reflexão a partir de link",
+  "name": "W4K3 PR0T0C0L - Rascunho a partir de link",
   "nodes": [
     {
       "parameters": {},
@@ -91,7 +91,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const newsData = $input.item.json;\nconst promptText = `Você é um analista crítico e questionador do sistema. Analise a seguinte notícia e escreva uma reflexão profunda com enfoque antisistema.\n\nNOTÍCIA:\nTítulo: ${newsData.mainNews.title}\nResumo: ${newsData.mainNews.summary || newsData.mainNews.title}\nTexto da matéria (trechos):\n${newsData.fullText || ''}\nFonte: ${newsData.mainNews.source}\nBaseie-se nos fatos do texto acima; não invente dados.\n\nA reflexão deve:\n- Ter um título impactante\n- Ter entre 400-600 palavras\n- Ser crítica e questionadora sobre o sistema\n- Apontar problemas estruturais revelados pela notícia\n- Ser escrita em português brasileiro\n- Ter tom provocativo mas fundamentado\n- Relacionar a notícia com problemas maiores do sistema\n- No campo \"content\", usar HTML simples: parágrafos em <p>...</p>, podendo usar <strong> e <em>. Nada de markdown.\n- Responder SOMENTE com o JSON, sem texto antes ou depois.\n\nFormato de saída (JSON):\n{\"title\": \"Título da reflexão\", \"content\": \"Conteúdo completo da reflexão...\", \"excerpt\": \"Resumo em 1-2 frases\"}`;\nreturn [{ json: { text: promptText, mainNews: newsData.mainNews, allSources: newsData.allSources, today: newsData.today } }];"
+        "jsCode": "// Monta o prompt a partir da notícia + direcionamento do autor + (opcional) versão anterior e ajustes.\nconst n = $input.item.json;\nconst req = $('Extrair link').first().json.data || {};\nconst direction = String(req.direction || '').trim();\nconst feedback = String(req.feedback || '').trim();\nconst prev = req.previousDraft && req.previousDraft.reflection;\nconst strip = h => String(h || '').replace(/<\\/p>\\s*/gi, '\\n\\n').replace(/<[^>]+>/g, '').trim();\n\nlet promptText = `Você é um analista crítico e questionador do sistema. Analise a seguinte notícia e escreva uma reflexão profunda com enfoque antisistema.\n\nNOTÍCIA:\nTítulo: ${n.mainNews.title}\nFonte: ${n.mainNews.source}\nResumo: ${n.mainNews.summary || n.mainNews.title}\nTexto da matéria (trechos):\n${n.fullText || ''}\n\nBaseie-se nos fatos do texto acima; não invente dados.`;\n\nif (direction) {\n  promptText += `\n\nDIRECIONAMENTO DO AUTOR (prioridade máxima: siga este foco, este ângulo e este tom):\n${direction}`;\n}\nif (prev && feedback) {\n  promptText += `\n\nVERSÃO ANTERIOR DA REFLEXÃO:\nTítulo: ${prev.title}\n${strip(prev.content)}\n\nAJUSTES PEDIDOS PELO AUTOR (aplique todos; mantenha o que não foi criticado):\n${feedback}`;\n}\n\npromptText += `\n\nA reflexão deve:\n- Ter um título impactante\n- Ter entre 400-600 palavras\n- Ser crítica e questionadora sobre o sistema\n- Apontar problemas estruturais revelados pela notícia\n- Ser escrita em português brasileiro\n- Ter tom provocativo mas fundamentado\n- No campo \"content\", usar HTML simples: parágrafos em <p>...</p>, podendo usar <strong> e <em>. Nada de markdown.\n- Responder SOMENTE com o JSON, sem texto antes ou depois.\n\nFormato de saída (JSON):\n{\"title\": \"Título da reflexão\", \"content\": \"<p>Conteúdo completo da reflexão...</p>\", \"excerpt\": \"Resumo em 1-2 frases\"}`;\n\nreturn [{ json: { text: promptText, mainNews: n.mainNews, allSources: n.allSources, today: n.today } }];\n"
       },
       "id": "27221072-7857-4681-b941-6e4716226b0e",
       "name": "Prepare Prompt",
@@ -156,42 +156,14 @@
     },
     {
       "parameters": {
-        "fileSelector": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/current.json",
-        "options": {}
+        "jsCode": "/* DEDSEC - validadores dos feeds diários (W4K3, Motivação, Organize-se)\r\n *\r\n * Arquivo sem dependências, usado em três lugares:\r\n *  1. n8n: cole este arquivo inteiro num nó \"Code\" antes do nó do GitHub (veja automation/n8n/README.md).\r\n *     Se o conteúdo for inválido, o nó lança erro, o fluxo para e o site continua com o conteúdo de ontem.\r\n *  2. GitHub Actions: automation/validate.js roda a cada push em data/ e avisa por e-mail se algo quebrou.\r\n *  3. Local: `node automation/validate.js`\r\n *\r\n * Cada validador recebe o CONTEÚDO FINAL do arquivo (já com a entrada nova somada às antigas)\r\n * e devolve uma lista de erros. Lista vazia = válido.\r\n */\r\n\r\nconst DATE_RE = /^\\d{4}-\\d{2}-\\d{2}$/;\r\nconst TIME_RE = /^([01]\\d|2[0-3]):[0-5]\\d$/;\r\nconst UFS = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR',\r\n  'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];\r\n\r\nfunction isObj(v) { return v !== null && typeof v === 'object' && !Array.isArray(v); }\r\nfunction isText(v, min = 1) { return typeof v === 'string' && v.trim().length >= min; }\r\nfunction isDate(v) {\r\n  if (typeof v !== 'string' || !DATE_RE.test(v)) return false;\r\n  const d = new Date(v + 'T00:00:00Z');\r\n  return !isNaN(d) && d.toISOString().slice(0, 10) === v; // recusa 2026-02-31\r\n}\r\nfunction isIso(v) { return typeof v === 'string' && !isNaN(Date.parse(v)); }\r\nfunction isUrlOrHash(v) { return v === '#' || (typeof v === 'string' && /^https?:\\/\\/\\S+$/.test(v)); }\r\n\r\n/** Datas em ordem decrescente (mais recente primeiro) e sem repetição. */\r\nfunction checkNewestFirst(list, errors, label) {\r\n  const seen = new Set();\r\n  for (let i = 0; i < list.length; i++) {\r\n    const d = list[i] && list[i].date;\r\n    if (!isDate(d)) continue;\r\n    if (seen.has(d)) errors.push(`${label}[${i}]: data ${d} repetida`);\r\n    seen.add(d);\r\n    if (i > 0 && isDate(list[i - 1].date) && list[i - 1].date < d) {\r\n      errors.push(`${label}[${i}]: fora de ordem (o mais recente deve vir primeiro)`);\r\n    }\r\n  }\r\n}\r\n\r\n/* ---------- W4K3 PR0T0C0L: data/reflections.json ----------\r\n * [ { id, date: \"AAAA-MM-DD\",\r\n *     news: { title, link, summary, source, publishedDate },\r\n *     reflection: { title, content (HTML simples), excerpt },\r\n *     sources: [ { title, link, source, date } ],\r\n *     tags: [ \"...\" ] }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateW4K3(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma entrada');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isObj(e.reflection)) errors.push(`${p}.reflection: obrigatório`);\r\n    else {\r\n      if (!isText(e.reflection.title, 3)) errors.push(`${p}.reflection.title: vazio`);\r\n      if (!isText(e.reflection.content, 50)) errors.push(`${p}.reflection.content: vazio ou curto demais`);\r\n    }\r\n    if (e.news !== undefined) {\r\n      if (!isObj(e.news)) errors.push(`${p}.news: deve ser um objeto`);\r\n      else {\r\n        if (!isText(e.news.title)) errors.push(`${p}.news.title: vazio`);\r\n        if (e.news.link !== undefined && !isUrlOrHash(e.news.link)) errors.push(`${p}.news.link: URL inválida`);\r\n      }\r\n    }\r\n    if (e.sources !== undefined) {\r\n      if (!Array.isArray(e.sources)) errors.push(`${p}.sources: deve ser uma lista`);\r\n      else e.sources.forEach((s, j) => {\r\n        if (!isObj(s) || !isText(s.title)) errors.push(`${p}.sources[${j}].title: vazio`);\r\n        else if (s.link !== undefined && !isUrlOrHash(s.link)) errors.push(`${p}.sources[${j}].link: URL inválida`);\r\n      });\r\n    }\r\n    if (e.tags !== undefined && !(Array.isArray(e.tags) && e.tags.every(t => typeof t === 'string'))) {\r\n      errors.push(`${p}.tags: deve ser uma lista de textos`);\r\n    }\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Motivação Diária: data/motivations.json ----------\r\n * [ { date: \"AAAA-MM-DD\", content: \"frase\", author?: \"...\" }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateMotivacao(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma frase');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isText(e.content, 10)) errors.push(`${p}.content: vazio ou curto demais`);\r\n    else if (e.content.length > 500) errors.push(`${p}.content: longo demais (máx. 500 caracteres)`);\r\n    if (e.author !== undefined && typeof e.author !== 'string') errors.push(`${p}.author: deve ser texto`);\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Organize-se: data/organize.json ----------\r\n * { updatedAt: \"ISO 8601\",\r\n *   dicasGerais: [ \"...\" ],\r\n *   eventos: [ {\r\n *     id, titulo, descricao,\r\n *     data: \"AAAA-MM-DD\", hora?: \"HH:MM\",\r\n *     uf: \"SP\", cidade: \"São Paulo\",\r\n *     local: \"ponto de concentração\", trajeto?: \"...\",\r\n *     organizacao?: \"...\", oQueLevar?: [ \"...\" ],\r\n *     fonte: { nome, url } } ] }\r\n * A IA cobre o Brasil inteiro; o site filtra por estado e cidade no navegador.\r\n */\r\nfunction validateOrganize(data) {\r\n  const errors = [];\r\n  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];\r\n  if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');\r\n  if (data.dicasGerais !== undefined && !(Array.isArray(data.dicasGerais) && data.dicasGerais.every(t => isText(t)))) {\r\n    errors.push('dicasGerais: deve ser uma lista de textos');\r\n  }\r\n  if (!Array.isArray(data.eventos)) return errors.concat('eventos: deve ser uma lista []');\r\n  const ids = new Set();\r\n  data.eventos.forEach((e, i) => {\r\n    const p = `eventos[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isText(e.id)) errors.push(`${p}.id: obrigatório`);\r\n    else if (ids.has(e.id)) errors.push(`${p}.id: \"${e.id}\" repetido`);\r\n    ids.add(e.id);\r\n    if (!isText(e.titulo, 3)) errors.push(`${p}.titulo: vazio`);\r\n    if (!isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);\r\n    if (e.hora !== undefined && !TIME_RE.test(e.hora)) errors.push(`${p}.hora: use HH:MM`);\r\n    if (!UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado inválida (\"${e.uf}\")`);\r\n    if (!isText(e.cidade, 2)) errors.push(`${p}.cidade: vazio`);\r\n    if (!isText(e.local, 3)) errors.push(`${p}.local: vazio`);\r\n    if (e.oQueLevar !== undefined && !(Array.isArray(e.oQueLevar) && e.oQueLevar.every(t => isText(t)))) {\r\n      errors.push(`${p}.oQueLevar: deve ser uma lista de textos`);\r\n    }\r\n    if (!isObj(e.fonte) || !isText(e.fonte.nome) || !/^https?:\\/\\/\\S+$/.test(e.fonte.url || '')) {\r\n      errors.push(`${p}.fonte: precisa de nome e url (http/https)`);\r\n    }\r\n  });\r\n  return errors;\r\n}\r\n\r\n/** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */\r\nfunction addEntry(list, entry, max = 60) {\r\n  const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);\r\n  return [entry, ...rest].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)).slice(0, max);\r\n}\r\n\r\nconst FEEDS = {\r\n  'data/reflections.json': validateW4K3,\r\n  'data/motivations.json': validateMotivacao,\r\n  'data/organize.json': validateOrganize\r\n};\r\n\r\nif (typeof module !== 'undefined' && module.exports) {\r\n  module.exports = { validateW4K3, validateMotivacao, validateOrganize, addEntry, FEEDS };\r\n}\r\n\n\n// ---- validar o rascunho (uma entrada) ----\nconst e = $('Format and Save1').first().json.newEntry;\nconst erros = validateW4K3([e]);\nif (erros.length) throw new Error('Rascunho inválido:\\n' + erros.join('\\n'));\nreturn [{ json: { title: e.reflection.title, fileContent: JSON.stringify(e, null, 2) + '\\n' } }];"
       },
-      "name": "Ler reflections.json atual",
-      "type": "n8n-nodes-base.readWriteFile",
-      "typeVersion": 1,
-      "id": "b1f0c0de-0000-4000-8000-000000000020",
-      "position": [
-        1760,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "fromJson",
-        "options": {}
-      },
-      "name": "Extrair JSON",
-      "type": "n8n-nodes-base.extractFromFile",
-      "typeVersion": 1,
-      "id": "b1f0c0de-0000-4000-8000-000000000021",
-      "position": [
-        1980,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "/* DEDSEC - validadores dos feeds diários (W4K3, Motivação, Organize-se)\r\n *\r\n * Arquivo sem dependências, usado em três lugares:\r\n *  1. n8n: cole este arquivo inteiro num nó \"Code\" antes do nó do GitHub (veja automation/n8n/README.md).\r\n *     Se o conteúdo for inválido, o nó lança erro, o fluxo para e o site continua com o conteúdo de ontem.\r\n *  2. GitHub Actions: automation/validate.js roda a cada push em data/ e avisa por e-mail se algo quebrou.\r\n *  3. Local: `node automation/validate.js`\r\n *\r\n * Cada validador recebe o CONTEÚDO FINAL do arquivo (já com a entrada nova somada às antigas)\r\n * e devolve uma lista de erros. Lista vazia = válido.\r\n */\r\n\r\nconst DATE_RE = /^\\d{4}-\\d{2}-\\d{2}$/;\r\nconst TIME_RE = /^([01]\\d|2[0-3]):[0-5]\\d$/;\r\nconst UFS = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR',\r\n  'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];\r\n\r\nfunction isObj(v) { return v !== null && typeof v === 'object' && !Array.isArray(v); }\r\nfunction isText(v, min = 1) { return typeof v === 'string' && v.trim().length >= min; }\r\nfunction isDate(v) {\r\n  if (typeof v !== 'string' || !DATE_RE.test(v)) return false;\r\n  const d = new Date(v + 'T00:00:00Z');\r\n  return !isNaN(d) && d.toISOString().slice(0, 10) === v; // recusa 2026-02-31\r\n}\r\nfunction isIso(v) { return typeof v === 'string' && !isNaN(Date.parse(v)); }\r\nfunction isUrlOrHash(v) { return v === '#' || (typeof v === 'string' && /^https?:\\/\\/\\S+$/.test(v)); }\r\n\r\n/** Datas em ordem decrescente (mais recente primeiro) e sem repetição. */\r\nfunction checkNewestFirst(list, errors, label) {\r\n  const seen = new Set();\r\n  for (let i = 0; i < list.length; i++) {\r\n    const d = list[i] && list[i].date;\r\n    if (!isDate(d)) continue;\r\n    if (seen.has(d)) errors.push(`${label}[${i}]: data ${d} repetida`);\r\n    seen.add(d);\r\n    if (i > 0 && isDate(list[i - 1].date) && list[i - 1].date < d) {\r\n      errors.push(`${label}[${i}]: fora de ordem (o mais recente deve vir primeiro)`);\r\n    }\r\n  }\r\n}\r\n\r\n/* ---------- W4K3 PR0T0C0L: data/reflections.json ----------\r\n * [ { id, date: \"AAAA-MM-DD\",\r\n *     news: { title, link, summary, source, publishedDate },\r\n *     reflection: { title, content (HTML simples), excerpt },\r\n *     sources: [ { title, link, source, date } ],\r\n *     tags: [ \"...\" ] }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateW4K3(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma entrada');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isObj(e.reflection)) errors.push(`${p}.reflection: obrigatório`);\r\n    else {\r\n      if (!isText(e.reflection.title, 3)) errors.push(`${p}.reflection.title: vazio`);\r\n      if (!isText(e.reflection.content, 50)) errors.push(`${p}.reflection.content: vazio ou curto demais`);\r\n    }\r\n    if (e.news !== undefined) {\r\n      if (!isObj(e.news)) errors.push(`${p}.news: deve ser um objeto`);\r\n      else {\r\n        if (!isText(e.news.title)) errors.push(`${p}.news.title: vazio`);\r\n        if (e.news.link !== undefined && !isUrlOrHash(e.news.link)) errors.push(`${p}.news.link: URL inválida`);\r\n      }\r\n    }\r\n    if (e.sources !== undefined) {\r\n      if (!Array.isArray(e.sources)) errors.push(`${p}.sources: deve ser uma lista`);\r\n      else e.sources.forEach((s, j) => {\r\n        if (!isObj(s) || !isText(s.title)) errors.push(`${p}.sources[${j}].title: vazio`);\r\n        else if (s.link !== undefined && !isUrlOrHash(s.link)) errors.push(`${p}.sources[${j}].link: URL inválida`);\r\n      });\r\n    }\r\n    if (e.tags !== undefined && !(Array.isArray(e.tags) && e.tags.every(t => typeof t === 'string'))) {\r\n      errors.push(`${p}.tags: deve ser uma lista de textos`);\r\n    }\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Motivação Diária: data/motivations.json ----------\r\n * [ { date: \"AAAA-MM-DD\", content: \"frase\", author?: \"...\" }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateMotivacao(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma frase');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isText(e.content, 10)) errors.push(`${p}.content: vazio ou curto demais`);\r\n    else if (e.content.length > 500) errors.push(`${p}.content: longo demais (máx. 500 caracteres)`);\r\n    if (e.author !== undefined && typeof e.author !== 'string') errors.push(`${p}.author: deve ser texto`);\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Organize-se: data/organize.json ----------\r\n * { updatedAt: \"ISO 8601\",\r\n *   dicasGerais: [ \"...\" ],\r\n *   eventos: [ {\r\n *     id, titulo, descricao,\r\n *     data: \"AAAA-MM-DD\", hora?: \"HH:MM\",\r\n *     uf: \"SP\", cidade: \"São Paulo\",\r\n *     local: \"ponto de concentração\", trajeto?: \"...\",\r\n *     organizacao?: \"...\", oQueLevar?: [ \"...\" ],\r\n *     fonte: { nome, url } } ] }\r\n * A IA cobre o Brasil inteiro; o site filtra por estado e cidade no navegador.\r\n */\r\nfunction validateOrganize(data) {\r\n  const errors = [];\r\n  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];\r\n  if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');\r\n  if (data.dicasGerais !== undefined && !(Array.isArray(data.dicasGerais) && data.dicasGerais.every(t => isText(t)))) {\r\n    errors.push('dicasGerais: deve ser uma lista de textos');\r\n  }\r\n  if (!Array.isArray(data.eventos)) return errors.concat('eventos: deve ser uma lista []');\r\n  const ids = new Set();\r\n  data.eventos.forEach((e, i) => {\r\n    const p = `eventos[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isText(e.id)) errors.push(`${p}.id: obrigatório`);\r\n    else if (ids.has(e.id)) errors.push(`${p}.id: \"${e.id}\" repetido`);\r\n    ids.add(e.id);\r\n    if (!isText(e.titulo, 3)) errors.push(`${p}.titulo: vazio`);\r\n    if (!isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);\r\n    if (e.hora !== undefined && !TIME_RE.test(e.hora)) errors.push(`${p}.hora: use HH:MM`);\r\n    if (!UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado inválida (\"${e.uf}\")`);\r\n    if (!isText(e.cidade, 2)) errors.push(`${p}.cidade: vazio`);\r\n    if (!isText(e.local, 3)) errors.push(`${p}.local: vazio`);\r\n    if (e.oQueLevar !== undefined && !(Array.isArray(e.oQueLevar) && e.oQueLevar.every(t => isText(t)))) {\r\n      errors.push(`${p}.oQueLevar: deve ser uma lista de textos`);\r\n    }\r\n    if (!isObj(e.fonte) || !isText(e.fonte.nome) || !/^https?:\\/\\/\\S+$/.test(e.fonte.url || '')) {\r\n      errors.push(`${p}.fonte: precisa de nome e url (http/https)`);\r\n    }\r\n  });\r\n  return errors;\r\n}\r\n\r\n/** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */\r\nfunction addEntry(list, entry, max = 60) {\r\n  const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);\r\n  return [entry, ...rest].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)).slice(0, max);\r\n}\r\n\r\nconst FEEDS = {\r\n  'data/reflections.json': validateW4K3,\r\n  'data/motivations.json': validateMotivacao,\r\n  'data/organize.json': validateOrganize\r\n};\r\n\r\nif (typeof module !== 'undefined' && module.exports) {\r\n  module.exports = { validateW4K3, validateMotivacao, validateOrganize, addEntry, FEEDS };\r\n}\r\n\n\n// ---- montar e validar (W4K3) ----\nconst newEntry = $('Format and Save1').first().json.newEntry;\nlet atual = $input.first().json.data;\nif (typeof atual === 'string') atual = JSON.parse(atual || '[]');\nif (!Array.isArray(atual)) throw new Error('reflections.json atual não é uma lista: nada foi publicado');\nconst novo = addEntry(atual, newEntry);\nconst erros = validateW4K3(novo);\nif (erros.length) throw new Error('Conteúdo inválido, nada foi publicado:\\n' + erros.join('\\n'));\nreturn [{ json: { date: newEntry.date, total: novo.length, title: newEntry.reflection.title, fileContent: JSON.stringify(novo, null, 2) + '\\n' } }];"
-      },
-      "name": "Validar e montar (addEntry)",
+      "id": "b1f0c0de-0000-4000-8000-000000000030",
+      "name": "Validar rascunho",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "id": "b1f0c0de-0000-4000-8000-000000000022",
       "position": [
-        2200,
+        1760,
         300
       ]
     },
@@ -200,31 +172,31 @@
         "operation": "toText",
         "sourceProperty": "fileContent",
         "options": {
-          "fileName": "reflections.json",
+          "fileName": "draft.json",
           "encoding": "utf8"
         }
       },
-      "name": "Converter em arquivo",
+      "id": "b1f0c0de-0000-4000-8000-000000000031",
+      "name": "Converter rascunho",
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
-      "id": "b1f0c0de-0000-4000-8000-000000000023",
       "position": [
-        2420,
+        1980,
         300
       ]
     },
     {
       "parameters": {
         "operation": "write",
-        "fileName": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/reflections.json",
+        "fileName": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/draft.json",
         "options": {}
       },
-      "name": "Gravar saída",
+      "id": "b1f0c0de-0000-4000-8000-000000000032",
+      "name": "Gravar rascunho",
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
-      "id": "b1f0c0de-0000-4000-8000-000000000024",
       "position": [
-        2640,
+        2200,
         300
       ]
     }
@@ -322,51 +294,29 @@
       "main": [
         [
           {
-            "node": "Ler reflections.json atual",
+            "node": "Validar rascunho",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Ler reflections.json atual": {
+    "Validar rascunho": {
       "main": [
         [
           {
-            "node": "Extrair JSON",
+            "node": "Converter rascunho",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Extrair JSON": {
+    "Converter rascunho": {
       "main": [
         [
           {
-            "node": "Validar e montar (addEntry)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Validar e montar (addEntry)": {
-      "main": [
-        [
-          {
-            "node": "Converter em arquivo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Converter em arquivo": {
-      "main": [
-        [
-          {
-            "node": "Gravar saída",
+            "node": "Gravar rascunho",
             "type": "main",
             "index": 0
           }
@@ -382,5 +332,5 @@
     "saveManualExecutions": true
   },
   "tags": [],
-  "versionId": "b7c2e3a4-0002-4000-8000-000000000001"
+  "versionId": "b7c2e3a4-0002-4000-8000-000000000002"
 }

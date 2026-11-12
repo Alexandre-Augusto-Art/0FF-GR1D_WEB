@@ -21,7 +21,7 @@ param([string]$TelegramToken)
 $ErrorActionPreference = 'Stop'
 $bin = Join-Path $env:USERPROFILE '.w4k3\bin'
 New-Item -ItemType Directory -Force -Path (Join-Path $bin 'n8n\workflows') | Out-Null
-Copy-Item (Join-Path $PSScriptRoot 'run-w4k3.ps1'), (Join-Path $PSScriptRoot 'telegram-w4k3.ps1') $bin -Force
+Copy-Item ('run-w4k3.ps1', 'telegram-w4k3.ps1', 'publish-entry.js', 'validators.js' | ForEach-Object { Join-Path $PSScriptRoot $_ }) $bin -Force
 Copy-Item (Join-Path $PSScriptRoot 'n8n\workflows\w4k3-*.json') (Join-Path $bin 'n8n\workflows') -Force
 $script = Join-Path $bin 'run-w4k3.ps1'
 
