@@ -1,0 +1,395 @@
+{
+  "greeting": "Conexão estabelecida. Sou o assistente da DEDSEC. Pergunte sobre qualquer ferramenta do site ou escolha um tópico abaixo.",
+  "fallback": "Não encontrei nada sobre isso no sistema. Tente reformular ou escolha um dos tópicos abaixo.",
+  "entries": [
+    {
+      "id": "site",
+      "title": "O que é a DEDSEC",
+      "answer": "A DEDSEC é um hub de ferramentas com estética hacker. O site tem duas áreas: FERRAMENTAS, para se informar, verificar fatos e se organizar, e ENTRETENIMENTO, com jogos, tarô e arte em realidade aumentada. Tudo é gratuito e funciona direto no navegador.",
+      "link": "index.html",
+      "examples": [
+        "o que é esse site",
+        "o que é a dedsec",
+        "para que serve este site",
+        "do que se trata essa página",
+        "quem fez esse site",
+        "o que tem aqui",
+        "me explica o site",
+        "quais ferramentas existem",
+        "o que vocês fazem",
+        "qual o objetivo do projeto"
+      ],
+      "keywords": [
+        "dedsec",
+        "site",
+        "hub",
+        "pagina",
+        "ferramentas",
+        "sobre"
+      ],
+      "linkLabel": "IR PARA A HOME →"
+    },
+    {
+      "id": "w4k3",
+      "title": "W4K3 PR0T0C0L",
+      "answer": "O W4K3 PR0T0C0L é o 'protocolo de despertar': um feed de notícias e atualizações do dia, gerado e atualizado automaticamente. Abra quando quiser saber o que está acontecendo.",
+      "link": "w4k3-protocol.html",
+      "examples": [
+        "o que é o w4k3 protocol",
+        "onde vejo as notícias",
+        "tem notícias do dia",
+        "quero me informar sobre o que está acontecendo",
+        "protocolo de despertar",
+        "atualizações diárias",
+        "últimas notícias"
+      ],
+      "keywords": [
+        "w4k3",
+        "wake",
+        "protocol",
+        "protocolo",
+        "despertar",
+        "noticia",
+        "noticias",
+        "news",
+        "atualizacoes"
+      ]
+    },
+    {
+      "id": "motivacao",
+      "title": "Motivação Diária",
+      "answer": "A Motivação Diária traz uma mensagem do dia e frases para começar o dia com energia. É só abrir a página e ler.",
+      "link": "motivacao.html",
+      "examples": [
+        "o que é a motivação diária",
+        "quero uma frase motivacional",
+        "estou desanimado",
+        "preciso de inspiração",
+        "mensagem do dia",
+        "frase do dia"
+      ],
+      "keywords": [
+        "motivacao",
+        "motivacional",
+        "frase",
+        "inspiracao",
+        "energia",
+        "mensagem",
+        "desanimado"
+      ]
+    },
+    {
+      "id": "factcheck",
+      "title": "Fact Check",
+      "answer": "O Fact Check vai ajudar você a verificar se uma imagem, link ou vídeo é confiável: checar a origem, procurar sinais de montagem ou de conteúdo gerado por IA e comparar com fontes confiáveis. A ferramenta está em construção.",
+      "soon": true,
+      "examples": [
+        "como sei se uma notícia é falsa",
+        "essa foto é verdadeira",
+        "como verificar um vídeo",
+        "isso é fake news",
+        "checar se um link é confiável",
+        "a imagem foi feita por inteligência artificial",
+        "o que é o fact check",
+        "verificar fatos",
+        "esse print é montagem",
+        "como saber se é deepfake",
+        "recebi uma mensagem suspeita no whatsapp",
+        "é golpe ou verdade"
+      ],
+      "keywords": [
+        "fact",
+        "check",
+        "checar",
+        "verificar",
+        "fake",
+        "falsa",
+        "falso",
+        "boato",
+        "imagem",
+        "foto",
+        "video",
+        "link",
+        "verdade",
+        "montagem",
+        "print",
+        "deepfake",
+        "golpe",
+        "whatsapp",
+        "suspeita",
+        "editada"
+      ]
+    },
+    {
+      "id": "organize",
+      "title": "Organize-se",
+      "answer": "O Organize-se vai mostrar manifestações perto da sua região, com dicas do que levar, como chegar e como se proteger. A ferramenta está em construção. Enquanto isso, veja o Revolution Assets para itens úteis.",
+      "soon": true,
+      "examples": [
+        "onde tem manifestação perto de mim",
+        "como encontrar um protesto",
+        "o que levar para uma manifestação",
+        "qual o trajeto do ato",
+        "como participar de um protesto com segurança",
+        "o que é o organize-se",
+        "quando vai ter manifestação"
+      ],
+      "keywords": [
+        "organize",
+        "organizar",
+        "manifestacao",
+        "manifestacoes",
+        "protesto",
+        "ato",
+        "passeata",
+        "trajeto",
+        "perto",
+        "regiao",
+        "levar"
+      ]
+    },
+    {
+      "id": "catalogo",
+      "title": "Catálogo",
+      "answer": "O Catálogo reúne a coleção de itens e conteúdos da DEDSEC, organizados por categoria. Os itens estão sendo adicionados aos poucos.",
+      "link": "catalogo.html",
+      "examples": [
+        "o que é o catálogo",
+        "o que tem na coleção",
+        "quero ver os itens",
+        "lista de produtos"
+      ],
+      "keywords": [
+        "catalogo",
+        "colecao",
+        "itens",
+        "categorias",
+        "lista"
+      ]
+    },
+    {
+      "id": "revolution",
+      "title": "Revolution Assets",
+      "answer": "O Revolution Assets lista itens úteis para manifestações: máscara de gás, capacete, óculos de proteção, megafone, bandeiras e kit de primeiros socorros, cada um com preço.",
+      "link": "revolution-assets.html",
+      "examples": [
+        "o que é o revolution assets",
+        "o que comprar para protesto",
+        "onde compro máscara de gás",
+        "equipamento de proteção para manifestação",
+        "kit de primeiros socorros",
+        "itens para protesto",
+        "quanto custa o megafone",
+        "onde consigo um capacete",
+        "preciso de óculos de proteção"
+      ],
+      "keywords": [
+        "revolution",
+        "assets",
+        "comprar",
+        "loja",
+        "mascara",
+        "gas",
+        "capacete",
+        "oculos",
+        "megafone",
+        "bandeira",
+        "primeiros",
+        "socorros",
+        "equipamento",
+        "preco"
+      ]
+    },
+    {
+      "id": "diy",
+      "title": "DIY",
+      "answer": "O DIY ('faça você mesmo') tem projetos para você montar. Os arquivos ficam numa pasta do Google Drive: entre, escolha um projeto, baixe e siga as instruções que vêm junto.",
+      "link": "diy.html",
+      "examples": [
+        "o que é diy",
+        "faça você mesmo",
+        "quero um projeto para fazer em casa",
+        "onde baixo os projetos",
+        "tutoriais para construir",
+        "pasta do drive"
+      ],
+      "keywords": [
+        "diy",
+        "faca",
+        "mesmo",
+        "projeto",
+        "projetos",
+        "drive",
+        "baixar",
+        "construir",
+        "montar",
+        "tutorial"
+      ]
+    },
+    {
+      "id": "art",
+      "title": "ARt",
+      "answer": "O ARt é um aplicativo de Realidade Aumentada para criar e ver arte no seu ambiente: visualização em AR, criação de arte interativa, galeria virtual e compartilhamento das obras. O link de download será publicado na página.",
+      "link": "art.html",
+      "examples": [
+        "o que é o art",
+        "aplicativo de realidade aumentada",
+        "como baixar o app",
+        "arte em ar",
+        "ver arte no celular com a câmera"
+      ],
+      "keywords": [
+        "art",
+        "arte",
+        "ar",
+        "realidade",
+        "aumentada",
+        "aplicativo",
+        "app",
+        "download",
+        "galeria"
+      ]
+    },
+    {
+      "id": "tarot",
+      "title": "Tarot",
+      "answer": "O Tarot Cyberpunk sorteia uma carta para você. Aperte PLAY, espere o sorteio e veja a carta e o significado dela. É entretenimento.",
+      "link": "tarot.html",
+      "examples": [
+        "o que é o tarot",
+        "quero tirar uma carta",
+        "ler minha sorte",
+        "qual meu destino",
+        "como funciona o tarô"
+      ],
+      "keywords": [
+        "tarot",
+        "taro",
+        "carta",
+        "cartas",
+        "sorte",
+        "destino",
+        "leitura"
+      ]
+    },
+    {
+      "id": "gacha",
+      "title": "Cyber Luck Gacha",
+      "answer": "O Cyber Luck Gacha é um jogo de sorteio (gacha) com estética hacker: você gira e tenta conseguir itens raros. Abre em outra página.",
+      "link": "https://alexandre-augusto-art.github.io/GachaProject/",
+      "examples": [
+        "o que é o gacha",
+        "cyber luck gacha",
+        "jogo de sorteio",
+        "quero girar a roleta",
+        "como ganhar itens raros"
+      ],
+      "keywords": [
+        "gacha",
+        "cyber",
+        "luck",
+        "sorteio",
+        "roleta",
+        "raro",
+        "girar"
+      ]
+    },
+    {
+      "id": "breach",
+      "title": "Breach Protocol",
+      "answer": "O Breach Protocol é um mini-game de hacking: resolva a sequência para invadir o sistema. Abre em outra página.",
+      "link": "https://alexandre-augusto-art.github.io/HackThePrice/",
+      "examples": [
+        "o que é o breach protocol",
+        "jogo de hacker",
+        "minigame de invasão",
+        "quero hackear",
+        "hack the price"
+      ],
+      "keywords": [
+        "breach",
+        "hack",
+        "hacker",
+        "hackear",
+        "invadir",
+        "minigame",
+        "mini-game",
+        "price"
+      ]
+    },
+    {
+      "id": "combate",
+      "title": "Combate com IA",
+      "answer": "O Combate com IA é uma demo jogável de luta em que você enfrenta um adversário controlado por inteligência artificial. Abre em outra página.",
+      "link": "https://alexandre-augusto-art.github.io/SSS_GameDemo/",
+      "examples": [
+        "o que é o combate com ia",
+        "jogo de luta",
+        "quero lutar contra a inteligência artificial",
+        "demo do jogo",
+        "tem algum jogo de combate"
+      ],
+      "keywords": [
+        "combate",
+        "luta",
+        "lutar",
+        "batalha",
+        "demo",
+        "ia",
+        "inteligencia"
+      ]
+    },
+    {
+      "id": "jogos",
+      "title": "Entretenimento",
+      "answer": "Na área de ENTRETENIMENTO você encontra: ARt (arte em realidade aumentada), Tarot, Cyber Luck Gacha, Breach Protocol e Combate com IA. Escolha um tópico abaixo para saber mais.",
+      "link": "index.html",
+      "examples": [
+        "quais jogos tem",
+        "quero jogar algo",
+        "tem diversão aqui",
+        "estou entediado",
+        "área de entretenimento",
+        "quero me distrair",
+        "algo para passar o tempo"
+      ],
+      "keywords": [
+        "jogo",
+        "jogos",
+        "jogar",
+        "entretenimento",
+        "diversao",
+        "game",
+        "games",
+        "distrair",
+        "tedio",
+        "entediado"
+      ],
+      "linkLabel": "VER NA HOME →"
+    },
+    {
+      "id": "privacidade",
+      "title": "Privacidade do chat",
+      "answer": "Este assistente roda inteiro no seu navegador. A IA é baixada uma vez e fica no seu aparelho, e nenhuma pergunta que você digita é enviada para servidor nenhum.",
+      "examples": [
+        "você guarda minhas perguntas",
+        "minhas conversas são enviadas",
+        "é seguro usar esse chat",
+        "você é uma inteligência artificial",
+        "como você funciona",
+        "quem é você"
+      ],
+      "keywords": [
+        "privacidade",
+        "seguro",
+        "dados",
+        "guarda",
+        "enviada",
+        "bot",
+        "assistente",
+        "voce",
+        "funciona"
+      ]
+    }
+  ]
+}
