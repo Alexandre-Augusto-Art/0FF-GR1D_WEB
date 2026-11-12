@@ -1,0 +1,571 @@
+{
+  "id": "W4K3gerador09h01",
+  "name": "W4K3 PR0T0C0L - Gerador diário (09h)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1f0c0de-0000-4000-8000-000000000001",
+      "name": "Início (Agendador do Windows 09h)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://www.testingcatalog.com/rss/",
+        "options": {
+          "ignoreSSL": true
+        }
+      },
+      "id": "fc1c9c7a-9aed-4cb3-a505-50bdb15a5824",
+      "name": "RSS Feed 1",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        2416
+      ],
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "https://www.marktechpost.com/feed/",
+        "options": {}
+      },
+      "id": "e7289a2e-074d-4275-86bd-d8eaea841b02",
+      "name": "RSS Feed 6",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        2528
+      ],
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "https://www.artificial-intelligence.blog/ai-news?format=rss",
+        "options": {}
+      },
+      "id": "c5038e2c-e1d6-4a54-9f47-67fb15ace95a",
+      "name": "RSS Feed 7",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [
+        -1072,
+        2624
+      ],
+      "onError": "continueRegularOutput",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "id": "d1af66e1-e7d5-4523-b751-d52db8d39b0e",
+      "name": "Merge RSS Feeds",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -832,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "title-assign",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "id": "content-assign",
+              "name": "content",
+              "type": "string",
+              "value": "={{ $json.contentSnippet || $json.content }}"
+            },
+            {
+              "id": "link-assign",
+              "name": "link",
+              "type": "string",
+              "value": "={{ $json.link }}"
+            },
+            {
+              "id": "isoDate-assign",
+              "name": "isoDate",
+              "type": "number",
+              "value": "={{ (new Date($json.isoDate).getTime()) || 0 }}"
+            },
+            {
+              "id": "source-assign",
+              "name": "source",
+              "type": "string",
+              "value": "={{ $json.feed?.title || (($json.link || '').split('/')[2] || '').replace(/^www./, '') || 'RSS Feed' }}"
+            },
+            {
+              "id": "publishedDate-assign",
+              "name": "publishedDate",
+              "type": "string",
+              "value": "={{ (new Date($json.isoDate).getTime()) ? new Date($json.isoDate).toISOString().split('T')[0] : '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63932fdd-821c-4866-879b-ae573165fbfa",
+      "name": "Transform Date",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "date-filter",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.isoDate }}",
+              "rightValue": "={{ Date.now() - 7 * 24 * 60 * 60 * 1000 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5785667c-5d97-48b0-bdc1-1608a4459198",
+      "name": "Filter Last 7 Days",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -384,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "isoDate",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "309bbd41-95d0-4fe2-b7f8-50268d30df1d",
+      "name": "Sort by Date",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "id": "fa1facf4-a3ad-43b0-80f6-44204a33b273",
+      "name": "Limit to 10 News",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        48,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().filter(i => i.json.title && i.json.link);\nif (items.length === 0) throw new Error('Nenhuma notícia encontrada nos feeds RSS (últimos 7 dias)');\nconst mainNews = items[0].json;\nconst isoDay = v => (v ? new Date(v).toISOString().split('T')[0] : '');\nconst allSources = items.map(item => ({ title: item.json.title, link: item.json.link, source: item.json.source || 'RSS Feed', date: item.json.publishedDate || isoDay(item.json.isoDate) }));\nconst today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }); // data de Brasília\nreturn [{ json: { mainNews: { title: mainNews.title, link: mainNews.link, summary: (mainNews.content || mainNews.title).slice(0, 600), source: mainNews.source || 'RSS Feed', publishedDate: mainNews.publishedDate || isoDay(mainNews.isoDate) }, allSources, today } }];"
+      },
+      "id": "f0ec9361-aeff-4892-994d-e5bc62a9f1b6",
+      "name": "Select Main News",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const newsData = $input.item.json;\nconst promptText = `Você é um analista crítico e questionador do sistema. Analise a seguinte notícia e escreva uma reflexão profunda com enfoque antisistema.\n\nNOTÍCIA:\nTítulo: ${newsData.mainNews.title}\nResumo: ${newsData.mainNews.summary || newsData.mainNews.title}\nFonte: ${newsData.mainNews.source}\n\nA reflexão deve:\n- Ter um título impactante\n- Ter entre 400-600 palavras\n- Ser crítica e questionadora sobre o sistema\n- Apontar problemas estruturais revelados pela notícia\n- Ser escrita em português brasileiro\n- Ter tom provocativo mas fundamentado\n- Relacionar a notícia com problemas maiores do sistema\n- No campo \"content\", usar HTML simples: parágrafos em <p>...</p>, podendo usar <strong> e <em>. Nada de markdown.\n- Responder SOMENTE com o JSON, sem texto antes ou depois.\n\nFormato de saída (JSON):\n{\"title\": \"Título da reflexão\", \"content\": \"Conteúdo completo da reflexão...\", \"excerpt\": \"Resumo em 1-2 frases\"}`;\nreturn [{ json: { text: promptText, mainNews: newsData.mainNews, allSources: newsData.allSources, today: newsData.today } }];"
+      },
+      "id": "27221072-7857-4681-b941-6e4716226b0e",
+      "name": "Prepare Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        496,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "options": {
+          "systemMessage": "Você é um analista crítico e questionador do sistema. Sua função é analisar notícias e escrever reflexões profundas com enfoque antisistema. Sempre responda em formato JSON válido com: {\"title\": \"Título da reflexão\", \"content\": \"Conteúdo completo da reflexão...\", \"excerpt\": \"Resumo em 1-2 frases\"}"
+        }
+      },
+      "id": "2f23d58f-f34a-411e-b7eb-7a7740c22dc1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        720,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:14b",
+        "options": {
+          "lowVram": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        720,
+        2720
+      ],
+      "id": "b31fe1f5-aea3-46d2-b6c4-f6e5c245b15a",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "hLRRnxobQk2nm5GX",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiResponse = $input.item.json;\nlet promptData = null;\nconst nodeNames = ['Prepare Prompt', 'Prepare Prompt1', 'Prepare Prompt2'];\nfor (const nodeName of nodeNames) {\n  try {\n    const node = $(nodeName);\n    if (node && node.item && node.item.json) { promptData = node.item.json; break; }\n  } catch (e) { continue; }\n}\nif (!promptData) {\n  promptData = { mainNews: { title: 'Notícia não disponível', link: '#', summary: '', source: 'RSS Feed', publishedDate: new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }) }, allSources: [], today: new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }) };\n}\nconst today = promptData.today || new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });\nlet reflectionText = aiResponse.output || aiResponse.text || (typeof aiResponse === 'string' ? aiResponse : JSON.stringify(aiResponse));\nlet reflectionData = {};\ntry {\n  const jsonMatch = reflectionText.match(/```(?:json)?\\s*([\\s\\S]*?)\\s*```/) || reflectionText.match(/\\{[\\s\\S]{20,}\\}/);\n  if (jsonMatch) {\n    const jsonStr = jsonMatch[1] || jsonMatch[0];\n    reflectionData = JSON.parse(jsonStr);\n  } else {\n    const lines = reflectionText.split('\\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('*'));\n    const firstLine = lines[0] || '';\n    reflectionData = { title: firstLine.length > 80 ? firstLine.substring(0, 80) + '...' : firstLine || 'Reflexão sobre Notícia', content: reflectionText, excerpt: lines.slice(0, 2).join(' ').substring(0, 200) || reflectionText.substring(0, 150) + '...' };\n  }\n} catch (e) {\n  const lines = reflectionText.split('\\n').filter(l => l.trim() && !l.startsWith('#') && !l.startsWith('*'));\n  const firstLine = lines[0] || '';\n  reflectionData = { title: firstLine.length > 80 ? firstLine.substring(0, 80) + '...' : firstLine || 'Reflexão sobre Notícia', content: reflectionText, excerpt: reflectionText.substring(0, 150) + (reflectionText.length > 150 ? '...' : '') };\n}\nconst toHtml = t => /<p[ >]/i.test(t) ? t : t.split(/\\n\\s*\\n|\\n/).map(p => p.trim()).filter(Boolean).map(p => '<p>' + p.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>') + '</p>').join('\\n');\nreflectionData.content = toHtml(String(reflectionData.content || reflectionText));\nconst entry = {\n  id: today,\n  date: today,\n  news: { title: promptData.mainNews.title || 'Notícia não disponível', link: promptData.mainNews.link || '#', summary: promptData.mainNews.summary || promptData.mainNews.title || '', source: promptData.mainNews.source || 'RSS Feed', publishedDate: promptData.mainNews.publishedDate || today },\n  reflection: { title: (reflectionData.title || 'Reflexão sobre Notícia').trim(), content: (reflectionData.content || reflectionText).trim(), excerpt: (reflectionData.excerpt || reflectionText.substring(0, 150) + '...').trim() },\n  sources: (promptData.allSources || []).map(source => ({ title: source.title || 'Fonte não disponível', link: source.link || '#', source: source.source || 'RSS Feed', date: source.date || today })),\n  tags: ['reflexão', 'notícia', 'antisistema', 'crítica']\n};\nreturn [{ json: { newEntry: entry, date: today } }];"
+      },
+      "id": "31ec496c-a4ea-4b80-9e77-8b5895fea36a",
+      "name": "Format and Save1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1008,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/current.json",
+        "options": {}
+      },
+      "name": "Ler reflections.json atual",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "id": "a1f0c0de-0000-4000-8000-000000000010",
+      "position": [
+        1228,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "name": "Extrair JSON",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "id": "a1f0c0de-0000-4000-8000-000000000011",
+      "position": [
+        1448,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "/* DEDSEC - validadores dos feeds diários (W4K3, Motivação, Organize-se)\r\n *\r\n * Arquivo sem dependências, usado em três lugares:\r\n *  1. n8n: cole este arquivo inteiro num nó \"Code\" antes do nó do GitHub (veja automation/n8n/README.md).\r\n *     Se o conteúdo for inválido, o nó lança erro, o fluxo para e o site continua com o conteúdo de ontem.\r\n *  2. GitHub Actions: automation/validate.js roda a cada push em data/ e avisa por e-mail se algo quebrou.\r\n *  3. Local: `node automation/validate.js`\r\n *\r\n * Cada validador recebe o CONTEÚDO FINAL do arquivo (já com a entrada nova somada às antigas)\r\n * e devolve uma lista de erros. Lista vazia = válido.\r\n */\r\n\r\nconst DATE_RE = /^\\d{4}-\\d{2}-\\d{2}$/;\r\nconst TIME_RE = /^([01]\\d|2[0-3]):[0-5]\\d$/;\r\nconst UFS = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR',\r\n  'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'];\r\n\r\nfunction isObj(v) { return v !== null && typeof v === 'object' && !Array.isArray(v); }\r\nfunction isText(v, min = 1) { return typeof v === 'string' && v.trim().length >= min; }\r\nfunction isDate(v) {\r\n  if (typeof v !== 'string' || !DATE_RE.test(v)) return false;\r\n  const d = new Date(v + 'T00:00:00Z');\r\n  return !isNaN(d) && d.toISOString().slice(0, 10) === v; // recusa 2026-02-31\r\n}\r\nfunction isIso(v) { return typeof v === 'string' && !isNaN(Date.parse(v)); }\r\nfunction isUrlOrHash(v) { return v === '#' || (typeof v === 'string' && /^https?:\\/\\/\\S+$/.test(v)); }\r\n\r\n/** Datas em ordem decrescente (mais recente primeiro) e sem repetição. */\r\nfunction checkNewestFirst(list, errors, label) {\r\n  const seen = new Set();\r\n  for (let i = 0; i < list.length; i++) {\r\n    const d = list[i] && list[i].date;\r\n    if (!isDate(d)) continue;\r\n    if (seen.has(d)) errors.push(`${label}[${i}]: data ${d} repetida`);\r\n    seen.add(d);\r\n    if (i > 0 && isDate(list[i - 1].date) && list[i - 1].date < d) {\r\n      errors.push(`${label}[${i}]: fora de ordem (o mais recente deve vir primeiro)`);\r\n    }\r\n  }\r\n}\r\n\r\n/* ---------- W4K3 PR0T0C0L: data/reflections.json ----------\r\n * [ { id, date: \"AAAA-MM-DD\",\r\n *     news: { title, link, summary, source, publishedDate },\r\n *     reflection: { title, content (HTML simples), excerpt },\r\n *     sources: [ { title, link, source, date } ],\r\n *     tags: [ \"...\" ] }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateW4K3(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma entrada');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isObj(e.reflection)) errors.push(`${p}.reflection: obrigatório`);\r\n    else {\r\n      if (!isText(e.reflection.title, 3)) errors.push(`${p}.reflection.title: vazio`);\r\n      if (!isText(e.reflection.content, 50)) errors.push(`${p}.reflection.content: vazio ou curto demais`);\r\n    }\r\n    if (e.news !== undefined) {\r\n      if (!isObj(e.news)) errors.push(`${p}.news: deve ser um objeto`);\r\n      else {\r\n        if (!isText(e.news.title)) errors.push(`${p}.news.title: vazio`);\r\n        if (e.news.link !== undefined && !isUrlOrHash(e.news.link)) errors.push(`${p}.news.link: URL inválida`);\r\n      }\r\n    }\r\n    if (e.sources !== undefined) {\r\n      if (!Array.isArray(e.sources)) errors.push(`${p}.sources: deve ser uma lista`);\r\n      else e.sources.forEach((s, j) => {\r\n        if (!isObj(s) || !isText(s.title)) errors.push(`${p}.sources[${j}].title: vazio`);\r\n        else if (s.link !== undefined && !isUrlOrHash(s.link)) errors.push(`${p}.sources[${j}].link: URL inválida`);\r\n      });\r\n    }\r\n    if (e.tags !== undefined && !(Array.isArray(e.tags) && e.tags.every(t => typeof t === 'string'))) {\r\n      errors.push(`${p}.tags: deve ser uma lista de textos`);\r\n    }\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Motivação Diária: data/motivations.json ----------\r\n * [ { date: \"AAAA-MM-DD\", content: \"frase\", author?: \"...\" }, ... ]   // mais recente primeiro\r\n */\r\nfunction validateMotivacao(data) {\r\n  const errors = [];\r\n  if (!Array.isArray(data)) return ['o arquivo deve ser uma lista []'];\r\n  if (data.length === 0) errors.push('lista vazia: publique ao menos uma frase');\r\n  data.forEach((e, i) => {\r\n    const p = `[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isDate(e.date)) errors.push(`${p}.date: use AAAA-MM-DD`);\r\n    if (!isText(e.content, 10)) errors.push(`${p}.content: vazio ou curto demais`);\r\n    else if (e.content.length > 500) errors.push(`${p}.content: longo demais (máx. 500 caracteres)`);\r\n    if (e.author !== undefined && typeof e.author !== 'string') errors.push(`${p}.author: deve ser texto`);\r\n  });\r\n  checkNewestFirst(data, errors, '');\r\n  return errors;\r\n}\r\n\r\n/* ---------- Organize-se: data/organize.json ----------\r\n * { updatedAt: \"ISO 8601\",\r\n *   dicasGerais: [ \"...\" ],\r\n *   eventos: [ {\r\n *     id, titulo, descricao,\r\n *     data: \"AAAA-MM-DD\", hora?: \"HH:MM\",\r\n *     uf: \"SP\", cidade: \"São Paulo\",\r\n *     local: \"ponto de concentração\", trajeto?: \"...\",\r\n *     organizacao?: \"...\", oQueLevar?: [ \"...\" ],\r\n *     fonte: { nome, url } } ] }\r\n * A IA cobre o Brasil inteiro; o site filtra por estado e cidade no navegador.\r\n */\r\nfunction validateOrganize(data) {\r\n  const errors = [];\r\n  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];\r\n  if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');\r\n  if (data.dicasGerais !== undefined && !(Array.isArray(data.dicasGerais) && data.dicasGerais.every(t => isText(t)))) {\r\n    errors.push('dicasGerais: deve ser uma lista de textos');\r\n  }\r\n  if (!Array.isArray(data.eventos)) return errors.concat('eventos: deve ser uma lista []');\r\n  const ids = new Set();\r\n  data.eventos.forEach((e, i) => {\r\n    const p = `eventos[${i}]`;\r\n    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }\r\n    if (!isText(e.id)) errors.push(`${p}.id: obrigatório`);\r\n    else if (ids.has(e.id)) errors.push(`${p}.id: \"${e.id}\" repetido`);\r\n    ids.add(e.id);\r\n    if (!isText(e.titulo, 3)) errors.push(`${p}.titulo: vazio`);\r\n    if (!isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);\r\n    if (e.hora !== undefined && !TIME_RE.test(e.hora)) errors.push(`${p}.hora: use HH:MM`);\r\n    if (!UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado inválida (\"${e.uf}\")`);\r\n    if (!isText(e.cidade, 2)) errors.push(`${p}.cidade: vazio`);\r\n    if (!isText(e.local, 3)) errors.push(`${p}.local: vazio`);\r\n    if (e.oQueLevar !== undefined && !(Array.isArray(e.oQueLevar) && e.oQueLevar.every(t => isText(t)))) {\r\n      errors.push(`${p}.oQueLevar: deve ser uma lista de textos`);\r\n    }\r\n    if (!isObj(e.fonte) || !isText(e.fonte.nome) || !/^https?:\\/\\/\\S+$/.test(e.fonte.url || '')) {\r\n      errors.push(`${p}.fonte: precisa de nome e url (http/https)`);\r\n    }\r\n  });\r\n  return errors;\r\n}\r\n\r\n/** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */\r\nfunction addEntry(list, entry, max = 60) {\r\n  const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);\r\n  return [entry, ...rest].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)).slice(0, max);\r\n}\r\n\r\nconst FEEDS = {\r\n  'data/reflections.json': validateW4K3,\r\n  'data/motivations.json': validateMotivacao,\r\n  'data/organize.json': validateOrganize\r\n};\r\n\r\nif (typeof module !== 'undefined' && module.exports) {\r\n  module.exports = { validateW4K3, validateMotivacao, validateOrganize, addEntry, FEEDS };\r\n}\r\n\n\n// ---- montar e validar (W4K3) ----\nconst newEntry = $('Format and Save1').first().json.newEntry;\nlet atual = $input.first().json.data;\nif (typeof atual === 'string') atual = JSON.parse(atual || '[]');\nif (!Array.isArray(atual)) throw new Error('reflections.json atual não é uma lista: nada foi publicado');\nconst novo = addEntry(atual, newEntry);\nconst erros = validateW4K3(novo);\nif (erros.length) throw new Error('Conteúdo inválido, nada foi publicado:\\n' + erros.join('\\n'));\nreturn [{ json: { date: newEntry.date, total: novo.length, title: newEntry.reflection.title, fileContent: JSON.stringify(novo, null, 2) + '\\n' } }];"
+      },
+      "name": "Validar e montar (addEntry)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "id": "a1f0c0de-0000-4000-8000-000000000012",
+      "position": [
+        1668,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "fileContent",
+        "options": {
+          "fileName": "reflections.json",
+          "encoding": "utf8"
+        }
+      },
+      "name": "Converter em arquivo",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "id": "a1f0c0de-0000-4000-8000-000000000013",
+      "position": [
+        1888,
+        2528
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/reflections.json",
+        "options": {}
+      },
+      "name": "Gravar saída",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "id": "a1f0c0de-0000-4000-8000-000000000014",
+      "position": [
+        2108,
+        2528
+      ]
+    }
+  ],
+  "connections": {
+    "RSS Feed 1": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Feed 6": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS Feed 7": {
+      "main": [
+        [
+          {
+            "node": "Merge RSS Feeds",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge RSS Feeds": {
+      "main": [
+        [
+          {
+            "node": "Transform Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Date": {
+      "main": [
+        [
+          {
+            "node": "Filter Last 7 Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Last 7 Days": {
+      "main": [
+        [
+          {
+            "node": "Sort by Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort by Date": {
+      "main": [
+        [
+          {
+            "node": "Limit to 10 News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit to 10 News": {
+      "main": [
+        [
+          {
+            "node": "Select Main News",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Main News": {
+      "main": [
+        [
+          {
+            "node": "Prepare Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Format and Save1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format and Save1": {
+      "main": [
+        [
+          {
+            "node": "Ler reflections.json atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Início (Agendador do Windows 09h)": {
+      "main": [
+        [
+          {
+            "node": "RSS Feed 1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Feed 6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Feed 7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler reflections.json atual": {
+      "main": [
+        [
+          {
+            "node": "Extrair JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair JSON": {
+      "main": [
+        [
+          {
+            "node": "Validar e montar (addEntry)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar e montar (addEntry)": {
+      "main": [
+        [
+          {
+            "node": "Converter em arquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converter em arquivo": {
+      "main": [
+        [
+          {
+            "node": "Gravar saída",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveManualExecutions": true
+  },
+  "tags": [],
+  "versionId": "b7c2e3a4-0001-4000-8000-000000000001"
+}

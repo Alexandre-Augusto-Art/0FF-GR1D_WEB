@@ -13,12 +13,12 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
 - O site é estático (GitHub Pages). As páginas leem arquivos JSON em `data/` via `fetch()`
   em `js/content-loader.js`.
 - Um fluxo n8n busca notícias de IA por RSS, pede para um modelo local (Ollama `qwen2.5:14b`)
-  escrever uma reflexão e **faz commit direto no GitHub** em `data/reflections.json`
-  (nó GitHub "Edit a file"). Não depende do clone local.
-- **Estado atual: parado.** Os últimos commits automáticos são de 2026-02-04.
-  Os fluxos têm só gatilho manual (ou webhook), nenhum agendamento ativo, e o n8n não fica
-  rodando no PC. Como as páginas avisam quando o conteúdo tem mais de 2 dias, a página
-  W4K3 mostra hoje "SEM ATUALIZAÇÃO HÁ N DIAS".
+  escrever uma reflexão e grava `data/reflections.json`.
+- **Estado atual (2026-11-12): W4K3 automatizado.** O fluxo corrigido está em
+  `automation/n8n/workflows/w4k3-gerador.json` e roda **todo dia às 09:00** pelo Agendador de
+  Tarefas do Windows (veja [Automação diária](#automação-diária-desde-2026-11-12)). Não usa mais
+  o nó GitHub: o n8n grava o arquivo e `automation/run-w4k3.ps1` valida, faz commit e push no
+  `main`. Os exports antigos (seções abaixo) ficam só como histórico.
 - **Motivação Diária e Organize-se não têm fluxo n8n ainda.** `data/motivations.json` tem só
   uma frase inicial colocada à mão (2026-11-12) e `data/organize.json` tem só a estrutura,
   sem eventos.
@@ -105,6 +105,40 @@ Observação: nos commits do Editor-Chefe (2026-02-04) o `reflections.json` enco
 **só 1 entrada**. Provavelmente o "Build Full JSON" não conseguiu ler o conteúdo existente e
 sobrescreveu o arquivo. Ao reativar, troque essa montagem por `addEntry` de
 `automation/validators.js`.
+
+## Automação diária (desde 2026-11-12)
+
+```
+08:50  tarefa "W4K3 - Acordar PC 08h50"  acorda o PC (suspensão/hibernação) e o segura ligado
+09:00  tarefa "W4K3 - Gerador 09h"       %USERPROFILE%\.w4k3\bin\run-w4k3.ps1
+         → espera Ollama e internet
+         → atualiza o clone dedicado %USERPROFILE%\.w4k3\0FF-GR1D_WEB (= origin/main)
+         → copia data/reflections.json para %USERPROFILE%\.n8n-files\w4k3\current.json
+         → n8n import:workflow + n8n execute --id=W4K3gerador09h01   (sem abrir o n8n)
+              Manual Trigger → 3 RSS → … → AI Agent (Ollama) → Format and Save1
+              → Ler current.json → Validar e montar (validators.js + addEntry) → Gravar saída
+         → node automation/validate.js → commit "W4K3 PR0T0C0L: nova reflexão AAAA-MM-DD" → push
+```
+
+- Instalar ou atualizar (depois de mudar o fluxo ou o script):
+  `powershell -ExecutionPolicy Bypass -File automation\install-w4k3-task.ps1`
+- Testar sem publicar:
+  `powershell -ExecutionPolicy Bypass -File %USERPROFILE%\.w4k3\bin\run-w4k3.ps1 -DryRun`
+- Log de cada dia: `%USERPROFILE%\.w4k3\logs\AAAA-MM-DD.log`
+- Credencial no n8n: só "Ollama account" (`http://localhost:11434`, sem segredo). O push usa o
+  Git Credential Manager do Windows, então não há token do GitHub no n8n.
+- Se o PC estava **desligado** às 9h, a tarefa roda assim que você entrar no Windows. Para ligar
+  sozinho a partir do desligado é preciso ativar "Power On By RTC" na BIOS (ASUS: Advanced →
+  APM Configuration) e entrar no Windows (a tarefa roda na sua sessão).
+
+### O que foi corrigido em relação ao export de 2026-02-04
+
+- O gatilho manual estava ligado só ao Editor-Chefe: os 3 RSS do Gerador não tinham gatilho.
+- "Merge for GitHub" combinava por `newEntry`, campo que o "Get a file" não tem, e o "Get a file"
+  devolve o arquivo como binário; o "Build Full JSON" lia `[]` e sobrescrevia o histórico (por
+  isso o arquivo ficou com 1 entrada). Trocado por leitura local + `addEntry` + validação.
+- Datas no fuso de Brasília; texto da IA convertido em `<p>`; um feed RSS fora do ar não derruba
+  o fluxo; a fonte mostra o domínio em vez de "RSS Feed".
 
 ## Formatos dos arquivos
 
