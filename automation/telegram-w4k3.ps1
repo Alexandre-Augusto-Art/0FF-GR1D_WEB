@@ -1,5 +1,5 @@
 ﻿<#
-  W4K3 PR0T0C0L - bot do Telegram com revisão antes de publicar.
+  0FF-GR1D_WEB - bot do Telegram do projeto (W4K3 PR0T0C0L e Motivação Diária), com revisão antes de publicar.
 
   Conversa:
     1. Você manda o link da notícia e, na mesma mensagem, o direcionamento (o que quer que ele fale).
@@ -184,7 +184,7 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "W4K3 PR0T0C0L`n`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nW4K3 PR0T0C0L (reflexões)`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
@@ -282,7 +282,7 @@ while ($true) {
       $chat = [long]$msg.chat.id
       if (-not $cfg.chatId) {
         $cfg.chatId = $chat; Save-Cfg
-        Send 'W4K3 PR0T0C0L: este chat agora é o dono do bot.'
+        Send '0FF-GR1D_WEB: este chat agora é o dono do bot.'
         Log "Dono: $chat"
       }
       if ($chat -ne [long]$cfg.chatId) { Log "Ignorando chat $chat"; continue }
