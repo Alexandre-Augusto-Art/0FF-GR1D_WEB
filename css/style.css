@@ -700,6 +700,18 @@ body {
     0 0 40px rgba(244, 63, 94, 0.3);
 }
 
+/* F4C3 SC4N banner */
+.banner-facescan {
+  border-color: #a3e635;
+}
+
+.banner-facescan:hover {
+  border-color: #a3e635;
+  box-shadow:
+    0 0 20px rgba(163, 230, 53, 0.5),
+    0 0 40px rgba(163, 230, 53, 0.3);
+}
+
 /* Section dividers */
 .section-divider {
   display: flex;

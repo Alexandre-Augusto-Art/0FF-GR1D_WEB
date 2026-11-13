@@ -368,6 +368,38 @@
       "linkLabel": "VER NA HOME →"
     },
     {
+      "id": "facescan",
+      "title": "F4C3 SC4N",
+      "answer": "O F4C3 SC4N testa se o seu disfarce protege a sua identidade. Você tira uma selfie sem disfarce e uma foto com máscara, óculos ou boné, e três IAs locais dizem se o rosto e o corpo são encontrados e se a foto ainda é ligada a você. Tudo roda no seu aparelho: nenhuma foto é enviada.",
+      "link": "f4c3-sc4n.html",
+      "examples": [
+        "meu disfarce funciona",
+        "estou protegido contra reconhecimento facial",
+        "testar se a câmera me reconhece",
+        "como esconder meu rosto em manifestação",
+        "a máscara impede reconhecimento facial",
+        "testar máscara e óculos",
+        "as câmeras conseguem me identificar",
+        "como não ser identificado no protesto"
+      ],
+      "keywords": [
+        "face",
+        "scan",
+        "rosto",
+        "disfarce",
+        "reconhecimento",
+        "facial",
+        "identidade",
+        "identificado",
+        "camera",
+        "cameras",
+        "esconder",
+        "anonimo",
+        "anonimato",
+        "vigilancia"
+      ]
+    },
+    {
       "id": "privacidade",
       "title": "Privacidade do chat",
       "answer": "Este assistente roda inteiro no seu navegador. A IA é baixada uma vez e fica no seu aparelho, e nenhuma pergunta que você digita é enviada para servidor nenhum.",
