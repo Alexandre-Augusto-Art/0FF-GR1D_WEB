@@ -19,16 +19,16 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
   Tarefas do Windows (veja [Automação diária](#automação-diária-desde-2026-11-12)). Não usa mais
   o nó GitHub: o n8n grava o arquivo e `automation/run-w4k3.ps1` valida, faz commit e push no
   `main`. Os exports antigos (seções abaixo) ficam só como histórico.
-- **Motivação Diária e Organize-se não têm fluxo n8n ainda.** `data/motivations.json` tem só
-  uma frase inicial colocada à mão (2026-11-12) e `data/organize.json` tem só a estrutura,
-  sem eventos.
+- **Motivação Diária automatizada (2026-11-13)** com aprovação pelo Telegram: veja
+  [Motivação Diária](#motivação-diária-desde-2026-11-13).
+- **Organize-se não tem fluxo n8n ainda.** `data/organize.json` tem só a estrutura, sem eventos.
 
 ## Quem lê o quê no site
 
 | Página | Arquivo lido | Quem escreve hoje |
 |---|---|---|
 | `w4k3-protocol.html` (`#w4k3-feed`) | `data/reflections.json` | n8n (fluxos W4K3), parado desde 2026-02-04 |
-| `motivacao.html` (`#motivacao-feed`) | `data/motivations.json` | manual (só a frase inicial); fluxo a criar |
+| `motivacao.html` (`#motivacao-feed`) | `data/motivations.json` | n8n (`motivacao-diaria.json`), aprovado por você no Telegram |
 | `organize-se.html` (a fazer) | `data/organize.json` | ninguém ainda; fluxo a criar |
 | blog (`js/blog-loader.js`) | `posts/index.json` | manual |
 | `tarot.html` | `data/tarot.json` | manual |
@@ -160,6 +160,47 @@ Pelo terminal: `run-w4k3.ps1 -Url <link> [-Direction "..."]` gera e publica sem 
 Uma reflexão por dia: publicar de novo no mesmo dia substitui; a execução das 09:00 não roda se
 o dia já tiver reflexão (`-Force` força). Execuções simultâneas esperam a anterior terminar.
 
+## Motivação Diária (desde 2026-11-13)
+
+Frases de filmes, séries, jogos e livros que motivam a resistência contra o sistema (V de Vingança,
+Jogos Vorazes, Cyberpunk 2077, Matrix, Andor, 1984...). Elas vêm de um **banco curado**,
+`automation/motivacao/frases.json`, e não da memória da IA: assim o site não publica citação
+inventada ou atribuída à obra errada. A IA só **escolhe** qual frase usar.
+
+```
+09:10  tarefa "W4K3 - Motivacao 09h10"   run-motivacao.ps1
+         → atualiza o clone; monta %USERPROFILE%\.n8n-files\motivacaoequest.json
+           { today, direction, exclude, recentIds, recentTexts, reflection (W4K3 de hoje), bank }
+         → n8n execute --id=MOTIVACAOdiaria1  (automation/n8n/workflows/motivacao-diaria.json)
+              Ler request.json → Escolher candidatas (até 8, sem repetir as últimas 60, filtradas pelo tema)
+              → Prepare Prompt → AI Agent (Ollama) escolhe {id, motivo} → Montar proposta
+              → Validar proposta (validateMotivacao) → proposal.json
+         → manda a proposta no Telegram: [✅ Publicar agora] [🔄 Outra]
+12:00  tarefa "W4K3 - Motivacao 12h"     run-motivacao.ps1 -AutoPublish
+         → se o dia ainda não tem frase, publica a proposta pendente (ou escolhe uma) e avisa no Telegram
+```
+
+Publicar = `publish-entry.js` (data de hoje, `addEntry`, validação) + `validate.js` + commit
+"Motivação Diária: frase de AAAA-MM-DD" + push no `main`. Sem o Telegram configurado, a execução das
+09:10 publica direto. A entrada guarda `work`, `kind` e `bankId` além de `date`, `content` e `author`
+(o `bankId` evita repetir a frase).
+
+**No Telegram** (mesmo bot do W4K3):
+
+| Você manda | O bot faz |
+|---|---|
+| botão ✅ Publicar agora | publica a proposta |
+| botão 🔄 Outra | escolhe outra (não repete as recusadas), mantendo o tema |
+| `/frase` | proposta nova na hora |
+| `/frase jogos vorazes` (obra, tema, personagem ou `jogo`/`série`) | proposta nessa linha; se o banco não tiver nada, avisa e escolhe entre as gerais |
+| `frase: texto — obra` | a sua própria frase vira a proposta (autor = o que vem depois do travessão, ou DEDSEC) |
+
+Para **acrescentar frases**, edite `automation/motivacao/frases.json`
+(`id` único, `text` em português, `speaker`, `work`, `kind`, `year`, `tags`) e rode o
+`install-w4k3-task.ps1` de novo para copiar o banco. Pelo terminal:
+`run-motivacao.ps1 -Propose [-Direction "tema"]` só gera a proposta;
+`-Publish %USERPROFILE%\.w4k3\motivacao-proposal.json [-DryRun]` publica.
+
 ### O que foi corrigido em relação ao export de 2026-02-04
 
 - O gatilho manual estava ligado só ao Editor-Chefe: os 3 RSS do Gerador não tinham gatilho.
@@ -221,8 +262,8 @@ A referência oficial é o comentário de cada validador em `automation/validato
    workflow e deixar o n8n sempre ligado (ex.: tarefa agendada do Windows rodando `n8n start`
    no logon). Configurar um Error workflow para receber aviso de falha.
 6. Exportar o fluxo para `automation/n8n/workflows/` e commitar.
-7. Criar os fluxos novos de Motivação (`data/motivations.json`) e Organize-se
-   (`data/organize.json`) seguindo o mesmo padrão.
+7. Criar o fluxo novo do Organize-se (`data/organize.json`) seguindo o mesmo padrão
+   (Motivação já foi feito: `motivacao-diaria.json`).
 
 ## Dicas para o Claude
 

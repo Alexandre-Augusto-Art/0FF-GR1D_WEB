@@ -1,0 +1,56 @@
+[
+  { "id": "vdv-povo-governo", "text": "O povo não deveria temer o seu governo. O governo é que deveria temer o seu povo.", "speaker": "V", "work": "V de Vingança", "kind": "filme", "year": 2005, "tags": ["governo", "medo", "povo", "tirania"] },
+  { "id": "vdv-ideias-balas", "text": "Por trás desta máscara há mais do que carne. Há uma ideia. E ideias são à prova de balas.", "speaker": "V", "work": "V de Vingança", "kind": "filme", "year": 2005, "tags": ["ideia", "resistência", "máscara"] },
+  { "id": "vdv-artistas-mentiras", "text": "Artistas usam mentiras para dizer a verdade, enquanto políticos as usam para encobri-la.", "speaker": "V", "work": "V de Vingança", "kind": "filme", "year": 2005, "tags": ["arte", "política", "verdade", "mentira"] },
+  { "id": "vdv-cinco-novembro", "text": "Lembrai, lembrai do cinco de novembro: a pólvora, a traição e o ardil.", "speaker": "V", "work": "V de Vingança", "kind": "filme", "year": 2005, "tags": ["memória", "revolta"] },
+
+  { "id": "jv-esperanca-medo", "text": "Esperança. É a única coisa mais forte que o medo.", "speaker": "Presidente Snow", "work": "Jogos Vorazes", "kind": "filme", "year": 2012, "tags": ["esperança", "medo", "poder"] },
+  { "id": "jv-queimar-conosco", "text": "O fogo está se espalhando. E se nós queimarmos, vocês queimam conosco!", "speaker": "Katniss Everdeen", "work": "Jogos Vorazes: A Esperança – Parte 1", "kind": "filme", "year": 2014, "tags": ["revolta", "fogo", "resistência"] },
+  { "id": "jv-inimigo-real", "text": "Lembre-se de quem é o verdadeiro inimigo.", "speaker": "Haymitch Abernathy", "work": "Jogos Vorazes: Em Chamas", "kind": "filme", "year": 2013, "tags": ["inimigo", "união", "classe"] },
+
+  { "id": "cp-cidade-queimar", "text": "Acorda, samurai. Temos uma cidade para queimar.", "speaker": "Johnny Silverhand", "work": "Cyberpunk 2077", "kind": "jogo", "year": 2020, "tags": ["corporações", "revolta", "acordar", "cyberpunk"] },
+
+  { "id": "mx-sistema-inimigo", "text": "A Matrix é um sistema. Esse sistema é nosso inimigo.", "speaker": "Morpheus", "work": "Matrix", "kind": "filme", "year": 1999, "tags": ["sistema", "controle", "cyberpunk"] },
+  { "id": "mx-porta", "text": "Eu só posso te mostrar a porta. Você é quem tem que atravessá-la.", "speaker": "Morpheus", "work": "Matrix", "kind": "filme", "year": 1999, "tags": ["escolha", "ação", "despertar"] },
+  { "id": "mx-deserto-real", "text": "Bem-vindo ao deserto do real.", "speaker": "Morpheus", "work": "Matrix", "kind": "filme", "year": 1999, "tags": ["verdade", "despertar", "cyberpunk"] },
+  { "id": "mx-liberte-mente", "text": "Liberte a sua mente.", "speaker": "Morpheus", "work": "Matrix", "kind": "filme", "year": 1999, "tags": ["mente", "liberdade", "despertar"] },
+
+  { "id": "andor-tirania-esforco", "text": "A tirania exige esforço constante. Ela quebra, ela vaza. A autoridade é frágil. A opressão é a máscara do medo.", "speaker": "Karis Nemik", "work": "Andor", "kind": "série", "year": 2022, "tags": ["tirania", "opressão", "medo", "star wars"] },
+  { "id": "andor-controle-antinatural", "text": "A necessidade imperial de controle é tão desesperada porque é tão antinatural.", "speaker": "Karis Nemik", "work": "Andor", "kind": "série", "year": 2022, "tags": ["controle", "império", "star wars"] },
+  { "id": "andor-nascer-sol", "text": "Eu queimo a minha vida para fazer um nascer do sol que sei que nunca vou ver.", "speaker": "Luthen Rael", "work": "Andor", "kind": "série", "year": 2022, "tags": ["sacrifício", "futuro", "star wars"] },
+  { "id": "andor-lute-imperio", "text": "Lutem contra o Império!", "speaker": "Maarva Andor", "work": "Andor", "kind": "série", "year": 2022, "tags": ["luta", "império", "star wars"] },
+  { "id": "andor-uma-saida", "text": "Só existe uma saída!", "speaker": "Kino Loy", "work": "Andor", "kind": "série", "year": 2022, "tags": ["trabalho", "prisão", "fuga", "star wars"] },
+
+  { "id": "sw-rebelioes-esperanca", "text": "Rebeliões são construídas sobre a esperança.", "speaker": "Jyn Erso", "work": "Rogue One: Uma História Star Wars", "kind": "filme", "year": 2016, "tags": ["esperança", "rebelião", "star wars"] },
+  { "id": "sw-tarkin-dedos", "text": "Quanto mais você aperta, Tarkin, mais sistemas vão escapar por entre os seus dedos.", "speaker": "Princesa Leia", "work": "Star Wars: Uma Nova Esperança", "kind": "filme", "year": 1977, "tags": ["controle", "opressão", "star wars"] },
+
+  { "id": "cf-coisas-possuem", "text": "As coisas que você possui acabam possuindo você.", "speaker": "Tyler Durden", "work": "Clube da Luta", "kind": "filme", "year": 1999, "tags": ["consumo", "capitalismo"] },
+  { "id": "cf-empregos-odiamos", "text": "Trabalhamos em empregos que odiamos para comprar porcarias de que não precisamos.", "speaker": "Tyler Durden", "work": "Clube da Luta", "kind": "filme", "year": 1999, "tags": ["trabalho", "consumo", "capitalismo"] },
+
+  { "id": "1984-dois-mais-dois", "text": "Liberdade é a liberdade de dizer que dois mais dois são quatro. Se isso for concedido, todo o resto decorre.", "speaker": "Winston Smith", "work": "1984 (George Orwell)", "kind": "livro", "year": 1949, "tags": ["verdade", "liberdade", "vigilância"] },
+  { "id": "1984-controla-passado", "text": "Quem controla o passado controla o futuro. Quem controla o presente controla o passado.", "speaker": "Lema do Partido", "work": "1984 (George Orwell)", "kind": "livro", "year": 1949, "tags": ["memória", "propaganda", "controle", "vigilância"] },
+
+  { "id": "bio-escolhe-obedece", "text": "Um homem escolhe. Um escravo obedece.", "speaker": "Andrew Ryan", "work": "BioShock", "kind": "jogo", "year": 2007, "tags": ["obediência", "escolha", "manipulação"] },
+
+  { "id": "ac-nada-verdade", "text": "Nada é verdade. Tudo é permitido.", "speaker": "Credo dos Assassinos", "work": "Assassin's Creed", "kind": "jogo", "year": 2007, "tags": ["credo", "autonomia", "verdade"] },
+  { "id": "ac-trevas-luz", "text": "Trabalhamos nas trevas para servir à luz.", "speaker": "Credo dos Assassinos", "work": "Assassin's Creed", "kind": "jogo", "year": 2007, "tags": ["credo", "clandestinidade", "hacker"] },
+
+  { "id": "duna-medo-mente", "text": "Não terei medo. O medo é o assassino da mente.", "speaker": "Litania contra o Medo", "work": "Duna", "kind": "livro", "year": 1965, "tags": ["medo", "coragem", "mente"] },
+  { "id": "duna-destruir-controla", "text": "Quem pode destruir uma coisa, controla essa coisa.", "speaker": "Paul Atreides", "work": "Duna", "kind": "livro", "year": 1965, "tags": ["poder", "controle", "recursos"] },
+
+  { "id": "cb-liberdade", "text": "Eles podem tirar as nossas vidas, mas nunca vão tirar a nossa liberdade!", "speaker": "William Wallace", "work": "Coração Valente", "kind": "filme", "year": 1995, "tags": ["liberdade", "luta", "coragem"] },
+  { "id": "spartacus-eu-sou", "text": "Eu sou Spartacus!", "speaker": "Os escravizados rebelados", "work": "Spartacus", "kind": "filme", "year": 1960, "tags": ["solidariedade", "união", "revolta"] },
+
+  { "id": "hmt-nolite", "text": "Nolite te bastardes carborundorum. Não deixe os desgraçados te esmagarem.", "speaker": "June Osborne", "work": "The Handmaid's Tale", "kind": "série", "year": 2017, "tags": ["opressão", "mulheres", "resistência"] },
+
+  { "id": "mm-nao-somos-coisas", "text": "Nós não somos coisas.", "speaker": "As esposas de Immortan Joe", "work": "Mad Max: Estrada da Fúria", "kind": "filme", "year": 2015, "tags": ["dignidade", "mulheres", "opressão"] },
+  { "id": "mm-quem-matou", "text": "Quem matou o mundo?", "speaker": "As esposas de Immortan Joe", "work": "Mad Max: Estrada da Fúria", "kind": "filme", "year": 2015, "tags": ["meio ambiente", "colapso", "responsabilidade"] },
+
+  { "id": "sda-menor-pessoa", "text": "Até a menor das pessoas pode mudar o curso do futuro.", "speaker": "Galadriel", "work": "O Senhor dos Anéis: A Sociedade do Anel", "kind": "filme", "year": 2001, "tags": ["coragem", "pessoa comum", "futuro"] },
+
+  { "id": "wm-vigilantes", "text": "Quem vigia os vigilantes?", "speaker": "Pichação nas ruas", "work": "Watchmen", "kind": "hq", "year": 1986, "tags": ["vigilância", "poder", "polícia"] },
+
+  { "id": "tl-eles-vivem", "text": "Eles vivem. Nós dormimos.", "speaker": "Mensagem escondida", "work": "Eles Vivem", "kind": "filme", "year": 1988, "tags": ["propaganda", "consumo", "despertar"] },
+
+  { "id": "anon-expect-us", "text": "Nós não perdoamos. Nós não esquecemos. Aguardem-nos.", "speaker": "Anonymous", "work": "Manifesto Anonymous", "kind": "manifesto", "year": 2008, "tags": ["hacker", "anonimato", "coletivo"] }
+]

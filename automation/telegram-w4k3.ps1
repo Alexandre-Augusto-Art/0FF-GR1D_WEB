@@ -22,6 +22,10 @@ $Draft     = Join-Path $Base 'draft.json'
 $Pending   = Join-Path $Base 'pending.json'
 $Runner    = Join-Path $PSScriptRoot 'run-w4k3.ps1'
 $Site      = 'https://alexandre-augusto-art.github.io/0FF-GR1D_WEB/w4k3-protocol.html'
+# Motivação Diária (mesmo bot)
+$MotRunner   = Join-Path $PSScriptRoot 'run-motivacao.ps1'
+$MotProposal = Join-Path $Base 'motivacao-proposal.json'
+$MotSite     = 'https://alexandre-augusto-art.github.io/0FF-GR1D_WEB/motivacao.html'
 $Utf8      = New-Object System.Text.UTF8Encoding($false)
 $LogFile   = Join-Path $Base 'logs\telegram.log'
 
@@ -82,8 +86,8 @@ function Show-Draft {
 }
 
 # Roda o run-w4k3.ps1 num processo separado e devolve @{ ok; line; err }
-function Run-Runner([string[]]$runnerArgs, [string]$tag) {
-  $out = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $Runner @runnerArgs 2>&1 | ForEach-Object { "$_" }
+function Run-Runner([string[]]$runnerArgs, [string]$tag, [string]$script = $Runner) {
+  $out = & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script @runnerArgs 2>&1 | ForEach-Object { "$_" }
   $code = $LASTEXITCODE
   $line = $out | Where-Object { $_ -like "$tag|*" } | Select-Object -Last 1
   $err = $out | Where-Object { $_ -like '*ERRO:*' } | Select-Object -Last 1
@@ -108,20 +112,91 @@ function Make-Draft($state, [string]$feedback) {
   }
 }
 
+# ---------- Motivação Diária ----------
+$BtnMot = @(, @(@{ text = '✅ Publicar agora'; callback_data = 'mot_ok' }, @{ text = '🔄 Outra'; callback_data = 'mot_new' }))
+
+function Show-Mot {
+  $p = Get-Content $MotProposal -Raw -Encoding UTF8 | ConvertFrom-Json
+  $msg = "💬 MOTIVAÇÃO DO DIA (proposta)`n`n`"$($p.content)`"`n— $($p.author)"
+  if ($p.reason) { $msg += "`n`nPor que essa: $($p.reason)" }
+  if ($p.direction -and -not $p.matched -and $p.bankId) { $msg += "`n`n(Não achei nada no banco sobre `"$($p.direction)`"; escolhi entre as gerais. Se quiser uma específica, mande: frase: texto — obra)" }
+  Send $msg $BtnMot
+}
+
+function Make-Mot([string]$direction, [string[]]$exclude) {
+  $a = @('-Propose')
+  $direction = ($direction -replace '"', '').Trim()
+  if ($direction) { $a += @('-Direction', $direction) }
+  $ex = @($exclude | Where-Object { $_ })
+  if ($ex.Count) { $a += @('-Exclude', ($ex -join ',')) }
+  $r = Run-Runner $a 'PROPOSTA' $MotRunner
+  if ($r.ok) { Show-Mot } else { Send "Não consegui escolher a frase. $($r.err)`nTente de novo: /frase" }
+}
+
+function Handle-Mot([string]$t, [string]$action) {
+  $low = $t.ToLowerInvariant()
+  if ($action -eq 'mot_ok') {
+    if (-not (Test-Path $MotProposal)) { Send 'Não há frase pendente (talvez já tenha sido publicada). /frase gera outra.'; return }
+    Send 'Publicando a frase...'
+    $snap = Join-Path $Base 'motivacao-approved.json'
+    Copy-Item $MotProposal $snap -Force
+    $r = Run-Runner @('-Publish', $snap) 'RESULTADO' $MotRunner
+    if ($r.ok) {
+      $p = Get-Content $snap -Raw -Encoding UTF8 | ConvertFrom-Json
+      Send "🚀 Frase do dia publicada:`n`n`"$($p.content)`"`n— $($p.author)`n`nNo site em 1 ou 2 minutos:`n$MotSite"
+    } else { Send "Não consegui publicar. $($r.err)" $BtnMot }
+    return
+  }
+  if ($action -eq 'mot_new') {
+    $ex = @(); $dir = ''
+    if (Test-Path $MotProposal) {
+      $p = Get-Content $MotProposal -Raw -Encoding UTF8 | ConvertFrom-Json
+      $ex = @($p.exclude) + @($p.bankId)
+      $dir = [string]$p.direction
+    }
+    Send 'Buscando outra (1 ou 2 minutos)...'
+    Make-Mot $dir $ex
+    return
+  }
+  # Frase enviada por você:  frase: texto — obra
+  $own = [regex]::Match($t, '^(?i)(frase|motiva[cç][aã]o)\s*:\s*(.+)$', 'Singleline')
+  if ($own.Success) {
+    $body = $own.Groups[2].Value.Trim()
+    $author = 'DEDSEC'
+    $m = [regex]::Match($body, '^(.*\S)\s+[—–-]\s+([^—–]+)$', 'Singleline')
+    if ($m.Success) { $body = $m.Groups[1].Value; $author = $m.Groups[2].Value.Trim() }
+    $body = $body.Trim().Trim('"', '“', '”', "'").Trim()
+    if ($body.Length -lt 10 -or $body.Length -gt 500) { Send 'A frase precisa ter entre 10 e 500 caracteres. Formato: frase: texto — obra'; return }
+    $p = [ordered]@{ date = (Get-Date).ToString('yyyy-MM-dd'); content = $body; author = $author; reason = 'Frase enviada por você.'; exclude = @() }
+    [IO.File]::WriteAllText($MotProposal, ($p | ConvertTo-Json -Depth 5), $Utf8)
+    Show-Mot
+    return
+  }
+  # /frase [tema ou obra]
+  $dir = ($t -replace '^(?i)/(frase|motivacao|motivação)(@\w+)?', '').Trim()
+  if ($dir) { Send "Buscando uma frase na linha de `"$dir`" (1 ou 2 minutos)..." } else { Send 'Escolhendo a frase do dia (1 ou 2 minutos)...' }
+  Make-Mot $dir @()
+}
+
 function Handle([string]$text, [string]$action) {
   $state = Load-State
   $t = ($text + '').Trim()
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "W4K3 PR0T0C0L`n`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho"
+    Send "W4K3 PR0T0C0L`n`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
     $msg = "Etapa: $($state.stage)"
     if ($state.url) { $msg += "`nLink: $($state.url)" }
     if (Test-Path $Pending) { $msg += "`nAgendado para $((Next9h).ToString('dd/MM HH:mm')): " + (Get-Content $Pending -Raw -Encoding UTF8 | ConvertFrom-Json).reflection.title }
+    if (Test-Path $MotProposal) { $msg += "`nFrase pendente: " + (Get-Content $MotProposal -Raw -Encoding UTF8 | ConvertFrom-Json).content }
     Send $msg; return
+  }
+  if ($action -like 'mot_*' -or $low -match '^/(frase|motivacao|motivação)(@\w+)?(\s|$)' -or $low -match '^(frase|motiva[cç][aã]o)\s*:') {
+    Handle-Mot $t $action
+    return
   }
   if ($action -eq 'cancel' -or $low -in '/cancelar', 'cancelar', 'descartar') {
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
