@@ -1,5 +1,89 @@
 [
   {
+    "id": "2026-11-13",
+    "date": "2026-11-13",
+    "news": {
+      "title": "Google Releases TPU Sync: Open-Source KV Cache Transfer for TPUs",
+      "link": "https://www.marktechpost.com/2026/11/13/google-tpu-sync-kv-cache-transfer-library/",
+      "summary": "Google released TPU Sync, an open-source C++ library that moves KV caches and weights across TPU HBM, host DRAM, storage and network. Google reports over 90% lower KV transfer latency on 235B to 480B MoE models.\nThe post Google Releases TPU Sync: Open-Source KV Cache Transfer for TPUs appeared first on MarkTechPost.",
+      "source": "marktechpost.com",
+      "publishedDate": "2026-11-13"
+    },
+    "reflection": {
+      "title": "A Ilusão do Progresso Tecnológico em um Sistema Corrompido",
+      "content": "<p>O lançamento do TPU Sync pelo Google é um exemplo de como a tecnologia avança, enquanto as desigualdades estruturais se aprofundam. A empresa, que já é gigante no mercado de tecnologia, não está apenas lançando um <em>open-source</em>, mas também garantindo seu lugar como líder da inovação - uma posição que só reforça a concentração de poder e riqueza.</p><p>A latência reduzida no transferência de dados é um avanço significativo para as grandes empresas de tecnologia. No entanto, para a maioria das pessoas, isso não é mais do que um brilho distante que não acarreta melhorias reais na vida cotidiana. A tecnologia está sendo desenvolvida de forma acelerada, enquanto questões fundamentais como desigualdade econômica, falta de acesso à educação e saúde estão sendo negligenciadas.</p><p>É um sistema em que a inovação tecnológica é constantemente celebrada enquanto os problemas sociais são descartados como <em>inescapáveis</em>. Como uma ferramenta de transferência de dados é realmente relevante quando tantos indivíduos lutam diariamente para se manterem acima da linha da pobreza? É uma ironia amarga que avanços tecnológicos como o TPU Sync não parecem fazer nada para aliviar a opressão e a exploração em que tantos vivem.</p><p>É fundamental questionar a relevância e os efeitos dos avanços tecnológicos dentro de um sistema economicamente desigual e politicamente corrompido. O Google e outras grandes empresas de tecnologia precisam ser questionadas sobre seu papel em um sistema que beneficia apenas os já privilegiados, enquanto deixa de lado a grande maioria da população.</p><p>Ao mesmo tempo, é importante reconhecer que a tecnologia pode ser uma ferramenta poderosa para a mudança social, se usada de forma responsável e equitativa. Mas para isso acontecer, é necessário mudar o sistema que a molda e controla.</p><p>Ao celebrar a tecnologia avançada sem questionar o sistema que a sustenta, corremos o risco de nos tornar complacentes com uma realidade que é profundamente injusta e desigual.</p>",
+      "excerpt": "O lançamento do TPU Sync pelo Google é um exemplo da desigualdade estrutural no mundo da tecnologia e questiona a relevância de tais avanços em um sistema economicamente desigual."
+    },
+    "sources": [
+      {
+        "title": "Google Releases TPU Sync: Open-Source KV Cache Transfer for TPUs",
+        "link": "https://www.marktechpost.com/2026/11/13/google-tpu-sync-kv-cache-transfer-library/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Google Releases Gemini 4 Hydrogen: 2.5x Faster Than Gemini 3.8 Flash",
+        "link": "https://www.marktechpost.com/2026/11/13/google-gemini-4-hydrogen/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Liquid AI Releases LiquidCodec, a 74M-Parameter Streaming Audio Codec",
+        "link": "https://www.marktechpost.com/2026/11/12/liquid-ai-liquidcodec-streaming-audio-codec/",
+        "source": "marktechpost.com",
+        "date": "2026-11-12"
+      },
+      {
+        "title": " Google launches Gemini 4 Hydrogen for Pro and Ultra users ",
+        "link": "https://www.testingcatalog.com/google-launches-gemini-4-hydrogen-for-pro-and-ultra-users/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-12"
+      },
+      {
+        "title": "CopilotKit Releases OpenBot 1.0: An MIT-Licensed, Self-Hostable AI Coworker With Built-In Governance",
+        "link": "https://www.marktechpost.com/2026/11/12/copilotkit-openbot-1-0-open-source-ai-coworker/",
+        "source": "marktechpost.com",
+        "date": "2026-11-12"
+      },
+      {
+        "title": "AWS Releases AWS Emulator: A Local Copy of 200+ AWS Services Built by AI Agents",
+        "link": "https://www.marktechpost.com/2026/11/12/aws-emulator-local-aws-api-emulator-ai-agents/",
+        "source": "marktechpost.com",
+        "date": "2026-11-12"
+      },
+      {
+        "title": "IBM Announces IBM Quantum Nighthawk r3: A New Processor to Support 10k Quantum Operations on 520 Programmable Qubits",
+        "link": "https://www.marktechpost.com/2026/11/12/ibm-quantum-nighthawk-r3-520-qubits-1040-qubit-system-2027/",
+        "source": "marktechpost.com",
+        "date": "2026-11-12"
+      },
+      {
+        "title": "Google Launches Gemini Decisions API With Gemini Decision 1 at $0.10/M Tokens",
+        "link": "https://www.marktechpost.com/2026/11/11/google-gemini-decisions-api-gemini-decision-1/",
+        "source": "marktechpost.com",
+        "date": "2026-11-11"
+      },
+      {
+        "title": "Google DeepMind Releases AlphaGenome 2 for Cell-Type-Specific Variant Effects",
+        "link": "https://www.marktechpost.com/2026/11/11/google-deepmind-alphagenome-2-cell-type-variant-effects/",
+        "source": "marktechpost.com",
+        "date": "2026-11-11"
+      },
+      {
+        "title": "Marktechpost AI Launches GPU Leaderboard and the Deploy It Chrome Extension",
+        "link": "https://www.marktechpost.com/2026/11/11/marktechpost-gpu-leaderboard-chrome-extension-launch/",
+        "source": "marktechpost.com",
+        "date": "2026-11-11"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica"
+    ]
+  },
+  {
     "id": "2026-11-12",
     "date": "2026-11-12",
     "news": {
