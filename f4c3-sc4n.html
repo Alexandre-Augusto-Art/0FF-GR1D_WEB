@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Nenhuma conexão sai do site: a foto não tem como ser enviada para outro lugar. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; img-src 'self' blob: data:; media-src 'self' blob: mediastream:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'; base-uri 'self'">
+  <!-- Conexões externas liberadas só para o chatbot baixar a IA dele (jsDelivr e Hugging Face).
+       As fotos ficam no worker do F4C3 SC4N, que só fala com o próprio site. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co; img-src 'self' blob: data:; media-src 'self' blob: mediastream:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'; base-uri 'self'">
   <meta name="referrer" content="no-referrer">
   <title>F4C3 SC4N - DEDSEC</title>
   <link rel="stylesheet" href="css/style.css?v=5">
@@ -38,6 +39,10 @@
       <p class="feed-text">
         As fotos são analisadas aqui mesmo, no seu navegador. Nada é enviado, nada é salvo:
         ao fechar a página, tudo some. Depois da primeira visita, funciona até em modo avião.
+      </p>
+      <p class="feed-text">
+        Dúvidas sobre segurança em manifestações ou sobre esta ferramenta? Pergunte ao assistente
+        (botão <span class="font-mono">&gt;_</span>): ele também roda no seu aparelho.
       </p>
       <p class="fs-status" id="fs-status" aria-live="polite">IA LOCAL: AGUARDANDO</p>
       <div class="fs-progress" id="fs-progress" hidden><span></span></div>
@@ -203,8 +208,8 @@
     }
   </script>
 
-  <!-- Sem o chatbot nesta página: ele baixa a IA de servidores externos, e aqui nenhuma conexão sai do site. -->
   <script src="js/face-scan/client.js" defer></script>
   <script src="js/face-scan/page.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
 </body>
 </html>

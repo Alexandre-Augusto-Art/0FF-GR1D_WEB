@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const CACHE_VERSION = 'f4c3-sc4n-v1';
+const CACHE_VERSION = 'f4c3-sc4n-v2';
 
 // Mudam pouco e são pesados: servidos do cache primeiro.
 const IMMUTABLE = [
@@ -26,7 +26,11 @@ const SHELL = [
   'js/face-scan/client.js',
   'js/face-scan/page.js',
   'js/face-scan/worker.js',
-  'js/face-scan/vision.js'
+  'js/face-scan/vision.js',
+  // Assistente: offline ele cai no modo básico (busca por palavras-chave)
+  'js/chatbot.js',
+  'css/chatbot.css',
+  'data/chatbot.json'
 ];
 
 const scopeUrl = (path) => new URL(path, self.registration.scope).href;

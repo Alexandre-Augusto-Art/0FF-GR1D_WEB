@@ -400,6 +400,118 @@
       ]
     },
     {
+      "id": "protecao-identidade",
+      "title": "Proteger a identidade em atos",
+      "answer": "O que mais protege é esconder o rosto e parecer igual ao grupo. Óculos escuros + máscara (PFF2 ou cirúrgica) + boné com aba derrubam o reconhecimento facial. Guarda-chuva bloqueia câmeras altas e drones. Roupa lisa, igual à do grupo e sem marcas, com tatuagens cobertas, evita que você seja seguido de câmera em câmera; leve uma muda para trocar ao sair. Confira as leis locais: em alguns lugares cobrir o rosto em atos é restrito. Teste seu disfarce no F4C3 SC4N.",
+      "link": "f4c3-sc4n.html",
+      "examples": [
+        "como proteger minha identidade na manifestação",
+        "como não ser reconhecido no protesto",
+        "o que usar para não ser identificado",
+        "dicas de segurança para manifestação",
+        "como me proteger das câmeras",
+        "máscara e óculos funcionam contra câmeras",
+        "guarda-chuva protege de câmera",
+        "que roupa usar no protesto"
+      ],
+      "keywords": [
+        "proteger",
+        "protecao",
+        "seguranca",
+        "identidade",
+        "reconhecido",
+        "identificado",
+        "manifestacao",
+        "protesto",
+        "ato",
+        "oculos",
+        "bone",
+        "chuva",
+        "roupa",
+        "tatuagem",
+        "drone",
+        "guarda-chuva"
+      ]
+    },
+    {
+      "id": "celular-protesto",
+      "title": "Celular em manifestações",
+      "answer": "O celular identifica você mais que qualquer câmera: as antenas registram quais aparelhos estavam no local. O mais seguro é deixar o celular em casa ou levar um aparelho reserva, sem suas contas pessoais. Se precisar levar o seu, deixe desligado ou em modo avião, com bloqueio por senha (não por rosto ou digital) e localização desativada.",
+      "examples": [
+        "devo levar o celular na manifestação",
+        "o celular me identifica",
+        "como usar o celular no protesto",
+        "modo avião protege",
+        "a polícia rastreia celular",
+        "celular reserva para protesto"
+      ],
+      "keywords": [
+        "celular",
+        "telefone",
+        "antena",
+        "rastreio",
+        "rastrear",
+        "localizacao",
+        "gps",
+        "aviao",
+        "senha",
+        "desbloqueio"
+      ]
+    },
+    {
+      "id": "estampas-anti-ia",
+      "title": "Estampas anti-reconhecimento",
+      "answer": "Estampas e roupas \"anti-IA\" (falsas faces, padrões adversariais) enganam bem detectores antigos, mas os modelos atuais encontram a pessoa e o rosto mesmo assim, e cada estampa costuma funcionar só contra o modelo para o qual foi feita. Pior: uma roupa chamativa facilita ser seguido de câmera em câmera. Esconder o rosto e usar roupa comum funciona melhor.",
+      "link": "f4c3-sc4n.html",
+      "examples": [
+        "camisa anti reconhecimento facial funciona",
+        "estampa que engana a câmera",
+        "roupa que esconde da inteligência artificial",
+        "maquiagem contra reconhecimento facial",
+        "camuflagem urbana funciona",
+        "hyperface funciona"
+      ],
+      "keywords": [
+        "estampa",
+        "camisa",
+        "camiseta",
+        "padrao",
+        "camuflagem",
+        "adversarial",
+        "maquiagem",
+        "hyperface",
+        "dazzle",
+        "enganar"
+      ]
+    },
+    {
+      "id": "facescan-limites",
+      "title": "Limites do F4C3 SC4N",
+      "answer": "As fotos do F4C3 SC4N nunca saem do seu aparelho: são analisadas no navegador e somem ao fechar a página. Mas passar no teste não garante anonimato. Ele usa três IAs abertas e leves; sistemas de polícia e empresas usam modelos mais fortes, câmeras melhores e juntam outras pistas, como roupa, jeito de andar e celular. Use o resultado para comparar disfarces, não como garantia.",
+      "link": "f4c3-sc4n.html",
+      "examples": [
+        "minhas fotos são enviadas",
+        "o face scan guarda minha foto",
+        "passei no teste estou seguro",
+        "o resultado do f4c3 sc4n é garantido",
+        "é seguro colocar minha selfie",
+        "a polícia usa a mesma ia"
+      ],
+      "keywords": [
+        "foto",
+        "fotos",
+        "selfie",
+        "enviada",
+        "garantia",
+        "garantido",
+        "resultado",
+        "teste",
+        "limites",
+        "selfies",
+        "anonimato"
+      ]
+    },
+    {
       "id": "privacidade",
       "title": "Privacidade do chat",
       "answer": "Este assistente roda inteiro no seu navegador. A IA é baixada uma vez e fica no seu aparelho, e nenhuma pergunta que você digita é enviada para servidor nenhum.",

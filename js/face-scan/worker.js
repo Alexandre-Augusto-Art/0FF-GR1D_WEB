@@ -31,18 +31,26 @@ async function fetchModel(key, id) {
   const { url, label } = MODELS[key];
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Falha ao baixar o modelo ${label} (${res.status}).`);
+  // Com gzip (o GitHub Pages comprime .onnx), content-length é o tamanho comprimido e o corpo
+  // chega maior, já descomprimido: serve só de estimativa para a barra, nunca para o buffer.
   const total = Number(res.headers.get('content-length')) || 0;
   if (!res.body || !total) return new Uint8Array(await res.arrayBuffer());
 
   const reader = res.body.getReader();
-  const bytes = new Uint8Array(total);
+  const chunks = [];
   let loaded = 0;
   for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
-    bytes.set(value, loaded);
+    chunks.push(value);
     loaded += value.length;
-    self.postMessage({ id, type: 'progress', stage: label, loaded, total });
+    self.postMessage({ id, type: 'progress', stage: label, loaded: Math.min(loaded, total * 0.99), total });
+  }
+  const bytes = new Uint8Array(loaded);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.length;
   }
   return bytes;
 }
