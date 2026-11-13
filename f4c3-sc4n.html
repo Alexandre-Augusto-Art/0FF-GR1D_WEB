@@ -9,7 +9,7 @@
   <meta name="referrer" content="no-referrer">
   <title>F4C3 SC4N - DEDSEC</title>
   <link rel="stylesheet" href="css/style.css?v=5">
-  <link rel="stylesheet" href="css/face-scan.css?v=1">
+  <link rel="stylesheet" href="css/face-scan.css?v=3">
 </head>
 <body>
   <!-- BG Triangles (dynamic mesh) -->
@@ -208,8 +208,9 @@
     }
   </script>
 
-  <script src="js/face-scan/client.js" defer></script>
-  <script src="js/face-scan/page.js" defer></script>
+  <!-- Suba o ?v= a cada mudança em js/face-scan: o worker e o vision.js herdam a versão. -->
+  <script src="js/face-scan/client.js?v=3" defer></script>
+  <script src="js/face-scan/page.js?v=3" defer></script>
   <script src="js/chatbot.js" defer></script>
 </body>
 </html>

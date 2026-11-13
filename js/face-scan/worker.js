@@ -16,7 +16,7 @@ const MODELS = {
   sface: { url: new URL('../../models/sface_2021dec_int8.onnx', self.location).href, label: 'IDENTIDADE' }
 };
 
-importScripts('vision.js', ORT_BASE + 'ort.wasm.min.js');
+importScripts('vision.js' + self.location.search, ORT_BASE + 'ort.wasm.min.js');
 /* global ort, FaceScanVision */
 const V = FaceScanVision;
 

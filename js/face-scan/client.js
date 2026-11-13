@@ -6,7 +6,10 @@
   'use strict';
 
   const SCRIPT_URL = document.currentScript ? document.currentScript.src : location.href;
-  const WORKER_URL = new URL('worker.js', SCRIPT_URL).href;
+  // O "?v=" da tag <script> segue para o worker (e dele para o vision.js), para que uma
+  // versão nova nunca rode com um worker antigo guardado no cache do navegador.
+  const VERSION = new URL(SCRIPT_URL).search;
+  const WORKER_URL = new URL('worker.js' + VERSION, SCRIPT_URL).href;
   const MATCH = 0.363; // igual a FaceScanVision.CONFIG.sface.match
 
   let worker = null;

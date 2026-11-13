@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const CACHE_VERSION = 'f4c3-sc4n-v2';
+const CACHE_VERSION = 'f4c3-sc4n-v3';
 
 // Mudam pouco e são pesados: servidos do cache primeiro.
 const IMMUTABLE = [
@@ -68,7 +68,9 @@ async function cacheFirst(request, key) {
 async function networkFirst(request, key) {
   const cache = await caches.open(CACHE_VERSION);
   try {
-    const res = await fetch(request);
+    // 'no-cache' revalida com o servidor: sem isso o cache HTTP (10 min no GitHub Pages)
+    // devolveria um script antigo mesmo com a rede disponível.
+    const res = await fetch(request, { cache: 'no-cache' });
     if (res.ok) cache.put(key, res.clone());
     return res;
   } catch (err) {
