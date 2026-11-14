@@ -1,5 +1,89 @@
 [
   {
+    "id": "2026-11-14",
+    "date": "2026-11-14",
+    "news": {
+      "title": "Vercel Releases UI SDK: 50+ UI Behaviors for AI Coding Agents",
+      "link": "https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/",
+      "summary": "Vercel Labs released Vercel UI SDK, an Apache-2.0 beta library of 50+ UI behaviors. Coding agents compose them into accessible components for React, Vue, Svelte, Solid and Web Components, with a bridge for direct UI control.\nThe post Vercel Releases UI SDK: 50+ UI Behaviors for AI Coding Agents appeared first on MarkTechPost.",
+      "source": "marktechpost.com",
+      "publishedDate": "2026-11-14"
+    },
+    "reflection": {
+      "title": "A Máscara da Inovação: Como a Tecnologia Oculta o Vazio Estrutural",
+      "content": "<p>Em meio ao anúncio da <strong>Vercel UI SDK</strong>, uma biblioteca de comportamentos de interface do usuário para agentes de codificação de inteligência artificial, a pergunta que fica é: até que ponto a tecnologia realmente resolve os problemas fundamentais da sociedade?</p>\n<p>A inovação tecnológica é frequentemente celebrada como a panaceia para todos os males, promovendo uma falsa sensação de progresso. Entretanto, sob essa camada de avanços, há um vazio estrutural que permanece inalterado. A notícia da <strong>Vercel</strong> lança luz sobre essa dicotomia: enquanto a tecnologia avança a um ritmo vertiginoso, os problemas de desigualdade social, falta de acesso à educação e a crescente desumanização do trabalho continuam a crescer.</p>\n<p>Por trás da cortina de fumaça da inovação, é crucial questionar o papel que a tecnologia desempenha na perpetuação de estruturas sociais desiguais. Em um mundo onde a codificação de inteligência artificial se torna cada vez mais comum, as barreiras de entrada para a codificação se elevam, excluindo ainda mais aqueles que já estão marginalizados. Isso não apenas perpetua a desigualdade, mas também cria uma nova forma de alienação entre aqueles que têm acesso à tecnologia e aqueles que não têm.</p>\n<p>É importante também refletir sobre o papel da <em>privatização da inovação</em>. A <strong>Vercel</strong>, como muitas outras empresas de tecnologia, opera em um ecossistema de negócios que visa lucro acima de tudo. Isso significa que a inovação é frequentemente direcionada para fins lucrativos, em vez de resolver problemas sociais de verdade. Como resultado, a tecnologia se torna um instrumento de exploração e não de emancipação.</p>\n<p>No fundo, a notícia sobre a <strong>Vercel UI SDK</strong> serve como um lembrete de que a tecnologia, por si só, não é a solução para os problemas do mundo. Ela pode ser um instrumento poderoso, mas é crucial que este instrumento seja usado de forma ética e justa. Caso contrário, a tecnologia apenas servirá para mascarar a realidade dos problemas estruturais que precisam ser abordados.</p>",
+      "excerpt": "A inovação tecnológica, como a apresentada pela Vercel UI SDK, é frequentemente celebrada sem questionar sua real capacidade de resolver problemas estruturais fundamentais, como desigualdade e desumanização do trabalho."
+    },
+    "sources": [
+      {
+        "title": "Vercel Releases UI SDK: 50+ UI Behaviors for AI Coding Agents",
+        "link": "https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": " Maket launches floor and wall textures from text or images ",
+        "link": "https://www.testingcatalog.com/maket-launches-floor-and-wall-textures-from-text-or-images/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Perplexity brings Teammates to Mac for Max subscribers ",
+        "link": "https://www.testingcatalog.com/perplexity-brings-teammates-to-mac-for-max-subscribers/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Best AI Video Generation Models in 2026: Elo, Price per Second, Open Weights",
+        "link": "https://www.marktechpost.com/2026/11/13/best-ai-video-generation-models-2026/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " OpenAI launches ChatGPT Wallet for agent purchases ",
+        "link": "https://www.testingcatalog.com/openai-launches-chatgpt-wallet-for-agent-purchases/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Meta Muse Spark 1.4 surfaces in RocksDB pull request ",
+        "link": "https://www.testingcatalog.com/meta-muse-spark-1-4-surfaces-in-rocksdb-pull-request/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Perplexity Releases Decider v1.3: Open-Weight Decision Models Add Locate",
+        "link": "https://www.marktechpost.com/2026/11/13/perplexity-decider-v1-3-open-weight-decision-models-locate/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Meta brings Muse AI agent to Chrome with new extension ",
+        "link": "https://www.testingcatalog.com/meta-brings-muse-ai-agent-to-chrome-with-new-extension/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Google Releases TPU Sync: Open-Source KV Cache Transfer for TPUs",
+        "link": "https://www.marktechpost.com/2026/11/13/google-tpu-sync-kv-cache-transfer-library/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Google Releases Gemini 4 Hydrogen: 2.5x Faster Than Gemini 3.8 Flash",
+        "link": "https://www.marktechpost.com/2026/11/13/google-gemini-4-hydrogen/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica"
+    ]
+  },
+  {
     "id": "2026-11-13",
     "date": "2026-11-13",
     "news": {
