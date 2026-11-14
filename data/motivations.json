@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-11-14",
+    "content": "A Matrix é um sistema. Esse sistema é nosso inimigo.",
+    "author": "Morpheus — Matrix (1999)",
+    "work": "Matrix",
+    "kind": "filme",
+    "bankId": "mx-sistema-inimigo"
+  },
+  {
     "date": "2026-11-13",
     "content": "O povo não deveria temer o seu governo. O governo é que deveria temer o seu povo.",
     "author": "V — V de Vingança (2005)",
