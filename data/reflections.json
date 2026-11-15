@@ -1,5 +1,89 @@
 [
   {
+    "id": "2026-11-15",
+    "date": "2026-11-15",
+    "news": {
+      "title": "Bland Launches Tofu-1, a Full-Duplex Speech-to-Speech Model for Calls",
+      "link": "https://www.marktechpost.com/2026/11/15/bland-tofu-1-full-duplex-speech-to-speech-model/",
+      "summary": "Bland has released Tofu-1, a full-duplex speech-to-speech model for noisy, high-stakes phone calls. It is in enterprise research preview, with no published benchmarks, size or pricing yet.\nThe post Bland Launches Tofu-1, a Full-Duplex Speech-to-Speech Model for Calls appeared first on MarkTechPost.",
+      "source": "marktechpost.com",
+      "publishedDate": "2026-11-15"
+    },
+    "reflection": {
+      "title": "O Novo Dispositivo de Controle da Realidade: A Tecnologia Tofu-1 e o Desmantelamento da Privacidade",
+      "content": "<p>A notícia do lançamento da Tofu-1, um modelo de processamento de voz bidirecional projetado para melhorar as chamadas telefônicas em ambientes ruidosos, revela uma nova faceta da manipulação de dados e controle da realidade por grandes empresas tecnológicas. Sob a desculpa de melhorar a eficiência e a clareza das comunicações, a Bland introduz uma ferramenta que vai além do simples processamento de voz, abrindo portas para uma invasão ainda mais intensa da privacidade.</p><p><strong>Um Mundo de Sombras</strong> - Tofu-1, ao permitir a transcrição e processamento bidirecional do que é dito durante as chamadas telefônicas, não apenas redefine as barreiras entre privacidade pessoal e intervenção tecnológica, mas também eleva as possibilidades de vigilância e manipulação. É um avanço que potencializa a coleta de dados em tempo real, sem o consentimento explícito dos usuários, transformando cada conversa em um depósito de informação valiosa para empresas e governos.</p><p>Por trás desta aparente inovação técnica, há um questionamento sobre a ética e os limites da coleta e uso de dados pessoais. Como é possível que uma tecnologia assim seja desenvolvida sem um escrutínio público amplo e uma regulamentação efetiva que assegure o respeito aos direitos individuais?</p><p><em>Privacidade como Um Luxo Exclusivo</em> - A crescente desigualdade digital não só se reflete na falta de acesso a tecnologias avançadas para a população menos favorecida, mas também na exclusão de muitos do direito à privacidade. Enquanto as grandes corporações e indivíduos de elite têm recursos para proteger sua privacidade, a maioria da população é forçada a viver sob um olhar constante, tornando-se prisioneiros de suas próprias comunicações.</p><p>É neste contexto que a introdução da Tofu-1 deve ser vista não apenas como um avanço tecnológico, mas como uma ferramenta potencialmente abusiva na mão de governos autoritários e corporações sem escrúpulos. A tecnologia, sem restrições éticas ou legais claras, se torna um instrumento de dominação.</p><p>Enquanto a Bland anuncia Tofu-1 com promessas de eficiência e inovação, é crucial que o público reflita sobre o preço a ser pago por estas 'conveniências' tecnológicas. A privacidade e o controle sobre nossas vidas devem ser garantidos, não negociados.</p><p>A tecnologia Tofu-1 representa mais um passo rumo a um mundo onde a vigilância é a norma e a privacidade, um privilégio. É hora de questionar as intenções por trás dessas 'inovações' e exigir um sistema que proteja, em vez de violar, nossos direitos fundamentais.</p>",
+      "excerpt": "A tecnologia Tofu-1, lançada pela Bland, além de melhorar a qualidade de chamadas telefônicas em ambientes barulhentos, abre portas para uma nova era de vigilância e violação da privacidade. É hora de questionar as intenções por trás dessas 'inovações' e exigir proteção de nossos direitos fundamentais."
+    },
+    "sources": [
+      {
+        "title": "Bland Launches Tofu-1, a Full-Duplex Speech-to-Speech Model for Calls",
+        "link": "https://www.marktechpost.com/2026/11/15/bland-tofu-1-full-duplex-speech-to-speech-model/",
+        "source": "marktechpost.com",
+        "date": "2026-11-15"
+      },
+      {
+        "title": "Cmpnd Releases dspy-wsp: Weight-Space Programming Comes to DSPy",
+        "link": "https://www.marktechpost.com/2026/11/14/cmpnd-dspy-wsp-weight-space-programming/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": " Google adds Wallet to Gemini for finance insights ",
+        "link": "https://www.testingcatalog.com/google-adds-wallet-to-gemini-for-finance-insights/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": "Stanford Research Open-Sources Memorilla, a Latent Memory Module for Frozen LLMs",
+        "link": "https://www.marktechpost.com/2026/11/14/stanford-memorilla-memory-system-16-memory-tokens/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": "Vercel Releases UI SDK: 50+ UI Behaviors for AI Coding Agents",
+        "link": "https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": " Maket launches floor and wall textures from text or images ",
+        "link": "https://www.testingcatalog.com/maket-launches-floor-and-wall-textures-from-text-or-images/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Perplexity brings Teammates to Mac for Max subscribers ",
+        "link": "https://www.testingcatalog.com/perplexity-brings-teammates-to-mac-for-max-subscribers/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": "Best AI Video Generation Models in 2026: Elo, Price per Second, Open Weights",
+        "link": "https://www.marktechpost.com/2026/11/13/best-ai-video-generation-models-2026/",
+        "source": "marktechpost.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " OpenAI launches ChatGPT Wallet for agent purchases ",
+        "link": "https://www.testingcatalog.com/openai-launches-chatgpt-wallet-for-agent-purchases/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Meta Muse Spark 1.4 surfaces in RocksDB pull request ",
+        "link": "https://www.testingcatalog.com/meta-muse-spark-1-4-surfaces-in-rocksdb-pull-request/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica"
+    ]
+  },
+  {
     "id": "2026-11-14",
     "date": "2026-11-14",
     "news": {
