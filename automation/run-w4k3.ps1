@@ -4,7 +4,16 @@
   Modos:
     run-w4k3.ps1                       execução diária (Agendador, 09:00):
                                          1. se há rascunho aprovado "para as 09h" (%USERPROFILE%\.w4k3\pending.json), publica ele;
-                                         2. senão, se o dia ainda não tem reflexão, roda o fluxo n8n das notícias RSS e publica.
+                                         2. senão, se o dia ainda não tem reflexão, monta a NOTÍCIA DO DIA: o fluxo w4k3-pauta.json
+                                            lê os RSS de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of
+                                            World, The Verge, Ars Technica...) e escolhe a notícia; o w4k3-link.json escreve a
+                                            análise com a lente cyberpunk/distópica. O rascunho vai para você aprovar no Telegram
+                                            (sem Telegram configurado, publica direto).
+    run-w4k3.ps1 -AutoPublish          12:00: se o dia ainda não tem reflexão e a notícia do dia está esperando aprovação,
+                                         publica ela e avisa no Telegram.
+    run-w4k3.ps1 -Pauta [-Topic "tema"] [-Another]
+                                       só gera o rascunho da notícia do dia (usado pelo bot: /noticia e "Outra notícia").
+                                         -Another pula as já propostas hoje. Saída: draft.json, pauta.json e "RASCUNHO|<título>".
     run-w4k3.ps1 -Request pedido.json  só gera um RASCUNHO a partir de um link (não publica).
                                          pedido.json = { url, direction?, feedback?, previousDraft? }
                                          Saída: %USERPROFILE%\.w4k3\draft.json e a linha "RASCUNHO|<título>".
@@ -19,6 +28,10 @@
   Log: %USERPROFILE%\.w4k3\logs\AAAA-MM-DD.log
 #>
 param(
+  [switch]$Pauta,
+  [string]$Topic,
+  [switch]$Another,
+  [switch]$AutoPublish,
   [string]$Request,
   [string]$Publish,
   [string]$Url,
@@ -35,6 +48,9 @@ $Clone   = Join-Path $Base '0FF-GR1D_WEB'
 $IO      = Join-Path $env:USERPROFILE '.n8n-files\w4k3'
 $Draft   = Join-Path $Base 'draft.json'
 $Pending = Join-Path $Base 'pending.json'
+$PautaFile = Join-Path $Base 'pauta.json'          # notícia do dia escolhida + as já recusadas hoje
+$StateFile = Join-Path $Base 'telegram-state.json' # estado da conversa do bot
+$Site    = 'https://alexandre-augusto-art.github.io/0FF-GR1D_WEB/w4k3-protocol.html'
 $Utf8    = New-Object System.Text.UTF8Encoding($false)
 
 # Impede o Windows de voltar a dormir enquanto este processo estiver vivo
@@ -126,6 +142,60 @@ function New-Draft($req) {
   Write-Host "RASCUNHO|$title"
 }
 
+function Today { return (Get-Date).ToString('yyyy-MM-dd') }  # o PC está no horário de Brasília
+# No PowerShell 5.1 o ConvertFrom-Json devolve a lista inteira como um item só; o ForEach a desembrulha
+function Read-List([string]$file) { (Get-Content $file -Raw -Encoding UTF8 | ConvertFrom-Json) | ForEach-Object { $_ } }
+function Test-HasToday { $r = @(Read-List (Join-Path $Clone 'data\reflections.json')); return ($r.Count -gt 0 -and $r[0].date -eq (Today)) }
+function Test-Telegram {
+  $f = Join-Path $Base 'telegram.json'
+  if (-not (Test-Path $f)) { return $false }
+  return [bool](Get-Content $f -Raw -Encoding UTF8 | ConvertFrom-Json).chatId
+}
+
+# Notícia do dia: o fluxo de pauta escolhe as candidatas nos RSS e a primeira que der certo vira rascunho
+function New-Pauta([string]$topic, [switch]$another) {
+  Wait-Internet
+  Update-Clone
+  $ex = @()
+  if ($another -and (Test-Path $PautaFile)) {
+    $prev = Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($prev.today -eq (Today)) {
+      $ex = @($prev.exclude) + @($prev.chosen.link)
+      if (-not $topic) { $topic = [string]$prev.topic }
+    }
+  }
+  $ex = @($ex | Where-Object { $_ })
+  # não repete notícia que já saiu no site
+  $used = @(Read-List (Join-Path $Clone 'data\reflections.json') | Select-Object -First 60 | ForEach-Object { $_.news.link } | Where-Object { $_ })
+  $req = [ordered]@{ today = Today; topic = "$topic".Trim(); exclude = @($used + $ex) }
+  [IO.File]::WriteAllText((Join-Path $IO 'pauta-request.json'), ($req | ConvertTo-Json -Depth 5 -Compress), $Utf8)
+  $out = Join-Path $IO 'pautas.json'
+  Remove-Item $out -ErrorAction SilentlyContinue
+  Invoke-Workflow 'W4K3pautaDiaria1' 'w4k3-pauta.json'
+  if (-not (Test-Path $out)) { throw 'O fluxo de pauta terminou sem gravar pautas.json' }
+  $p = Get-Content $out -Raw -Encoding UTF8 | ConvertFrom-Json
+  Write-Host "Pauta: $($p.total) notícias lidas, $(@($p.candidates).Count) candidatas"
+  $last = $null
+  foreach ($c in @($p.candidates | Select-Object -First 3)) {
+    Write-Host "Candidata ($($c.score)): $($c.title) [$($c.source)]"
+    try {
+      # fallback: se a página tiver paywall ou bloquear robôs, a análise usa o texto que veio no RSS
+      $fb = [ordered]@{ title = $c.title; summary = $c.summary; text = $c.text; source = $c.source; publishedDate = $c.publishedDate }
+      New-Draft ([pscustomobject]@{ url = $c.link; direction = ''; mode = 'pauta'; fallback = $fb })
+      $state = [ordered]@{ today = Today; topic = [string]$p.topic; matched = [bool]$p.matched; exclude = @($ex); chosen = $c }
+      [IO.File]::WriteAllText($PautaFile, ($state | ConvertTo-Json -Depth 6), $Utf8)
+      return
+    } catch { $last = $_; Write-Host "Não deu certo com essa: $_"; $ex += $c.link }
+  }
+  throw "Nenhuma das notícias candidatas virou rascunho. $last"
+}
+
+# Manda o rascunho da notícia do dia para aprovação (o bot cuida da conversa a partir daí)
+function Send-DailyDraft {
+  $tg = Join-Path $PSScriptRoot 'telegram-w4k3.ps1'
+  Invoke-Native 'Telegram: rascunho do dia' { powershell.exe -NoProfile -ExecutionPolicy Bypass -File $tg -AnnounceDaily } | Out-Null
+}
+
 # Commit + push de data/reflections.json do clone
 function Push-Reflections([string]$message) {
   Invoke-Native 'validate.js' { node (Join-Path $Clone 'automation\validate.js') } | Out-Null
@@ -157,7 +227,27 @@ function Publish-Draft([string]$file, [string]$message) {
 try {
   Write-Host "W4K3 PR0T0C0L - início $(Get-Date -Format s)  Request=$Request Publish=$Publish Url=$Url DryRun=$DryRun"
 
-  if ($Request) {
+  if ($Pauta) {
+    New-Pauta $Topic -another:$Another
+  }
+  elseif ($AutoPublish) {
+    Wait-Internet
+    Update-Clone
+    if (Test-HasToday) { Write-Host "Já existe reflexão de $(Today), nada a fazer."; return }
+    $st = if (Test-Path $StateFile) { Get-Content $StateFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
+    if (-not $st -or -not $st.daily -or ($st.stage -notin @('review', 'confirm')) -or -not (Test-Path $Draft)) {
+      Write-Host 'Nenhuma notícia do dia esperando aprovação (descartada, em ajuste ou não gerada).'; return
+    }
+    $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($d.date -ne (Today)) { Write-Host "O rascunho é de $($d.date), não de hoje."; return }
+    Publish-Draft $Draft 'W4K3 PR0T0C0L: notícia do dia (12h)'
+    if (-not $DryRun) {
+      [IO.File]::WriteAllText($StateFile, (@{ stage = 'idle'; url = $null; direction = $null } | ConvertTo-Json), $Utf8)
+      Remove-Item $Draft -ErrorAction SilentlyContinue
+      Send-Telegram "⏰ Sem resposta até as 12:00, publiquei a notícia do dia:`n$($d.reflection.title)`n`n$Site"
+    }
+  }
+  elseif ($Request) {
     Wait-Internet
     New-Draft (Get-Content $Request -Raw -Encoding UTF8 | ConvertFrom-Json)
   }
@@ -175,28 +265,26 @@ try {
     if (-not $DryRun) {
       $title = (Get-Content $Pending -Raw -Encoding UTF8 | ConvertFrom-Json).reflection.title
       Remove-Item $Pending
-      Send-Telegram "Publicado no horário padrão: $title`nhttps://alexandre-augusto-art.github.io/0FF-GR1D_WEB/w4k3-protocol.html"
+      Send-Telegram "Publicado no horário padrão: $title`n$Site"
     }
   }
   else {
     Wait-Internet
     Update-Clone
-    $current = Join-Path $Clone 'data\reflections.json'
-    $today = (Get-Date).ToString('yyyy-MM-dd')   # o PC está no horário de Brasília
-    $latest = (Get-Content $current -Raw -Encoding UTF8 | ConvertFrom-Json)[0]
-    if ($latest.date -eq $today -and -not $Force) { Write-Host "Já existe reflexão de $today, nada a fazer (use -Force)."; return }
-    Copy-Item $current (Join-Path $IO 'current.json') -Force
-    $out = Join-Path $IO 'reflections.json'
-    Remove-Item $out -ErrorAction SilentlyContinue
-    Invoke-Workflow 'W4K3gerador09h01' 'w4k3-gerador.json'
-    if (-not (Test-Path $out)) { throw 'O fluxo terminou sem gravar reflections.json' }
-    Copy-Item $out $current -Force
-    Push-Reflections 'W4K3 PR0T0C0L: nova reflexão'
+    if ((Test-HasToday) -and -not $Force) { Write-Host "Já existe reflexão de $(Today), nada a fazer (use -Force)."; return }
+    New-Pauta ''
+    if (Test-Telegram) {
+      Send-DailyDraft
+    } else {
+      Write-Host 'Telegram não configurado: publicando direto.'
+      Publish-Draft $Draft 'W4K3 PR0T0C0L: notícia do dia'
+    }
   }
 }
 catch {
   Write-Host "`nERRO: $_"
-  if (-not $Request -and -not $Publish -and -not $Url) { Send-Telegram "W4K3: a execução das 09h falhou. $_" }
+  if ($AutoPublish) { Send-Telegram "W4K3: a publicação das 12h falhou. $_" }
+  elseif (-not $Pauta -and -not $Request -and -not $Publish -and -not $Url) { Send-Telegram "W4K3: a notícia do dia (09h) falhou. $_" }
   $Host.SetShouldExit(1)
   exit 1
 }

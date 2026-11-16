@@ -10,16 +10,24 @@
   Comandos: /cancelar descarta o rascunho, /status mostra o que está em andamento, /ajuda.
   Mandar um link novo começa outro rascunho (o anterior é descartado).
 
+  NOTÍCIA DO DIA: às 09:00 o run-w4k3.ps1 escolhe uma notícia real nos RSS de tecnologia e sociedade,
+  escreve a análise com a lente cyberpunk/distópica e chama este script com -AnnounceDaily, que manda
+  o rascunho aqui: [✅ Publicar agora] [✏️ Sugerir mudanças] [🔄 Outra notícia] [🗑 Descartar]. Ajustes por texto livre,
+  como num link. Sem resposta até as 12:00, o run-w4k3.ps1 -AutoPublish publica.
+  /noticia [tema]  gera a notícia do dia na hora (ex.: /noticia vigilância).
+
   Roda neste PC por long polling (sem IP público nem webhook). Com o PC dormindo, as mensagens
   esperam no Telegram (até 24 h). Configuração: install-w4k3-task.ps1 -TelegramToken "<token>".
   O token fica só em %USERPROFILE%\.w4k3\telegram.json. O primeiro chat que falar com o bot vira o dono.
 #>
+param([switch]$AnnounceDaily)  # só manda o rascunho da notícia do dia e sai (chamado pelo run-w4k3.ps1)
 $ErrorActionPreference = 'Stop'
 $Base      = Join-Path $env:USERPROFILE '.w4k3'
 $CfgFile   = Join-Path $Base 'telegram.json'
 $StateFile = Join-Path $Base 'telegram-state.json'
 $Draft     = Join-Path $Base 'draft.json'
 $Pending   = Join-Path $Base 'pending.json'
+$PautaFile = Join-Path $Base 'pauta.json'
 $Runner    = Join-Path $PSScriptRoot 'run-w4k3.ps1'
 $Site      = 'https://alexandre-augusto-art.github.io/0FF-GR1D_WEB/w4k3-protocol.html'
 # Motivação Diária (mesmo bot)
@@ -66,7 +74,11 @@ function Send([string]$text, $buttons) {
   }
 }
 
-$BtnReview  = @(, @(@{ text = '✅ Aprovar'; callback_data = 'approve' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }))
+$BtnReview  = @(@(@{ text = '✅ Aprovar'; callback_data = 'approve' }, @{ text = '✏️ Sugerir mudanças'; callback_data = 'suggest' }),
+                @(@{ text = '🗑 Descartar'; callback_data = 'cancel' }))
+$BtnDaily   = @(@(@{ text = '✅ Publicar agora'; callback_data = 'now' }, @{ text = '✏️ Sugerir mudanças'; callback_data = 'suggest' }),
+                @(@{ text = '🔄 Outra notícia'; callback_data = 'pauta_new' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }))
+$SuggestHelp = "✏️ Escreva aqui o que você quer mudar, do jeito que falaria com uma pessoa. Exemplos:`n• mais curto / mais direto`n• compare com Jogos Vorazes em vez de Watch Dogs`n• foque nos trabalhadores, não na empresa`n• troque o título`n• tom mais irônico`n`nEu reescrevo e te mando a nova versão para aprovar."
 $BtnPublish = @(, @(@{ text = '🚀 Publicar agora'; callback_data = 'now' }, @{ text = '⏰ No horário padrão (09:00)'; callback_data = 'at9' }))
 
 function Next9h {
@@ -75,14 +87,25 @@ function Next9h {
   return $n
 }
 
-function Show-Draft {
+function Show-Draft([switch]$daily) {
   $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
   $body = [string]$d.reflection.content
   $body = $body -replace '(?i)</p>\s*', "`n`n" -replace '(?i)<br\s*/?>', "`n" -replace '<[^>]+>', ''
   $body = [System.Net.WebUtility]::HtmlDecode($body).Trim()
   $words = ($body -split '\s+').Count
-  Send ("📝 RASCUNHO`n`n{0}`n`n{1}`n`n— notícia base: {2} ({3})`n— {4} palavras" -f $d.reflection.title, $body, $d.news.title, $d.news.source, $words)
-  Send 'Responda com os ajustes que quiser (texto livre) ou aprove:' $BtnReview
+  $head = if ($daily) { '📰 NOTÍCIA DO DIA (rascunho)' } else { '📝 RASCUNHO' }
+  $refs = @($d.tags | Where-Object { $_ -notin 'reflexão', 'notícia', 'antisistema', 'crítica', 'notícia-do-dia', 'link-enviado' })
+  $msg = "{0}`n`n{1}`n`n{2}`n`n— notícia base: {3} ({4})`n{5}" -f $head, $d.reflection.title, $body, $d.news.title, $d.news.source, $d.news.link
+  if ($refs.Count) { $msg += "`n— referências: $($refs -join ', ')" }
+  $msg += "`n— $words palavras"
+  Send $msg
+  if ($daily) {
+    $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
+    $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.)`n" } else { '' }
+    Send ($note + 'Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. Sem resposta até as 12:00, publico este.') $BtnDaily
+  } else {
+    Send 'Aprove ou sugira mudanças (pode só escrever o que quer mudar):' $BtnReview
+  }
 }
 
 # Roda o run-w4k3.ps1 num processo separado e devolve @{ ok; line; err }
@@ -98,6 +121,12 @@ function Run-Runner([string[]]$runnerArgs, [string]$tag, [string]$script = $Runn
 
 function Make-Draft($state, [string]$feedback) {
   $req = @{ url = $state.url; direction = $state.direction }
+  if ($state.daily -and (Test-Path $PautaFile)) {
+    # notícia do dia: mantém a tag e o texto do RSS (para matérias com paywall)
+    $c = (Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json).chosen
+    $req.mode = 'pauta'
+    $req.fallback = @{ title = $c.title; summary = $c.summary; text = $c.text; source = $c.source; publishedDate = $c.publishedDate }
+  }
   if ($feedback -and (Test-Path $Draft)) {
     $req.feedback = $feedback
     $req.previousDraft = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -105,10 +134,48 @@ function Make-Draft($state, [string]$feedback) {
   $reqFile = Join-Path $Base 'request.json'
   [IO.File]::WriteAllText($reqFile, ($req | ConvertTo-Json -Depth 20), $Utf8)
   $r = Run-Runner @('-Request', $reqFile) 'RASCUNHO'
-  if ($r.ok) { $state.stage = 'review'; Save-State $state; Show-Draft }
+  if ($r.ok) { $state.stage = 'review'; Save-State $state; Show-Draft -daily:([bool]$state.daily) }
   else {
     Send "Não consegui gerar o rascunho. $($r.err)`nMande o link de novo ou outro link."
     if (-not $feedback) { $state.stage = 'idle'; Save-State $state }
+  }
+}
+
+# ---------- Notícia do dia ----------
+function Set-DailyState {
+  $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
+  $s = [pscustomobject]@{ stage = 'review'; url = $d.news.link; direction = $null; daily = $true }
+  Save-State $s
+  return $s
+}
+
+function Make-Pauta([string]$topic, [switch]$another) {
+  $a = @('-Pauta')
+  $topic = ($topic -replace '"', '').Trim()
+  if ($topic) { $a += @('-Topic', $topic) }
+  if ($another) { $a += '-Another' }
+  Save-State ([pscustomobject]@{ stage = 'drafting'; url = $null; direction = $null; daily = $true })
+  $r = Run-Runner $a 'RASCUNHO'
+  if ($r.ok) { Set-DailyState | Out-Null; Show-Draft -daily }
+  else {
+    Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
+    Send "Não consegui montar a notícia do dia. $($r.err)`nTente de novo: /noticia"
+  }
+}
+
+function Publish-Now($state) {
+  Send 'Publicando...'
+  $snap = Join-Path $Base 'approved.json'
+  Copy-Item $Draft $snap -Force
+  $r = Run-Runner @('-Publish', $snap) 'RESULTADO'
+  if ($r.ok) {
+    $p = $r.line.Split('|')
+    Send "🚀 Publicado ($($p[1])): $($p[2])`n`nNo site em 1 ou 2 minutos:`n$Site"
+    Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
+    Remove-Item $Draft -ErrorAction SilentlyContinue
+  } else {
+    $btn = if ($state.daily) { $BtnDaily } else { $BtnPublish }
+    Send "Não consegui publicar. $($r.err)`nTente de novo: 'agora' ou o botão." $btn
   }
 }
 
@@ -184,11 +251,12 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "0FF-GR1D_WEB · bot do projeto`n`nW4K3 PR0T0C0L (reflexões)`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
     $msg = "Etapa: $($state.stage)"
+    if ($state.daily) { $msg += ' (notícia do dia)' }
     if ($state.url) { $msg += "`nLink: $($state.url)" }
     if (Test-Path $Pending) { $msg += "`nAgendado para $((Next9h).ToString('dd/MM HH:mm')): " + (Get-Content $Pending -Raw -Encoding UTF8 | ConvertFrom-Json).reflection.title }
     if (Test-Path $MotProposal) { $msg += "`nFrase pendente: " + (Get-Content $MotProposal -Raw -Encoding UTF8 | ConvertFrom-Json).content }
@@ -196,6 +264,15 @@ function Handle([string]$text, [string]$action) {
   }
   if ($action -like 'mot_*' -or $low -match '^/(frase|motivacao|motivação)(@\w+)?(\s|$)' -or $low -match '^(frase|motiva[cç][aã]o)\s*:') {
     Handle-Mot $t $action
+    return
+  }
+  if ($action -eq 'pauta_new' -or $low -match '^/(noticia|notícia)(@\w+)?(\s|$)') {
+    $another = ($action -eq 'pauta_new')
+    $topic = if ($another) { '' } else { ($t -replace '^(?i)/(noticia|notícia)(@\w+)?', '').Trim() }
+    if ($another) { Send 'Buscando outra notícia e escrevendo a análise (uns 5 minutos)...' }
+    elseif ($topic) { Send "Buscando uma notícia sobre `"$topic`" e escrevendo a análise (uns 5 minutos)..." }
+    else { Send 'Escolhendo a notícia do dia e escrevendo a análise (uns 5 minutos)...' }
+    Make-Pauta $topic -another:$another
     return
   }
   if ($action -eq 'cancel' -or $low -in '/cancelar', 'cancelar', 'descartar') {
@@ -220,9 +297,14 @@ function Handle([string]$text, [string]$action) {
 
   switch ($state.stage) {
     'review' {
-      if ($action -eq 'approve' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍') {
+      if ($state.daily -and ($action -eq 'now' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍', 'publicar', 'publica', 'agora')) {
+        Publish-Now $state
+      } elseif ($action -eq 'approve' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍') {
         $state.stage = 'confirm'; Save-State $state
         Send 'Aprovado. Quando publico?' $BtnPublish
+      } elseif ($action -eq 'suggest') {
+        # o clique tira os botões do rascunho; devolve aqui para ainda dar para publicar sem mudar nada
+        Send $SuggestHelp $(if ($state.daily) { $BtnDaily } else { $BtnReview })
       } elseif ($action) {
         Send 'Use os botões do último rascunho, ou mande ajustes por texto.'
       } else {
@@ -232,16 +314,7 @@ function Handle([string]$text, [string]$action) {
     }
     'confirm' {
       if ($action -eq 'now' -or $low -in 'agora', 'publicar', 'publica', 'publicar agora') {
-        Send 'Publicando...'
-        $snap = Join-Path $Base 'approved.json'
-        Copy-Item $Draft $snap -Force
-        $r = Run-Runner @('-Publish', $snap) 'RESULTADO'
-        if ($r.ok) {
-          $p = $r.line.Split('|')
-          Send "🚀 Publicado ($($p[1])): $($p[2])`n`nNo site em 1 ou 2 minutos:`n$Site"
-          Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
-          Remove-Item $Draft -ErrorAction SilentlyContinue
-        } else { Send "Não consegui publicar. $($r.err)`nTente de novo: 'agora' ou o botão." $BtnPublish }
+        Publish-Now $state
       } elseif ($action -eq 'at9' -or $low -in '9h', '09h', '9', 'depois', 'horario padrao', 'horário padrão') {
         Copy-Item $Draft $Pending -Force
         Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
@@ -254,9 +327,19 @@ function Handle([string]$text, [string]$action) {
         Make-Draft $state $t
       }
     }
-    'drafting' { Send 'O rascunho anterior não terminou (o PC pode ter dormido no meio). Mande o link de novo.' }
-    default { Send 'Mande o link de uma notícia (e, junto, o que você quer que eu fale sobre ela). /ajuda' }
+    'drafting' { Send 'O rascunho anterior não terminou (o PC pode ter dormido no meio). Mande o link de novo ou /noticia.' }
+    default { Send 'Mande o link de uma notícia (e, junto, o que você quer que eu fale sobre ela), ou /noticia para a notícia do dia. /ajuda' }
   }
+}
+
+if ($AnnounceDaily) {
+  # chamado pelo run-w4k3.ps1 às 09:00, com o draft.json da notícia do dia pronto
+  if (-not $cfg.chatId) { Write-Host 'Bot sem dono ainda.'; exit 2 }
+  if (-not (Test-Path $Draft)) { Write-Host "Sem $Draft"; exit 1 }
+  Set-DailyState | Out-Null
+  Show-Draft -daily
+  Log 'Notícia do dia enviada para aprovação'
+  exit 0
 }
 
 Log 'Receptor no ar'

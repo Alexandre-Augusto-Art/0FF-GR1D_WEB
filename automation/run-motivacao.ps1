@@ -122,6 +122,13 @@ function New-Proposal([string]$dir, [string[]]$excl) {
   $refl = @(Read-Json (Join-Path $Clone 'data\reflections.json'))
   if ($refl.Count -and $refl[0].date -eq (Today)) {
     $reflection = @{ title = $refl[0].reflection.title; excerpt = $refl[0].reflection.excerpt }
+  } else {
+    # a notícia do dia (W4K3) ainda pode estar esperando aprovação no Telegram: usa o rascunho como tema
+    $wd = Join-Path $Base 'draft.json'
+    if (Test-Path $wd) {
+      $d = Get-Content $wd -Raw -Encoding UTF8 | ConvertFrom-Json
+      if ($d.date -eq (Today)) { $reflection = @{ title = $d.reflection.title; excerpt = $d.reflection.excerpt } }
+    }
   }
   $req = [ordered]@{
     today       = Today

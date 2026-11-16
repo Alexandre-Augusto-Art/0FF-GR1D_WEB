@@ -1,0 +1,207 @@
+{
+  "id": "W4K3pautaDiaria1",
+  "name": "W4K3 PR0T0C0L - Pauta do dia (RSS de tecnologia e sociedade)",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Início (Agendador do Windows 09h)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ],
+      "id": "f0992b55-1d0c-4b98-84e9-2b8a9d772a5e"
+    },
+    {
+      "parameters": {
+        "fileSelector": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/pauta-request.json",
+        "options": {}
+      },
+      "name": "Ler pauta-request.json",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ],
+      "id": "4183a18d-d8ca-4ece-9be2-1c751ebdc271"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "name": "Extrair pedido",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        440,
+        300
+      ],
+      "id": "8a21e9ac-eae5-4c73-a4ab-b3260c97722e"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fontes da pauta diária: sites que cobrem tecnologia e o impacto dela na vida humana.\n// match: como reconhecer a notícia de cada fonte pelo link (o RSS não diz de qual feed ela veio).\n// weight: bônus para veículos de análise/investigação (vs. noticiário de mercado).\n// Para acrescentar ou tirar uma fonte, edite esta lista (a primeira cujo match bater vale).\nconst feeds = [\n  { name: 'MIT Technology Review Brasil', url: 'https://mittechreview.com.br/feed/', match: 'mittechreview\\.com\\.br', weight: 2 },\n  { name: 'Nexo Jornal', url: 'https://www.nexojornal.com.br/rss.xml', match: 'nexojornal\\.com\\.br', weight: 1 },\n  { name: 'Intercept Brasil', url: 'https://www.intercept.com.br/feed/', match: 'intercept\\.com\\.br', weight: 2 },\n  { name: 'TecMundo', url: 'https://rss.tecmundo.com.br/feed', match: 'tecmundo', weight: 0 },\n  { name: 'Canaltech', url: 'https://canaltech.com.br/rss/', match: 'canaltech\\.com\\.br', weight: 0 },\n  { name: 'WIRED', url: 'https://www.wired.com/feed/rss', match: 'wired\\.com', weight: 1 },\n  { name: 'WIRED', url: 'https://www.wired.com/feed/category/security/latest/rss', match: 'wired\\.com', weight: 1 },\n  { name: 'MIT Technology Review', url: 'https://www.technologyreview.com/feed/', match: 'technologyreview\\.com', weight: 2 },\n  { name: 'Rest of World', url: 'https://restofworld.org/feed/latest', match: 'restofworld\\.org', weight: 2 },\n  { name: 'The Verge', url: 'https://www.theverge.com/rss/policy/index.xml', match: 'theverge\\.com', weight: 2 },\n  { name: 'The Verge', url: 'https://www.theverge.com/rss/science/index.xml', match: 'theverge\\.com', weight: 2 },\n  { name: 'Ars Technica (Tech Policy)', url: 'https://feeds.arstechnica.com/arstechnica/tech-policy', match: 'arstechnica\\.com/tech-policy', weight: 2 },\n  { name: 'Ars Technica', url: 'https://feeds.arstechnica.com/arstechnica/index', match: 'arstechnica\\.com', weight: 0 },\n];\nreturn feeds.map(f => ({ json: f }));"
+      },
+      "name": "Fontes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        300
+      ],
+      "id": "8b306160-fdf3-4381-9c15-a8ba0dc9e26f"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "name": "Ler RSS",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        300
+      ],
+      "id": "94961663-d57a-41f3-b40d-059d5f9f02de",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Junta as notícias de todas as fontes, tira as já usadas e ordena pela relação com o tema do\r\n// W4K3 PR0T0C0L: vigilância, controle, big techs, IA, trabalho, direitos digitais, corpo e tecnologia.\r\nconst req = $('Extrair pedido').first().json.data || {};\r\nconst feeds = $('Fontes').all().map(i => i.json);\r\nconst today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });\r\nconst now = Date.now();\r\n\r\nconst dec = s => String(s || '')\r\n  .replace(/&#(\\d+);/g, (_, n) => String.fromCharCode(n))\r\n  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))\r\n  .replace(/&quot;/g, '\"').replace(/&apos;|&#039;/g, \"'\").replace(/&lt;/g, '<').replace(/&gt;/g, '>')\r\n  .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');\r\nconst strip = h => dec(String(h || '').replace(/<(script|style)[\\s\\S]*?<\\/\\1>/gi, ' ').replace(/<\\/p>/gi, '\\n').replace(/<[^>]+>/g, ' '))\r\n  .split('\\n').map(l => l.replace(/\\s+/g, ' ').trim()).filter(Boolean).join('\\n');\r\nconst fold = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\r\n// link sem utm_*, sem barra final: para reconhecer a mesma matéria\r\nconst normLink = u => String(u || '').trim().replace(/[?&]utm_[^&#]*/g, '').replace(/[?&]$/, '').replace(/#.*$/, '').replace(/\\/+$/, '').toLowerCase();\r\nconst exclude = new Set((req.exclude || []).map(normLink));\r\n\r\nconst T = (w, list) => list.map(t => [w, t]);\r\nconst terms = [\r\n  ...T(3, ['vigilancia', 'surveillance', 'reconhecimento facial', 'facial recognition', 'biometri', 'spyware', 'pegasus',\r\n    'palantir', 'rastreamento', 'tracking', 'privacidade', 'privacy', 'dados pessoais', 'personal data', 'vazamento',\r\n    'data breach', 'censura', 'censorship', 'desinformacao', 'disinformation', 'misinformation', 'deepfake', 'algoritmo',\r\n    'algorithm', 'big tech', 'monopolio', 'monopoly', 'antitrust', 'antitruste', 'policia', 'police', 'policiamento',\r\n    'policing', 'drone', 'militar', 'military', 'neurotecnologia', 'neurotech', 'implante', 'brain-computer', 'neuralink',\r\n    'transumanis', 'imortalidade', 'immortality', 'credito social', 'social credit', 'identidade digital', 'digital id',\r\n    'ciberataque', 'cyberattack', 'ransomware', 'moderacao de conteudo', 'content moderation', 'entregador',\r\n    'motorista de aplicativo', 'gig work', 'gig economy', 'precarizacao', 'automacao', 'automation', 'demissoes', 'layoffs',\r\n    'sindicato', 'labor union', 'greve', 'strike', 'protesto', 'protest', 'ativista', 'activist', 'manipulacao',\r\n    'manipulation', 'regulacao', 'regulation', 'regular a ia', 'bets', 'apostas']),\r\n  ...T(2, ['inteligencia artificial', 'artificial intelligence', 'IA', 'AI', 'openai', 'chatgpt', 'meta', 'google',\r\n    'amazon', 'microsoft', 'apple', 'tesla', 'musk', 'nvidia', 'tiktok', 'zuckerberg', 'bezos', 'altman', 'data center',\r\n    'datacenter', 'robo', 'robot', 'hacker', 'hackers', 'trabalhadores', 'workers', 'plataforma', 'platform', 'uber', 'ifood', 'starlink',\r\n    'satelite', 'satellite', 'dna', 'genetic', 'crispr', 'biotec', 'cripto', 'crypto', 'bitcoin', 'eleicao', 'election',\r\n    'democracia', 'democracy', 'stf', 'congresso', 'congress', 'senado', 'senate', 'tribunal', 'court', 'lawsuit']),\r\n  ...T(1, ['controle', 'processo', 'dados', 'data', 'lei', 'law', 'direitos', 'rights', 'governo', 'government', 'clima', 'climate', 'energia',\r\n    'energy', 'saude', 'health', 'escola', 'school', 'criancas', 'children', 'redes sociais', 'social media']),\r\n  ...T(-8, ['black friday', 'oferta', 'ofertas', 'desconto', 'cupom', 'promocao', 'deal', 'deals', 'melhores', 'best',\r\n    'review', 'hands-on', 'unboxing', 'guia de compras', 'o que comprar', 'how to', 'como fazer', 'gift guide', 'presente',\r\n    'wallpaper', 'trailer', 'gratis', 'free games', 'smartphone barato', 'vale a pena']),\r\n  ...T(-4, ['hoje no tecmundo', 'resumo do dia', 'the download', 'newsletter', 'podcast']),\r\n// siglas em maiúsculas (IA, AI) só valem escritas assim no texto original: \"ia\" também é verbo\r\n].map(([w, t]) => [w, t, new RegExp('(^|[^a-zA-Z0-9])' + t.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + '([^a-zA-Z0-9]|$)'), t === t.toUpperCase() && /[A-Z]/.test(t)]);\r\n\r\nconst all = [];\r\nfor (const it of $input.all()) {\r\n  const j = it.json || {};\r\n  if (j.error || !j.title || !j.link) continue;\r\n  const link = dec(j.link).trim();\r\n  const feed = feeds.find(f => f.match && new RegExp(f.match, 'i').test(link)) || {};\r\n  if (!/^https?:\\/\\/\\S+$/.test(link) || exclude.has(normLink(link))) continue;\r\n  const ts = Date.parse(j.isoDate || j.pubDate || '') || 0;\r\n  const title = dec(j.title).replace(/\\s+/g, ' ').trim();\r\n  const text = strip(j['content:encoded'] || j.content || '');\r\n  const summary = strip(j.contentSnippet || j.summary || j.content || '').replace(/\\n/g, ' ').slice(0, 600);\r\n  const source = feed.name || (link.split('/')[2] || '').replace(/^www\\./, '');\r\n  const rawHead = ' ' + title + ' ', rawBody = ' ' + summary + ' ' + text.slice(0, 1500) + ' ';\r\n  const head = fold(rawHead), body = fold(rawBody);\r\n  let score = Number(feed.weight || 0);\r\n  const hits = [];\r\n  for (const [w, t, re, cs] of terms) {\r\n    if (re.test(cs ? rawHead : head)) { score += w * 2; hits.push(t); }\r\n    else if (re.test(cs ? rawBody : body)) { score += w; if (w > 0) hits.push(t); }\r\n  }\r\n  const age = (now - ts) / 3600000;\r\n  if (age < 24) score += 2; else if (age < 48) score += 1;\r\n  all.push({ title, link, source, feedUrl: feed.url || '', ts, publishedDate: ts ? new Date(ts).toISOString().slice(0, 10) : today,\r\n    summary, text: text.slice(0, 6000), score, hits: [...new Set(hits)].slice(0, 8), age });\r\n}\r\n\r\n// mesma matéria em dois feeds (ex.: WIRED e WIRED Security): fica uma\r\nconst seen = new Set();\r\nlet pool = all.sort((a, b) => b.score - a.score || b.ts - a.ts).filter(n => {\r\n  const k = normLink(n.link);\r\n  if (seen.has(k)) return false;\r\n  seen.add(k); return true;\r\n});\r\nlet recent = pool.filter(n => n.ts && n.age <= 72);\r\nif (recent.length < 3) recent = pool.filter(n => n.ts && n.age <= 24 * 7);\r\npool = recent;\r\n\r\n// tema pedido no Telegram (/noticia vigilância): só as que falam dele; se nenhuma falar, avisa e segue com as gerais\r\nconst topic = String(req.topic || '').trim();\r\nlet matched = true;\r\nif (topic) {\r\n  const words = fold(topic).split(/[^a-z0-9]+/).filter(w => w.length >= 3);\r\n  const hit = pool.filter(n => { const t = fold(n.title + ' ' + n.summary + ' ' + n.text); return words.some(w => t.includes(w)); });\r\n  if (hit.length) pool = hit; else matched = false;\r\n}\r\npool = pool.filter(n => n.score > 0);\r\nif (!pool.length) throw new Error('Nenhuma notícia nova e relevante nas fontes (últimos 7 dias).');\r\n\r\n// no máximo 2 por fonte entre as 8 primeiras, para variar\r\nconst per = {}, candidates = [];\r\nfor (const n of pool) {\r\n  const k = n.source.split(' (')[0];  // Ars Technica e Ars Technica (Tech Policy) contam juntas\r\n  if ((per[k] = (per[k] || 0) + 1) > 2) continue;\r\n  candidates.push(n);\r\n  if (candidates.length === 8) break;\r\n}\r\nconst out = { today, topic, matched, total: all.length, candidates: candidates.map(({ ts, age, ...c }) => c) };\r\nreturn [{ json: { fileContent: JSON.stringify(out, null, 2) } }];"
+      },
+      "name": "Escolher pautas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ],
+      "id": "19ab6964-baa5-4608-b530-863890d3f8e3"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "fileContent",
+        "options": {
+          "fileName": "pautas.json",
+          "encoding": "utf8"
+        }
+      },
+      "name": "Converter em arquivo",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        300
+      ],
+      "id": "93d69c22-eee9-420d-9e05-8c7310a92d22"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/AAA-DESKTOP/.n8n-files/w4k3/pautas.json",
+        "options": {}
+      },
+      "name": "Gravar pautas",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        300
+      ],
+      "id": "4f43041b-2a84-402f-8b82-68196294d8d4"
+    }
+  ],
+  "connections": {
+    "Início (Agendador do Windows 09h)": {
+      "main": [
+        [
+          {
+            "node": "Ler pauta-request.json",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler pauta-request.json": {
+      "main": [
+        [
+          {
+            "node": "Extrair pedido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair pedido": {
+      "main": [
+        [
+          {
+            "node": "Fontes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fontes": {
+      "main": [
+        [
+          {
+            "node": "Ler RSS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler RSS": {
+      "main": [
+        [
+          {
+            "node": "Escolher pautas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escolher pautas": {
+      "main": [
+        [
+          {
+            "node": "Converter em arquivo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Converter em arquivo": {
+      "main": [
+        [
+          {
+            "node": "Gravar pautas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "saveManualExecutions": true
+  },
+  "tags": [],
+  "versionId": "692c79d2-a10a-4855-9646-1ff74ef4cb53"
+}

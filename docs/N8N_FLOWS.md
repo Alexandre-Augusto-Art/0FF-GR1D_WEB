@@ -14,11 +14,13 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
   em `js/content-loader.js`.
 - Um fluxo n8n busca notícias de IA por RSS, pede para um modelo local (Ollama `qwen2.5:14b`)
   escrever uma reflexão e grava `data/reflections.json`.
-- **Estado atual (2026-11-12): W4K3 automatizado.** O fluxo corrigido está em
-  `automation/n8n/workflows/w4k3-gerador.json` e roda **todo dia às 09:00** pelo Agendador de
-  Tarefas do Windows (veja [Automação diária](#automação-diária-desde-2026-11-12)). Não usa mais
-  o nó GitHub: o n8n grava o arquivo e `automation/run-w4k3.ps1` valida, faz commit e push no
-  `main`. Os exports antigos (seções abaixo) ficam só como histórico.
+- **Estado atual (2026-11-16): W4K3 com notícia do dia aprovada no Telegram.** Todo dia às 09:00
+  o fluxo `w4k3-pauta.json` lê os RSS de sites de tecnologia e sociedade e escolhe uma notícia real;
+  o `w4k3-link.json` escreve a análise crítica com referências de cyberpunk, Watch Dogs, V de
+  Vingança, Jogos Vorazes, Blade Runner etc., e o rascunho vai para você aprovar ou ajustar no
+  Telegram, como na Motivação Diária. Veja [Notícia do dia](#notícia-do-dia-desde-2026-11-16).
+  O n8n grava os arquivos e `automation/run-w4k3.ps1` valida, faz commit e push no `main`.
+  Os exports antigos (seções abaixo) ficam só como histórico.
 - **Motivação Diária automatizada (2026-11-13)** com aprovação pelo Telegram: veja
   [Motivação Diária](#motivação-diária-desde-2026-11-13).
 - **Organize-se não tem fluxo n8n ainda.** `data/organize.json` tem só a estrutura, sem eventos.
@@ -27,7 +29,7 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
 
 | Página | Arquivo lido | Quem escreve hoje |
 |---|---|---|
-| `w4k3-protocol.html` (`#w4k3-feed`) | `data/reflections.json` | n8n (fluxos W4K3), parado desde 2026-02-04 |
+| `w4k3-protocol.html` (`#w4k3-feed`) | `data/reflections.json` | n8n (`w4k3-pauta.json` + `w4k3-link.json`), aprovado por você no Telegram |
 | `motivacao.html` (`#motivacao-feed`) | `data/motivations.json` | n8n (`motivacao-diaria.json`), aprovado por você no Telegram |
 | `organize-se.html` (a fazer) | `data/organize.json` | ninguém ainda; fluxo a criar |
 | blog (`js/blog-loader.js`) | `posts/index.json` | manual |
@@ -113,12 +115,47 @@ sobrescreveu o arquivo. Ao reativar, troque essa montagem por `addEntry` de
 09:00  tarefa "W4K3 - Gerador 09h"       %USERPROFILE%\.w4k3\bin\run-w4k3.ps1
          → espera Ollama e internet
          → atualiza o clone dedicado %USERPROFILE%\.w4k3\0FF-GR1D_WEB (= origin/main)
-         → copia data/reflections.json para %USERPROFILE%\.n8n-files\w4k3\current.json
-         → n8n import:workflow + n8n execute --id=W4K3gerador09h01   (sem abrir o n8n)
-              Manual Trigger → 3 RSS → … → AI Agent (Ollama) → Format and Save1
-              → Ler current.json → Validar e montar (validators.js + addEntry) → Gravar saída
-         → node automation/validate.js → commit "W4K3 PR0T0C0L: nova reflexão AAAA-MM-DD" → push
+         → se há rascunho aprovado "para as 09h" (pending.json), publica ele e para aqui
+         → monta a notícia do dia (veja abaixo) e manda o rascunho no Telegram
+12:00  tarefa "W4K3 - Noticia 12h"       run-w4k3.ps1 -AutoPublish
+         → se o dia ainda não tem reflexão e a notícia do dia está esperando aprovação, publica e avisa
 ```
+
+## Notícia do dia (desde 2026-11-16)
+
+Substitui o antigo `w4k3-gerador.json` (3 RSS de IA, publicava sem revisão).
+
+```
+run-w4k3.ps1 (09:00, ou o bot com /noticia)
+  → pauta-request.json { today, topic, exclude (links já publicados ou recusados hoje) }
+  → n8n execute --id=W4K3pautaDiaria1  (automation/n8n/workflows/w4k3-pauta.json)
+       Fontes (13 RSS) → Ler RSS (um feed fora do ar não derruba) → Escolher pautas → pautas.json
+  → para a melhor candidata (tenta até 3): n8n execute --id=W4K3linkNoticia1 (w4k3-link.json)
+       com { url, mode: "pauta", fallback: texto do RSS } → draft.json
+  → telegram-w4k3.ps1 -AnnounceDaily manda o rascunho: [✅ Publicar agora] [✏️ Sugerir mudanças] [🔄 Outra notícia] [🗑 Descartar]
+```
+
+- **Fontes** (nó "Fontes" do `w4k3-pauta.json`; edite a lista lá): MIT Technology Review Brasil,
+  Nexo Jornal, Intercept Brasil, TecMundo, Canaltech, WIRED (geral e Security), MIT Technology
+  Review, Rest of World, The Verge (Policy e Science), Ars Technica (geral e Tech Policy).
+- **Como escolhe:** notícias das últimas 72 h (7 dias se houver poucas), sem repetir link já
+  publicado. Pontua por temas (vigilância, privacidade, big techs, IA, algoritmos, trabalho de
+  plataforma, polícia, censura, neurotecnologia...), com bônus para veículos de análise e para as
+  mais recentes, e penaliza ofertas, reviews e guias de compra. No máximo 2 por fonte entre as 8.
+- **Paywall:** Nexo, Intercept e Ars Technica não deixam ler a página; nesses casos a análise usa
+  o texto que vem no próprio RSS (`fallback`).
+- **A análise** (nó "Prepare Prompt" do `w4k3-link.json`, que também vale para links que você
+  manda): o fato com a fonte citada → leitura crítica de quem ganha e quem perde → 1 a 3 obras como
+  espelho → um chamado no fim, em 4 parágrafos curtos (150 a 250 palavras, 1 a 2 minutos de leitura). O prompt traz **fichas curtas de cada obra**, e a IA só pode usar o
+  que está nelas (o modelo local inventava detalhes das obras). As obras citadas viram tags da
+  entrada, junto com `notícia-do-dia` (ou `link-enviado`).
+- **No Telegram:** o botão ✏️ Sugerir mudanças (ou só escrever o que quer mudar) reescreve o rascunho; "Outra notícia" pula as já
+  propostas hoje; `/noticia` gera na hora; `/noticia vigilância` procura uma notícia sobre o tema
+  (se não houver, avisa e usa as gerais). Descartar = nada é publicado nesse dia.
+- **Sem Telegram configurado**, a execução das 09:00 publica a notícia direto.
+- A Motivação Diária das 09:10 usa o rascunho da notícia do dia como tema enquanto ele não é publicado.
+- Pelo terminal: `run-w4k3.ps1 -Pauta [-Topic "tema"] [-Another]` só gera o rascunho
+  (`%USERPROFILE%\.w4k3\draft.json`); `-Publish draft.json` publica; `-AutoPublish -DryRun` testa o das 12h.
 
 - Instalar ou atualizar (depois de mudar o fluxo ou o script):
   `powershell -ExecutionPolicy Bypass -File automation\install-w4k3-task.ps1`
@@ -137,6 +174,7 @@ Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só
 `link.json {url, direction, feedback?, previousDraft?} → Baixar notícia (HTTP) → Extrair notícia
 (og:title, og:description, data, parágrafos) → Prepare Prompt (texto da matéria + direcionamento
 + versão anterior e ajustes) → AI Agent → Format and Save1 → Validar rascunho → draft.json`.
+O mesmo fluxo escreve a notícia do dia (`mode: "pauta"`).
 Quem publica é o `run-w4k3.ps1 -Publish` (usa `automation/publish-entry.js`: data de hoje,
 `addEntry`, validação). A entrada recebe a tag `link-enviado`.
 
