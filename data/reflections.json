@@ -1,5 +1,89 @@
 [
   {
+    "id": "2026-11-16",
+    "date": "2026-11-16",
+    "news": {
+      "title": "Meet Meta’s JiTTests: LLM-Generated Tests Designed to Fail Before Risky Code Lands",
+      "link": "https://www.marktechpost.com/2026/11/16/meta-jittests-llm-catching-tests-privacy-bugs/",
+      "summary": "Meta has moved Catching JiTTests into production. The LLM system writes tests designed to fail on risky diffs, and caught 74 privacy SEVs before landing in H1 2026, with a 60% engineer-reported true-positive rate.\nThe post Meet Meta’s JiTTests: LLM-Generated Tests Designed to Fail Before Risky Code Lands appeared first on MarkTechPost.",
+      "source": "marktechpost.com",
+      "publishedDate": "2026-11-16"
+    },
+    "reflection": {
+      "title": "A Mente Autômata do Capitalismo Técnológico: Uma Nova Era de Controlar e Submeter",
+      "content": "<p><strong>A notícia sobre o sistema <em>JiTTests</em> da Meta, que utiliza inteligência artificial para gerar testes de software projetados para falhar, é um sintoma claro da lógica predatória que impera no mundo tecnológico contemporâneo.</strong> Não estamos diante de uma simples inovação no campo da segurança cibernética, mas sim de uma nova etapa na militarização e controle do espaço digital pela indústria tecnológica.</p>\n<p>Aqui, o algoritmo não apenas codifica as regras e normas estabelecidas pelos engenheiros humanos, mas também ganha autonomia para criar suas próprias regras de teste, reforçando a lógica de que a automação e a inteligência artificial são a resposta para todos os problemas enfrentados pela sociedade. Entretanto, essa lógica engana, pois esconde a verdadeira natureza das relações de poder que moldam a tecnologia e a sociedade.</p>\n<p>Em primeiro lugar, esse sistema é uma demonstração clara do quanto o capitalismo de vigilância, que domina a indústria tecnológica, está preocupado com a privacidade e segurança do usuário. O fato de que o sistema <em>JiTTests</em> tenha detectado 74 violações de privacidade e que 60% dessas violações foram confirmadas por engenheiros humanos, indica que os sistemas de segurança atuais são insuficientes e falhos. Mas ao invés de questionar a estrutura que permite tais violações, a resposta é a automação ainda mais intensa e controladora.</p>\n<p>Mas o problema não é somente a falta de privacidade e segurança para o usuário comum. É a forma como a tecnologia é usada como ferramenta de controle e submissão por parte dos grandes conglomerados. O sistema <em>JiTTests</em> é um exemplo do quanto a tecnologia está sendo usada para reforçar a lógica de controle e dominação, reforçando assim a estrutura de poder que mantém o status quo.</p>\n<p>Nessa nova era digital, a lógica do controle e dominação se manifesta também no uso de algoritmos para reforçar a hierarquia e o controle dentro das próprias organizações. A autonomia e criatividade dos engenheiros humanos é limitada pela lógica do sistema, que busca sempre a eficiência e a segurança em detrimento da liberdade e inovação.</p>\n<p>É importante, portanto, que nos questionemos sobre a natureza dessa tecnologia e seu papel no mundo contemporâneo. Não podemos nos deixar enganar pela superficialidade da inovação, mas sim compreender a lógica subjacente que a motiva e molda.</p>",
+      "excerpt": "A lógica de controlar e submeter se manifesta na nova era digital através de sistemas como o JiTTests da Meta, que utiliza inteligência artificial para gerar testes de software projetados para falhar."
+    },
+    "sources": [
+      {
+        "title": "Meet Meta’s JiTTests: LLM-Generated Tests Designed to Fail Before Risky Code Lands",
+        "link": "https://www.marktechpost.com/2026/11/16/meta-jittests-llm-catching-tests-privacy-bugs/",
+        "source": "marktechpost.com",
+        "date": "2026-11-16"
+      },
+      {
+        "title": "Alibaba Releases Qwen4-Max: 2.4T MoE, 71B Active, 1M Context",
+        "link": "https://www.marktechpost.com/2026/11/16/alibaba-qwen4-max-release/",
+        "source": "marktechpost.com",
+        "date": "2026-11-16"
+      },
+      {
+        "title": "Hark Releases Handoff², a 2x Faster Computer-Use Agent for Hark Pro",
+        "link": "https://www.marktechpost.com/2026/11/16/hark-handoff-2-computer-use-agent-2x-faster/",
+        "source": "marktechpost.com",
+        "date": "2026-11-16"
+      },
+      {
+        "title": "Bland Launches Tofu-1, a Full-Duplex Speech-to-Speech Model for Calls",
+        "link": "https://www.marktechpost.com/2026/11/15/bland-tofu-1-full-duplex-speech-to-speech-model/",
+        "source": "marktechpost.com",
+        "date": "2026-11-15"
+      },
+      {
+        "title": "Cmpnd Releases dspy-wsp: Weight-Space Programming Comes to DSPy",
+        "link": "https://www.marktechpost.com/2026/11/14/cmpnd-dspy-wsp-weight-space-programming/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": " Google adds Wallet to Gemini for finance insights ",
+        "link": "https://www.testingcatalog.com/google-adds-wallet-to-gemini-for-finance-insights/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": "Stanford Research Open-Sources Memorilla, a Latent Memory Module for Frozen LLMs",
+        "link": "https://www.marktechpost.com/2026/11/14/stanford-memorilla-memory-system-16-memory-tokens/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": "Vercel Releases UI SDK: 50+ UI Behaviors for AI Coding Agents",
+        "link": "https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/",
+        "source": "marktechpost.com",
+        "date": "2026-11-14"
+      },
+      {
+        "title": " Maket launches floor and wall textures from text or images ",
+        "link": "https://www.testingcatalog.com/maket-launches-floor-and-wall-textures-from-text-or-images/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      },
+      {
+        "title": " Perplexity brings Teammates to Mac for Max subscribers ",
+        "link": "https://www.testingcatalog.com/perplexity-brings-teammates-to-mac-for-max-subscribers/",
+        "source": "testingcatalog.com",
+        "date": "2026-11-13"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica"
+    ]
+  },
+  {
     "id": "2026-11-15",
     "date": "2026-11-15",
     "news": {
