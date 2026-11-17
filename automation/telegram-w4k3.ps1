@@ -128,6 +128,13 @@ function Show-Draft([switch]$daily) {
   $refs = @($d.tags | Where-Object { $_ -notin 'reflexão', 'notícia', 'antisistema', 'crítica', 'notícia-do-dia', 'link-enviado' })
   $msg = "{0}`n`n{1}`n`n{2}`n`n— notícia base: {3} ({4})`n{5}" -f $head, $d.reflection.title, $body, $d.news.title, $d.news.source, $d.news.link
   if ($refs.Count) { $msg += "`n— referências: $($refs -join ', ')" }
+  $esp = $d.reflection.espelho
+  if ($esp) {
+    $tr = @($esp.traducao | ForEach-Object { "$($_.real) = $($_.ficcao)" }) -join '; '
+    $msg += "`n— espelho: $($esp.obra) ($($esp.elemento))" + $(if ($tr) { " · $tr" } else { '' })
+  }
+  $av = @($d.reflection.avisos | Where-Object { $_ })
+  if ($av.Count) { $msg += "`n⚠️ a checagem automática ainda viu: $($av -join '; ')" }
   $msg += "`n— $words palavras"
   Send $msg
   $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 2 minutos." } else { '' }

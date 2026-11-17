@@ -21,5 +21,8 @@ if (!no) {
   f.connections[NOME] = { main: [[{ node: 'Validar rascunho', type: 'main', index: 0 }]] };
 }
 no.parameters.jsCode = codigo;
+// o validador lia a saída do nó antigo pelo nome
+const val = f.nodes.find((x) => x.name === 'Validar rascunho');
+val.parameters.jsCode = val.parameters.jsCode.replace("$('Format and Save1')", `$('${NOME}')`);
 fs.writeFileSync(arq, JSON.stringify(f, null, 2) + '\n');
 console.log('ok:', NOME, `(${codigo.length} caracteres)`);

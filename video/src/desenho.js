@@ -193,7 +193,7 @@ function desenhaFigura(ctx, frame, vol, ox, oy, esc) {
 // ---------- fundos ----------
 function binario(ctx, frame) {
   ctx.font = mono(20); ctx.textBaseline = 'top';
-  const cw = 26, ch = 30, cols = Math.ceil(W / cw) + 1, rows = Math.ceil(H / ch) + 2;
+  const cw = 26, ch = 30, cols = Math.ceil(ctx.canvas.width / cw) + 1, rows = Math.ceil(ctx.canvas.height / ch) + 2;
   for (let c = 0; c < cols; c++) {
     const rolagem = frame * (1.2 + rnd(c * 7) * 3.2), off = rolagem % ch, base = Math.floor(rolagem / ch);
     for (let r = -1; r < rows; r++) {
@@ -242,6 +242,7 @@ function multidao(frame, t, balanco) {
 
 // ---------- pós-processamento ----------
 function pos(ctx, frame, glitch) {
+  const W = ctx.canvas.width, H = ctx.canvas.height; // vale para o horizontal e o vertical
   if (glitch > 0) {
     const snap = tela('snap', W, H); snap._x.drawImage(ctx.canvas, 0, 0);
     const n = Math.round(4 + glitch * 14);
@@ -292,16 +293,43 @@ const tv = (passo) => pixel('tv', 30, 24, (x) => {
 
 // ---------- textos ----------
 const SIMBOLOS = '01#$%&*+=<>/\\|';
-function carimbo(ctx, txt, x, y, cor, idade) {
+function carimbo(ctx, txt, x, y, cor, idade, px = 24, centro = false) {
   if (idade < 0) return;
   const pronto = Math.floor(idade / 1.5); // "decodifica" o texto nos primeiros quadros
   let s = '';
   for (let i = 0; i < txt.length; i++) s += i < pronto || txt[i] === ' ' ? txt[i] : SIMBOLOS[Math.floor(rnd(idade * 17 + i) * SIMBOLOS.length)];
-  ctx.font = mono(24); ctx.textBaseline = 'top';
+  ctx.font = mono(px); ctx.textBaseline = 'top';
   const w = ctx.measureText(s).width;
-  const dx = idade < 4 ? (rnd(idade * 5 + x) - 0.5) * 30 : 0;
-  ctx.fillStyle = '#000'; ctx.fillRect(x - 10 + dx, y - 7, w + 20, 38);
+  if (centro) x -= w / 2;
+  const dx = idade < 4 ? (rnd(idade * 5 + x) - 0.5) * 30 : 0, pad = px * 0.42;
+  ctx.fillStyle = '#000'; ctx.fillRect(x - pad + dx, y - px * 0.3, w + pad * 2, px * 1.6);
   ctx.fillStyle = cor; ctx.fillText(s, x + dx, y);
+}
+// legenda grande no centro, poucas palavras por vez (como nos reels): branca com contorno, a palavra falada em verde
+function legendaCentro(ctx, gs, t, cx, cy, px, larg) {
+  const g = gs.find((g) => t >= g.ini && t < g.fim);
+  if (!g) return;
+  ctx.save();
+  ctx.font = `900 ${px}px "Segoe UI Black", "Segoe UI", Arial, sans-serif`; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  const esp = ctx.measureText(' ').width, linhas = [[]];
+  let l = 0;
+  for (const p of g.ps) {
+    const w = ctx.measureText(p.w).width;
+    if (l + w > larg && linhas[linhas.length - 1].length) { linhas.push([]); l = 0; }
+    linhas[linhas.length - 1].push({ p, w }); l += w + esp;
+  }
+  const alt = px * 1.15;
+  linhas.forEach((ln, li) => {
+    const total = ln.reduce((a, b) => a + b.w + esp, -esp);
+    let x = cx - total / 2;
+    const y = cy - ((linhas.length - 1) * alt) / 2 + li * alt;
+    for (const { p, w } of ln) {
+      ctx.lineWidth = px * 0.2; ctx.strokeStyle = '#000'; ctx.strokeText(p.w, x, y);
+      ctx.fillStyle = t >= p.ini && t < p.fim ? COR.lime : COR.branco; ctx.fillText(p.w, x, y);
+      x += w + esp;
+    }
+  });
+  ctx.restore();
 }
 function quebra(ctx, txt, larg) {
   const linhas = [];
@@ -313,11 +341,11 @@ function quebra(ctx, txt, larg) {
   if (cur) linhas.push(cur);
   return linhas;
 }
-function grupos(palavras) {
+function grupos(palavras, max = 5) {
   const gs = [];
   for (const p of palavras) {
     const g = gs[gs.length - 1];
-    if (!g || g.s !== p.s || g.ps.length >= 5) gs.push({ s: p.s, ps: [p] });
+    if (!g || g.s !== p.s || g.ps.length >= max) gs.push({ s: p.s, ps: [p] });
     else g.ps.push(p);
   }
   gs.forEach((g) => { g.ini = g.ps[0].ini; });
@@ -346,10 +374,10 @@ function legenda(ctx, gs, t) {
     }
   });
 }
-function selo(ctx) {
-  ctx.fillStyle = COR.branco; ctx.fillRect(1160, 18, 100, 78);
-  ctx.fillStyle = '#000'; ctx.font = mono(30); ctx.textBaseline = 'top'; ctx.fillText('W4K3', 1174, 26);
-  ctx.font = mono(13); ctx.fillText('0FF-GR1D', 1180, 66);
+function selo(ctx, x = 1160, y = 18) {
+  ctx.fillStyle = COR.branco; ctx.fillRect(x, y, 100, 78);
+  ctx.fillStyle = '#000'; ctx.font = mono(30); ctx.textBaseline = 'top'; ctx.fillText('W4K3', x + 14, y + 8);
+  ctx.font = mono(13); ctx.fillText('0FF-GR1D', x + 20, y + 48);
 }
 function textoAscii(ctx, txt, x, y, larg, cor, maxPx = 150) {
   const c0 = tela('medida', 10, 10)._x;
@@ -470,7 +498,7 @@ function vigilancia(ctx, f, lf, len, vol) {
 function obra(ctx, f, lf, len, vol, seg, P) {
   binario(ctx, f);
   ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fillRect(0, 0, W, H);
-  const nome = ((P.refs && P.refs.length ? P.refs[seg.k % P.refs.length] : 'DISTOPIA') || 'DISTOPIA').toUpperCase();
+  const nome = P.espelho ? nomeObra(P) : ((P.refs && P.refs.length ? P.refs[seg.k % P.refs.length] : 'DISTOPIA') || 'DISTOPIA').toUpperCase();
   carimbo(ctx, 'ESPELHO DA FICÇÃO', 90, 70, COR.lime, lf);
   if (lf >= 6) textoAscii(ctx, nome, 90, 130, 1100, COR.cyan);
   const passo = Math.floor(f / 2.5);
@@ -504,38 +532,167 @@ function cenaFinal(ctx, f, P) {
   if (P.fonte) { ctx.fillStyle = '#8a8a8a'; ctx.font = mono(18); ctx.fillText('fonte: ' + P.fonte, 205, 465); }
 }
 
-const CENAS = { abertura, manchete, plataforma, marionete, vigilancia, obra, pergunta };
+// ---------- cenas do formato "espelho direto" ----------
+const microfone = () => pixel('mic', 12, 28, (x) => {
+  x.fillStyle = '#3a3a3a'; rr(x, 1, 0, 10, 11, 4); x.fill();
+  x.fillStyle = '#9a9a9a'; for (let i = 2; i < 10; i += 2) x.fillRect(i, 1, 1, 9);
+  x.fillStyle = COR.lime; x.fillRect(0, 11, 12, 4);
+  x.fillStyle = '#111'; x.fillRect(4, 15, 4, 13);
+});
+const nomeObra = (P) => ((P.espelho && P.espelho.obra) || (P.refs && P.refs[0]) || 'W4K3 PR0T0C0L').toUpperCase();
+const mundoObra = (P) => ((P.espelho && P.espelho.mundo) || '').toUpperCase();
+// silhueta de cidade neon em pixel art (prédios com janelas acesas), repetida nas cenas de ficção
+function skyline(ctx, f, escuro = 0.35) {
+  const passo = Math.floor(f / 6);
+  for (let i = 0; i < 26; i++) {
+    const w = 50 + rnd(i * 3) * 70, x = i * 52 - 20, h = 180 + rnd(i * 7) * 330, y = H - h;
+    ctx.fillStyle = i % 2 ? '#101010' : '#161616'; ctx.fillRect(x, y, w, h);
+    for (let yy = y + 12; yy < H - 10; yy += 18) for (let xx = x + 8; xx < x + w - 8; xx += 14) {
+      const r = rnd(i * 977 + yy * 13 + xx + (rnd(i + yy) > 0.97 ? passo : 0));
+      if (r > 0.78) { ctx.fillStyle = r > 0.97 ? COR.magenta : r > 0.92 ? COR.cyan : '#6f6a3a'; ctx.fillRect(xx, yy, 6, 8); }
+    }
+  }
+  ctx.fillStyle = `rgba(0,0,0,${escuro})`; ctx.fillRect(0, 0, W, H);
+  // chuva em passos
+  ctx.strokeStyle = 'rgba(180,180,180,0.18)'; ctx.lineWidth = 1; ctx.beginPath();
+  for (let k = 0; k < 90; k++) {
+    const x = rnd(k * 7 + passo * 131) * W, y = rnd(k * 11 + passo * 71) * H;
+    ctx.moveTo(x, y); ctx.lineTo(x - 8, y + 26);
+  }
+  ctx.stroke();
+}
+function apresentador(ctx, f, lf, len, vol, seg, P) {
+  skyline(ctx, f, 0.55);
+  desenhaFigura(ctx, f, vol, 410, 150, 1.06);
+  adesivo(ctx, microfone(), 610, 470, 6, -0.12 + Math.sin(Math.floor(f / 4)) * 0.03, 3);
+  if (P._vertical) return; // no vertical a faixa fica fora da cena
+  ctx.fillStyle = COR.lime; ctx.fillRect(60, 40, 760, 92);
+  ctx.fillStyle = '#000'; ctx.font = '900 58px "Segoe UI Black", "Segoe UI", Arial, sans-serif'; ctx.textBaseline = 'middle';
+  ctx.fillText(nomeObra(P).slice(0, 22), 80, 88);
+  ctx.fillStyle = '#000'; ctx.fillRect(60, 132, 760, 36);
+  ctx.fillStyle = COR.branco; ctx.font = mono(20); ctx.textBaseline = 'middle';
+  ctx.fillText(('W4K3 NEWS  //  ' + (seg.lado === 'ficcao' ? mundoObra(P) || 'FICÇÃO' : (P.fonte || 'REAL').toUpperCase())).slice(0, 60), 76, 150);
+}
+function cidade(ctx, f, lf, len, vol, seg, P) {
+  skyline(ctx, f, 0.25);
+  // torre corporativa no centro: o nome troca entre a ficção e o real (a "tradução" na tela)
+  const tr = (P.espelho && P.espelho.traducao && P.espelho.traducao[0]) || { real: 'BIG TECH', ficcao: 'MEGACORP' };
+  const g = ctx.createLinearGradient(520, 0, 760, 0);
+  g.addColorStop(0, '#0b3a44'); g.addColorStop(0.5, COR.cyan); g.addColorStop(1, '#0b3a44');
+  ctx.fillStyle = g; ctx.fillRect(540, 90, 200, H); ctx.fillRect(580, 40, 120, 60); ctx.fillRect(625, 0, 30, 45);
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  for (let y = 110; y < H; y += 16) ctx.fillRect(548, y, 184, 5);
+  const fase = Math.floor(lf / 22) % 2, idade = lf % 22;
+  const nome = String(fase ? tr.real : tr.ficcao).toUpperCase().slice(0, 16);
+  carimbo(ctx, nome, 640, 150, fase ? COR.lime : COR.magenta, idade, 30, true);
+  // tabela de tradução real = ficção, uma linha por vez
+  (P.espelho && P.espelho.traducao || []).slice(0, 3).forEach((t, i) => {
+    carimbo(ctx, `${String(t.real).toUpperCase()} = ${String(t.ficcao).toUpperCase()}`.slice(0, 34), 820, 260 + i * 56, CORES[i % CORES.length], lf - 8 - i * 12, 22);
+  });
+}
+function virada(ctx, f, lf, len, vol, seg, P) {
+  binario(ctx, f * 2);
+  ctx.fillStyle = 'rgba(0,0,0,0.8)'; ctx.fillRect(0, 0, W, H);
+  const txt = String(seg.legenda || 'NÃO É FALHA').toUpperCase();
+  let px = 130;
+  ctx.font = `900 ${px}px "Segoe UI Black", "Segoe UI", Arial, sans-serif`;
+  let linhas = quebra(ctx, txt, 960); // cabe também no corte do vertical (1080 px do miolo)
+  while ((linhas.length > 2 || linhas.some((l) => ctx.measureText(l).width > 1000)) && px > 50) {
+    px -= 8; ctx.font = `900 ${px}px "Segoe UI Black", "Segoe UI", Arial, sans-serif`; linhas = quebra(ctx, txt, 960);
+  }
+  ctx.textBaseline = 'middle';
+  const tremor = Math.floor(f / 2);
+  linhas.forEach((ln, i) => {
+    const w = ctx.measureText(ln).width, x = W / 2 - w / 2 + (rnd(tremor * 3 + i) - 0.5) * 10;
+    const y = H / 2 - ((linhas.length - 1) * px * 1.1) / 2 + i * px * 1.1 - 60;
+    ctx.fillStyle = COR.lime; ctx.fillText(ln, x + 6, y + 6);
+    ctx.fillStyle = COR.branco; ctx.fillText(ln, x, y);
+  });
+}
+
+const CENAS = { abertura, manchete, plataforma, marionete, vigilancia, obra, pergunta, apresentador, cidade, virada };
 // onde os rótulos de palavras-chave aparecem em cada cena (fora dos elementos principais)
 const VAGAS = {
   abertura: [], manchete: [[830, 90], [860, 165]], plataforma: [[520, 70], [560, 140], [530, 210]],
   marionete: [[60, 70], [60, 135]], vigilancia: [[300, 190], [640, 230]], obra: [[480, 420], [520, 490]],
-  pergunta: [[690, 90], [760, 165]],
+  pergunta: [[690, 90], [760, 165]], apresentador: [[860, 230]], cidade: [[60, 90]], virada: [],
 };
 const CORES = [COR.lime, COR.branco, COR.cyan, COR.magenta];
 
 // ---------- quadro ----------
-let _gs = null, _gsDe = null;
+// A cena é sempre desenhada em 1280x720; o quadro final é o horizontal (a cena inteira) ou o vertical
+// 1080x1920 (faixa da obra em cima, cena no meio, legenda grande e frase de impacto embaixo).
+let _gs = null, _gs3 = null, _gsDe = null;
+function faixaVertical(ctx, P, seg, frame) {
+  const VW = ctx.canvas.width;
+  ctx.fillStyle = COR.lime; ctx.fillRect(0, 170, VW, 150);
+  ctx.fillStyle = '#000'; ctx.textBaseline = 'middle';
+  let px = 92;
+  const nome = nomeObra(P);
+  ctx.font = `900 ${px}px "Segoe UI Black", "Segoe UI", Arial, sans-serif`;
+  while (ctx.measureText(nome).width > VW - 100 && px > 40) { px -= 6; ctx.font = `900 ${px}px "Segoe UI Black", "Segoe UI", Arial, sans-serif`; }
+  ctx.fillText(nome, (VW - ctx.measureText(nome).width) / 2, 246);
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 320, VW, 60);
+  const lado = seg && seg.lado === 'ficcao' ? '◉ FICÇÃO  //  ' + (mundoObra(P) || nomeObra(P))
+    : seg && seg.lado ? '◉ REAL  //  ' + (P.fonte || '').toUpperCase() : 'W4K3 NEWS  //  ' + (P.fonte || '').toUpperCase();
+  ctx.font = mono(30); ctx.fillStyle = seg && seg.lado === 'ficcao' ? COR.magenta : COR.branco;
+  ctx.fillText(lado.slice(0, 44), (VW - ctx.measureText(lado.slice(0, 44)).width) / 2, 351);
+}
 export function desenhar(ctx, frame, P) {
-  if (_gsDe !== P.palavras) { _gs = grupos(P.palavras); _gsDe = P.palavras; P.segmentos.forEach((s, i, a) => { s.k = a.slice(0, i).filter((x) => x.cena === s.cena).length; }); }
+  if (_gsDe !== P.palavras) {
+    _gs = grupos(P.palavras); _gs3 = grupos(P.palavras, 3); _gsDe = P.palavras;
+    P.segmentos.forEach((s, i, a) => { s.k = a.slice(0, i).filter((x) => x.cena === s.cena).length; });
+  }
+  const vertical = ctx.canvas.height > ctx.canvas.width;
+  P._vertical = vertical;
   const t = frame / P.fps, vol = P.vol[frame] || 0;
-  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = COR.preto; ctx.fillRect(0, 0, W, H);
+  const cv = tela('cena', W, H), c = cv._x;
+  c.fillStyle = COR.preto; c.fillRect(0, 0, W, H);
 
   const seg = frame < P.final ? P.segmentos.filter((s) => s.ini <= frame).pop() : null;
   if (seg) {
     const lf = frame - seg.ini, len = Math.max(1, seg.fim - seg.ini);
-    CENAS[seg.cena](ctx, frame, lf, len, vol, seg, P);
-    const vagas = VAGAS[seg.cena] || [];
-    seg.chaves.forEach((c, i) => {
-      if (seg.cena === 'obra' && P.refs.some((r) => r.toUpperCase() === c.txt)) return; // o nome já está grande na tela
-      if (i < vagas.length && frame >= c.ini) carimbo(ctx, c.txt, vagas[i][0], vagas[i][1], CORES[(seg.k + i) % CORES.length], frame - c.ini);
-    });
-    if (seg.cena !== 'abertura') legenda(ctx, _gs, t);
-    selo(ctx);
-  } else cenaFinal(ctx, frame, P);
+    CENAS[seg.cena](c, frame, lf, len, vol, seg, P);
+    // rótulos dentro da cena (no vertical, a frase de impacto da batida vai para baixo)
+    if (!(vertical && seg.legenda)) {
+      const vagas = VAGAS[seg.cena] || [];
+      seg.chaves.forEach((k, i) => {
+        if (seg.cena === 'virada') return; // a frase já está gigante na tela
+        if (seg.cena === 'obra' && (P.refs.some((r) => r.toUpperCase() === k.txt) || nomeObra(P) === k.txt)) return;
+        if (i < vagas.length && frame >= k.ini) carimbo(c, k.txt, vagas[i][0], vagas[i][1], CORES[(seg.k + i) % CORES.length], frame - k.ini);
+      });
+    }
+  } else cenaFinal(c, frame, P);
+
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  if (!vertical) {
+    ctx.drawImage(cv, 0, 0);
+    if (seg && seg.cena !== 'abertura' && seg.cena !== 'virada') {
+      if (P.espelho) legendaCentro(ctx, _gs3, t, W / 2, 560, 62, 1100);
+      else legenda(ctx, _gs, t);
+    }
+    if (seg) selo(ctx);
+  } else {
+    const VW = ctx.canvas.width, VH = ctx.canvas.height;
+    ctx.fillStyle = COR.preto; ctx.fillRect(0, 0, VW, VH);
+    binario(ctx, frame * 0.6);
+    ctx.fillStyle = 'rgba(0,0,0,0.72)'; ctx.fillRect(0, 0, VW, VH);
+    if (seg) faixaVertical(ctx, P, seg, frame);
+    // cena em tamanho real, cortando 100 px de cada lado (os elementos principais ficam no miolo)
+    const cy = 430, ch = H, corte = (W - VW) / 2;
+    ctx.drawImage(cv, corte, 0, VW, H, 0, cy, VW, ch);
+    ctx.fillStyle = COR.branco; ctx.fillRect(0, cy - 4, VW, 4); ctx.fillRect(0, cy + ch, VW, 4);
+    if (seg && seg.cena !== 'abertura' && seg.cena !== 'virada') legendaCentro(ctx, _gs3, t, VW / 2, 1360, 96, VW - 120);
+    if (seg && seg.legenda && seg.cena !== 'virada') {
+      const k = seg.chaves[0];
+      if (k && frame >= k.ini) carimbo(ctx, k.txt.slice(0, 26), VW / 2, 1660, CORES[seg.k % CORES.length], frame - k.ini, 50, true);
+    }
+    if (seg) selo(ctx, VW - 130, 40);
+  }
 
   let glitch = 0;
-  for (const c of [...P.segmentos.slice(1).map((s) => s.ini), P.final]) glitch = Math.max(glitch, 1 - Math.abs(frame - c) / 4);
+  for (const x of [...P.segmentos.slice(1).map((s) => s.ini), P.final]) glitch = Math.max(glitch, 1 - Math.abs(frame - x) / 4);
+  if (seg && seg.cena === 'virada') glitch = Math.max(glitch, 0.18 + vol * 0.3);
   if (vol > 0.8 && rnd(frame * 3) < 0.3) glitch = Math.max(glitch, 0.35);
   if (rnd(frame * 7 + 1) < 0.04) glitch = Math.max(glitch, 0.15);
   pos(ctx, frame, glitch);
