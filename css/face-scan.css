@@ -1,0 +1,265 @@
+/* ===== F4C3 SC4N ===== */
+:root {
+  --fs-accent: #a3e635;
+  --fs-danger: #ff4d6d;
+  --fs-warn: #facc15;
+  --fs-safe: #00ff84;
+  --fs-muted: #94a3b8;
+  --fs-face: #ff4d6d;
+  --fs-body: #22d3ee;
+}
+
+.fs-heading {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--fs-accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.fs-subheading {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--color-primary);
+  letter-spacing: 0.1em;
+  margin: 2rem 0 1rem;
+}
+
+.fs-status {
+  margin-top: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--fs-accent);
+}
+
+.fs-status.is-error { color: var(--fs-danger); }
+
+.fs-progress {
+  margin-top: 0.5rem;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(163, 230, 53, 0.4);
+}
+
+.fs-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--fs-accent);
+  box-shadow: 0 0 10px var(--fs-accent);
+  transition: width 0.2s ease;
+}
+
+/* Passos */
+.fs-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 2rem;
+}
+
+@media (min-width: 900px) {
+  .fs-steps { grid-template-columns: 1fr 1fr; }
+}
+
+.fs-step-tag {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--fs-muted);
+  margin-bottom: 0.5rem;
+}
+
+.fs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.fs-btn {
+  display: inline-block;
+  padding: 0.9rem 1.6rem;
+  background: rgba(163, 230, 53, 0.1);
+  border: 2px solid var(--fs-accent);
+  color: var(--fs-accent);
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fs-btn:hover,
+.fs-btn:focus-visible {
+  background: rgba(163, 230, 53, 0.25);
+  box-shadow: 0 0 20px rgba(163, 230, 53, 0.4);
+}
+
+.fs-btn:disabled {
+  opacity: 0.4;
+  cursor: wait;
+}
+
+.fs-btn-ghost {
+  border-color: var(--fs-muted);
+  color: var(--fs-muted);
+  background: transparent;
+}
+
+.fs-thumb {
+  margin-top: 1.5rem;
+  max-width: 220px;
+  border: 2px solid var(--fs-accent);
+}
+
+.fs-thumb canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fs-note {
+  margin-top: 0.75rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--fs-muted);
+}
+
+.fs-note.is-error { color: var(--fs-danger); }
+
+/* Câmera */
+.fs-camera video {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  background: #000;
+  object-fit: contain;
+}
+
+/* Resultado */
+.fs-canvas-wrap {
+  border: 2px solid var(--color-border);
+  background: #000;
+}
+
+.fs-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fs-legend {
+  margin-top: 0.5rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--fs-muted);
+}
+
+.fs-key {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 0.4rem 0 0.8rem;
+  border: 2px solid;
+  vertical-align: -1px;
+}
+
+.fs-key:first-child { margin-left: 0; }
+.fs-key-face { border-color: var(--fs-face); }
+.fs-key-body { border-color: var(--fs-body); }
+
+.fs-indicators {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .fs-indicators { grid-template-columns: repeat(3, 1fr); }
+}
+
+.fs-indicator {
+  padding: 1rem;
+  border: 2px solid var(--fs-muted);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.fs-indicator-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--fs-muted);
+}
+
+.fs-indicator-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0;
+}
+
+.fs-indicator-detail {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.fs-indicator.is-danger { border-color: var(--fs-danger); }
+.fs-indicator.is-danger .fs-indicator-value { color: var(--fs-danger); }
+.fs-indicator.is-warn { border-color: var(--fs-warn); }
+.fs-indicator.is-warn .fs-indicator-value { color: var(--fs-warn); }
+.fs-indicator.is-safe { border-color: var(--fs-safe); }
+.fs-indicator.is-safe .fs-indicator-value { color: var(--fs-safe); }
+.fs-indicator.is-neutral .fs-indicator-value { color: var(--fs-muted); }
+.fs-indicator.is-danger .fs-meter { color: var(--fs-danger); }
+.fs-indicator.is-warn .fs-meter { color: var(--fs-warn); }
+.fs-indicator.is-safe .fs-meter { color: var(--fs-safe); }
+
+.fs-meter {
+  position: relative;
+  height: 8px;
+  margin-top: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.fs-meter span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+}
+
+.fs-meter i {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--color-primary);
+}
+
+.fs-tips {
+  list-style: none;
+}
+
+.fs-tips li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.9rem;
+  line-height: 1.6;
+}
+
+.fs-tips li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--fs-accent);
+}
+
+.fs-links a {
+  color: var(--fs-accent);
+}
+
+@media (max-width: 768px) {
+  .fs-btn { flex: 1 1 auto; text-align: center; }
+  .fs-thumb { max-width: 160px; }
+}

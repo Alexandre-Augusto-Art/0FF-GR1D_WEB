@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-11-16",
+    "content": "Quem controla o passado controla o futuro. Quem controla o presente controla o passado.",
+    "author": "Lema do Partido — 1984 (George Orwell) (1949)",
+    "work": "1984 (George Orwell)",
+    "kind": "livro",
+    "bankId": "1984-controla-passado"
+  },
+  {
+    "date": "2026-11-15",
+    "content": "Nós não perdoamos. Nós não esquecemos. Aguardem-nos.",
+    "author": "Anonymous — Manifesto Anonymous (2008)",
+    "work": "Manifesto Anonymous",
+    "kind": "manifesto",
+    "bankId": "anon-expect-us"
+  },
+  {
+    "date": "2026-11-14",
+    "content": "A Matrix é um sistema. Esse sistema é nosso inimigo.",
+    "author": "Morpheus — Matrix (1999)",
+    "work": "Matrix",
+    "kind": "filme",
+    "bankId": "mx-sistema-inimigo"
+  },
+  {
+    "date": "2026-11-13",
+    "content": "O povo não deveria temer o seu governo. O governo é que deveria temer o seu povo.",
+    "author": "V — V de Vingança (2005)",
+    "work": "V de Vingança",
+    "kind": "filme",
+    "bankId": "vdv-povo-governo"
+  },
+  {
     "date": "2026-11-12",
     "content": "O código que você escreve hoje é o futuro que você constrói amanhã.",
     "author": "DEDSEC"
