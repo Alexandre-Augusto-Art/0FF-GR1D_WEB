@@ -133,6 +133,19 @@
       main.appendChild(base);
     }
 
+    // vídeo narrado da análise (só caminhos do próprio site, gravados pelo automation/video-site.js)
+    const vid = latest.video;
+    const local = (s) => typeof s === 'string' && /^assets\/videos\/[\w./-]+$/.test(s) && !s.includes('..') ? s : null;
+    if (vid && local(vid.src)) {
+      const v = document.createElement('video');
+      v.className = 'reflection-video';
+      v.src = local(vid.src);
+      if (local(vid.poster)) v.poster = local(vid.poster);
+      v.controls = true; v.playsInline = true; v.preload = 'none';
+      v.setAttribute('aria-label', 'Vídeo narrado: ' + (plainText(latest.reflection.title) || 'análise do dia'));
+      main.appendChild(v);
+    }
+
     const body = el('div', 'reflection-body');
     body.appendChild(safeHtml(latest.reflection.content));
     main.appendChild(body);
