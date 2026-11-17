@@ -10,25 +10,77 @@
       "publishedDate": "2026-11-13"
     },
     "reflection": {
-      "title": "O Jogo de Videogame que Desaparece",
-      "content": "<p>Segundo a Nexo Jornal, a liminar contra a Meta estabeleceu que a empresa não pode coletar e analisar dados de páginas de empresas sem autorização prévia. Isso põe em xeque a questão de quem tem o poder sobre os direitos autorais na era da inteligência artificial.</p><p>A disputa entre as grandes plataformas e os criadores mostra que a autonomia dos usuários está diminuindo e que o controle sobre os dados é cada vez mais uma questão crucial. As plataformas dominam a produção e a distribuição de conteúdo, enquanto o consumidor e o criador perdem poder.</p><p>Este cenário lembra <em>Watch Dogs</em>, onde o sistema ctOS controla tudo em Chicago, desde semáforos até telefones celulares. Ao hackear o sistema, Aiden Pearce revela como a privacidade e o controle dos dados são instrumentos de poder nas mãos das corporações.</p><p>Diante desse quadro, o que garantirá que os direitos dos criadores sejam respeitados na era da IA?</p>",
-      "excerpt": "A liminar contra a Meta coloca em xeque o controle sobre os direitos autorais na era da IA, mostrando a disputa de poder entre grandes plataformas e criadores."
-    },
-    "sources": [
-      {
-        "title": "O que a liminar contra a Meta diz sobre direitos autorais",
-        "link": "https://www.nexojornal.com.br/ensaio/2026/11/13/meta-direitos-autorais-tecnologia-plataforma-digital",
-        "source": "Nexo Jornal",
-        "date": "2026-11-13"
+      "title": "A Arasaka já tem nome aqui: Meta",
+      "content": "<p>Em Night City, a Arasaka usa o Soulkiller para copiar e analisar mentes humanas, transformando-as em propriedade da corporação. Pessoas se tornam commodities, vendendo suas vidas e pensamentos em troca de benefícios mínimos.</p>\n<p>Aqui, o nome é Meta, e o programa de vigilância digital se chama cláusula de coleta e análise de conteúdo. Segundo o Nexo Jornal, um juiz de São Paulo suspendeu a cláusula da Meta que autorizava a coleta de dados de páginas corporativas. Em outubro, a Meta anunciou termos comerciais autorizando a coleta de conteúdo de sites ligados a páginas corporativas.</p>\n<p><strong>É o sistema funcionando, não um erro.</strong></p>\n<p>Quem você acha que está ganhando?</p>",
+      "excerpt": "A Meta, como a Arasaka em Cyberpunk 2077, copia mentes para lucrar, mas juiz suspende cláusula que autoriza a prática.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, a Arasaka usa o Soulkiller para copiar e analisar mentes humanas, transformando-as em propriedade da corporação.",
+          "legenda": "Arasaka usa o Soulkiller",
+          "cena": "apresentador"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam commodities, vendendo suas vidas e pensamentos em troca de benefícios mínimos.",
+          "legenda": "benefícios mínimos",
+          "cena": "cidade"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é Meta, e o programa de vigilância digital se chama cláusula de coleta e análise de conteúdo.",
+          "legenda": "Meta = Arasaka",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Nexo Jornal, um juiz de São Paulo suspendeu a cláusula da Meta que autorizava a coleta de dados de páginas corporativas.",
+          "legenda": "São Paulo",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "Em outubro, a Meta anunciou termos comerciais autorizando a coleta de conteúdo de sites ligados a páginas corporativas.",
+          "legenda": "Meta anunciou",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema funcionando, não um erro.",
+          "legenda": "sistema funcionando",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Quem você acha que está ganhando?",
+          "legenda": "Quem você acha que está ganhando?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "Meta",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "Coleta e análise de conteúdo",
+            "ficcao": "Soulkiller"
+          }
+        ]
       }
-    ],
+    },
+    "sources": [],
     "tags": [
       "reflexão",
       "notícia",
       "antisistema",
       "crítica",
       "notícia-do-dia",
-      "Watch Dogs"
+      "Cyberpunk 2077"
     ]
   },
   {
