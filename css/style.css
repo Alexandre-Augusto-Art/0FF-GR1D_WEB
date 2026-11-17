@@ -725,11 +725,11 @@ body {
 }
 
 /* ALT3RN4T1V3 T00LS banner */
-.banner-offgrid {
+.banner-alttools {
   border-color: #22d3ee;
 }
 
-.banner-offgrid:hover {
+.banner-alttools:hover {
   border-color: #22d3ee;
   box-shadow:
     0 0 20px rgba(34, 211, 238, 0.5),
