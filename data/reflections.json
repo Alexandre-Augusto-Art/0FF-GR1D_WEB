@@ -81,7 +81,11 @@
       "crítica",
       "notícia-do-dia",
       "Cyberpunk 2077"
-    ]
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-17.mp4",
+      "poster": "assets/videos/w4k3/2026-11-17.jpg"
+    }
   },
   {
     "id": "2026-11-16",
