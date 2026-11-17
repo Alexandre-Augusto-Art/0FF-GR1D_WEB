@@ -35,6 +35,7 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
 | blog (`js/blog-loader.js`) | `posts/index.json` | manual |
 | `tarot.html` | `data/tarot.json` | manual |
 | chatbot (`js/chatbot.js`) | `data/chatbot.json` | manual |
+| `fact-check.html` (`js/fact-check/`) | `data/factcheck.json` (regras: sites oficiais, encurtadores, palavras de golpe, agências) | manual; validado por `validateFactCheck`. Testes: `node tests/fact-check/link.test.js` |
 
 As páginas W4K3 e Motivação mostram o selo "ATUALIZADO EM" (data da entrada mais recente) e
 o aviso de conteúdo velho depois de `STALE_DAYS = 2` dias. O HTML gerado pela IA passa por uma

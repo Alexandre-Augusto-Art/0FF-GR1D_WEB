@@ -81,8 +81,8 @@
     {
       "id": "factcheck",
       "title": "Fact Check",
-      "answer": "O Fact Check vai ajudar você a verificar se uma imagem, link ou vídeo é confiável: checar a origem, procurar sinais de montagem ou de conteúdo gerado por IA e comparar com fontes confiáveis. A ferramenta está em construção.",
-      "soon": true,
+      "answer": "No Fact Check você cola um link (ou a mensagem inteira) e vê para onde ele leva de verdade: se imita um site conhecido, se é encurtado, se tem cara de golpe. A análise é feita no seu aparelho, sem abrir o site. Depois dá para buscar o assunto nas agências de checagem. A checagem de imagens, vídeos e mensagens vem em breve.",
+      "link": "fact-check.html",
       "examples": [
         "como sei se uma notícia é falsa",
         "essa foto é verdadeira",
