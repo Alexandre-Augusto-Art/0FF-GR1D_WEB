@@ -168,6 +168,33 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
   sozinho a partir do desligado é preciso ativar "Power On By RTC" na BIOS (ASUS: Advanced →
   APM Configuration) e entrar no Windows (a tarefa roda na sua sessão).
 
+### Vídeo da análise (desde 2026-11-17)
+
+Cada rascunho que o bot manda (notícia do dia, link ou ajuste) ganha um vídeo narrado, feito só
+neste PC (sem GPU e sem serviço pago), no estilo colagem/ASCII/glitch.
+
+```
+telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
+  → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
+       título + cada frase → Piper pt-BR (scripts/tts.py, uma frase por arquivo = tempo exato)
+       → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
+       → cenas por frase (O FATO: manchete, plataforma · A LEITURA: marionete, vigilância ·
+         O ESPELHO: obra citada, vigilância · O CHAMADO: pergunta) + rótulos de palavras-chave
+       → Remotion (src/desenho.js, tudo desenhado em canvas) → MP4 ≤ 45 MB → sendVideo
+```
+
+- Código em `video/` (copiado pelo instalador para `%USERPROFILE%\.w4k3\video`, com `npm ci`);
+  voz em `%USERPROFILE%\.w4k3\tts` (venv com `piper-tts` + `pt_BR-faber-medium`).
+- Cerca de 1min40 para 1 minuto de vídeo. Vídeos ficam em `%USERPROFILE%\.w4k3\videos` (os 20 últimos).
+- Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
+  durante o render, o vídeo velho não é enviado. Publicar não interrompe.
+- O vídeo não vai para o site (GitHub Pages); fica para você postar onde quiser.
+- Log: `%USERPROFILE%\.w4k3\logs\video.log`. Testar à mão:
+  `node video\scripts\gerar.js %USERPROFILE%\.w4k3\draft.json --saida teste.mp4`.
+- Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.
+- Personagem e marca são próprios (máscara com boca de equalizador); não usar caveira, logo ou
+  cenas do Watch Dogs (direitos autorais).
+
 ### Reflexão a partir de um link (desde 2026-11-12)
 
 Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só um **rascunho**:

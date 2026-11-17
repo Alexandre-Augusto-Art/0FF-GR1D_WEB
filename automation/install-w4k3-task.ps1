@@ -11,7 +11,9 @@
       "W4K3 - Motivacao 09h10"   todo dia 09:10, escolhe a frase da Motivação Diária e manda para aprovar no Telegram
       "W4K3 - Motivacao 12h"     todo dia 12:00, publica a frase proposta se você não respondeu
       "W4K3 - Telegram"          (opcional) ao entrar no Windows, fica ouvindo links e comandos mandados ao seu bot
-  Rode de novo sempre que mudar o fluxo ou o script.
+  - Copia o projeto de vídeo (video\) para %USERPROFILE%\.w4k3\video, instala as dependências e a voz
+    Piper (pt-BR) em %USERPROFILE%\.w4k3\tts: o bot manda um vídeo narrado de cada rascunho.
+  Rode de novo sempre que mudar o fluxo, o script ou o vídeo.
 
   Telegram (uma vez): no Telegram, fale com @BotFather → /newbot → copie o token e rode
     powershell -ExecutionPolicy Bypass -File automation\install-w4k3-task.ps1 -TelegramToken "<token>"
@@ -28,6 +30,41 @@ Copy-Item ('run-w4k3.ps1', 'run-motivacao.ps1', 'telegram-w4k3.ps1', 'publish-en
 Copy-Item (Join-Path $PSScriptRoot 'n8n\workflows\*.json') (Join-Path $bin 'n8n\workflows') -Force
 Copy-Item (Join-Path $PSScriptRoot 'motivacao\frases.json') (Join-Path $bin 'motivacao') -Force
 $script = Join-Path $bin 'run-w4k3.ps1'
+
+# ---- Vídeo da análise: projeto Remotion (video\) + voz Piper, tudo neste PC ----
+$videoSrc = Join-Path (Split-Path $PSScriptRoot -Parent) 'video'
+$videoDst = Join-Path $env:USERPROFILE '.w4k3\video'
+if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContinue) -and
+    (Get-Command ffmpeg.exe -ErrorAction SilentlyContinue) -and (Get-Command python.exe -ErrorAction SilentlyContinue)) {
+  New-Item -ItemType Directory -Force -Path $videoDst | Out-Null
+  $lock = Join-Path $videoDst 'package-lock.json'
+  $npm = -not (Test-Path (Join-Path $videoDst 'node_modules')) -or -not (Test-Path $lock) -or
+         ((Get-FileHash $lock).Hash -ne (Get-FileHash (Join-Path $videoSrc 'package-lock.json')).Hash)
+  Copy-Item (Join-Path $videoSrc 'src'), (Join-Path $videoSrc 'scripts') $videoDst -Recurse -Force
+  Copy-Item (Join-Path $videoSrc 'package.json'), (Join-Path $videoSrc 'package-lock.json') $videoDst -Force
+  if ($npm) {
+    Push-Location $videoDst
+    & npm.cmd ci --no-audit --no-fund
+    & node.exe node_modules\@remotion\cli\remotion-cli.js browser ensure
+    Pop-Location
+  }
+  $tts = Join-Path $env:USERPROFILE '.w4k3\tts'
+  $py = Join-Path $tts 'venv\Scripts\python.exe'
+  if (-not (Test-Path $py)) {
+    New-Item -ItemType Directory -Force -Path $tts | Out-Null
+    & python.exe -m venv (Join-Path $tts 'venv')
+    & $py -m pip install -q piper-tts
+  }
+  foreach ($ext in 'onnx', 'onnx.json') {
+    $f = Join-Path $tts "pt_BR-faber-medium.$ext"
+    if (-not (Test-Path $f)) {
+      Invoke-WebRequest "https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium/pt_BR-faber-medium.$ext" -OutFile $f -UseBasicParsing
+    }
+  }
+  Write-Host 'ok: vídeo da análise (Remotion + Piper em %USERPROFILE%\.w4k3)'
+} else {
+  Write-Host 'vídeo: pulado (precisa de node, ffmpeg e python no PATH)'
+}
 
 $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
