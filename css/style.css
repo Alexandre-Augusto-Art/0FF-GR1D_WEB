@@ -724,6 +724,18 @@ body {
     0 0 40px rgba(250, 204, 21, 0.3);
 }
 
+/* ALT3RN4T1V3 T00LS banner */
+.banner-offgrid {
+  border-color: #22d3ee;
+}
+
+.banner-offgrid:hover {
+  border-color: #22d3ee;
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.5),
+    0 0 40px rgba(34, 211, 238, 0.3);
+}
+
 /* Section dividers */
 .section-divider {
   display: flex;
