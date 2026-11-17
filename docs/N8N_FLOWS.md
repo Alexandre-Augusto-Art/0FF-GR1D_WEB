@@ -230,7 +230,14 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
-- O vídeo não vai para o site (GitHub Pages); fica para você postar onde quiser.
+- **No site:** ao publicar, o `automation/video-site.js` (chamado pelo `run-w4k3.ps1`) acha o vídeo
+  vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3ideos\indice.json`, que o
+  `gerar.js` grava), recomprime para a web (540x960, uns 2 MB por 45 s) em
+  `assets/videos/w4k3/<data>.mp4` com uma capa `.jpg` e grava `video: { src, poster }` na entrada. A
+  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 6 min;
+  sem vídeo desta versão, publica só o texto.
+- Cada vídeo soma uns 2 MB ao repositório (uns 700 MB por ano publicando todo dia); se crescer
+  demais, apague os vídeos antigos de `assets/videos/w4k3` (a página só mostra o da entrada mais nova).
 - Log: `%USERPROFILE%\.w4k3\logs\video.log`. Testar à mão:
   `node video\scripts\gerar.js %USERPROFILE%\.w4k3\draft.json --saida teste.mp4`.
 - Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.

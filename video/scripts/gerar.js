@@ -187,11 +187,23 @@ async function main() {
     return final;
   };
   const vertical = renderiza('W4K3V', base + '-vertical.mp4');
+  registra(hash0, { vertical, titulo });
   if (args.includes('--telegram')) await enviar(vertical, draftPath, hash0, titulo, total, 1080, 1920);
   if (!args.includes('--so-vertical')) renderiza('W4K3', base + '-horizontal.mp4');
   // guarda só os 30 mais recentes
   fs.readdirSync(VIDEOS).filter((f) => f.endsWith('.mp4')).map((f) => path.join(VIDEOS, f))
     .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs).slice(30).forEach((f) => fs.rmSync(f, { force: true }));
+}
+
+// videos/indice.json: hash do rascunho → vídeo. Ao publicar, o automation/video-site.js acha o vídeo
+// da versão aprovada por aqui (a cópia aprovada tem os mesmos bytes do rascunho).
+function registra(h, info) {
+  const f = path.join(VIDEOS, 'indice.json');
+  let ix = {};
+  try { ix = JSON.parse(fs.readFileSync(f, 'utf8')); } catch {}
+  ix[h] = { ...info, quando: new Date().toISOString() };
+  const fica = Object.entries(ix).sort((a, b) => String(b[1].quando).localeCompare(String(a[1].quando))).slice(0, 30);
+  fs.writeFileSync(f, JSON.stringify(Object.fromEntries(fica), null, 1));
 }
 
 async function enviar(arquivo, draft, hash0, titulo, dur, largura, altura) {

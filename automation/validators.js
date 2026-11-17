@@ -59,6 +59,11 @@ function validateW4K3(data) {
       if (!isText(e.reflection.title, 3)) errors.push(`${p}.reflection.title: vazio`);
       if (!isText(e.reflection.content, 50)) errors.push(`${p}.reflection.content: vazio ou curto demais`);
     }
+    if (e.video !== undefined) {
+      const ok = (s, ext) => typeof s === 'string' && new RegExp('^assets/videos/[\\w./-]+\\.' + ext + '$').test(s) && !s.includes('..');
+      if (!isObj(e.video) || !ok(e.video.src, 'mp4')) errors.push(`${p}.video.src: use assets/videos/....mp4`);
+      else if (e.video.poster !== undefined && !ok(e.video.poster, '(jpg|png)')) errors.push(`${p}.video.poster: use assets/videos/....jpg`);
+    }
     if (e.news !== undefined) {
       if (!isObj(e.news)) errors.push(`${p}.news: deve ser um objeto`);
       else {

@@ -210,6 +210,7 @@ function Push-Reflections([string]$message) {
   Invoke-Native 'validate.js' { node (Join-Path $Clone 'automation\validate.js') } | Out-Null
   $first = (Get-Content (Join-Path $Clone 'data\reflections.json') -Raw -Encoding UTF8 | ConvertFrom-Json)[0]
   Invoke-Native 'git add' { git -C $Clone add data/reflections.json } | Out-Null
+  if (Test-Path (Join-Path $Clone 'assets\videos\w4k3')) { Invoke-Native 'git add (vídeo)' { git -C $Clone add assets/videos/w4k3 } | Out-Null }
   git -C $Clone diff --cached --quiet 2>$null
   if ($LASTEXITCODE -eq 0) { Write-Host 'Nada mudou, sem commit.' }
   elseif ($DryRun) {
@@ -230,6 +231,12 @@ function Publish-Draft([string]$file, [string]$message) {
   Wait-Internet
   Update-Clone
   Invoke-Native 'publish-entry.js' { node (Join-Path $PSScriptRoot 'publish-entry.js') $file (Join-Path $Clone 'data\reflections.json') } | Out-Null
+  # vídeo desta versão (se existir) vai junto, comprimido para a web; sem vídeo, publica só o texto
+  $vs = Join-Path $PSScriptRoot 'video-site.js'
+  if (Test-Path $vs) {
+    try { Invoke-Native 'vídeo para o site' { node $vs $file $Clone } | Out-Null }
+    catch { Write-Host "Vídeo não foi para o site: $_" }
+  }
   Push-Reflections $message
 }
 
