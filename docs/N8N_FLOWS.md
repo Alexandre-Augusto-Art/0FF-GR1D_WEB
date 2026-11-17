@@ -145,10 +145,8 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
   mais recentes, e penaliza ofertas, reviews e guias de compra. No máximo 2 por fonte entre as 8.
 - **Paywall:** Nexo, Intercept e Ars Technica não deixam ler a página; nesses casos a análise usa
   o texto que vem no próprio RSS (`fallback`).
-- **A análise** (nó "Prepare Prompt" do `w4k3-link.json`, que também vale para links que você
-  manda): o fato com a fonte citada → leitura crítica de quem ganha e quem perde → 1 a 3 obras como
-  espelho → um chamado no fim, em 4 parágrafos curtos (150 a 250 palavras, 1 a 2 minutos de leitura). O prompt traz **fichas curtas de cada obra**, e a IA só pode usar o
-  que está nelas (o modelo local inventava detalhes das obras). As obras citadas viram tags da
+- **A análise** (nó "Escrever (espelho direto)" do `w4k3-link.json`, que também vale para links
+  que você manda): formato **espelho direto**, veja a seção abaixo. A obra escolhida vira tag da
   entrada, junto com `notícia-do-dia` (ou `link-enviado`).
 - **No Telegram:** o botão ✏️ Sugerir mudanças (ou só escrever o que quer mudar) reescreve o rascunho; "Outra notícia" pula as já
   propostas hoje; `/noticia` gera na hora; `/noticia vigilância` procura uma notícia sobre o tema
@@ -169,6 +167,36 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
   sozinho a partir do desligado é preciso ativar "Power On By RTC" na BIOS (ASUS: Advanced →
   APM Configuration) e entrar no Windows (a tarefa roda na sua sessão).
 
+### Formato "espelho direto" (desde 2026-11-17)
+
+Inspirado em reels que dizem que a notícia real **é** a coisa da ficção com outro nome (não que
+ela "lembra"). O nó `Escrever (espelho direto)` (fonte editável em
+`automation/n8n/code/escrever-espelho.js`; `node automation/n8n/build-link.js` copia para o fluxo)
+fala com o Ollama em etapas curtas, porque o modelo local erra menos com tarefas pequenas:
+
+```
+1. mecanismo  só os fatos da matéria, quem faz o quê com quem, quem ganha, quem paga
+2. espelho    a obra com a MESMA engrenagem (fichas com temas) + tradução real → ficção
+              (ex.: Meta = Arasaka, treinar IA = Soulkiller)
+3. batidas    6 a 9 falas curtas, 130 a 190 palavras: abre dentro da obra ("Em Night City...")
+              → "Aqui, o nome é..." → fatos com a fonte → virada ("Não é falha. É o modelo
+              de negócio.") → chamado; cada batida tem legenda de 2 a 5 palavras e a cena do vídeo
+4. checagem   por código: números que não estão na matéria nem na ficha, fonte citada, ordem das
+              batidas, palavras proibidas ("lembra", "remete"...); se falhar, uma reescrita
+```
+
+- A entrada guarda `reflection.beats` (as batidas) e `reflection.espelho`; o texto do site é a
+  junção das batidas. `analise` e `avisos` só existem no rascunho (o `publish-entry.js` tira).
+- **Aprende com você:** o `run-w4k3.ps1` manda as 3 últimas análises publicadas com batidas como
+  exemplo de tom (você aprova, e os seus ajustes viram o padrão).
+- Num ajuste, a etapa 1 é reaproveitada; a 2 só roda de novo se você pedir outra obra.
+- No CPU leva uns 8 a 12 minutos (4 chamadas). Por isso o `run-w4k3.ps1` sobe o limite do nó de
+  código do n8n (`N8N_RUNNERS_TASK_TIMEOUT=2400`).
+- No Telegram, o rascunho mostra o espelho (obra, elemento e tradução) e o que a checagem ainda
+  apontou, se apontou algo.
+- Com a 3090: trocar `MODELO` no nó por um de ~30B (Qwen2.5-32B ou Gemma 3 27B) melhora o tom e a
+  fidelidade aos fatos.
+
 ### Vídeo da análise (desde 2026-11-17)
 
 Cada rascunho que o bot manda (notícia do dia, link ou ajuste) ganha um vídeo narrado, feito só
@@ -179,14 +207,18 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
        título + cada frase → Piper pt-BR (scripts/tts.py, uma frase por arquivo = tempo exato)
        → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
-       → cenas por frase (O FATO: manchete, plataforma · A LEITURA: marionete, vigilância ·
-         O ESPELHO: obra citada, vigilância · O CHAMADO: pergunta) + rótulos de palavras-chave
-       → Remotion (src/desenho.js, tudo desenhado em canvas) → MP4 ≤ 45 MB → sendVideo
+       → uma cena por batida (a cena e a legenda de impacto vêm do roteiro; textos antigos sem
+         batidas usam cenas por parágrafo): apresentador, cidade (a torre troca o nome real pelo
+         da ficção), manchete, plataforma, vigilância, marionete, obra, virada, pergunta
+       → Remotion (src/desenho.js, tudo desenhado em canvas)
+       → vertical 1080x1920 (faixa da obra, cena, legenda grande no centro) → sendVideo
+       → horizontal 1280x720 (fica só em %USERPROFILE%\.w4k3\videos)
 ```
 
 - Código em `video/` (copiado pelo instalador para `%USERPROFILE%\.w4k3\video`, com `npm ci`);
   voz em `%USERPROFILE%\.w4k3\tts` (venv com `piper-tts` + `pt_BR-faber-medium`).
-- Cerca de 1min40 para 1 minuto de vídeo. Vídeos ficam em `%USERPROFILE%\.w4k3\videos` (os 20 últimos).
+- Uns 4 a 5 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
+  `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
 - O vídeo não vai para o site (GitHub Pages); fica para você postar onde quiser.
@@ -200,8 +232,8 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 
 Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só um **rascunho**:
 `link.json {url, direction, feedback?, previousDraft?} → Baixar notícia (HTTP) → Extrair notícia
-(og:title, og:description, data, parágrafos) → Prepare Prompt (texto da matéria + direcionamento
-+ versão anterior e ajustes) → AI Agent → Format and Save1 → Validar rascunho → draft.json`.
+(og:title, og:description, data, parágrafos) → Escrever (espelho direto) (texto da matéria +
+direcionamento + versão anterior e ajustes; Ollama em etapas) → Validar rascunho → draft.json`.
 O mesmo fluxo escreve a notícia do dia (`mode: "pauta"`).
 Quem publica é o `run-w4k3.ps1 -Publish` (usa `automation/publish-entry.js`: data de hoje,
 `addEntry`, validação). A entrada recebe a tag `link-enviado`.

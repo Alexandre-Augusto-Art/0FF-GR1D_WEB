@@ -41,6 +41,17 @@ const FICHAS = [
   { obra: 'Ghost in the Shell', ficha: 'mangá de 1989 e anime de 1995. A Major Motoko Kusanagi, ciborgue da Seção 9; cérebros ligados à rede podem ser hackeados e receber memórias falsas.', temas: 'corpo e mente na rede, memória manipulada, identidade' },
 ];
 const PREFERIDAS = ['Cyberpunk 2077', 'Watch Dogs', 'V de Vingança', 'Jogos Vorazes', 'Blade Runner'];
+const MUNDOS = {
+  'Cyberpunk 2077': 'Night City', 'Cyberpunk: Edgerunners': 'Night City', 'Watch Dogs': 'a cidade do ctOS',
+  'V de Vingança': 'a Inglaterra do Norsefire', 'Jogos Vorazes': 'Panem', 'Blade Runner': 'a Los Angeles da Tyrell',
+  '1984': 'a Oceania do Grande Irmão', 'Matrix': 'a Matrix', 'Black Mirror': 'Black Mirror', 'Mr. Robot': 'Mr. Robot',
+  'Minority Report': 'a cidade do Pré-Crime', 'Deus Ex': 'o mundo de Deus Ex', 'Elysium': 'a Terra de Elysium',
+  'Admirável Mundo Novo': 'o Admirável Mundo Novo', 'Psycho-Pass': 'o Japão do Sistema Sibyl',
+  'Neuromancer': 'o ciberespaço de Neuromancer', 'Ghost in the Shell': 'o mundo de Ghost in the Shell',
+};
+const semAcento = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+// "raízes" de 6 letras das palavras longas: comparação grosseira, mas sem dicionário
+const raizes = (t) => new Set((semAcento(t).match(/[a-z0-9]{5,}/g) || []).map((w) => w.slice(0, 6)));
 const CENAS = {
   apresentador: 'o apresentador mascarado do W4K3 no telejornal, com a faixa da obra (bom para abrir no mundo da ficção)',
   cidade: 'cidade neon dominada por uma torre corporativa que troca de nome entre o real e a ficção',
@@ -107,6 +118,10 @@ Extraia da notícia, em português, usando SÓ o que está escrito acima:
 const pedeOutraObra = ajuste && (/outra (obra|refer)/i.test(ajuste) || FICHAS.some((f) => ajuste.toLowerCase().includes(f.obra.toLowerCase().split(':')[0]) && (!anterior || !anterior.espelho || f.obra !== anterior.espelho.obra)));
 let espelho = anterior && anterior.espelho;
 if (!espelho || pedeOutraObra || !ajuste) {
+  const alvo = raizes([analise.mecanismo, analise.quem_ganha, analise.quem_perde, ...(analise.fatos || []), news.title].join(' '));
+  const pedidas = FICHAS.filter((f) => semAcento(direcao + ' ' + ajuste).includes(semAcento(f.obra.split(':')[0])));
+  const nota = (f) => { let k = 0; for (const r of raizes(f.temas + ' ' + f.ficha)) if (alvo.has(r)) k++; return k + (PREFERIDAS.includes(f.obra) ? 2 : 0); };
+  const candidatas = [...new Set([...pedidas, ...FICHAS.slice().sort((a, b) => nota(b) - nota(a))])].slice(0, 4);
   espelho = await ia(SISTEMA, `MECANISMO DA NOTÍCIA: ${analise.mecanismo}
 QUEM GANHA: ${analise.quem_ganha}
 QUEM PERDE: ${analise.quem_perde}
@@ -114,19 +129,24 @@ FATOS:
 ${lista(analise.fatos)}
 ${direcao ? '\nDIRECIONAMENTO DO AUTOR (prioridade): ' + direcao : ''}${ajuste ? '\nPEDIDO DE AJUSTE DO AUTOR (prioridade): ' + ajuste : ''}
 
-FICHAS DAS OBRAS (use só o que está escrito aqui):
-${FICHAS.map((f) => `- ${f.obra}: ${f.ficha} [temas: ${f.temas}]`).join('\n')}
+OBRAS CANDIDATAS (use só o que está escrito em cada ficha):
+${candidatas.map((f) => `- ${f.obra}: ${f.ficha}`).join('\n')}
 
-Escolha UMA obra cuja ENGRENAGEM seja a mesma da notícia: o mesmo tipo de poder fazendo a mesma coisa com as pessoas (não basta o tema ser parecido). Prefira ${PREFERIDAS.join(', ')} quando servirem bem.
-Monte a tabela de tradução: cada ator ou coisa real e o seu equivalente na obra (ex.: Meta → Arasaka, treinar IA → Soulkiller).
-{"obra": "nome exato como na ficha", "elemento": "o sistema, lugar ou personagem da ficha que espelha a notícia", "mundo": "onde se passa (ex.: Night City)", "por_que": "uma frase", "traducao": [{"real": "...", "ficcao": "..."}]}`, 500, 0.4);
+Escolha UMA destas obras cuja ENGRENAGEM seja a mesma da notícia: o mesmo tipo de poder fazendo a mesma coisa com as pessoas (não basta o tema ser parecido).
+"elemento": o sistema, programa, empresa ou personagem que aparece ESCRITO na ficha e faz na obra o que acontece na notícia.
+"traducao": de 2 a 4 pares; o lado "ficcao" tem de usar palavras que estão na ficha (ex.: Meta = Arasaka; treinar IA = Soulkiller).
+{"obra": "nome exato da obra", "elemento": "...", "por_que": "uma frase", "traducao": [{"real": "...", "ficcao": "..."}]}`, 400, 0.3);
 }
 if (!fichaDe(espelho.obra)) {
-  const achada = FICHAS.find((f) => String(espelho.obra || '').toLowerCase().includes(f.obra.toLowerCase().split(':')[0]));
+  const achada = FICHAS.find((f) => semAcento(espelho.obra).includes(semAcento(f.obra.split(':')[0])));
   espelho.obra = achada ? achada.obra : 'Watch Dogs';
 }
-espelho.traducao = (Array.isArray(espelho.traducao) ? espelho.traducao : []).filter((t) => t && t.real && t.ficcao).slice(0, 4);
 const ficha = fichaDe(espelho.obra);
+espelho.mundo = MUNDOS[ficha.obra] || ficha.obra;
+// o lado "ficcao" da tradução tem de estar na ficha (o modelo inventava, ex.: "células cerebrais")
+const naFicha = (t) => { const ws = (semAcento(t).match(/[a-z0-9]{4,}/g) || []); const fx = semAcento(ficha.ficha + ' ' + ficha.obra); return ws.length > 0 && ws.filter((w) => fx.includes(w.slice(0, 5))).length / ws.length >= 0.5; };
+espelho.traducao = (Array.isArray(espelho.traducao) ? espelho.traducao : []).filter((t) => t && t.real && t.ficcao && naFicha(t.ficcao)).slice(0, 4);
+if (!naFicha(espelho.elemento || '')) espelho.elemento = espelho.traducao[0] ? espelho.traducao[0].ficcao : ficha.obra;
 
 // ---------- 3. batidas ----------
 const exs = (exemplos.length ? exemplos : [EXEMPLO_PADRAO]).map((e) => `Título: ${e.titulo}\n${lista(e.batidas)}`).join('\n\n');
@@ -142,19 +162,23 @@ Ficha da obra (os ÚNICOS detalhes da obra que você pode usar): ${ficha.ficha}
 Tradução real → ficção: ${espelho.traducao.map((t) => `${t.real} = ${t.ficcao}`).join('; ')}
 ${direcao ? '\nDIRECIONAMENTO DO AUTOR (prioridade máxima): ' + direcao : ''}
 
-COMO ESCREVER (6 a 9 batidas, 130 a 190 palavras no total):
-1. lado "ficcao": abra DENTRO da obra ("Em ${espelho.mundo || 'Night City'}, ...") descrevendo a engrenagem de forma concreta.
-2. lado "real": vire para o nosso mundo com a troca de nome ("Aqui, o nome é ...", "No nosso mundo, ela se chama ...").
-3. lado "real": os fatos, citando a fonte pelo nome uma vez ("Segundo o/a ${fonte}, ..."). Diga quem lucra e quem paga.
-4. lado "virada": uma frase seca que mostra que não é acidente (ex.: "Não é falha. É o modelo de negócio.").
-5. lado "chamado": termine com uma pergunta ou um chamado que volta à obra.
+ESCREVA EXATAMENTE 7 BATIDAS, nesta ordem. Cada batida tem de 18 a 28 palavras, em 1 a 3 frases curtas:
+1. "ficcao": comece com "Em ${espelho.mundo}, ..." e apresente ${espelho.elemento} com os detalhes da ficha.
+2. "ficcao": o que isso faz com as pessoas na obra e quem lucra lá (só o que está na ficha).
+3. "real": a troca de nome. "Aqui, o nome é ..." ou "No nosso mundo, ... se chama ..." (use a tradução).
+4. "real": o fato principal, citando a fonte: "Segundo o/a ${fonte}, ...".
+5. "real": mais um fato da lista (números e nomes exatos) e quem ganha, quem paga.
+6. "virada": uma frase seca, com palavras SUAS, mostrando que não é acidente, é o sistema funcionando.
+7. "chamado": volte à obra citando ${espelho.elemento} ou ${espelho.mundo} pelo nome e termine com uma pergunta direta para quem assiste (ex.: "Em Night City, ninguém assinou nada. E você, assinou?").
 - Fale com quem assiste ("você", "sua"). Frases curtas, de no máximo 15 palavras. Nada de introdução, jargão ou "talvez".
+- Não repita frases dos exemplos: escreva frases novas para esta notícia.
 - Proibido: ${PROIBIDAS.map((p) => '"' + p + '"').join(', ')}.
-- "legenda": de 2 a 5 palavras, o soco da batida, para aparecer grande na tela.
+- Cada batida traz uma informação nova: não repita na batida 5 o fato da batida 4.
+- "legenda": de 2 a 5 palavras, o soco da batida, para aparecer grande na tela. NUNCA as primeiras palavras da fala: use o nome ou a ideia mais forte (ex.: "META = ARASAKA", "SUA MENTE É DELES", "SUSPENSO PELA JUSTIÇA").
 - "cena": uma destas: ${Object.entries(CENAS).map(([k, v]) => `${k} (${v})`).join('; ')}.
 - Título de até 10 palavras cruzando o real e a ficção.
 
-EXEMPLOS DE TOM (copie o jeito, não o conteúdo):
+EXEMPLOS DE TOM (só o jeito; o conteúdo e as frases têm de ser novos):
 ${exs}
 
 {"titulo": "...", "batidas": [{"lado": "ficcao", "fala": "...", "legenda": "...", "cena": "apresentador"}], "resumo": "1 frase para chamada"}`;
@@ -168,9 +192,21 @@ function checar(o) {
   const b = Array.isArray(o.batidas) ? o.batidas : [];
   const texto = b.map((x) => String(x.fala || '')).join(' ');
   const pal = texto.split(/\s+/).filter(Boolean).length;
-  if (b.length < 5 || b.length > 10) p.push(`use de 6 a 9 batidas (vieram ${b.length})`);
-  if (pal < 110) p.push(`texto curto demais (${pal} palavras; escreva de 130 a 190)`);
-  if (pal > 230) p.push(`texto longo demais (${pal} palavras; corte para 130 a 190)`);
+  if (b.length < 6 || b.length > 8) p.push(`escreva exatamente 7 batidas (vieram ${b.length})`);
+  if (pal < 100) p.push(`texto curto demais (${pal} palavras): cada batida precisa de 18 a 28 palavras`);
+  b.forEach((x, i) => { const k = String(x.fala || '').split(/\s+/).filter(Boolean).length; if (x.lado !== 'virada' && k < 12) p.push(`batida ${i + 1} curta demais (${k} palavras): escreva de 18 a 28`); });
+  const fim = b[b.length - 1];
+  const daObra = raizes(espelho.elemento + ' ' + espelho.mundo);
+  if (fim && fim.lado === 'chamado' && ![...raizes(fim.fala)].some((r) => daObra.has(r))) p.push(`o chamado tem de voltar à obra: cite ${espelho.elemento} ou ${espelho.mundo}`);
+  if (pal > 220) p.push(`texto longo demais (${pal} palavras): cada batida precisa de 18 a 28 palavras`);
+  // nomes próprios no meio da frase: os da ficção têm de estar na ficha, os do real na matéria
+  const fx = semAcento(ficha.ficha + ' ' + ficha.obra + ' ' + espelho.mundo), rl = semAcento(corpo + ' ' + news.title + ' ' + fonte + ' ' + (analise.fatos || []).join(' '));
+  b.forEach((x, i) => {
+    for (const m of String(x.fala || '').matchAll(/(?<![.!?:]\s)(?<!^)\b(\p{Lu}[\p{L}-]{3,})/gu)) {
+      const w = semAcento(m[1]);
+      if (x.lado === 'ficcao' ? !fx.includes(w) : !(rl.includes(w) || fx.includes(w))) p.push(`batida ${i + 1}: "${m[1]}" não está na ${x.lado === 'ficcao' ? 'ficha da obra' : 'notícia'}; tire ou troque`);
+    }
+  });
   if (b[0] && b[0].lado !== 'ficcao') p.push('a 1ª batida tem de ser do lado "ficcao", abrindo dentro da obra');
   if (!b.some((x) => x.lado === 'virada')) p.push('falta a batida "virada"');
   if (b.length && b[b.length - 1].lado !== 'chamado') p.push('a última batida tem de ser do lado "chamado"');
@@ -200,8 +236,32 @@ let batidas = (Array.isArray(roteiro.batidas) ? roteiro.batidas : []).map((x) =>
 })).filter((x) => x.fala);
 if (!batidas.length) throw new Error('A IA não escreveu nenhuma batida');
 const PADRAO = { ficcao: 'apresentador', real: 'manchete', virada: 'virada', chamado: 'pergunta' };
+// escolhe o trecho de 2 a 4 palavras mais "pesado" da fala: nomes próprios e palavras longas, sem começar/terminar em conectivo
+const VAZIAS = new Set(['a', 'o', 'as', 'os', 'de', 'da', 'do', 'das', 'dos', 'em', 'no', 'na', 'nos', 'nas', 'e', 'ou', 'que', 'um', 'uma', 'para', 'por', 'com', 'se', 'seu', 'sua', 'ao', 'aos', 'é', 'aqui', 'segundo', 'mais', 'como']);
+function legendaDe(fala, troca, ja = new Set()) {
+  if (troca) return troca;
+  const pergunta = String(fala).split(/(?<=[.!])\s+/).find((f) => /\?$/.test(f) && f.split(/\s+/).length <= 6);
+  if (pergunta) return pergunta;
+  const trechos = String(fala).split(/[.,;:!?—–()"]+/).map((t) => t.trim().split(/\s+/).filter(Boolean)).filter((t) => t.length);
+  let melhor = null, nota = -1;
+  for (const ws of trechos) for (let n = 2; n <= 4; n++) for (let i = 0; i + n <= ws.length; i++) {
+    const j = ws.slice(i, i + n);
+    if (VAZIAS.has(j[0].toLowerCase()) || VAZIAS.has(j[n - 1].toLowerCase())) continue;
+    const v = j.reduce((s, w, k) => s + (w.length >= 5 ? Math.min(w.length, 8) : 1) + (/^\p{Lu}/u.test(w) && !(i === 0 && k === 0) ? 8 : 0) - (ja.has(semAcento(w)) ? 12 : 0), 0) / n + (n === 3 ? 0.5 : 0);
+    if (v > nota) { nota = v; melhor = j.join(' '); }
+  }
+  return melhor || String(fala).split(/\s+/).slice(0, 3).join(' ');
+}
+// o mundo e a fonte já aparecem na faixa do vídeo: não gastar a legenda com eles
+const JA = new Set(semAcento(espelho.mundo + ' ' + fonte).split(/[^a-z0-9]+/).filter((w) => w.length > 2));
 batidas.forEach((x, i) => {
-  if (!x.legenda || x.legenda.split(/\s+/).length > 6) x.legenda = x.fala.split(/\s+/).slice(0, 4).join(' ').replace(/[,.;:]$/, '');
+  const nl = x.legenda ? x.legenda.split(/\s+/).length : 0;
+  // legenda que só repete o começo da fala ("Em Night City, a") não diz nada na tela
+  const comeco = nl && semAcento(x.fala).replace(/[^a-z0-9 ]/g, '').startsWith(semAcento(x.legenda).replace(/[^a-z0-9 ]/g, ''));
+  // a batida da troca de nome ganha a própria tradução ("Meta = Arasaka")
+  const t0 = (espelho.traducao || [])[0];
+  const troca = x.lado === 'real' && t0 && i === batidas.findIndex((y) => y.lado === 'real') && t0.real.split(/\s+/).length + t0.ficcao.split(/\s+/).length <= 5 ? `${t0.real} = ${t0.ficcao}` : '';
+  if (nl < 2 || nl > 6 || comeco) x.legenda = legendaDe(x.fala, troca, JA);
   if (!x.cena) x.cena = i === 0 ? 'apresentador' : PADRAO[x.lado];
 });
 const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

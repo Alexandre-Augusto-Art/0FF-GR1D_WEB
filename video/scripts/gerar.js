@@ -68,7 +68,7 @@ function chaves(frase, usados) {
 const ROTEIRO = [['manchete', 'plataforma'], ['marionete', 'vigilancia'], ['obra', 'vigilancia'], ['pergunta']];
 const TODAS = ['plataforma', 'marionete', 'vigilancia', 'obra', 'pergunta'];
 
-function main() {
+async function main() {
   if (!draftPath || !fs.existsSync(draftPath)) throw new Error('rascunho não encontrado: ' + draftPath);
   fs.mkdirSync(JOB, { recursive: true }); fs.mkdirSync(VIDEOS, { recursive: true });
   fs.writeFileSync(PIDFILE, String(process.pid));
@@ -80,10 +80,13 @@ function main() {
   const paragrafos = limpar(d.reflection.content).split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
   const refs = (d.tags || []).filter((t) => !['reflexão', 'notícia', 'antisistema', 'crítica', 'notícia-do-dia', 'link-enviado'].includes(t));
 
-  // frases: título + cada frase de cada parágrafo
-  const frases = [{ txt: falavel(titulo.replace(/[.!?]*$/, '.')), par: -1 }];
-  paragrafos.forEach((p, i) => frasesDe(p).forEach((f) => frases.push({ txt: falavel(f), par: i })));
-  log(`"${titulo}": ${paragrafos.length} parágrafos, ${frases.length} frases`);
+  // frases: título + (batidas do roteiro "espelho direto", ou cada frase de cada parágrafo nos textos antigos).
+  // seg = cena a que a frase pertence (uma batida inteira fica numa cena só)
+  const beats = Array.isArray(d.reflection.beats) && d.reflection.beats.length ? d.reflection.beats : null;
+  const frases = [{ txt: falavel(titulo.replace(/[.!?]*$/, '.')), par: -1, seg: 0 }];
+  if (beats) beats.forEach((b, i) => frasesDe(b.fala).forEach((f) => frases.push({ txt: falavel(f), par: 0, seg: i + 1, beat: b })));
+  else paragrafos.forEach((p, i) => frasesDe(p).forEach((f) => frases.push({ txt: falavel(f), par: i, seg: frases.length })));
+  log(`"${titulo}": ${beats ? beats.length + ' batidas' : paragrafos.length + ' parágrafos'}, ${frases.length} frases`);
 
   // 1) voz, frase por frase
   const wavs = path.join(JOB, 'frases');
@@ -93,7 +96,10 @@ function main() {
   const dur = JSON.parse(run(PY, [path.join(__dirname, 'tts.py'), MODELO, fjson, wavs, '0.95']).toString().trim().split('\n').pop());
   let t = INICIO;
   frases.forEach((f, i) => {
-    if (i > 0) t += frases[i - 1].par === f.par ? PAUSA_FRASE : PAUSA_PARAGRAFO;
+    if (i > 0) {
+      const a = frases[i - 1];
+      t += a.seg === f.seg ? 0.22 : beats ? (a.par < 0 ? 0.6 : 0.35) : (a.par === f.par ? PAUSA_FRASE : PAUSA_PARAGRAFO);
+    }
     f.ini = t; f.fim = t + dur[i]; t = f.fim;
   });
   const fimFala = t + 0.4, total = fimFala + FINAL;
@@ -130,62 +136,74 @@ function main() {
     let x = f.ini;
     ws.forEach((w, j) => { const dd = (f.fim - f.ini) * pesos[j] / tot; palavras.push({ w, s, ini: +x.toFixed(3), fim: +(x + dd).toFixed(3) }); x += dd; });
   });
-  const contPar = {}, usados = new Set();
-  const segmentos = frases.map((f, s) => {
-    const k = (contPar[f.par] = (contPar[f.par] ?? -1) + 1);
-    const lista = f.par < 0 ? ['abertura'] : ROTEIRO[f.par] || TODAS;
-    const cena = f.par >= ROTEIRO.length ? TODAS[(s + k) % TODAS.length] : lista[k % lista.length];
-    const ini = s === 0 ? 0 : Math.round(((frases[s - 1].fim + f.ini) / 2) * FPS);
-    const ws = f.txt.split(/\s+/);
-    const ch = f.par < 0 ? [] : chaves(f.txt, usados).map((c) => {
+  const contPar = {}, usados = new Set(), grupos = [];
+  frases.forEach((f, i) => { const g = grupos[grupos.length - 1]; if (g && g.seg === f.seg) g.fr.push(i); else grupos.push({ seg: f.seg, fr: [i] }); });
+  const segmentos = grupos.map((g, k) => {
+    const s = g.fr[0], f = frases[s];
+    const ini = k === 0 ? 0 : Math.round(((frases[s - 1].fim + f.ini) / 2) * FPS);
+    if (f.par < 0) return { cena: 'abertura', ini, par: -1, chaves: [] };
+    if (beats) {
+      // a cena e a legenda de impacto vêm do roteiro escrito pela IA
+      const b = f.beat;
+      const ch = b.legenda ? [{ txt: String(b.legenda).toUpperCase().slice(0, 30), ini: Math.round(f.ini * FPS) + 3 }] : [];
+      return { cena: b.cena || 'manchete', ini, par: 0, chaves: ch, lado: b.lado, legenda: b.legenda || '' };
+    }
+    const kk = (contPar[f.par] = (contPar[f.par] ?? -1) + 1);
+    const lista = ROTEIRO[f.par] || TODAS;
+    const cena = f.par >= ROTEIRO.length ? TODAS[(s + kk) % TODAS.length] : lista[kk % lista.length];
+    const ch = chaves(f.txt, usados).map((c) => {
       const p = palavras.filter((pp) => pp.s === s)[c.i];
       return { txt: c.txt.toUpperCase().slice(0, 22), ini: Math.round(p.ini * FPS) };
     });
-    return { cena, ini, par: f.par, chaves: ch, n: ws.length };
+    return { cena, ini, par: f.par, chaves: ch };
   });
   segmentos.forEach((g, i) => { g.fim = i + 1 < segmentos.length ? segmentos[i + 1].ini : Math.round(fimFala * FPS); });
 
   const props = {
     fps: FPS, duracao: nq, audio: 'job/voz.wav', vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos,
     titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '',
-    final: Math.round(fimFala * FPS),
+    final: Math.round(fimFala * FPS), espelho: d.reflection.espelho || null,
   };
   const propsPath = opt('--so-props') || path.join(JOB, 'props.json');
   fs.writeFileSync(propsPath, JSON.stringify(props));
   log(`roteiro: ${segmentos.map((g) => g.cena).join(' > ')} (${total.toFixed(1)} s)`);
   if (args.includes('--so-props')) return;
 
-  // 5) render (só CPU) e compressão para caber no Telegram (limite de 50 MB para bots)
-  const bruto = path.join(JOB, 'bruto.mp4');
-  const t0 = Date.now();
-  run(process.execPath, [path.join(PROJ, 'node_modules', '@remotion', 'cli', 'remotion-cli.js'), 'render', 'src/index.jsx', 'W4K3', bruto,
-    `--props=${propsPath}`, '--crf=24', '--log=error'], { cwd: PROJ, stdio: ['ignore', 'inherit', 'inherit'] });
-  log(`render em ${Math.round((Date.now() - t0) / 1000)} s`);
+  // 5) render (só CPU) e compressão para caber no Telegram (limite de 50 MB para bots).
+  // Primeiro o vertical (Reels/Shorts), que vai para o Telegram; depois o horizontal, que fica guardado.
   const slug = (d.date || 'video') + '-' + titulo.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
-  const final = opt('--saida') || path.join(VIDEOS, slug + '.mp4');
-  for (const crf of [27, 31, 35]) {
-    run('ffmpeg', ['-y', '-v', 'error', '-i', bruto, '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p',
-      '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', final]);
-    if (fs.statSync(final).size < 45 * 1024 * 1024) break;
-  }
-  log(`vídeo: ${final} (${(fs.statSync(final).size / 1048576).toFixed(1)} MB)`);
-  // guarda só os 20 mais recentes
+  const base = opt('--saida') ? opt('--saida').replace(/\.mp4$/i, '') : path.join(VIDEOS, slug);
+  const renderiza = (comp, final) => {
+    const bruto = path.join(JOB, `bruto-${comp}.mp4`);
+    const t0 = Date.now();
+    run(process.execPath, [path.join(PROJ, 'node_modules', '@remotion', 'cli', 'remotion-cli.js'), 'render', 'src/index.jsx', comp, bruto,
+      `--props=${propsPath}`, '--crf=24', '--log=error'], { cwd: PROJ, stdio: ['ignore', 'inherit', 'inherit'] });
+    for (const crf of [27, 31, 35]) {
+      run('ffmpeg', ['-y', '-v', 'error', '-i', bruto, '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p',
+        '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', final]);
+      if (fs.statSync(final).size < 45 * 1024 * 1024) break;
+    }
+    log(`${comp}: ${final} (${(fs.statSync(final).size / 1048576).toFixed(1)} MB, render em ${Math.round((Date.now() - t0) / 1000)} s)`);
+    return final;
+  };
+  const vertical = renderiza('W4K3V', base + '-vertical.mp4');
+  if (args.includes('--telegram')) await enviar(vertical, draftPath, hash0, titulo, total, 1080, 1920);
+  if (!args.includes('--so-vertical')) renderiza('W4K3', base + '-horizontal.mp4');
+  // guarda só os 30 mais recentes
   fs.readdirSync(VIDEOS).filter((f) => f.endsWith('.mp4')).map((f) => path.join(VIDEOS, f))
-    .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs).slice(20).forEach((f) => fs.rmSync(f, { force: true }));
-
-  if (args.includes('--telegram')) return enviar(final, draftPath, hash0, titulo, total);
+    .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs).slice(30).forEach((f) => fs.rmSync(f, { force: true }));
 }
 
-async function enviar(arquivo, draft, hash0, titulo, dur) {
+async function enviar(arquivo, draft, hash0, titulo, dur, largura, altura) {
   // rascunho trocado por outra versão: este vídeo ficou velho (se só sumiu, foi publicado: manda mesmo assim)
   if (fs.existsSync(draft) && hash(draft) !== hash0) { log('rascunho mudou durante o render: vídeo não enviado'); return; }
   const cfg = JSON.parse(fs.readFileSync(path.join(BASE, 'telegram.json'), 'utf8').replace(/^﻿/, ''));
   if (!cfg.token || !cfg.chatId) { log('Telegram sem token/dono: vídeo não enviado'); return; }
   const fd = new FormData();
   fd.append('chat_id', String(cfg.chatId));
-  fd.append('caption', `🎬 Vídeo da análise (rascunho): ${titulo}\nEle acompanha o texto acima. Se você pedir mudanças, faço um vídeo novo.`);
+  fd.append('caption', `🎬 Vídeo da análise (rascunho): ${titulo}\nVertical para Reels/Shorts; a versão horizontal fica em %USERPROFILE%\\.w4k3\\videos. Se você pedir mudanças, faço um vídeo novo.`);
   fd.append('supports_streaming', 'true');
-  fd.append('width', '1280'); fd.append('height', '720'); fd.append('duration', String(Math.round(dur)));
+  fd.append('width', String(largura)); fd.append('height', String(altura)); fd.append('duration', String(Math.round(dur)));
   fd.append('video', new Blob([fs.readFileSync(arquivo)], { type: 'video/mp4' }), path.basename(arquivo));
   const r = await fetch(`https://api.telegram.org/bot${cfg.token}/sendVideo`, { method: 'POST', body: fd });
   const j = await r.json();
