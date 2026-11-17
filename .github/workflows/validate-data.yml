@@ -5,10 +5,14 @@ on:
     paths:
       - 'data/**'
       - 'automation/**'
+      - 'js/fact-check/**'
+      - 'tests/fact-check/**'
   pull_request:
     paths:
       - 'data/**'
       - 'automation/**'
+      - 'js/fact-check/**'
+      - 'tests/fact-check/**'
   workflow_dispatch:
 
 permissions:
@@ -23,3 +27,4 @@ jobs:
         with:
           node-version: '20'
       - run: node automation/validate.js
+      - run: node tests/fact-check/link.test.js

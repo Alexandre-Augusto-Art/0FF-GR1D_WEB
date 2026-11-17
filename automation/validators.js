@@ -1,4 +1,4 @@
-/* DEDSEC - validadores dos feeds diários (W4K3, Motivação, Organize-se)
+/* DEDSEC - validadores dos arquivos de data/ (W4K3, Motivação, Organize-se e regras do Fact Check)
  *
  * Arquivo sem dependências, usado em três lugares:
  *  1. n8n: cole este arquivo inteiro num nó "Code" antes do nó do GitHub (veja automation/n8n/README.md).
@@ -143,6 +143,57 @@ function validateOrganize(data) {
   return errors;
 }
 
+/* ---------- Fact Check: data/factcheck.json (regras, editado à mão) ----------
+ * { updatedAt: "ISO 8601",
+ *   trusted: [ { name, type: imprensa|checagem|governo|servico, domains: ["g1.globo.com"], brands: ["globo"] } ],
+ *   shorteners: ["bit.ly"], riskyTlds: ["xyz"], scamWords: ["pix"], dangerousExtensions: ["apk"],
+ *   agencies: [ { name, site: "aosfatos.org" } ] }   // site pode ter caminho: "g1.globo.com/fato-ou-fake"
+ */
+const HOST_RE = /^(?=.{1,253}$)([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$/;
+const FC_TYPES = ['imprensa', 'checagem', 'governo', 'servico', 'plataforma'];
+
+function validateFactCheck(data) {
+  const errors = [];
+  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];
+  if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');
+
+  const owner = new Map();
+  if (!Array.isArray(data.trusted) || data.trusted.length === 0) errors.push('trusted: lista vazia ou ausente');
+  else data.trusted.forEach((t, i) => {
+    const p = `trusted[${i}]`;
+    if (!isObj(t)) { errors.push(`${p}: deve ser um objeto`); return; }
+    if (!isText(t.name)) errors.push(`${p}.name: vazio`);
+    if (!FC_TYPES.includes(t.type)) errors.push(`${p}.type: use ${FC_TYPES.join(', ')}`);
+    if (!Array.isArray(t.domains) || t.domains.length === 0) errors.push(`${p}.domains: lista vazia`);
+    else t.domains.forEach(d => {
+      if (!HOST_RE.test(d)) errors.push(`${p}.domains: "${d}" não é um domínio (minúsculas, sem http://)`);
+      else if (owner.has(d)) errors.push(`${p}.domains: "${d}" já está em ${owner.get(d)}`);
+      else owner.set(d, t.name);
+    });
+    if (!Array.isArray(t.brands) || !t.brands.every(b => /^[a-z0-9]{2,}$/.test(b))) {
+      errors.push(`${p}.brands: lista de palavras em minúsculas, sem acento nem espaço`);
+    }
+  });
+
+  for (const key of ['shorteners']) {
+    if (!Array.isArray(data[key]) || !data[key].every(d => HOST_RE.test(d))) errors.push(`${key}: lista de domínios`);
+  }
+  for (const key of ['riskyTlds', 'scamWords', 'dangerousExtensions']) {
+    if (!Array.isArray(data[key]) || !data[key].every(w => /^[a-z0-9]{1,}$/.test(w))) {
+      errors.push(`${key}: lista de palavras em minúsculas, sem acento nem ponto`);
+    }
+  }
+
+  if (!Array.isArray(data.agencies) || data.agencies.length === 0) errors.push('agencies: lista vazia ou ausente');
+  else data.agencies.forEach((a, i) => {
+    if (!isObj(a) || !isText(a.name)) errors.push(`agencies[${i}].name: vazio`);
+    else if (typeof a.site !== 'string' || !HOST_RE.test(a.site.split('/')[0])) {
+      errors.push(`agencies[${i}].site: use domínio com caminho opcional, sem http://`);
+    }
+  });
+  return errors;
+}
+
 /** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */
 function addEntry(list, entry, max = 60) {
   const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);
@@ -152,9 +203,10 @@ function addEntry(list, entry, max = 60) {
 const FEEDS = {
   'data/reflections.json': validateW4K3,
   'data/motivations.json': validateMotivacao,
-  'data/organize.json': validateOrganize
+  'data/organize.json': validateOrganize,
+  'data/factcheck.json': validateFactCheck
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { validateW4K3, validateMotivacao, validateOrganize, addEntry, FEEDS };
+  module.exports = { validateW4K3, validateMotivacao, validateOrganize, validateFactCheck, addEntry, FEEDS };
 }
