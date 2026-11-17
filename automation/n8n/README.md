@@ -8,7 +8,7 @@ no ar com o último conteúdo, e as páginas avisam "SEM ATUALIZAÇÃO HÁ N DIA
 |---|---|---|---|
 | W4K3 PR0T0C0L | `data/reflections.json` | `w4k3-protocol.html` | `validateW4K3` |
 | Motivação Diária | `data/motivations.json` | `motivacao.html` | `validateMotivacao` |
-| Organize-se | `data/organize.json` | `organize-se.html` (a fazer) | `validateOrganize` |
+| Organize-se | `data/organize.json` | `organize-se.html` (GitHub Actions, não n8n: `automation/organize/fetch.js`) | `validateOrganize` |
 
 O formato de cada arquivo está documentado em [`../validators.js`](../validators.js).
 

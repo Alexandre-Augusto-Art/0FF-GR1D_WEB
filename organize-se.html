@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORGANIZE-SE - DEDSEC</title>
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <style>
+    .os-accent { color: #f43f5e; }
+    .os-section h2 { margin-bottom: 1rem; color: #f43f5e; letter-spacing: 0.06em; }
+    .os-section p { line-height: 1.8; opacity: 0.9; margin-bottom: 1rem; }
+    .os-section p:last-child { margin-bottom: 0; }
+
+    .os-picker { display: flex; flex-direction: column; gap: 0.75rem; }
+    .os-picker label { color: #f43f5e; letter-spacing: 0.08em; }
+    .os-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .os-select {
+      flex: 1 1 260px;
+      padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid #f43f5e;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 1.05rem;
+    }
+    .os-select:focus { outline: none; box-shadow: 0 0 16px rgba(244, 63, 94, 0.45); }
+    .os-select option { background: #111; }
+    .os-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .os-chip {
+      padding: 0.45rem 0.85rem;
+      border: 1px solid #f43f5e;
+      background: transparent;
+      color: #f43f5e;
+      font-family: inherit;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
+    .os-chip[aria-pressed="true"] { background: #f43f5e; color: #1a0410; font-weight: bold; }
+    .os-meta { font-size: 0.82rem; opacity: 0.7; letter-spacing: 0.04em; }
+    .os-meta.is-stale { color: #facc15; opacity: 1; }
+
+    .os-warning {
+      border-left: 3px solid #facc15;
+      padding: 0.75rem 1rem;
+      background: rgba(250, 204, 21, 0.06);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .os-group { margin-top: 2rem; }
+    .os-group-title {
+      display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
+      color: #f43f5e; font-size: 1.2rem; letter-spacing: 0.08em; margin-bottom: 0.9rem;
+    }
+    .os-group-title small { font-size: 0.8rem; opacity: 0.6; color: var(--color-text); letter-spacing: 0.05em; }
+    .os-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .os-card {
+      display: flex; flex-direction: column; gap: 0.6rem;
+      padding: 1.1rem 1.2rem;
+      border: 2px solid rgba(244, 63, 94, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .os-card.is-today { border-color: #f43f5e; box-shadow: 0 0 18px rgba(244, 63, 94, 0.35); }
+    .os-when { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+    .os-badge {
+      font-size: 0.72rem; padding: 0.15rem 0.5rem; letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1px solid rgba(224, 242, 254, 0.4);
+    }
+    .os-badge.is-date { border-color: #f43f5e; color: #f43f5e; font-weight: bold; }
+    .os-badge.is-today { background: #f43f5e; color: #1a0410; border-color: #f43f5e; font-weight: bold; }
+    .os-badge.is-tbc { border-color: #facc15; color: #facc15; }
+    .os-badge.is-live { border-color: #a3e635; color: #a3e635; }
+    .os-title { font-size: 1.05rem; line-height: 1.45; font-weight: 600; }
+    .os-place { font-size: 0.85rem; opacity: 0.8; }
+    .os-sources { font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; margin-top: auto; padding-top: 0.3rem; }
+    .os-sources a { color: #f43f5e; }
+    .os-sources a:hover, .os-sources a:focus-visible { color: #fff; }
+    .os-empty { opacity: 0.75; padding: 1rem 0; line-height: 1.7; }
+
+    /* checklist */
+    .os-progress { height: 6px; background: rgba(244, 63, 94, 0.15); margin: 0.5rem 0 1.25rem; }
+    .os-progress > div { height: 100%; width: 0; background: #f43f5e; transition: width 0.25s; }
+    .os-cl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+    .os-cl-box { border: 1px solid rgba(244, 63, 94, 0.45); padding: 1rem 1.1rem; background: rgba(0, 0, 0, 0.55); }
+    .os-cl-box h3 { color: #f43f5e; font-size: 1rem; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+    .os-cl-box ul { list-style: none; padding: 0; margin: 0; }
+    .os-cl-box li { margin-bottom: 0.55rem; line-height: 1.5; }
+    .os-cl-box label { display: flex; gap: 0.6rem; align-items: flex-start; cursor: pointer; }
+    .os-cl-box input[type="checkbox"] { accent-color: #f43f5e; width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; flex: none; }
+    .os-cl-box input:checked + span { opacity: 0.55; text-decoration: line-through; }
+    .os-cl-box .os-why { display: block; font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; text-decoration: none; }
+    .os-tips li { position: relative; padding-left: 1.3rem; }
+    .os-tips li::before { content: '>'; position: absolute; left: 0; color: #f43f5e; font-weight: bold; }
+    .os-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    .os-btn {
+      padding: 0.6rem 1rem; border: 1px solid #f43f5e; background: transparent; color: #f43f5e;
+      font-family: inherit; font-size: 0.85rem; letter-spacing: 0.06em; cursor: pointer;
+    }
+    .os-btn:hover, .os-btn:focus-visible { background: rgba(244, 63, 94, 0.15); }
+
+    .os-phones { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+    .os-phone { border: 1px solid rgba(244, 63, 94, 0.45); padding: 0.75rem; background: rgba(0, 0, 0, 0.55); }
+    .os-phone strong { display: block; font-size: 1.4rem; color: #f43f5e; letter-spacing: 0.05em; }
+    .os-phone span { font-size: 0.85rem; opacity: 0.8; }
+    .os-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+    .os-links a { color: #f43f5e; border: 1px solid #f43f5e; padding: 0.5rem 0.85rem; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em; }
+    .os-links a:hover, .os-links a:focus-visible { background: rgba(244, 63, 94, 0.15); }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      #bg-triangles, .scanlines, .header, .back-button, .os-hide-print, .footer, #chatbot-root { display: none !important; }
+      .os-cl-box { border: 1px solid #000; background: #fff; }
+      .os-cl-box h3, .os-accent, .os-section h2 { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- BG Triangles (dynamic mesh) -->
+  <canvas id="bg-triangles"></canvas>
+
+  <!-- Scanlines effect -->
+  <div class="scanlines"></div>
+
+  <header class="header">
+    <img src="assets/Banners/Home.jpg" alt="DEDSEC" class="header-image">
+    <div class="header-overlay">
+      <h1 class="logo glitch" data-text="DEDSEC">DEDSEC</h1>
+      <p class="subtitle">ORGANIZE-SE</p>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <a href="index.html" class="back-button">← VOLTAR</a>
+
+    <div class="page-header">
+      <h1 class="page-title">ORGANIZE-SE</h1>
+      <p class="page-subtitle">Atos e manifestações dos movimentos populares no seu estado, e o que levar para ir com segurança</p>
+    </div>
+
+    <!-- Seletor -->
+    <div class="content-section os-section os-hide-print">
+      <div class="os-picker">
+        <label for="os-uf">// SEU ESTADO</label>
+        <div class="os-row">
+          <select id="os-uf" class="os-select">
+            <option value="">Escolha seu estado…</option>
+          </select>
+        </div>
+        <div class="os-chips" id="os-filter" role="group" aria-label="Mostrar">
+          <button type="button" class="os-chip" data-f="todos" aria-pressed="true">TUDO</button>
+          <button type="button" class="os-chip" data-f="convocacao" aria-pressed="false">SÓ ATOS MARCADOS</button>
+          <button type="button" class="os-chip" data-f="cobertura" aria-pressed="false">SÓ ATOS ROLANDO</button>
+        </div>
+        <p class="os-meta" id="os-updated">Carregando…</p>
+      </div>
+    </div>
+
+    <!-- Lista -->
+    <div class="content-section os-section os-hide-print" style="margin-top: 2rem;">
+      <div class="os-warning">
+        <strong class="os-accent">CONFIRA ANTES DE IR.</strong>
+        Esta lista é montada sozinha, todo dia, a partir de manchetes de jornais e sites de movimentos.
+        Data, hora e local podem mudar ou vir errados: abra a fonte e confirme nos perfis de quem convoca.
+      </div>
+      <div id="os-events" aria-live="polite"></div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="content-section os-section" style="margin-top: 2rem;" id="checklist">
+      <h2>// CHECKLIST DO ATO</h2>
+      <p>Marque o que já está pronto. Fica salvo só neste aparelho.</p>
+      <div class="os-progress" aria-hidden="true"><div id="os-progress-bar"></div></div>
+      <p class="os-meta" id="os-progress-text"></p>
+      <div class="os-cl-grid" id="os-checklist"></div>
+      <div class="os-actions os-hide-print">
+        <button type="button" class="os-btn" id="os-reset">LIMPAR MARCAÇÕES</button>
+        <button type="button" class="os-btn" id="os-print">IMPRIMIR CHECKLIST</button>
+      </div>
+    </div>
+
+    <!-- Cuidados -->
+    <div class="content-section os-section" style="margin-top: 2rem;">
+      <h2>// CUIDADOS</h2>
+      <div class="os-cl-grid" id="os-tips"></div>
+    </div>
+
+    <!-- Telefones -->
+    <div class="content-section os-section" style="margin-top: 2rem;">
+      <h2>// TELEFONES ÚTEIS</h2>
+      <p>Anote no papel (ou na pele, com caneta) antes de sair. Celular descarrega, quebra e é apreendido.</p>
+      <div class="os-phones">
+        <div class="os-phone"><strong>192</strong><span>SAMU: emergência médica</span></div>
+        <div class="os-phone"><strong>193</strong><span>Bombeiros</span></div>
+        <div class="os-phone"><strong>190</strong><span>Polícia Militar</span></div>
+        <div class="os-phone"><strong>100</strong><span>Disque Direitos Humanos: denuncie violência e abuso</span></div>
+        <div class="os-phone"><strong>180</strong><span>Central de Atendimento à Mulher</span></div>
+        <div class="os-phone"><strong>Defensoria</strong><span>Defensoria Pública do seu estado: defesa gratuita se for detido</span></div>
+      </div>
+      <div class="os-links os-hide-print">
+        <a href="bitchat.html">BITCHAT: CHAT SEM INTERNET</a>
+        <a href="f4c3-sc4n.html">F4C3 SC4N: TESTE SEU DISFARCE</a>
+        <a href="alt-tools.html">ALT TOOLS: APPS SEGUROS</a>
+      </div>
+      <p class="os-meta" style="margin-top: 1.25rem;">
+        Este guia é informativo e não substitui orientação jurídica. Em caso de prisão, procure a Defensoria Pública,
+        a comissão de direitos humanos da OAB ou a assessoria jurídica do movimento que convocou o ato.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>DEDSEC © 2024 | EXPECT US</p>
+  </footer>
+
+  <script>
+    (function () {
+      const STATES = [
+        ['AC', 'Acre'], ['AL', 'Alagoas'], ['AP', 'Amapá'], ['AM', 'Amazonas'], ['BA', 'Bahia'], ['CE', 'Ceará'],
+        ['DF', 'Distrito Federal'], ['ES', 'Espírito Santo'], ['GO', 'Goiás'], ['MA', 'Maranhão'], ['MT', 'Mato Grosso'],
+        ['MS', 'Mato Grosso do Sul'], ['MG', 'Minas Gerais'], ['PA', 'Pará'], ['PB', 'Paraíba'], ['PR', 'Paraná'],
+        ['PE', 'Pernambuco'], ['PI', 'Piauí'], ['RJ', 'Rio de Janeiro'], ['RN', 'Rio Grande do Norte'],
+        ['RS', 'Rio Grande do Sul'], ['RO', 'Rondônia'], ['RR', 'Roraima'], ['SC', 'Santa Catarina'],
+        ['SP', 'São Paulo'], ['SE', 'Sergipe'], ['TO', 'Tocantins']
+      ];
+      const NAME = Object.fromEntries(STATES);
+      const STALE_DAYS = 2;
+      const store = {
+        get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+        set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* modo privado */ } }
+      };
+      const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const safeUrl = u => (/^https?:\/\//i.test(u || '') ? u : '#');
+
+      /* ---------- Atos ---------- */
+      const sel = document.getElementById('os-uf');
+      const list = document.getElementById('os-events');
+      const updated = document.getElementById('os-updated');
+      sel.insertAdjacentHTML('beforeend', '<option value="*">Todos os estados</option>' +
+        STATES.map(([uf, n]) => `<option value="${uf}">${esc(n)} (${uf})</option>`).join(''));
+
+      let data = null;
+      let filter = 'todos';
+      const savedUf = store.get('os-uf');
+      if (savedUf && (savedUf === '*' || NAME[savedUf])) sel.value = savedUf;
+
+      function todayBR() {
+        return new Date(Date.now() - 3 * 3600000).toISOString().slice(0, 10);
+      }
+      const WD = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
+      function fmtDate(ymd) {
+        const [y, m, d] = ymd.split('-').map(Number);
+        const wd = WD[new Date(Date.UTC(y, m - 1, d, 12)).getUTCDay()];
+        return `${wd} ${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+      }
+      function daysBetween(a, b) { return Math.round((Date.parse(b) - Date.parse(a)) / 86400000); }
+
+      function card(ev) {
+        const today = todayBR();
+        const badges = [];
+        const isToday = ev.data === today;
+        if (ev.data) {
+          const diff = daysBetween(today, ev.data);
+          if (isToday) badges.push('<span class="os-badge is-today">HOJE</span>');
+          else if (diff === 1) badges.push('<span class="os-badge is-date">AMANHÃ</span>');
+          badges.push(`<span class="os-badge is-date">${fmtDate(ev.data)}${ev.hora ? ' · ' + esc(ev.hora) : ''}</span>`);
+        } else if (ev.tipo === 'convocacao') {
+          badges.push('<span class="os-badge is-tbc">DATA A CONFIRMAR NA FONTE</span>');
+        }
+        if (ev.tipo === 'cobertura') badges.push('<span class="os-badge is-live">ROLANDO / NOTÍCIA DO ATO</span>');
+        else badges.push('<span class="os-badge">CONVOCAÇÃO</span>');
+
+        let place;
+        if (ev.uf === 'BR') place = ev.estados && ev.estados.length ? 'Vários estados: ' + ev.estados.join(', ') : 'Nacional / várias cidades';
+        else place = ev.cidade ? ev.cidade + ' (' + ev.uf + ')' : (NAME[ev.uf] || ev.uf) + ', cidade a confirmar';
+
+        const pub = new Date(ev.publicadoEm);
+        const pubTxt = isNaN(pub) ? '' : ' · notícia de ' + pub.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+        const fontes = [ev.fonte].concat(ev.outrasFontes || []);
+        const links = fontes.map((f, i) =>
+          `<a href="${esc(safeUrl(f.url))}" target="_blank" rel="noopener noreferrer">${i === 0 ? 'Ver fonte: ' : ''}${esc(f.nome)} ↗</a>`).join('');
+        return `<article class="os-card${isToday ? ' is-today' : ''}">
+          <div class="os-when">${badges.join('')}</div>
+          <div class="os-title">${esc(ev.titulo)}</div>
+          <div class="os-place">📍 ${esc(place)}${pubTxt}</div>
+          <div class="os-sources">${links}</div>
+        </article>`;
+      }
+
+      function group(title, sub, events) {
+        if (!events.length) return '';
+        return `<section class="os-group"><h3 class="os-group-title">${esc(title)} <small>${esc(sub)}</small></h3>
+          <div class="os-list">${events.map(card).join('')}</div></section>`;
+      }
+
+      function sortEvents(a, b) {
+        const da = a.data || '9999', db = b.data || '9999';
+        if (da !== db) return da < db ? -1 : 1;
+        return (a.publicadoEm < b.publicadoEm) ? 1 : -1;
+      }
+
+      function render() {
+        if (!data) return;
+        const uf = sel.value;
+        const today = todayBR();
+        const evs = (data.eventos || [])
+          .filter(e => !e.data || e.data >= today)
+          .filter(e => filter === 'todos' || e.tipo === filter)
+          .sort(sortEvents);
+        if (!uf) {
+          const count = {};
+          evs.forEach(e => { if (e.uf !== 'BR') count[e.uf] = (count[e.uf] || 0) + 1; });
+          const top = Object.entries(count).sort((a, b) => b[1] - a[1]).map(([u, n]) => `${NAME[u]} (${n})`).join(', ');
+          list.innerHTML = `<p class="os-empty" style="margin-top:1.25rem;">Escolha seu estado acima para ver os atos.` +
+            (top ? `<br>Com atos agora: ${esc(top)}.` : '') + '</p>';
+          return;
+        }
+        let html = '';
+        if (uf === '*') {
+          html += group('TODOS OS ESTADOS', evs.length + ' itens', evs);
+        } else {
+          const local = evs.filter(e => e.uf === uf || (e.estados || []).includes(uf));
+          const national = evs.filter(e => e.uf === 'BR' && !(e.estados || []).includes(uf));
+          html += group(NAME[uf].toUpperCase(), local.length ? local.length + ' no estado' : '', local);
+          if (!local.length) {
+            html += `<p class="os-empty" style="margin-top:1.25rem;">Nenhum ato de ${esc(NAME[uf])} apareceu nas notícias dos últimos dias.
+              Isso não quer dizer que não tenha: confira os perfis dos sindicatos, coletivos e movimentos da sua cidade.</p>`;
+          }
+          html += group('CHAMADAS NACIONAIS', 'podem ter ato na sua cidade: confira na fonte', national);
+        }
+        if (!evs.length) html = '<p class="os-empty" style="margin-top:1.25rem;">Nenhum ato encontrado com esse filtro.</p>';
+        list.innerHTML = html;
+      }
+
+      sel.addEventListener('change', () => { store.set('os-uf', sel.value); render(); });
+      document.getElementById('os-filter').addEventListener('click', e => {
+        const b = e.target.closest('[data-f]');
+        if (!b) return;
+        filter = b.dataset.f;
+        document.querySelectorAll('#os-filter [data-f]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+        render();
+      });
+
+      fetch('data/organize.json', { cache: 'no-cache' })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(json => {
+          data = json;
+          const up = new Date(json.updatedAt);
+          if (!isNaN(up)) {
+            const age = (Date.now() - up) / 86400000;
+            updated.textContent = 'ATUALIZADO EM ' + up.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) +
+              (age > STALE_DAYS ? ' · a busca automática está atrasada, a lista pode estar velha' : ' · a busca roda sozinha todo dia');
+            if (age > STALE_DAYS) updated.classList.add('is-stale');
+          }
+          render();
+        })
+        .catch(() => {
+          updated.textContent = 'Não deu para carregar a lista agora.';
+          list.innerHTML = '<p class="os-empty">Tente de novo em instantes. O checklist abaixo funciona mesmo sem internet.</p>';
+        });
+
+      /* ---------- Checklist ---------- */
+      const CHECKLIST = [
+        { t: 'ANTES DE SAIR', items: [
+          ['Confirmei data, hora e local na fonte e nos perfis de quem convoca', 'Atos mudam de última hora.'],
+          ['Combinei com quem vou e um ponto de encontro se o grupo se separar', 'Escolha um lugar fácil fora do trajeto.'],
+          ['Avisei alguém de confiança que vou e a que horas devo voltar', 'Combine de mandar mensagem na chegada e na saída.'],
+          ['Olhei o trajeto, as saídas e onde tem posto de saúde e metrô/ônibus', ''],
+          ['Anotei no papel ou no braço os telefones de emergência e de um contato', 'Inclua a Defensoria ou a assessoria jurídica do ato.']
+        ] },
+        { t: 'O QUE LEVAR', items: [
+          ['Documento oficial com foto (RG ou CNH)', 'Sem documento, a polícia pode levar para identificação.'],
+          ['Água em garrafa de plástico e um lanche leve', 'Garrafa de vidro pode ser vista como arma.'],
+          ['Celular carregado e bateria extra (power bank)', ''],
+          ['Dinheiro trocado e cartão de transporte', 'Para voltar mesmo sem celular.'],
+          ['Protetor solar, boné e capa de chuva', ''],
+          ['Remédios de uso contínuo e a receita', 'Asma, diabetes, pressão: leve o seu.'],
+          ['Máscara (PFF2) e óculos (no lugar de lente de contato)', 'Ajudam contra poeira e fumaça; lente piora irritação nos olhos.'],
+          ['Soro fisiológico ou água limpa para lavar os olhos', ''],
+          ['Roupa confortável e tênis fechado', 'Evite chinelo e sapato novo.'],
+          ['Cartaz ou faixa (sem haste de madeira ou metal)', 'Haste pode ser apreendida.']
+        ] },
+        { t: 'O QUE NÃO LEVAR', items: [
+          ['Nada que pareça arma: canivete, tesoura, objeto cortante, rojão', 'Mesmo sem intenção, pode virar flagrante.'],
+          ['Nenhuma droga ilícita, nem bebida alcoólica', ''],
+          ['Objetos de valor e muito dinheiro', 'Joias, relógio caro, notebook.'],
+          ['Documentos que você não precisa (deixe em casa)', '']
+        ] },
+        { t: 'CELULAR E DADOS', items: [
+          ['Coloquei senha numérica e desliguei o desbloqueio por rosto e digital', 'É mais difícil te obrigarem a desbloquear com senha.'],
+          ['Fiz backup das fotos e conversas', 'Se o celular for perdido ou apreendido, você não perde tudo.'],
+          ['Uso um mensageiro com criptografia (ex.: Signal) para combinar o ato', 'Veja a página ALT TOOLS.'],
+          ['Ativei mensagens temporárias nos grupos do ato', ''],
+          ['Instalei um chat que funciona sem internet (ex.: Bitchat)', 'Rede de celular costuma cair em ato grande.'],
+          ['Compartilhei minha localização só com uma pessoa de confiança', 'E desliguei depois.']
+        ] }
+      ];
+      const TIPS = [
+        { t: 'DURANTE O ATO', items: [
+          'Fique perto do seu grupo e prefira as bordas da multidão, onde é mais fácil sair.',
+          'Beba água mesmo sem sede e coma alguma coisa. Calor e cansaço derrubam rápido.',
+          'Não aceite provocação, nem da polícia nem de infiltrado. Se alguém incita violência, afaste-se e avise o grupo.',
+          'Ao filmar, mostre a ação e a polícia, não o rosto de quem está protestando. Borre os rostos antes de postar.',
+          'Se começar tumulto, não corra no meio da multidão: ande firme para a saída mais próxima, de mãos dadas com o grupo.',
+          'Gás lacrimogêneo: saia contra o vento, não esfregue os olhos e lave com água ou soro em abundância. Não use vinagre nem leite.',
+          'Bala de borracha ou ferimento: procure a equipe de saúde do ato ou o SAMU (192) e guarde fotos e laudo.'
+        ] },
+        { t: 'SEUS DIREITOS', items: [
+          'Reunião pacífica, sem armas, em local público é direito garantido pela Constituição (art. 5º, XVI). Não precisa de autorização, só de aviso prévio à autoridade, que é feito por quem organiza.',
+          'Filmar a ação da polícia em local público é permitido.',
+          'Revista pessoal precisa de motivo concreto (fundada suspeita). Mulheres devem ser revistadas por policiais mulheres.',
+          'Você não é obrigado a desbloquear o celular nem a entregar senhas.',
+          'Policial deve estar identificado com nome na farda. Anote nome, número da viatura, horário e local de qualquer abuso.'
+        ] },
+        { t: 'SE FOR DETIDO', items: [
+          'Fique calmo e não resista fisicamente. Diga seu nome e mostre o documento.',
+          'Você tem direito de ficar em silêncio e de falar com advogado ou defensor público antes de depor.',
+          'Pergunte para qual delegacia vai ser levado e grite seu nome e a delegacia para alguém do grupo ouvir.',
+          'Não assine nada sem ler e sem orientação jurídica.',
+          'Você tem direito a avisar alguém da família. Se sofrer agressão, peça exame de corpo de delito.'
+        ] },
+        { t: 'DEPOIS', items: [
+          'Volte em grupo e avise que chegou.',
+          'Revise fotos e vídeos antes de postar: tire rostos, tatuagens e placas de quem estava com você.',
+          'Se viu ou sofreu violência, registre tudo (horário, local, testemunhas) e denuncie no Disque 100 ou na Defensoria.',
+          'Machucado, mesmo que pareça leve? Procure atendimento e guarde o laudo.'
+        ] }
+      ];
+
+      const clRoot = document.getElementById('os-checklist');
+      const KEY = 'os-checklist-v1';
+      let checked = {};
+      try { checked = JSON.parse(store.get(KEY) || '{}') || {}; } catch (e) { checked = {}; }
+      clRoot.innerHTML = CHECKLIST.map((g, gi) => `<div class="os-cl-box"><h3>${esc(g.t)}</h3><ul>` +
+        g.items.map(([txt, why], ii) => {
+          const id = `cl-${gi}-${ii}`;
+          return `<li><label><input type="checkbox" data-id="${id}"${checked[id] ? ' checked' : ''}>` +
+            `<span>${esc(txt)}${why ? `<small class="os-why">${esc(why)}</small>` : ''}</span></label></li>`;
+        }).join('') + '</ul></div>').join('');
+
+      const total = CHECKLIST.reduce((n, g) => n + g.items.length, 0);
+      function progress() {
+        const n = clRoot.querySelectorAll('input:checked').length;
+        document.getElementById('os-progress-bar').style.width = (n / total * 100) + '%';
+        document.getElementById('os-progress-text').textContent = n === total ? 'Tudo pronto. Bom ato e volte em segurança.' : `${n} de ${total} itens prontos`;
+      }
+      clRoot.addEventListener('change', e => {
+        const id = e.target.dataset && e.target.dataset.id;
+        if (!id) return;
+        if (e.target.checked) checked[id] = 1; else delete checked[id];
+        store.set(KEY, JSON.stringify(checked));
+        progress();
+      });
+      document.getElementById('os-reset').addEventListener('click', () => {
+        checked = {};
+        store.set(KEY, '{}');
+        clRoot.querySelectorAll('input').forEach(i => { i.checked = false; });
+        progress();
+      });
+      document.getElementById('os-print').addEventListener('click', () => window.print());
+      progress();
+
+      document.getElementById('os-tips').innerHTML = TIPS.map(g => `<div class="os-cl-box"><h3>${esc(g.t)}</h3><ul class="os-tips">` +
+        g.items.map(t => `<li>${esc(t)}</li>`).join('') + '</ul></div>').join('');
+    })();
+  </script>
+
+  <script>
+    // Background Triangles Animation
+    const triCanvas = document.getElementById('bg-triangles');
+    const triCtx = triCanvas ? triCanvas.getContext('2d') : null;
+
+    const TRI_CONFIG = {
+      rows: 2,
+      cols: 4,
+      amplitude: 90,
+      speed: 0.0002
+    };
+
+    let triPoints = [];
+    let triStartTime = performance.now();
+
+    function initTriangles() {
+      if (!triCanvas || !triCtx) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      triCanvas.width = w;
+      triCanvas.height = h;
+
+      triPoints = [];
+      const { rows, cols } = TRI_CONFIG;
+      const margin = 0.18;
+      const spanX = 1 + margin * 2;
+      const spanY = 1 + margin * 2;
+      for (let y = 0; y <= rows; y++) {
+        for (let x = 0; x <= cols; x++) {
+          const px = (-margin + (x / cols) * spanX) * w;
+          const py = (-margin + (y / rows) * spanY) * h;
+          const phase = Math.random() * Math.PI * 2;
+          triPoints.push({ baseX: px, baseY: py, phase });
+        }
+      }
+    }
+
+    function getAccentColor() {
+      const cs = getComputedStyle(document.documentElement);
+      const c = cs.getPropertyValue('--accent-color').trim();
+      return c || '#ffffff';
+    }
+
+    function drawTriangles(time) {
+      if (!triCanvas || !triCtx || !triPoints.length) return;
+      const w = triCanvas.width;
+      const h = triCanvas.height;
+      triCtx.clearRect(0, 0, w, h);
+
+      const color = getAccentColor();
+      triCtx.strokeStyle = color;
+      triCtx.lineWidth = 0.7;
+      triCtx.globalAlpha = 0.35;
+
+      const { rows, cols, amplitude, speed } = TRI_CONFIG;
+      const t = (time - triStartTime);
+
+      const animated = triPoints.map(p => {
+        const offset = Math.sin(t * speed + p.phase);
+        const x = p.baseX + offset * amplitude;
+        const y = p.baseY + Math.cos(t * speed * 1.3 + p.phase) * amplitude * 0.6;
+        return { x, y };
+      });
+
+      const idx = (x, y) => y * (cols + 1) + x;
+
+      triCtx.beginPath();
+      for (let y = 0; y < TRI_CONFIG.rows; y++) {
+        for (let x = 0; x < TRI_CONFIG.cols; x++) {
+          const p0 = animated[idx(x, y)];
+          const p1 = animated[idx(x + 1, y)];
+          const p2 = animated[idx(x, y + 1)];
+          const p3 = animated[idx(x + 1, y + 1)];
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p1.x, p1.y);
+          triCtx.lineTo(p3.x, p3.y);
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p3.x, p3.y);
+          triCtx.lineTo(p2.x, p2.y);
+        }
+      }
+      triCtx.stroke();
+      triCtx.globalAlpha = 1;
+    }
+
+    function animateTriangles(time) {
+      drawTriangles(time || performance.now());
+      requestAnimationFrame(animateTriangles);
+    }
+
+    if (triCanvas && triCtx) {
+      initTriangles();
+      window.addEventListener('resize', initTriangles);
+      requestAnimationFrame(animateTriangles);
+    }
+  </script>
+  <script src="js/chatbot.js" defer></script>
+</body>
+</html>

@@ -106,24 +106,26 @@ function validateMotivacao(data) {
 }
 
 /* ---------- Organize-se: data/organize.json ----------
+ * Gravado todo dia por automation/organize/fetch.js (GitHub Actions), a partir de manchetes do Google Notícias.
  * { updatedAt: "ISO 8601",
- *   dicasGerais: [ "..." ],
+ *   buscas?: [ { busca, ok, manchetes, atos } ],
  *   eventos: [ {
- *     id, titulo, descricao,
- *     data: "AAAA-MM-DD", hora?: "HH:MM",
- *     uf: "SP", cidade: "São Paulo",
- *     local: "ponto de concentração", trajeto?: "...",
- *     organizacao?: "...", oQueLevar?: [ "..." ],
- *     fonte: { nome, url } } ] }
- * A IA cobre o Brasil inteiro; o site filtra por estado e cidade no navegador.
+ *     id, titulo,
+ *     tipo: "convocacao" (ato marcado) | "cobertura" (ato que está/estava rolando),
+ *     uf: "SP" | ... | "BR" (nacional, várias cidades), estados?: ["SP", "RJ"],
+ *     cidade?: "São Paulo", data?: "AAAA-MM-DD" (dia do ato; sem data = conferir na fonte), hora?: "HH:MM",
+ *     publicadoEm: "ISO 8601",
+ *     fonte: { nome, url }, outrasFontes?: [ { nome, url } ] } ] }
+ * O site filtra por estado no navegador.
  */
+const ORG_TIPOS = ['convocacao', 'cobertura'];
+function isFonte(f) { return isObj(f) && isText(f.nome) && /^https?:\/\/\S+$/.test(f.url || ''); }
+
 function validateOrganize(data) {
   const errors = [];
   if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];
   if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');
-  if (data.dicasGerais !== undefined && !(Array.isArray(data.dicasGerais) && data.dicasGerais.every(t => isText(t)))) {
-    errors.push('dicasGerais: deve ser uma lista de textos');
-  }
+  if (data.buscas !== undefined && !Array.isArray(data.buscas)) errors.push('buscas: deve ser uma lista');
   if (!Array.isArray(data.eventos)) return errors.concat('eventos: deve ser uma lista []');
   const ids = new Set();
   data.eventos.forEach((e, i) => {
@@ -133,16 +135,16 @@ function validateOrganize(data) {
     else if (ids.has(e.id)) errors.push(`${p}.id: "${e.id}" repetido`);
     ids.add(e.id);
     if (!isText(e.titulo, 3)) errors.push(`${p}.titulo: vazio`);
-    if (!isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);
+    if (!ORG_TIPOS.includes(e.tipo)) errors.push(`${p}.tipo: use ${ORG_TIPOS.join(' ou ')}`);
+    if (e.uf !== 'BR' && !UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado inválida ("${e.uf}")`);
+    if (e.estados !== undefined && !(Array.isArray(e.estados) && e.estados.every(u => UFS.includes(u)))) errors.push(`${p}.estados: lista de siglas`);
+    if (e.cidade !== undefined && !isText(e.cidade, 2)) errors.push(`${p}.cidade: vazio`);
+    if (e.data !== undefined && !isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);
     if (e.hora !== undefined && !TIME_RE.test(e.hora)) errors.push(`${p}.hora: use HH:MM`);
-    if (!UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado inválida ("${e.uf}")`);
-    if (!isText(e.cidade, 2)) errors.push(`${p}.cidade: vazio`);
-    if (!isText(e.local, 3)) errors.push(`${p}.local: vazio`);
-    if (e.oQueLevar !== undefined && !(Array.isArray(e.oQueLevar) && e.oQueLevar.every(t => isText(t)))) {
-      errors.push(`${p}.oQueLevar: deve ser uma lista de textos`);
-    }
-    if (!isObj(e.fonte) || !isText(e.fonte.nome) || !/^https?:\/\/\S+$/.test(e.fonte.url || '')) {
-      errors.push(`${p}.fonte: precisa de nome e url (http/https)`);
+    if (!isIso(e.publicadoEm)) errors.push(`${p}.publicadoEm: use data e hora ISO 8601`);
+    if (!isFonte(e.fonte)) errors.push(`${p}.fonte: precisa de nome e url (http/https)`);
+    if (e.outrasFontes !== undefined && !(Array.isArray(e.outrasFontes) && e.outrasFontes.every(isFonte))) {
+      errors.push(`${p}.outrasFontes: lista de { nome, url }`);
     }
   });
   return errors;
