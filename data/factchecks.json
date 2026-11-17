@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-17T06:36:29.690Z",
+ "updatedAt": "2026-11-17T13:13:31.681Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -33,6 +33,29 @@
   }
  ],
  "items": [
+  {
+   "title": "Projeto no Senado não visa punir quem ‘questionar o sistema eleitoral’ ou impedir auditoria",
+   "link": "https://www.estadao.com.br/estadao-verifica/plc-112-de-2021-nao-visa-penalizar-quem-questionar-sistema-eleitoral",
+   "source": "Estadão Verifica",
+   "date": "2026-11-17T12:57:47.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É #FAKE vídeo de mulher que corre por paredão e dá salto mortal no topo de barragem; cena foi fabricada com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/17/e-fake-video-de-mulher-que-corre-por-paredao-e-da-salto-mortal-no-topo-de-barragem-cena-foi-fabricada-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-17T08:00:02.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE vídeo em que corredora sobe e salta em paredão Reprodução Circula nas redes sociais o vídeo de uma mulher correndo por um paredão até o alto barragem, onde executa um mortal e deslizando de volta para baixo. É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo…"
+  },
+  {
+   "title": "É #FAKE que Renata Vasconcellos disse que CPFs com final de 0 a 9 podem quitar dívidas por R$ 70; vídeo foi manipulado com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/17/e-fake-que-renata-vasconcellos-disse-que-cpfs-com-final-de-0-a-9-podem-quitar-dividas-por-r-70-video-foi-manipulado-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-17T08:00:00.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo em que Renata Vasconcellos diz que brasileiros com CPF de final 0 a 9 podem quitar dívidas por R$ 40 a R$ 70 Reprodução Circula nas redes sociais um vídeo da jornalista Renata Vasconcellos, apresentadora do Jornal Nacional, dizendo que brasileiros com Cadastro…"
+  },
   {
    "title": "Apagão geral? O mundo vai acabar dia 17 de novembro?",
    "link": "https://www.e-farsas.com/apagao-geral-o-mundo-vai-acabar-dia-17-de-novembro.html",
