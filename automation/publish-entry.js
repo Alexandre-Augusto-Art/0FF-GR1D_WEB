@@ -28,6 +28,12 @@ if (isMotivacao) {
   label = entry.content;
 } else {
   entry = { ...draft, id: today, date: today };
+  if (entry.reflection) {
+    // análise interna e avisos da checagem só servem ao rascunho; batidas e espelho ficam
+    // (o bot usa as batidas aprovadas como exemplo de tom para os próximos textos)
+    const { analise, avisos, ...r } = entry.reflection;
+    entry.reflection = r;
+  }
   validate = validateW4K3;
   label = entry.reflection && entry.reflection.title;
 }

@@ -125,6 +125,8 @@ function Update-Clone {
 
 function Invoke-Workflow([string]$id, [string]$file) {
   Wait-Ollama
+  # o nó "Escrever (espelho direto)" faz várias chamadas à IA no processador: passa dos 300 s padrão do n8n
+  $env:N8N_RUNNERS_TASK_TIMEOUT = '2400'
   Invoke-Native 'n8n import:workflow' { n8n import:workflow "--input=$(Join-Path $PSScriptRoot "n8n\workflows\$file")" } | Out-Null
   Invoke-Native 'n8n execute' { n8n execute "--id=$id" } -Quiet | Out-Null
 }
@@ -132,6 +134,13 @@ function Invoke-Workflow([string]$id, [string]$file) {
 # Gera o rascunho a partir de um pedido { url, direction, feedback, previousDraft }
 function New-Draft($req) {
   if ($req.url -notmatch '^https?://\S+$') { throw "Link inválido: $($req.url)" }
+  # exemplos de tom: as 3 últimas análises publicadas no formato de batidas (já aprovadas por você)
+  $refl = Join-Path $Clone 'data\reflections.json'
+  if (Test-Path $refl) {
+    $ex = @(Read-List $refl | Where-Object { $_.reflection.beats } | Select-Object -First 3 |
+      ForEach-Object { [ordered]@{ titulo = $_.reflection.title; batidas = @($_.reflection.beats | ForEach-Object { $_.fala }) } })
+    if ($ex.Count) { $req | Add-Member -NotePropertyName examples -NotePropertyValue $ex -Force }
+  }
   [IO.File]::WriteAllText((Join-Path $IO 'link.json'), ($req | ConvertTo-Json -Depth 20 -Compress), $Utf8)
   $out = Join-Path $IO 'draft.json'
   Remove-Item $out -ErrorAction SilentlyContinue
