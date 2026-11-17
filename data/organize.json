@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-11-17T19:26:08.877Z",
+ "updatedAt": "2026-11-17T19:36:35.839Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 17,
+   "manchetes": 16,
    "atos": 2
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 16,
+   "manchetes": 15,
    "atos": 0
   },
   {
@@ -22,19 +22,19 @@
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 20,
+   "manchetes": 21,
    "atos": 0
   },
   {
    "busca": "BA",
    "ok": true,
    "manchetes": 25,
-   "atos": 2
+   "atos": 1
   },
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 28,
    "atos": 7
   },
   {
@@ -70,7 +70,7 @@
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 30,
+   "manchetes": 31,
    "atos": 1
   },
   {
@@ -83,7 +83,7 @@
    "busca": "PA",
    "ok": true,
    "manchetes": 23,
-   "atos": 1
+   "atos": 2
   },
   {
    "busca": "PB",
@@ -100,7 +100,7 @@
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 28,
    "atos": 1
   },
   {
@@ -112,7 +112,7 @@
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 30,
+   "manchetes": 31,
    "atos": 7
   },
   {
@@ -130,7 +130,7 @@
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 11,
+   "manchetes": 12,
    "atos": 0
   },
   {
@@ -154,37 +154,37 @@
   {
    "busca": "SE",
    "ok": true,
-   "manchetes": 15,
+   "manchetes": 14,
    "atos": 1
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 17,
+   "manchetes": 16,
    "atos": 0
   },
   {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 33,
-   "atos": 11
+   "manchetes": 32,
+   "atos": 10
   },
   {
    "busca": "movimentos",
    "ok": true,
    "manchetes": 27,
-   "atos": 11
+   "atos": 12
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 30,
+   "manchetes": 31,
    "atos": 6
   },
   {
    "busca": "pautas",
    "ok": true,
-   "manchetes": 35,
+   "manchetes": 36,
    "atos": 17
   }
  ],
@@ -440,6 +440,10 @@
     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS3BDM2dCbVN4S0ZwT2lJR2c4cjlqajBycFAxcWlrMFA3ZDNIVjNqYktlWS0ySGZmS3poTVFRb0V3ZDVmZFRWLUdaZ0xFcVF3MkFrUnBhWF8yWnY0UVVjbGg0dFl6WVVsUS14dTdiaU9oTlhtLWVjMGU2OGZvZG9SY185ZkctUnZROUlMWHF5ZVJUVk9zTnd1dUVDRk1KSENBUHpLMjB0Zw?oc=5"
    },
    "outrasFontes": [
+    {
+     "nome": "Blog do BG",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOaE9Iei1VVmZJS1NkRzVGbXItWHFLWThfd3hNZVgzMk5XelNtckszUks2R0dxOVJ3M3Bic1JfaXJwVFZCZXE5UzFNZERxd1JjWU5SQndKekx5WUlXeTU5UXNJTXFqa1B4c2EydUlGSXlMZnFlY3JlTzBHdm53WkEtODhlUEgyaFM2WEZZQjFDSnBESEF0UzNWRVVBZVpkMDZWRDVxdUNCdkg4OE9RS1hDU0dPRTNEdmFUMW5nU0FIaXkycnNx?oc=5"
+    },
     {
      "nome": "Blog do BG",
      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPX3pJa1FNd1pWcGRWNmlJd2g2Q0dIVi1LaUEwbTZ1bWVtbzgwdm5XUF9QeVBQOXM4T2xRTWxCMDdScFVOVFViaTZoMURkMWhmR2pFR2hiYlZsbzRqc1NzSWQ3UnAzUDIxN3Q3bDNLRFNzdm9TX2ZKMGF3cFJTUXFJakphTjNDYkc0Nzl2OU9vTDhKQnNWeHluUXFaVjdPYWRGdHJFYVl3aWVHZDdpbndKS3ZuNkN1TDYzNmhpald4c2NGTUgzUnAzdU9zWklBOEZXWGF2T2xCR09vd09sci1FRw?oc=5"
