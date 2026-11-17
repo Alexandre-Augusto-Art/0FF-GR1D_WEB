@@ -194,6 +194,40 @@ function validateFactCheck(data) {
   return errors;
 }
 
+/* ---------- Fact Check: data/factchecks.json (gerado por automation/factchecks/fetch.js) ----------
+ * { updatedAt: "ISO 8601",
+ *   sources: [ { name, ok: true|false, count, error? } ],
+ *   items: [ { title, link, source, date: "ISO 8601", rating, summary? } ] }   // mais recente primeiro
+ */
+const FC_RATINGS = ['FALSO', 'ENGANOSO', 'ANTIGO', 'FORA DE CONTEXTO', 'MONTAGEM', 'FEITO COM IA', 'GOLPE', 'VERDADEIRO', 'CHECAGEM'];
+
+function validateFactChecks(data) {
+  const errors = [];
+  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];
+  if (!isIso(data.updatedAt)) errors.push('updatedAt: use data e hora ISO 8601');
+  if (data.sources !== undefined && !(Array.isArray(data.sources) && data.sources.every(s => isObj(s) && isText(s.name)))) {
+    errors.push('sources: lista de { name, ok, count }');
+  }
+  if (!Array.isArray(data.items)) return errors.concat('items: deve ser uma lista []');
+  const links = new Set();
+  data.items.forEach((it, i) => {
+    const p = `items[${i}]`;
+    if (!isObj(it)) { errors.push(`${p}: deve ser um objeto`); return; }
+    if (!isText(it.title, 5)) errors.push(`${p}.title: vazio`);
+    if (typeof it.link !== 'string' || !/^https?:\/\/\S+$/.test(it.link)) errors.push(`${p}.link: URL inválida`);
+    else if (links.has(it.link)) errors.push(`${p}.link: repetido`);
+    links.add(it.link);
+    if (!isText(it.source)) errors.push(`${p}.source: vazio`);
+    if (!isIso(it.date)) errors.push(`${p}.date: use ISO 8601`);
+    if (!FC_RATINGS.includes(it.rating)) errors.push(`${p}.rating: use ${FC_RATINGS.join(', ')}`);
+    if (it.summary !== undefined && (typeof it.summary !== 'string' || it.summary.length > 400)) errors.push(`${p}.summary: texto de até 400 caracteres`);
+    if (i > 0 && isIso(it.date) && isIso(data.items[i - 1].date) && data.items[i - 1].date < it.date) {
+      errors.push(`${p}: fora de ordem (o mais recente deve vir primeiro)`);
+    }
+  });
+  return errors;
+}
+
 /** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */
 function addEntry(list, entry, max = 60) {
   const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);
@@ -204,9 +238,10 @@ const FEEDS = {
   'data/reflections.json': validateW4K3,
   'data/motivations.json': validateMotivacao,
   'data/organize.json': validateOrganize,
-  'data/factcheck.json': validateFactCheck
+  'data/factcheck.json': validateFactCheck,
+  'data/factchecks.json': validateFactChecks
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { validateW4K3, validateMotivacao, validateOrganize, validateFactCheck, addEntry, FEEDS };
+  module.exports = { validateW4K3, validateMotivacao, validateOrganize, validateFactCheck, validateFactChecks, addEntry, FEEDS };
 }
