@@ -286,12 +286,28 @@
     });
   }
 
+  // Outras páginas (ex.: Fact Check) usam o mesmo modelo local para comparar textos, sem baixar outro.
+  window.DedsecAssist = {
+    get state() { return modelState; },
+    /** Baixa/ativa o modelo (uma vez) e espera ficar pronto. Devolve true se deu certo. */
+    async ready() {
+      while (!kb && modelState === 'idle') await new Promise(r => setTimeout(r, 200));
+      loadModel();
+      while (modelState === 'loading') await new Promise(r => setTimeout(r, 200));
+      return modelState === 'ready';
+    },
+    /** Vetores normalizados (produto escalar = similaridade). Só depois de ready(). */
+    embed: texts => embed(texts),
+    statusText: () => (els.status ? els.status.textContent : '')
+  };
+
   async function init() {
     try {
       const res = await fetch(KB_URL);
       kb = await res.json();
     } catch (err) {
       console.warn('[DEDSEC ASSIST] não foi possível carregar data/chatbot.json', err);
+      modelState = 'error'; // destrava quem espera em DedsecAssist.ready()
       return;
     }
     build();

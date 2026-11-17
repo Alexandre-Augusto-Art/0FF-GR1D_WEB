@@ -81,7 +81,7 @@
     {
       "id": "factcheck",
       "title": "Fact Check",
-      "answer": "No Fact Check você cola um link (ou a mensagem inteira) e vê para onde ele leva de verdade: se imita um site conhecido, se é encurtado, se tem cara de golpe. A análise é feita no seu aparelho, sem abrir o site. Depois dá para buscar o assunto nas agências de checagem. A checagem de imagens, vídeos e mensagens vem em breve.",
+      "answer": "O Fact Check tem quatro abas. LINK mostra para onde o link leva de verdade e se imita um site conhecido. IMAGEM lê os dados escondidos da foto (câmera, data, GPS, marca de IA), compara com a miniatura original e mostra retoques. VÍDEO separa as cenas para a busca reversa. MENSAGEM aponta truques de boato e golpe e procura se as agências já checaram. Tudo roda no seu aparelho: nada é enviado.",
       "link": "fact-check.html",
       "examples": [
         "como sei se uma notícia é falsa",

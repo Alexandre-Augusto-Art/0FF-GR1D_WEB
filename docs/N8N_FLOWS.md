@@ -35,7 +35,16 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
 | blog (`js/blog-loader.js`) | `posts/index.json` | manual |
 | `tarot.html` | `data/tarot.json` | manual |
 | chatbot (`js/chatbot.js`) | `data/chatbot.json` | manual |
-| `fact-check.html` (`js/fact-check/`) | `data/factcheck.json` (regras: sites oficiais, encurtadores, palavras de golpe, agências) | manual; validado por `validateFactCheck`. Testes: `node tests/fact-check/link.test.js` |
+| `fact-check.html` (`js/fact-check/`) | `data/factcheck.json` (regras: sites oficiais, encurtadores, palavras de golpe, agências) | manual; validado por `validateFactCheck` |
+| `fact-check.html`, aba MENSAGEM | `data/factchecks.json` (checagens recentes das agências) | **GitHub Actions**, não o n8n: `.github/workflows/factchecks.yml` roda `automation/factchecks/fetch.js` a cada 6 h e faz commit no `main`. Validado por `validateFactChecks` |
+
+Testes do Fact Check (também rodam na Action "Validar feeds"): `node tests/fact-check/link.test.js`,
+`node tests/fact-check/media.test.js` e `node tests/fact-check/text.test.js`.
+
+O coletor das checagens não usa IA nem o PC de casa, por isso roda no GitHub. Ele faz `git pull --rebase`
+antes do push; os scripts locais (`run-w4k3.ps1`, `run-motivacao.ps1`) atualizam o clone logo antes de
+publicar, então a chance de um push atropelar o outro é pequena. Se um push local falhar com
+"non-fast-forward", é só rodar de novo.
 
 As páginas W4K3 e Motivação mostram o selo "ATUALIZADO EM" (data da entrada mais recente) e
 o aviso de conteúdo velho depois de `STALE_DAYS = 2` dias. O HTML gerado pela IA passa por uma
