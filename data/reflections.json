@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-11-17",
+    "date": "2026-11-17",
+    "news": {
+      "title": "O que a liminar contra a Meta diz sobre direitos autorais",
+      "link": "https://www.nexojornal.com.br/ensaio/2026/11/13/meta-direitos-autorais-tecnologia-plataforma-digital",
+      "summary": "Antes que o Congresso vote às pressas as regras da inteligência artificial e da economia digital, é preciso entender o que já temos e, principalmente, o que está em jogo No primeiro discurso após ser reeleito, Lula falou em “intromissão” das plataformas digitais no pleito e prometeu regulá-las. O governo quer aprovar ainda em 2026 o marco legal da inteligência artificial (PL 2.338/2023), já aprovado no Senado, e o projeto que amplia os poderes do Cade (Conselho Administrativo de Defesa Econômica) sobre as big techs (PL 4.675/2025). O relator deste último, deputado Aliel Machado (PV-PR), resumi",
+      "source": "Nexo Jornal",
+      "publishedDate": "2026-11-13"
+    },
+    "reflection": {
+      "title": "O Jogo de Videogame que Desaparece",
+      "content": "<p>Segundo a Nexo Jornal, a liminar contra a Meta estabeleceu que a empresa não pode coletar e analisar dados de páginas de empresas sem autorização prévia. Isso põe em xeque a questão de quem tem o poder sobre os direitos autorais na era da inteligência artificial.</p><p>A disputa entre as grandes plataformas e os criadores mostra que a autonomia dos usuários está diminuindo e que o controle sobre os dados é cada vez mais uma questão crucial. As plataformas dominam a produção e a distribuição de conteúdo, enquanto o consumidor e o criador perdem poder.</p><p>Este cenário lembra <em>Watch Dogs</em>, onde o sistema ctOS controla tudo em Chicago, desde semáforos até telefones celulares. Ao hackear o sistema, Aiden Pearce revela como a privacidade e o controle dos dados são instrumentos de poder nas mãos das corporações.</p><p>Diante desse quadro, o que garantirá que os direitos dos criadores sejam respeitados na era da IA?</p>",
+      "excerpt": "A liminar contra a Meta coloca em xeque o controle sobre os direitos autorais na era da IA, mostrando a disputa de poder entre grandes plataformas e criadores."
+    },
+    "sources": [
+      {
+        "title": "O que a liminar contra a Meta diz sobre direitos autorais",
+        "link": "https://www.nexojornal.com.br/ensaio/2026/11/13/meta-direitos-autorais-tecnologia-plataforma-digital",
+        "source": "Nexo Jornal",
+        "date": "2026-11-13"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Watch Dogs"
+    ]
+  },
+  {
     "id": "2026-11-16",
     "date": "2026-11-16",
     "news": {
