@@ -73,6 +73,8 @@ async function main() {
   fs.mkdirSync(JOB, { recursive: true }); fs.mkdirSync(VIDEOS, { recursive: true });
   fs.writeFileSync(PIDFILE, String(process.pid));
   const hash0 = hash(draftPath);
+  // vídeo desta versão vai ser refeito: tira do índice até o novo ficar pronto (o publicar espera)
+  registra(hash0, null);
   const snap = path.join(JOB, 'draft.json');
   fs.copyFileSync(draftPath, snap);
   const d = JSON.parse(fs.readFileSync(snap, 'utf8').replace(/^﻿/, ''));
@@ -178,11 +180,14 @@ async function main() {
     const t0 = Date.now();
     run(process.execPath, [path.join(PROJ, 'node_modules', '@remotion', 'cli', 'remotion-cli.js'), 'render', 'src/index.jsx', comp, bruto,
       `--props=${propsPath}`, '--crf=24', '--log=error'], { cwd: PROJ, stdio: ['ignore', 'inherit', 'inherit'] });
+    // comprime num arquivo à parte e só depois troca: quem lê o vídeo nunca pega um arquivo pela metade
+    const parcial = final.replace(/\.mp4$/i, '.parcial.mp4');
     for (const crf of [27, 31, 35]) {
       run('ffmpeg', ['-y', '-v', 'error', '-i', bruto, '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p',
-        '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', final]);
-      if (fs.statSync(final).size < 45 * 1024 * 1024) break;
+        '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', parcial]);
+      if (fs.statSync(parcial).size < 45 * 1024 * 1024) break;
     }
+    fs.renameSync(parcial, final);
     log(`${comp}: ${final} (${(fs.statSync(final).size / 1048576).toFixed(1)} MB, render em ${Math.round((Date.now() - t0) / 1000)} s)`);
     return final;
   };
@@ -201,7 +206,7 @@ function registra(h, info) {
   const f = path.join(VIDEOS, 'indice.json');
   let ix = {};
   try { ix = JSON.parse(fs.readFileSync(f, 'utf8')); } catch {}
-  ix[h] = { ...info, quando: new Date().toISOString() };
+  if (info) ix[h] = { ...info, quando: new Date().toISOString() }; else delete ix[h];
   const fica = Object.entries(ix).sort((a, b) => String(b[1].quando).localeCompare(String(a[1].quando))).slice(0, 30);
   fs.writeFileSync(f, JSON.stringify(Object.fromEntries(fica), null, 1));
 }

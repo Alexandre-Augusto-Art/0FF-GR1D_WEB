@@ -38,16 +38,23 @@ const rodando = () => {
   const dir = path.join(clone, 'assets', 'videos', 'w4k3');
   fs.mkdirSync(dir, { recursive: true });
   const src = `assets/videos/w4k3/${today}.mp4`, poster = `assets/videos/w4k3/${today}.jpg`;
-  const ff = (a) => execFileSync('ffmpeg', ['-y', '-v', 'error', ...a], { windowsHide: true, maxBuffer: 1 << 26 });
+  // tudo é feito fora do clone e só entra nele se der certo (nada pela metade vai para o commit)
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'w4k3-site-'));
+  const tVid = path.join(tmp, 'v.mp4'), tCapa = path.join(tmp, 'v.jpg');
+  // -xerror: qualquer erro no vídeo de origem (arquivo truncado etc.) aborta em vez de gerar um vídeo pela metade
+  const ff = (a) => execFileSync('ffmpeg', ['-y', '-v', 'error', '-xerror', ...a], { windowsHide: true, maxBuffer: 1 << 26 });
   ff(['-i', v.vertical, '-vf', 'scale=540:960', '-c:v', 'libx264', '-crf', '32', '-preset', 'slow', '-pix_fmt', 'yuv420p',
-    '-c:a', 'aac', '-b:a', '64k', '-ac', '1', '-movflags', '+faststart', path.join(clone, src)]);
+    '-c:a', 'aac', '-b:a', '64k', '-ac', '1', '-movflags', '+faststart', tVid]);
   // capa: um quadro do apresentador, logo depois da abertura
-  ff(['-ss', '2.5', '-i', v.vertical, '-frames:v', '1', '-vf', 'scale=540:960', '-q:v', '5', path.join(clone, poster)]);
+  ff(['-ss', '2.5', '-i', v.vertical, '-frames:v', '1', '-vf', 'scale=540:960', '-q:v', '5', tCapa]);
 
   const file = path.join(clone, 'data', 'reflections.json');
   const list = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^﻿/, ''));
   const e = list.find((x) => x && (x.id === today || x.date === today));
   if (!e) sem('entrada de hoje não encontrada no reflections.json');
+  fs.copyFileSync(tVid, path.join(clone, src));
+  fs.copyFileSync(tCapa, path.join(clone, poster));
+  fs.rmSync(tmp, { recursive: true, force: true });
   e.video = { src, poster };
   fs.writeFileSync(file, JSON.stringify(list, null, 2) + '\n');
   console.log(`vídeo: ${(fs.statSync(path.join(clone, src)).size / 1048576).toFixed(1)} MB`);
