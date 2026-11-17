@@ -7,12 +7,14 @@ on:
       - 'automation/**'
       - 'js/fact-check/**'
       - 'tests/fact-check/**'
+      - 'tests/organize/**'
   pull_request:
     paths:
       - 'data/**'
       - 'automation/**'
       - 'js/fact-check/**'
       - 'tests/fact-check/**'
+      - 'tests/organize/**'
   workflow_dispatch:
 
 permissions:
@@ -30,3 +32,4 @@ jobs:
       - run: node tests/fact-check/link.test.js
       - run: node tests/fact-check/media.test.js
       - run: node tests/fact-check/text.test.js
+      - run: node tests/organize/fetch.test.js

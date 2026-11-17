@@ -23,7 +23,9 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
   Os exports antigos (seções abaixo) ficam só como histórico.
 - **Motivação Diária automatizada (2026-11-13)** com aprovação pelo Telegram: veja
   [Motivação Diária](#motivação-diária-desde-2026-11-13).
-- **Organize-se não tem fluxo n8n ainda.** `data/organize.json` tem só a estrutura, sem eventos.
+- **Organize-se roda no GitHub Actions, não no n8n (desde 2026-11-17).** `.github/workflows/organize.yml`
+  roda `automation/organize/fetch.js` duas vezes por dia: busca no Google Notícias (RSS) os atos de esquerda e
+  de movimentos populares em cada estado, tira estado/cidade/data/hora da manchete e grava `data/organize.json`.
 
 ## Quem lê o quê no site
 
@@ -31,7 +33,7 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
 |---|---|---|
 | `w4k3-protocol.html` (`#w4k3-feed`) | `data/reflections.json` | n8n (`w4k3-pauta.json` + `w4k3-link.json`), aprovado por você no Telegram |
 | `motivacao.html` (`#motivacao-feed`) | `data/motivations.json` | n8n (`motivacao-diaria.json`), aprovado por você no Telegram |
-| `organize-se.html` (a fazer) | `data/organize.json` | ninguém ainda; fluxo a criar |
+| `organize-se.html` | `data/organize.json` | **GitHub Actions**: `.github/workflows/organize.yml` roda `automation/organize/fetch.js` às 06:17 e 15:41 (Brasília) e faz commit no `main`. Validado por `validateOrganize`; testes em `tests/organize/fetch.test.js` |
 | blog (`js/blog-loader.js`) | `posts/index.json` | manual |
 | `tarot.html` | `data/tarot.json` | manual |
 | chatbot (`js/chatbot.js`) | `data/chatbot.json` | manual |
@@ -283,7 +285,8 @@ inventada ou atribuída à obra errada. A IA só **escolhe** qual frase usar.
 
 ```
 09:10  tarefa "W4K3 - Motivacao 09h10"   run-motivacao.ps1
-         → atualiza o clone; monta %USERPROFILE%\.n8n-files\motivacaoequest.json
+         → atualiza o clone; monta %USERPROFILE%\.n8n-files\motivacao
+equest.json
            { today, direction, exclude, recentIds, recentTexts, reflection (W4K3 de hoje), bank }
          → n8n execute --id=MOTIVACAOdiaria1  (automation/n8n/workflows/motivacao-diaria.json)
               Ler request.json → Escolher candidatas (até 8, sem repetir as últimas 60, filtradas pelo tema)
@@ -347,8 +350,9 @@ A referência oficial é o comentário de cada validador em `automation/validato
 { "date": "AAAA-MM-DD", "content": "frase de 10 a 500 caracteres", "author": "DEDSEC" }
 ```
 
-`data/organize.json` (Organize-se): objeto com `updatedAt`, `dicasGerais` e `eventos`
-(cada evento precisa de `uf`, `cidade`, `data` e `fonte.url`).
+`data/organize.json` (Organize-se): objeto com `updatedAt`, `buscas` e `eventos`
+(cada evento tem `tipo`, `uf` ou `BR` para nacional, `publicadoEm` e `fonte`; `cidade`, `data` e `hora`
+só quando a manchete diz). Formato completo em `automation/validators.js`.
 
 ## Onde o n8n roda (e por que não está rodando)
 
@@ -376,8 +380,7 @@ A referência oficial é o comentário de cada validador em `automation/validato
    workflow e deixar o n8n sempre ligado (ex.: tarefa agendada do Windows rodando `n8n start`
    no logon). Configurar um Error workflow para receber aviso de falha.
 6. Exportar o fluxo para `automation/n8n/workflows/` e commitar.
-7. Criar o fluxo novo do Organize-se (`data/organize.json`) seguindo o mesmo padrão
-   (Motivação já foi feito: `motivacao-diaria.json`).
+7. (Feito) O Organize-se não usa n8n: roda no GitHub Actions (`organize.yml`).
 
 ## Dicas para o Claude
 

@@ -123,8 +123,8 @@
     {
       "id": "organize",
       "title": "Organize-se",
-      "answer": "O Organize-se vai mostrar manifestações perto da sua região, com dicas do que levar, como chegar e como se proteger. A ferramenta está em construção. Enquanto isso, veja o Revolution Assets para itens úteis.",
-      "soon": true,
+      "answer": "O Organize-se mostra os atos e manifestações dos movimentos populares no seu estado. A lista é atualizada sozinha todo dia a partir das notícias. Escolha seu estado, confira data e local na fonte, e use o checklist do que levar, os cuidados e o que fazer se for detido.",
+      "link": "organize-se.html",
       "examples": [
         "onde tem manifestação perto de mim",
         "como encontrar um protesto",

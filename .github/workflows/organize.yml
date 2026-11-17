@@ -1,0 +1,50 @@
+name: Organize-se - atos do dia
+
+# Busca no Google Notícias as convocações de atos de esquerda e de movimentos populares em cada estado
+# e atualiza data/organize.json (usado em organize-se.html). Roda no GitHub, sem IA e sem o PC de casa.
+# Também dá para rodar à mão em Actions > "Run workflow".
+on:
+  schedule:
+    - cron: '17 9 * * *'    # todo dia às 06:17 de Brasília
+    - cron: '41 18 * * *'   # e às 15:41, para pegar as convocações do dia
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: organize
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Testes do coletor
+        run: node tests/organize/fetch.test.js
+      - name: Buscar atos
+        run: node automation/organize/fetch.js
+      - name: Validar
+        run: node automation/validate.js
+      - name: Publicar se mudou
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898283+github-actions[bot]@users.noreply.github.com'
+          git add data/organize.json
+          if git diff --cached --quiet; then
+            echo 'Nada novo.'
+            exit 0
+          fi
+          git commit -m "Organize-se: atos atualizados $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1

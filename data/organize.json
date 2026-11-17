@@ -1,11 +1,646 @@
 {
-  "updatedAt": "2026-11-12T00:00:00-03:00",
-  "dicasGerais": [
-    "Vá acompanhado e combine um ponto de encontro caso o grupo se separe.",
-    "Leve água, documento com foto, celular carregado e uma bateria extra.",
-    "Use roupas e calçados confortáveis e proteja-se do sol ou da chuva.",
-    "Anote num papel o telefone de alguém de confiança.",
-    "Confira o trajeto e as saídas da região antes de ir."
-  ],
-  "eventos": []
+ "updatedAt": "2026-11-17T19:26:08.877Z",
+ "buscas": [
+  {
+   "busca": "AC",
+   "ok": true,
+   "manchetes": 17,
+   "atos": 2
+  },
+  {
+   "busca": "AL",
+   "ok": true,
+   "manchetes": 16,
+   "atos": 0
+  },
+  {
+   "busca": "AP",
+   "ok": true,
+   "manchetes": 10,
+   "atos": 0
+  },
+  {
+   "busca": "AM",
+   "ok": true,
+   "manchetes": 20,
+   "atos": 0
+  },
+  {
+   "busca": "BA",
+   "ok": true,
+   "manchetes": 25,
+   "atos": 2
+  },
+  {
+   "busca": "CE",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 7
+  },
+  {
+   "busca": "DF",
+   "ok": true,
+   "manchetes": 29,
+   "atos": 4
+  },
+  {
+   "busca": "ES",
+   "ok": true,
+   "manchetes": 24,
+   "atos": 0
+  },
+  {
+   "busca": "GO",
+   "ok": true,
+   "manchetes": 24,
+   "atos": 0
+  },
+  {
+   "busca": "MA",
+   "ok": true,
+   "manchetes": 22,
+   "atos": 0
+  },
+  {
+   "busca": "MT",
+   "ok": true,
+   "manchetes": 30,
+   "atos": 1
+  },
+  {
+   "busca": "MS",
+   "ok": true,
+   "manchetes": 30,
+   "atos": 1
+  },
+  {
+   "busca": "MG",
+   "ok": true,
+   "manchetes": 25,
+   "atos": 0
+  },
+  {
+   "busca": "PA",
+   "ok": true,
+   "manchetes": 23,
+   "atos": 1
+  },
+  {
+   "busca": "PB",
+   "ok": true,
+   "manchetes": 16,
+   "atos": 0
+  },
+  {
+   "busca": "PR",
+   "ok": true,
+   "manchetes": 17,
+   "atos": 2
+  },
+  {
+   "busca": "PE",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 1
+  },
+  {
+   "busca": "PI",
+   "ok": true,
+   "manchetes": 15,
+   "atos": 2
+  },
+  {
+   "busca": "RJ",
+   "ok": true,
+   "manchetes": 30,
+   "atos": 7
+  },
+  {
+   "busca": "RN",
+   "ok": true,
+   "manchetes": 29,
+   "atos": 1
+  },
+  {
+   "busca": "RS",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 2
+  },
+  {
+   "busca": "RO",
+   "ok": true,
+   "manchetes": 11,
+   "atos": 0
+  },
+  {
+   "busca": "RR",
+   "ok": true,
+   "manchetes": 9,
+   "atos": 0
+  },
+  {
+   "busca": "SC",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 1
+  },
+  {
+   "busca": "SP",
+   "ok": true,
+   "manchetes": 29,
+   "atos": 6
+  },
+  {
+   "busca": "SE",
+   "ok": true,
+   "manchetes": 15,
+   "atos": 1
+  },
+  {
+   "busca": "TO",
+   "ok": true,
+   "manchetes": 17,
+   "atos": 0
+  },
+  {
+   "busca": "convocações",
+   "ok": true,
+   "manchetes": 33,
+   "atos": 11
+  },
+  {
+   "busca": "movimentos",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 11
+  },
+  {
+   "busca": "sindicatos",
+   "ok": true,
+   "manchetes": 30,
+   "atos": 6
+  },
+  {
+   "busca": "pautas",
+   "ok": true,
+   "manchetes": 35,
+   "atos": 17
+  }
+ ],
+ "eventos": [
+  {
+   "id": "76855a5e9c38",
+   "titulo": "Faixas e cartazes; gritos e aplausos; megafones e apitos. Um protesto marcou a manhã desta terça-feira (17) no Paço Municipal de Canoas, onde trabalhadores de cooperativas de catadores se reuniram. Responsáveis pela…",
+   "tipo": "cobertura",
+   "uf": "RS",
+   "publicadoEm": "2026-11-17T18:27:57.000Z",
+   "fonte": {
+    "nome": "Instagram",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9nd09jVENCLVRONFpic2tETl9Xd2tXcV94UW13RHl3ZXl1RFVnNmxUdmRyaEQ5bTVUVHlod254Mmh4OE1YN2tLaVQxM193RHI5YjAxZlFB?oc=5"
+   },
+   "cidade": "Canoas",
+   "data": "2026-11-17"
+  },
+  {
+   "id": "3892d6fd8e44",
+   "titulo": "‘Com Lula e contra o mercado’: estudantes chamam ato no Rio nesta terça-feira (17)",
+   "tipo": "convocacao",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-17T15:36:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNb1EwRzJFZHo5amU3MVgzblRKZXNjYmJ4bHZuajczUlptZXJlcjY0ZUl5TmRjQnYtSGsxempEaUhqc0tTUlFlV081UWh4bXBBTnhQUE5HOXVlMlhrZ0VQTTBjMy1aNTRSU2VnSDdXMGhSeE9Iel96cml0X1k5MGRBR01FR1hJVWZSMjBNTlM4c1NHMjJUbzlnRTRIU1BPVU12cGU1RVdYQ2tFNkVHVEhuaHZwLTRhSzFNVEJLYTBR?oc=5"
+   },
+   "cidade": "Rio de Janeiro",
+   "data": "2026-11-17"
+  },
+  {
+   "id": "7c5d33107045",
+   "titulo": "No Recife (PE), estudantes da UFPE protestam nesta terça-feira (17) contra o projeto de ajuste fiscal do governo Lula",
+   "tipo": "convocacao",
+   "uf": "PE",
+   "publicadoEm": "2026-11-16T22:32:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOUlBia1A1a1J2ZnhBenpQam9aN2JJUW9oY09IMlQ1ZUphdllVX0pBXy1tMTVVS3ZTeTJGQ3JBdEIxaHR5Rk1YYVgycmlqVVFfRGNZSzRFellLbnpINy00bkV6ZENMNFZSbHlPclkyRjdPVkVtb3ZkZzVubXhQcVN1Z2dpOTRkZXg2RERabjlHR2JmVndJb2ZudGlqZC1mZXZXZ21sWEdPekdPTG5jb2NieVc3aFllVXA5WHFiaTd5QUtaRmtMRnVDUEEwaFExUTVZLWxYNnVkQ0lzUlYtYlNaakR5WUhJNFpqNUkwTA?oc=5"
+   },
+   "cidade": "Recife",
+   "data": "2026-11-17"
+  },
+  {
+   "id": "5e215de93362",
+   "titulo": "Ato contra juros altos e ajuste fiscal será realizado nesta terça (17) em Brasília",
+   "tipo": "convocacao",
+   "uf": "DF",
+   "publicadoEm": "2026-11-16T20:46:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOZXNQU1RDM2xOVm9qWXdNYzgzNkUwcHhQbU5UazVyZmt4RDh1R0Q0bDZWVGpnZ1V0VVdzY3hGNldxbnVNSnhPUWI2YnJ2NE9rcHFTTHFQSElOZWpJYmlOazJjdkdjM3JrS3dDZlhhdGtlOHVKZkVpYkQzZ2l3azdaSHBkUm5iYlh0ZlRodUVxWXhEV25rcDNiY2NGNWljNU5reklJYUNScFRXdzFGUXdQRGRDemc1NWJwVHNVMnZyeEFQdw?oc=5"
+   },
+   "cidade": "Brasília",
+   "data": "2026-11-17"
+  },
+  {
+   "id": "d24de33220f4",
+   "titulo": "Belém vai às ruas contra o ajuste fiscal e os juros altos nesta terça (17)",
+   "tipo": "convocacao",
+   "uf": "PA",
+   "publicadoEm": "2026-11-16T14:10:43.000Z",
+   "fonte": {
+    "nome": "ponto de pauta",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQTU9pbXhrMDYzcnZQMGwzazZaVzV1MWNvY1lQQXo3S3Nqd2d3ZTZnd2lJbEdMRjk3OXhwQzhSTWU2UW9qUVViVUNMN0IwY29oVWlheEJjSnk4OUlMejRfbnhQS3ZmZ2ZNRjgwekVVWmk2UFFLaGUwWHpTTUhSbmJ3MmtUTlVaYzhBYk1SeGZTT3dMdHVSVEFLSTVJZGVCRzJyQ0RHQ3NKeWxsYVg0MFE?oc=5"
+   },
+   "cidade": "Belém",
+   "data": "2026-11-17",
+   "outrasFontes": [
+    {
+     "nome": "Estado do Pará Online",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQMDRTOWxvaHYtWXJlS1ROQ0pmQ1JhNVE4cWdmVWxoZnhYblNmWGk1SnRUM2Y0RnFiWFVvNHhzSXZNNzZvaDFzSjF5WHVUN3d4aEdLVFlMeUEzWDE5OXB3d0pFbmVzZG9BNzdnT0dPcjJBYURyODNFcTFqWEttaWhKZUwzMThCdjF4akdxeXd6LWJvWTA1Q1FhUGprYkVRbE5O?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "e4ffff4927b3",
+   "titulo": "17 de novembro: dia nacional de mobilização contra o ajuste fiscal e os juros altos",
+   "tipo": "convocacao",
+   "uf": "BR",
+   "publicadoEm": "2026-11-14T00:09:52.000Z",
+   "fonte": {
+    "nome": "PSOL 50",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQUlUyZWZRWV9zZi02Z3VaT28yaGp4ZzFuZWpfYWktbTM5VnMzNlBrTV9jMmZPZExqLXhPZGlid1dnc3pGZFplTFpBQW1lTnFmRU5wWlBfTVlWYlJJTWlYUjNxRTZCOHpiT3oybnE5ZU5vZVpacWRESjZRVHBxZlBSeWpyYkY4ZmlPNWtXck1SS3J2X0l3c0J4azZXQmQwNHpfdlgxcTIxeVg?oc=5"
+   },
+   "data": "2026-11-17"
+  },
+  {
+   "id": "d1db2e4037e3",
+   "titulo": "Contra os juros altos e o ajuste fiscal, UNE marca ato em frente à ‘Baleia da Faria Lima’ para terça (17)",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-13T22:40:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQQkpseTlhOEFDU3pSeVNxZDY0SXRpNEI3NFNMb3IyX1VRbE8zbXRtUFJ5dGFESnNKdFVwYzB0cy0zWE9hcTdFZlB5Y1pyWXY3YjdUOXdNVUtWaThLRG4yMktKSG9ndVo5Sko2ZXBNRjdGeGxEN2syQ3FnMG1BcDhPTDRiMnJ4RGtubnR0QU5tTXNJd05DdHB4UXlnaDZkVEtnaktfSTktX2JMRVBhck8wY2pzeDE4bmZZbzc4QVJ4X2xxSDdHa2ZIOUZKS25xSk5jX215LXNrdVZKdGRt?oc=5"
+   },
+   "cidade": "São Paulo",
+   "data": "2026-11-17"
+  },
+  {
+   "id": "9857f79bdefd",
+   "titulo": "SINDJUS convoca categoria para novo ato pela derrubada dos Vetos 45/25 e 17/26 nesta quarta-feira (18/11)",
+   "tipo": "convocacao",
+   "uf": "DF",
+   "publicadoEm": "2026-11-17T16:41:30.000Z",
+   "fonte": {
+    "nome": "Sindjus-DF",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNekhJeHVGaTBrN3NPdU13MjZzWGE1WmtHZXpGUFR5Njd3dkltZE8xQ3NZR2RoekNpWjQxMTRWMzlDakZ3WklEdWtXVFFxWFRYSy1KN2Mtcm9iM19Jb1MxRlpmSm04ZmdRM1F0a1RfQ3lUSmFzcUNzanVGVllkT3R2dkd4MUdtU0UxR1BzVDF4cnh5S1Fxbkg1WmprclE0QlpDWUJGTm9JSUxmRS1qSlFNOFJKcFQ2N1pxY3JKWTZzaEZqZi1PY3JwUQ?oc=5"
+   },
+   "data": "2026-11-18"
+  },
+  {
+   "id": "bcb5771662a3",
+   "titulo": "Trabalhadores ocupam o Centro do Rio na Marcha pelo Clima nesta quarta-feira (18)",
+   "tipo": "convocacao",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-16T22:14:52.000Z",
+   "fonte": {
+    "nome": "CSP-Conlutas",
+    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOT3VlNkNvNU5TVXJJbktzS2V1ZmNCY1p5SkNVWFVrZzFYdHBnSjMwdDIyeElDMVdrS1VOS0c1VDRybzQwR3BBN1dscUdtcGNsNDRGRWo1YUd5RnduNFRrdGo0eFJLM1p1VDBibzdERUhIc203TGZFdThReTBJc1FuektneHRyemtKMVQ2N1pmZk14eVJ3T2hIN0NTeEs3MWtlZEZ2NU9Za2NDQm9lUkUtV29wQXk?oc=5"
+   },
+   "cidade": "Rio de Janeiro",
+   "data": "2026-11-18"
+  },
+  {
+   "id": "0e6439cc6489",
+   "titulo": "47ª Marcha da Consciência Negra ocupa o centro de Salvador nesta sexta (20)",
+   "tipo": "convocacao",
+   "uf": "BA",
+   "publicadoEm": "2026-11-17T16:32:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOT2d1YjR5RlhSZ1dlQnpiR0kwVjg3UTBzVFo1SEc1blIxdXVBWXpsLVI3dE4wbG1EOENlWDNUbURjNnFQN2FqVnZBdHZPMmxnZnhXR1NKeUgwaVQtVk5GdUVLNWdjN3ZXeFVfQ0RoMndzSEN2LTMxT2ltS3FRNDNDcjZsNFF4ZE9zXzAyTkRieXZwTmxUVDFHOWFqQWZWdm5ESWxDc2M4bVBFVjVUYWJzNnJucGlTOUpo?oc=5"
+   },
+   "cidade": "Salvador",
+   "data": "2026-11-20"
+  },
+  {
+   "id": "698db3f8c75d",
+   "titulo": "Dia da Consciência Negra: DF terá festivais, shows, samba e atos em defesa da população negra",
+   "tipo": "convocacao",
+   "uf": "DF",
+   "publicadoEm": "2026-11-16T22:50:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOQ0M0R2YteGtQNkpTZDVicGdlRFVNVlNQM3d2dzQ0S05WT0xlV1dVZ1hIaGlURDdSUG1HTmR1WGVZTVlZQU1xcjhibXFucVRSNWlaYm5ZLVg0UFV3RGt0WUlPVXZpbU56aU9xRWx2THdqRHcxTm4wV1Rnb1RVU3hCWWVIU2NMT0trVWlESXUxZ0l6emdzR19yVEV4TWhzMjhIY1daWlVjRzFxREZnb0p1SENMbGluLU1mMEJmNHBIYk1SWWNGb0l5NGhXUjNpaVk?oc=5"
+   },
+   "data": "2026-11-20"
+  },
+  {
+   "id": "d860b1da583c",
+   "titulo": "Marcha da Consciência Negra leva luta antirracista às ruas de Jundiaí nesta sexta-feira (20)",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-16T21:00:29.000Z",
+   "fonte": {
+    "nome": "Tribuna de Jundiaí",
+    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQaXFxRVIzelFrNFBFenFVM2Mzd3JidUdRUDRKc2xQZExnay1NZWo4M29TWFdfOWJyUkoydmhpaVVWSlpveXRuUlc5Mm1wTGpCSlNCNFVMNHJJRGg5THNpczVxRXVnWFdiSU5IYUc0LXVFUk8wMnZpZUNMdEVSazdoY3RKQjd1QlFQV0JuWTRpYngxUjA?oc=5"
+   },
+   "cidade": "Jundiaí",
+   "data": "2026-11-20"
+  },
+  {
+   "id": "e96d9b5335e2",
+   "titulo": "SISMUC participa de ato em defesa dos povos indígenas em Curitiba",
+   "tipo": "cobertura",
+   "uf": "PR",
+   "publicadoEm": "2026-11-17T18:32:00.000Z",
+   "fonte": {
+    "nome": "SISMUC",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOSk01OWdKWnhZOU9WaldFTlhNczIwam5JUmtkcHRqbHJjUnNic1NvUDdfNDRnbXJvSjBGc3R5YXEyWXpJanRwYTI0Ty1HdnlQN2k0TXVoelpVcC1kVmQ3UHdoelJ2SExRa2V4X0M0WHlWbjRFS1pfakp5dHR6Ni1OR0E0c1Q1azN0bjRwUG5tWnVpYllmNXFDZGR4Zzl6VlJP?oc=5"
+   },
+   "cidade": "Curitiba"
+  },
+  {
+   "id": "650199705274",
+   "titulo": "DF: ‘Não queremos esse ajuste nem o arcabouço’, dizem estudantes em ato na Câmara dos Deputados",
+   "tipo": "cobertura",
+   "uf": "DF",
+   "publicadoEm": "2026-11-17T18:22:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQMlRaM0JFY2RXc2lLNUNyVHpJSGR3M19tR240OFNzbWp2RkVVN1NJYVdPb25fc0pUTlJ3MVZDNGZmd1N5VVFscFdZeUZ5SlBoN0p2REVzWlA5MWltbHFVMmlaRUNGVlN3SmlVT3g5TkQ5SVlLcDhkOGlZcXJXWndhZmlFbGNyV1ZNZjdaQzktc1BCY0ZDSnRvRkVxTTBZYmc2eVh5emZHb250WEJYNmxGRHR5UUVmMEcxXy1yVUhFZlkyTTZLbFhlODJPdEQybkZ0?oc=5"
+   }
+  },
+  {
+   "id": "2c22d45a20ff",
+   "titulo": "SP: Trabalhadores do SUS protestam contra terceirização",
+   "tipo": "cobertura",
+   "uf": "SP",
+   "publicadoEm": "2026-11-17T17:31:35.000Z",
+   "fonte": {
+    "nome": "Outras Palavras",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQR3puTzRiQjJlRXJISjNiREM0SThVenBlUkxUQ2o2cktuaXNQWTJJWHMzZExIT3Zlc2FZQ3l4S1dFTG9YVkktNEhZaWhOR04tNmlvQ0JxeU5tOVpvSnFTRnlVajNBdGxJQThCX1Jmd0xWTkRtaUJRUWlzaG01SWdCTjJERzlMS3FNeVVLWU1sR242VTIwNEVXZg?oc=5"
+   }
+  },
+  {
+   "id": "8fe85637da26",
+   "titulo": "Leo Suricate e Gabriel Biologia decidem não participar de ato contra ajuste fiscal de Lula em Fortaleza",
+   "tipo": "cobertura",
+   "uf": "CE",
+   "publicadoEm": "2026-11-17T16:04:04.000Z",
+   "fonte": {
+    "nome": "OpiniãoCE",
+    "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxORGY4bGpPbktXdmxWQVc0T1hNN2ZNRW9pVU1peV9TOHdfRVJvcmZJT18zbjZoOHFxalpvSEhYaUtPaVRvNG5LYWJ6NjNsMm43TjI0dDIwb2EyRDZaVHNGRG9rTno2eDRJTFpHMnBJLUZpeXdpTVE3MHJUbERUVFkwNkJZYURZbkQ4QjRWcGkxeFpwSVFKVnB4RGh6MWpvTTlmOHdOV1hvVGREaXFvR0M4Y1hqSzdYVTRLMDhqQmNidkZDY2g0M2NwOVMtelZ2NXVLbHNuWmR4Z2tYa1EzWHRKNGNsYXl2M0Yz?oc=5"
+   },
+   "cidade": "Fortaleza"
+  },
+  {
+   "id": "f599c3696353",
+   "titulo": "Ato contra ajuste fiscal de Lula mobiliza esquerda em todo país e tem protesto em Salvador",
+   "tipo": "cobertura",
+   "uf": "BA",
+   "publicadoEm": "2026-11-17T15:45:00.000Z",
+   "fonte": {
+    "nome": "Muita Informação",
+    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNTG9uYnRZRnZlZFFrLVBnVEtmOFUybjkzTERydG5sR0U4WEZXSDUtb3poeFpzNXFMTmtNOW1kOXlLd3R0T2RUbFJnTEF6OXlfeVpHUmhqN0RldDBYRmZZMm1FRnFDWm4tTnUyUFBRR0pHajhNZExaY2lUd3JSZktBaXdab1JsQUotenp1bkxkUG9BSklPeW5GdTFZV1lKa0Zxa3QzVjVkU2x1WmpfY1N6NERJaXE2YlhaRFg2YnJPOHU0dDFXY1o4ZnZ1OA?oc=5"
+   },
+   "cidade": "Salvador"
+  },
+  {
+   "id": "a0665505ad52",
+   "titulo": "Manifestação reúne população e trabalhadores em defesa da Maternidade do Promorar, em Teresina",
+   "tipo": "cobertura",
+   "uf": "PI",
+   "publicadoEm": "2026-11-17T14:39:00.000Z",
+   "fonte": {
+    "nome": "Portal R10",
+    "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOVTZERnJIUmpMS01tTnBsdi1HczZuNXhQRUlybjBURFdjVmNfX2FtQUo1RV96NWtkWTdQdFNLZi1QTC12LXFHc0l4bENucVhmZVpvRkFFSGtMY2lreXctTV94UTdteUZ3Y0R3TWp5RlhSNTF6Z3pOSHdrNEhNRkwxdEpOUGE2Mm1aNW1yZ0UyMVZDOFZDLTBJNHJ6TDdyTlVlSDB1ell0N0Utb1lNb0JzWVg5dGpGSWNyOHdCNUEwZEkwdFpfdTNHSHpMQ1ZndFRBQzNkRUoxNk52bGfSAeABQVVfeXFMUEdLYTNzc3h3bXM4T1NCeVN1NWd3QUNPdFlNaHRRamM4SUdFMWJOLU0zdTJWdVdHOWNZUWxDQU1waW0zTWlqbk9SbEUyamZoaF9IVFJTVmZyWExVN3hRSXZwT2hyeU01d09PRXdIM0VWZm1CV25qVlFBYWFjbktRb0NnTnpDME5nMWJhLWM0UFlQV1dTV1IxSHEtREhCT1Y4bWlRTXEzbGNNczJaY1M2RzYtc2FXOHBYSVBKbldGTjJTQmhnbzZVS2tZblFNcnNMVXRYYk9ZRzRHLTA4Q1c4QTc?oc=5"
+   },
+   "cidade": "Teresina"
+  },
+  {
+   "id": "d85727e47f6a",
+   "titulo": "Sindimetrô RS convoca ato contra ajuste fiscal do governo federal",
+   "tipo": "convocacao",
+   "uf": "RS",
+   "publicadoEm": "2026-11-17T14:32:00.000Z",
+   "fonte": {
+    "nome": "Sul 21",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOM184cmZYTkR0Umx1NmVUYTV6ZzFOaEZXTG5sa3pUNjNsc0NnZEpsMWF1LTF4b3dQd3hHWV9UYm01S1JiUmticTN3V1NnNkt2ZlRoaGVtdDZKMzR6TmRocG9NWllwTVJsaTlaOTNHQWdlU2paQnZhSGpqM0JEOWlLZUV4VXRJU05tTXZiN3F2eC1OZWRQWjM3VUIxbHl5MDU3XzJqRXFTU0FqQnY5Y3E0?oc=5"
+   }
+  },
+  {
+   "id": "9f29ba74fd81",
+   "titulo": "UNE realiza atos em 13 cidades contra ajuste fiscal de Lula",
+   "tipo": "convocacao",
+   "uf": "BR",
+   "publicadoEm": "2026-11-17T11:56:59.000Z",
+   "fonte": {
+    "nome": "Poder360",
+    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS3BDM2dCbVN4S0ZwT2lJR2c4cjlqajBycFAxcWlrMFA3ZDNIVjNqYktlWS0ySGZmS3poTVFRb0V3ZDVmZFRWLUdaZ0xFcVF3MkFrUnBhWF8yWnY0UVVjbGg0dFl6WVVsUS14dTdiaU9oTlhtLWVjMGU2OGZvZG9SY185ZkctUnZROUlMWHF5ZVJUVk9zTnd1dUVDRk1KSENBUHpLMjB0Zw?oc=5"
+   },
+   "outrasFontes": [
+    {
+     "nome": "Blog do BG",
+     "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPX3pJa1FNd1pWcGRWNmlJd2g2Q0dIVi1LaUEwbTZ1bWVtbzgwdm5XUF9QeVBQOXM4T2xRTWxCMDdScFVOVFViaTZoMURkMWhmR2pFR2hiYlZsbzRqc1NzSWQ3UnAzUDIxN3Q3bDNLRFNzdm9TX2ZKMGF3cFJTUXFJakphTjNDYkc0Nzl2OU9vTDhKQnNWeHluUXFaVjdPYWRGdHJFYVl3aWVHZDdpbndKS3ZuNkN1TDYzNmhpald4c2NGTUgzUnAzdU9zWklBOEZXWGF2T2xCR09vd09sci1FRw?oc=5"
+    },
+    {
+     "nome": "Jornal GGN",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPeEFRUlFRNGIzZjRvdlZvMVJzQUNqR2dzUUowVGQ4WXRvWmlodkRnTzZleDFCSW4wVV96QXdFdTdINjlNS0FIUXhQQWNuYjBGOU5VYk1LTFNGUlR2ODZTMUtCdjFQTktRTzhKODdUMl9JNE5kdWEzaG16czNkbk1zb0t5RnFmTDlxRGVlUkhfcDN6M1pYYVNJYmFxcVVQUVBkdk90WU5Kck9sWTVmcEE?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "87e78c377526",
+   "titulo": "Ajuste fiscal leva estudantes a atos marcados na Faria Lima e pelo país",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-17T08:30:00.000Z",
+   "fonte": {
+    "nome": "UOL Notícias",
+    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQa3lzSHEtS1ZSdjB3dTYxUUVnRG9pWnBfc1l5LXMzQVFaRlVDWXVHZDFDY3JvNEx2VnpqZTJJemJJMUktRHRfWENLd2staGh0eEV4TmlLUDhqdDg4S3pycG5PME96b0hUOG5aVER1RGpWZm1hM1cyYUx6ZTZwd0NGTmpoc2s1WmtXNDd5cmlKMVg2c1FWTWZnMjVDdDduQklTNTZ4bkVZbjZoODFnTUc2aVdhU0JaZmJtSUFUbg?oc=5"
+   },
+   "cidade": "São Paulo"
+  },
+  {
+   "id": "5437e12eca0d",
+   "titulo": "Movimentos convocam manifestação em BH contra ajuste fiscal e cobram taxação dos super-ricos",
+   "tipo": "convocacao",
+   "uf": "MG",
+   "publicadoEm": "2026-11-16T21:24:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQMlo0OFJ1SG1sVHNTWXpJd0JqVTNSZEFHYlJSSmYwdE00eDRyX3JsSW9kMFNxOC1hV3BvTnhYNFU0cGZMNk5yYWc4RXZsN1hINHNmcmdubHBzT1p1dDUtdVNYYjJoOW5Ycm1UYVZOeF96djMxQWEtcmVYOUNrN1U5Und6WU56cVhhWnVNLWNNNm5USnhITl85NWdQUkJZYmtLcUYxdHJyUVhibGxBTG54WUJIMHJzS3kxODBwdml1ampobzJRSXZiMkFKdHR5ZXN5?oc=5"
+   },
+   "cidade": "Belo Horizonte"
+  },
+  {
+   "id": "62ebff966d90",
+   "titulo": "CUT e Força Sindical ficam fora de protesto contra plano Moretti no Rio",
+   "tipo": "cobertura",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-16T20:58:00.000Z",
+   "fonte": {
+    "nome": "Agenda do Poder",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTmgwTW1XNHpGczB3LXZpaHMwUjZtWW5lekNmQlZhYlNrTHFDNVVIRFlHUEFOVmtvUjRJZUtrWTN6TW1rSWNzbTd5Skh1elVObzJfNldHOWJsN0lmTXZFZ0dVWF96OWhBWFp1c3IyY1FyZjgzWjBSc0gtUkxvNkN5b194V3hWSlhNY2VNWjR4ZExuSWFmb3U4NmlmUnBmUld6NHZJ?oc=5"
+   },
+   "cidade": "Rio de Janeiro"
+  },
+  {
+   "id": "afd2e246cd19",
+   "titulo": "Marcha da Maconha em Porto Alegre denuncia racismo na política de drogas e cobra reparação",
+   "tipo": "cobertura",
+   "uf": "RS",
+   "publicadoEm": "2026-11-16T16:50:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOdVdjY2pQenFFZ2ozYkpiWFZlWUpRMnhPM3pCUWQ0LXBKalNRaGZYeUpsYTN4eHBNUHJWdFNNX01PY2U5WGE0LURsN2M4eThSbXE3TE1Vc3Q5OS1oRTZqX2hzV3VfRGM3N3FvSm9uMzBBUVJJUGk1YTBXNEhEWEg5TlhmcE1WRUEtSThVVjNIUTdmX2liMERCcDRsRHVGMlJfTEc4RkRsN3I4TVpVY25oZUdULU80OTh5c3JOSTJZM2JNWU42SDRMWWRMNFZ3T3c?oc=5"
+   },
+   "cidade": "Porto Alegre"
+  },
+  {
+   "id": "b254970cd1a4",
+   "titulo": "Por que o PSOL decidiu ir às ruas para o primeiro protesto contra Lula reeleito",
+   "tipo": "cobertura",
+   "uf": "BR",
+   "publicadoEm": "2026-11-16T15:21:00.000Z",
+   "fonte": {
+    "nome": "VEJA",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUctenhGS2tJT19FR1Y4RDB0cVVBNDVTQTlwNVZrcm9kbGxEWngyelVTV0FFbmM2TDVHV2tucDhQRXV4a1lzVUcwb3FwdkR6REdZeC1admd2TVFpTGk0SXRLQi00MGo5UEVmUGE2dldwRi1VS2lxemxIM2g0cUdTS1lDeURwMnVITW83amNqb2VaQU9sUm91QmRPcV93aVN4WWFaUC1WalVqWnVwMUZsbWRrSQ?oc=5"
+   }
+  },
+  {
+   "id": "4dd2581789d6",
+   "titulo": "PSOL convoca manifestação contra medidas econômicas do governo Lula",
+   "tipo": "convocacao",
+   "uf": "BR",
+   "publicadoEm": "2026-11-16T14:01:00.000Z",
+   "fonte": {
+    "nome": "Mídia Bahia",
+    "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBWZ01lSXFNdUxYLUR1TmY2ZnVFQ3E5LTV6VVY1VldMcjZUdVRyTzNuc2lCenpmMnJ6a19VVGhMNUFudThBTkg5a1d0NGNmT0xBX0ZkOVFtRE1ZNGVtcDZYS1FPN1IwVDJkV3NGSzBiMk5IWEVOY3ZPYUt6RGw?oc=5"
+   },
+   "outrasFontes": [
+    {
+     "nome": "Portal Salvador FM",
+     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQRDlhRzB5UG1uWmozWVdMMGpaVlByMzlpWjhtdTNqcHJhSFhQSG1yTnNDVjEwbm1vcloxdGZ5b1lYV0NmS3huWDhsanVkOXN2eEkwT0RVbmlHZk1UZmxoajdFSGNIQ0lKajkzVklqUmg0WDNzczhSWHdMTWdVdER5T2lBYTNYMDFHamlUY1ZwTE5DcGJwU2l5WmpYTGRZRUxVNEdheUR4d2NmRndjTkZPYXI0ZnJVQQ?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "27b54b904472",
+   "titulo": "Grupos de esquerda que pediram voto em Lula convocam protesto contra o ajuste fiscal em Florianópolis",
+   "tipo": "convocacao",
+   "uf": "SC",
+   "publicadoEm": "2026-11-16T00:44:00.000Z",
+   "fonte": {
+    "nome": "TopElegance",
+    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPenc2WHE5Q0ZrUFF6dm9YZFFYNmFOWVpsVXFTYXI1QUVEYUgzaUN1OVpGeXV6UEJ5LW9vU0hPelJ0R1lRX3hiRm9ieE5LNWR5ZjhCbktxc0xfbTlScFByM2hGcXBWaGdfRFFmLWI1dWd6ZFFRMldwNGsxeW1paUhHYmVWcWpldEhaVTdVZFUzN0Y1U3MtZGozV2s3MmtvQnh0V1czZk5MYWpQdlNqM2M5NHhBN0QwbkxpQTdXOWdnVk0wYVVfSDM5dWZWc1M2bm1WVVZMWk96WFY?oc=5"
+   },
+   "cidade": "Florianópolis"
+  },
+  {
+   "id": "c12c2ec10224",
+   "titulo": "Cartazes cobram proteção de Mailza e Lula às mulheres durante ato por Elyne em Rio Branco",
+   "tipo": "cobertura",
+   "uf": "AC",
+   "publicadoEm": "2026-11-14T22:27:07.000Z",
+   "fonte": {
+    "nome": "ac24horas",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOWS1LVlpsZi1VVzZzSmJmZXR2LTdQdG9yb0VmYmpzMlhHbnNoWGVab2p0SWtQcG5OdjU3clNWN1ZyMzVsa1FyMnk5MjNXX2hBY3FXM1J2M29hcjhCdW9kSERxT1dIWWpjWXpzU0RiOU1FWFVFV2l2MnYtbmZVanAtRE5ITi00bnNhZzBYREcyXzF1TU93WnA0Qi0xblY3VEFiNmk0cFZNek8xcl95Zno5NXd6bW5qakUxd2l3ZUhFSELSAcYBQVVfeXFMTXo2RWJ2UDQ1aG5hQUlEVjBfbkw5eU5qT2hpWlotb29Cb3hhdkNIRWhDNmdDNHlYdDlIUDBIYVV1RmpuR1FxY0tfRlNmZDl1ZEdoNjFwWXlvQjVYS1FHcHpHcU1GQXhoeXdvbEFVZHpiVFgzSktWTmYwMURSY1YxQjVjTlNxdDdaTnIyQWJNYmp0aDN0NGo1VmJBMlE2REp6OGhxYkZkYndfaWhad0d1TVROQnBhR253aHB2VGJLSXlRZGRKZk9n?oc=5"
+   },
+   "cidade": "Rio Branco"
+  },
+  {
+   "id": "3b166ebab19b",
+   "titulo": "Ato em Rio Branco cobra Justiça por médica Elyne e relembra falhas na proteção antes do feminicídio",
+   "tipo": "cobertura",
+   "uf": "AC",
+   "publicadoEm": "2026-11-14T21:53:59.000Z",
+   "fonte": {
+    "nome": "ac24horas",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNLWxiUHd0alNzZGJLZnZmajJxejM3eVFhRHhCZ2Q3QUZhNS04TjhQYjFDd0JDSXVwRktYWUN5RHJKQnUydmJZTHlDM0JFWFQ4aEhlNFZpdDgweVJ0YjVtSkR6RkRfcjloOGVGaFdRRDdWelRpTTRjX2hReENzRzhQUEg3V09yZHZ5QzUxR2lWX3cwbGVobzdzRWxMZlZTVlVrSjZCblhfRXROX0k4WFo2WnVMdWF5Q1B4X3lJQXZQUEdxWXRUUDI2ZHZHS1QxZ9IB0wFBVV95cUxPdlYwblZFd05zbDI1aEZhOXFUYnd1aEg2SDBVZWdJbVV5Vl9faHdzNVpFb2JLQmZiUS1CVFJmX2VBZzRvd3oybV9OdkdWOHRfb1hTNHlRSDBoYTJVbEQzTXR2X09lMDVzTlhTeGkxNGcxc2lZZjZOZXNTQ3Itbno4azBaNVJmOVFGREJpRUdvUG5QelF4Q2N0cGNiZDJfRWpScW9YRHo1RXZjaGtaMUhmdnlqSkowZmU3RndZWktLRUhoeWtIcUlpb0RnZlExV0JoQWhn?oc=5"
+   },
+   "cidade": "Rio Branco"
+  },
+  {
+   "id": "7fb46f70c9a3",
+   "titulo": "União Nacional dos Estudantes convoca manifestação contra juros altos e ajuste fiscal",
+   "tipo": "convocacao",
+   "uf": "BR",
+   "publicadoEm": "2026-11-14T21:24:06.000Z",
+   "fonte": {
+    "nome": "Hora News",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNcHJPcXlqc0hRNXJPc0VWR1JCc3RBd3llUWtwQVpQU2pYbFYwNm91b0REOFBxVFkwZDM1Y3JlVnJESTVPOTIyUmRnU1AtOEZjb1ZFMkJxVDRld0lpTk5ER1JaUjhXZ0VfV0dWa0ZzSGZ6b3E1dE9TVU15WjRMcGJPbDdscXB3ZXFFS2V1NHo2TU4waXBUeXNyelFHbTVrNnU0dW5rbjlJUnVsYjA?oc=5"
+   }
+  },
+  {
+   "id": "985f37f4b333",
+   "titulo": "Povos originários protestam em marcha no Centro de Curitiba",
+   "tipo": "cobertura",
+   "uf": "PR",
+   "publicadoEm": "2026-11-14T20:59:00.000Z",
+   "fonte": {
+    "nome": "Bem Paraná",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNeUdOMlM1R29hWjBNZC01X3FBNGM1TTBmVXV5cjFwQ0JlYjVxUkxNY1lhMko3NUJLRGcwTXVVTERESEpPRzJJZWtHSE9IQmp4VWlGVms1anVZdlpZc0lUS1hFaldpN3dkRmg1cEpKbWM2NmViUjZmbTU0ZnFvOHNUa2tuVWVwVmU2YkVaTGtB0gGTAUFVX3lxTE9EYmZmaThBMXZna2pBdUdpazZBZF9lTmVXOHpXZExHellJd0NMSmktTk5CS3djb05Qd2xPRk9MaVY5X0pLOUR3Q1ZsR2ZDaVEtMFMxYXl0Sl91dFF0c2xZQkg0YTUyNDRwZ3dzdDc2YlB3RDE4c1VPMnUzQjlaS1RmT1dWamZleTVwcS1aOUZUejQyUQ?oc=5"
+   },
+   "cidade": "Curitiba"
+  },
+  {
+   "id": "31e58d0a01eb",
+   "titulo": "‘O mercado não manda no Brasil’: UNE convoca protesto na Faria Lima contra juros altos (vídeo)",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-14T00:36:00.000Z",
+   "fonte": {
+    "nome": "Brasil 247",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWWtvdXhZNkNrYlZTLVE2VnFOaGp4ZEJQY25pdk5lM3FNN0F3Ykc2V0YzRHo3RnRYRTF5WmRsMkktcmN4SE5pMTNVamlxQXJoZHI1MjQ2ZTV5MnpVTWIwV21VWnU1YkxSa2JNSXN3SkRTN2pIU1BzNlBSZmhWYkIwdjh3d2VZbGFwWmh1amFOelZGZ0hlalVEell2QmJfQUlHOWtNeGNiajdKSUxRbzdtQ01sZlJkeU9wSTJsNE94SVc?oc=5"
+   },
+   "cidade": "São Paulo",
+   "outrasFontes": [
+    {
+     "nome": "Hora do Povo",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOTXVGNllxaVY0VzVNTHA0eGEyTjNDamN5d3RzUDNFa3UwUFJ2a2JJYnZheExxdEk0clNpcUZ2MTBXRzdnNGhqcTJJc3dzMWNFNUljdDhSWE9OdTlYQVFEbGdQTXhhaHFmdTZWYWFKc0hSTnQxOXRKOHRFT0FtbklFU0ZTQXk2cHVRQl9kV3F4aWgtQjd1ZkJDaW1ZWW9IRHEtU0VEN3ViVWppWTF6QmJacl82cm12MGNaWW9zcVBLZw?oc=5"
+    },
+    {
+     "nome": "VEJA",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdlpVdVR4NUtQUXNqWDJXSHNmWGViUXFZcTVBd3VCUDZxc1l3blluaVB6SlBqSVhYWV8xQVpDNHVtcTkxbE1GTGgyVHo1aG1TX1JqNzY4N3hLX2FQSEVpRFZNUUZ1TnhNLXE3QXZKVGZWakh0aXVlUUE4MUE5ZklZYmR6c3AxVnBEdWEwLWtMOE1MeUpNNlAtZHk2RE1GZGxicDhLdWRuS3FiRFJv?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "2f50289e4ccc",
+   "titulo": "Sintep-MT inicia assembleias e prepara Conselho de Representantes e Ato Público",
+   "tipo": "convocacao",
+   "uf": "MT",
+   "publicadoEm": "2026-11-13T20:19:00.000Z",
+   "fonte": {
+    "nome": "Sintep-MT",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPTkRMYTRDM01DdjZhamJySUlBN3ZfTUR3WHRQanRqXzc2Mmp0RHB6anF4Y29YT2FGUm1BdmNVZlV5aFNvRHpfWThHNUFqOHlQRjdJTWFFVU1VY2NiMmYzendPU01XUi01ejdLaWVfTGpWcmdQZlpfcTlIVzRjME1mYXItZ25BM0xkQW90RFk5RkVJNDRwREl5UlNaUWhDNXoxUnU2V1pPSjNsY1Rvcmlkd0pNZ2IwVEJrMUJWSmlVcWRCRUI1a2hsTVNOZ3c4SFliLXYza01xYlQwMmVvQU9HMHdFTlQtX1V2NXliTQ?oc=5"
+   }
+  },
+  {
+   "id": "2c73058d5df2",
+   "titulo": "23ª Marcha da Consciência Negra: 60 anos dos Panteras Negras marcam ação no Masp",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-13T13:32:00.000Z",
+   "fonte": {
+    "nome": "CUT-SP",
+    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxONFdqeDVFYWZSR09OcUEyNlBsTXZtT3ZCb2tQVUkzZ1JvaXBjYUZ0WEVZcjB0Ul9QdmQ4TllYNUNIY29QMjZNZ3kxSzRXN2x4SGFJY3VrZlA3Y2szTXVFdHJGSjhiVGt3UjRTdTVReHM1SXZzNUw1S1ROdWRBMUQ3QnZMX25JcFcyZzVxSlU3X2VmLUZobGZsMDd5LWJmQ2t5SUd4XzFXbEpCNERUQmtkYlVtOEk?oc=5"
+   },
+   "cidade": "São Paulo"
+  },
+  {
+   "id": "800bd64caf9d",
+   "titulo": "Câmara Municipal votará reajuste de 4,58% dos servidores em regime de urgência; SISMUC convoca categoria para ato",
+   "tipo": "convocacao",
+   "uf": "PR",
+   "publicadoEm": "2026-11-11T12:41:00.000Z",
+   "fonte": {
+    "nome": "SISMUC",
+    "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPVmZYZllMVWFoUkwyYnRVbk5xT1daUkRaN1IxU1FvUW41ZHhsQkY0azJ6Mjd0OTdoYjlibmt1M3ZvLWphdmo2VFpHcU5qRE9jVGhsTXFUa3I3OUE2NlFqQTJXelFpbnpzZzZkai1BNzJueXpSZ2pvSVNFaGJad2NIeGJWQ0JLSGVpSVhmcDU1VTF1c2RTdm9wdVd1a3BkMWJ5S293NGZGZ0VvMUR4NU00RGZrVWs5M05udm1aLTJ4c3pLb1hlTjE4b1ZPMnZwVkFfV0s1ZjFWcm4zZ0U5?oc=5"
+   },
+   "cidade": "Curitiba"
+  }
+ ]
 }
