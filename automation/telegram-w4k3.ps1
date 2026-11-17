@@ -16,6 +16,10 @@
   como num link. Sem resposta até as 12:00, o run-w4k3.ps1 -AutoPublish publica.
   /noticia [tema]  gera a notícia do dia na hora (ex.: /noticia vigilância).
 
+  VÍDEO: a cada rascunho novo, Start-Video roda %USERPROFILE%\.w4k3\video\scripts\gerar.js em segundo plano
+  (voz Piper + Remotion, só neste PC, ~2 min para 1 min de vídeo) e ele manda o vídeo aqui quando fica pronto.
+  Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento. Log em logs\video.log.
+
   Roda neste PC por long polling (sem IP público nem webhook). Com o PC dormindo, as mensagens
   esperam no Telegram (até 24 h). Configuração: install-w4k3-task.ps1 -TelegramToken "<token>".
   O token fica só em %USERPROFILE%\.w4k3\telegram.json. O primeiro chat que falar com o bot vira o dono.
@@ -87,6 +91,33 @@ function Next9h {
   return $n
 }
 
+# ---------- Vídeo da análise (video\scripts\gerar.js: Piper + Remotion, só neste PC) ----------
+$VideoDir = Join-Path $Base 'video'
+$VideoPid = Join-Path $Base 'video.pid'
+function Stop-Video {
+  if (-not (Test-Path $VideoPid)) { return }
+  $old = (Get-Content $VideoPid -Raw).Trim()
+  if ($old -and (Get-Process -Id $old -ErrorAction SilentlyContinue)) {
+    # /T derruba junto o Chrome do Remotion e o FFmpeg
+    Start-Process taskkill.exe -ArgumentList "/PID $old /T /F" -WindowStyle Hidden -Wait
+    Log "video: job $old interrompido"
+  }
+  Remove-Item $VideoPid -ErrorAction SilentlyContinue
+}
+# Gera o vídeo do rascunho atual em segundo plano; quando fica pronto, ele mesmo manda no Telegram
+function Start-Video {
+  $gerar = Join-Path $VideoDir 'scripts\gerar.js'
+  $node = Get-Command node.exe -ErrorAction SilentlyContinue
+  if (-not (Test-Path $gerar) -or -not $node -or -not (Test-Path (Join-Path $VideoDir 'node_modules'))) { return $false }
+  Stop-Video
+  $log = Join-Path $Base 'logs\video.log'
+  $p = Start-Process -FilePath $node.Source -ArgumentList @("`"$gerar`"", "`"$Draft`"", '--telegram') -WorkingDirectory $VideoDir `
+       -WindowStyle Hidden -RedirectStandardOutput $log -RedirectStandardError "$log.err" -PassThru
+  [IO.File]::WriteAllText($VideoPid, "$($p.Id)")
+  Log "video: job $($p.Id) iniciado"
+  return $true
+}
+
 function Show-Draft([switch]$daily) {
   $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
   $body = [string]$d.reflection.content
@@ -99,12 +130,13 @@ function Show-Draft([switch]$daily) {
   if ($refs.Count) { $msg += "`n— referências: $($refs -join ', ')" }
   $msg += "`n— $words palavras"
   Send $msg
+  $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 2 minutos." } else { '' }
   if ($daily) {
     $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
     $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.)`n" } else { '' }
-    Send ($note + 'Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. Sem resposta até as 12:00, publico este.') $BtnDaily
+    Send ($note + 'Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. Sem resposta até as 12:00, publico este.' + $vid) $BtnDaily
   } else {
-    Send 'Aprove ou sugira mudanças (pode só escrever o que quer mudar):' $BtnReview
+    Send ('Aprove ou sugira mudanças (pode só escrever o que quer mudar):' + $vid) $BtnReview
   }
 }
 
@@ -120,6 +152,7 @@ function Run-Runner([string[]]$runnerArgs, [string]$tag, [string]$script = $Runn
 }
 
 function Make-Draft($state, [string]$feedback) {
+  Stop-Video  # o vídeo da versão anterior ficaria velho, e libera o processador para a IA
   $req = @{ url = $state.url; direction = $state.direction }
   if ($state.daily -and (Test-Path $PautaFile)) {
     # notícia do dia: mantém a tag e o texto do RSS (para matérias com paywall)
@@ -154,6 +187,7 @@ function Make-Pauta([string]$topic, [switch]$another) {
   $topic = ($topic -replace '"', '').Trim()
   if ($topic) { $a += @('-Topic', $topic) }
   if ($another) { $a += '-Another' }
+  Stop-Video
   Save-State ([pscustomobject]@{ stage = 'drafting'; url = $null; direction = $null; daily = $true })
   $r = Run-Runner $a 'RASCUNHO'
   if ($r.ok) { Set-DailyState | Out-Null; Show-Draft -daily }
@@ -251,7 +285,7 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
@@ -277,6 +311,7 @@ function Handle([string]$text, [string]$action) {
   }
   if ($action -eq 'cancel' -or $low -in '/cancelar', 'cancelar', 'descartar') {
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
+    Stop-Video
     Remove-Item $Draft -ErrorAction SilentlyContinue
     Send 'Rascunho descartado. Mande outro link quando quiser.'; return
   }
@@ -288,6 +323,7 @@ function Handle([string]$text, [string]$action) {
     $direction = ($t.Remove($m.Index, $m.Length)).Trim()
     $state = [pscustomobject]@{ stage = 'drafting'; url = $url; direction = $direction }
     Save-State $state
+    Stop-Video
     Remove-Item $Draft -ErrorAction SilentlyContinue
     $dirMsg = if ($direction) { "Direcionamento: $direction" } else { 'Sem direcionamento (dica: escreva junto com o link o que você quer que eu destaque).' }
     Send "Recebido. Lendo a notícia e escrevendo o rascunho (uns 5 minutos)...`n$dirMsg"

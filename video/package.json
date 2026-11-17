@@ -1,0 +1,19 @@
+{
+  "name": "w4k3-video",
+  "version": "1.0.0",
+  "description": "Vídeo narrado da análise do W4K3 PR0T0C0L (Piper + Remotion, roda local)",
+  "scripts": {
+    "estudio": "remotion studio src/index.jsx",
+    "exemplo": "node scripts/gerar.js %USERPROFILE%/.w4k3/draft.json --so-props src/exemplo.json",
+    "gerar": "node scripts/gerar.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/cli": "^4.0.544",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.544"
+  },
+  "private": true
+}
