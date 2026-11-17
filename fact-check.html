@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Conexões externas liberadas só para o chatbot baixar a IA dele (jsDelivr e Hugging Face).
-       A análise do link é feita aqui e não acessa o site analisado. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co; img-src 'self' blob: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'; base-uri 'self'">
+       Links, fotos, vídeos e mensagens são analisados aqui: nada é enviado. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co; img-src 'self' blob: data:; media-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'; base-uri 'self'">
   <meta name="referrer" content="no-referrer">
   <title>FACT CHECK - DEDSEC</title>
   <link rel="stylesheet" href="css/style.css?v=5">
-  <link rel="stylesheet" href="css/fact-check.css?v=1">
+  <link rel="stylesheet" href="css/fact-check.css?v=2">
 </head>
 <body>
   <!-- BG Triangles (dynamic mesh) -->
@@ -37,17 +37,18 @@
     <div class="content-section">
       <h2 class="fc-heading">// NADA SAI DO SEU APARELHO</h2>
       <p class="feed-text">
-        A análise é feita aqui mesmo, no seu navegador, olhando só o endereço: o site suspeito
-        <strong>não é aberto</strong> e nada é enviado para nós. Os botões de consulta abrem sites
-        externos (Registro.br, Google, agências de checagem) numa nova aba, e só quando você clica.
+        Tudo é analisado aqui mesmo, no seu navegador: links, fotos, vídeos e mensagens
+        <strong>não são enviados</strong> para nós nem para ninguém, e o site suspeito não é aberto.
+        Os botões de consulta abrem sites externos (Registro.br, Google, agências de checagem) numa
+        nova aba, e só quando você clica.
       </p>
     </div>
 
-    <nav class="fc-tabs" role="tablist" aria-label="O que você quer checar">
+    <nav class="fc-tabs" id="fc-tabs" role="tablist" aria-label="O que você quer checar">
       <button type="button" class="fc-tab is-active" role="tab" aria-selected="true" aria-controls="fc-panel-link" id="fc-tab-link">LINK</button>
-      <button type="button" class="fc-tab" role="tab" aria-selected="false" disabled>IMAGEM <span class="fc-soon">EM BREVE</span></button>
-      <button type="button" class="fc-tab" role="tab" aria-selected="false" disabled>VÍDEO <span class="fc-soon">EM BREVE</span></button>
-      <button type="button" class="fc-tab" role="tab" aria-selected="false" disabled>MENSAGEM <span class="fc-soon">EM BREVE</span></button>
+      <button type="button" class="fc-tab" role="tab" aria-selected="false" aria-controls="fc-panel-imagem" id="fc-tab-imagem" tabindex="-1">IMAGEM</button>
+      <button type="button" class="fc-tab" role="tab" aria-selected="false" aria-controls="fc-panel-video" id="fc-tab-video" tabindex="-1">VÍDEO</button>
+      <button type="button" class="fc-tab" role="tab" aria-selected="false" aria-controls="fc-panel-mensagem" id="fc-tab-mensagem" tabindex="-1">MENSAGEM</button>
     </nav>
 
     <section class="content-section" id="fc-panel-link" role="tabpanel" aria-labelledby="fc-tab-link">
@@ -79,6 +80,127 @@
 
         <h3 class="fc-subheading">INVESTIGAR O SITE</h3>
         <div class="fc-links" id="fc-investigate"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="fc-panel-imagem" role="tabpanel" aria-labelledby="fc-tab-imagem" hidden>
+      <h2 class="fc-heading">ANALISAR UMA IMAGEM</h2>
+      <p class="feed-text">Foto, print ou meme. Eu leio os dados escondidos no arquivo, comparo com a miniatura que a câmera guarda e procuro retoques.</p>
+      <label class="fc-drop" id="fc-image-drop">
+        <input type="file" id="fc-image-input" accept="image/*,.heic,.heif" hidden>
+        <span class="fc-drop-main">ESCOLHER IMAGEM</span>
+        <span class="fc-drop-sub">ou arraste aqui · ou cole um print (Ctrl+V)</span>
+      </label>
+      <p class="fc-note">Dica: o WhatsApp apaga os dados escondidos. Se puder, peça a foto original "como documento".</p>
+      <p class="fc-note" id="fc-image-status" aria-live="polite"></p>
+
+      <div class="fc-result" id="fc-image-result" hidden>
+        <div class="fc-verdict" id="fc-image-verdict"></div>
+
+        <div class="fc-view-bar" id="fc-image-view-bar" hidden>
+          <button type="button" class="fc-tab is-active" id="fc-image-view-original">ORIGINAL</button>
+          <button type="button" class="fc-tab" id="fc-image-view-ela">ELA (RETOQUES)</button>
+        </div>
+        <div class="fc-canvas-wrap" id="fc-image-view"></div>
+        <p class="fc-note" id="fc-image-noview" hidden>O navegador não consegue mostrar este formato (ex.: HEIC), mas os dados do arquivo foram lidos.</p>
+        <p class="fc-note" id="fc-ela-help" hidden>
+          A ELA salva a imagem de novo e mostra onde ela mudou mais. Numa foto inteira, a textura fica parecida no
+          quadro todo. Uma área que brilha muito mais que o resto, com bordas marcadas, pode ter sido colada ou retocada.
+          Bordas, textos e partes muito claras sempre brilham mais: compare áreas parecidas, como pele com pele e céu com céu.
+        </p>
+
+        <h3 class="fc-subheading">SINAIS</h3>
+        <ul class="fc-signals" id="fc-image-signals"></ul>
+
+        <div id="fc-image-thumb" hidden>
+          <h3 class="fc-subheading">MINIATURA GUARDADA × FOTO</h3>
+          <div class="fc-thumb-pair" id="fc-image-thumb-pair"></div>
+        </div>
+
+        <h3 class="fc-subheading">DADOS DO ARQUIVO</h3>
+        <dl class="fc-facts" id="fc-image-facts"></dl>
+
+        <h3 class="fc-subheading">ONDE ELA APARECEU PRIMEIRO? (BUSCA REVERSA)</h3>
+        <p class="feed-text">Abra um dos sites e envie a imagem por lá. Procure a versão mais antiga: se ela já existia antes do fato que dizem que ela mostra, é fora de contexto.</p>
+        <div class="fc-links" id="fc-image-reverse"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="fc-panel-video" role="tabpanel" aria-labelledby="fc-tab-video" hidden>
+      <h2 class="fc-heading">ANALISAR UM VÍDEO</h2>
+      <p class="feed-text">Eu leio os dados do arquivo e separo os quadros em que a cena muda. Baixe os quadros e faça a busca reversa: a maioria dos vídeos falsos é um vídeo antigo com outra história.</p>
+      <label class="fc-drop" id="fc-video-drop">
+        <input type="file" id="fc-video-input" accept="video/*" hidden>
+        <span class="fc-drop-main">ESCOLHER VÍDEO</span>
+        <span class="fc-drop-sub">ou arraste aqui · MP4, MOV, WEBM</span>
+      </label>
+      <p class="fc-note" id="fc-video-status" aria-live="polite"></p>
+      <div class="fc-progress" id="fc-video-progress" hidden><span></span></div>
+
+      <div class="fc-result" id="fc-video-result" hidden>
+        <div class="fc-verdict" id="fc-video-verdict"></div>
+
+        <h3 class="fc-subheading">SINAIS</h3>
+        <ul class="fc-signals" id="fc-video-signals"></ul>
+
+        <div id="fc-video-frames-box" hidden>
+          <h3 class="fc-subheading">QUADROS-CHAVE</h3>
+          <p class="fc-note">Baixe um quadro e envie na busca reversa. Os arquivos são criados aqui no aparelho.</p>
+          <div class="fc-frames" id="fc-video-frames"></div>
+        </div>
+
+        <h3 class="fc-subheading">DADOS DO ARQUIVO</h3>
+        <dl class="fc-facts" id="fc-video-facts"></dl>
+
+        <h3 class="fc-subheading">BUSCA REVERSA DOS QUADROS</h3>
+        <div class="fc-links" id="fc-video-reverse"></div>
+
+        <h3 class="fc-subheading">PODE SER DEEPFAKE?</h3>
+        <ul class="fc-tips">
+          <li>Boca e dentes borrados ou que "derretem" quando a pessoa fala; voz fora do ritmo da boca.</li>
+          <li>Pele lisa demais, piscadas estranhas, brilho dos olhos diferente entre um olho e outro.</li>
+          <li>Bordas do rosto e do cabelo tremendo; óculos, brincos e mãos que mudam de forma.</li>
+          <li>Texto no fundo sem sentido; sombras e luz que não combinam com o ambiente.</li>
+          <li>Nenhum veículo sério deu? Uma fala "bombástica" de alguém famoso que só existe em um vídeo é sinal forte de montagem.</li>
+        </ul>
+        <p class="fc-note">Nenhum detector automático de deepfake é confiável o bastante para dar veredito, por isso não usamos um. O caminho mais seguro é achar o vídeo original.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="fc-panel-mensagem" role="tabpanel" aria-labelledby="fc-tab-mensagem" hidden>
+      <h2 class="fc-heading">ANALISAR UMA MENSAGEM</h2>
+      <p class="feed-text">Cole a mensagem inteira que chegou no WhatsApp, Telegram ou rede social. Eu procuro os truques de boato e de golpe, analiso os links e vejo se as agências já checaram o assunto.</p>
+      <form class="fc-form" id="fc-msg-form" autocomplete="off">
+        <label class="fc-label" for="fc-msg-input">MENSAGEM</label>
+        <textarea id="fc-msg-input" class="fc-input" rows="6" spellcheck="false"
+          placeholder="Cole aqui a mensagem que você recebeu"></textarea>
+        <div class="fc-actions">
+          <button type="submit" class="fc-btn">ANALISAR</button>
+          <button type="button" class="fc-btn fc-btn-ghost" id="fc-msg-clear" hidden>LIMPAR</button>
+        </div>
+        <p class="fc-note" id="fc-msg-status" aria-live="polite"></p>
+        <p class="fc-note" id="fc-msg-base"></p>
+      </form>
+
+      <div class="fc-result" id="fc-msg-result" hidden>
+        <div class="fc-verdict" id="fc-msg-verdict"></div>
+
+        <h3 class="fc-subheading">SINAIS</h3>
+        <ul class="fc-signals" id="fc-msg-signals"></ul>
+
+        <div id="fc-msg-links-box" hidden>
+          <h3 class="fc-subheading">LINKS NA MENSAGEM</h3>
+          <ul class="fc-msg-links" id="fc-msg-links"></ul>
+        </div>
+
+        <h3 class="fc-subheading">JÁ CHECARAM?</h3>
+        <ul class="fc-matches" id="fc-msg-matches"></ul>
+        <p class="fc-note" id="fc-msg-matches-note"></p>
+        <div class="fc-smart" id="fc-msg-smart" hidden>
+          <button type="button" class="fc-btn fc-btn-ghost" id="fc-msg-smart-btn">BUSCA INTELIGENTE (IA LOCAL)</button>
+          <p class="fc-note">Usa a mesma IA do assistente, no seu aparelho. Na primeira vez baixa cerca de 120 MB; depois fica guardada.</p>
+          <p class="fc-note" id="fc-msg-smart-status" aria-live="polite"></p>
+        </div>
       </div>
     </section>
 
@@ -230,8 +352,13 @@
   </script>
 
   <!-- Suba o ?v= a cada mudança em js/fact-check ou em data/factcheck.json. -->
-  <script src="js/fact-check/link.js?v=1" defer></script>
-  <script src="js/fact-check/page.js?v=1" defer></script>
-  <script src="js/chatbot.js" defer></script>
+  <script src="js/fact-check/link.js?v=2" defer></script>
+  <script src="js/fact-check/media-meta.js?v=1" defer></script>
+  <script src="js/fact-check/text.js?v=1" defer></script>
+  <script src="js/fact-check/ui.js?v=1" defer></script>
+  <script src="js/fact-check/page.js?v=2" defer></script>
+  <script src="js/fact-check/media-page.js?v=1" defer></script>
+  <script src="js/fact-check/message-page.js?v=1" defer></script>
+  <script src="js/chatbot.js?v=2" defer></script>
 </body>
 </html>

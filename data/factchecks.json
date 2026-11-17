@@ -1,0 +1,1457 @@
+{
+ "updatedAt": "2026-11-17T06:36:29.690Z",
+ "sources": [
+  {
+   "name": "Aos Fatos",
+   "ok": true,
+   "count": 20
+  },
+  {
+   "name": "Agência Lupa",
+   "ok": true,
+   "count": 10
+  },
+  {
+   "name": "Boatos.org",
+   "ok": true,
+   "count": 15
+  },
+  {
+   "name": "E-farsas",
+   "ok": true,
+   "count": 15
+  },
+  {
+   "name": "Fato ou Fake (g1)",
+   "ok": true,
+   "count": 100
+  },
+  {
+   "name": "Estadão Verifica",
+   "ok": true,
+   "count": 20
+  }
+ ],
+ "items": [
+  {
+   "title": "Apagão geral? O mundo vai acabar dia 17 de novembro?",
+   "link": "https://www.e-farsas.com/apagao-geral-o-mundo-vai-acabar-dia-17-de-novembro.html",
+   "source": "E-farsas",
+   "date": "2026-11-17T01:51:14.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que um apagão vai acabar com a energia global por 90 dias e trará fome e outras catástrofes para a humanidade no dia 17 de novembro de 2026? O assunto ganhou força nas redes sociais na segunda semana de novembro de 2026, sendo bastante compartilhado em grupos do…"
+  },
+  {
+   "title": "É antigo vídeo que mostra protesto contra Lula na Fórmula 1",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/16/e-antigo-video-que-mostra-protesto-contra-lula-na-formula-1",
+   "source": "Agência Lupa",
+   "date": "2026-11-17T01:15:11.000Z",
+   "rating": "ANTIGO",
+   "summary": "Post que circula nas redes sociais omite que as cenas foram gravadas em 2022"
+  },
+  {
+   "title": "Vídeos que mostram descarte de tomates não são recentes",
+   "link": "https://www.aosfatos.org/noticias/videos-que-mostram-descarte-de-tomates-nao-sao-recentes",
+   "source": "Aos Fatos",
+   "date": "2026-11-16T21:55:01.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">Vídeos que mostram o descarte de tomates não são recentes nem têm relação com a atual alta no preço do produto, como afirmam posts nas redes sociais. As peças desinformativas usam duas gravações diferentes. Uma delas foi feita na Ceasa-RJ…"
+  },
+  {
+   "title": "É falso que Flávio Dino adiou fim da escala 6 por 1",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/16/e-falso-que-flavio-dino-adiou-fim-da-escala-6-por-1",
+   "source": "Agência Lupa",
+   "date": "2026-11-16T20:30:39.000Z",
+   "rating": "FALSO",
+   "summary": "Decisão do ministro manteve prazo previsto pela lei; nova escala terá início em 16 de dezembro"
+  },
+  {
+   "title": "É #FAKE vídeo de homem que se diz 'de direita' e pede para voltar ao Brasil porque 'conta não fecha' no Paraguai",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/16/e-fake-video-de-homem-que-se-diz-de-direita-e-pede-para-voltar-ao-brasil-porque-conta-nao-fecha-no-paraguai.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-16T19:06:14.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE vídeo viral em que homem de direita reclama do Paraguai e pede para voltar ao Brasil Reprodução Voltou a circular nas redes sociais o vídeo de um homem que diz ser um brasileiro \"de direita\" vivendo no Paraguai e pede ajuda para conseguir voltar ao Brasil, após ter…"
+  },
+  {
+   "title": "É falso que Lula tenha sido flagrado com 10 dedos em foto na COP 31 na Turquia",
+   "link": "https://www.boatos.org/politica/lula-foi-flagrado-com-dez-dedos-em-foto-na-cop-31-na-turquia.html",
+   "source": "Boatos.org",
+   "date": "2026-11-16T18:29:37.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Uma imagem da COP31 na Turquia mostraria que Lula voltou a ter dez dedos, incluindo o dedo mínimo da mão esquerda, que foi amputado em um acidente de trabalho. Análise Publicações nas redes sociais compartilham uma imagem do presidente Luiz Inácio Lula da…"
+  },
+  {
+   "title": "É falso que funcionária de banco de sêmen tenha sido flagrada bebendo amostras de doadores na Califórnia",
+   "link": "https://www.boatos.org/mundo/funcionaria-de-laboratorio-de-semen-foi-flagrada-bebendo-amostras-de-doadores.html",
+   "source": "Boatos.org",
+   "date": "2026-11-16T18:28:16.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Uma funcionária de um banco de sêmen na Califórnia teria sido flagrada por câmeras de segurança bebendo amostras de doadores e acabou presa. Análise Uma história bizarra voltou a circular nas redes sociais em setembro de 2026. Publicações afirmam que uma…"
+  },
+  {
+   "title": "História que aponta que jovem foi expulso do Enem após defecar na sala com 55 alunos é falsa",
+   "link": "https://www.boatos.org/brasil/jovem-foi-expulso-do-enem-apos-defecar-na-sala-com-55-alunos.html",
+   "source": "Boatos.org",
+   "date": "2026-11-16T18:26:07.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um jovem teria sido expulso do Enem após defecar na sala de aplicação da prova, diante de outros 55 candidatos. Análise Publicações nas redes sociais afirmam que um candidato teria sido expulso do Exame Nacional do Ensino Médio (Enem) após soltar gases e…"
+  },
+  {
+   "title": "Foto de Lula com dez dedos na COP31 foi gerada por IA",
+   "link": "https://www.aosfatos.org/noticias/foto-de-lula-com-dez-dedos-na-cop31-foi-gerada-por-ia",
+   "source": "Aos Fatos",
+   "date": "2026-11-16T18:09:46.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "<p>Não é verdade que o presidente Lula (PT) foi fotografado com cinco dedos na mão esquerda durante sua participação na COP31 (Conferência das Nações Unidas sobre Mudança do Clima), na Turquia, como afirmam postagens nas redes sociais. As peças desinformativas usam uma imagem…"
+  },
+  {
+   "title": "Voto distrital misto: entenda a proposta que pode mudar o sistema eleitoral do Brasil",
+   "link": "https://www.agencialupa.org/explicador/2026/11/16/voto-distrital-misto-entenda-a-proposta-que-pode-mudar-o-sistema-eleitoral-do-brasil",
+   "source": "Agência Lupa",
+   "date": "2026-11-16T13:00:00.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Projeto altera forma que deputados e vereadores são eleitos no país; veja o que mudaria"
+  },
+  {
+   "title": "Capa da revista chamando Sérgio Moro de juiz ladrão é falsa",
+   "link": "https://www.boatos.org/politica/veja-publicou-capa-chamando-sergio-moro-de-juiz-ladrao.html",
+   "source": "Boatos.org",
+   "date": "2026-11-15T18:40:41.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Uma suposta capa da revista Veja teria chamado Sérgio Moro de “juiz ladrão” e afirmado que ele, Deltan Dallagnol e Gabriela Hardt se uniram para desviar dinheiro da União. Análise Uma imagem que circula nas redes sociais apresenta uma suposta capa da…"
+  },
+  {
+   "title": "É falso que Donald Trump e integrantes do governo tenham sido enviados às pressas para um bunker após falha na aviação dos EUA",
+   "link": "https://www.boatos.org/mundo/trump-e-integrantes-do-governo-foram-enviados-a-um-bunker-apos-falha-na-aviacao-dos-eua.html",
+   "source": "Boatos.org",
+   "date": "2026-11-15T18:39:11.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Donald Trump e integrantes de seu governo teriam sido enviados às pressas para um bunker após uma falha nos sistemas de aviação dos Estados Unidos, diante de uma suposta ameaça desconhecida. Análise Uma publicação nas redes sociais afirma que Donald Trump e…"
+  },
+  {
+   "title": "É falso que Lucas Pavanato era uma mulher trans antes de entrar para a política",
+   "link": "https://www.boatos.org/politica/lucas-pavanato-era-uma-mulher-trans-antes-de-entrar-para-a-politica.html",
+   "source": "Boatos.org",
+   "date": "2026-11-15T18:37:46.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um vídeo atribuído a Lucas Pavanato mostraria o político contando que descobriu ser uma mulher trans em 2020, antes de entrar para a política. Análise Uma publicação nas redes sociais associa a imagem de Lucas Pavanato a um relato em primeira pessoa sobre…"
+  },
+  {
+   "title": "Ao contrário do que apontam alertas, Gov.br realmente está enviando mensagens pelo WhatsApp para cadastro de e-mail de recuperação da conta",
+   "link": "https://www.boatos.org/tecnologia/mensagem-do-gov-br-no-whatsapp-para-cadastrar-e-mail-de-recuperacao-de-conta-e-golpe.html",
+   "source": "Boatos.org",
+   "date": "2026-11-14T15:47:03.000Z",
+   "rating": "VERDADEIRO",
+   "summary": "Boatos.org Boato – Mensagens atribuídas ao Gov.br que orientam usuários a cadastrar um e-mail de recuperação da conta pelo aplicativo seriam tentativas de golpe. O governo não enviaria notificações por WhatsApp para esse procedimento. Análise Publicações nas redes sociais…"
+  },
+  {
+   "title": "Vídeo que mostra Bolsonaro deixando hospital após cirurgia não é de novembro de 2026",
+   "link": "https://www.boatos.org/politica/bolsonaro-deixou-hospital-apos-retirar-lesoes-de-pele-e-foi-aplaudido-pelas-pessoas-em-novembro-de-2026.html",
+   "source": "Boatos.org",
+   "date": "2026-11-14T15:46:19.000Z",
+   "rating": "ANTIGO",
+   "summary": "Boatos.org Boato – Um vídeo mostraria Jair Bolsonaro deixando um hospital após passar por um procedimento para retirar lesões de pele e sendo recebido por apoiadores em novembro de 2026. Análise Uma publicação nas redes sociais apresenta a notícia de que Jair Bolsonaro teria…"
+  },
+  {
+   "title": "Vídeo mostra fiéis dando cambalhotas e mortais durante culto religioso em igreja é fake criado por IA",
+   "link": "https://www.boatos.org/religiao/video-mostra-fieis-dando-cambalhotas-e-mortais-durante-culto-religioso-em-igreja.html",
+   "source": "Boatos.org",
+   "date": "2026-11-14T15:45:08.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria 10 mil fiéis pulando, gritando e dando cambalhotas e mortais ao mesmo tempo durante um culto religioso em uma igreja. Análise Um vídeo que circula nas redes sociais mostra uma grande congregação em uma igreja, com milhares de pessoas…"
+  },
+  {
+   "title": "É falso que Celso Portiolli tenha demitido Tiago Barnabé por se recusar a fazer o “L” e que Ratinho tenha saído em sua defesa",
+   "link": "https://www.boatos.org/entretenimento/celso-portiolli-demitiu-tiago-barnabe-por-se-recusar-a-fazer-o-l-e-ratinho-saiu-em-sua-defesa.html",
+   "source": "Boatos.org",
+   "date": "2026-11-14T15:43:39.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Celso Portiolli teria demitido o humorista Tiago Barnabé, conhecido pela personagem Barnabela, por ele se recusar a fazer o gesto do “L”. Ratinho teria se revoltado com a decisão e brigado com o apresentador nos bastidores do SBT. Análise Um vídeo que…"
+  },
+  {
+   "title": "Vídeo de tornado foi gravado em 2024 nos EUA, não em Chapecó",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/14/video-de-tornado-foi-gravado-em-2024-nos-eua-nao-em-chapeco",
+   "source": "Agência Lupa",
+   "date": "2026-11-14T03:01:50.000Z",
+   "rating": "ANTIGO",
+   "summary": "Publicação viraliza após município catarinense ser atingido pelo fenômeno em novembro deste ano"
+  },
+  {
+   "title": "Reportagem sobre pente-fino no INSS não é atual, mas de 2016",
+   "link": "https://www.aosfatos.org/noticias/reportagem-pente-fino-inss-2016",
+   "source": "Aos Fatos",
+   "date": "2026-11-13T20:04:39.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente uma reportagem sobre um pente-fino em pagamentos do INSS (Instituto Nacional do Seguro Social) no qual aposentados receberam cobranças por cartas, diferentemente do que afirmam postagens nas redes sociais. O vídeo utilizado nas…"
+  },
+  {
+   "title": "Vídeo não mostra fila causada por bolsonaristas de saída do Paraguai",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/13/video-nao-mostra-fila-causada-por-bolsonaristas-de-saida-do-paraguai",
+   "source": "Agência Lupa",
+   "date": "2026-11-13T19:49:01.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "Gravação foi feita durante congestionamento em Ciudad del Este no feriado de 12 de outubro"
+  },
+  {
+   "title": "Fake caça-cliques aponta que ator Alexandre Borges morreu aos 60 anos em novembro de 2026",
+   "link": "https://www.boatos.org/entretenimento/alexandre-borges-morreu-aos-60-anos-em-novembro-de-2026.html",
+   "source": "Boatos.org",
+   "date": "2026-11-13T19:37:49.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Uma publicação nas redes sociais afirma que o ator Alexandre Borges morreu aos 60 anos, em 11 de novembro de 2026. Análise Uma publicação nas redes sociais anuncia a morte do ator Alexandre Borges e utiliza uma fotografia dele acompanhada das datas 23 de…"
+  },
+  {
+   "title": "Vídeo que mostra jovem levitando e sendo arremessada no chão em sala de aula é fake criada por IA",
+   "link": "https://www.boatos.org/mundo/jovem-levitou-e-foi-arremessada-por-forca-sobrenatural-em-sala.html",
+   "source": "Boatos.org",
+   "date": "2026-11-13T19:35:26.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria uma jovem levitando dentro de uma sala de aula e sendo arremessada contra o chão por uma suposta força sobrenatural. Análise Um vídeo que circula nas redes sociais mostra uma jovem aparentemente sendo levantada do chão e arremessada…"
+  },
+  {
+   "title": "História que aponta que homem ejaculou durante exame de próstata e atirou no médico depois é falsa",
+   "link": "https://www.boatos.org/mundo/homem-atirou-em-medico-apos-ejacular-em-exame-de-prostata.html",
+   "source": "Boatos.org",
+   "date": "2026-11-13T19:31:22.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um homem teria ejaculado durante um exame de próstata e atirado duas vezes contra o médico que realizou o procedimento, na Flórida, nos Estados Unidos. Análise Uma história que circula na internet afirma que um homem chamado Milo Johanson teria atirado duas…"
+  },
+  {
+   "title": "Enem não excluiu matemática para cobrar conteúdos sobre Chico Buarque e Rouanet",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/13/enem-nao-excluiu-matematica-para-cobrar-conteudos-sobre-chico-buarque-e-rouanet",
+   "source": "Agência Lupa",
+   "date": "2026-11-13T18:55:53.000Z",
+   "rating": "FALSO",
+   "summary": "Publicação ignora que o primeiro dia do Enem, em 8 de novembro, cobrou apenas redação, linguagens e ciências humanas; prova de matemática acontece no dia 15"
+  },
+  {
+   "title": "Lula não se referia a tornados em Santa Catarina quando falou que ‘o vento está levando o ódio’",
+   "link": "https://www.estadao.com.br/estadao-verifica/lula-nao-se-referia-a-tornados-ao-dizer-que-vento-esta-levando-o-odio-em-santa-catarina",
+   "source": "Estadão Verifica",
+   "date": "2026-11-13T17:38:03.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "É falso que pagamento do Pix MEI só começa em 2030",
+   "link": "https://www.aosfatos.org/noticias/pagamento-pix-mei",
+   "source": "Aos Fatos",
+   "date": "2026-11-13T17:05:39.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é verdade que a gestão de Lula (PT) tenha confirmado que o pagamento do Pix MEI só irá começar em 2030, ao contrário do que afirmam postagens nas redes sociais. A previsão é que os repasses sejam iniciados em 2027 e que os pagamentos ocorram…"
+  },
+  {
+   "title": "É de 2016 vídeo sobre cobrança de valores de aposentados pelo INSS",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/13/e-de-2016-video-sobre-cobranca-de-valores-de-aposentados-pelo-inss",
+   "source": "Agência Lupa",
+   "date": "2026-11-13T16:52:01.000Z",
+   "rating": "ANTIGO",
+   "summary": "Reportagem da Record foi exibida durante o governo Michel Temer e tratou da revisão de auxílios-acidente incorporados após 1997"
+  },
+  {
+   "title": "Foto não mostra protesto de 1 milhão de pessoas contra o governo Milei",
+   "link": "https://www.agencialupa.org/noticias/2026/11/13/foto-nao-mostra-protesto-de-1-milhao-de-pessoas-contra-o-governo-milei",
+   "source": "Agência Lupa",
+   "date": "2026-11-13T14:23:02.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "Fotografia foi registrada em 18 de dezembro de 2022, quando torcedores argentinos se reuniram em Buenos Aires para comemorar o título da Copa do Mundo"
+  },
+  {
+   "title": "Vídeo de urnas eletrônicas em ônibus não demonstra irregularidade, e sim procedimento padrão",
+   "link": "https://www.estadao.com.br/estadao-verifica/urnas-eletronicas-onibus-fraude-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-13T12:33:40.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "É falso que split payment irá tributar o Pix",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/13/e-falso-que-split-payment-ira-tributar-o-pix",
+   "source": "Agência Lupa",
+   "date": "2026-11-13T03:04:26.000Z",
+   "rating": "FALSO",
+   "summary": "Mecanismo que está em fase de teste separa o valor do imposto de uma compra entre empresas e autoridades fiscais"
+  },
+  {
+   "title": "Página caça-cliques cria fake news que aponta que Xuxa está em fase terminal",
+   "link": "https://www.boatos.org/entretenimento/xuxa-esta-doente-em-fase-terminal-e-fotos-mostram-feridas.html",
+   "source": "Boatos.org",
+   "date": "2026-11-12T22:47:28.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Xuxa Meneghel estaria em fase terminal de uma doença grave, e imagens que circulam nas redes sociais mostrariam a apresentadora com feridas pelo corpo. Análise Tem circulado nas redes sociais uma publicação que utiliza uma chamada alarmista sobre a saúde da…"
+  },
+  {
+   "title": "Não é verdade que o Papa Leão XIV contratou André Janones para comandar “Exército do Papa”",
+   "link": "https://www.boatos.org/religiao/papa-leao-xiv-contratou-janones-para-comandar-exercito-do-papa.html",
+   "source": "Boatos.org",
+   "date": "2026-11-12T22:45:14.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – O papa Leão XIV teria contratado o ex-deputado André Janones para comandar um suposto Exército do Papa, criado pelo Vaticano para mobilizar fiéis e organizar ações religiosas. Análise Um texto que circula nas redes sociais afirma que o papa Leão XIV teria…"
+  },
+  {
+   "title": "Vídeo não mostra congestionamento causado por fuga de brasileiros do Paraguai",
+   "link": "https://www.aosfatos.org/noticias/video-congestionamento-paraguai",
+   "source": "Aos Fatos",
+   "date": "2026-11-12T21:01:53.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "<p>Um vídeo que mostra uma fila de carros deixando o Paraguai em direção ao Brasil não foi gravado após a crise do Ueno Bank como afirmam postagens nas redes sociais. As peças desinformativas usam um registro feito um mês antes da crise, quando a região vivenciou um grande…"
+  },
+  {
+   "title": "Verificadores de 20 países pedem às plataformas, governos e financiadores que protejam as informações confiáveis na América Latina",
+   "link": "https://www.aosfatos.org/noticias/verificadores-de-20-paises-plataformas-governos-financiadores-informacoes-confiaveis-america-latina",
+   "source": "Aos Fatos",
+   "date": "2026-11-12T20:42:47.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p><strong>Cidade do México, 12 de novembro de 2026.</strong> A <em>LatamChequea</em>, rede de 47 organizações de verificação em 20 países, apela às plataformas tecnológicas, aos governos e aos financiadores do jornalismo para que fortaleçam a informação confiável na América…"
+  },
+  {
+   "title": "Verificadores de 20 países pedem às plataformas, governos e financiadores que protejam as informações confiáveis na América Latina",
+   "link": "https://www.agencialupa.org/institucional/2026/11/12/verificadores-de-20-paises-pedem-as-plataformas-governos-e-financiadores-que-protejam-as-informacoes-confiaveis-na-america-latina",
+   "source": "Agência Lupa",
+   "date": "2026-11-12T20:13:03.000Z",
+   "rating": "CHECAGEM",
+   "summary": "A LatamChequea apela às plataformas tecnológicas, aos governos e aos financiadores do jornalismo para que apoiem a verificação independente diante do assédio político, da desinformação e dos riscos à sua sustentabilidade"
+  },
+  {
+   "title": "É #FAKE que vídeo de trânsito no Paraguai mostre 'êxodo' bolsonarista; cena é de congestionamento do feriado de 12 de outubro",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/12/e-fake-que-video-de-transito-no-paraguai-mostre-exodo-bolsonarista-cena-mostra-congestionamento-do-feriado-de-12-de-outubro.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-12T20:11:23.000Z",
+   "rating": "FALSO",
+   "summary": "Vídeo não mostra saídade bolsonaristas do Paraguia de volta ao Brasil g1 Circula nas redes sociais uma publicação que afirma que um vídeo de carros enfileirados em um trânsito intenso representa um 'êxodo' de bolsonaristas voltando do Paraguai para o Brasil, após a crise do…"
+  },
+  {
+   "title": "Checadores de fatos de 20 países reivindicam ambiente de informações confiáveis na América Latina",
+   "link": "https://www.estadao.com.br/estadao-verifica/checadores-de-fatos-de-20-paises-reivindicam-ambiente-de-informacoes-confiaveis-na-america-latina",
+   "source": "Estadão Verifica",
+   "date": "2026-11-12T19:58:03.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Flávio Dino não adiou fim da escala 6x1 para o final de 2027",
+   "link": "https://www.aosfatos.org/noticias/flavio-dino-fim-escala-6x1",
+   "source": "Aos Fatos",
+   "date": "2026-11-12T18:45:53.000Z",
+   "rating": "FALSO",
+   "summary": "<p>Não é verdade que o ministro do STF (Supremo Tribunal Federal) Flávio Dino adiou o fim da escala 6x1 para dezembro de 2027, como afirmam publicações nas redes sociais. Apesar de entidades terem solicitado a extensão do prazo, Dino decidiu manter o calendário original, que…"
+  },
+  {
+   "title": "Vídeo não mostra Lula sendo afastado de outros presidentes na COP31",
+   "link": "https://www.aosfatos.org/noticias/video-lula-presidentes-cop31",
+   "source": "Aos Fatos",
+   "date": "2026-11-12T16:45:27.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "<p>Não é verdade que um vídeo mostra o presidente Lula (PT) sendo afastado dos demais líderes da COP31 (Conferência das Nações Unidas sobre Mudança do Clima), como sugerem publicações nas redes sociais. A gravação mostra o momento em que ele é realocado para a foto oficial.…"
+  },
+  {
+   "title": "É falso que código das urnas eletrônicas tenha desviado votos de Flávio para Lula",
+   "link": "https://www.estadao.com.br/estadao-verifica/falso-urnas-desviaram-votos-flavio-lula-eleicoes",
+   "source": "Estadão Verifica",
+   "date": "2026-11-12T16:07:59.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Ao dizer que Lulinha fiscalizará ações do governo, presidente se referiu a si mesmo, e não ao filho",
+   "link": "https://www.estadao.com.br/estadao-verifica/lula-nao-disse-que-lulinha-fiscalizara-entregas-do-governo",
+   "source": "Estadão Verifica",
+   "date": "2026-11-12T15:51:40.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Investigação sobre fazendas de IA de Aos Fatos e Democracia em Xeque subsidia decisão do TSE sobre Meta",
+   "link": "https://www.aosfatos.org/noticias/investigacao-fazendas-ia-aos-fatos-subsidia-decisao-tse-meta",
+   "source": "Aos Fatos",
+   "date": "2026-11-12T15:37:31.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>O TSE (Tribunal Superior Eleitoral) <a href=\"https://agenciabrasil.ebc.com.br/radioagencia-nacional/justica/audio/2026-11/tse-multa-meta-em-r-75-milhoes-por-descumprir-decisao-nas-eleicoes\" target=\"_blank\">multou</a> em R$ 7,5 milhões a Meta, empresa responsável pelo…"
+  },
+  {
+   "title": "É falso post em que Janones diz que bolsonarista deveria morrer queimado",
+   "link": "https://www.aosfatos.org/noticias/falso-post-janones-bolsonarista-morrer-queimado",
+   "source": "Aos Fatos",
+   "date": "2026-11-11T21:46:15.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É uma montagem o post em que o deputado federal André Janones (Rede-MG) supostamente afirma que “todo bolsonarista deveria morrer queimado”. A imagem falsa circula desde 2022, tendo sido inclusive já desmentida por <strong>Aos Fatos</strong>.…"
+  },
+  {
+   "title": "Vídeo mostra Lula sendo aplaudido no Japão em 2025, não na COP31",
+   "link": "https://www.aosfatos.org/noticias/lula-aplaudido-japao-2025-cop31",
+   "source": "Aos Fatos",
+   "date": "2026-11-11T21:07:20.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "<p style=\" margin-bottom:13px\">Não foi gravado na Turquia, mas no Japão, o vídeo em que o presidente Lula (PT) aparece sendo aplaudido ao deixar um hotel, diferentemente do que alegam posts nas redes. As imagens que agora são atribuídas à chegada do petista à COP31,…"
+  },
+  {
+   "title": "Contagem dos votos ocorre mesmo quando há interrupção na divulgação dos dados",
+   "link": "https://www.estadao.com.br/estadao-verifica/falso-golpe-urna-eletronica-paralisacao-eleicoes",
+   "source": "Estadão Verifica",
+   "date": "2026-11-11T19:34:58.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Entenda como regularizar pagamento de pedágio eletrônico sem multa; prazo termina em 16 de novembro",
+   "link": "https://www.estadao.com.br/estadao-verifica/entenda-como-regularizar-pagamento-de-pedagio-eletronico-sem-multa-prazo-termina-em-16-de-novembro",
+   "source": "Estadão Verifica",
+   "date": "2026-11-11T17:58:29.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É falso que Enem não terá questões de matemática neste ano",
+   "link": "https://www.aosfatos.org/noticias/enem-questoes-matematica",
+   "source": "Aos Fatos",
+   "date": "2026-11-11T17:44:46.000Z",
+   "rating": "FALSO",
+   "summary": "<p>Não é verdade que a matemática foi deixada de lado no Enem (Exame Nacional do Ensino Médio) para dar espaço a questões sobre Lei Rouanet e Chico Buarque. O vídeo que circula em posts com essa alegação traz comentários sobre o primeiro dia da prova, que foi focado em…"
+  },
+  {
+   "title": "Não é verdade que PF concluiu investigação de repasses de Vorcaro a ‘Dark Horse’",
+   "link": "https://www.aosfatos.org/noticias/pf-investigacao-repasses-vorcaro-dark-horse",
+   "source": "Aos Fatos",
+   "date": "2026-11-11T17:41:42.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que a PF (Polícia Federal) tenha encerrado a investigação sobre os repasses financeiros feitos por Daniel Vorcaro para a cinebiografia do ex-presidente Jair Bolsonaro (PL) a pedido do senador Flávio Bolsonaro (PL-RJ). O inquérito ainda…"
+  },
+  {
+   "title": "Falta de água em cidade do Nordeste não tem relação com o governo federal ou reeleição de Lula",
+   "link": "https://www.estadao.com.br/estadao-verifica/nordeste-sem-agua-abandono-lula-falta-contexto",
+   "source": "Estadão Verifica",
+   "date": "2026-11-11T13:55:20.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "É #FAKE que governo Lula anunciou volta do seguro DPVAT; vídeo exibe reportagem de 2024",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/11/e-fake-que-governo-lula-anunciou-volta-do-seguro-dpvat-video-exibe-reportagem-de-2024.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-11T08:00:01.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que governo Lula anunciou volta do seguro DPVAT; vídeo exibe reportagem de 2024 Reprodução Circulam nas redes sociais publicações alegando que o governo Lula (PT) anunciou o retorno, para o ano que vem, do extinto seguro obrigatório chamado Danos Pessoais por Veículos…"
+  },
+  {
+   "title": "Vídeo mostra fila para Fórmula 1, não saída de brasileiros do Paraguai",
+   "link": "https://www.aosfatos.org/noticias/fila-formula-1-saida-brasileiros-paraguai",
+   "source": "Aos Fatos",
+   "date": "2026-11-10T21:53:26.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é verdade que um vídeo que circula nas redes mostra uma multidão de brasileiros deixando o Paraguai após a crise envolvendo o Ueno Bank. A gravação foi feita em São Paulo, nas proximidades do Autódromo de Interlagos, durante o fim de semana…"
+  },
+  {
+   "title": "Trump não disse que Flávio vai assumir Presidência no lugar de Lula",
+   "link": "https://www.aosfatos.org/noticias/trump-flavio-assumir-presidencia-lula",
+   "source": "Aos Fatos",
+   "date": "2026-11-10T21:01:30.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é verdade que Donald Trump, presidente dos Estados Unidos, tenha dito que as eleições brasileiras foram “roubadas” e que Flávio Bolsonaro (PL) iria assumir a Presidência em 2027, como alegam nas redes. O único post do americano sobre o…"
+  },
+  {
+   "title": "Vídeo de protesto contra Lula na Fórmula 1 é de 2022, não de 2026",
+   "link": "https://www.aosfatos.org/noticias/protesto-contra-lula-formula-1-2022",
+   "source": "Aos Fatos",
+   "date": "2026-11-10T17:20:52.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente o vídeo que mostra um grupo de pessoas gritando “Lula ladrão, seu lugar é na prisão” durante o GP de São Paulo de Fórmula 1, como afirmam nas redes. A gravação é de novembro de 2022, quando parte do público presente no Autódromo de…"
+  },
+  {
+   "title": "É #FATO: Foto mostra papa Leão XIV segurando carne em churrasco no Uruguai; veja imagem",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/10/e-fato-foto-mostra-papa-leao-xiv-segurando-carne-em-churrasco-no-uruguai-veja-imagem.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-10T17:16:46.000Z",
+   "rating": "VERDADEIRO",
+   "summary": "É #FATO: Foto mostra papa Leão XIV segurando carne em churrasco no Uruguai Reprodução Circula nas redes sociais uma foto que mostra o papa Leão XIV segurando uma carne em um churrasco no Uruguai. É #FATO. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo Fato (Horizontal) g1 🟢…"
+  },
+  {
+   "title": "É falso que Trump ligou para Lula para dizer que pretende extraditar Flávio",
+   "link": "https://www.aosfatos.org/noticias/trump-lula-extraditar-flavio",
+   "source": "Aos Fatos",
+   "date": "2026-11-10T15:13:37.000Z",
+   "rating": "FALSO",
+   "summary": "<p>Não é verdade que o presidente americano <a href=\"https://www.aosfatos.org/noticias/?tag=donald-trump\" target=\"_blank\">Donald Trump</a> ligou para o presidente <a href=\"https://www.aosfatos.org/noticias/?tag=luiz-inacio-lula-da-silva\" target=\"_blank\">Lula</a> (PT) para…"
+  },
+  {
+   "title": "Governo Lula não proibiu crianças de assistir desenhos bíblicos na Record",
+   "link": "https://www.estadao.com.br/estadao-verifica/desenhos-biblicos-censura-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-10T12:16:32.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "É falso que votações de Lula e Flávio Bolsonaro tenham sido trocadas",
+   "link": "https://www.estadao.com.br/estadao-verifica/e-falso-que-votacoes-de-lula-e-flavio-bolsonaro-tenham-sido-trocadas",
+   "source": "Estadão Verifica",
+   "date": "2026-11-10T11:26:31.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Vídeo de homem cobrindo câmera em seção eleitoral não sugere fraude; procedimento é recomendado",
+   "link": "https://www.estadao.com.br/estadao-verifica/video-homem-corindo-camera-secao-de-votacao-nao-prova-fraude",
+   "source": "Estadão Verifica",
+   "date": "2026-11-10T10:53:17.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "Dados de um conjunto pequeno de boletins de urna não servem para estimar resultado das eleições",
+   "link": "https://www.estadao.com.br/estadao-verifica/boletins-urna-mostram-vitoria-flavio-bolsonaro-eleicoes-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-10T03:57:00.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Não há nova lei que garanta benefício do INSS a donas de casa que não contribuíram",
+   "link": "https://www.aosfatos.org/noticias/beneficio-inss-donas-casa-nao-contribuiram",
+   "source": "Aos Fatos",
+   "date": "2026-11-09T21:38:01.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" margin-bottom:13px\">Não é verdade que uma nova lei garante o pagamento mensal de R$ 1.621 a donas de casa que nunca contribuíram para o INSS (Instituto Nacional do Seguro Social), bastando comprovar baixa renda e inscrição no CadÚnico (Cadastro Único para Programas…"
+  },
+  {
+   "title": "Defesa Civil, militares e Simpsons são usados nas redes para inventar apagão mundial",
+   "link": "https://www.aosfatos.org/noticias/defesa-civil-militares-simpsons-apagao-mundial",
+   "source": "Aos Fatos",
+   "date": "2026-11-09T20:30:50.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>Na manhã desta segunda-feira (9), logo no início do trabalho, abrimos a caixa de entrada de mensagens da<em> <a href=\"https://www.aosfatos.org/fatima/\" target=\"_blank\">Fátima</a></em>, a chatbot do <strong>Aos Fatos</strong>, e lá estavam diversas pessoas perguntando: “é…"
+  },
+  {
+   "title": "É falso que governo Lula aprovou volta do DPVAT em 2027",
+   "link": "https://www.aosfatos.org/noticias/governo-lula-volta-dpvat-2027",
+   "source": "Aos Fatos",
+   "date": "2026-11-09T18:22:15.000Z",
+   "rating": "FALSO",
+   "summary": "<p>Não é verdade que o governo Lula aprovou a volta do seguro DPVAT (Danos Pessoais por Veículos Automotores Terrestres) em janeiro de 2027, como afirmam publicações nas redes sociais. As peças de desinformação compartilham uma reportagem do final de 2024, quando foi cogitado…"
+  },
+  {
+   "title": "É falso que Scarlett Johansson tenha se posicionado contra ‘desenhos com conteúdo LGBT’",
+   "link": "https://www.estadao.com.br/estadao-verifica/e-falso-que-scarlett-johansson-e-contra-criancas-assistirem-a-desenhos-com-questoes-de-genero",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T17:39:59.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Comportamento de gráfico da evolução dos votos não indica fraude na eleição",
+   "link": "https://www.estadao.com.br/estadao-verifica/grafico-eolucao-votos-eleicoes-fraude-eleitoral-falso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T16:55:45.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "Vídeo de pessoas procurando comida em caminhão de lixo em Fortaleza é de 2021",
+   "link": "https://www.estadao.com.br/estadao-verifica/video-de-pessoas-procurando-comida-em-caminhao-de-lixo-em-fortaleza-e-de-2021",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T14:50:34.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Votação baixíssima de Flávio em 3 mil urnas não é evidência de fraude eleitoral",
+   "link": "https://www.estadao.com.br/estadao-verifica/predominancia-votos-lula-secoes-nao-prova-fraude",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T14:36:08.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "Vídeo incita polêmica sobre incesto em livro que não é distribuído em escolas públicas desde 2017",
+   "link": "https://www.estadao.com.br/estadao-verifica/livro-que-aborda-incesto-nao-e-distribuido-em-escolas-publicas-desde-2017",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T12:28:12.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Áudio falso atribuído a Flávio Dino sobre ‘arruinar a economia’ volta a circular nas redes",
+   "link": "https://www.estadao.com.br/estadao-verifica/audio-falso-flavio-dino-arruinar-a-economia-volta-a-circular",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T12:13:55.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Tratado sobre democracia não permite intervenção de Trump no Brasil, diferentemente do que diz vídeo",
+   "link": "https://www.estadao.com.br/estadao-verifica/carta-democratica-nao-permite-intervencao-nas-eleicoes-brasileiras-video-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-09T12:07:04.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É #FAKE que votos de Lula nas eleições superaram total de habitantes em cidades do Brasil; vídeo foi fabricado com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/11/06/e-fake-que-votos-de-lula-nas-eleicoes-superaram-total-de-habitantes-em-cidades-do-brasil-video-foi-fabricado-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-06T22:44:14.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE que Lula teve mais votos do que o total de habitantes em cidades mencionadas em vídeo Reprodução Circula nas redes sociais um vídeo com uma suposta reportagem de TV na qual a apresentadora alega que, nas eleições de 2026, o presidente Lula (PT) teve mais votos do que…"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre postes explodindo e casa destelhada durante tornado em Chapecó; cena ocorreu nos EUA em 2024",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/06/e-fake-que-video-mostre-postes-explodindo-e-casa-destelhada-durante-tornado-em-chapeco-cena-ocorreu-nos-eua-em-2024.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-06T17:00:59.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo mostre postes explodindo e casa destelhada durante tornado em Chapecó; cena ocorreu nos EUA em 2024 Reprodução Circula nas redes sociais um vídeo que supostamente mostra postes explodindo e uma casa sendo destelhada em meio a destroços voando durante o…"
+  },
+  {
+   "title": "É #FAKE mensagem sobre 'Auxílio Reconstrução 2026'; golpe voltou a circular",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/05/e-fake-mensagem-sobre-auxilio-reconstrucao-2026-golpe-voltou-a-circular.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-05T21:03:26.000Z",
+   "rating": "GOLPE",
+   "summary": "Imagem de mensagem falsa convidando pessoas a comparilharem dados para consulta de benefício g1/Reprodução Voltou a circular no WhatsApp uma mensagem que imita os canais do governo federal e divulga um benefício chamado \"Auxílio Reconstrução 2026\", no valor de R$ 1.050, a ser…"
+  },
+  {
+   "title": "É #FAKE que cena de pessoas pegando comida em caminhão de lixo ocorreu durante governo Lula; vídeo foi gravado em 2021",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/05/e-fake-que-cena-de-pessoas-pegando-comida-em-caminhao-de-lixo-ocorreu-durante-governo-lula-video-foi-gravado-em-2021.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-05T17:26:45.000Z",
+   "rating": "ANTIGO",
+   "summary": "É #FAKE que cena de pessoas pegando comida em caminhão de lixo ocorreu durante governo Lula; vídeo foi gravado em 2021 Reprodução Circula nas redes sociais um vídeo que mostra um grupo de pessoas coletando alimentos de um caminhão de lixo. As legendas alegam que a gravação…"
+  },
+  {
+   "title": "É #FAKE que INSS vai bloquear pagamentos de benefícios a quem não cadastrar biometria até novembro de 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/05/e-fake-que-inss-vai-bloquear-pagamentos-de-beneficios-a-quem-nao-cadastrar-biometria-ate-novembro-de-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-05T08:00:01.000Z",
+   "rating": "FALSO",
+   "summary": "INSS não cancela beneficios já concedidos por falta de biometria g1 Circulam nas redes publicações alegando que o Instituto Nacional do Seguro Social (INSS) vai bloquear pagamentos de beneficiários que não atualizarem a biometria até este mês. É #FAKE. ✅ Siga o canal de Fato…"
+  },
+  {
+   "title": "É #FAKE vídeo de Lula dizendo 'para o povo trabalhador a prisão; para o bandido, a proteção'; áudio foi editado",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/04/e-fake-video-de-lula-dizendo-para-o-povo-trabalhador-a-prisao-para-o-bandido-a-protecao-audio-foi-editado.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-04T17:27:06.000Z",
+   "rating": "MONTAGEM",
+   "summary": "É #FAKE vídeo de Lula dizendo 'para o povo trabalhador, a prisão; para o bandido, a proteção' Reprodução Circula nas redes sociais um vídeo que supostamente mostra o presidente Lula (PT) dizendo \"para o povo trabalhador, a prisão; para o bandido, a proteção\". É #FAKE. ✅ Siga…"
+  },
+  {
+   "title": "Vídeo mostra urna eletrônica votando sozinha! Será verdade?",
+   "link": "https://www.e-farsas.com/video-mostra-urna-eletronica-votando-sozinha-sera-verdade.html",
+   "source": "E-farsas",
+   "date": "2026-11-03T23:21:09.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Equipamento aparece em vídeo funcionando e adicionando votos sozinha! Será que essa é uma prova de fraude nas eleições? O vídeo de poucos segundos de duração foi bastante compartilhado no final de outubro e começo de novembro de 2026 e mostra uma seção eleitoral vazia, com…"
+  },
+  {
+   "title": "É #FAKE vídeo de bebê rindo após beijar estátua humana; cena foi fabricada com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/03/e-fake-video-de-bebe-rindo-apos-beijar-estatua-humana-cena-foi-fabricada-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-03T20:28:28.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE vídeo de bebê rindo após dar beijo em estátua humana Reprodução Circula nas redes sociais um vídeo que supostamente mostra um bebê se aproximando e beijando uma estátua humana pintada de dourado. A artista, então, abre os olhos e sorri junto com a criança. É #FAKE. ✅…"
+  },
+  {
+   "title": "É #FAKE que foto de avião prestes a atingir o solo mostre acidente com jatinho nos EUA; imagem foi feita com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/03/e-fake-que-foto-de-aviao-prestes-a-atingir-o-solo-mostre-acidente-com-jatinho-nos-eua-imagem-foi-feita-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-03T18:20:22.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE que foto de avião prestes a se chocar contra o solo mostre acidente com jatinho nos EUA; imagem foi manipulada com IA Reprodução Circula nas redes sociais uma foto que supostamente mostraria o avião que caiu neste domingo (dia 1º) na Flórida, nos Estados Unidos,…"
+  },
+  {
+   "title": "É #FAKE que Lula anunciou corte de R$ 6 bilhões na Saúde e na Educação após eleição de 2026; vídeo foi exibido no ano retrasado",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/30/e-fake-que-lula-anunciou-corte-de-r-6-bilhoes-na-saude-e-na-educacao-apos-eleicao-de-2026-video-foi-exibido-no-ano-retrasado.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-30T21:33:03.000Z",
+   "rating": "FALSO",
+   "summary": "Não houve anúncio de corte de gastos g1 Circulam nas redes sociais publicações alegando que o governo Lula (PT) anunciou um corte \"de quase R$ 6 bilhões\" na Saúde e na Educação após a vitória sobre Flávio Bolsonaro (PL) no segundo turno das eleições 2026. É #FAKE. Selo Fake…"
+  },
+  {
+   "title": "É #FAKE que governo federal recuou sobre fim da escala 6x1 após vitória de Lula no segundo turno das eleições 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/29/e-fake-que-governo-federal-recuou-sobre-fim-da-escala-6x1-apos-vitoria-de-lula-no-segundo-turno-das-eleicoes-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-29T20:02:21.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que governo federal tenha recuado sobre o fim da 6x1 Reprodução Circula nas redes sociais um post alegando que o governo federal, depois da vitória do presidente Lula (PT) sobre Flávio Bolsonaro (PL) no segundo turno das eleições 2026, teria recuado sobre o fim da…"
+  },
+  {
+   "title": "É #FAKE que governo Lula 'bloqueou' Gás do Povo e Bolsa Família após eleições de 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/29/e-fake-que-governo-lula-bloqueou-gas-do-povo-e-bolsa-familia-apos-eleicoes-de-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-29T18:52:54.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Bolsa Família e Vale Gás foram bloqueados Reprodução Circulam nas redes sociais posts sugerindo que o governo federal bloqueou os programas Gás do Povo e Bolsa Família. É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo Fake (Horizontal) g1 🔴 Como são os…"
+  },
+  {
+   "title": "É #FAKE que vídeo de veículo transportando urnas após transmissão de votos indica fraude na apuração",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/28/e-fake-que-video-de-veiculo-transportando-urnas-apos-transmissao-de-votos-indica-fraude-na-apuracao.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-28T19:56:43.000Z",
+   "rating": "GOLPE",
+   "summary": "É #FAKE que vídeo de motorista a serviço da Justiça Eleitoral revele inconsistência na apuração de urnas Reprodução Circula nas redes sociais o vídeo de um motorista a serviço da Justiça eleitoral sentado ao volante do veículo e gravando urnas eletrônicas no porta-malas. Ao…"
+  },
+  {
+   "title": "Um padre foi morto por um crucifixo depois de roubar 2 milhões em esmolas?",
+   "link": "https://www.e-farsas.com/um-padre-foi-morto-por-um-crucifixo-depois-de-roubar-2-milhoes-em-esmolas.html",
+   "source": "E-farsas",
+   "date": "2026-10-28T19:35:30.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Padre teria morrido ao ser atingido por uma cruz como castigo divino após tentar escapar com 2 milhões de doações feitas à sua paróquia. Será verdade? A alegação surgiu nas redes sociais no final de outubro de 2026, sendo bastante compartilhada principalmente em inglês e…"
+  },
+  {
+   "title": "É #FAKE que reportagem mostrou plano de Lula para encerrar Bolsa Família após 2º turno; vídeo de 2025 citou mudanças no programa",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/28/e-fake-que-reportagem-mostrou-plano-de-lula-para-encerrar-bolsa-familia-apos-2o-turno-video-de-2025-citou-mudancas-no-programa.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-28T14:20:59.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que reportagem citou plano de Lula para acabar com Bolsa Família após 2º turno; vídeo de 2025 relatou mudanças no programa Reprodução Circulam nas redes sociais publicações com um vídeo de uma reportagem supostamente relatando que, após a vitória no segundo turno das…"
+  },
+  {
+   "title": "É #FAKE que vereadora do PT morreu após ataque em ato pró-Lula em Montes Claros (MG); ela teve alta e votou no dia seguinte",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/27/e-fake-que-vereadora-do-pt-morreu-apos-ataque-em-ato-pro-lula-em-montes-claros-mg-ela-teve-alta-e-votou-no-dia-seguinte.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-27T22:22:52.000Z",
+   "rating": "FALSO",
+   "summary": "Vereadora de Montes Claros atingida por pedra não morreu g1 Circulam nas redes sociais publicações afirmando que Iara Pimentel (PT), vereadora em Montes Claros (MG), morreu após ter sido atingida na cabeça por garrafas, pedras e tijolos durante um ato em favor de Lula (PT) na…"
+  },
+  {
+   "title": "É #FAKE que vídeo de Flávio Bolsonaro chorando foi divulgado após derrota para Lula no segundo turno da eleição",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/27/e-fake-que-video-de-flavio-bolsonaro-chorando-foi-divulgado-apos-derrota-para-lula-no-segundo-turno-da-eleicao.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-27T18:24:41.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo de Flávio Bolsonaro chorando foi divulgado após derrota para Lula no segundo turno da eleição Reprodução Circula nas redes sociais um vídeo que supostamente mostraria Flávio Bolsonaro (PL) chorando após a derrota para Lula (PT) no segundo turno das eleições,…"
+  },
+  {
+   "title": "Os votos feitos depois das 17h deram a vitória para o Lula?",
+   "link": "https://www.e-farsas.com/os-votos-feitos-depois-das-17h-deram-a-vitoria-para-o-lula.html",
+   "source": "E-farsas",
+   "date": "2026-10-26T15:18:10.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que os votos feitos após às 17h do dia 25 de outubro de 2026 foram decisivos para a vitória do presidente Lula? A alegação começou a se espalhar nas redes sociais e em grupos de WhatsApp após a totalização da contagem dos votos do segundo turno das eleições…"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre celebração em presídio por vitória de Lula; cena exibe festa após gol do Santa Cruz em 2022",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/26/e-fake-que-video-seja-celebracao-em-presidio-por-vitoria-de-lula-cena-exibe-festa-apos-gol-do-santa-cruz-em-2022.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-26T12:50:36.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo seja celebração em presídio por vitória de Lula; cena exibe festa após gol do Santa Cruz em 2022 Reprodução Circula nas redes sociais um vídeo que supostamente mostra uma comemoração em um presídio pela vitória de Lula (PT) neste domingo (25). É #FAKE. ✅…"
+  },
+  {
+   "title": "É #FAKE que assinatura de eleitor em caderno de votação pode servir para comprovar eventual fraude nas urnas",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/25/e-fake-que-assinatura-de-eleitor-em-caderno-de-votacao-pode-servir-para-comprovar-eventual-fraude-nas-urnas.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-25T22:05:46.000Z",
+   "rating": "GOLPE",
+   "summary": "É #FAKE que assinar caderno de votação garante futuras auditorias Reprodução Circula nas redes sociais o vídeo de uma mulher recomendando que eleitores assinem o caderno de votação nas eleições para garantir a comprovação do voto e evitar eventuais fraudes nas urnas. É #FAKE.…"
+  },
+  {
+   "title": "É #FAKE foto de mulher rasgando bandeira de Nossa Senhora Aparecida em ato de apoio a Flávio Bolsonaro; cena foi criada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/25/e-fake-foto-de-mulher-rasgando-bandeira-de-nossa-senhora-aparecida-em-ato-de-apoio-a-flavio-bolsonaro-cena-foi-criada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-25T19:55:00.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE foto de mulher rasgando bandeira de Nossa Senhora Aparecida em ato de apoio a Flávio Bolsonaro; cena foi criada com IA Reprodução Circula nas redes sociais uma foto que supostamente mostra uma manifestante rasgando uma bandeira de Nossa Senhora Aparecida durante o ato…"
+  },
+  {
+   "title": "#NÃOÉBEMASSIM: Eleitor deve avisar mesário se alguém votar em seu lugar, mas investigação do caso cabe à própria Justiça Eleitoral",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/25/naoebemassim-eleitor-deve-avisar-mesario-se-alguem-votar-em-seu-lugar-mas-investigacao-do-caso-cabe-a-propria-justica-eleitoral.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-25T18:27:47.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Post mistura procedimentos pertinentes e irregulares, caso o eleitor seja notificado, na seção eleitoral, do registro prévio do voto g1 Circulam nas redes sociais mensagens e vídeos que orientam os eleitores a adotarem medidas na seção eleitoral — como exigir que o presidente…"
+  },
+  {
+   "title": "É #FAKE que todos os voos da Gol do Sul para o Nordeste foram cancelados no sábado antes do 2° turno",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/25/e-fake-que-todos-os-voos-da-gol-do-sul-para-o-nordeste-foram-cancelados-no-sabado-antes-do-2-turno.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-25T18:16:01.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que todos os voos da Gol do Sul para o Nordeste foram cancelados no sábado antes do 2° turno Reprodução Circulam nas redes sociais publicações alegando que todos os voos da Gol do Sul para o Nordeste deste sábado (24), um dia antes da votação do segundo turno das…"
+  },
+  {
+   "title": "É #FAKE que Flávio Bolsonaro fez o 'L' durante debate da Globo; imagem foi fabricada com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/24/e-fake-que-flavio-bolsonaro-fez-o-l-durante-debate-da-globo-imagem-foi-fabricada-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-24T06:22:56.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Flávio Bolsonaro 'fez o L' durante o debate da Globo Reprodução Circula nas redes sociais uma imagem que supostamente mostra o candidato à Presidência Flávio Bolsonaro (PL) fazendo um \"L\" com as mãos durante o debate da Globo, realizado na noite desta sexta-feira…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas falas de Flávio Bolsonaro e Lula no debate da Globo no 2º turno das eleições 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/23/veja-o-que-e-fato-ou-fake-nas-falas-de-flavio-bolsonaro-e-lula-no-debate-da-globo-no-2o-turno-das-eleicoes-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-24T01:15:31.000Z",
+   "rating": "FALSO",
+   "summary": "Flávio Bolsonaro e Lula no estúdio do debate desta sexta-feira (23) Globo/Manoella Mello O Fato ou Fake, serviço de checagens do Grupo Globo, preparou uma cobertura especial para verificar as declarações feitas pelos candidatos Flávio Bolsonaro (PL) e Lula (PT) durante o…"
+  },
+  {
+   "title": "Fato ou Fake: veja como enviar sugestões, participar do canal no WhatsApp e seguir nas redes sociais",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/23/fato-ou-fake-veja-como-enviar-sugestoes-participar-do-canal-no-whatsapp-e-seguir-nas-redes-sociais.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-23T22:01:18.000Z",
+   "rating": "FALSO",
+   "summary": "Banner Fato ou Fake Editoria de Arte/g1 O Fato ou Fake, serviço de checagem do Grupo Globo, foi lançado em 30 de julho de 2018. Participam da apuração equipes de g1, \"O Globo\", \"Extra\", \"Valor\", CBN, GloboNews e TV Globo. Jornalistas fazem um monitoramento diário para…"
+  },
+  {
+   "title": "Fato ou Fake existe desde 2018; conheça o histórico do serviço de checagens do Grupo Globo",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/23/fato-ou-fake-existe-desde-2018-conheca-o-historico-do-servico-de-checagens-do-grupo-globo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-23T15:29:36.000Z",
+   "rating": "FALSO",
+   "summary": "Fato ou Fake existe desde 2018; conheça o histórico do serviço de checagens do Grupo Globo O Fato ou Fake, serviço de checagem do Grupo Globo, reúne jornalistas de sete Redações: TV Globo, g1, GloboNews, \"O Globo\", \"Valor Econômico\", \"Extra\" e CBN. Criada em julho de 2018, a…"
+  },
+  {
+   "title": "Fato ou Fake: entenda como funcionam as checagens e o trabalho da equipe",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/22/fato-ou-fake-entenda-como-funcionam-as-checagens-e-o-trabalho-da-equipe.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-23T00:35:49.000Z",
+   "rating": "FALSO",
+   "summary": "Fato ou Fake existe desde 2018; conheça o histórico do serviço de checagens do Grupo Globo Lançado em 2018, O Fato ou Fake, serviço de checagem do Grupo Globo, reúne profissionais das sete Redações: TV Globo, g1, GloboNews, \"O Globo\", \"Valor Econômico\", \"Extra\" e CBN e foi…"
+  },
+  {
+   "title": "#FATO, #FAKE e #NÃOÉBEMASSIM: Entenda selos usados pelo Fato ou Fake nas checagens de debates e entrevistas em eleições",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/22/fato-fake-e-naoebemassim-entenda-selos-usados-pelo-fato-ou-fake-nas-checagens-de-debates-e-entrevistas-em-eleicoes.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-22T22:32:37.000Z",
+   "rating": "FALSO",
+   "summary": "Saiba como o Fato ou Fake checará declarações dos candidatos no debate da Globo O Fato ou Fake, serviço de checagens do Grupo Globo, preparou uma cobertura especial para verificar as declarações feitas pelos candidatos Flávio Bolsonaro (PL) e Lula (PT) durante o debate da TV…"
+  },
+  {
+   "title": "Fato ou Fake: reveja as checagens das entrevistas de Flávio Bolsonaro e Lula e do debate da Band",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/22/fato-ou-fake-reveja-as-checagens-das-entrevistas-de-flavio-bolsonaro-e-lula-e-do-debate-da-band.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-22T16:58:48.000Z",
+   "rating": "FALSO",
+   "summary": "\"Fato ou Fake\" fará checagens das falas dos candidatos à presidência durante o debate O Fato ou Fake, serviço de checagens do Grupo Globo, verificou declarações dos candidatos Flávio Bolsonaro (PL) e Lula (PT) nas entrevistas à TV Globo e no debate da Band, no domingo (18).…"
+  },
+  {
+   "title": "Saiba como o Fato ou Fake checará declarações dos candidatos no debate de 2⁰ turno da Globo",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/22/saiba-como-o-fato-ou-fake-checara-declaracoes-dos-candidatos-no-debate-de-2-turno-da-globo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-22T16:42:25.000Z",
+   "rating": "FALSO",
+   "summary": "\"Fato ou Fake\" fará checagens das falas dos candidatos à presidência durante o debate O Fato ou Fake, serviço de checagem do Grupo Globo, preparou uma cobertura especial para verificar as declarações dos candidatos Lula (PT) e Flávio Bolsonaro (PL) durante o debate da TV…"
+  },
+  {
+   "title": "O vídeo do cachorro lambendo um churrasquinho grego é real?",
+   "link": "https://www.e-farsas.com/o-video-do-cachorro-lambendo-um-churrasquinho-grego-e-real.html",
+   "source": "E-farsas",
+   "date": "2026-10-22T11:13:48.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Será que o flagrante de um cachorro lambendo a pilha de carne de uma banca de churrasquinho grego é verdadeiro ou falso? As imagens surgiram nas redes sociais na segunda quinzena de outubro de 2026 e mostram um cachorro de rua se deliciando em uma barraca de churrasquinho…"
+  },
+  {
+   "title": "É #FAKE vídeo de Brizola associando Jair Bolsonaro a milícias; material foi adulterado com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/21/e-fake-video-de-brizola-associando-jair-bolsonaro-a-milicias-material-foi-adulterado-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-21T18:30:20.000Z",
+   "rating": "MONTAGEM",
+   "summary": "É #FAKE vídeo de Brizola associando Jair Bolsonaro às milícias; material foi adulterado com IA Reprodução Circula nas redes sociais um vídeo que supostamente mostra Leonel Brizola (1922-2004) associando o ex-presidente Jair Bolsonaro (PL) a milícias. É #FAKE. ✅ Siga o canal…"
+  },
+  {
+   "title": "É #FAKE vídeo de bandeira da Palestina erguida no topo da Torre Eiffel; cena foi criada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/21/e-fake-video-de-bandeira-da-palestina-erguida-no-topo-da-torre-eiffel-cena-foi-criada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-21T03:00:01.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo de bandeira da Palestina erguida no topo da Torre Eiffel; cena foi criada com IA Reprodução Circula nas redes sociais um vídeo que supostamente mostra as bandeiras da Palestina e da Jordânia erguidas no topo da Torre Eiffel, na França, por manifestantes. É…"
+  },
+  {
+   "title": "É #FATO: vídeo mostra turistas empurrando malas em meio a protestos em Paris; assista",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/20/e-fato-video-mostra-turistas-empurrando-malas-em-meio-a-protestos-em-paris-assista.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-20T14:43:04.000Z",
+   "rating": "VERDADEIRO",
+   "summary": "É #FATO: vídeo mostra turistas empurrando malas em meio a protestos em Paris Circula nas redes sociais um vídeo que mostra duas mulheres empurrando malas em meio a uma manifestação em Paris, na França. Nas imagens, aparecem pessoas vestidas de preto e fumaça espalhada pela…"
+  },
+  {
+   "title": "É #FAKE que mesários podem votar no lugar de eleitores ausentes após as 17h",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/20/e-fake-que-mesarios-podem-votar-no-lugar-de-eleitores-ausentes-apos-as-17h.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-20T03:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que mesários possam votar no lugar de eleitores ausentes após as 17h Reprodução Circula nas redes sociais um vídeo em que um homem afirma que mesários poderiam registrar votos em nome de eleitores que não compareceram às urnas após as 17h. Ele questiona os…"
+  },
+  {
+   "title": "É #FAKE imagem que mostra 'Pantera Cor-de-Rosa' em protesto em Paris; cenas foram criadas com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/20/e-fake-imagem-que-mostra-pantera-cor-de-rosa-em-protesto-em-paris-cenas-foram-criadas-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-20T03:00:00.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE imagem de Pantera Cor-de-Rosa nos protestos em Paris; imagem foi criada com IA Reprodução Circulam nas redes sociais imagens que supostamente mostram uma pessoa fantasiada de Pantera Cor-de-Rosa durante os protestos em Paris, na França. É FAKE. ✅ Siga o canal de Fato…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas falas de Flávio Bolsonaro e Lula no debate da Band no 2º turno das eleições 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/19/veja-o-que-e-fato-ou-fake-nas-falas-de-flavio-bolsonaro-e-lula-no-debate-da-band-no-2o-turno-das-eleicoes-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-19T12:54:48.000Z",
+   "rating": "FALSO",
+   "summary": "Flávio Bolsonaro e Lula em debate na Band Renato Pizzutto/Band Os candidatos Flávio Bolsonaro (PL) e Lula (PT) participaram, neste domingo (18), de um debate do 2º turno da eleição presidencial organizado pelo Grupo Bandeirantes, em um pool formado por TV Gazeta, TV Cultura,…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de Flávio Bolsonaro à Globo no 2º turno das eleições 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/16/veja-o-que-e-fato-ou-fake-na-entrevista-de-flavio-bolsonaro-a-globo-no-2o-turno-das-eleicoes-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-17T01:44:47.000Z",
+   "rating": "FALSO",
+   "summary": "Flávio Bolsonaro (PL) já está na bancada para ser entrevistado por Renata Lo Prete. Globo/ Manoella Mello O candidato à Presidência da República Flávio Bolsonaro (PL) foi entrevistado nesta sexta-feira (16) pela TV Globo. Conduzida pela jornalista Renata Lo Prete diretamente…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de Lula à Globo no 2º turno das eleições 2026",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/15/veja-o-que-e-fato-ou-fake-na-entrevista-de-lula-a-globo-no-2o-turno-das-eleicoes-2026.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-16T02:09:53.000Z",
+   "rating": "FALSO",
+   "summary": "Lula dá entrevista ao JN Manuella Mello/Globo O presidente Lula (PT), candidato à reeleição, foi entrevistado nesta quinta-feira (15) pela TV Globo. Conduzida pela jornalista Renata Lo Prete diretamente dos Estúdios Globo, no Rio, e exibida ao vivo logo após o Jornal…"
+  },
+  {
+   "title": "#NÃOÉBEMASSIM: Bolsa Família teve reajuste maior que do salário mínimo em 2026, mas não supera aumento dos últimos três anos",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/15/naoebemassim-bolsa-familia-teve-reajuste-maior-que-do-salario-minimo-em-2026-mas-nao-supera-aumento-dos-ultimos-tres-anos.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-15T08:00:00.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Bolsa Família não teve reajuste maior que salário mínimo nos últimos 3 anos g1 Circulam nas redes sociais publicações alegando que o governo Lula (PT) deu mais de 15% de reajuste para o Bolsa Família, mas corrigiu em apenas 6% o salário mínimo. #NÃOÉBEMASSIM. ✅ Siga o canal…"
+  },
+  {
+   "title": "É #FAKE foto de Renan Santos fazendo o 'L' em apoio a Lula; imagem foi fabricada com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/14/e-fake-foto-de-renan-santos-fazendo-o-l-em-apoio-a-lula-imagem-foi-fabricada-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-14T19:42:34.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE foto de Renan Santos fazendo gesto de apoio a Lula com os dedos; imagem foi criada com IA Reprodução Circula nas redes sociais uma foto de Renan Santos (Missão) fazendo o \"L\" com os dedos indicador e polegar, para demonstrar apoio ao presidente Lula (PT). É #FAKE. ✅…"
+  },
+  {
+   "title": "Artigo de opinião de 2025 acusando ‘golpe de Estado no STF’ circula como se fosse recente",
+   "link": "https://www.estadao.com.br/estadao-verifica/artigo-de-opiniao-de-2025-acusando-golpe-de-estado-no-stf-circula-como-se-fosse-recente",
+   "source": "Estadão Verifica",
+   "date": "2026-10-14T18:13:25.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre luta entre professor de filosofia da USP e policial da Rota; cenas foram gravadas no México em 2024",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/14/e-fake-que-video-mostre-luta-entre-professor-de-filosofia-da-usp-e-policial-da-rota-cenas-foram-gravadas-no-mexico-em-2024.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-14T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo mostre luta entre professor de filosofia e policial da Rota em 2026; cenas foram gravadas no México em 2024 Reprodução Circula nas redes sociais o vídeo de uma briga entre dois homens que, segundo a descrição, seriam um professor de filosofia da Universidade…"
+  },
+  {
+   "title": "Um candidato chamado Hitler Mussolini foi eleito prefeito no Peru?",
+   "link": "https://www.e-farsas.com/um-candidato-chamado-hitler-mussolini-foi-eleito-prefeito-no-peru.html",
+   "source": "E-farsas",
+   "date": "2026-10-14T01:31:06.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que o candidato chamado Hitler Mussolini venceu as eleições municipais de uma cidade peruana? A alegação surgiu nas redes sociais na segunda semana de outubro de 2026, sendo bastante compartilhada em sites de vídeos curtos, como o TikTok. Segundo o que foi…"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre 'ritual de invocação' durante manifestação pró-Lula na Paulista; cena exibe Marcha para Exu em agosto",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/13/e-fake-que-video-mostre-ritual-de-invocacao-durante-manifestacao-pro-lula-na-paulista-cena-exibe-marcha-para-exu-em-agosto.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-13T18:16:59.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo mostre 'ritual de invocação' durante ato pró-Lula na Paulista Reprodução Circula nas redes sociais um vídeo que supostamente mostraria um \"ritual de invocação de Satanás\" realizado durante a manifestação a favor do presidente Lula (PT), candidato à…"
+  },
+  {
+   "title": "É #FAKE foto de mulher limpando pichação em estação de Metrô após ato de Lula na Paulista; imagem foi manipulada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/13/e-fake-foto-de-mulher-limpando-pichacao-em-estacao-de-metro-apos-ato-de-lula-na-paulista-imagem-foi-manipulada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-13T14:32:12.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE foto de trabalhadora limpando pichações de Metrô na Paulista após ato pró-Lula; imagem foi manipulada com IA Reprodução Circula nas redes sociais uma foto que supostamente mostra uma funcionária do Metrô de São Paulo limpando pichações no vidro da área externa de uma…"
+  },
+  {
+   "title": "É #FAKE que vídeo de mulher com suposta substância ilícita seja de ato pró-Lula na Paulista",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/12/e-fake-que-video-de-mulher-com-suposta-substancia-ilicita-seja-de-ato-pro-lula-na-paulista.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-12T22:59:53.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo de mulher com suposta substância ilícita seja de ato pró-Lula na Paulista Circula nas redes sociais um vídeo que mostra uma manifestante supostamente consumindo uma substância ilícita no que seria o ato pró-Lula na Avenida Paulista, em São Paulo, no último…"
+  },
+  {
+   "title": "É #FAKE que Lula disse 'mulher é que nem milho'",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/09/e-fake-que-lula-disse-mulher-e-que-nem-milho.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-09T22:45:43.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Lula disse que 'mulher é que nem milho' Reprodução Circula nas redes sociais uma imagem que imita uma reportagem do g1 e exibe o título \"Lula: 'Mulher é que nem milho, nasceu pelinho já pode comer'\". É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo Fake…"
+  },
+  {
+   "title": "É #FAKE que amostras de sangue coletadas na Pesquisa Nacional de Saúde servem para governo criar 'banco de DNA' estatal",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/09/e-fake-que-amostras-de-sangue-coletadas-na-pesquisa-nacional-de-saude-servem-parar-governo-criar-banco-de-dna-estatal.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-09T20:42:16.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Pesquisa Nacional de Saúde, realizada pelo IBGE, busca criar banco de DNA estatal Reprodução Circula nas redes sociais uma publicação alegando que a Pesquisa Nacional de Saúde 2026, realizada pelo Instituto Brasileiro de Geografia e Estatística (IBGE), serve para…"
+  },
+  {
+   "title": "É #FAKE vídeo de Flávio Bolsonaro dizendo que, se eleito, vai cortar 13° e aposentadorias; fala foi manipulada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/08/e-fake-video-de-flavio-bolsonaro-dizendo-que-se-eleito-vai-cortar-13-e-aposentadorias-fala-foi-manipulada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-08T21:41:08.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo de Flávio Bolsonaro dizendo que vai cortar 13° salário e aposentadorias; fala foi manipulada com IA Reprodução Circula nas redes sociais um vídeo que supostamente mostra o candidato à Presidência da República Flávio Bolsonaro (PL) dizendo que, se eleito, vai…"
+  },
+  {
+   "title": "É #FAKE SMS que manda regularizar título antes do 2º turno e indica site que cobra PIX de R$ 13,54",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/08/e-fake-sms-que-manda-regularizar-titulo-antes-do-2o-turno-e-indica-site-que-cobra-pix-de-r-1354.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-08T19:53:26.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE SMS que manda regularizar título antes do 2º turno e indica site falso que cobra pix de R$ 13,54 Reprodução Uma mensagem enviada por SMS em nome do governo federal alega que o usuário tem de regularizar o título de eleitor antes do segundo turno das eleições de 2026,…"
+  },
+  {
+   "title": "É #FAKE foto de eleitores com tornozeleira eletrônica e roupa vermelha em fila para votar na eleição; imagem foi feita com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/07/e-fake-foto-de-eleitores-com-tornozeleira-eletronica-e-roupa-vermelha-em-fila-para-votar-na-eleicao-imagem-foi-feita-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-07T19:43:36.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE foto de eleitores vestidos de vermelho com tornozeleira eletrônica; trata-se de IA Reprodução Circula nas redes sociais uma foto que supostamente mostraria pessoas usando tornozeleiras eletrônicas e roupas vermelhas enquanto aguardavam em uma fila de votação nas…"
+  },
+  {
+   "title": "É #FAKE que distribuição de panfletos do PT em Santa Catarina ocorreu porque partido deu ordem aos Correios",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/07/e-fake-que-distribuicao-de-panfletos-do-pt-em-santa-catarina-ocorreu-porque-partido-deu-ordem-aos-correios.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-07T18:06:21.000Z",
+   "rating": "FALSO",
+   "summary": "Publicações omitem que entrega de material eleitoral pelos Correios ocorre de maneira legalizada g1 Circulam nas redes sociais publicações afirmando que o PT obrigou funcionários dos Correios a entregarem panfletos do candidato ao Senado pelo partido em Santa Catarina, Décio…"
+  },
+  {
+   "title": "É #FAKE vídeo de Flávio Bolsonaro dizendo que trabalhador precisa escolher ou direitos ou emprego; conteúdo foi manipulado por IA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/06/e-fake-video-de-flavio-bolsonaro-dizendo-que-trabalhador-precisa-escolher-ou-direitos-ou-emprego-conteudo-foi-manipulado-por-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-06T22:56:50.000Z",
+   "rating": "MONTAGEM",
+   "summary": "Vídeo de Flávio Bolsonaro pedindo menos direitos trabalhistas para aumentar oferta de emprego foi feito por IA g1 Circulam nas redes sociais posts que compartilham um vídeo do senador e candidato à Presidência Flávio Bolsonaro (PL-RJ) e atribuem a ele uma declaração dizendo…"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre carro de Janja sofrendo ataque com ovos; gravação exibe protesto na Albânia",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/06/e-fake-que-video-mostre-carro-de-janja-sofrendo-ataque-com-ovos-gravacao-exibe-protesto-na-albania.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-06T18:43:42.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo mostre carro de Janja sendo atacado por ovos; gravação exibe protesto na Albânia Reprodução Circulam nas redes sociais publicações com um vídeo que supostamente mostra o carro da primeira-dama Janja da Silva sendo atingido por ovos arremessados por…"
+  },
+  {
+   "title": "É #FAKE que Gilmar Mendes votou com celular na mão; ministro do STF segurava carteira com cola eleitoral",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/05/e-fake-que-gilmar-mendes-votou-com-celular-na-mao-ministro-do-stf-segurava-carteira-com-cola-eleitoral.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-05T18:59:55.000Z",
+   "rating": "FALSO",
+   "summary": "Ministro do Supremo Tribunal Federal (STF) Gilmar Mendes votou em MT Circulam nas redes sociais publicações alegando que o ministro Gilmar Mendes, do Supremo Tribunal Federal (STF), foi flagrado com celular na cabine de votação nas eleições deste domingo (4). É #FAKE. ✅ Siga…"
+  },
+  {
+   "title": "É #FATO: Problema na rede elétrica atrasou funcionamento de urna em Barra do Mendes, na Bahia",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/05/e-fato-problema-na-rede-eletrica-atrasou-funcionamento-de-urna-em-barra-do-mendes-na-bahia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-05T17:30:58.000Z",
+   "rating": "VERDADEIRO",
+   "summary": "É #FATO que problema na rede elétrica atrasou funcionamento de urna em Barra do Mendes, na Bahia Reprodução Circula nas redes sociais o vídeo de uma mulher reclamando que uma urna eletrônica em Barra do Mendes, na Bahia, teve problemas de funcionamento durante a votação do…"
+  },
+  {
+   "title": "É #FAKE que André Mendonça alterou locais de votação em 'uma das comunidades mais lulistas do Rio de Janeiro'",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/05/e-fake-que-andre-mendonca-alterou-locais-de-votacao-em-uma-das-comunidades-mais-lulistas-do-rio-de-janeiro.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-05T03:06:33.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Mendonça alterou locais de votação em reduto lulista no Rio Reprodução Circula nas redes sociais um post afirmando que André Mendonça, ministro do Supremo Tribunal Federal (STF) e vice-presidente do Tribunal Superior Eleitoral (TSE), autorizou \"a mudança de locais…"
+  },
+  {
+   "title": "É #FAKE que eleitores puderam votar on-line pelo celular por causa de chuva",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/04/e-fake-que-eleitores-puderam-votar-on-line-pelo-celular-por-causa-de-chuva.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-05T01:25:32.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que eleitor possa votar on-line pelo celular em caso de chuva Reprodução Circularam nas redes sociais anúncios afirmando que os eleitores poderiam votar on-line, pelo celular, em caso de chuva neste domingo (4), data do primeiro turno das eleições de 2026. É #FAKE. ✅…"
+  },
+  {
+   "title": "É #FAKE que 'cola eleitoral' distribuída em Camaçari não foi produzida pelo TRE-BA",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/04/e-fake-que-cola-eleitoral-distribuida-em-camacari-nao-foi-produzida-pelo-tre-ba.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-05T00:01:36.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que cola eleitoral distribuída em Camaçari não seja do TRE-BA Reprodução Circula nas redes sociais o vídeo de uma mulher monstrando um maço \"colas\" não preenchidas durante a votação neste domingo (4) Camaçari, na Região Metropolitana de Salvador, e afirmando que o…"
+  },
+  {
+   "title": "É #FAKE que Lula jogou bandeira do Brasil no chão após votar",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/04/e-fake-que-lula-jogou-bandeira-do-brasil-no-chao-apos-votar.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-04T22:49:18.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que após votar Lula jogou a bandeira do Brasil no chão Reprodução Circulam nas redes sociais posts dizendo que o presidente Lula (PT) jogou no chão a bandeira do Brasil exibida por ele logo após votar no primeiro turno das eleições 2026, neste domingo (4). É #FAKE. ✅…"
+  },
+  {
+   "title": "É #FAKE que urna anula voto se eleitor aperta 'confirma' quando tela exibe mensagem para conferir candidato escolhido",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/10/04/e-fake-que-urna-anula-voto-se-eleitor-aperta-confirma-quando-tela-exibe-mensagem-para-conferir-candidato-escolhido.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-04T22:00:06.000Z",
+   "rating": "FALSO",
+   "summary": "Comunicado traz instruções falsas sobre votação na urna eletrônica g1 Circula nas redes sociais um comunicado dizendo que o eleitor terá o voto anulado se apertar o botão \"Confirma\" antes de a tela da urna exibir o comando \"Confirma\". É #FAKE. ✅ Siga o canal de Fato ou Fake…"
+  },
+  {
+   "title": "É #FAKE que urna eletrônica no Distrito Federal tinha votos registrados antes do início da votação",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/03/e-fake-que-urna-eletronica-no-distrito-federal-tinha-votos-registrados-antes-do-inicio-da-votacao.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-03T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que urna eletrônica no DF apresentou votos registrados antes do início da votação Reprodução Circula nas redes sociais um vídeo com dois policiais militares afirmando que foi identificada uma urna eletrônica do Distrito Federal com votos registrados antes da votação e…"
+  },
+  {
+   "title": "É #FAKE que Flávio Dino disse ter entrado no STF 'com a missão de destruir Jair Bolsonaro e os filhos'; vídeo foi manipulado com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/02/e-fake-que-flavio-dino-disse-ter-entrado-no-stf-com-a-missao-de-destruir-jair-bolsonaro-e-os-filhos-video-foi-manipulado-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-02T21:23:17.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo em que Dino declara que vai perseguir Flávio Bolsonaro Reprodução Circula nas redes sociais um vídeo que mostra Flávio Dino supostamente dizendo que entrou no Supremo Tribunal Federal (STF) \"com a missão de destruir Jair Bolsonaro (PL), seus filhos e o…"
+  },
+  {
+   "title": "É #FAKE vídeo de Romário criticando Lula por proibição de bets; conteúdo foi manipulado com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/02/e-fake-video-de-romario-criticando-lula-por-proibicao-de-bets-conteudo-foi-manipulado-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-02T19:44:54.000Z",
+   "rating": "MONTAGEM",
+   "summary": "É #FAKE vídeo em que Romário critica Lula por proibição de bets Reprodução Circula nas redes sociais um vídeo que mostra o senador Romário (sem partido-RJ) supostamente criticando e ameaçando o presidente Lula (PT) por ter proibido as bets no Brasil. É #FAKE. ✅ Siga o canal…"
+  },
+  {
+   "title": "É #FAKE vídeo de Virginia Fonseca declarando apoio a Flávio Bolsonaro; gravação foi manipulada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/02/e-fake-video-de-virginia-fonseca-declarando-apoio-a-flavio-bolsonaro-gravacao-foi-manipulada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-02T08:00:04.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo de Virginia Fonseca declarando apoio a Flávio Bolsonaro; gravação foi manipulada com IA Reprodução Circula nas redes socias um vídeo que supostamente mostra Virginia Fonseca declarando apoio ao candidato a presidente Flávio Bolsonaro (PL) nas eleições de 2026.…"
+  },
+  {
+   "title": "A Xuxa gravou vídeo criticando falas do presidente Lula sobre toque em crianças?",
+   "link": "https://www.e-farsas.com/a-xuxa-gravou-video-criticando-falas-do-presidente-lula-sobre-toque-em-criancas.html",
+   "source": "E-farsas",
+   "date": "2026-10-01T23:49:03.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Vídeo mostra a apresentadora chorando e criticando falas de Lula sobre toque íntimo em crianças, mas será que isso é verdade? As imagens se espalharam nas redes sociais e em grupos do WhatsApp no final de setembro de 2026, e mostram a apresentadora Xuxa Meneghel chorando…"
+  },
+  {
+   "title": "É #FAKE que Xuxa disse 'não vote nesse homem' em campanha contra Lula; vídeo foi feito em 2022 e tinha crítica a Bolsonaro",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/10/01/e-fake-que-xuxa-disse-nao-vote-nesse-homem-em-campanha-contra-lula-video-foi-feito-em-2022-e-tinha-critica-a-bolsonaro.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-01T20:28:29.000Z",
+   "rating": "ANTIGO",
+   "summary": "É #FAKE que Xuxa disse 'não vote nesse homem' em campanha contra Lula; vídeo foi feito em 2022 e tinha crítica a Bolsonaro Reprodução Circula nas redes sociais um vídeo de Xuxa Meneghel comentando \"as falas horríveis que o nosso presidente falou\" e pedindo \"não vote nesse…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate da Globo com candidatos ao Governo do Distrito Federal",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/30/veja-o-que-e-fato-ou-fake-no-debate-da-globo-com-candidatos-ao-governo-do-distrito-federal.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-01T01:02:36.000Z",
+   "rating": "FALSO",
+   "summary": "Candidatos ao governo do DF no estúdio do debate da TV Globo Bruna Yamaguti/g1 A Globo promoveu, nesta terça-feira (29), um debate com candidatos ao Governo do Distrito Federal. Com mediação do jornalista Heraldo Pereira, o encontro, nos estúdios da TV Globo em Brasília, foi…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate da Globo com candidatos ao governo de Minas Gerais",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/30/veja-o-que-e-fato-ou-fake-no-debate-da-globo-com-candidatos-ao-governo-de-minas-gerais.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-10-01T00:39:41.000Z",
+   "rating": "FALSO",
+   "summary": "Os candidatos Gabriel Azevedo (MDB), Alexandre Kalil (PDT), Patrus Ananias (PT), Cleitinho Azevedo (Republicanos), Flávio Roscoe (PL) e Mateus Simões (PSD) no estúdio da TV Globo em Minas para participar do debate entre candidatos ao governo de Minas Gerais Douglas…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate da Globo com candidatos ao Governo de Pernambuco",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/30/veja-o-que-e-fato-ou-fake-no-debate-da-globo-com-candidatos-ao-governo-de-pernambuco.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-30T22:52:05.000Z",
+   "rating": "FALSO",
+   "summary": "Candidatos ao governo de PE: João Campos (PSB), Ivan Moraes (PSOL) e Raquel Lyra (PSD) Brenda Alcântara/Globo A Globo promoveu, nesta terça-feira (29), um debate com candidatos ao Governo de Pernambuco. Com mediação do jornalista Márcio Bonfim, o encontro, realizado nos…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate da Globo com candidatos ao Governo de São Paulo",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/30/veja-o-que-e-fato-ou-fake-no-debate-da-globo-com-candidatos-ao-governo-de-sao-paulo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-30T17:34:59.000Z",
+   "rating": "FALSO",
+   "summary": "Os candidatos Fernando Haddad (PT) e Tarcísio de Freitas (Republicanos) no estúdio da TV Globo para participar do debate entre candidatos ao governo de São Paulo Bob Paulino/Globo A Globo promoveu, nesta terça-feira (29), um debate com candidatos ao Governo de São Paulo. Com…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate da Globo com candidatos ao Governo do Rio de Janeiro",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/30/veja-o-que-e-fato-ou-fake-no-debate-da-globo-com-candidatos-ao-governo-do-rio.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-30T16:34:59.000Z",
+   "rating": "FALSO",
+   "summary": "Os candidatos Douglas Ruas (PL), Eduardo Paes (PSD), William Siri (PSOL), André Marinho (NOVO) e Garotinho (Republicanos) no estúdio da TV Globo para participar do debate entre candidatos ao governo do Rio de Janeiro Globo/Manoella Mello A Globo promoveu, nesta terça-feira…"
+  },
+  {
+   "title": "É #FAKE que vídeo mostre presidente do Paraguai agradecendo a Lula por empresas deixarem o Brasil",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/29/e-fake-que-video-mostre-presidente-do-paraguai-agradecendo-a-lula-por-empresas-deixarem-o-brasil.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-29T19:58:44.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo mostre presidente do Paraguai agradecendo a Lula por empresas deixaram o Brasil Reprodução Circula nas redes sociais um vídeo que mostra o presidente Lula (PT) conversando com um homem em um evento. Segundo as descrições dos posts, esse interlocutor seria o…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate de candidatos ao Senado por São Paulo no g1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/25/veja-o-que-e-fato-ou-fake-nos-debates-de-candidatos-ao-senado-por-sao-paulo-no-g1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-26T00:48:07.000Z",
+   "rating": "FALSO",
+   "summary": "Debate do g1 com candidatos ao Senado por São Paulo (Marina Silva, Simone Tebet, Soninha Francine e Geraldo Rufino) Noah Denser/Divulgação O g1 promoveu, nesta sexta-feira (25), um debate com candidatos ao Senado por São Paulo. Com mediação da jornalista Ana Paula Campos, o…"
+  },
+  {
+   "title": "É #FATO: Voto nas eleições de 2026 vale como prova de vida automática para o INSS",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/25/e-fato-voto-nas-eleicoes-de-2026-vale-como-prova-de-vida-automatica-para-o-inss.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-25T20:40:20.000Z",
+   "rating": "VERDADEIRO",
+   "summary": "É #FATO: Voto nas eleições de 2026 vale como prova de vida automática Reprodução Circulam nas redes sociais publicações afirmando que votar nas eleições de 2026 vale como prova de vida automática para o Instituto Nacional do Seguro Social (INSS). É #FATO. ✅ Siga o canal de…"
+  },
+  {
+   "title": "É #FAKE foto de Flávio Bolsonaro usando camisa com ofensas a nordestinos; trata-se de montagem",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/25/e-fake-foto-de-flavio-bolsonaro-usando-camisa-com-ofensas-a-nordestinos-trata-se-de-montagem.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-25T08:00:00.000Z",
+   "rating": "MONTAGEM",
+   "summary": "É #FAKE foto de Flávio Bolsonaro com camisa com ofensas a nordestinos; trata-se de montagem Reprodução Circula nas redes sociais uma foto que supostamente mostra o senador e candidato à Presidência da República Flávio Bolsonaro (PL) vestindo uma camisa estampada com a…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nos debates de candidatos ao Senado pelo Rio de Janeiro no g1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/24/veja-o-que-e-fato-ou-fake-nos-debates-de-candidatos-ao-senado-pelo-rio-de-janeiro-no-g1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-24T19:14:31.000Z",
+   "rating": "FALSO",
+   "summary": "Benedita da Silva, Carlos Jordy, Carlos Portinho, Marcelo Crivella, Marcos Dias, Mônica Benício, Pedro Paulo e Waguinho, candidatos ao Senado pelo Rio durante debate no g1 Reprodução O g1 promoveu, nesta terça-feira (22), dois debates com candidatos ao Senado pelo Rio de…"
+  },
+  {
+   "title": "É #FAKE que Lula menosprezou garis e disse que profissão 'não dá orgulho'; vídeo foi cortado e tirado de contexto",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/24/e-fake-que-lula-menosprezou-garis-e-disse-que-profissao-nao-da-orgulho-video-foi-cortado-e-tirado-de-contexto.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-24T18:19:15.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "Fala de Lula sobre garis foi tirada de contexto g1 Circulam nas redes sociais publicações com o vídeo de um discurso do presidente Lula (PT) em Belo Horizonte. Segundo esses posts, o petista afirmou que a atividade de coletor de lixo \"não é uma profissão que dá orgulho\". É…"
+  },
+  {
+   "title": "Médico-robô é flagrado fugindo do hospital! Real ou fake?",
+   "link": "https://www.e-farsas.com/medico-robo-e-flagrado-fugindo-do-hospital-real-ou-fake.html",
+   "source": "E-farsas",
+   "date": "2026-09-24T00:01:34.000Z",
+   "rating": "FALSO",
+   "summary": "Vídeo mostra um robô fugindo de um hospital depois de trabalhar por 36 horas em um plantão, mas será que esse vídeo é verdadeiro? As imagens que mostram um robô vestido com uma roupa hospitalar correndo enquanto uma ambulância e outras pessoas parecem tentar alcançá-lo…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas entrevistas com candidatos ao governo de Minas Gerais no MG1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/22/veja-o-que-e-fato-ou-fake-nas-entrevistas-com-candidatos-ao-governo-de-minas-gerais-no-mg1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-22T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "Montagem mostra candidatos ao governo de Minas Gerais Flávio Roscoe (PL), Alexandre Kalil (PDT), Patrus Ananias (PT), Gabriel (MDB), Cleitinho (Republicanos) e Mateus Simões (PSD) MG1 Os candidatos ao governo de Minas Gerais Flávio Roscoe (PL), Alexandre Kalil (PDT), Patrus…"
+  },
+  {
+   "title": "O IBGE vai incluir o tráfico de drogas no cálculo do PIB?",
+   "link": "https://www.e-farsas.com/o-ibge-vai-incluir-o-trafico-de-drogas-no-calculo-do-pib.html",
+   "source": "E-farsas",
+   "date": "2026-09-19T23:41:32.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que o IBGE vai acrescentar a movimentação do tráfico de drogas e das BETs no cálculo do Produto Interno Bruto nacional? Publicações espalhadas nas redes sociais na segunda quinzena de setembro de 2026 afirmam que o Governo Federal teria ordenado que o Instituto…"
+  },
+  {
+   "title": "É #FAKE que Virginia Fonseca e Vini Jr. postaram fotos com anúncio de gravidez; imagens foram fabricadas com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/18/e-fake-que-virginia-fonseca-e-vini-jr-postaram-fotos-com-anuncio-de-gravidez-imagens-foram-fabricadas-com-inteligencia-artificial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-18T22:23:03.000Z",
+   "rating": "FALSO",
+   "summary": "São fasas imagens de Virginia anunciando gravidez ao lado de Vinicius Junior g1 Circulam nas redes fotos em que a influenciadora Virginia Fonseca e o jogador Vini Jr. supostamente mostrando um teste positivo de gravidez. É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas entrevistas com candidatos ao governo do Distrito Federal no DF1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/18/veja-o-que-e-fato-ou-fake-nas-entrevistas-com-candidatos-ao-governo-do-distrito-federal-no-df1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-18T18:12:21.000Z",
+   "rating": "FALSO",
+   "summary": "Leandro Grass, Celina Leão, Paula Belmonte e José Roberto Arruda em entrevista ao DF1 Reprodução Os candidatos ao governo do Distrito Federal foram entrevistados pelo DF1 nesta semana. Conduzidas pelos jornalistas Heraldo Pereira e Natalia Godoy, as conversas sobre os…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas entrevistas com candidatos ao governo de Pernambuco no NE1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/18/veja-o-que-e-fato-ou-fake-nas-entrevistas-com-candidatos-ao-governo-de-pernambuco-no-ne1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-18T08:00:01.000Z",
+   "rating": "FALSO",
+   "summary": "João Campos (à esq.) e Raquel Lyra (à dir.) durante entrevista à TV Globo Reprodução/TV Globo Os candidatos ao governo de Pernambuco João Campos (PSB) e Raquel Lyra (PSD) foram entrevistados pelo NE1 nesta semana. Conduzidas pelos jornalistas Márcio Bonfim e Maristela Niz, as…"
+  },
+  {
+   "title": "É #FAKE áudio de Flávio Dino dizendo que objetivo do governo federal é 'arruinar economia'",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/18/e-fake-audio-de-flavio-dino-dizendo-que-objetivo-do-governo-federal-e-arruinar-economia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-18T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE áudio de Flávio Dino dizendo que objetivo do governo é 'arruinar economia' Reprodução Circulam nas redes sociais publicações com um áudio atribuído ao ministro Flávio Dino, do Supremo Tribunal Federal (STF), no qual ele supostamente diz que o objetivo do governo…"
+  },
+  {
+   "title": "A inteligência artificial pode alterar votos na urna eletrônica?",
+   "link": "https://www.e-farsas.com/a-inteligencia-artificial-pode-alterar-votos-na-urna-eletronica.html",
+   "source": "E-farsas",
+   "date": "2026-09-17T21:34:48.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que os avanços na área de inteligência artificial colocaram a segurança das urnas eletrônicas em xeque? É possível que a IA consiga alterar votos na urna eletrônica? Vídeos publicados nas redes sociais na segunda quinzena de setembro de 2026 sugerem que a…"
+  },
+  {
+   "title": "É #FAKE que voto para presidente não vale se eleitor votar em branco ou nulo para governador, senadores e deputados",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/17/e-fake-que-voto-para-presidente-nao-vale-se-eleitor-votar-em-branco-ou-nulo-para-governador-senadores-e-deputados.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-17T20:08:17.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que voto nulo ou em branco para outros cargos anula votação para presidente; mensagem voltou a circular Reprodução Circula no WhatsApp uma mensagem afirmando que, se o eleitor votar só em presidente e em branco nas outras opções, o voto será considerado como parcial,…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas entrevistas com candidatos ao governo do Rio de Janeiro no RJ1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/17/veja-o-que-e-fato-ou-fake-nas-entrevistas-com-candidatos-ao-governo-do-rio-de-janeiro-no-rj1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-17T08:20:34.000Z",
+   "rating": "FALSO",
+   "summary": "Garotinho, Douglas Ruas e Eduardo Paes durante entrevista ao RJ1 Reprodução Os candidatos ao governo do Rio de Janeiro Anthony Garotinho (Republicanos), Douglas Ruas (PL) e Eduardo Paes (PSD) foram entrevistados pelo RJ1 nesta semana. Conduzidas pelos jornalistas Mariana…"
+  },
+  {
+   "title": "Daniel Vorcaro pagou 50 mil para corredor amador usar seu relógio em treino?",
+   "link": "https://www.e-farsas.com/daniel-vorcaro-pagou-50-mil-para-corredor-amador-usar-seu-relogio-em-treino.html",
+   "source": "E-farsas",
+   "date": "2026-09-16T19:51:57.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que o banqueiro Daniel Vorcaro pagou 50 mil para um corredor amador usar seu relógio em uma corrida para impressionar uma paquera estrangeira? A imagem supostamente vazada do inquérito movido contra Daniel Vorcaro começou a circular nas redes sociais na segunda…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nas entrevistas com candidatos ao governo de São Paulo no SP1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/16/veja-o-que-e-fato-ou-fake-nas-entrevistas-com-candidatos-ao-governo-de-sao-paulo-no-sp1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-16T08:30:00.000Z",
+   "rating": "FALSO",
+   "summary": "Fernando Haddad (esq.) e Tarcísio de Freitas (dir.) durante sabatina no SP1 Reprodução Os candidatos ao governo de São Paulo Fernando Haddad (PT) e Tarcísio de Freitas (Republicanos) foram entrevistados pelo SP1 nesta semana. Conduzidas pelo jornalista Alan Severiano, as…"
+  },
+  {
+   "title": "Fotografia encontrada em tumba egípcia provou que a viagem no tempo é real?",
+   "link": "https://www.e-farsas.com/fotografia-encontrada-em-tumba-egipcia-provou-que-a-viagem-no-tempo-e-real.html",
+   "source": "E-farsas",
+   "date": "2026-09-15T22:38:53.000Z",
+   "rating": "CHECAGEM",
+   "summary": "O cientista Elon Huck teria provado que é possível viajar no tempo ao deixar uma fotografia sua de 1987 em uma tumba egípcia aberta em 1932! Será que isso é verdade? A história voltou a circular nas redes sociais na primeira quinzena de setembro de 2026 e conta o estranho…"
+  },
+  {
+   "title": "É #FAKE vídeo de presidiário se emocionando ao abraçar esposa e filho bebê; cena foi criada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/15/e-fake-video-de-presidiario-se-emocionando-ao-abracar-esposa-e-filho-bebe-cena-foi-criada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-15T17:07:35.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo de presidiário se emocionando ao abraçar família; cena foi criada com inteligência artificial Reprodução Circula nas redes sociais um vídeo que supostamente mostra um presidiário emocionado ao receber a visita da esposa e do filho bebê. É #FAKE. ✅ Siga o canal…"
+  },
+  {
+   "title": "É #FAKE que Felipe Nunes fez foto com Flávio Bolsonaro e que Quaest pertence ao Banco Genial; imagem foi fabricada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/14/e-fake-que-felipe-nunes-fez-foto-com-flavio-bolsonaro-e-que-quaest-pertence-ao-banco-genial-imagem-foi-fabricada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-15T01:03:29.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE foto de Felipe Nunes, da Quaest, ao lado do candidato à Presidência da República Flávio Bolsonaro Reprodução/X Circulam nas redes sociais uma foto de Felipe Nunes, diretor da Quaest, ao lado do candidato à Presidência da República Flávio Bolsonaro (PL) e alegações de…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de Eduardo Paes a 'O Globo', 'Extra', 'Valor' e CBN",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/11/veja-o-que-e-fato-e-o-que-e-fake-na-entrevista-de-eduardo-paes-a-o-globo-extra-valor-e-cbn.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-11T23:17:04.000Z",
+   "rating": "FALSO",
+   "summary": "Sabatina candidatos ao Governo do Estado do Rio de Janeiro Eduardo Paes ( PSD) com os entrevistadores Leandro Resende, Chico Goes, Bernardo Mello Franco , Bianca Santos e Thiago Prado Ana Branco / Agência O Globo O candidato ao governo do Rio pelo PSD, Eduardo Paes, foi…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE no debate de candidatos ao Senado pelo Distrito Federal no g1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/11/veja-o-que-e-fato-e-o-que-e-fake-no-debate-de-candidatos-ao-senado-pelo-distrito-federal-no-g1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-11T22:58:35.000Z",
+   "rating": "FALSO",
+   "summary": "Os candidatos ao Senado pelo DF Erika Kokay (PT), Guto Felicio dos Santos (PSDB), Marley (Avante) e Ronaldo Fonseca (PSD). Os candidatos ao Senado pelo DF Erika Kokay (PT), Guto Felicio dos Santos (PSDB), Marley (Avante) e Ronaldo Fonseca (PSD). O g1 promoveu, nesta…"
+  },
+  {
+   "title": "É #FAKE e-mail que simula notificação de fiscalização do Inmetro com ameaças e multa de R$ 1,5 milhão",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/11/e-fake-e-mail-que-simula-notificacao-de-fiscalizacao-do-inmetro-com-ameacas-e-multa-de-r-15-milhao.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-11T20:01:02.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE mensagem que simula notificação de fiscalização do Inmetro com ameaças e multa de R$ 1,5 milhão Reprodução Um e-mail enviado a empresas e pessoas físicas simula uma notificação de fiscalização do Instituto Nacional de Metrologia, Qualidade e Tecnologia (Inmetro),…"
+  },
+  {
+   "title": "Fato ou Fake: veja como enviar sugestões, participar do canal no WhatsApp e seguir nas redes sociais",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/11/fato-ou-fake-veja-como-enviar-sugestoes-participar-do-canal-no-whatsapp-e-seguir-nas-redes-sociais.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-11T03:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "Banner Fato ou Fake Editoria de Arte/g1 O Fato ou Fake, serviço de checagem do Grupo Globo, foi lançado em 30 de julho de 2018. Participam da apuração equipes de g1, \"O Globo\", \"Extra\", \"Valor\", CBN, GloboNews e TV Globo. Jornalistas fazem um monitoramento diário para…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de Anthony Garotinho a 'O Globo', 'Extra', 'Valor' e CBN",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/10/veja-o-que-e-fato-e-o-que-e-fake-na-entrevista-de-anthony-garotinho-a-o-globo-extra-valor-e-cbn.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-10T22:51:53.000Z",
+   "rating": "FALSO",
+   "summary": "Anthony Garotinho (Republicanos), ao centro, participa de sabatina de 'O Globo', 'Extra', 'Valor' e CBN com os candidatos ao Governo do Rio de Janeiro Ana Branco/Agência O Globo O candidato ao governo do Rio pelo Republicanos, Anthony Garotinho, foi entrevistado nesta…"
+  },
+  {
+   "title": "É #FAKE que vídeo de público do Rock in Rio fazendo coro para Lula foi gravado em 2026; registro ocorreu na edição de 2022",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/10/e-fake-que-video-de-publico-do-rock-in-rio-fazendo-coro-para-lula-foi-gravado-em-2026-registro-ocorreu-na-edicao-de-2022.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-10T21:47:15.000Z",
+   "rating": "ANTIGO",
+   "summary": "É #FAKE que vídeo mostre coro para Lula em show do Rock in Rio de 2026; registro é da edição de 2022 Reprodução Circulam nas redes sociais publicações que compartilham um vídeo do público do Rock in Rio fazendo coro em apoio Lula (PT) e alegam que o registro ocorreu na edição…"
+  },
+  {
+   "title": "É #FAKE foto de relatório da PF dizendo não ver crime em conversas de Nikolas Ferreira com Vorcaro; imagem foi criada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/10/e-fake-foto-de-relatorio-da-pf-dizendo-nao-ver-crime-em-conversas-de-nikolas-ferreira-com-vorcaro-imagem-foi-criada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-10T08:00:00.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Imagem de relatório falso da PF sobre áudio de conversa entre Nikolas e Vorcaro g1 Circulam nas redes sociais publicações exibindo um suposto documento no qual a Polícia Federal teria dito não haver indícios de crime nas mensagens trocadas entre o deputado federal Nikolas…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de William Siri a 'O Globo', 'Extra', 'Valor' e CBN",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/09/veja-o-que-e-fato-e-o-que-e-fake-na-entrevista-de-william-siri-a-o-globo-extra-valor-e-cbn.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-09T22:38:24.000Z",
+   "rating": "FALSO",
+   "summary": "William Siri (PSOL), ao centro, participa de sabatina de 'O Globo', 'Extra', 'Valor' e CBN com os candidatos ao governo do Rio Ana Branco/Agência O Globo O candidato ao governo do Rio pelo PSOL, William Siri, foi entrevistado nesta quarta-feira (9) por \"O Globo\", \"Extra\",…"
+  },
+  {
+   "title": "É #FAKE vídeo de Flávio Bolsonaro prometendo salário mínimo de R$ 3 mil; cena foi fabricada com inteligência artificial",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/09/e-fake-video-de-flavio-bolsonaro-prometendo-salario-minimo-de-r-3-mil-cena-foi-fabricada-com-inteligencia-articial.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-09T19:59:22.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE vídeo em que Flávio Bolsonaro promete salário de R$ 3 mil Reprodução Circula nas redes sociais um vídeo que mostra o candidato à Presidência da República Flávio Bolsonaro (PL) aparece com uma peça de picanha da mão e prometendo salário mínimo acima de R$ 3 mil. É…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE nos debates de candidatos ao Senado por Minas Gerais no g1",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/09/veja-o-que-e-fato-e-o-que-e-fake-nos-debates-de-candidatos-ao-senado-por-minas-gerais-no-g1.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-09T12:04:38.000Z",
+   "rating": "FALSO",
+   "summary": "A partir da esquerda, candidatos ao Senado por MG em 2026: Aécio Neves (PSDB), Arcanjo Pimenta (MDB), Áurea Carolina (PSOL), Carlin Moura (Avante), Domingos Sávio (PL), Manoel Carvalho (MDB) e Marcelo Aro (PP) Gledston Tavares/Globo O g1 promoveu, nesta terça-feira (8), dois…"
+  },
+  {
+   "title": "Veja o que é #FATO ou #FAKE na entrevista de Douglas Ruas a 'O Globo', 'Extra', 'Valor' e CBN",
+   "link": "https://g1.globo.com/fato-ou-fake/eleicoes/noticia/2026/09/08/veja-o-que-e-fato-e-o-que-e-fake-na-entrevista-de-douglas-ruas-a-o-globo-extra-valor-e-cbn.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-08T22:50:30.000Z",
+   "rating": "FALSO",
+   "summary": "Sabatina candidatos ao Governo do Estado do Rio de Janeiro - Douglas Ruas com os entrevistadores Leandro Resende, Chico Goes, Bernardo Mello Franco , Bianca Santos e Thiago Prado Ana Branco/Agência O Globo O candidato ao governo do Rio pelo PL, Douglas Ruas, foi entrevistado…"
+  },
+  {
+   "title": "É #FAKE foto de aniversário de Clint Eastwood com atores renomados",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/04/e-fake-foto-de-aniversario-de-clint-eastwood-com-atores-renomados.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-04T17:27:19.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE foto de aniversário de Clint Eastwood com atores renomados Reprodução Circula nas redes sociais uma foto que supostamente mostra o ator Clint Eastwood em seu aniversário de 96 anos, ao lado de Robert De Niro, Al Pacino, Anthony Hopkins, Jack Nicholson e Harrison Ford.…"
+  },
+  {
+   "title": "É #FAKE que norma do governo federal proíbe uso de estribos em caminhões de coleta de lixo",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/09/04/e-fake-que-norma-do-governo-federal-proibe-uso-de-estribos-em-caminhoes-de-coleta-de-lixo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-09-04T14:27:53.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que norma do governo proíbe uso de estribos em caminhões de coleta de lixo Reprodução Circulam nas redes sociais publicações alegando que uma nova norma do Ministério do Trabalho e Emprego (MTE) teria proibido o uso de estribos em caminhões de coleta de lixo. É #FAKE.…"
+  },
+  {
+   "title": "É verdade que o presidente Lula construiu uma ponte gigante em São Paulo?",
+   "link": "https://www.e-farsas.com/e-verdade-que-o-presidente-lula-construiu-uma-ponte-gigante-em-sao-paulo.html",
+   "source": "E-farsas",
+   "date": "2026-08-29T18:57:19.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Vídeo mostra obra colossal que estaria sendo feito pelo governo Lula, mas será que isso é verdade mesmo? As imagens surgiram nas redes sociais na segunda quinzena de agosto de 2026 e mostram a construção de uma ponte com centenas de metros de comprimento e outras centenas de…"
+  },
+  {
+   "title": "Cucurella levou a Copa do Mundo em uma sacola plástica?",
+   "link": "https://www.e-farsas.com/cucurella-levou-a-copa-do-mundo-em-uma-sacola-plastica.html",
+   "source": "E-farsas",
+   "date": "2026-07-22T00:27:49.000Z",
+   "rating": "CHECAGEM",
+   "summary": "É verdade que o jogador da Seleção Espanhola Marc Cucurella foi flagrado levando o troféu da copa do mundo em uma sacola de lixo? O vídeo surgiu nas redes sociais na segunda quinzena de julho de 2026, logo após o término do jogo da final da Copa do Mundo de futebol. Nele…"
+  },
+  {
+   "title": "É verdade que uma pesquisa fraudada mudou o padrão de sono da humanidade?",
+   "link": "https://www.e-farsas.com/e-verdade-que-uma-pesquisa-fraudada-mudou-o-padrao-de-sono-da-humanidade.html",
+   "source": "E-farsas",
+   "date": "2026-06-28T17:03:13.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Uma pesquisa fraudada pela fábrica de colchões Simmons Beautyrest teria feito com que o mundo abandonasse o sono bifásico para dormir 8 horas por noite? A alegação surgiu nas redes sociais no final de junho de 2026, sendo também bastante compartilhada em grupos do WhatsApp e…"
+  }
+ ]
+}

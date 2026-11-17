@@ -28,3 +28,5 @@ jobs:
           node-version: '20'
       - run: node automation/validate.js
       - run: node tests/fact-check/link.test.js
+      - run: node tests/fact-check/media.test.js
+      - run: node tests/fact-check/text.test.js

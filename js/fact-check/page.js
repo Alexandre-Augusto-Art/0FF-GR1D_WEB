@@ -1,46 +1,74 @@
-/* DEDSEC - Fact Check: tela
- * Carrega data/factcheck.json, roda a análise de js/fact-check/link.js e monta o resultado.
- * Todo texto entra com textContent: nada do link colado vira HTML.
+/* DEDSEC - Fact Check: abas, aba LINK e "checar o assunto".
+ * Carrega data/factcheck.json e avisa as outras abas (image/video/message) por window.FactCheckApp.
  */
 (function () {
   'use strict';
 
   const L = window.FactCheckLink;
+  const UI = window.FactCheckUI;
+  const { el } = UI;
   const $ = id => document.getElementById(id);
-  const RULES_URL = 'data/factcheck.json?v=1';
+  const RULES_URL = 'data/factcheck.json?v=2';
 
-  const VERDICTS = {
+  const LINK_VERDICTS = {
     danger: { tag: 'ALERTA', text: 'Este link tem sinais fortes de golpe ou de site falso. Não abra e não repasse.' },
     warn: { tag: 'CUIDADO', text: 'Há sinais que pedem cuidado. Confira os pontos abaixo antes de abrir ou repassar.' },
     ok: { tag: 'SITE CONHECIDO', text: 'O endereço é de um site conhecido. Isso não prova que a notícia é verdadeira: confira a data e se outros veículos deram o mesmo.' },
     unknown: { tag: 'SEM ALERTAS NO ENDEREÇO', text: 'Não achei truques no endereço, mas também não conheço o site. Investigue quem está por trás e cheque o assunto.' }
   };
-  const ICONS = { danger: '✖', warn: '!', ok: '✔', info: 'i' };
 
+  /* ---------- estado compartilhado com as outras abas ---------- */
   let rules = null;
+  const waiting = [];
+  const App = {
+    get rules() { return rules; },
+    onRules(cb) { if (rules) cb(rules); else waiting.push(cb); },
+    LINK_VERDICTS,
+    /** Põe um assunto em "CHECAR O ASSUNTO" (se a pessoa ainda não escreveu nada) */
+    suggestSubject(q, force) {
+      const input = $('fc-subject-input');
+      if (q && (force || !input.value.trim())) { input.value = q.slice(0, 160); updateSubject(); }
+    },
+    /** Abre a aba LINK já com este endereço analisado */
+    openLink(url) {
+      selectTab('link');
+      $('fc-link-input').value = url;
+      $('fc-link-form').requestSubmit();
+    },
+    selectTab
+  };
+  window.FactCheckApp = App;
 
-  function el(tag, cls, text) {
-    const n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text !== undefined) n.textContent = text;
-    return n;
+  /* ---------- abas ---------- */
+  const TABS = ['link', 'imagem', 'video', 'mensagem'];
+
+  function selectTab(name, fromHash) {
+    if (!TABS.includes(name)) name = 'link';
+    for (const t of TABS) {
+      const tab = $('fc-tab-' + t), panel = $('fc-panel-' + t);
+      const on = t === name;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      tab.tabIndex = on ? 0 : -1;
+      panel.hidden = !on;
+    }
+    if (!fromHash && location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
   }
 
-  function linkButton(item, small) {
-    const a = el('a', small ? 'fc-btn fc-btn-small' : 'fc-btn fc-btn-link');
-    a.href = item.href;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.appendChild(el('span', 'fc-btn-label', item.label + ' ↗'));
-    if (item.note) a.appendChild(el('span', 'fc-btn-note', item.note));
-    return a;
+  function initTabs() {
+    for (const t of TABS) $('fc-tab-' + t).addEventListener('click', () => selectTab(t));
+    $('fc-tabs').addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const cur = TABS.findIndex(t => $('fc-tab-' + t).classList.contains('is-active'));
+      const next = TABS[(cur + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length];
+      selectTab(next);
+      $('fc-tab-' + next).focus();
+    });
+    window.addEventListener('hashchange', () => selectTab(location.hash.slice(1), true));
+    selectTab(location.hash.slice(1), true);
   }
 
-  function fill(container, items, small) {
-    container.replaceChildren(...items.map(i => linkButton(i, small)));
-  }
-
-  /* ---------- link ---------- */
+  /* ---------- aba LINK ---------- */
   function renderHost(r) {
     const box = $('fc-host');
     box.replaceChildren();
@@ -64,40 +92,15 @@
     $('fc-link-clear').hidden = false;
     if (!r.ok) {
       $('fc-link-result').hidden = true;
-      status.textContent = r.error;
-      status.classList.add('is-error');
+      UI.setStatus(status, r.error, true);
       return;
     }
-    status.textContent = '';
-    status.classList.remove('is-error');
-
-    const v = VERDICTS[r.verdict];
-    const verdict = $('fc-verdict');
-    verdict.className = 'fc-verdict is-' + r.verdict;
-    $('fc-verdict-tag').textContent = v.tag;
-    $('fc-verdict-text').textContent = v.text;
-
+    UI.setStatus(status, '');
+    UI.setVerdict($('fc-verdict'), r.verdict, LINK_VERDICTS);
     renderHost(r);
-
-    const order = { danger: 0, warn: 1, ok: 2, info: 3 };
-    const list = $('fc-signals');
-    list.replaceChildren(...r.signals.slice().sort((a, b) => order[a.level] - order[b.level]).map(s => {
-      const li = el('li', 'fc-signal is-' + s.level);
-      li.appendChild(el('span', 'fc-signal-icon', ICONS[s.level]));
-      const body = el('div', 'fc-signal-body');
-      body.appendChild(el('strong', 'fc-signal-title', s.title));
-      body.appendChild(el('p', 'fc-signal-detail', s.detail));
-      li.appendChild(body);
-      return li;
-    }));
-
-    fill($('fc-investigate'), L.investigateLinks(r));
-
-    if (r.query && !$('fc-subject-input').value.trim()) {
-      $('fc-subject-input').value = r.query;
-      updateSubject();
-    }
-
+    UI.renderSignals($('fc-signals'), r.signals);
+    UI.fill($('fc-investigate'), L.investigateLinks(r));
+    App.suggestSubject(r.query);
     $('fc-link-result').hidden = false;
     $('fc-link-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -106,8 +109,7 @@
     $('fc-link-input').value = '';
     $('fc-link-result').hidden = true;
     $('fc-link-clear').hidden = true;
-    $('fc-link-status').textContent = '';
-    $('fc-link-status').classList.remove('is-error');
+    UI.setStatus($('fc-link-status'), '');
     $('fc-link-input').focus();
   }
 
@@ -115,20 +117,19 @@
   function updateSubject() {
     const q = $('fc-subject-input').value.trim();
     const links = L.subjectLinks(q, rules ? rules.agencies : []);
-    const box = $('fc-subject-links');
-    const agencies = $('fc-agency-links');
     if (q.length < 3) {
-      box.replaceChildren(el('p', 'fc-note', 'Escreva o assunto para liberar a busca.'));
-      agencies.replaceChildren(el('p', 'fc-note', 'Escreva o assunto acima.'));
+      $('fc-subject-links').replaceChildren(el('p', 'fc-note', 'Escreva o assunto para liberar a busca.'));
+      $('fc-agency-links').replaceChildren(el('p', 'fc-note', 'Escreva o assunto acima.'));
       return;
     }
-    fill(box, links.all);
-    fill(agencies, links.agencies, true);
+    UI.fill($('fc-subject-links'), links.all);
+    UI.fill($('fc-agency-links'), links.agencies, true);
   }
 
   /* ---------- início ---------- */
   async function init() {
-    if (!L) return;
+    if (!L || !UI) return;
+    initTabs();
     const status = $('fc-link-status');
     $('fc-link-form').addEventListener('submit', analyzeLink);
     $('fc-link-clear').addEventListener('click', clearLink);
@@ -144,11 +145,11 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       rules = await res.json();
       $('fc-link-submit').disabled = false;
-      status.textContent = '';
+      UI.setStatus(status, '');
       updateSubject();
+      waiting.splice(0).forEach(cb => cb(rules));
     } catch (err) {
-      status.textContent = 'Não consegui carregar as regras da análise. Recarregue a página.';
-      status.classList.add('is-error');
+      UI.setStatus(status, 'Não consegui carregar as regras da análise. Recarregue a página.', true);
     }
   }
 
