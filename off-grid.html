@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTERNATIVES OFF GRID - DEDSEC</title>
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <style>
+    .og-accent { color: #22d3ee; }
+    .og-section h2 { margin-bottom: 1rem; color: #22d3ee; }
+    .og-section p { line-height: 1.8; opacity: 0.9; margin-bottom: 1rem; }
+    .og-section p:last-child { margin-bottom: 0; }
+
+    .og-controls { display: flex; flex-direction: column; gap: 1rem; }
+    .og-search {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #22d3ee;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .og-search:focus { outline: none; box-shadow: 0 0 16px rgba(34, 211, 238, 0.45); }
+    .og-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .og-chip {
+      padding: 0.45rem 0.85rem;
+      border: 1px solid #22d3ee;
+      background: transparent;
+      color: #22d3ee;
+      font-family: inherit;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
+    .og-chip[aria-pressed="true"] { background: #22d3ee; color: #04121a; font-weight: bold; }
+
+    .og-category { margin-top: 2.5rem; }
+    .og-category-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      color: #22d3ee;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+    .og-category-title small { font-size: 0.8rem; opacity: 0.6; color: var(--color-text); letter-spacing: 0.05em; }
+
+    .og-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .og-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 1.25rem;
+      border: 2px solid rgba(34, 211, 238, 0.55);
+      background: rgba(0, 0, 0, 0.65);
+      color: inherit;
+      text-decoration: none;
+      transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .og-card:hover,
+    .og-card:focus-visible {
+      border-color: #22d3ee;
+      background: rgba(34, 211, 238, 0.08);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+    }
+    .og-instead { font-size: 0.75rem; opacity: 0.65; letter-spacing: 0.08em; text-transform: uppercase; }
+    .og-instead s { opacity: 0.9; }
+    .og-name { font-size: 1.15rem; font-weight: bold; color: #22d3ee; letter-spacing: 0.04em; }
+    .og-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.88; }
+    .og-why { font-size: 0.82rem; line-height: 1.55; opacity: 0.75; border-left: 2px solid #22d3ee; padding-left: 0.6rem; }
+    .og-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; padding-top: 0.4rem; }
+    .og-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border: 1px solid rgba(224, 242, 254, 0.35);
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+    }
+    .og-tag.is-oss { border-color: #a3e635; color: #a3e635; }
+    .og-tag.is-warn { border-color: #facc15; color: #facc15; }
+    .og-empty { text-align: center; opacity: 0.7; padding: 2rem 0; }
+
+    .og-legend { list-style: none; padding: 0; margin: 0; }
+    .og-legend li { margin-bottom: 0.6rem; line-height: 1.6; opacity: 0.9; }
+    .og-history li { position: relative; padding-left: 1.6rem; margin-bottom: 0.9rem; line-height: 1.7; opacity: 0.9; list-style: none; }
+    .og-history { padding: 0; margin: 0; }
+    .og-history li::before { content: '>'; position: absolute; left: 0; color: #22d3ee; font-weight: bold; }
+    .og-note { font-size: 0.85rem; opacity: 0.7; margin-top: 1.25rem; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <!-- BG Triangles (dynamic mesh) -->
+  <canvas id="bg-triangles"></canvas>
+
+  <!-- Scanlines effect -->
+  <div class="scanlines"></div>
+
+  <header class="header">
+    <img src="assets/Banners/Home.jpg" alt="DEDSEC" class="header-image">
+    <div class="header-overlay">
+      <h1 class="logo glitch" data-text="DEDSEC">DEDSEC</h1>
+      <p class="subtitle">ALTERNATIVES OFF GRID</p>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <a href="index.html" class="back-button">← VOLTAR</a>
+
+    <div class="page-header">
+      <h1 class="page-title">ALTERNATIVES OFF GRID</h1>
+      <p class="page-subtitle">Saia das big techs: ferramentas livres, abertas e que respeitam sua privacidade</p>
+    </div>
+
+    <!-- Por quê -->
+    <div class="content-section og-section">
+      <h2>POR QUE SAIR?</h2>
+      <p>
+        As grandes plataformas lucram com seus dados: o que você posta, com quem fala, onde está.
+        Para quem se organiza, isso significa <strong class="og-accent">contas derrubadas, alcance cortado
+        e dados entregues</strong> a quem pedir. Cada ferramenta abaixo substitui um serviço comum
+        por uma opção mais livre, de código aberto ou focada em privacidade.
+      </p>
+      <p>Não precisa trocar tudo de uma vez. Comece pelo mensageiro e pelo navegador.</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="content-section og-section" style="margin-top: 2rem;">
+      <div class="og-controls">
+        <label for="og-search" class="og-accent" style="letter-spacing: 0.08em;">// BUSCAR (ex.: instagram, whatsapp, google)</label>
+        <input id="og-search" class="og-search" type="search" placeholder="O que você quer substituir?" autocomplete="off">
+        <div class="og-chips" id="og-chips" role="group" aria-label="Filtrar por categoria"></div>
+      </div>
+    </div>
+
+    <div id="og-list" aria-live="polite"></div>
+
+    <!-- Legenda -->
+    <div class="content-section og-section" style="margin-top: 2.5rem;">
+      <h2>COMO LER AS ETIQUETAS</h2>
+      <ul class="og-legend">
+        <li><span class="og-tag is-oss">CÓDIGO ABERTO</span> qualquer pessoa pode auditar o código.</li>
+        <li><span class="og-tag">FEDIVERSO</span> redes independentes que conversam entre si; nenhuma empresa é dona de tudo.</li>
+        <li><span class="og-tag">E2E</span> criptografia de ponta a ponta: só quem conversa lê.</li>
+        <li><span class="og-tag is-warn">PARCIAL</span> melhor que a big tech, mas não é totalmente aberto. Leia a descrição.</li>
+      </ul>
+    </div>
+
+    <!-- Histórico -->
+    <div class="content-section og-section" style="margin-top: 2rem;">
+      <h2>UM POUCO DE HISTÓRIA</h2>
+      <ul class="og-history">
+        <li><strong>1999, Riseup:</strong> coletivo de Seattle que nasceu no ciclo de protestos contra a OMC para oferecer e-mail e listas seguras a movimentos sociais.</li>
+        <li><strong>2013, Snowden:</strong> os documentos mostraram a vigilância em massa feita com ajuda das big techs. Ferramentas como Tor, Tails e Signal ganharam força.</li>
+        <li><strong>2014, Framasoft:</strong> a associação francesa lança a campanha "Desgooglizar a Internet", com alternativas livres para cada serviço do Google.</li>
+        <li><strong>2016 em diante, Fediverso:</strong> Mastodon, PeerTube e Pixelfed mostram que dá para ter rede social sem dono, onde cada comunidade cuida do seu servidor.</li>
+      </ul>
+      <p class="og-note">
+        A DEDSEC não tem vínculo com nenhum dos projetos listados. Baixe sempre pelos sites oficiais.
+        Nenhuma ferramenta é 100% segura: privacidade também depende de como você usa.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>DEDSEC © 2024 | EXPECT US</p>
+  </footer>
+
+  <script>
+    // Alternativas: cada item substitui um serviço comum ("insteadOf").
+    const OG_DATA = [
+      {
+        id: 'social', label: 'REDES SOCIAIS', hint: 'sem algoritmo te vendendo',
+        items: [
+          { name: 'Pixelfed', insteadOf: 'Instagram', url: 'https://pixelfed.org/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Rede de fotos sem anúncios e com linha do tempo cronológica.',
+            why: 'Não existe algoritmo decidindo quem vê seu post.' },
+          { name: 'Flashes', insteadOf: 'Instagram', url: 'https://flashes.blue/', tags: ['PROTOCOLO ABERTO'],
+            desc: 'App de fotos e vídeos com cara de Instagram, construído sobre o Bluesky.',
+            why: 'Usa sua conta do Bluesky: quem já está lá migra sem recomeçar.' },
+          { name: 'Mastodon', insteadOf: 'X / Threads', url: 'https://joinmastodon.org/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Microblog descentralizado: escolha um servidor (instância) da sua comunidade.',
+            why: 'Nenhum bilionário pode comprar e mudar as regras de todo mundo.' },
+          { name: 'Bluesky', insteadOf: 'X / Twitter', url: 'https://bsky.app/', tags: ['PROTOCOLO ABERTO', 'PARCIAL'],
+            desc: 'Rede parecida com o antigo Twitter, sobre o protocolo aberto AT.',
+            why: 'Fácil para migrar seguidores, mas ainda depende muito de uma empresa.' },
+          { name: 'Loops', insteadOf: 'TikTok / Reels', url: 'https://joinloops.org/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Vídeos curtos no fediverso, do mesmo criador do Pixelfed.',
+            why: 'Projeto novo: bom para acompanhar e apoiar.' },
+          { name: 'PeerTube', insteadOf: 'YouTube', url: 'https://joinpeertube.org/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Plataforma de vídeo que coletivos podem hospedar por conta própria.',
+            why: 'Vídeo de denúncia não some por "violação de diretrizes".' },
+          { name: 'ReVanced', insteadOf: 'App do YouTube', url: 'https://revanced.app/', tags: ['CÓDIGO ABERTO', 'PARCIAL'],
+            desc: 'Modifica o app do YouTube no Android: sem anúncios, com tela desligada e download.',
+            why: 'Ainda é o YouTube do Google por baixo. Baixe só do site oficial.' },
+          { name: 'Lemmy', insteadOf: 'Reddit', url: 'https://join-lemmy.org/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Fóruns e comunidades por tema, com votos e debates.',
+            why: 'Bom para grupos de estudo e discussão longa.' },
+          { name: 'Friendica', insteadOf: 'Facebook', url: 'https://friendi.ca/', tags: ['CÓDIGO ABERTO', 'FEDIVERSO'],
+            desc: 'Rede social completa: perfis, grupos, eventos e fotos.',
+            why: 'Conversa com Mastodon e outras redes do fediverso.' }
+        ]
+      },
+      {
+        id: 'chat', label: 'MENSAGENS E CHAMADAS', hint: 'comece por aqui',
+        items: [
+          { name: 'Signal', insteadOf: 'WhatsApp', url: 'https://signal.org/', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'Mensagens, áudio e vídeo com criptografia de ponta a ponta, sem coleta de metadados.',
+            why: 'Ative mensagens temporárias e use nome de usuário em vez de expor o número.' },
+          { name: 'SimpleX Chat', insteadOf: 'WhatsApp / Telegram', url: 'https://simplex.chat/', tags: ['CÓDIGO ABERTO', 'E2E', 'SEM CADASTRO'],
+            desc: 'Mensageiro sem número de telefone e sem nenhum identificador de usuário.',
+            why: 'Ideal quando nem o seu número pode aparecer.' },
+          { name: 'Briar', insteadOf: 'WhatsApp (sem internet)', url: 'https://briarproject.org/', tags: ['CÓDIGO ABERTO', 'E2E', 'OFFLINE'],
+            desc: 'Funciona via Tor, Wi-Fi local ou Bluetooth. Só Android.',
+            why: 'Pensado para ativistas e jornalistas em situação de risco.' },
+          { name: 'Bitchat', insteadOf: 'Chat no ato (sem sinal)', url: 'bitchat.html', internal: true, tags: ['CÓDIGO ABERTO', 'OFFLINE'],
+            desc: 'Chat em malha via Bluetooth, sem internet e sem conta.',
+            why: 'Veja nosso guia completo aqui na DEDSEC.' },
+          { name: 'Element (Matrix)', insteadOf: 'Discord / Slack', url: 'https://element.io/', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'Salas de chat para organizações, com servidores independentes.',
+            why: 'O coletivo pode ter o próprio servidor.' },
+          { name: 'Jitsi Meet', insteadOf: 'Zoom / Google Meet', url: 'https://meet.jit.si/', tags: ['CÓDIGO ABERTO', 'SEM CADASTRO'],
+            desc: 'Videochamada direto no navegador, sem instalar nada.',
+            why: 'Crie uma sala com nome difícil de adivinhar e use senha.' }
+        ]
+      },
+      {
+        id: 'search', label: 'BUSCADORES', hint: 'pesquise sem ser perfilado',
+        items: [
+          { name: 'DuckDuckGo', insteadOf: 'Google', url: 'https://duckduckgo.com/', tags: ['PRIVACIDADE', 'PARCIAL'],
+            desc: 'Busca que não guarda histórico nem monta perfil seu.',
+            why: 'O jeito mais fácil de começar. O buscador em si não é código aberto.' },
+          { name: 'SearXNG', insteadOf: 'Google', url: 'https://searx.space/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Metabuscador livre: junta resultados de vários buscadores sem te rastrear.',
+            why: 'A lista mostra instâncias públicas; coletivos podem rodar a própria.' },
+          { name: 'Startpage', insteadOf: 'Google', url: 'https://www.startpage.com/', tags: ['PRIVACIDADE', 'PARCIAL'],
+            desc: 'Resultados do Google, mas sem entregar seus dados a ele.',
+            why: 'Tem o modo "visualização anônima" para abrir sites por um proxy.' },
+          { name: 'Brave Search', insteadOf: 'Google', url: 'https://search.brave.com/', tags: ['ÍNDICE PRÓPRIO', 'PARCIAL'],
+            desc: 'Buscador com índice próprio, independente do Google e do Bing.',
+            why: 'Privado, mas o código do buscador não é aberto.' },
+          { name: 'Mojeek', insteadOf: 'Google', url: 'https://www.mojeek.com/', tags: ['ÍNDICE PRÓPRIO', 'PRIVACIDADE'],
+            desc: 'Buscador britânico independente, com índice próprio e sem rastreio.',
+            why: 'Resultados diferentes: bom para fugir da bolha.' },
+          { name: 'Ecosia', insteadOf: 'Google', url: 'https://www.ecosia.org/', tags: ['PRIVACIDADE', 'PARCIAL'],
+            desc: 'Buscador que usa o lucro para plantar árvores.',
+            why: 'Mais ético que o Google, mas usa resultados do Bing/Google.' }
+        ]
+      },
+      {
+        id: 'browser', label: 'NAVEGADORES', hint: 'a porta de entrada de tudo',
+        items: [
+          { name: 'Firefox', insteadOf: 'Chrome / Edge', url: 'https://www.mozilla.org/firefox/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Navegador independente, sem motor do Google, com bloqueio de rastreadores.',
+            why: 'Instale a extensão uBlock Origin para bloquear anúncios e rastreio.' },
+          { name: 'Tor Browser', insteadOf: 'Chrome (anônimo)', url: 'https://www.torproject.org/', tags: ['CÓDIGO ABERTO', 'ANONIMATO'],
+            desc: 'Esconde seu IP passando a conexão por três servidores voluntários.',
+            why: 'Use para pesquisar temas sensíveis ou acessar sites bloqueados.' },
+          { name: 'Mullvad Browser', insteadOf: 'Chrome', url: 'https://mullvad.net/browser', tags: ['CÓDIGO ABERTO'],
+            desc: 'Feito com o Tor Project: a proteção do Tor Browser, sem a rede Tor.',
+            why: 'Combina com uma VPN confiável.' },
+          { name: 'LibreWolf', insteadOf: 'Chrome', url: 'https://librewolf.net/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Versão do Firefox já configurada para privacidade, sem telemetria.',
+            why: 'Para quem não quer mexer em configurações.' },
+          { name: 'Brave', insteadOf: 'Chrome', url: 'https://brave.com/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Parecido com o Chrome, mas bloqueia anúncios e rastreadores por padrão.',
+            why: 'Desligue as funções de cripto e recompensas que vêm ligadas.' }
+        ]
+      },
+      {
+        id: 'email', label: 'E-MAIL', hint: 'sua identidade online',
+        items: [
+          { name: 'Proton Mail', insteadOf: 'Gmail / Outlook', url: 'https://proton.me/mail', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'E-mail criptografado com sede na Suíça. Plano grátis.',
+            why: 'Mensagens entre contas Proton são criptografadas de ponta a ponta.' },
+          { name: 'Tuta', insteadOf: 'Gmail / Outlook', url: 'https://tuta.com/', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'E-mail e agenda criptografados, da Alemanha. Plano grátis.',
+            why: 'Criptografa até o assunto do e-mail.' },
+          { name: 'Riseup', insteadOf: 'Gmail', url: 'https://riseup.net/', tags: ['COLETIVO', 'ATIVISTA'],
+            desc: 'Coletivo autônomo que oferece e-mail, listas e VPN para movimentos sociais.',
+            why: 'Conta só por convite de quem já usa. Mantido por doações.' },
+          { name: 'Disroot', insteadOf: 'Gmail + Drive', url: 'https://disroot.org/', tags: ['CÓDIGO ABERTO', 'COLETIVO'],
+            desc: 'Coletivo holandês com e-mail, nuvem, pads e chat livres.',
+            why: 'Vários serviços numa conta só, sem big tech.' }
+        ]
+      },
+      {
+        id: 'files', label: 'NUVEM E DOCUMENTOS', hint: 'arquivos do coletivo',
+        items: [
+          { name: 'CryptPad', insteadOf: 'Google Docs / Forms', url: 'https://cryptpad.org/', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'Documentos, planilhas, formulários e quadros criptografados e colaborativos.',
+            why: 'Nem o servidor consegue ler o que vocês escrevem.' },
+          { name: 'Etherpad', insteadOf: 'Google Docs', url: 'https://etherpad.org/', tags: ['CÓDIGO ABERTO', 'SEM CADASTRO'],
+            desc: 'Texto colaborativo em tempo real: cada pessoa escreve com uma cor.',
+            why: 'Ótimo para ata de assembleia. Há pads públicos, como o do Riseup.' },
+          { name: 'Immich', insteadOf: 'Google Fotos / iCloud', url: 'https://immich.app/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Backup de fotos e vídeos do celular num servidor que você controla.',
+            why: 'Fotos de ato ficam com o coletivo, não com a big tech.' },
+          { name: 'Nextcloud', insteadOf: 'Google Drive', url: 'https://nextcloud.com/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Nuvem completa que o coletivo pode hospedar ou contratar de um provedor ético.',
+            why: 'Arquivos, agenda e contatos sob controle do grupo.' },
+          { name: 'Proton Drive', insteadOf: 'Google Drive', url: 'https://proton.me/drive', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'Armazenamento criptografado, do mesmo criador do Proton Mail.',
+            why: 'Plano grátis para começar.' },
+          { name: 'OnionShare', insteadOf: 'WeTransfer', url: 'https://onionshare.org/', tags: ['CÓDIGO ABERTO', 'ANONIMATO'],
+            desc: 'Envia e recebe arquivos de forma anônima pela rede Tor.',
+            why: 'Usado por jornalistas para receber documentos de fontes.' },
+          { name: 'Cryptomator', insteadOf: 'Pasta comum na nuvem', url: 'https://cryptomator.org/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Cria um cofre criptografado dentro de qualquer nuvem (Drive, Dropbox...).',
+            why: 'Para quando não dá para sair da nuvem que o grupo já usa.' },
+          { name: 'LibreOffice', insteadOf: 'Microsoft Office', url: 'https://www.libreoffice.org/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Pacote de escritório completo e gratuito.',
+            why: 'Abre e salva arquivos do Word e do Excel.' }
+        ]
+      },
+      {
+        id: 'mobile', label: 'CELULAR', hint: 'o aparelho que vai no ato',
+        items: [
+          { name: 'F-Droid', insteadOf: 'Google Play', url: 'https://f-droid.org/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Loja de apps Android só com software livre, sem conta Google.',
+            why: 'Muitos apps desta lista estão lá.' },
+          { name: 'Droid-ify', insteadOf: 'Google Play / App Store', url: 'https://github.com/Droid-ify/client', tags: ['CÓDIGO ABERTO'],
+            desc: 'Cliente moderno e mais rápido para os repositórios do F-Droid.',
+            why: 'Mesmos apps livres, com visual mais amigável.' },
+          { name: 'Organic Maps', insteadOf: 'Google Maps', url: 'https://organicmaps.app/', tags: ['CÓDIGO ABERTO', 'OFFLINE'],
+            desc: 'Mapas e rotas offline baseados no OpenStreetMap, sem rastreio.',
+            why: 'Baixe o mapa da cidade antes do ato: funciona sem sinal.' },
+          { name: 'OpenStreetMap', insteadOf: 'Google Maps', url: 'https://www.openstreetmap.org/', tags: ['CÓDIGO ABERTO', 'COLABORATIVO'],
+            desc: 'O mapa colaborativo do mundo, feito por voluntários.',
+            why: 'Comunidades podem mapear o próprio território.' },
+          { name: 'Bitwarden', insteadOf: 'Senhas salvas no Google', url: 'https://bitwarden.com/', tags: ['CÓDIGO ABERTO', 'E2E'],
+            desc: 'Gerenciador de senhas grátis, no celular e no computador.',
+            why: 'Uma senha forte e diferente para cada conta.' },
+          { name: 'KeePassXC', insteadOf: 'Senhas salvas no navegador', url: 'https://keepassxc.org/', tags: ['CÓDIGO ABERTO', 'OFFLINE'],
+            desc: 'Cofre de senhas que fica só no seu computador, sem nuvem.',
+            why: 'Nada sai do seu aparelho.' },
+          { name: 'Orbot', insteadOf: 'Conexão comum', url: 'https://orbot.app/', tags: ['CÓDIGO ABERTO', 'ANONIMATO'],
+            desc: 'Passa o tráfego dos apps do celular pela rede Tor.',
+            why: 'Ajuda a contornar bloqueios de sites e apps.' },
+          { name: 'Proton VPN', insteadOf: 'VPN grátis duvidosa', url: 'https://protonvpn.com/', tags: ['CÓDIGO ABERTO'],
+            desc: 'VPN com plano gratuito sem limite de dados e auditada.',
+            why: 'VPN grátis desconhecida costuma vender seus dados.' }
+        ]
+      },
+      {
+        id: 'system', label: 'SISTEMA', hint: 'para ir mais fundo',
+        items: [
+          { name: 'Tails', insteadOf: 'Windows (uso sensível)', url: 'https://tails.net/', tags: ['CÓDIGO ABERTO', 'ANONIMATO'],
+            desc: 'Sistema que roda de um pendrive, usa Tor e esquece tudo ao desligar.',
+            why: 'Usado por Snowden e por jornalistas para trabalho sensível.' },
+          { name: 'Linux Mint', insteadOf: 'Windows', url: 'https://linuxmint.com/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Linux fácil para quem vem do Windows. Revive computador antigo.',
+            why: 'Sem telemetria e sem licença paga.' },
+          { name: 'GrapheneOS', insteadOf: 'Android do fabricante', url: 'https://grapheneos.org/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Android focado em segurança e privacidade, sem serviços do Google.',
+            why: 'Só funciona em celulares Google Pixel.' },
+          { name: 'LineageOS', insteadOf: 'Android / iOS', url: 'https://lineageos.org/', tags: ['CÓDIGO ABERTO'],
+            desc: 'Android livre para centenas de modelos de celular, sem os apps do Google.',
+            why: 'Dá vida nova a celular antigo que não recebe mais atualização.' }
+        ]
+      },
+      {
+        id: 'home', label: 'CASA E MÍDIA', hint: 'a sala também escuta',
+        items: [
+          { name: 'Home Assistant', insteadOf: 'Alexa / Google Home', url: 'https://www.home-assistant.io/', tags: ['CÓDIGO ABERTO', 'OFFLINE'],
+            desc: 'Automação da casa rodando localmente, sem mandar nada para a nuvem.',
+            why: 'Assistentes de voz das big techs ficam ouvindo o ambiente o tempo todo.' },
+          { name: 'Stremio', insteadOf: 'Netflix / Disney+', url: 'https://www.stremio.com/', tags: ['PARCIAL'],
+            desc: 'Central de mídia que junta filmes, séries e canais de várias fontes num app.',
+            why: 'Add-ons de terceiros podem trazer conteúdo pirata: escolha fontes legais.' }
+        ]
+      }
+    ];
+
+    const OSS_TAGS = ['CÓDIGO ABERTO'];
+    const WARN_TAGS = ['PARCIAL'];
+
+    const listEl = document.getElementById('og-list');
+    const chipsEl = document.getElementById('og-chips');
+    const searchEl = document.getElementById('og-search');
+    let activeCat = 'all';
+
+    function normalize(s) {
+      return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    }
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    function buildCard(item) {
+      const card = el('a', 'og-card');
+      card.href = item.url;
+      if (!item.internal) {
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
+      const instead = el('span', 'og-instead', 'em vez de ');
+      instead.appendChild(el('s', null, item.insteadOf));
+      card.appendChild(instead);
+      card.appendChild(el('span', 'og-name', (item.internal ? '→ ' : '↗ ') + item.name));
+      card.appendChild(el('span', 'og-desc', item.desc));
+      card.appendChild(el('span', 'og-why', item.why));
+      const tags = el('span', 'og-tags');
+      item.tags.forEach(t => {
+        let cls = 'og-tag';
+        if (OSS_TAGS.includes(t)) cls += ' is-oss';
+        if (WARN_TAGS.includes(t)) cls += ' is-warn';
+        tags.appendChild(el('span', cls, t));
+      });
+      card.appendChild(tags);
+      return card;
+    }
+
+    function render() {
+      const q = normalize(searchEl.value.trim());
+      listEl.replaceChildren();
+      let total = 0;
+
+      OG_DATA.forEach(cat => {
+        if (activeCat !== 'all' && cat.id !== activeCat) return;
+        const items = cat.items.filter(it => {
+          if (!q) return true;
+          const hay = normalize([it.name, it.insteadOf, it.desc, it.why, cat.label, it.tags.join(' ')].join(' '));
+          return hay.includes(q);
+        });
+        if (!items.length) return;
+        total += items.length;
+
+        const section = el('section', 'og-category');
+        const title = el('h2', 'og-category-title', '// ' + cat.label);
+        title.appendChild(el('small', null, cat.hint));
+        section.appendChild(title);
+        const grid = el('div', 'og-grid');
+        items.forEach(it => grid.appendChild(buildCard(it)));
+        section.appendChild(grid);
+        listEl.appendChild(section);
+      });
+
+      if (!total) {
+        listEl.appendChild(el('p', 'og-empty', 'Nada encontrado. Tente o nome do app que você quer substituir.'));
+      }
+    }
+
+    function buildChips() {
+      const cats = [{ id: 'all', label: 'TUDO' }].concat(OG_DATA.map(c => ({ id: c.id, label: c.label })));
+      cats.forEach(c => {
+        const btn = el('button', 'og-chip', c.label);
+        btn.type = 'button';
+        btn.setAttribute('aria-pressed', String(c.id === activeCat));
+        btn.addEventListener('click', () => {
+          activeCat = c.id;
+          chipsEl.querySelectorAll('.og-chip').forEach(b => b.setAttribute('aria-pressed', 'false'));
+          btn.setAttribute('aria-pressed', 'true');
+          render();
+        });
+        chipsEl.appendChild(btn);
+      });
+    }
+
+    searchEl.addEventListener('input', render);
+    buildChips();
+    render();
+  </script>
+
+  <script>
+    // Background Triangles Animation
+    const triCanvas = document.getElementById('bg-triangles');
+    const triCtx = triCanvas ? triCanvas.getContext('2d') : null;
+
+    const TRI_CONFIG = {
+      rows: 2,
+      cols: 4,
+      amplitude: 90,
+      speed: 0.0002
+    };
+
+    let triPoints = [];
+    let triStartTime = performance.now();
+
+    function initTriangles() {
+      if (!triCanvas || !triCtx) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      triCanvas.width = w;
+      triCanvas.height = h;
+
+      triPoints = [];
+      const { rows, cols } = TRI_CONFIG;
+      const margin = 0.18;
+      const spanX = 1 + margin * 2;
+      const spanY = 1 + margin * 2;
+      for (let y = 0; y <= rows; y++) {
+        for (let x = 0; x <= cols; x++) {
+          const px = (-margin + (x / cols) * spanX) * w;
+          const py = (-margin + (y / rows) * spanY) * h;
+          const phase = Math.random() * Math.PI * 2;
+          triPoints.push({ baseX: px, baseY: py, phase });
+        }
+      }
+    }
+
+    function getAccentColor() {
+      const cs = getComputedStyle(document.documentElement);
+      const c = cs.getPropertyValue('--accent-color').trim();
+      return c || '#ffffff';
+    }
+
+    function drawTriangles(time) {
+      if (!triCanvas || !triCtx || !triPoints.length) return;
+      const w = triCanvas.width;
+      const h = triCanvas.height;
+      triCtx.clearRect(0, 0, w, h);
+
+      const color = getAccentColor();
+      triCtx.strokeStyle = color;
+      triCtx.lineWidth = 0.7;
+      triCtx.globalAlpha = 0.35;
+
+      const { rows, cols, amplitude, speed } = TRI_CONFIG;
+      const t = (time - triStartTime);
+
+      const animated = triPoints.map(p => {
+        const offset = Math.sin(t * speed + p.phase);
+        const x = p.baseX + offset * amplitude;
+        const y = p.baseY + Math.cos(t * speed * 1.3 + p.phase) * amplitude * 0.6;
+        return { x, y };
+      });
+
+      const idx = (x, y) => y * (cols + 1) + x;
+
+      triCtx.beginPath();
+      for (let y = 0; y < TRI_CONFIG.rows; y++) {
+        for (let x = 0; x < TRI_CONFIG.cols; x++) {
+          const p0 = animated[idx(x, y)];
+          const p1 = animated[idx(x + 1, y)];
+          const p2 = animated[idx(x, y + 1)];
+          const p3 = animated[idx(x + 1, y + 1)];
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p1.x, p1.y);
+          triCtx.lineTo(p3.x, p3.y);
+
+          triCtx.moveTo(p0.x, p0.y);
+          triCtx.lineTo(p3.x, p3.y);
+          triCtx.lineTo(p2.x, p2.y);
+        }
+      }
+      triCtx.stroke();
+      triCtx.globalAlpha = 1;
+    }
+
+    function animateTriangles(time) {
+      drawTriangles(time || performance.now());
+      requestAnimationFrame(animateTriangles);
+    }
+
+    if (triCanvas && triCtx) {
+      initTriangles();
+      window.addEventListener('resize', initTriangles);
+      requestAnimationFrame(animateTriangles);
+    }
+  </script>
+  <script src="js/chatbot.js" defer></script>
+</body>
+</html>
