@@ -1,5 +1,104 @@
 [
   {
+    "id": "2026-11-18",
+    "date": "2026-11-18",
+    "news": {
+      "title": "US moves to cut China’s remote access to AI chips",
+      "link": "https://arstechnica.com/tech-policy/2026/11/us-moves-to-cut-chinas-remote-access-to-ai-chips/",
+      "summary": "Trump bets China won’t mind US blocking remote access to AI chips.",
+      "source": "Ars Technica (Tech Policy)",
+      "publishedDate": "2026-11-16"
+    },
+    "reflection": {
+      "title": "Guerra Corporativa Controla a IA",
+      "content": "<p>Em Night City, Arasaka e Militech travam uma guerra por tecnologia, explorando a população como bucha de canhão. Pessoas se tornam peões em conflitos de megacorporações, lutando por tecnologias que as exploram.</p>\n<p>Aqui, o nome é guerra entre EUA e China por controle de IA. Segundo o Ars Technica (Tech Policy), o governo dos EUA prepara uma regra para limitar acesso remoto à China de chips de IA restritos. O Departamento de Comércio dos EUA visa fechar brechas que permitem contornar restrições de exportação de chips de IA.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, está livre das corporações?</p>",
+      "excerpt": "O sistema corporativo controla a tecnologia, explorando a população em conflitos de poder.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka e Militech travam uma guerra por tecnologia, explorando a população como bucha de canhão.",
+          "legenda": "META = ARASAKA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões em conflitos de megacorporações, lutando por tecnologias que as exploram.",
+          "legenda": "PEÕES DA GUERRA",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é guerra entre EUA e China por controle de IA.",
+          "legenda": "GUERRA CORPORATIVA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Ars Technica (Tech Policy), o governo dos EUA prepara uma regra para limitar acesso remoto à China de chips de IA restritos.",
+          "legenda": "LIMITES DE ACESSO",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "real",
+          "fala": "O Departamento de Comércio dos EUA visa fechar brechas que permitem contornar restrições de exportação de chips de IA.",
+          "legenda": "FECHANDO BRECHAS",
+          "cena": "marionete"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, está livre das corporações?",
+          "legenda": "VOCÊ ESTÁ LIVRE?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "governo dos EUA",
+            "ficcao": "megacorporações"
+          },
+          {
+            "real": "China",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "chips de IA",
+            "ficcao": "cyberware"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "US moves to cut China’s remote access to AI chips",
+        "link": "https://arstechnica.com/tech-policy/2026/11/us-moves-to-cut-chinas-remote-access-to-ai-chips/",
+        "source": "Ars Technica (Tech Policy)",
+        "date": "2026-11-16"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-18.mp4",
+      "poster": "assets/videos/w4k3/2026-11-18.jpg"
+    }
+  },
+  {
     "id": "2026-11-17",
     "date": "2026-11-17",
     "news": {
