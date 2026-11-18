@@ -14,6 +14,9 @@
     run-w4k3.ps1 -Pauta [-Topic "tema"] [-Another]
                                        só gera o rascunho da notícia do dia (usado pelo bot: /noticia e "Outra notícia").
                                          -Another pula as já propostas hoje. Saída: draft.json, pauta.json e "RASCUNHO|<título>".
+    run-w4k3.ps1 -Pauta -Tema 7        a pauta parte do tema #7 da lista de reels (%USERPROFILE%\.w4k3\temas.json): busca notícias
+                                         com as palavras do tema e escreve com o mecanismo dele como direcionamento. Sem -Topic
+                                         nem -Tema, a notícia das 09h usa o 1º tema da lista, se houver.
     run-w4k3.ps1 -Request pedido.json  só gera um RASCUNHO a partir de um link (não publica).
                                          pedido.json = { url, direction?, feedback?, previousDraft? }
                                          Saída: %USERPROFILE%\.w4k3\draft.json e a linha "RASCUNHO|<título>".
@@ -30,6 +33,7 @@
 param(
   [switch]$Pauta,
   [string]$Topic,
+  [string]$Tema,
   [switch]$Another,
   [switch]$AutoPublish,
   [string]$Request,
@@ -162,7 +166,7 @@ function Test-Telegram {
 }
 
 # Notícia do dia: o fluxo de pauta escolhe as candidatas nos RSS e a primeira que der certo vira rascunho
-function New-Pauta([string]$topic, [switch]$another) {
+function New-Pauta([string]$topic, [switch]$another, [string]$direction = '') {
   Wait-Internet
   Update-Clone
   $ex = @()
@@ -184,19 +188,43 @@ function New-Pauta([string]$topic, [switch]$another) {
   if (-not (Test-Path $out)) { throw 'O fluxo de pauta terminou sem gravar pautas.json' }
   $p = Get-Content $out -Raw -Encoding UTF8 | ConvertFrom-Json
   Write-Host "Pauta: $($p.total) notícias lidas, $(@($p.candidates).Count) candidatas"
+  # o direcionamento do tema só vale se a notícia for sobre ele (sem notícia do tema, a pauta é geral)
+  if (-not $p.matched) { $direction = '' }
   $last = $null
   foreach ($c in @($p.candidates | Select-Object -First 3)) {
     Write-Host "Candidata ($($c.score)): $($c.title) [$($c.source)]"
     try {
       # fallback: se a página tiver paywall ou bloquear robôs, a análise usa o texto que veio no RSS
       $fb = [ordered]@{ title = $c.title; summary = $c.summary; text = $c.text; source = $c.source; publishedDate = $c.publishedDate }
-      New-Draft ([pscustomobject]@{ url = $c.link; direction = ''; mode = 'pauta'; fallback = $fb })
-      $state = [ordered]@{ today = Today; topic = [string]$p.topic; matched = [bool]$p.matched; exclude = @($ex); chosen = $c }
+      New-Draft ([pscustomobject]@{ url = $c.link; direction = $direction; mode = 'pauta'; fallback = $fb })
+      $state = [ordered]@{ today = Today; topic = [string]$p.topic; matched = [bool]$p.matched; exclude = @($ex); chosen = $c; tema = $script:TemaId }
       [IO.File]::WriteAllText($PautaFile, ($state | ConvertTo-Json -Depth 6), $Utf8)
       return
     } catch { $last = $_; Write-Host "Não deu certo com essa: $_"; $ex += $c.link }
   }
   throw "Nenhuma das notícias candidatas virou rascunho. $last"
+}
+
+# ---------- Temas vindos de reels (automation/reels/reel-tema.js) ----------
+$ReelTema = Join-Path $PSScriptRoot 'reels\reel-tema.js'
+$script:TemaId = $null
+function Invoke-ReelTema([string[]]$a) {
+  if (-not (Test-Path $ReelTema)) { return '' }
+  $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
+  try { return (& node $ReelTema @a 2>$null | Out-String).Trim() } finally { $ErrorActionPreference = $prev }
+}
+# Gera a pauta a partir de um tema da lista (id, ou '' para o 1º da fila); devolve $false se não há tema
+function New-PautaTema([string]$id) {
+  $l = Invoke-ReelTema (@('pegar') + @($id | Where-Object { $_ }))
+  if ($l -notlike 'TEMA|*') { if ($id) { throw "Tema #$id não está na lista." }; return $false }
+  $x = $l.Split('|', 4)
+  $script:TemaId = $x[1]
+  Write-Host "Tema #$($x[1]) da lista de reels: busca `"$($x[2])`""
+  New-Pauta $x[2] -direction $x[3]
+  # achou notícia sobre o tema: sai da fila; não achou: continua lá para outro dia
+  $p = Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json
+  if ($p.matched) { Invoke-ReelTema @('usado', $x[1]) | Out-Null } else { Write-Host 'Nenhuma notícia recente sobre o tema; ele continua na lista.' }
+  return $true
 }
 
 # Manda o rascunho da notícia do dia para aprovação (o bot cuida da conversa a partir daí)
@@ -243,7 +271,10 @@ function Publish-Draft([string]$file, [string]$message) {
 try {
   Write-Host "W4K3 PR0T0C0L - início $(Get-Date -Format s)  Request=$Request Publish=$Publish Url=$Url DryRun=$DryRun"
 
-  if ($Pauta) {
+  if ($Pauta -and $Tema) {
+    New-PautaTema $Tema | Out-Null
+  }
+  elseif ($Pauta) {
     New-Pauta $Topic -another:$Another
   }
   elseif ($AutoPublish) {
@@ -288,7 +319,7 @@ try {
     Wait-Internet
     Update-Clone
     if ((Test-HasToday) -and -not $Force) { Write-Host "Já existe reflexão de $(Today), nada a fazer (use -Force)."; return }
-    New-Pauta ''
+    if (-not (New-PautaTema '')) { New-Pauta '' }
     if (Test-Telegram) {
       Send-DailyDraft
     } else {
