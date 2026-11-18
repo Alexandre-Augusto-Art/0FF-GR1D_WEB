@@ -140,7 +140,8 @@ function Show-Draft([switch]$daily) {
   $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 2 minutos." } else { '' }
   if ($daily) {
     $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
-    $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.)`n" } else { '' }
+    $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.$(if ($p.tema) { " O tema #$($p.tema) continua na lista." }))`n" }
+            elseif ($p -and $p.tema) { "(Notícia achada a partir do tema #$($p.tema) da sua lista de reels; ele saiu da fila.)`n" } else { '' }
     Send ($note + 'Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. Sem resposta até as 12:00, publico este.' + $vid) $BtnDaily
   } else {
     Send ('Aprove ou sugira mudanças (pode só escrever o que quer mudar):' + $vid) $BtnReview
@@ -189,10 +190,30 @@ function Set-DailyState {
   return $s
 }
 
-function Make-Pauta([string]$topic, [switch]$another) {
+# ---------- Temas vindos de reels (reels\reel-tema.js: baixa, transcreve e analisa em segundo plano) ----------
+$ReelTema = Join-Path $PSScriptRoot 'reels\reel-tema.js'
+function Invoke-ReelTema([string[]]$a) {
+  if (-not (Test-Path $ReelTema)) { return 'Os temas de reels não estão instalados (rode install-w4k3-task.ps1).' }
+  $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
+  try { return (& node $ReelTema @a 2>&1 | ForEach-Object { "$_" } | Out-String).Trim() } finally { $ErrorActionPreference = $prev }
+}
+function Add-Reel([string]$kind, [string]$ref, [string]$comment) {
+  $a = @($kind, $ref)
+  $comment = ($comment -replace '"', "'").Trim()
+  if ($comment) { $a += $comment }
+  $r = Invoke-ReelTema $a
+  if ($r -match 'FILA\|(\d+)') {
+    $n = [int]$Matches[1]
+    $fila = if ($n -gt 1) { " ($n na fila)" } else { '' }
+    Send "🎞️ Recebi o reel$fila. Vou baixar, transcrever e analisar neste PC (uns 3 minutos cada) e te aviso quando virar tema. Pode continuar mandando."
+  } else { Send "Não consegui pôr o reel na fila. $r" }
+}
+
+function Make-Pauta([string]$topic, [switch]$another, [string]$tema) {
   $a = @('-Pauta')
   $topic = ($topic -replace '"', '').Trim()
-  if ($topic) { $a += @('-Topic', $topic) }
+  if ($tema) { $a += @('-Tema', $tema) }
+  elseif ($topic) { $a += @('-Topic', $topic) }
   if ($another) { $a += '-Another' }
   Stop-Video
   Save-State ([pscustomobject]@{ stage = 'drafting'; url = $null; direction = $null; daily = $true })
@@ -292,7 +313,7 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nTEMAS A PARTIR DE REELS`nMande o link de um reel (Instagram, TikTok ou Shorts) ou o próprio vídeo, com um comentário se quiser. Eu baixo, transcrevo e analiso aqui no PC e guardo como tema para edições futuras (reels parecidos viram um tema só). A notícia das 09h usa o 1º da lista e busca uma notícia real sobre ele.`n/temas  a lista`nusar 3  escreve a análise do tema #3 agora`napagar 3  tira da lista`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
@@ -316,6 +337,26 @@ function Handle([string]$text, [string]$action) {
     Make-Pauta $topic -another:$another
     return
   }
+  # ---- temas de reels ----
+  if ($low -match '^/temas(@\w+)?$' -or $low -in 'temas', 'lista') { Send (Invoke-ReelTema @('listar')); return }
+  $um = [regex]::Match($low, '^(?:usar|escrever)\s+#?(\d+)$')
+  if ($action -like 'tema_usar_*' -or $um.Success) {
+    $id = if ($um.Success) { $um.Groups[1].Value } else { $action -replace '^tema_usar_', '' }
+    Send "Buscando notícias sobre o tema #$id e escrevendo a análise (uns 10 minutos)..."
+    Make-Pauta '' -tema $id
+    return
+  }
+  $ap = [regex]::Match($low, '^(?:apagar|remover)\s+#?(\d+)$')
+  if ($action -like 'tema_apagar_*' -or $ap.Success) {
+    $id = if ($ap.Success) { $ap.Groups[1].Value } else { $action -replace '^tema_apagar_', '' }
+    Send (Invoke-ReelTema @('apagar', $id)); return
+  }
+  $rl = [regex]::Match($t, 'https?://(?:www\.|m\.)?(?:instagram\.com/(?:[\w.]+/)?(?:reel|reels|p|tv)/|tiktok\.com/|vm\.tiktok\.com/|youtube\.com/shorts/)\S*', 'IgnoreCase')
+  if ($rl.Success -and -not $action) {
+    Add-Reel 'add' ($rl.Value.TrimEnd('.', ',', ')', '>')) ($t.Remove($rl.Index, $rl.Length))
+    return
+  }
+
   if ($action -eq 'cancel' -or $low -in '/cancelar', 'cancelar', 'descartar') {
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
     Stop-Video
@@ -412,6 +453,9 @@ while ($true) {
         Log "Dono: $chat"
       }
       if ($chat -ne [long]$cfg.chatId) { Log "Ignorando chat $chat"; continue }
+      # vídeo mandado direto (reel privado ou salvo no celular): vira tema também
+      $vf = if ($msg.video) { $msg.video.file_id } elseif ($msg.document -and "$($msg.document.mime_type)" -like 'video/*') { $msg.document.file_id } else { $null }
+      if ($vf) { Add-Reel 'add-arquivo' $vf ([string]$msg.caption); continue }
       Handle ([string]$msg.text + [string]$msg.caption) $null
     } catch { Log "Erro tratando update: $_"; try { Send "Erro interno: $_" } catch {} }
   }

@@ -13,6 +13,8 @@
       "W4K3 - Telegram"          (opcional) ao entrar no Windows, fica ouvindo links e comandos mandados ao seu bot
   - Copia o projeto de vídeo (video\) para %USERPROFILE%\.w4k3\video, instala as dependências e a voz
     Piper (pt-BR) em %USERPROFILE%\.w4k3\tts: o bot manda um vídeo narrado de cada rascunho.
+  - Instala yt-dlp e faster-whisper em %USERPROFILE%\.w4k3\reels: reels mandados ao bot viram temas
+    para edições futuras (automation\reels\reel-tema.js).
   Rode de novo sempre que mudar o fluxo, o script ou o vídeo.
 
   Telegram (uma vez): no Telegram, fale com @BotFather → /newbot → copie o token e rode
@@ -64,6 +66,26 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
   Write-Host 'ok: vídeo da análise (Remotion + Piper em %USERPROFILE%\.w4k3)'
 } else {
   Write-Host 'vídeo: pulado (precisa de node, ffmpeg e python no PATH)'
+}
+
+# ---- Temas a partir de reels: yt-dlp (download sem login) + faster-whisper (transcrição), neste PC ----
+New-Item -ItemType Directory -Force -Path (Join-Path $bin 'reels'), (Join-Path $bin 'n8n\code') | Out-Null
+Copy-Item (Join-Path $PSScriptRoot 'reels\*') (Join-Path $bin 'reels') -Include '*.js', '*.py' -Force
+# as fichas das obras ficam no código do nó de escrita; o reel-tema.js lê de lá
+Copy-Item (Join-Path $PSScriptRoot 'n8n\code\*.js') (Join-Path $bin 'n8n\code') -Force
+if (Get-Command python.exe -ErrorAction SilentlyContinue) {
+  $reels = Join-Path $env:USERPROFILE '.w4k3\reels'
+  $rpy = Join-Path $reels 'venv\Scripts\python.exe'
+  if (-not (Test-Path $rpy)) {
+    New-Item -ItemType Directory -Force -Path $reels | Out-Null
+    & python.exe -m venv (Join-Path $reels 'venv')
+    & $rpy -m pip install -q --disable-pip-version-check faster-whisper
+  }
+  # o Instagram muda com frequência e o yt-dlp acompanha: atualiza a cada instalação
+  & $rpy -m pip install -q --disable-pip-version-check -U yt-dlp
+  Write-Host 'ok: temas a partir de reels (yt-dlp + faster-whisper em %USERPROFILE%\.w4k3\reels)'
+} else {
+  Write-Host 'reels: pulado (precisa de python no PATH)'
 }
 
 $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
