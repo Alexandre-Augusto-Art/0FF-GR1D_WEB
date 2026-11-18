@@ -1,10 +1,11 @@
 {
- "updatedAt": "2026-11-18T01:04:04.770Z",
+ "updatedAt": "2026-11-18T15:51:14.086Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": true,
-   "count": 20
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 404"
   },
   {
    "name": "Agência Lupa",
@@ -13,8 +14,9 @@
   },
   {
    "name": "Boatos.org",
-   "ok": true,
-   "count": 15
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 429"
   },
   {
    "name": "E-farsas",
@@ -33,6 +35,14 @@
   }
  ],
  "items": [
+  {
+   "title": "Vídeo usa imagens criadas por IA para simular protestos contra Lula no Nordeste",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/17/video-usa-imagens-criadas-por-ia-para-simular-protestos-contra-lula-no-nordeste",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T02:02:56.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Post no Facebook alega existência de ‘tumultos nas ruas’ da região; ferramenta de detecção de IA indica imagens sintéticas"
+  },
   {
    "title": "É falso post em que Marco Rubio acusa Lula de conspirar contra os EUA com Irã",
    "link": "https://www.aosfatos.org/noticias/falso-post-marco-rubio-lula-conspirar-eua-ira",
