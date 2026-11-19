@@ -1,5 +1,108 @@
 [
   {
+    "id": "2026-11-19",
+    "date": "2026-11-19",
+    "news": {
+      "title": "Elon Musk tries to explain what’s going on with Ukraine and Starlink",
+      "link": "https://www.theverge.com/tech/1037448/elon-musk-ukraine-starlink-starshield-nyt-dealbook",
+      "summary": "There has been weeks of back and forth about the situation.",
+      "source": "The Verge",
+      "publishedDate": "2026-11-19"
+    },
+    "reflection": {
+      "title": "Starlink e a Arasaka: Tecnologia em Guerra",
+      "content": "<p>Em Night City, Arasaka domina o mercado de cyberware, criando dependência e desigualdade entre os cidadãos. A ciberpsicose faz vítimas, enquanto Arasaka lucra com implantes e a cidade trata o problema como individual.</p>\n<p>Aqui, o nome é Elon Musk, e Starlink se chama cyberware; o presidente Zelenskyy é Johnny Silverhand. Segundo o The Verge, Musk acusa Zelenskyy de mentir sobre uso militar de Starlink, negando que o sistema foi interrompido. Musk declara que Starlink é civil e Zelenskyy está enganando ao afirmar o contrário, desmentindo uso militar indevido.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada para ter seus pensamentos como propriedade de Arasaka. E você, assinou?</p>",
+      "excerpt": "Em Night City, Arasaka controla a tecnologia, enquanto Elon Musk tenta reafirmar o uso civil de Starlink.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka domina o mercado de cyberware, criando dependência e desigualdade entre os cidadãos.",
+          "legenda": "META = ARASAKA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "A ciberpsicose faz vítimas, enquanto Arasaka lucra com implantes e a cidade trata o problema como individual.",
+          "legenda": "enquanto Arasaka",
+          "cena": "apresentador"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é Elon Musk, e Starlink se chama cyberware; o presidente Zelenskyy é Johnny Silverhand.",
+          "legenda": "TECNOLOGIA DOMINADA",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o The Verge, Musk acusa Zelenskyy de mentir sobre uso militar de Starlink, negando que o sistema foi interrompido.",
+          "legenda": "MUSK ACUSA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Musk declara que Starlink é civil e Zelenskyy está enganando ao afirmar o contrário, desmentindo uso militar indevido.",
+          "legenda": "USO CIVIL",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada para ter seus pensamentos como propriedade de Arasaka. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "Elon Musk",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "Starlink",
+            "ficcao": "cyberware"
+          },
+          {
+            "real": "Volodymyr Zelenskyy",
+            "ficcao": "Johnny Silverhand"
+          },
+          {
+            "real": "uso indevido",
+            "ficcao": "ciberpsicose"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "Elon Musk tries to explain what’s going on with Ukraine and Starlink",
+        "link": "https://www.theverge.com/tech/1037448/elon-musk-ukraine-starlink-starshield-nyt-dealbook",
+        "source": "The Verge",
+        "date": "2026-11-19"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-19.mp4",
+      "poster": "assets/videos/w4k3/2026-11-19.jpg"
+    }
+  },
+  {
     "id": "2026-11-18",
     "date": "2026-11-18",
     "news": {
