@@ -1,11 +1,10 @@
 {
- "updatedAt": "2026-11-18T15:51:14.086Z",
+ "updatedAt": "2026-11-19T00:34:02.253Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 404"
+   "ok": true,
+   "count": 20
   },
   {
    "name": "Agência Lupa",
@@ -14,9 +13,8 @@
   },
   {
    "name": "Boatos.org",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 429"
+   "ok": true,
+   "count": 17
   },
   {
    "name": "E-farsas",
@@ -35,6 +33,84 @@
   }
  ],
  "items": [
+  {
+   "title": "É falsa capa da Veja que acusa Moro de desviar dinheiro",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/18/e-falsa-capa-da-veja-que-acusa-moro-de-desviar-dinheiro",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T21:18:26.000Z",
+   "rating": "FALSO",
+   "summary": "Imagem foi criada com IA e simula edição da revista publicada em novembro de 2026"
+  },
+  {
+   "title": "Vídeo sobre bloqueio do Bolsa Família para 1,2 milhão de usuários é antigo",
+   "link": "https://www.agencialupa.org/noticias/2026/11/18/video-sobre-bloqueio-do-bolsa-familia-para-12-milhao-de-usuarios-e-antigo",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T20:44:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "Medida ocorreu em 12 de abril de 2023 para evitar pagamentos duplicados devido a suspeitas de fraude"
+  },
+  {
+   "title": "Lula não se referiu a tempestades em SC ao falar de vento e ódio",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/18/lula-nao-se-referiu-a-tempestades-em-sc-ao-falar-de-vento-e-odio",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T19:39:35.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Presidente respondia a pergunta sobre a presença do partido no estado"
+  },
+  {
+   "title": "Teoria sobre sósia de Lula volta a ganhar força mesmo após sucessivos desmentidos",
+   "link": "https://www.estadao.com.br/estadao-verifica/teoria-lula-sosia-clone-volta-a-viralizar",
+   "source": "Estadão Verifica",
+   "date": "2026-11-18T19:06:05.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Suposta negociação de Maduro para delatar Lula é boato sem confirmação",
+   "link": "https://www.estadao.com.br/estadao-verifica/suposta-negociacao-de-maduro-para-delatar-lula-e-boato-sem-confirmacao",
+   "source": "Estadão Verifica",
+   "date": "2026-11-18T18:44:58.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "É #FAKE que foto de produtores descartando leite foi feita em 2026 no Rio Grande do Sul; registro ocorreu em Pernambuco há 7 anos",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/18/e-fake-que-foto-de-produtores-descartando-leite-foi-feita-em-2026-no-rio-grande-do-sul-registro-ocorreu-em-pernambuco-ha-7-anos.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-18T18:03:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "É #FAKE que foto de produtores descartando leite foi feita em 2026 no Rio Grande do Sul; registro ocorreu em Pernambuco há 7 anos Reprodução Circula nas redes sociais uma foto de produtores de leite despejando o produto no chão. As legendas alegam que o registro ocorreu,…"
+  },
+  {
+   "title": "É falso que Lula tenha levado uma comitiva de 2 mil pessoas para a COP31 e que o governo tenha pago todas as despesas",
+   "link": "https://www.boatos.org/politica/lula-levou-uma-comitiva-de-2-mil-pessoas-para-a-cop31.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:16:03.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Lula teria levado uma comitiva de 2 mil pessoas para a COP31, na Turquia, e o governo teria custeado passagens, hospedagem, alimentação e outras despesas de todos os participantes. Análise Publicações nas redes sociais afirmam que o presidente Luiz Inácio…"
+  },
+  {
+   "title": "Vídeos de tomates descartados são antigos e não mostram ação para aumentar preços em novembro de 2026",
+   "link": "https://www.boatos.org/brasil/videos-que-mostram-tomates-sendo-jogados-fora-sao-de-periodo-de-alta-no-valor-do-produto.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:14:58.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "Boatos.org Boato – Vídeos mostram produtores e comerciantes jogando grandes quantidades de tomates fora para reduzir a oferta e aumentar os preços nos supermercados em novembro de 2026. Análise Publicações nas redes sociais mostram imagens de produtores e comerciantes…"
+  },
+  {
+   "title": "É falso que o Banco do Brasil tenha liberado R$ 256 bilhões em empréstimos para fazendas fantasmas ligadas a um CPF inexistente",
+   "link": "https://www.boatos.org/brasil/banco-do-brasil-liberou-r-256-bilhoes-em-emprestimos-para-112-fazendas-fantasmas-ligadas-a-um-cpf-inexistente.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:11:44.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – O Banco do Brasil teria liberado 112 empréstimos, que somariam R$ 256 bilhões, para fazendas fantasmas vinculadas a um único CPF inexistente. Análise Publicações nas redes sociais afirmam que o Banco do Brasil teria liberado 112 empréstimos, que somariam R$…"
+  },
+  {
+   "title": "Vídeo de descarte de leite em rodovia é de 2019; não atual",
+   "link": "https://www.aosfatos.org/noticias/video-descarte-leite",
+   "source": "Aos Fatos",
+   "date": "2026-11-18T16:28:55.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente um vídeo em que produtores rurais descartam leite em uma rodovia, como afirmam postagens nas redes sociais. O registro original é de fevereiro de 2019 e foi feito em Pernambuco. Na época, os manifestantes protestavam por melhores…"
+  },
   {
    "title": "Vídeo usa imagens criadas por IA para simular protestos contra Lula no Nordeste",
    "link": "https://www.agencialupa.org/verificacao/2026/11/17/video-usa-imagens-criadas-por-ia-para-simular-protestos-contra-lula-no-nordeste",
