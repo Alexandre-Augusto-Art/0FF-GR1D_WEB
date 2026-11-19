@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-19T00:34:02.253Z",
+ "updatedAt": "2026-11-19T15:55:54.520Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -34,12 +34,44 @@
  ],
  "items": [
   {
+   "title": "É #FAKE que vídeo de descarte de tomates no Rio tenha a ver com alta de preços em 2026; cena ocorreu em dezembro do ano passado",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-video-de-descarte-de-tomates-no-rio-tenha-a-ver-com-alta-de-precos-em-2026-cena-ocorreu-em-dezembro-do-ano-passado.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-19T15:19:45.000Z",
+   "rating": "FALSO",
+   "summary": "Vídeo de descarte de tomates no Rio não é recente g1 Circulam nas redes sociais publicações exibindo um vídeo em que um comerciante joga 50 caixas de tomate fora devido à recente alta de preços do produto. É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo Fake…"
+  },
+  {
+   "title": "É #FAKE que MP do 'imposto do pecado' aumentará em 30% carga tributária sobre carros em 2027",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-mp-do-imposto-do-pecado-aumentara-em-30percent-carga-tributaria-sobre-carros-em-2027.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-19T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "Valor de 30% não é um aumento porcentual sobre o impost oatual, nem a taxa que incidiará sobre todos os veículos g1 Circulam nas redes publicações sugerindo que o Imposto Seletivo (IS), conhecido como \"imposto do pecado\", aumentará em 30% a carga tributária sobre todos carros…"
+  },
+  {
+   "title": "Lula não ‘entregou’ maior reserva de urânio do Brasil para a China",
+   "link": "https://www.aosfatos.org/noticias/lula-uranio-brasil-china",
+   "source": "Aos Fatos",
+   "date": "2026-11-18T21:29:47.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" background-color:#ffffff; padding:0pt 0pt 18pt 0pt\">Não é verdade que o governo Lula (PT) tenha entregado para a China a maior reserva de urânio do Brasil, como afirmam postagens nas redes sociais. As peças desinformativas distorcem a venda da Mineração Taboca…"
+  },
+  {
    "title": "É falsa capa da Veja que acusa Moro de desviar dinheiro",
    "link": "https://www.agencialupa.org/verificacao/2026/11/18/e-falsa-capa-da-veja-que-acusa-moro-de-desviar-dinheiro",
    "source": "Agência Lupa",
    "date": "2026-11-18T21:18:26.000Z",
    "rating": "FALSO",
    "summary": "Imagem foi criada com IA e simula edição da revista publicada em novembro de 2026"
+  },
+  {
+   "title": "Vídeo sobre bloqueio do Bolsa Família para 1,2 milhão de usuários é antigo",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/18/video-sobre-bloqueio-do-bolsa-familia-para-12-milhao-de-usuarios-e-antigo",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T20:44:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "Medida ocorreu em 12 de abril de 2023 para evitar pagamentos duplicados devido a suspeitas de fraude"
   },
   {
    "title": "Vídeo sobre bloqueio do Bolsa Família para 1,2 milhão de usuários é antigo",
