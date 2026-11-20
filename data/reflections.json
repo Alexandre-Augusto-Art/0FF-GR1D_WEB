@@ -1,5 +1,104 @@
 [
   {
+    "id": "2026-11-20",
+    "date": "2026-11-20",
+    "news": {
+      "title": "AI isn’t replacing your job. It’s turning it into low-paid gig work",
+      "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "summary": "Platform companies are luring doctors, lawyers, and Ph.D.s with top rates, but then use the same tactics of pay cuts and sudden ghosting that have plagued global data workers.",
+      "source": "Rest of World",
+      "publishedDate": "2026-11-19"
+    },
+    "reflection": {
+      "title": "Arasaka Em Nosso Mundo",
+      "content": "<p>Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller. Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é Arasaka, e a tecnologia de IA se chama plataformas de tecnologia. Segundo o Rest of World, plataformas oferecem até $180 por hora para médicos nos EUA e $7,50 para trabalhadores na Filipinas. A Hive reduziu drasticamente pagamentos para trabalhadores, após um período inicial de pagamentos mais altos.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "Em Night City, Arasaka controla a tecnologia de IA explorando trabalhadores, semelhante a como plataformas de tecnologia exploram trabalhadores no mundo real.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller.",
+          "legenda": "META = ARASAKA",
+          "cena": "apresentador"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "SUSPENSO PELA JUSTIÇA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é Arasaka, e a tecnologia de IA se chama plataformas de tecnologia.",
+          "legenda": "SUA MENTE É DELES",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Rest of World, plataformas oferecem até $180 por hora para médicos nos EUA e $7,50 para trabalhadores na Filipinas.",
+          "legenda": "TRABALHADORES EXPLORADOS",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "A Hive reduziu drasticamente pagamentos para trabalhadores, após um período inicial de pagamentos mais altos.",
+          "legenda": "REDUÇÃO DE PAGAMENTOS",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "plataformas de tecnologia",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "recrutamento de profissionais",
+            "ficcao": "contratação de trabalhadores"
+          },
+          {
+            "real": "condições de trabalho instáveis e pagamentos reduzidos",
+            "ficcao": "exploração e controle"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "AI isn’t replacing your job. It’s turning it into low-paid gig work",
+        "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+        "source": "Rest of World",
+        "date": "2026-11-19"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-20.mp4",
+      "poster": "assets/videos/w4k3/2026-11-20.jpg"
+    }
+  },
+  {
     "id": "2026-11-19",
     "date": "2026-11-19",
     "news": {
