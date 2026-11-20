@@ -1,10 +1,11 @@
 {
- "updatedAt": "2026-11-19T15:55:54.520Z",
+ "updatedAt": "2026-11-20T00:44:04.960Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": true,
-   "count": 20
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 404"
   },
   {
    "name": "Agência Lupa",
@@ -14,7 +15,7 @@
   {
    "name": "Boatos.org",
    "ok": true,
-   "count": 17
+   "count": 15
   },
   {
    "name": "E-farsas",
@@ -33,6 +34,59 @@
   }
  ],
  "items": [
+  {
+   "title": "Foto antiga é associada a protestos contra ajuste fiscal",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/19/foto-antiga-e-associada-a-protestos-contra-ajuste-fiscal",
+   "source": "Agência Lupa",
+   "date": "2026-11-19T20:13:40.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Imagem mostra manifestação contra a PEC da Blindagem, em setembro de 2025, e não ato contra medidas do governo Lula"
+  },
+  {
+   "title": "Livro que aborda incesto e pedofilia foi retirado pelo MEC em 2017 e não voltou a ser distribuído",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/19/livro-que-aborda-incesto-e-pedofilia-foi-retirado-pelo-mec-em-2017-e-nao-voltou-a-ser-distribuido",
+   "source": "Agência Lupa",
+   "date": "2026-11-19T19:36:58.000Z",
+   "rating": "FALSO",
+   "summary": "Obra ‘Enquanto o sono não vem’ foi retirada das escolas públicas em 2017, após questionamentos sobre o conteúdo"
+  },
+  {
+   "title": "É falsa a capa da revista ‘Veja’ que chama Sérgio Moro de ‘ladrão’",
+   "link": "https://www.estadao.com.br/estadao-verifica/capa-revista-veja-juiz-era-ladrao-sergio-moro-falsa",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T19:10:08.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Anúncios nas redes sociais da Meta divulgam bets ilegais: ‘aqui ainda funciona’",
+   "link": "https://www.estadao.com.br/estadao-verifica/anuncios-nas-redes-sociais-da-meta-divulgam-bets-ilegais-aqui-ainda-funciona",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T18:38:16.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Moraes mandou destruir armamentos de condenados do 8 de Janeiro, e não Bíblias e bengalas",
+   "link": "https://www.estadao.com.br/estadao-verifica/moraes-mandou-destruir-armas-nao-biblias-8-de-janeiro",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T18:28:06.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Vídeo que mostra Cristiano Ronaldo protestando em defesa da Palestina na Bola de Ouro foi criado por IA",
+   "link": "https://www.boatos.org/esporte/cristiano-ronaldo-gritou-palestina-livre-e-posou-com-bandeira-do-pais-durante-a-cerimonia-da-bola-de-ouro.html",
+   "source": "Boatos.org",
+   "date": "2026-11-19T16:44:32.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Cristiano Ronaldo teria gritado “Palestina Livre” e posado com uma bandeira palestina durante a cerimônia da Bola de Ouro. Análise Publicações nas redes sociais compartilham um vídeo que supostamente mostraria o jogador português Cristiano Ronaldo usando…"
+  },
+  {
+   "title": "Vídeo que mostra Paris coberta por gafanhotos foi criado com inteligência artificial",
+   "link": "https://www.boatos.org/mundo/video-mostra-uma-invasao-de-gafanhotos-que-cobriu-as-ruas-de-paris.html",
+   "source": "Boatos.org",
+   "date": "2026-11-19T16:43:03.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria uma invasão de gafanhotos que cobriu ruas e veículos em Paris, na França. Análise Uma publicação nas redes sociais compartilha um vídeo que supostamente mostraria uma invasão de gafanhotos na capital francesa. A legenda afirma que uma…"
+  },
   {
    "title": "É #FAKE que vídeo de descarte de tomates no Rio tenha a ver com alta de preços em 2026; cena ocorreu em dezembro do ano passado",
    "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-video-de-descarte-de-tomates-no-rio-tenha-a-ver-com-alta-de-precos-em-2026-cena-ocorreu-em-dezembro-do-ano-passado.ghtml",
