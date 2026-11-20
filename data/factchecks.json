@@ -1,11 +1,10 @@
 {
- "updatedAt": "2026-11-20T00:44:04.960Z",
+ "updatedAt": "2026-11-20T15:39:18.855Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 404"
+   "ok": true,
+   "count": 20
   },
   {
    "name": "Agência Lupa",
@@ -14,8 +13,9 @@
   },
   {
    "name": "Boatos.org",
-   "ok": true,
-   "count": 15
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 429"
   },
   {
    "name": "E-farsas",
@@ -34,6 +34,37 @@
   }
  ],
  "items": [
+  {
+   "title": "Vídeo apresenta dados falsos sobre velocidade nas filas de votação para sugerir fraude nas urnas",
+   "link": "https://www.estadao.com.br/estadao-verifica/fraude-urnas-sem-biometria-secoes-lula-venceu-filas-rapidas",
+   "source": "Estadão Verifica",
+   "date": "2026-11-20T13:16:37.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "É #FAKE que Pix MEI de até R$ 5 mil terá de baixar para R$ 363 para 'caber' no orçamento reservado pelo governo",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/20/e-fake-que-pix-mei-de-ate-r-5-mil-tera-de-baixar-para-r-363-para-caber-no-orcamento-reservado-pelo-governo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-20T07:00:01.000Z",
+   "rating": "FALSO",
+   "summary": "Não é verdde que assistência a MEIs será reduzida de R$ 5 mil para R$ 363 g1 Circulam nas redes sociais publicações sugerindo que o Pix MEI, proposta de incentivo financeiro de até R$ 5 mil a microempreendedores individuais anunciada por Lula (PT) durante a campanha à…"
+  },
+  {
+   "title": "Repetindo falsa cartilha de censura, deputados pró-big techs atacam PL dos Mercados Digitais",
+   "link": "https://www.aosfatos.org/noticias/pl-mercados-digitais-censura",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T20:26:46.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>Prestes a ser votado na Câmara dos Deputados, o <a href=\"https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2562481\" target=\"_blank\">PL 4.675/2025</a>, apelidado de “PL dos Mercados Digitais”, tem sido alvo de desinformação nas redes sociais por…"
+  },
+  {
+   "title": "Vídeo que mostra descarte de cebolas no campo é de 2024, não atual",
+   "link": "https://www.aosfatos.org/noticias/video-descarte-cebolas-campo-2024-nao-atual",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T20:19:48.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente o vídeo que mostra o descarte de sacos de cebola em um campo, como afirmam postagens nas redes sociais. As peças desinformativas alegam que a situação teria relação com a atual alta nos preços do produto, o que não é verdade. As…"
+  },
   {
    "title": "Foto antiga é associada a protestos contra ajuste fiscal",
    "link": "https://www.agencialupa.org/jornalismo/2026/11/19/foto-antiga-e-associada-a-protestos-contra-ajuste-fiscal",
@@ -88,6 +119,14 @@
    "summary": "Boatos.org Boato – Um vídeo mostraria uma invasão de gafanhotos que cobriu ruas e veículos em Paris, na França. Análise Uma publicação nas redes sociais compartilha um vídeo que supostamente mostraria uma invasão de gafanhotos na capital francesa. A legenda afirma que uma…"
   },
   {
+   "title": "É falso que Casa da Moeda vai lançar nota de R$ 100 com rosto de Lula",
+   "link": "https://www.aosfatos.org/noticias/nota-100-reais-lula",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T15:51:13.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que a Casa da Moeda esteja avaliando o lançamento de uma nova versão da nota de R$ 100 com o rosto do presidente Lula (PT), como afirmam postagens nas redes sociais. Não há projeto para substituir a cédula, segundo a Casa da Moeda. O…"
+  },
+  {
    "title": "É #FAKE que vídeo de descarte de tomates no Rio tenha a ver com alta de preços em 2026; cena ocorreu em dezembro do ano passado",
    "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-video-de-descarte-de-tomates-no-rio-tenha-a-ver-com-alta-de-precos-em-2026-cena-ocorreu-em-dezembro-do-ano-passado.ghtml",
    "source": "Fato ou Fake (g1)",
@@ -109,7 +148,7 @@
    "source": "Aos Fatos",
    "date": "2026-11-18T21:29:47.000Z",
    "rating": "CHECAGEM",
-   "summary": "<p style=\" background-color:#ffffff; padding:0pt 0pt 18pt 0pt\">Não é verdade que o governo Lula (PT) tenha entregado para a China a maior reserva de urânio do Brasil, como afirmam postagens nas redes sociais. As peças desinformativas distorcem a venda da Mineração Taboca…"
+   "summary": "<p style=\" background-color:#ffffff; padding:0pt 0pt 18pt 0pt\">Não é verdade que o governo Lula (PT) tenha entregado para a China a maior reserva de urânio do Brasil, como afirmam postagens nas redes sociais. As peças desinformativas distorcem a venda de uma empresa privada,…"
   },
   {
    "title": "É falsa capa da Veja que acusa Moro de desviar dinheiro",
