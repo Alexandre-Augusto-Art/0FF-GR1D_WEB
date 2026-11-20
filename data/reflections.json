@@ -3,46 +3,46 @@
     "id": "2026-11-19",
     "date": "2026-11-19",
     "news": {
-      "title": "Elon Musk tries to explain what’s going on with Ukraine and Starlink",
-      "link": "https://www.theverge.com/tech/1037448/elon-musk-ukraine-starlink-starshield-nyt-dealbook",
-      "summary": "There has been weeks of back and forth about the situation.",
-      "source": "The Verge",
-      "publishedDate": "2026-11-19"
+      "title": "EmTech Brasil 2026: os desafios e limites da Inteligência Artificial",
+      "link": "https://mittechreview.com.br/emtech-brasil-2026-desafios-limites-inteligencia-artificial/",
+      "summary": "EmTech Brasil 2026 encerra dois dias de debates sobre Inteligência Artificial, inovação e seus impactos na Justiça, educação, saúde e energia",
+      "source": "MIT Technology Review - Brasil",
+      "publishedDate": "2026-11-17"
     },
     "reflection": {
-      "title": "Starlink e a Arasaka: Tecnologia em Guerra",
-      "content": "<p>Em Night City, Arasaka domina o mercado de cyberware, criando dependência e desigualdade entre os cidadãos. A ciberpsicose faz vítimas, enquanto Arasaka lucra com implantes e a cidade trata o problema como individual.</p>\n<p>Aqui, o nome é Elon Musk, e Starlink se chama cyberware; o presidente Zelenskyy é Johnny Silverhand. Segundo o The Verge, Musk acusa Zelenskyy de mentir sobre uso militar de Starlink, negando que o sistema foi interrompido. Musk declara que Starlink é civil e Zelenskyy está enganando ao afirmar o contrário, desmentindo uso militar indevido.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada para ter seus pensamentos como propriedade de Arasaka. E você, assinou?</p>",
-      "excerpt": "Em Night City, Arasaka controla a tecnologia, enquanto Elon Musk tenta reafirmar o uso civil de Starlink.",
+      "title": "EmTech Brasil: A Arasaka Digital",
+      "content": "<p>Em Night City, Arasaka domina a tecnologia de IA, controlando mentes através do Soulkiller. Pessoas se tornam commodities, perdendo privacidade e autonomia, enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é Arasaka, e a tecnologia de IA se chama EmTech Brasil 2026. Segundo o MIT Technology Review - Brasil, especialistas discutem limites e possibilidades da IA em áreas como justiça e saúde. O procurador Paulo Costa destacou a iniciativa Smart Sampa, usando câmeras de celulares para monitorar violência doméstica.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "EmTech Brasil 2026 discute IA e seus impactos, refletindo poder corporativo de Night City.",
       "beats": [
         {
           "lado": "ficcao",
-          "fala": "Em Night City, Arasaka domina o mercado de cyberware, criando dependência e desigualdade entre os cidadãos.",
+          "fala": "Em Night City, Arasaka domina a tecnologia de IA, controlando mentes através do Soulkiller.",
           "legenda": "META = ARASAKA",
-          "cena": "cidade"
-        },
-        {
-          "lado": "ficcao",
-          "fala": "A ciberpsicose faz vítimas, enquanto Arasaka lucra com implantes e a cidade trata o problema como individual.",
-          "legenda": "enquanto Arasaka",
           "cena": "apresentador"
         },
         {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam commodities, perdendo privacidade e autonomia, enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "SUA MENTE É DELES",
+          "cena": "vigilancia"
+        },
+        {
           "lado": "real",
-          "fala": "Aqui, o nome é Elon Musk, e Starlink se chama cyberware; o presidente Zelenskyy é Johnny Silverhand.",
-          "legenda": "TECNOLOGIA DOMINADA",
+          "fala": "Aqui, o nome é Arasaka, e a tecnologia de IA se chama EmTech Brasil 2026.",
+          "legenda": "ARASAKA = EMTECH",
+          "cena": "cidade"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o MIT Technology Review - Brasil, especialistas discutem limites e possibilidades da IA em áreas como justiça e saúde.",
+          "legenda": "LIMITES E POSSIBILIDADES",
           "cena": "manchete"
         },
         {
           "lado": "real",
-          "fala": "Segundo o The Verge, Musk acusa Zelenskyy de mentir sobre uso militar de Starlink, negando que o sistema foi interrompido.",
-          "legenda": "MUSK ACUSA",
+          "fala": "O procurador Paulo Costa destacou a iniciativa Smart Sampa, usando câmeras de celulares para monitorar violência doméstica.",
+          "legenda": "SMART SAMPA",
           "cena": "plataforma"
-        },
-        {
-          "lado": "real",
-          "fala": "Musk declara que Starlink é civil e Zelenskyy está enganando ao afirmar o contrário, desmentindo uso militar indevido.",
-          "legenda": "USO CIVIL",
-          "cena": "vigilancia"
         },
         {
           "lado": "virada",
@@ -52,8 +52,8 @@
         },
         {
           "lado": "chamado",
-          "fala": "Em Night City, ninguém assinou nada para ter seus pensamentos como propriedade de Arasaka. E você, assinou?",
-          "legenda": "E você, assinou?",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "ASSINOU ALGO?",
           "cena": "pergunta"
         }
       ],
@@ -63,30 +63,22 @@
         "mundo": "Night City",
         "traducao": [
           {
-            "real": "Elon Musk",
-            "ficcao": "Arasaka"
+            "real": "Governos e instituições responsáveis pela aplicação da lei ganham poder ao acompanhar o desenvolvimento de tecnologias que podem ser utilizadas para combater crimes digitais",
+            "ficcao": "Arasaka usa o programa Soulkiller para copiar e armazenar mentes em servidores, controlando assim a vida e a privacidade de indivíduos"
           },
           {
-            "real": "Starlink",
-            "ficcao": "cyberware"
-          },
-          {
-            "real": "Volodymyr Zelenskyy",
-            "ficcao": "Johnny Silverhand"
-          },
-          {
-            "real": "uso indevido",
-            "ficcao": "ciberpsicose"
+            "real": "Pessoas e organizações que praticam crimes digitais podem perder autonomia e privacidade, já que a tecnologia permite uma maior vigilância e monitoramento",
+            "ficcao": "A corporação Arasaka monitora e controla indivíduos através de implantes cibernéticos e programas como o Soulkiller, limitando a liberdade e a privacidade dos mesmos"
           }
         ]
       }
     },
     "sources": [
       {
-        "title": "Elon Musk tries to explain what’s going on with Ukraine and Starlink",
-        "link": "https://www.theverge.com/tech/1037448/elon-musk-ukraine-starlink-starshield-nyt-dealbook",
-        "source": "The Verge",
-        "date": "2026-11-19"
+        "title": "EmTech Brasil 2026: os desafios e limites da Inteligência Artificial",
+        "link": "https://mittechreview.com.br/emtech-brasil-2026-desafios-limites-inteligencia-artificial/",
+        "source": "MIT Technology Review - Brasil",
+        "date": "2026-11-17"
       }
     ],
     "tags": [
