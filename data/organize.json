@@ -1,52 +1,52 @@
 {
- "updatedAt": "2026-11-20T17:48:30.134Z",
+ "updatedAt": "2026-11-21T00:14:21.039Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 10,
+   "manchetes": 12,
    "atos": 0
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 17,
-   "atos": 1
+   "manchetes": 15,
+   "atos": 0
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 36,
+   "manchetes": 9,
    "atos": 1
   },
   {
    "busca": "AM",
    "ok": true,
    "manchetes": 14,
-   "atos": 2
+   "atos": 1
   },
   {
    "busca": "BA",
    "ok": true,
-   "manchetes": 29,
-   "atos": 2
+   "manchetes": 56,
+   "atos": 4
   },
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 28,
-   "atos": 6
+   "manchetes": 26,
+   "atos": 7
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 30,
+   "manchetes": 29,
    "atos": 3
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 13,
+   "manchetes": 17,
    "atos": 1
   },
   {
@@ -58,74 +58,74 @@
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 19,
+   "manchetes": 18,
    "atos": 0
   },
   {
    "busca": "MT",
    "ok": true,
-   "manchetes": 37,
-   "atos": 4
+   "manchetes": 21,
+   "atos": 2
   },
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 64,
-   "atos": 2
+   "manchetes": 31,
+   "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 59,
+   "manchetes": 58,
    "atos": 5
   },
   {
    "busca": "PA",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 25,
    "atos": 1
   },
   {
    "busca": "PB",
    "ok": true,
-   "manchetes": 9,
-   "atos": 2
+   "manchetes": 10,
+   "atos": 1
   },
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 12,
+   "manchetes": 11,
    "atos": 2
   },
   {
    "busca": "PE",
    "ok": true,
    "manchetes": 25,
-   "atos": 3
+   "atos": 5
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 10,
+   "manchetes": 11,
    "atos": 1
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 30,
-   "atos": 7
+   "manchetes": 24,
+   "atos": 5
   },
   {
    "busca": "RN",
    "ok": true,
-   "manchetes": 32,
+   "manchetes": 31,
    "atos": 0
   },
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 25,
-   "atos": 3
+   "manchetes": 21,
+   "atos": 4
   },
   {
    "busca": "RO",
@@ -136,38 +136,38 @@
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 8,
+   "manchetes": 9,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
-   "manchetes": 30,
-   "atos": 1
+   "manchetes": 29,
+   "atos": 2
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 53,
-   "atos": 19
+   "manchetes": 21,
+   "atos": 10
   },
   {
    "busca": "SE",
    "ok": true,
    "manchetes": 10,
-   "atos": 0
+   "atos": 1
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 10,
-   "atos": 0
+   "manchetes": 14,
+   "atos": 1
   },
   {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 31,
-   "atos": 9
+   "manchetes": 32,
+   "atos": 11
   },
   {
    "busca": "movimentos",
@@ -179,31 +179,62 @@
    "busca": "sindicatos",
    "ok": true,
    "manchetes": 16,
-   "atos": 3
+   "atos": 2
   },
   {
    "busca": "pautas",
    "ok": true,
-   "manchetes": 40,
-   "atos": 17
+   "manchetes": 85,
+   "atos": 37
   }
  ],
  "eventos": [
   {
-   "id": "6f2b255ec65e",
+   "id": "5552d127a703",
+   "titulo": "16ª Marcha da Capoeira Zumbi dos Palmares marca programação do Dia da Consciência Negra, no Recife",
+   "tipo": "convocacao",
+   "uf": "PE",
+   "publicadoEm": "2026-11-20T19:53:00.000Z",
+   "fonte": {
+    "nome": "Folha PE",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPcUFlVzFlQkxzeWRLSjBqT1k1cmVnQjRSWFptRFAzSXFXX0xkUlpBVWxFNnd6SXRQdVVXd2pXa2lHTkVIaVdZU1lmWVhnTTk4SnpkdGp5VVVrVVFXbkQ2NDhySHVxZDgycUZRa3hIWFB4UG1aaDM0Z1c0eHlhYjZaczB4QmFlcDh4VHFaVjNUczVyZ9IBlgFBVV95cUxOdUstWTUzMkJzeVJleGFwQlFzOGwwdnpjOGRwZXk3aTBqcktUeDJocHNPZWYzUG9ITFoxX3JONHFZMko3eXV6aldxd2RaU1Nma1NNZXBZbFRpLXdqM0F3OXlEYmxsVVdYX3dCdmxRNE15VXdJQnFtSnJtdFVtZ21MTVFKcWFSWHpGRVRMOGRRdE80R3NCekE?oc=5"
+   },
+   "cidade": "Recife",
+   "data": "2026-11-20",
+   "outrasFontes": [
+    {
+     "nome": "Blog do Magno",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQbk9XeEp5TEh2ZWlYUThiZjFBY2hPSFJKaERqMHZOSnUwYjhReDRQcjROZDdsLU9XRDI5aFhqanloTWQzMGxKNXFzZkU5WGpGTS1JYWE4LUlkSEJLSUVNczVTZlRjT01QbThhQ2xVaC05d1d0QVlMTnIydWNGUmJlcHkzaHVDQjJkUFc1bnM4QXZoRDdHd0NiVUVjZnA2cmNWeE1zVXZ4YzJnVUg5RFo0aUJNbzI4T3dyM2MwMUxTLVJpaW8?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "d01fd5250765",
+   "titulo": "Um ano após indicação de Messias no Dia da Consciência Negra, cadeira vazia em ato reforça cobrança por ministra negra no STF",
+   "tipo": "cobertura",
+   "uf": "BR",
+   "publicadoEm": "2026-11-20T19:37:55.000Z",
+   "fonte": {
+    "nome": "O GLOBO",
+    "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxNTjg0VEVHX2t2bXpFVzZ1cUZDYURwdFR2bHBVMkZ1anA2ekZmX25ETGx0dF83WjdkWVNvRWNPQmZhSlRUWTRmSlRRdmd4SVB2MHFPeGNpQndKTUJISjNfLTZBZ0dJS1pYYUR5RWJ2bFp1QlR2a3FDVUxGalliRE9qVWo4NEZQb2gyMWR3dXVWWFJwVXdlMVcyNlBWZ1pXMWVTS0l3Xy1xT05pVjROOWhaQ2VVNmxrMmlZSW13akVqenY3VGx0QVVpMWNFazdHOTQ0WGQ0djlGd2VOaTE4TEVpMDAzeUtRSFFCVEtIOVVXR3lOTGJpa19wR3Y2aEpkaExhTzhoWnkzSdIBlgJBVV95cUxOekRabzdCUWpvSXIzX3MwWUc0X2V2NzFVTlB4QlFxZGFhaVZLX01WMXNReVBEYl9RMFhUYWlXWG5DM0RNU2dGNHBBV1k2ejhMNWlsNjNVTVZ6WktUZFdncU9RZ3dhOFRQNUJqX3lEWG1XR2NQNFI4Wkl6ajdkRjdWU3lISFRrajFZcWFMTVVsQlpEN2VyZ09nRTkzTFJpUXNhUVFaV0FJSGdIQjVPVHVqb1VDNWl5aktXZ1JUcmZTU2VZNmcwMTl5RmpHdmtHX285TW4yVWk0SUJPTC1GU1pINlZQVHNmSlVDV1Frc2RKem1CT3c1a1ZMLXE1YUNoYjNDMlBKS1VqTEpfaEtuQjBHaVVvSjhPZw?oc=5"
+   },
+   "data": "2026-11-20"
+  },
+  {
+   "id": "46a1152f529a",
    "titulo": "SP: empreendedorismo, marcha e música marcam Dia da Consciência Negra",
    "tipo": "convocacao",
    "uf": "SP",
    "publicadoEm": "2026-11-20T10:46:00.000Z",
    "fonte": {
-    "nome": "Repórter PB",
-    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQWl6aWRtc3d5V3NUbkVQb2JqdFF5a3BlSFFNRThGcGk3SGZCeVhYRHF6OENSQ2NsczhzZ2tpbWJJcC1URHpWQ2ZuRkVtRERNZmxiYWJ0dFFrOW9qUjRuN29DQWtpRjlMbE1FTUs4TFVGZlFYRjNDYmFZN2hxQ0UwaDYwQzNQVGt2dEdfMFNJbHR5aTJESldVdW5KUmNpeGVEZjRHbDE2RDFGeFV3YjFlbkZiNVVhaExhS3h2NXNDN3RsT3pOeUpNeUxscGJ3QXc?oc=5"
+    "nome": "Agência Brasil",
+    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOLVVtaHFDSjcxMllvNjhEc2FGTHJGWi1nR2NNVm9pbTNFLThZVFhmYTFlTkhyLXRaNXVjV1M5T05rWkRLWmw5T1BKRDBJY09kdTVsOG1wSlExQnF6ZmVtMEhZZEFHeVRha19RV1QxOTRPNVFHSktXdjFEZ0xiVV96OGVUenE5T0JRSlRnSkQzbjRGTjhvRExEaGVYa29OQzRXY0JoNGI5a21QTC1zbUt6RnR1QU1nVHZKWXJ5U2ZydmRvQ2pIS1U5SVRzenlMQQ?oc=5"
    },
    "data": "2026-11-20",
    "outrasFontes": [
     {
-     "nome": "Agência Brasil",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOLVVtaHFDSjcxMllvNjhEc2FGTHJGWi1nR2NNVm9pbTNFLThZVFhmYTFlTkhyLXRaNXVjV1M5T05rWkRLWmw5T1BKRDBJY09kdTVsOG1wSlExQnF6ZmVtMEhZZEFHeVRha19RV1QxOTRPNVFHSktXdjFEZ0xiVV96OGVUenE5T0JRSlRnSkQzbjRGTjhvRExEaGVYa29OQzRXY0JoNGI5a21QTC1zbUt6RnR1QU1nVHZKWXJ5U2ZydmRvQ2pIS1U5SVRzenlMQQ?oc=5"
+     "nome": "Repórter PB",
+     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQWl6aWRtc3d5V3NUbkVQb2JqdFF5a3BlSFFNRThGcGk3SGZCeVhYRHF6OENSQ2NsczhzZ2tpbWJJcC1URHpWQ2ZuRkVtRERNZmxiYWJ0dFFrOW9qUjRuN29DQWtpRjlMbE1FTUs4TFVGZlFYRjNDYmFZN2hxQ0UwaDYwQzNQVGt2dEdfMFNJbHR5aTJESldVdW5KUmNpeGVEZjRHbDE2RDFGeFV3YjFlbkZiNVVhaExhS3h2NXNDN3RsT3pOeUpNeUxscGJ3QXc?oc=5"
     },
     {
      "nome": "Informe Cidade",
@@ -212,6 +243,14 @@
     {
      "nome": "Jornal Classivale",
      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOUjNLLXVMVnI4bFFua211Q1o3OGczMnY2TlZpVlFFRnpsbUUwRU05T1p6Nm0ydEs0NG5vbmgxT3ZoWXVNa3ZtQmkyMks3ajZzZGNfdktPbFNPMzE0amx0QV9qaTg0MVNfZEI4d0VLVndBaW5yWDBMQkZjNGNLbXFaOExhamRpdGZyVEl4OUdHNkNyb0ZIb0pYQWxHNDE0UlVoeDNBRHdLaGIwci1NMzBON1Bn?oc=5"
+    },
+    {
+     "nome": "Tribuna do Povo",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOcUNSOFhLckItdzhHMGx1TU5PM2pQQWZxeU9NUFFZZERReVhwMHYzSVNZWEdvUkpiZkVNVnJ5UjdKaUROX1JRQ3JLQ1FMS29TZVJSZFhlSWFSNjJ0Uk5lbWdWZVp2OGZKaEhNcXdEbnNnTzJnNW1vNkVkbGhZSS1GWW5VRGVESTA5alFuT29VQnd6YWR3WUJsVk1hbzRDNmFOUHNodGdPeTNJcWRHdnVTdG03ejBqSDRw?oc=5"
+    },
+    {
+     "nome": "BOM DIA SOROCABA",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQU05JZHFfOTZaUzd4VVZJTmozTUV2TlcydHFkY2d4ZVdRM3J2WjVqejZVOVVNZzcxTUtCbnBIM3FsbndqTWc2NHFxTWVoT3dOeDFaMmtGNUlKMzNRRFk1bW1BOWpDUC1UMzFHNlVBb2dBbVZLZVhPcG1QYWJOQjNtaklPbWdwUkdYMVNPSWlvTUhRYm9KQ3pfRmJuNVFjWHg4ZTBfejRjRGFFUzRCTHJEQjRn?oc=5"
     }
    ]
   },
@@ -266,6 +305,19 @@
    "data": "2026-11-20"
   },
   {
+   "id": "3dc4030594d0",
+   "titulo": "Maringá recebe a 2ª Marcha Antirracista no dia 20 de novembro",
+   "tipo": "convocacao",
+   "uf": "PR",
+   "publicadoEm": "2026-11-19T00:02:09.000Z",
+   "fonte": {
+    "nome": "O Maringá",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOWU9PdVVvRks2Uk5EUTlCMVpkX3l3cnQ4UkJLS1hmbUYySFAzVVRPdEhFQVcxeG9qb2VXZ21tVGZLWVFaLXZtclQ3SnVWNm9tSDM3NWlkN1hGcGpaZnE4eV9lcWMwLXhtaU5XSDhSVk4xUTZnNUFMVUVoaWZ4U2NQd0Vfakw3YU5PU2ItVXhDcFlZSUFLQnVmNy10ZDZKX2tUVHNF0gGoAUFVX3lxTE5jWVludzctajg3Nk9Ld202UjdWdmJXRTVfeXFBeWNVSThNTndMVnlnYUdOeXd1X3QzRzktNWttMlRzRlhjcUk2T3VLY0tBUnJudFpJejR5a3VMakJWX1ZfcEFPQTJmcUh0OGRBY2pMMDNEejVUdDQ0Z1ZVMllQUzFwSUFFODVJX3hGSGhjOTJnZjU0d2xzZXJHYTlBczM2OTc4NXFNTWxFUw?oc=5"
+   },
+   "cidade": "Maringá",
+   "data": "2026-11-20"
+  },
+  {
    "id": "5a1df4a562f2",
    "titulo": "23ª Marcha da Consciência Negra ocupa a Avenida Paulista nesta sexta-feira (20)",
    "tipo": "convocacao",
@@ -289,7 +341,13 @@
     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOT2d1YjR5RlhSZ1dlQnpiR0kwVjg3UTBzVFo1SEc1blIxdXVBWXpsLVI3dE4wbG1EOENlWDNUbURjNnFQN2FqVnZBdHZPMmxnZnhXR1NKeUgwaVQtVk5GdUVLNWdjN3ZXeFVfQ0RoMndzSEN2LTMxT2ltS3FRNDNDcjZsNFF4ZE9zXzAyTkRieXZwTmxUVDFHOWFqQWZWdm5ESWxDc2M4bVBFVjVUYWJzNnJucGlTOUpo?oc=5"
    },
    "cidade": "Salvador",
-   "data": "2026-11-20"
+   "data": "2026-11-20",
+   "outrasFontes": [
+    {
+     "nome": "Alô Alô Bahia",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNNTd5cW1tR2pHcFFJVFNkUGM0eHNndXFkOE9pbUJtVFI1c1RSVHJtVkRleWVxQ25sXzNpcTNCTWt5dC1RQWV6dWJpeDBDZnZJamM3dUNVT2Z4Znp6anZYWjJfLWxKdjNZMVhrZ29KSHlXTEs1NmlEVnhBazZoekJYbXVITkxVZUZyUDQtNkJLNlVBWWtFemdYZi1pSXZfSTFCbmFIbkloU0VhODNWNHUtSWhoM1E1M3VZNER4SlVLcVRQVkZsR19TMzUyQWZkQUJWWHZ2WVFVVnFqQQ?oc=5"
+    }
+   ]
   },
   {
    "id": "4c29793a5d0c",
@@ -348,15 +406,21 @@
    "data": "2026-11-26"
   },
   {
-   "id": "6613f9429bef",
+   "id": "caf7658813a6",
    "titulo": "Marcha da Consciência Negra homenageia Panteras Negras e cobra representatividade no STF",
    "tipo": "cobertura",
    "uf": "BR",
    "publicadoEm": "2026-11-20T16:48:54.000Z",
    "fonte": {
     "nome": "CBN",
-    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNeVl5MnN2NDNiQi1PZkJTR3Y4Z0Etam95X2FEeU5OT1FVa0xXV09uWk85MWZ6Vkd5Z2t6a2RJdU9wUGhTN3p6ZUVPdGZsVHVBbFczQ193U0YtX1BsOEx6d2lGR1dPNmRLMXVYUUR3cU5Nc29xQ3dKSmQxWlZQUC1kYklzcmlvTnNyOUNDbmxfNWpVTGFXeTM3ZkE0MExpSGZodVBZTTYxZ2lTZHgzemVrOVJrVlNMVkk1VmVwLVZITmpROHRTVUHSAdQBQVVfeXFMT2RMY3kxMXJQQ2lPV0hVcU1XNW80dl9oNlRJOHVsSmVXSndEaXl3cjdKR1Fsa1paOE5tbjJDWktSa0p1M24zNjE2QzB3bjAydkJscE54NHlTZXN6MVdjUWY0cTJHbFRZTW5sTEpjS1NpSGR6Sk1CYjR5QTBabTRCWmVrb00zRkgweVRXQXFSMWJ6bGJHcmFwanVNcjd1ZHVrdnBUU3R2VndoM2RKUEFjaXEzMEs4dWJMZTVMX2FKWURGSjlseFB3am5Cby1MQXQ3WEg0Ql8?oc=5"
-   }
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZExjeTExclBDaU9XSFVxTVc1bzR2X2g2VEk4dWxKZVdKd0RpeXdyN0pHUWxrWlo4Tm1uMkNaS1JrSnUzbjM2MTZDMHduMDJ2QmxwTng0eVNlc3oxV2NRZjRxMkdsVFlNbmxMSmNLU2lIZHpKTUJiNHlBMFptNEJaZWtvTTNGSDB5VFdBcVIxYnpsYkdyYXBqdU1yN3VkdWt2cFRTdHZWd2gzZEpQQWNpcTMwSzh1YkxlNUxfYUpZREZKOWx4UHdqbkJvLUxBdDdYSDRCX9IB1AFBVV95cUxPZExjeTExclBDaU9XSFVxTVc1bzR2X2g2VEk4dWxKZVdKd0RpeXdyN0pHUWxrWlo4Tm1uMkNaS1JrSnUzbjM2MTZDMHduMDJ2QmxwTng0eVNlc3oxV2NRZjRxMkdsVFlNbmxMSmNLU2lIZHpKTUJiNHlBMFptNEJaZWtvTTNGSDB5VFdBcVIxYnpsYkdyYXBqdU1yN3VkdWt2cFRTdHZWd2gzZEpQQWNpcTMwSzh1YkxlNUxfYUpZREZKOWx4UHdqbkJvLUxBdDdYSDRCXw?oc=5"
+   },
+   "outrasFontes": [
+    {
+     "nome": "CBN",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNeVl5MnN2NDNiQi1PZkJTR3Y4Z0Etam95X2FEeU5OT1FVa0xXV09uWk85MWZ6Vkd5Z2t6a2RJdU9wUGhTN3p6ZUVPdGZsVHVBbFczQ193U0YtX1BsOEx6d2lGR1dPNmRLMXVYUUR3cU5Nc29xQ3dKSmQxWlZQUC1kYklzcmlvTnNyOUNDbmxfNWpVTGFXeTM3ZkE0MExpSGZodVBZTTYxZ2lTZHgzemVrOVJrVlNMVkk1VmVwLVZITmpROHRTVUHSAdQBQVVfeXFMT2RMY3kxMXJQQ2lPV0hVcU1XNW80dl9oNlRJOHVsSmVXSndEaXl3cjdKR1Fsa1paOE5tbjJDWktSa0p1M24zNjE2QzB3bjAydkJscE54NHlTZXN6MVdjUWY0cTJHbFRZTW5sTEpjS1NpSGR6Sk1CYjR5QTBabTRCWmVrb00zRkgweVRXQXFSMWJ6bGJHcmFwanVNcjd1ZHVrdnBUU3R2VndoM2RKUEFjaXEzMEs4dWJMZTVMX2FKWURGSjlseFB3am5Cby1MQXQ3WEg0Ql8?oc=5"
+    }
+   ]
   },
   {
    "id": "9d2efe2f6e93",
@@ -368,7 +432,13 @@
     "nome": "G1",
     "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQMVZNZmNDYUJrRzZaVmgxMWdWZkhwNktpcjcxRlFPRUp1V0pwcFp2RnNvVHBHMnNtYS1nOGxmT05SMXNFbng0QWZ3YlkxOXNJLXVkUm5YYzN6eUYyMnZVR1UycnljaWpzWVlQT3Z2ekxkU1o2TnB5Z0kwcWxJcjVsekRhVWN0dTE3OGxNTlM1bzF6YkxkYTdMaEpNcnoyT3J4NFk3OTVoVmZkbXVkYl9KNVRzcnNDb01zcGxKejlnVlNqd9IB0AFBVV95cUxPamFycUVYLUNaU3BESEdzRG5fNVFXaUl2aWJnc2g3aHhlYWdTSS1HM051dWZHdWhUT0FaTnBDeVZUVVBiZmR0UUZZSl9qVC1TZmtSU0p1aHVoVkMwU2UzNGhSeUZWU1JlSXRjYWprR2RQQTRQd05GckxlLWxrTC12clhMby1aWUwxd2hmaXhTbjVrWVVQVk9Pc3RZYnpxYkViSXFLUHFpYndXdVNRLW5VaGEyRHVzLXJMZWpjbE1CZ2RPa2VlQm9rc0Zrbi1HS2d4?oc=5"
    },
-   "cidade": "João Pessoa"
+   "cidade": "João Pessoa",
+   "outrasFontes": [
+    {
+     "nome": "G1",
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPamFycUVYLUNaU3BESEdzRG5fNVFXaUl2aWJnc2g3aHhlYWdTSS1HM051dWZHdWhUT0FaTnBDeVZUVVBiZmR0UUZZSl9qVC1TZmtSU0p1aHVoVkMwU2UzNGhSeUZWU1JlSXRjYWprR2RQQTRQd05GckxlLWxrTC12clhMby1aWUwxd2hmaXhTbjVrWVVQVk9Pc3RZYnpxYkViSXFLUHFpYndXdVNRLW5VaGEyRHVzLXJMZWpjbE1CZ2RPa2VlQm9rc0Zrbi1HS2d40gHQAUFVX3lxTE9qYXJxRVgtQ1pTcERIR3NEbl81UVdpSXZpYmdzaDdoeGVhZ1NJLUczTnV1Zkd1aFRPQVpOcEN5VlRVUGJmZHRRRllKX2pULVNma1JTSnVodWhWQzBTZTM0aFJ5RlZTUmVJdGNhamtHZFBBNFB3TkZyTGUtbGtMLXZyWExvLVpZTDF3aGZpeFNuNWtZVVBWT09zdFlienFiRWJJcUtQcWlid1d1U1EtblVoYTJEdXMtckxlamNsTUJnZE9rZWVCb2tzRmtuLUdLZ3g?oc=5"
+    }
+   ]
   },
   {
    "id": "6feb3f1cf537",
@@ -379,7 +449,13 @@
    "fonte": {
     "nome": "Brasil de Fato",
     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONlJlRm12ZG8zbGd0RWRRaVNLWHUtZlV6T1FqSUR1V3pQV3lfZFRGS1l2X2dwN19zNDZRc0ZJaDZsQ1lCT1N6N1R6cFRxUkFUVktzbmV6NGdCOG13eWN2RlNtUWFHYXFWSVh3eU50bUcwR3o2ZzBzOEI2RXpMUENIWE8tTml6TmRkYTNsVXR4SnVZTlJMVkVJYUdNcXlfaV9MNDhneklCRC00eGVaWmZJV25pWkJwOU9WZ0ZjNzA5MmR6Nk5oODAtU1FFNmcteDRvVkItUQ?oc=5"
-   }
+   },
+   "outrasFontes": [
+    {
+     "nome": "Alma Preta Jornalismo",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQNnFxWEUxa1ZZcUVxNlJ3NWtWdjlGVG1kVUpFTjA4ODNHSVVUUmdPU3pvSnJNZkxkUWhEcF81MVFuQ3Q4SHhHb2tJX2w0dnRHUXh3b3pWbHV4WnlVQVBCaU5Bd1BvaldpdVd2eFQzM19FNFRZVHFyODRraWg1QTF6V1JCTUtmMlgyc2pN?oc=5"
+    }
+   ]
   },
   {
    "id": "2b7b5fcd23ea",
@@ -494,14 +570,6 @@
     {
      "nome": "Agência Brasil",
      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPdlRvaGxDaU9aeWZRaFBrTDdjV2R2VFRQRmZkUi1jY3h1dkk3azY5SE9QTzdMN1J5dC1PWElzUDVpOEhVQS1wbjh5dHNRcWo2SUEwSmxGZVFPcGNaMC1OdGVXdTNNQ0lHdlhKazRrZFBlSFVxNW5Yc1NuZnVwSVlUc09hNlRfVzBxcmc4OERvSE5KWmtLRG1jX3hBWmhvaWtjWVNORGExOTNVLTVNVGltYXFzTjVVd1ZDSFdWalRiVQ?oc=5"
-    },
-    {
-     "nome": "CenárioMT",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQUGVpcEdMNEZNTnR5MHNRV09peWVnM0w4VlpzYkFuR1FTMmxrUjVOVG9OUGVwV2NZRXA3MEhEZzIzTTdqbjJVM0JfTU81VkhXd1VUZ0JvaWFqMlQ3a1I2NmlQMzFxTzhGV0NPUmx0dUdoV2tTMUhnajNjdHp2NmpMRTlsVU03RTNFNUh0UGFRTnlQblRIeDVHY0wwaEwyTlRKb3REcEdnSQ?oc=5"
-    },
-    {
-     "nome": "bra1.com.br",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNOTRYMkJYRm5OX3ZKM1hSdVpCaDQ5Z1g2VFRWYVZFczdycWc0MVZ4QzYtaHVhUVhrU182bDdVLTVlNjg2d0pQN3NjUGZSb3NrQTByYlVhTWdyaG1FMkpvQzhNRS1aTDZXblVQdEJQOF9hbGhfSTNKZzB5MVBwZWpQWUFCT0lNUjZDOG56SHBSVng4UFcyNjE5ZDN5T2V6aEw4MjNDZWYxOGdVd3NPZ3JfczM1OUhnNmRqNk1QWHdaYjA?oc=5"
     }
    ]
   },
@@ -668,18 +736,24 @@
    "cidade": "Macapá"
   },
   {
-   "id": "e04cb5b7db8f",
-   "titulo": "Protesto por moradia fecha neste momento cruzamento da Conde da Boa Vista com a Rua do Hospício, no Centro do Recife",
+   "id": "1d3361550612",
+   "titulo": "Protesto por moradia fecha cruzamento da Conde da Boa Vista com a Rua do Hospício, no Centro do Recife",
    "tipo": "convocacao",
    "uf": "BR",
    "publicadoEm": "2026-11-18T13:15:00.000Z",
    "fonte": {
     "nome": "Diario de Pernambuco",
-    "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNVHNpd3REMmxQMmZ3X1M3SUtJZDFMSmUtRWhJUTktcUJTREdJQ3phQnZwTUVkVU13X3o2R1Rsc1hBQlh0WGdkTUxIeHJzZHJOU016WUl2ZXdEUXRhMjh4cnBIYUtMeE1fTlMzVElaTVpEdjZnQ1FJXzgyUVJ1dTZMV0dfRWUxVnV2UzZMa0hodFpLUTdHNVdwRXI2M0dWbXRBLXFSR0FjeTJ3d0tDVFhYUmdoYVE0cENEUUhZODFhR3R2dzBjaUhvRUFqTU0tUFJtSjFEa2wwSHhfOXQwcDFLdUgxNzAyc0tuaUF1dEFiSGZRQ2JMQjNSb05oa1NuWWNleFh6eElTc3lyTTl6MlJUeHFlenE1QQ?oc=5"
+    "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxPdm41d2xiQWllaVV2bE05WXBIc19pS2EtbG9DTTNDaVJ4cmFINk44UVUwTERteVE5R244RGdjdEV0ZkdnaW9Vc2JSZzRNQVVlSHJreWNIY2RkbXRnczd3OUpncGRlQXJZTnlfNTF5N0ozZjU5X01rdVMzdlhfOTN0YUZmYi1xeG5RU0lmNF91SUJJVEpPQWtSWWJ4dWVCUDRLWnROMVdHRXFlakxTWlh3SzJUT0VwRFJHeFdwcWFIOHJfcU1pU3cxV1NfbXA1V1ZfTERIaUJpRVE4cU4xc1BEdHNVMkE3QWhtRnFwQ2JtdUdxbkdPSHNTSHJ5ck12TjhxSXNzbkZxZk5rZHYySG5QUzhQWUZUenR3cHBv?oc=5"
    },
    "estados": [
     "RR",
     "PE"
+   ],
+   "outrasFontes": [
+    {
+     "nome": "Diario de Pernambuco",
+     "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNVHNpd3REMmxQMmZ3X1M3SUtJZDFMSmUtRWhJUTktcUJTREdJQ3phQnZwTUVkVU13X3o2R1Rsc1hBQlh0WGdkTUxIeHJzZHJOU016WUl2ZXdEUXRhMjh4cnBIYUtMeE1fTlMzVElaTVpEdjZnQ1FJXzgyUVJ1dTZMV0dfRWUxVnV2UzZMa0hodFpLUTdHNVdwRXI2M0dWbXRBLXFSR0FjeTJ3d0tDVFhYUmdoYVE0cENEUUhZODFhR3R2dzBjaUhvRUFqTU0tUFJtSjFEa2wwSHhfOXQwcDFLdUgxNzAyc0tuaUF1dEFiSGZRQ2JMQjNSb05oa1NuWWNleFh6eElTc3lyTTl6MlJUeHFlenE1QQ?oc=5"
+    }
    ]
   },
   {
@@ -713,16 +787,8 @@
      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYmlTRDlUaFhDeTg2dnlSZDd5WmhwSWxYQkEwcWNtVDB6Z2tLQzkzeWhCOWdHYTl6ZnRPdlVZSFV4UC1Ga1pTbTNCSTliZzR6REZ0Y1N1VlJ0VnkzRExjLXRvcms3cUdQRzY4RkZSbGpEUmlzV19yZmhQUHBhZ0V3WUQ5ekRncEdubUw1RTR3YjZjUm9KSzdvVGZuLXQyLUdaZ1R0LWdrRWpzWDhKcXhVUldoQThKWFZyaTBB?oc=5"
     },
     {
-     "nome": "Diário da Guanabara",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPM3gzQnJnYjh3NHJHWHFrQ1RKUnR5MzdJblFtR3JDUE82UXd3Ti10a3pnT0RON1lfVzNzcFYyWWNpaDl1enMxVjZtSFliVjk1MjhVQlVVWGh3dWxKNjZwLWdLSkFxNVhvQVExOW1NQTBDQzRYUy1LQWlQRUdoUVo2bkdUWldpcW8wM0lXSWpOTmlPV1ktZTcyaUVfYnFMaGg2?oc=5"
-    },
-    {
      "nome": "MRNews",
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOOFRwNmVCUVFCSElVM2JrMDctN1RYb0p3Mmh6YjBaQnhzOV9DTUt5YTdrSlp1bUpHcG1tU2U0d3d2anhpNWh3ZU5JdXdCTE9ZTk5lMUJhcjdPeWJONWJ0YUZFSGFaUTlaZjBxQjhNWmZmTVhOTzZmQTVncUN0aFhuakQzdmtBaVhkTXZWRVZMLXpLbGZkcU1Pdkx6ZjJ6aUZZVUNodF8wNW9kc0Foam80VFRtOVktVWpRa3c?oc=5"
-    },
-    {
-     "nome": "Colatina em Ação",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOS1RZNUpHM2J1T3pZZlRKMHNneUpEdU94OWgyMS01WElQNk1CN3RRRHhvbU9XN1B5SlBWdXRVQzFlbDRIU3VZTDJ6QWU5RmVFVVl2TjQwWFJDMzBQS1NPMGtxSXdMRl9DYW1qZ3dMbWxtT2I4Q1pHclVOUmJ6TWJNSTFXRFNTdUFpWW9sMDR4VHR2RUlYcjdkSHdURE5WMGE0V1ZjZGdkbTJnN29kOW9DeXZtWWxoSHg5eXVBZjVObFA1cUJzcUE?oc=5"
     }
    ],
    "cidade": "Rio de Janeiro"
@@ -865,26 +931,15 @@
     "nome": "Carta Campinas",
     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOT25uYmcxZEk0eTE4dnNlRDJrSWNvT3lIRXp4bXRTWnpuOVhhbnFSLTkzN0NmUkkyUEZ2cVpKQ2s5NkpuU3I2VkVUSGJsZFUzNVJKanhGbkQwMDk3bHMzV1R1UkdjM1duTDB0VVhxc1hxSTdIemtVaU5hU2pldWJrd1NsaFdNdks0eVV6STk0b0p0UE5lWHltUmZyQTdJQUZ4dVN2WTdpOFNWUGNyRV9IOW5IWWlIRFUyQU9Z0gHAAUFVX3lxTE5tQTNicXpvSzNMRVN6OVJ6azkwMlBSWnU3X0FZd2xoRzZZaW9wWHZFQmluWk5qRjlEQ0Z6RDlmYk1vcS1nZFMtbkRHNDJhSDRqR2lfODhfQ2Rmc09uNGZxa3BiWWo2Vy1vcm51MHpRcy1LWWt1QTNmVXJSMEloSlpOc2lWdDB4NVNKSXJHLWprX2d1ZEpicm95eC12TW9qREI3SEY5a2ZBUjRfSEF0N1hRSTNQa3VqV0FQVE94NEVraw?oc=5"
    },
-   "cidade": "Campinas"
-  },
-  {
-   "id": "9f29ba74fd81",
-   "titulo": "UNE realiza atos em 13 cidades contra ajuste fiscal de Lula",
-   "tipo": "cobertura",
-   "uf": "BR",
-   "publicadoEm": "2026-11-17T11:56:59.000Z",
-   "fonte": {
-    "nome": "Poder360",
-    "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS3BDM2dCbVN4S0ZwT2lJR2c4cjlqajBycFAxcWlrMFA3ZDNIVjNqYktlWS0ySGZmS3poTVFRb0V3ZDVmZFRWLUdaZ0xFcVF3MkFrUnBhWF8yWnY0UVVjbGg0dFl6WVVsUS14dTdiaU9oTlhtLWVjMGU2OGZvZG9SY185ZkctUnZROUlMWHF5ZVJUVk9zTnd1dUVDRk1KSENBUHpLMjB0Zw?oc=5"
-   },
+   "cidade": "Campinas",
    "outrasFontes": [
     {
-     "nome": "IstoÉ",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFB4LXBoWTFLU1c1V3lqcFJVMFRmaU5qbXhYMjdQNUdHN05nNy1iVk1FYy1IdE5ZVHU1WjBlSzVKeFB0aHdObHlpb2pPaWY4MFM3bjBzakE5dHJxMEY5c3JFczlwMlg2OXJ1MFlqdXFva2ZzZUpkQS0wSA?oc=5"
+     "nome": "TODODIA",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMHFVV3FJM1lFbk9sTVlmbTUyUWswdkRKNzRWdUkwMVRVbFBLSWVJTE8tcVdoOV9nWUtpME1YMjVUNjhwVzM3YkdsU1ZkT05PZm9kNnJ3QzRvOTcxUWp0MHdMOFItUlN0dE5EUDJTaURILTdDUjMxTUZsdVNTODhpejRHZm94SWNkdWw2a0ZhWTFRZEJhYWpBd2Y0SjJ1R3g3aGhFSHIxNA?oc=5"
     },
     {
-     "nome": "Portal R10",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOU2lWYmhsZzU2TzUxT3Njckh1QURVUnY3T1AwTFZ4OGwydjV2Ml9fZG5qWUYtR1ROc3FRNU5QaVJrck9MbEdhckl3WXI0d2xOWEtzRnRlV1lHZUNIQXJKZ3JVLVliWlNfVnhudWtqTXpEbEllY3VXYWlPUF8wVXdJcHExWmNoOGw0Q3BFRDNrUWZjTU9hTnRjMndNSGJQc2lDY1EwN25SRUxwSlVwbDd1UWJObHJid3g1cEVj0gG7AUFVX3lxTE5TaVZiaGxnNTZPNTFPc2NySHVBRFVSdjdPUDBMVng4bDJ2NXYyX19kbmpZRi1HVE5zcVE1TlBpUmtyT0xsR2FySXdZcjR3bE5YS3NGdGVXWUdlQ0hBckpnclUtWWJaU19WeG51a2pNekRsSWVjdVdhaU9QXzBVd0lwcTFaY2g4bDRDcEVEM2tRZmNNT2FOdGMyd01IYlBzaUNjUTA3blJFTHBKVXBsN3VRYk5scmJ3eDVwRWM?oc=5"
+     "nome": "Band",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQVGpteV82clY3c1JkTG41R05SdTdTWEk5NVlPNEpIWVJ5RWotY1dkeUlLNUJ0M294UHpjV012RllRTzI1SVhsLXdwZXppMFhGUk5Zb2JyZFlMLUZJd3BmT2REQU43RXlnUDM4ZHduVVpqSDZTY1dwVmhJS0Z6c0N2UGJfN05WZUdvcFYySXk2eWNUYzRWWEJHZXdQdk9ldF8yOGFBRUdCOA?oc=5"
     }
    ]
   },
@@ -946,6 +1001,39 @@
    }
   },
   {
+   "id": "912b164bf41c",
+   "titulo": "Contra ajuste fiscal de Lula, PSOL convoca atos de rua",
+   "tipo": "convocacao",
+   "uf": "BR",
+   "publicadoEm": "2026-11-16T10:49:16.000Z",
+   "fonte": {
+    "nome": "bahia.ba",
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxObXdkMTBBNVpNNmJtNWU3dUZxV3NWRFlubGRsMFNWcm12Q3RLSG1sQ2RFRGlUOHhKQUVIblZRWEFRWTA1YUFzSXV5RG5LcG1KVlRGUW1KaWJHbWFRTTNZN3JUOHM3VTh4d2hlbEJCcGU4RGlBZUJ4ZUdzUVlYMThuUDF3bWRGSGRJOFlZ?oc=5"
+   },
+   "outrasFontes": [
+    {
+     "nome": "Poder360",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS3BDM2dCbVN4S0ZwT2lJR2c4cjlqajBycFAxcWlrMFA3ZDNIVjNqYktlWS0ySGZmS3poTVFRb0V3ZDVmZFRWLUdaZ0xFcVF3MkFrUnBhWF8yWnY0UVVjbGg0dFl6WVVsUS14dTdiaU9oTlhtLWVjMGU2OGZvZG9SY185ZkctUnZROUlMWHF5ZVJUVk9zTnd1dUVDRk1KSENBUHpLMjB0Zw?oc=5"
+    },
+    {
+     "nome": "IstoÉ",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFB4LXBoWTFLU1c1V3lqcFJVMFRmaU5qbXhYMjdQNUdHN05nNy1iVk1FYy1IdE5ZVHU1WjBlSzVKeFB0aHdObHlpb2pPaWY4MFM3bjBzakE5dHJxMEY5c3JFczlwMlg2OXJ1MFlqdXFva2ZzZUpkQS0wSA?oc=5"
+    },
+    {
+     "nome": "O POVO",
+     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPYzhxYi1yNW5ZY2Q5VnJCaENCTzFiN3RBdUdfTmpjQ3A4Y0FnUXIwd1huUmdoc05udTAtcm5HaHJRLWdOdTNkRDVfd1J3ZlR4bUhYOENRZnNoV3JBTkhqZ2NDemZpS3h4Rk0zTW00SVhJTFNhcUpxZFpUejdLcFpyNFA4TEhDNVdwaGhVbmphaXZ1T1pGZE5iTHVUMDA1NkZ0eU14empmOEVPM3RJVDRfSG1KZjBVQ3FZMEtmY3ptUnVvdTVjc2tTWUd5YWlSc20tY3lEUzFEa0hqOEd6VTdHMnNRWko5Vjh2azUzeg?oc=5"
+    },
+    {
+     "nome": "Portal R10",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOU2lWYmhsZzU2TzUxT3Njckh1QURVUnY3T1AwTFZ4OGwydjV2Ml9fZG5qWUYtR1ROc3FRNU5QaVJrck9MbEdhckl3WXI0d2xOWEtzRnRlV1lHZUNIQXJKZ3JVLVliWlNfVnhudWtqTXpEbEllY3VXYWlPUF8wVXdJcHExWmNoOGw0Q3BFRDNrUWZjTU9hTnRjMndNSGJQc2lDY1EwN25SRUxwSlVwbDd1UWJObHJid3g1cEVj0gG7AUFVX3lxTE5TaVZiaGxnNTZPNTFPc2NySHVBRFVSdjdPUDBMVng4bDJ2NXYyX19kbmpZRi1HVE5zcVE1TlBpUmtyT0xsR2FySXdZcjR3bE5YS3NGdGVXWUdlQ0hBckpnclUtWWJaU19WeG51a2pNekRsSWVjdVdhaU9QXzBVd0lwcTFaY2g4bDRDcEVEM2tRZmNNT2FOdGMyd01IYlBzaUNjUTA3blJFTHBKVXBsN3VRYk5scmJ3eDVwRWM?oc=5"
+    },
+    {
+     "nome": "O Cafezinho",
+     "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOOVpaQlozMTRfM3V0YzNFT29TTmd4WU5vLWJyQzdvYmJKM0Y5RDdjV2p4WTFrdlVOVWRKTmJ1Vk5RY2lwbnktYktrSk03WkltaG5MWGFWYldoVzg2bERieWR1b01GUHUzeHk0SUFCSmZJcGJiSGVoU2tGOHZiMjNFWGJR0gGHAUFVX3lxTFB3MkpqUFdBZHNfM3diT1lMZXRpVlJLZ3VkQ0JwakVuUzJTc1ZXSUNwYnl3WmxXZ2c0N09GTWJ5REVUYVpKVGRjX1A5SGxyVG50cE1vNDRMUGlHaVVfeGh6d2F3dDVaam9HTTZaRXlDRG5UbENCWVAtOUxEeDlUc200QkdJbmlQOA?oc=5"
+    }
+   ]
+  },
+  {
    "id": "27b54b904472",
    "titulo": "Grupos de esquerda que pediram voto em Lula convocam protesto contra o ajuste fiscal em Florianópolis",
    "tipo": "convocacao",
@@ -955,7 +1043,13 @@
     "nome": "TopElegance",
     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPenc2WHE5Q0ZrUFF6dm9YZFFYNmFOWVpsVXFTYXI1QUVEYUgzaUN1OVpGeXV6UEJ5LW9vU0hPelJ0R1lRX3hiRm9ieE5LNWR5ZjhCbktxc0xfbTlScFByM2hGcXBWaGdfRFFmLWI1dWd6ZFFRMldwNGsxeW1paUhHYmVWcWpldEhaVTdVZFUzN0Y1U3MtZGozV2s3MmtvQnh0V1czZk5MYWpQdlNqM2M5NHhBN0QwbkxpQTdXOWdnVk0wYVVfSDM5dWZWc1M2bm1WVVZMWk96WFY?oc=5"
    },
-   "cidade": "Florianópolis"
+   "cidade": "Florianópolis",
+   "outrasFontes": [
+    {
+     "nome": "Jornal TopNews",
+     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVnJ2S2FCOTN3bEc3eFVOd1VhU1VpVzFFRlFnd1lfNmo5OGV2QlV3eU5GUlVfTmF1bzFIdGRpU0NteEFHNkk0amZ0Q0dZb2s2YzB0T2NZRkwydXB4ZHBCb1Y5bG1IM2RSX0lOS2dwaWN1d1ZBMHdEdW1XemZhcnBjRkxNOEhxekhhamNyX2VER0hXS2NEWVdCR19NamNRVGFvSmpEMl9rOXFQRmFrN0dpcGFKTFRHeElZQXgybk14YjEyUlVDS1ptOTEweVpxUQ?oc=5"
+    }
+   ]
   },
   {
    "id": "7fb46f70c9a3",
@@ -968,6 +1062,10 @@
     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNcHJPcXlqc0hRNXJPc0VWR1JCc3RBd3llUWtwQVpQU2pYbFYwNm91b0REOFBxVFkwZDM1Y3JlVnJESTVPOTIyUmRnU1AtOEZjb1ZFMkJxVDRld0lpTk5ER1JaUjhXZ0VfV0dWa0ZzSGZ6b3E1dE9TVU15WjRMcGJPbDdscXB3ZXFFS2V1NHo2TU4waXBUeXNyelFHbTVrNnU0dW5rbjlJUnVsYjA?oc=5"
    },
    "outrasFontes": [
+    {
+     "nome": "O Dia",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZTY5Zl9OcGhkVWJqbkNPZlhUeEV3a2RMaENFdTRPemVzbEdweW1uMV9zaFJDeW8xUHlNVkxRcm9wZFpScUxZLWdzUFB3TnNwQWRWMURtSXRlVG1fcEx4RXljaFY2bVFjejFhdHA2bzFHTGJfUXJhcWNfOEp4LUJ0RExlSi1lYXhZdGM4Q09EZ2ZwdjVGSEtMeDNsNmJ4a0V0eDZVS2FGVmZscjNTR210ZmIxWdIBuAFBVV95cUxPbWx2aVBJczkwTDNrTThTdEs2R2NDV1NWTkMyNGtYUXpQUm9DMVllVHU0SFJyaGhURHF0TFlKaV9qSms2c3dHRmdFR2prekNCZGwtbkxBbGJCYTlLS3pSd0htZnJoanFmOE42S1cwb2QwZUxFYjVsQU03YVV2cWcxbDNReV9Yb2hhcmN3V3NhdnYxcWR1cFR4MDVmVXkxdW5EOW56VDNSY21aTHZqOWFtcnJNdTBWeERD?oc=5"
+    },
     {
      "nome": "sinasefe",
      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQcVFvWnNnOUg4NGtvclctMGpaMGcxNm9SVmZGek1STTk5UFNIajZFY0hrSVJjckVuVTJvdnRHT2t4V1l6Z3NTbEJ4VjBQMnk3SmY0eUs0bk9iR3VpRmpVTFJtUVFzbHZpUmppTlhNaVdUbGJOZVZqTF9Mb09vSnoweEdfQVdsQzNPbnl6QXlLSVFGMkZHMk5LWTdwd3ZHdw?oc=5"
