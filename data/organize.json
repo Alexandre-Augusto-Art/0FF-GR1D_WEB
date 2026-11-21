@@ -1,28 +1,28 @@
 {
- "updatedAt": "2026-11-21T16:47:48.702Z",
+ "updatedAt": "2026-11-21T23:36:08.612Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 13,
+   "manchetes": 12,
    "atos": 0
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 17,
+   "manchetes": 16,
    "atos": 0
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 33,
+   "manchetes": 9,
    "atos": 1
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 16,
+   "manchetes": 15,
    "atos": 0
   },
   {
@@ -34,31 +34,31 @@
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 26,
-   "atos": 2
+   "manchetes": 59,
+   "atos": 4
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 30,
    "atos": 1
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 25,
+   "manchetes": 29,
    "atos": 0
   },
   {
    "busca": "GO",
    "ok": true,
-   "manchetes": 12,
+   "manchetes": 13,
    "atos": 0
   },
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 14,
+   "manchetes": 15,
    "atos": 0
   },
   {
@@ -70,19 +70,19 @@
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 28,
    "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 56,
-   "atos": 2
+   "manchetes": 21,
+   "atos": 1
   },
   {
    "busca": "PA",
    "ok": true,
-   "manchetes": 26,
+   "manchetes": 27,
    "atos": 2
   },
   {
@@ -94,38 +94,38 @@
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 9,
+   "manchetes": 38,
    "atos": 1
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 25,
-   "atos": 4
+   "manchetes": 26,
+   "atos": 3
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 11,
+   "manchetes": 12,
    "atos": 1
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 22,
-   "atos": 4
+   "manchetes": 24,
+   "atos": 3
   },
   {
    "busca": "RN",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 30,
    "atos": 0
   },
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 23,
-   "atos": 2
+   "manchetes": 21,
+   "atos": 3
   },
   {
    "busca": "RO",
@@ -136,44 +136,44 @@
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 38,
+   "manchetes": 8,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
    "manchetes": 30,
-   "atos": 2
+   "atos": 1
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 23,
-   "atos": 5
+   "manchetes": 22,
+   "atos": 4
   },
   {
    "busca": "SE",
    "ok": true,
-   "manchetes": 37,
-   "atos": 1
+   "manchetes": 11,
+   "atos": 0
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 15,
+   "manchetes": 17,
    "atos": 0
   },
   {
    "busca": "convocações",
    "ok": true,
    "manchetes": 32,
-   "atos": 10
+   "atos": 9
   },
   {
    "busca": "movimentos",
    "ok": true,
-   "manchetes": 28,
-   "atos": 6
+   "manchetes": 56,
+   "atos": 11
   },
   {
    "busca": "sindicatos",
@@ -183,9 +183,9 @@
   },
   {
    "busca": "pautas",
-   "ok": true,
-   "manchetes": 42,
-   "atos": 12
+   "ok": false,
+   "manchetes": 0,
+   "atos": 0
   }
  ],
  "eventos": [
@@ -202,16 +202,22 @@
    "data": "2026-11-26"
   },
   {
-   "id": "059e89efb028",
+   "id": "3d47121f1224",
    "titulo": "Zumbi faz 40 anos: Monumento no Rio vira palco de protesto contra a letalidade policial contra jovens negros",
    "tipo": "cobertura",
    "uf": "RJ",
    "publicadoEm": "2026-11-21T11:15:00.000Z",
    "fonte": {
-    "nome": "MT HOJE",
-    "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOeksyMmRPa2VKd01YQ2hpak9VSGVOS2ZpQ29JdHRpbFoyU2hZWHpiUXRlN05oZXd0T2FRUldjcGxLSVdUVzEwR0lDOEFwZy1FZ05GeGpVa3l1NnpkblNlbUZ0LWZpN3NWN0FmYTUwMDE1SXJ2T0V6MzIyLVlLOG9ndWZhUHR1aGZBdUEwaURwMGNLZ21VTGZDNi14cVJJX3pHN0VfQzZnNFQzT0JzMnRSaU55MWx0RTF6b3hzVUlvQTdia081dTlyTTY1ekdUbk85VGVYYndIUWlQWnE5d2VxNFFMSEtvX3c?oc=5"
+    "nome": "www.bra1.com.br",
+    "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNRVp1SEF5eDJmSHNkV3RkdnpSeEphWEtfNWRsUUY2MkVLSXVMM0N1dzdsWVhVOEd6UzByeWUyanIyVjVRckkwWm9zd1FDNjJDT3JObjluM195UjJ1WUlCUVFoQ0o5a1hiT2szejJzbE9OSVAxN0psVy1QVmJKY3VIZDRGT3RCSFRaNWZrRzVBV2o3bEhKOXktODlvRFl6cVRKUnhiQzVXX19HeGd3RUdqTDRyU2IxbGc5Z0NXbXcxdTM4ZUdNM0RXVGctamNHQUlVVmlRb3JFU3k5dTlQOFdHODFB?oc=5"
    },
-   "cidade": "Rio de Janeiro"
+   "cidade": "Rio de Janeiro",
+   "outrasFontes": [
+    {
+     "nome": "MT HOJE",
+     "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOeksyMmRPa2VKd01YQ2hpak9VSGVOS2ZpQ29JdHRpbFoyU2hZWHpiUXRlN05oZXd0T2FRUldjcGxLSVdUVzEwR0lDOEFwZy1FZ05GeGpVa3l1NnpkblNlbUZ0LWZpN3NWN0FmYTUwMDE1SXJ2T0V6MzIyLVlLOG9ndWZhUHR1aGZBdUEwaURwMGNLZ21VTGZDNi14cVJJX3pHN0VfQzZnNFQzT0JzMnRSaU55MWx0RTF6b3hzVUlvQTdia081dTlyTTY1ekdUbk85VGVYYndIUWlQWnE5d2VxNFFMSEtvX3c?oc=5"
+    }
+   ]
   },
   {
    "id": "ce061b527495",
@@ -235,10 +241,6 @@
     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNeVl5MnN2NDNiQi1PZkJTR3Y4Z0Etam95X2FEeU5OT1FVa0xXV09uWk85MWZ6Vkd5Z2t6a2RJdU9wUGhTN3p6ZUVPdGZsVHVBbFczQ193U0YtX1BsOEx6d2lGR1dPNmRLMXVYUUR3cU5Nc29xQ3dKSmQxWlZQUC1kYklzcmlvTnNyOUNDbmxfNWpVTGFXeTM3ZkE0MExpSGZodVBZTTYxZ2lTZHgzemVrOVJrVlNMVkk1VmVwLVZITmpROHRTVUHSAdQBQVVfeXFMT2RMY3kxMXJQQ2lPV0hVcU1XNW80dl9oNlRJOHVsSmVXSndEaXl3cjdKR1Fsa1paOE5tbjJDWktSa0p1M24zNjE2QzB3bjAydkJscE54NHlTZXN6MVdjUWY0cTJHbFRZTW5sTEpjS1NpSGR6Sk1CYjR5QTBabTRCWmVrb00zRkgweVRXQXFSMWJ6bGJHcmFwanVNcjd1ZHVrdnBUU3R2VndoM2RKUEFjaXEzMEs4dWJMZTVMX2FKWURGSjlseFB3am5Cby1MQXQ3WEg0Ql8?oc=5"
    },
    "outrasFontes": [
-    {
-     "nome": "CBN",
-     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZExjeTExclBDaU9XSFVxTVc1bzR2X2g2VEk4dWxKZVdKd0RpeXdyN0pHUWxrWlo4Tm1uMkNaS1JrSnUzbjM2MTZDMHduMDJ2QmxwTng0eVNlc3oxV2NRZjRxMkdsVFlNbmxMSmNLU2lIZHpKTUJiNHlBMFptNEJaZWtvTTNGSDB5VFdBcVIxYnpsYkdyYXBqdU1yN3VkdWt2cFRTdHZWd2gzZEpQQWNpcTMwSzh1YkxlNUxfYUpZREZKOWx4UHdqbkJvLUxBdDdYSDRCX9IB1AFBVV95cUxPZExjeTExclBDaU9XSFVxTVc1bzR2X2g2VEk4dWxKZVdKd0RpeXdyN0pHUWxrWlo4Tm1uMkNaS1JrSnUzbjM2MTZDMHduMDJ2QmxwTng0eVNlc3oxV2NRZjRxMkdsVFlNbmxMSmNLU2lIZHpKTUJiNHlBMFptNEJaZWtvTTNGSDB5VFdBcVIxYnpsYkdyYXBqdU1yN3VkdWt2cFRTdHZWd2gzZEpQQWNpcTMwSzh1YkxlNUxfYUpZREZKOWx4UHdqbkJvLUxBdDdYSDRCXw?oc=5"
-    },
     {
      "nome": "Metrópoles",
      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOREowMmhBdHlwTG5yd0xiZmJhRmctZGRudzc2R19UZy1CaGEwY3k4NUpjcHdQcVh0cEF0ekQycml4bkcxWHVjTUZrQ3RKVjRZREJoSlVfU29MZHBXNzdSQWhQZnNTZnd2MFhkMzJRY0tOZ3YwOThGeXZsbFRBVkxXSmlRV1RWRzVrMkVNcDdjbl9tSnBWQTlhTmkxYWRqVGNqUDUtcG9VQkgxTExy?oc=5"
@@ -567,7 +569,7 @@
   {
    "id": "e04cb5b7db8f",
    "titulo": "Protesto por moradia fecha cruzamento da Conde da Boa Vista com a Rua do Hospício, no Centro do Recife",
-   "tipo": "convocacao",
+   "tipo": "cobertura",
    "uf": "BR",
    "publicadoEm": "2026-11-18T13:15:00.000Z",
    "fonte": {
@@ -609,11 +611,7 @@
    "outrasFontes": [
     {
      "nome": "Portal Piauí Hoje",
-     "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVVVNeDBEOVc4NVhEVUJ4aElWSjBEMzhmbFlXLUt4LUlVZEc3THhiRl83OVpwNUZram84ZzdYNzFhdUMwT1pjQl90VnlsanhONnEwZ2hGdFJjLXdQTXJ4aEVTZEw5S2VteEtqQWh0V0hBTkhEdGN2SzVUa01vMXpuaVVramV0dDBRWDRsMmQxY25Pc2tSc2NZQ3NzRkFXeVNta05nMElydzh4TEg3ZlVNcdIBsAFBVV95cUxPVVVNeDBEOVc4NVhEVUJ4aElWSjBEMzhmbFlXLUt4LUlVZEc3THhiRl83OVpwNUZram84ZzdYNzFhdUMwT1pjQl90VnlsanhONnEwZ2hGdFJjLXdQTXJ4aEVTZEw5S2VteEtqQWh0V0hBTkhEdGN2SzVUa01vMXpuaVVramV0dDBRWDRsMmQxY25Pc2tSc2NZQ3NzRkFXeVNta05nMElydzh4TEg3ZlVNcQ?oc=5"
-    },
-    {
-     "nome": "TV Brasil |",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOYmlTRDlUaFhDeTg2dnlSZDd5WmhwSWxYQkEwcWNtVDB6Z2tLQzkzeWhCOWdHYTl6ZnRPdlVZSFV4UC1Ga1pTbTNCSTliZzR6REZ0Y1N1VlJ0VnkzRExjLXRvcms3cUdQRzY4RkZSbGpEUmlzV19yZmhQUHBhZ0V3WUQ5ekRncEdubUw1RTR3YjZjUm9KSzdvVGZuLXQyLUdaZ1R0LWdrRWpzWDhKcXhVUldoQThKWFZyaTBB?oc=5"
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNVUxSN2dyMFRDaVQtSkZrNENhekF2WmlqMURiaksxbGw2cVFMZzllT29VZ2N0WklvT3RGaFhnQlhDV0F3OW1FTzJSN291cUJTS0JBR2dOcEFBdVlXNVZIU0dYdkMtSzhGY0VRVEJKVkFVZkNSU2pJNmdsQXNwcXFoMm1uejVJb0VROGNOMEdrYjFBWjZOS2pOcTFfNEJENzlmOUZoVEl1cFo2TnfSAbABQVVfeXFMT1VVTXgwRDlXODVYRFVCeGhJVkowRDM4ZmxZVy1LeC1JVWRHN0x4YkZfNzlacDVGa2pvOGc3WDcxYXVDME9aY0JfdFZ5bGp4TjZxMGdoRnRSYy13UE1yeGhFU2RMOUtlbXhLakFodFdIQU5IRHRjdks1VGtNbzF6bmlVa2pldHQwUVg0bDJkMWNuT3NrUnNjWUNzc0ZBV3lTbWtOZzBJcnc4eExIN2ZVTXE?oc=5"
     }
    ],
    "cidade": "Rio de Janeiro"
@@ -653,6 +651,10 @@
    },
    "cidade": "São Paulo",
    "outrasFontes": [
+    {
+     "nome": "UOL Notícias",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQa3lzSHEtS1ZSdjB3dTYxUUVnRG9pWnBfc1l5LXMzQVFaRlVDWXVHZDFDY3JvNEx2VnpqZTJJemJJMUktRHRfWENLd2staGh0eEV4TmlLUDhqdDg4S3pycG5PME96b0hUOG5aVER1RGpWZm1hM1cyYUx6ZTZwd0NGTmpoc2s1WmtXNDd5cmlKMVg2c1FWTWZnMjVDdDduQklTNTZ4bkVZbjZoODFnTUc2aVdhU0JaZmJtSUFUbg?oc=5"
+    },
     {
      "nome": "Blog do Dércio",
      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOWEJqT2VZZ3ppMFNQVHJXWDg0YUpTb0tBU3pPOVd3UnBDLWhXT1ZYLVhZemlLMXRpU2lqRW84RG9iUVltRnQwRms0ZXB6M0pkTnZXWEdkVDhkUnhwSE0wckN2Y0g1bWc0cHVscUFPYmEycDhWVEJRT01DVTZlVlhac0s5TmNRRHN0R1hXVFpsa19zcnk4N3paWFd3ZTdSQWNwNE5JSFRsdHdHdw?oc=5"
