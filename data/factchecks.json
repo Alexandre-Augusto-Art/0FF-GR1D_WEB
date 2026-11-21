@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-21T00:04:12.688Z",
+ "updatedAt": "2026-11-21T19:33:33.390Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -14,7 +14,7 @@
   {
    "name": "Boatos.org",
    "ok": true,
-   "count": 15
+   "count": 17
   },
   {
    "name": "E-farsas",
@@ -33,6 +33,46 @@
   }
  ],
  "items": [
+  {
+   "title": "Golpe usa vídeo criado por IA de “mãe viúva” pedindo R$ 5 para tratar leucemia",
+   "link": "https://www.boatos.org/brasil/mae-viuva-com-leucemia-pede-r-5-para-tratamento-e-transplante.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:58:46.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Uma mãe viúva que teria leucemia e três filhos estaria pedindo doações de R$ 5 para pagar medicamentos, exames e um transplante de medula óssea. Análise Uma publicação do perfil “Gestos com Motivo” pede doações de R$ 5 para ajudar uma suposta mãe viúva que…"
+  },
+  {
+   "title": "É falso que Roberto Carlos encontrou sua empregada dormindo na rua",
+   "link": "https://www.boatos.org/entretenimento/roberto-carlos-encontrou-uma-empregada-dormindo-na-rua.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:57:14.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Roberto Carlos teria encontrado uma empregada chamada Nice dormindo na rua em frente à sua casa e descoberto que ela vivia em situação de pobreza. Análise Uma publicação nas redes sociais afirma que o cantor Roberto Carlos teria encontrado uma funcionária…"
+  },
+  {
+   "title": "Vídeo de macaco carregando filhote de cachorro em árvore não foi gravado no Brasil",
+   "link": "https://www.boatos.org/brasil/video-mostra-macaco-carregando-filhote-de-cachorro-em-arvore-nos-jardins-em-sao-paulo.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:56:14.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Boatos.org Boato – Um vídeo mostraria um macaco carregando um filhote de cachorro no bairro dos Jardins, em São Paulo. Análise Uma publicação nas redes sociais afirma que um macaco foi visto carregando um filhote de cachorro no bairro dos Jardins, em São Paulo. A cena chamou…"
+  },
+  {
+   "title": "Vídeo que mostra Patrícia Abravanel chorando e pedindo audiência para o SBT é fake criado por IA",
+   "link": "https://www.boatos.org/entretenimento/patricia-abravanel-chorou-ao-vivo-e-pediu-audiencia-para-o-sbt.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:53:37.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Patrícia Abravanel teria chorado ao vivo e implorado para que o público voltasse a assistir ao SBT depois de uma queda de 90% na audiência da emissora. Análise Publicações nas redes sociais afirmam que Patrícia Abravanel teria chorado durante uma…"
+  },
+  {
+   "title": "É falsa a capa de O Globo que afirma que Flávio Bolsonaro fugiu do Brasil vestido de mulher",
+   "link": "https://www.boatos.org/politica/flavio-bolsonaro-fugiu-do-brasil-vestido-de-mulher-e-o-globo-revelou-tudo.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:51:13.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – O Globo teria publicado uma reportagem afirmando que Flávio Bolsonaro fugiu do Brasil vestido de mulher e que a Interpol identificou o vestido utilizado pelo senador. Análise Uma imagem que circula nas redes sociais imita a capa do jornal O Globo e afirma…"
+  },
   {
    "title": "Vídeo de descarte de cebolas não é de 2026 e nem de um período de alta do preço do produto",
    "link": "https://www.boatos.org/brasil/produtores-jogaram-cebolas-fora-em-2026-para-aumentar-os-precos-e-deram-calote-de-r-48-bilhoes-no-banco-do-brasil.html",
