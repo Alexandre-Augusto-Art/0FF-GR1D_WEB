@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-20T15:39:18.855Z",
+ "updatedAt": "2026-11-21T00:04:12.688Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -13,9 +13,8 @@
   },
   {
    "name": "Boatos.org",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 429"
+   "ok": true,
+   "count": 15
   },
   {
    "name": "E-farsas",
@@ -34,6 +33,22 @@
   }
  ],
  "items": [
+  {
+   "title": "Vídeo de descarte de cebolas não é de 2026 e nem de um período de alta do preço do produto",
+   "link": "https://www.boatos.org/brasil/produtores-jogaram-cebolas-fora-em-2026-para-aumentar-os-precos-e-deram-calote-de-r-48-bilhoes-no-banco-do-brasil.html",
+   "source": "Boatos.org",
+   "date": "2026-11-20T14:20:55.000Z",
+   "rating": "ANTIGO",
+   "summary": "Boatos.org Boato – Produtores rurais estariam jogando cebolas fora para aumentar os preços e teriam dado um calote de R$ 48 bilhões no Banco do Brasil. Análise Um vídeo que mostra sacos de cebola sendo descartados em uma área rural voltou a circular nas redes sociais em…"
+  },
+  {
+   "title": "Vídeo que mostra mulher sendo atacada por onça em varanda de casa em Mato Grosso é fake criado por IA",
+   "link": "https://www.boatos.org/brasil/video-mostra-mulher-sendo-atacada-por-onca-em-varanda-de-casa-em-mato-grosso.html",
+   "source": "Boatos.org",
+   "date": "2026-11-20T14:19:25.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria uma mulher sendo atacada por uma onça enquanto descansava na varanda de casa, em Mato Grosso. Análise Uma publicação nas redes sociais compartilha um vídeo que supostamente mostraria uma mulher sendo atacada por uma onça enquanto…"
+  },
   {
    "title": "Vídeo apresenta dados falsos sobre velocidade nas filas de votação para sugerir fraude nas urnas",
    "link": "https://www.estadao.com.br/estadao-verifica/fraude-urnas-sem-biometria-secoes-lula-venceu-filas-rapidas",
