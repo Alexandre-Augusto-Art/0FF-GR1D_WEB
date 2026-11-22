@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-11-22T17:10:20.190Z",
+ "updatedAt": "2026-11-22T23:50:58.353Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 11,
+   "manchetes": 13,
    "atos": 0
   },
   {
@@ -16,13 +16,13 @@
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 12,
+   "manchetes": 11,
    "atos": 0
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 17,
+   "manchetes": 18,
    "atos": 0
   },
   {
@@ -34,31 +34,31 @@
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 27,
    "atos": 2
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 28,
+   "manchetes": 29,
    "atos": 1
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 45,
+   "manchetes": 28,
    "atos": 0
   },
   {
    "busca": "GO",
    "ok": true,
-   "manchetes": 12,
+   "manchetes": 11,
    "atos": 0
   },
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 44,
+   "manchetes": 43,
    "atos": 0
   },
   {
@@ -70,20 +70,20 @@
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 30,
+   "manchetes": 28,
    "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 26,
    "atos": 1
   },
   {
    "busca": "PA",
    "ok": true,
-   "manchetes": 27,
-   "atos": 2
+   "manchetes": 28,
+   "atos": 1
   },
   {
    "busca": "PB",
@@ -94,25 +94,25 @@
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 13,
+   "manchetes": 15,
    "atos": 1
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 25,
+   "manchetes": 54,
    "atos": 1
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 51,
+   "manchetes": 12,
    "atos": 1
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 27,
    "atos": 3
   },
   {
@@ -124,31 +124,31 @@
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 24,
-   "atos": 5
+   "manchetes": 23,
+   "atos": 4
   },
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 9,
+   "manchetes": 10,
    "atos": 0
   },
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 9,
+   "manchetes": 34,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
-   "manchetes": 28,
-   "atos": 2
+   "manchetes": 29,
+   "atos": 3
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 22,
+   "manchetes": 20,
    "atos": 4
   },
   {
@@ -172,13 +172,13 @@
   {
    "busca": "movimentos",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 30,
    "atos": 3
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 16,
+   "manchetes": 19,
    "atos": 1
   },
   {
@@ -200,6 +200,17 @@
     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQM3BZNDVEWGt0c3lHVlV1aC1HTmowOWx4UHNmWGVDdmJUd2hFQTlZRGI2OGpPLUxNRlFvS1JlcHV1QlFIWi16SDJLLUlwM3QyUTMtQmx2a3ZnN0tPTzlQT3Rrc3NiaXNTS25nVHpSdnFzTk1HRE5jcm9hbDQ0Q0JvcTFrU3V1dmpyb3lPNG5LanJYUlA5OTVMYy14WENHVHJnZFBLM2tKMHNld2Z3UDM4LVRKX2VOd2YtSzlVQ0g0WTdubE1DVF9tLU5xMTlrdzA0RnVKQVdva2ZIN2ZHQmMyS1U4OEVmaF95bUw2YzRjQkVMVG1iazRR?oc=5"
    },
    "data": "2026-11-26"
+  },
+  {
+   "id": "ade924e0db41",
+   "titulo": "Projeto de deputada catarinense que cria mobilização nacional de 21 dias contra o racismo e a violência contra a mulher segue para sanção presidencial",
+   "tipo": "cobertura",
+   "uf": "SC",
+   "publicadoEm": "2026-11-22T19:00:00.000Z",
+   "fonte": {
+    "nome": "Rádio Araranguá FM 95.5",
+    "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPNlRqNk5yTXRCNFowNWFNeV9paGdlejBmb25yeFNsbzRQNHF1LTlNVzZ0NlptbU9OaVk2MFdCbzJJMjRrYWhGZTd6eDljamFSaERrbkV0OWcyQVV2b3JibG0ydl90UG9ZM0V1bnBXSFJmcktDWWxOcU0yaWlSWTlCV2JhLVVxRkhFbG93UkZ5UkhOcWZmbzIzOHpuWGN5dWFuM3RpQ0duMHJNdktjY2JkeTZwc0pyanlBMW9ob056VTh5YjZycFBVaTFTcWJJZXQ2VU5ZeFF0alJna2gzVXUyYUtnd09DUVFTTTUzc1E3M05IdDZQZWI3bkxLcFFOM0V0V1FUTGpyZUtUMUZTUEE?oc=5"
+   }
   },
   {
    "id": "c1d1bf9ce3cb",
@@ -439,6 +450,10 @@
     {
      "nome": "Revista Raça Brasil",
      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPYzUwOExCcVk5SlVWMTVCUlRZMnZHbzViQ2twMFVyQUVDSVZjWHFtZ3hRSERmWVN2eXFJZ2hfQjhTc0RRc2d3bUw0LUR2VmlCeHdWR1lMNUpuSkNLMEtSd3ItbWI3QVota2tqNy1GeFMyTk1SenpYV1BoT0wtVU0zdmNYdzFtV0tSdTBfdnp5akhKM1ZVdEFaVGZrTFI3a1RaaGhvSnA4RWs0bUgzZjEwclhSVnBDMERDSjB5Vkt1Nm94VFptbnF6aVhaUzZIYWFZY1E?oc=5"
+    },
+    {
+     "nome": "Portal Chapada Grande",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNZktFRzhLYkhLOFFPYVJfYlZsVzdZaVBHRXRxTS1HSnI4RHluQ1hpVGRtRGxLdXBTOUszOUR6MlczT1pSMmc2OTZ2bzh0ZnNPemd1YkRWc3ZmMUE5WVZLald5M2dPeHJJcVA5NGNsU3d5NkhaazFSQVQxZnFrcGVnQlhYTk0tSlVHZ25NNlZJZWVTb0VqV0Y1UG9zdjB2WV9XRWlz?oc=5"
     }
    ]
   },
