@@ -197,16 +197,20 @@ function Invoke-ReelTema([string[]]$a) {
   $prev = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
   try { return (& node $ReelTema @a 2>&1 | ForEach-Object { "$_" } | Out-String).Trim() } finally { $ErrorActionPreference = $prev }
 }
-function Add-Reel([string]$kind, [string]$ref, [string]$comment) {
+function Add-Reel([string]$kind, [string]$ref, [string]$comment, [string]$group) {
   $a = @($kind, $ref)
+  if ($kind -eq 'add-foto') { $a += $(if ($group) { $group } else { '-' }) }
   $comment = ($comment -replace '"', "'").Trim()
   if ($comment) { $a += $comment }
   $r = Invoke-ReelTema $a
-  if ($r -match 'FILA\|(\d+)') {
+  if ($r -match 'FILA\|(-?\d+)') {
     $n = [int]$Matches[1]
+    if ($n -lt 0) { return }  # outra foto do mesmo álbum: já avisei na primeira
     $fila = if ($n -gt 1) { " ($n na fila)" } else { '' }
-    Send "🎞️ Recebi o reel$fila. Vou baixar, transcrever e analisar neste PC (uns 3 minutos cada) e te aviso quando virar tema. Pode continuar mandando."
-  } else { Send "Não consegui pôr o reel na fila. $r" }
+    $o = if ($kind -eq 'add-foto') { 'a imagem' } elseif ($kind -eq 'add-arquivo') { 'o vídeo' } elseif ($ref -match '/(reel|reels|tv)/|tiktok|shorts') { 'o reel' } else { 'o post' }
+    $tempo = if ($kind -eq 'add-foto' -or $o -eq 'o post') { 'post de imagens leva uns 1 a 2 minutos por imagem' } else { 'uns 3 minutos' }
+    Send "📥 Recebi $o$fila. Vou ler, transcrever e analisar neste PC ($tempo) e te aviso quando virar tema. Pode continuar mandando."
+  } else { Send "Não consegui pôr na fila. $r" }
 }
 
 function Make-Pauta([string]$topic, [switch]$another, [string]$tema) {
@@ -313,7 +317,7 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nTEMAS A PARTIR DE REELS`nMande o link de um reel (Instagram, TikTok ou Shorts) ou o próprio vídeo, com um comentário se quiser. Eu baixo, transcrevo e analiso aqui no PC e guardo como tema para edições futuras (reels parecidos viram um tema só). A notícia das 09h usa o 1º da lista e busca uma notícia real sobre ele.`n/temas  a lista`nusar 3  escreve a análise do tema #3 agora`napagar 3  tira da lista`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nTEMAS A PARTIR DE REELS E POSTS`nMande o link de um reel ou post (Instagram, TikTok ou Shorts), o próprio vídeo, ou imagens (prints, slides; um álbum vira um post só), com um comentário se quiser. Eu transcrevo a fala, leio o texto das imagens e analiso aqui no PC e guardo como tema para edições futuras (posts parecidos viram um tema só). A notícia das 09h usa o 1º da lista e busca uma notícia real sobre ele.`n/temas  a lista`nusar 3  escreve a análise do tema #3 agora`napagar 3  tira da lista`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
@@ -456,6 +460,13 @@ while ($true) {
       # vídeo mandado direto (reel privado ou salvo no celular): vira tema também
       $vf = if ($msg.video) { $msg.video.file_id } elseif ($msg.document -and "$($msg.document.mime_type)" -like 'video/*') { $msg.document.file_id } else { $null }
       if ($vf) { Add-Reel 'add-arquivo' $vf ([string]$msg.caption); continue }
+      # imagem (print do post, slide, meme): a maior versão; fotos de um álbum viram um item só
+      $pf = if ($msg.photo) { @($msg.photo)[-1].file_id } elseif ($msg.document -and "$($msg.document.mime_type)" -like 'image/*') { $msg.document.file_id } else { $null }
+      if ($pf) {
+        $grp = if ($msg.media_group_id) { [string]$msg.media_group_id } else { '-' }
+        Add-Reel 'add-foto' $pf ([string]$msg.caption) $grp
+        continue
+      }
       Handle ([string]$msg.text + [string]$msg.caption) $null
     } catch { Log "Erro tratando update: $_"; try { Send "Erro interno: $_" } catch {} }
   }

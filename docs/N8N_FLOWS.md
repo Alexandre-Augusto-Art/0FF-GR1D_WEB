@@ -246,16 +246,20 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 - Personagem e marca são próprios (máscara com boca de equalizador); não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 
-### Temas a partir de reels (desde 2026-11-18)
+### Temas a partir de reels e posts (desde 2026-11-18; posts de imagem desde 2026-11-23)
 
-Reels que você recebe viram uma lista de temas para edições futuras. Mande ao bot o link do reel
-(Instagram, TikTok ou YouTube Shorts) ou o próprio arquivo de vídeo, com um comentário se quiser
-("compara com a Amazon de verdade"):
+Reels e posts que você recebe viram uma lista de temas para edições futuras. Mande ao bot o link
+(Instagram, TikTok ou YouTube Shorts; reel, carrossel ou post de imagem), o próprio arquivo de
+vídeo ou imagens (prints, slides; um álbum do Telegram vira um post só), com um comentário se
+quiser ("compara com a Amazon de verdade"):
 
 ```
 link/vídeo → automation/reels/reel-tema.js (em segundo plano, fila; o bot continua respondendo)
-  → yt-dlp, sem login (reel privado: mande o arquivo, até 20 MB pelo bot)
-  → faster-whisper (transcrever.py; "small" no CPU, uns 35 s para 1min45 de reel)
+  → yt-dlp, sem login: legenda, vídeos e as imagens do carrossel (privado: mande o arquivo,
+    até 20 MB pelo bot)
+  → vídeos: faster-whisper (transcrever.py; "small" no CPU, uns 35 s para 1min45 de reel)
+  → imagens (até 6 por post): qwen2.5vl:7b no Ollama transcreve o texto de cada slide e
+    descreve a imagem (uns 1 a 1,5 min por imagem no CPU; segundos com a 3090)
   → Ollama: título, mecanismo real, quem ganha/paga, obra sugerida (das fichas do espelho),
     palavras de busca e afirmações a checar
   → junta com um tema parecido ou cria um novo em %USERPROFILE%\.w4k3\temas.json
@@ -272,7 +276,7 @@ link/vídeo → automation/reels/reel-tema.js (em segundo plano, fila; o bot con
 - Não usa cookies nem a sua conta do Instagram: é o que leva o Instagram a bloquear contas.
 - Teste sem mexer no Telegram nem na lista: `W4K3_TESTE=1 node automation\reels\reel-tema.js testar
   <url> [comentário]` (usa `temas-teste.json`). Com a 3090: `W4K3_WHISPER=large-v3`.
-- Log em `%USERPROFILE%\.w4k3\logs\reels.log`.
+- Outro modelo de visão: `W4K3_VISAO=<modelo>`. Log em `%USERPROFILE%\.w4k3\logs\reels.log`.
 
 ### Reflexão a partir de um link (desde 2026-11-12)
 
