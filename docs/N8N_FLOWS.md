@@ -246,6 +246,38 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 - Personagem e marca são próprios (máscara com boca de equalizador); não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 
+### Temas a partir de reels e posts (desde 2026-11-18; posts de imagem desde 2026-11-23)
+
+Reels e posts que você recebe viram uma lista de temas para edições futuras. Mande ao bot o link
+(Instagram, TikTok ou YouTube Shorts; reel, carrossel ou post de imagem), o próprio arquivo de
+vídeo ou imagens (prints, slides; um álbum do Telegram vira um post só), com um comentário se
+quiser ("compara com a Amazon de verdade"):
+
+```
+link/vídeo → automation/reels/reel-tema.js (em segundo plano, fila; o bot continua respondendo)
+  → yt-dlp, sem login: legenda, vídeos e as imagens do carrossel (privado: mande o arquivo,
+    até 20 MB pelo bot)
+  → vídeos: faster-whisper (transcrever.py; "small" no CPU, uns 35 s para 1min45 de reel)
+  → imagens (até 6 por post): qwen2.5vl:7b no Ollama transcreve o texto de cada slide e
+    descreve a imagem (uns 1 a 1,5 min por imagem no CPU; segundos com a 3090)
+  → Ollama: título, mecanismo real, quem ganha/paga, obra sugerida (das fichas do espelho),
+    palavras de busca e afirmações a checar
+  → junta com um tema parecido ou cria um novo em %USERPROFILE%\.w4k3\temas.json
+  → mensagem no Telegram com [✍️ Escrever agora] [🗑 Apagar tema]
+```
+
+- O vídeo baixado é apagado depois; ficam o link, a legenda, um trecho da transcrição e a análise.
+- **Reel não é fonte.** O tema vira pauta buscando uma notícia real com as palavras do tema
+  (`run-w4k3.ps1 -Pauta -Tema 7`), com o mecanismo do tema e o seu comentário como
+  direcionamento. Se não houver notícia recente sobre ele, a pauta é geral e o tema fica na lista.
+- Às 09h, a notícia do dia parte do 1º tema da fila (mais reels sobre o mesmo assunto primeiro,
+  depois o mais antigo). Sem temas, segue como antes.
+- No bot: `/temas` (lista), `usar 7` (escreve agora), `apagar 7`.
+- Não usa cookies nem a sua conta do Instagram: é o que leva o Instagram a bloquear contas.
+- Teste sem mexer no Telegram nem na lista: `W4K3_TESTE=1 node automation\reels\reel-tema.js testar
+  <url> [comentário]` (usa `temas-teste.json`). Com a 3090: `W4K3_WHISPER=large-v3`.
+- Outro modelo de visão: `W4K3_VISAO=<modelo>`. Log em `%USERPROFILE%\.w4k3\logs\reels.log`.
+
 ### Reflexão a partir de um link (desde 2026-11-12)
 
 Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só um **rascunho**:

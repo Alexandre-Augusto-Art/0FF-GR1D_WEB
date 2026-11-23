@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-17T13:13:31.681Z",
+ "updatedAt": "2026-11-23T07:55:45.811Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -14,7 +14,7 @@
   {
    "name": "Boatos.org",
    "ok": true,
-   "count": 15
+   "count": 17
   },
   {
    "name": "E-farsas",
@@ -33,6 +33,320 @@
   }
  ],
  "items": [
+  {
+   "title": "Golpe cita que Cacau Show está dando brinde de Natal para quem compartilhar link no WhatsApp",
+   "link": "https://www.boatos.org/brasil/cacau-show-esta-dando-caixa-de-presente-de-natal-para-quem-responder-a-um-questionario.html",
+   "source": "Boatos.org",
+   "date": "2026-11-22T20:32:36.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – A Cacau Show estaria dando uma caixa de chocolates de Natal para quem respondesse a um questionário e compartilhasse a promoção com amigos. Análise Uma mensagem que circula nas redes sociais e aplicativos de mensagens promete uma caixa de chocolates de…"
+  },
+  {
+   "title": "Golpe usa vídeo criado por IA de “mãe viúva” pedindo R$ 5 para tratar leucemia",
+   "link": "https://www.boatos.org/brasil/mae-viuva-com-leucemia-pede-r-5-para-tratamento-e-transplante.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:58:46.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Uma mãe viúva que teria leucemia e três filhos estaria pedindo doações de R$ 5 para pagar medicamentos, exames e um transplante de medula óssea. Análise Uma publicação do perfil “Gestos com Motivo” pede doações de R$ 5 para ajudar uma suposta mãe viúva que…"
+  },
+  {
+   "title": "É falso que Roberto Carlos encontrou sua empregada dormindo na rua",
+   "link": "https://www.boatos.org/entretenimento/roberto-carlos-encontrou-uma-empregada-dormindo-na-rua.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:57:14.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Roberto Carlos teria encontrado uma empregada chamada Nice dormindo na rua em frente à sua casa e descoberto que ela vivia em situação de pobreza. Análise Uma publicação nas redes sociais afirma que o cantor Roberto Carlos teria encontrado uma funcionária…"
+  },
+  {
+   "title": "Vídeo de macaco carregando filhote de cachorro em árvore não foi gravado no Brasil",
+   "link": "https://www.boatos.org/brasil/video-mostra-macaco-carregando-filhote-de-cachorro-em-arvore-nos-jardins-em-sao-paulo.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:56:14.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Boatos.org Boato – Um vídeo mostraria um macaco carregando um filhote de cachorro no bairro dos Jardins, em São Paulo. Análise Uma publicação nas redes sociais afirma que um macaco foi visto carregando um filhote de cachorro no bairro dos Jardins, em São Paulo. A cena chamou…"
+  },
+  {
+   "title": "Vídeo que mostra Patrícia Abravanel chorando e pedindo audiência para o SBT é fake criado por IA",
+   "link": "https://www.boatos.org/entretenimento/patricia-abravanel-chorou-ao-vivo-e-pediu-audiencia-para-o-sbt.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:53:37.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Patrícia Abravanel teria chorado ao vivo e implorado para que o público voltasse a assistir ao SBT depois de uma queda de 90% na audiência da emissora. Análise Publicações nas redes sociais afirmam que Patrícia Abravanel teria chorado durante uma…"
+  },
+  {
+   "title": "É falsa a capa de O Globo que afirma que Flávio Bolsonaro fugiu do Brasil vestido de mulher",
+   "link": "https://www.boatos.org/politica/flavio-bolsonaro-fugiu-do-brasil-vestido-de-mulher-e-o-globo-revelou-tudo.html",
+   "source": "Boatos.org",
+   "date": "2026-11-21T15:51:13.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – O Globo teria publicado uma reportagem afirmando que Flávio Bolsonaro fugiu do Brasil vestido de mulher e que a Interpol identificou o vestido utilizado pelo senador. Análise Uma imagem que circula nas redes sociais imita a capa do jornal O Globo e afirma…"
+  },
+  {
+   "title": "Vídeo de descarte de cebolas não é de 2026 e nem de um período de alta do preço do produto",
+   "link": "https://www.boatos.org/brasil/produtores-jogaram-cebolas-fora-em-2026-para-aumentar-os-precos-e-deram-calote-de-r-48-bilhoes-no-banco-do-brasil.html",
+   "source": "Boatos.org",
+   "date": "2026-11-20T14:20:55.000Z",
+   "rating": "ANTIGO",
+   "summary": "Boatos.org Boato – Produtores rurais estariam jogando cebolas fora para aumentar os preços e teriam dado um calote de R$ 48 bilhões no Banco do Brasil. Análise Um vídeo que mostra sacos de cebola sendo descartados em uma área rural voltou a circular nas redes sociais em…"
+  },
+  {
+   "title": "Vídeo que mostra mulher sendo atacada por onça em varanda de casa em Mato Grosso é fake criado por IA",
+   "link": "https://www.boatos.org/brasil/video-mostra-mulher-sendo-atacada-por-onca-em-varanda-de-casa-em-mato-grosso.html",
+   "source": "Boatos.org",
+   "date": "2026-11-20T14:19:25.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria uma mulher sendo atacada por uma onça enquanto descansava na varanda de casa, em Mato Grosso. Análise Uma publicação nas redes sociais compartilha um vídeo que supostamente mostraria uma mulher sendo atacada por uma onça enquanto…"
+  },
+  {
+   "title": "Vídeo apresenta dados falsos sobre velocidade nas filas de votação para sugerir fraude nas urnas",
+   "link": "https://www.estadao.com.br/estadao-verifica/fraude-urnas-sem-biometria-secoes-lula-venceu-filas-rapidas",
+   "source": "Estadão Verifica",
+   "date": "2026-11-20T13:16:37.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "É #FAKE que Pix MEI de até R$ 5 mil terá de baixar para R$ 363 para 'caber' no orçamento reservado pelo governo",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/20/e-fake-que-pix-mei-de-ate-r-5-mil-tera-de-baixar-para-r-363-para-caber-no-orcamento-reservado-pelo-governo.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-20T07:00:01.000Z",
+   "rating": "FALSO",
+   "summary": "Não é verdde que assistência a MEIs será reduzida de R$ 5 mil para R$ 363 g1 Circulam nas redes sociais publicações sugerindo que o Pix MEI, proposta de incentivo financeiro de até R$ 5 mil a microempreendedores individuais anunciada por Lula (PT) durante a campanha à…"
+  },
+  {
+   "title": "Repetindo falsa cartilha de censura, deputados pró-big techs atacam PL dos Mercados Digitais",
+   "link": "https://www.aosfatos.org/noticias/pl-mercados-digitais-censura",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T20:26:46.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>Prestes a ser votado na Câmara dos Deputados, o <a href=\"https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2562481\" target=\"_blank\">PL 4.675/2025</a>, apelidado de “PL dos Mercados Digitais”, tem sido alvo de desinformação nas redes sociais por…"
+  },
+  {
+   "title": "Vídeo que mostra descarte de cebolas no campo é de 2024, não atual",
+   "link": "https://www.aosfatos.org/noticias/video-descarte-cebolas-campo-2024-nao-atual",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T20:19:48.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente o vídeo que mostra o descarte de sacos de cebola em um campo, como afirmam postagens nas redes sociais. As peças desinformativas alegam que a situação teria relação com a atual alta nos preços do produto, o que não é verdade. As…"
+  },
+  {
+   "title": "Foto antiga é associada a protestos contra ajuste fiscal",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/19/foto-antiga-e-associada-a-protestos-contra-ajuste-fiscal",
+   "source": "Agência Lupa",
+   "date": "2026-11-19T20:13:40.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Imagem mostra manifestação contra a PEC da Blindagem, em setembro de 2025, e não ato contra medidas do governo Lula"
+  },
+  {
+   "title": "Livro que aborda incesto e pedofilia foi retirado pelo MEC em 2017 e não voltou a ser distribuído",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/19/livro-que-aborda-incesto-e-pedofilia-foi-retirado-pelo-mec-em-2017-e-nao-voltou-a-ser-distribuido",
+   "source": "Agência Lupa",
+   "date": "2026-11-19T19:36:58.000Z",
+   "rating": "FALSO",
+   "summary": "Obra ‘Enquanto o sono não vem’ foi retirada das escolas públicas em 2017, após questionamentos sobre o conteúdo"
+  },
+  {
+   "title": "É falsa a capa da revista ‘Veja’ que chama Sérgio Moro de ‘ladrão’",
+   "link": "https://www.estadao.com.br/estadao-verifica/capa-revista-veja-juiz-era-ladrao-sergio-moro-falsa",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T19:10:08.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Anúncios nas redes sociais da Meta divulgam bets ilegais: ‘aqui ainda funciona’",
+   "link": "https://www.estadao.com.br/estadao-verifica/anuncios-nas-redes-sociais-da-meta-divulgam-bets-ilegais-aqui-ainda-funciona",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T18:38:16.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Moraes mandou destruir armamentos de condenados do 8 de Janeiro, e não Bíblias e bengalas",
+   "link": "https://www.estadao.com.br/estadao-verifica/moraes-mandou-destruir-armas-nao-biblias-8-de-janeiro",
+   "source": "Estadão Verifica",
+   "date": "2026-11-19T18:28:06.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Vídeo que mostra Cristiano Ronaldo protestando em defesa da Palestina na Bola de Ouro foi criado por IA",
+   "link": "https://www.boatos.org/esporte/cristiano-ronaldo-gritou-palestina-livre-e-posou-com-bandeira-do-pais-durante-a-cerimonia-da-bola-de-ouro.html",
+   "source": "Boatos.org",
+   "date": "2026-11-19T16:44:32.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Cristiano Ronaldo teria gritado “Palestina Livre” e posado com uma bandeira palestina durante a cerimônia da Bola de Ouro. Análise Publicações nas redes sociais compartilham um vídeo que supostamente mostraria o jogador português Cristiano Ronaldo usando…"
+  },
+  {
+   "title": "Vídeo que mostra Paris coberta por gafanhotos foi criado com inteligência artificial",
+   "link": "https://www.boatos.org/mundo/video-mostra-uma-invasao-de-gafanhotos-que-cobriu-as-ruas-de-paris.html",
+   "source": "Boatos.org",
+   "date": "2026-11-19T16:43:03.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Boatos.org Boato – Um vídeo mostraria uma invasão de gafanhotos que cobriu ruas e veículos em Paris, na França. Análise Uma publicação nas redes sociais compartilha um vídeo que supostamente mostraria uma invasão de gafanhotos na capital francesa. A legenda afirma que uma…"
+  },
+  {
+   "title": "É falso que Casa da Moeda vai lançar nota de R$ 100 com rosto de Lula",
+   "link": "https://www.aosfatos.org/noticias/nota-100-reais-lula",
+   "source": "Aos Fatos",
+   "date": "2026-11-19T15:51:13.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que a Casa da Moeda esteja avaliando o lançamento de uma nova versão da nota de R$ 100 com o rosto do presidente Lula (PT), como afirmam postagens nas redes sociais. Não há projeto para substituir a cédula, segundo a Casa da Moeda. O…"
+  },
+  {
+   "title": "É #FAKE que vídeo de descarte de tomates no Rio tenha a ver com alta de preços em 2026; cena ocorreu em dezembro do ano passado",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-video-de-descarte-de-tomates-no-rio-tenha-a-ver-com-alta-de-precos-em-2026-cena-ocorreu-em-dezembro-do-ano-passado.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-19T15:19:45.000Z",
+   "rating": "FALSO",
+   "summary": "Vídeo de descarte de tomates no Rio não é recente g1 Circulam nas redes sociais publicações exibindo um vídeo em que um comerciante joga 50 caixas de tomate fora devido à recente alta de preços do produto. É #FAKE. ✅ Siga o canal de Fato ou Fake no WhatsApp Selo Fake…"
+  },
+  {
+   "title": "É #FAKE que MP do 'imposto do pecado' aumentará em 30% carga tributária sobre carros em 2027",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/19/e-fake-que-mp-do-imposto-do-pecado-aumentara-em-30percent-carga-tributaria-sobre-carros-em-2027.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-19T08:00:00.000Z",
+   "rating": "FALSO",
+   "summary": "Valor de 30% não é um aumento porcentual sobre o impost oatual, nem a taxa que incidiará sobre todos os veículos g1 Circulam nas redes publicações sugerindo que o Imposto Seletivo (IS), conhecido como \"imposto do pecado\", aumentará em 30% a carga tributária sobre todos carros…"
+  },
+  {
+   "title": "Lula não ‘entregou’ maior reserva de urânio do Brasil para a China",
+   "link": "https://www.aosfatos.org/noticias/lula-uranio-brasil-china",
+   "source": "Aos Fatos",
+   "date": "2026-11-18T21:29:47.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" background-color:#ffffff; padding:0pt 0pt 18pt 0pt\">Não é verdade que o governo Lula (PT) tenha entregado para a China a maior reserva de urânio do Brasil, como afirmam postagens nas redes sociais. As peças desinformativas distorcem a venda de uma empresa privada,…"
+  },
+  {
+   "title": "É falsa capa da Veja que acusa Moro de desviar dinheiro",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/18/e-falsa-capa-da-veja-que-acusa-moro-de-desviar-dinheiro",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T21:18:26.000Z",
+   "rating": "FALSO",
+   "summary": "Imagem foi criada com IA e simula edição da revista publicada em novembro de 2026"
+  },
+  {
+   "title": "Vídeo sobre bloqueio do Bolsa Família para 1,2 milhão de usuários é antigo",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/18/video-sobre-bloqueio-do-bolsa-familia-para-12-milhao-de-usuarios-e-antigo",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T20:44:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "Medida ocorreu em 12 de abril de 2023 para evitar pagamentos duplicados devido a suspeitas de fraude"
+  },
+  {
+   "title": "Vídeo sobre bloqueio do Bolsa Família para 1,2 milhão de usuários é antigo",
+   "link": "https://www.agencialupa.org/noticias/2026/11/18/video-sobre-bloqueio-do-bolsa-familia-para-12-milhao-de-usuarios-e-antigo",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T20:44:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "Medida ocorreu em 12 de abril de 2023 para evitar pagamentos duplicados devido a suspeitas de fraude"
+  },
+  {
+   "title": "Lula não se referiu a tempestades em SC ao falar de vento e ódio",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/18/lula-nao-se-referiu-a-tempestades-em-sc-ao-falar-de-vento-e-odio",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T19:39:35.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Presidente respondia a pergunta sobre a presença do partido no estado"
+  },
+  {
+   "title": "Teoria sobre sósia de Lula volta a ganhar força mesmo após sucessivos desmentidos",
+   "link": "https://www.estadao.com.br/estadao-verifica/teoria-lula-sosia-clone-volta-a-viralizar",
+   "source": "Estadão Verifica",
+   "date": "2026-11-18T19:06:05.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Suposta negociação de Maduro para delatar Lula é boato sem confirmação",
+   "link": "https://www.estadao.com.br/estadao-verifica/suposta-negociacao-de-maduro-para-delatar-lula-e-boato-sem-confirmacao",
+   "source": "Estadão Verifica",
+   "date": "2026-11-18T18:44:58.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "É #FAKE que foto de produtores descartando leite foi feita em 2026 no Rio Grande do Sul; registro ocorreu em Pernambuco há 7 anos",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/18/e-fake-que-foto-de-produtores-descartando-leite-foi-feita-em-2026-no-rio-grande-do-sul-registro-ocorreu-em-pernambuco-ha-7-anos.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-18T18:03:16.000Z",
+   "rating": "ANTIGO",
+   "summary": "É #FAKE que foto de produtores descartando leite foi feita em 2026 no Rio Grande do Sul; registro ocorreu em Pernambuco há 7 anos Reprodução Circula nas redes sociais uma foto de produtores de leite despejando o produto no chão. As legendas alegam que o registro ocorreu,…"
+  },
+  {
+   "title": "É falso que Lula tenha levado uma comitiva de 2 mil pessoas para a COP31 e que o governo tenha pago todas as despesas",
+   "link": "https://www.boatos.org/politica/lula-levou-uma-comitiva-de-2-mil-pessoas-para-a-cop31.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:16:03.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Lula teria levado uma comitiva de 2 mil pessoas para a COP31, na Turquia, e o governo teria custeado passagens, hospedagem, alimentação e outras despesas de todos os participantes. Análise Publicações nas redes sociais afirmam que o presidente Luiz Inácio…"
+  },
+  {
+   "title": "Vídeos de tomates descartados são antigos e não mostram ação para aumentar preços em novembro de 2026",
+   "link": "https://www.boatos.org/brasil/videos-que-mostram-tomates-sendo-jogados-fora-sao-de-periodo-de-alta-no-valor-do-produto.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:14:58.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "Boatos.org Boato – Vídeos mostram produtores e comerciantes jogando grandes quantidades de tomates fora para reduzir a oferta e aumentar os preços nos supermercados em novembro de 2026. Análise Publicações nas redes sociais mostram imagens de produtores e comerciantes…"
+  },
+  {
+   "title": "É falso que o Banco do Brasil tenha liberado R$ 256 bilhões em empréstimos para fazendas fantasmas ligadas a um CPF inexistente",
+   "link": "https://www.boatos.org/brasil/banco-do-brasil-liberou-r-256-bilhoes-em-emprestimos-para-112-fazendas-fantasmas-ligadas-a-um-cpf-inexistente.html",
+   "source": "Boatos.org",
+   "date": "2026-11-18T17:11:44.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – O Banco do Brasil teria liberado 112 empréstimos, que somariam R$ 256 bilhões, para fazendas fantasmas vinculadas a um único CPF inexistente. Análise Publicações nas redes sociais afirmam que o Banco do Brasil teria liberado 112 empréstimos, que somariam R$…"
+  },
+  {
+   "title": "Vídeo de descarte de leite em rodovia é de 2019; não atual",
+   "link": "https://www.aosfatos.org/noticias/video-descarte-leite",
+   "source": "Aos Fatos",
+   "date": "2026-11-18T16:28:55.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente um vídeo em que produtores rurais descartam leite em uma rodovia, como afirmam postagens nas redes sociais. O registro original é de fevereiro de 2019 e foi feito em Pernambuco. Na época, os manifestantes protestavam por melhores…"
+  },
+  {
+   "title": "Vídeo usa imagens criadas por IA para simular protestos contra Lula no Nordeste",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/17/video-usa-imagens-criadas-por-ia-para-simular-protestos-contra-lula-no-nordeste",
+   "source": "Agência Lupa",
+   "date": "2026-11-18T02:02:56.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "Post no Facebook alega existência de ‘tumultos nas ruas’ da região; ferramenta de detecção de IA indica imagens sintéticas"
+  },
+  {
+   "title": "É falso post em que Marco Rubio acusa Lula de conspirar contra os EUA com Irã",
+   "link": "https://www.aosfatos.org/noticias/falso-post-marco-rubio-lula-conspirar-eua-ira",
+   "source": "Aos Fatos",
+   "date": "2026-11-17T18:11:58.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que Marco Rubio, secretário de Estado dos Estados Unidos, tenha publicado no X (antigo Twitter) que o presidente Lula teria conspirado contra os EUA durante reunião com o presidente do Irã, Masoud Pezeshkian. Perfis compartilham um post…"
+  },
+  {
+   "title": "‘Economist’ revela nova capa e inicia mais uma onda de conspirações nas redes",
+   "link": "https://www.aosfatos.org/noticias/economist-nova-capa-onda-de-conspiracoes",
+   "source": "Aos Fatos",
+   "date": "2026-11-17T15:57:13.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>A revista britânica <em>Economist</em> lançou, na última segunda-feira (16), a mais nova edição da “The World Ahead” (“O mundo à frente”, em tradução para o português).</p> <p>Calma, isso não é “publi” do <strong>Aos Fatos</strong>, mas sim uma das maiores notícias para os…"
+  },
+  {
+   "title": "É falso que Lula tenha sido internado em hospital nas Filipinas em novembro de 2026",
+   "link": "https://www.boatos.org/politica/lula-foi-internado-em-hospital-nas-filipinas-em-novembro-de-2026.html",
+   "source": "Boatos.org",
+   "date": "2026-11-17T15:13:58.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Lula teria sido internado em um hospital nas Filipinas em 14 de novembro de 2026, onde estaria em estado estável. Análise Uma publicação nas redes sociais afirma que o presidente Luiz Inácio Lula da Silva estaria internado em um hospital nas Filipinas em 14…"
+  },
+  {
+   "title": "É falso que pterodáctilo tenha sido flagrado sobrevoando Ciudad Juárez, no México",
+   "link": "https://www.boatos.org/ciencia/pterodactilo-foi-flagrado-sobrevoando-ciudad-juarez-no-mexico.html",
+   "source": "Boatos.org",
+   "date": "2026-11-17T15:12:52.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um pterodáctilo teria sido filmado sobrevoando Ciudad Juárez, no México, em outubro e novembro de 2026. Análise Vídeos que circulam nas redes sociais mostram silhuetas de criaturas aladas sobrevoando Ciudad Juárez, no estado de Chihuahua, no México. As…"
+  },
+  {
+   "title": "É falso que Casa da Moeda tenha anunciado rosto de Lula na nota de R$ 100 em 2030",
+   "link": "https://www.boatos.org/politica/casa-da-moeda-vai-lancar-nota-de-r-100-com-rosto-de-lula-em-2030.html",
+   "source": "Boatos.org",
+   "date": "2026-11-17T15:09:39.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – A Casa da Moeda estaria avaliando lançar uma nova nota de R$ 100 com o rosto do presidente Luiz Inácio Lula da Silva em 2030. Análise Uma imagem que circula nas redes sociais apresenta uma suposta nota de R$ 100 com o rosto do presidente Luiz Inácio Lula da…"
+  },
   {
    "title": "Projeto no Senado não visa punir quem ‘questionar o sistema eleitoral’ ou impedir auditoria",
    "link": "https://www.estadao.com.br/estadao-verifica/plc-112-de-2021-nao-visa-penalizar-quem-questionar-sistema-eleitoral",

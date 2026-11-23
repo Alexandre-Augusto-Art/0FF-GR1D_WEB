@@ -1,5 +1,389 @@
 [
   {
+    "id": "2026-11-23",
+    "date": "2026-11-23",
+    "news": {
+      "title": "Quer trabalhar em big techs? Veja vagas abertas no Brasil",
+      "link": "https://www.estadao.com.br/tecmundo/big-techs/quer-trabalhar-em-big-techs-confira-vagas-de-emprego-disponiveis-no-brasil/",
+      "summary": "Na lista atualizada, trazemos vagas abertas no escritório da OpenAI em São Paulo e outras novidades",
+      "source": "Estadão",
+      "publishedDate": "2026-11-22"
+    },
+    "reflection": {
+      "title": "Arasaka no Mundo da IA",
+      "content": "<p>Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller. Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é OpenAI, e a tecnologia de IA se chama plataformas de tecnologia. Segundo o Estadão, a OpenAI busca engenheiros de IA aplicada em São Paulo. A empresa exige presença presencial três vezes por semana para o cargo, além de fluência em inglês e espanhol.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "A OpenAI busca engenheiros de IA em São Paulo, em meio a um cenário de controle corporativo e exploração.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller.",
+          "legenda": "META = ARASAKA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "PEÕES DA ARASAKA",
+          "cena": "marionete"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é OpenAI, e a tecnologia de IA se chama plataformas de tecnologia.",
+          "legenda": "OPENAI = ARASAKA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Estadão, a OpenAI busca engenheiros de IA aplicada em São Paulo.",
+          "legenda": "HUNTER DE TALENTOS",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "A empresa exige presença presencial três vezes por semana para o cargo, além de fluência em inglês e espanhol.",
+          "legenda": "PRESENCIAL NA ARASAKA",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "desenvolver demonstrações técnicas",
+            "ficcao": "implantes cibernéticos (cyberware)"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "Quer trabalhar em big techs? Veja vagas abertas no Brasil",
+        "link": "https://www.estadao.com.br/tecmundo/big-techs/quer-trabalhar-em-big-techs-confira-vagas-de-emprego-disponiveis-no-brasil/",
+        "source": "Estadão",
+        "date": "2026-11-22"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-23.mp4",
+      "poster": "assets/videos/w4k3/2026-11-23.jpg"
+    }
+  },
+  {
+    "id": "2026-11-20",
+    "date": "2026-11-20",
+    "news": {
+      "title": "AI isn’t replacing your job. It’s turning it into low-paid gig work",
+      "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+      "summary": "Platform companies are luring doctors, lawyers, and Ph.D.s with top rates, but then use the same tactics of pay cuts and sudden ghosting that have plagued global data workers.",
+      "source": "Rest of World",
+      "publishedDate": "2026-11-19"
+    },
+    "reflection": {
+      "title": "Arasaka Em Nosso Mundo",
+      "content": "<p>Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller. Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é Arasaka, e a tecnologia de IA se chama plataformas de tecnologia. Segundo o Rest of World, plataformas oferecem até $180 por hora para médicos nos EUA e $7,50 para trabalhadores na Filipinas. A Hive reduziu drasticamente pagamentos para trabalhadores, após um período inicial de pagamentos mais altos.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "Em Night City, Arasaka controla a tecnologia de IA explorando trabalhadores, semelhante a como plataformas de tecnologia exploram trabalhadores no mundo real.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller.",
+          "legenda": "META = ARASAKA",
+          "cena": "apresentador"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "SUSPENSO PELA JUSTIÇA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é Arasaka, e a tecnologia de IA se chama plataformas de tecnologia.",
+          "legenda": "SUA MENTE É DELES",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Rest of World, plataformas oferecem até $180 por hora para médicos nos EUA e $7,50 para trabalhadores na Filipinas.",
+          "legenda": "TRABALHADORES EXPLORADOS",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "A Hive reduziu drasticamente pagamentos para trabalhadores, após um período inicial de pagamentos mais altos.",
+          "legenda": "REDUÇÃO DE PAGAMENTOS",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "plataformas de tecnologia",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "recrutamento de profissionais",
+            "ficcao": "contratação de trabalhadores"
+          },
+          {
+            "real": "condições de trabalho instáveis e pagamentos reduzidos",
+            "ficcao": "exploração e controle"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "AI isn’t replacing your job. It’s turning it into low-paid gig work",
+        "link": "https://restofworld.org/2026/ai-jobs-skills-gig-work/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+        "source": "Rest of World",
+        "date": "2026-11-19"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-20.mp4",
+      "poster": "assets/videos/w4k3/2026-11-20.jpg"
+    }
+  },
+  {
+    "id": "2026-11-19",
+    "date": "2026-11-19",
+    "news": {
+      "title": "EmTech Brasil 2026: os desafios e limites da Inteligência Artificial",
+      "link": "https://mittechreview.com.br/emtech-brasil-2026-desafios-limites-inteligencia-artificial/",
+      "summary": "EmTech Brasil 2026 encerra dois dias de debates sobre Inteligência Artificial, inovação e seus impactos na Justiça, educação, saúde e energia",
+      "source": "MIT Technology Review - Brasil",
+      "publishedDate": "2026-11-17"
+    },
+    "reflection": {
+      "title": "EmTech Brasil: A Arasaka Digital",
+      "content": "<p>Em Night City, Arasaka domina a tecnologia de IA, controlando mentes através do Soulkiller. Pessoas se tornam commodities, perdendo privacidade e autonomia, enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é Arasaka, e a tecnologia de IA se chama EmTech Brasil 2026. Segundo o MIT Technology Review - Brasil, especialistas discutem limites e possibilidades da IA em áreas como justiça e saúde. O procurador Paulo Costa destacou a iniciativa Smart Sampa, usando câmeras de celulares para monitorar violência doméstica.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "EmTech Brasil 2026 discute IA e seus impactos, refletindo poder corporativo de Night City.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka domina a tecnologia de IA, controlando mentes através do Soulkiller.",
+          "legenda": "META = ARASAKA",
+          "cena": "apresentador"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam commodities, perdendo privacidade e autonomia, enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "SUA MENTE É DELES",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é Arasaka, e a tecnologia de IA se chama EmTech Brasil 2026.",
+          "legenda": "ARASAKA = EMTECH",
+          "cena": "cidade"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o MIT Technology Review - Brasil, especialistas discutem limites e possibilidades da IA em áreas como justiça e saúde.",
+          "legenda": "LIMITES E POSSIBILIDADES",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "O procurador Paulo Costa destacou a iniciativa Smart Sampa, usando câmeras de celulares para monitorar violência doméstica.",
+          "legenda": "SMART SAMPA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "ASSINOU ALGO?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "Governos e instituições responsáveis pela aplicação da lei ganham poder ao acompanhar o desenvolvimento de tecnologias que podem ser utilizadas para combater crimes digitais",
+            "ficcao": "Arasaka usa o programa Soulkiller para copiar e armazenar mentes em servidores, controlando assim a vida e a privacidade de indivíduos"
+          },
+          {
+            "real": "Pessoas e organizações que praticam crimes digitais podem perder autonomia e privacidade, já que a tecnologia permite uma maior vigilância e monitoramento",
+            "ficcao": "A corporação Arasaka monitora e controla indivíduos através de implantes cibernéticos e programas como o Soulkiller, limitando a liberdade e a privacidade dos mesmos"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "EmTech Brasil 2026: os desafios e limites da Inteligência Artificial",
+        "link": "https://mittechreview.com.br/emtech-brasil-2026-desafios-limites-inteligencia-artificial/",
+        "source": "MIT Technology Review - Brasil",
+        "date": "2026-11-17"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-19.mp4",
+      "poster": "assets/videos/w4k3/2026-11-19.jpg"
+    }
+  },
+  {
+    "id": "2026-11-18",
+    "date": "2026-11-18",
+    "news": {
+      "title": "US moves to cut China’s remote access to AI chips",
+      "link": "https://arstechnica.com/tech-policy/2026/11/us-moves-to-cut-chinas-remote-access-to-ai-chips/",
+      "summary": "Trump bets China won’t mind US blocking remote access to AI chips.",
+      "source": "Ars Technica (Tech Policy)",
+      "publishedDate": "2026-11-16"
+    },
+    "reflection": {
+      "title": "Guerra Corporativa Controla a IA",
+      "content": "<p>Em Night City, Arasaka e Militech travam uma guerra por tecnologia, explorando a população como bucha de canhão. Pessoas se tornam peões em conflitos de megacorporações, lutando por tecnologias que as exploram.</p>\n<p>Aqui, o nome é guerra entre EUA e China por controle de IA. Segundo o Ars Technica (Tech Policy), o governo dos EUA prepara uma regra para limitar acesso remoto à China de chips de IA restritos. O Departamento de Comércio dos EUA visa fechar brechas que permitem contornar restrições de exportação de chips de IA.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, está livre das corporações?</p>",
+      "excerpt": "O sistema corporativo controla a tecnologia, explorando a população em conflitos de poder.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka e Militech travam uma guerra por tecnologia, explorando a população como bucha de canhão.",
+          "legenda": "META = ARASAKA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões em conflitos de megacorporações, lutando por tecnologias que as exploram.",
+          "legenda": "PEÕES DA GUERRA",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é guerra entre EUA e China por controle de IA.",
+          "legenda": "GUERRA CORPORATIVA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Ars Technica (Tech Policy), o governo dos EUA prepara uma regra para limitar acesso remoto à China de chips de IA restritos.",
+          "legenda": "LIMITES DE ACESSO",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "real",
+          "fala": "O Departamento de Comércio dos EUA visa fechar brechas que permitem contornar restrições de exportação de chips de IA.",
+          "legenda": "FECHANDO BRECHAS",
+          "cena": "marionete"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, está livre das corporações?",
+          "legenda": "VOCÊ ESTÁ LIVRE?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "governo dos EUA",
+            "ficcao": "megacorporações"
+          },
+          {
+            "real": "China",
+            "ficcao": "Arasaka"
+          },
+          {
+            "real": "chips de IA",
+            "ficcao": "cyberware"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "US moves to cut China’s remote access to AI chips",
+        "link": "https://arstechnica.com/tech-policy/2026/11/us-moves-to-cut-chinas-remote-access-to-ai-chips/",
+        "source": "Ars Technica (Tech Policy)",
+        "date": "2026-11-16"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-18.mp4",
+      "poster": "assets/videos/w4k3/2026-11-18.jpg"
+    }
+  },
+  {
     "id": "2026-11-17",
     "date": "2026-11-17",
     "news": {
