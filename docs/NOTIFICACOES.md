@@ -1,48 +1,65 @@
 # Avisos da 2B no Telegram
 
-A 2B, personagem do projeto, posta num **canal público do Telegram** sempre que sai conteúdo novo no site.
-Quem quer receber os avisos só precisa entrar no canal. Não tem cadastro e não guardamos nada de quem segue.
+A 2B é o bot do projeto no Telegram. O botão **"Receber avisos da 2B no Telegram"**, na página inicial, abre a
+conversa com ela, e cada pessoa escolhe ali o que quer receber:
 
-| Ferramenta | Quando a 2B avisa | Hashtag |
-|---|---|---|
-| W4K3 PR0T0C0L | reflexão nova publicada (com prévia do link) | `#w4k3` |
-| Motivação Diária | frase nova | `#motivacao` |
-| Organize-se | atos **convocados** que ainda vão acontecer, numa mensagem por rodada, agrupados por estado (cobertura de ato que já passou não vira aviso) | `#organize #SP #RJ …`, `#nacional` |
-| Fact Check | resumo das checagens novas das agências (as 10 mais recentes) | `#factcheck` |
+| Aviso | Quando chega |
+|---|---|
+| W4K3 PR0T0C0L | reflexão nova publicada |
+| Motivação Diária | frase nova |
+| Organize-se | atos **convocados** que ainda vão acontecer, numa mensagem por rodada. A pessoa pode escolher os estados; atos nacionais também chegam |
+| Fact Check | resumo das checagens novas das agências (as 10 mais recentes) |
 
-Para ver só um assunto no canal, toque na hashtag (por exemplo `#SP`) e o Telegram filtra.
-
-## Como funciona
-
-- `automation/notify.js` lê os feeds em `data/`, compara com o que já foi avisado e monta as mensagens.
-  As falas de abertura da 2B ficam no objeto `VOICE`, no topo do arquivo. Edite à vontade.
-- `.github/workflows/notify.yml` roda o script quando:
-  - um push no `main` muda `data/` (é o caso do W4K3 e da Motivação, que saem do PC de casa);
-  - terminam as Actions do Fact Check ou do Organize-se. Os commits delas não disparam `push`, por isso o `workflow_run`.
-- O que já foi avisado fica em `notified.json`, no branch **`notify-state`**, fora do `main`. Assim não entra em
-  conflito com os outros pushes. Pode apagar esse branch para recomeçar do zero: na próxima rodada a 2B
-  marca tudo o que existe como já avisado e não manda nada.
-- **Primeira rodada de cada feed:** só marca, sem enviar, para não despejar 180 checagens de uma vez.
-- Se o Telegram recusar uma mensagem, o conteúdo dela não é marcado e vai na rodada seguinte.
-- Testes: `node tests/notify/notify.test.js`. Eles também rodam na Action "Validar feeds".
-- Para ver as mensagens sem enviar: `node automation/notify.js --state caminho/qualquer.json --dry-run`.
+Comandos: `/avisos` muda as escolhas, `/parar` desliga tudo e apaga os dados, `/ajuda` explica.
 
 ## Configurar (uma vez)
 
-1. **Criar o bot 2B.** No Telegram, fale com o `@BotFather` e mande `/newbot`.
-   - Nome: `2B`.
-   - Usuário: um que termine em `bot` e esteja livre, por exemplo `offgrid_2b_bot`.
-   - Ele devolve o **token**. Guarde-o, ele não vai para o código.
+1. **Criar o bot.** No Telegram, fale com o `@BotFather` e mande `/newbot`.
+   - Nome: `2B_notifications`.
+   - Usuário: **`avisos_2B_bot`** (o Telegram exige começar com letra e terminar em `bot`). Se já tiver dono, escolha
+     outro e troque o link `t.me/avisos_2B_bot` em `index.html` e o nome em `install.ps1`.
    - Opcional: `/setuserpic` (a foto da 2B), `/setdescription` e `/setabouttext`.
-2. **Criar o canal.** Novo canal, **público**, com um link como `t.me/offgrid_2b`.
-3. **Pôr a 2B no canal.** Em Administradores, adicione o bot e deixe ligada só a permissão **Publicar mensagens**.
-4. **Secrets no GitHub.** Em *Settings → Secrets and variables → Actions → New repository secret*:
-   - `TELEGRAM_2B_TOKEN`: o token do passo 1;
-   - `TELEGRAM_2B_CHAT`: `@offgrid_2b`, o usuário do canal com `@`.
-5. **Primeira rodada.** Vá em *Actions → "2B - avisos no Telegram" → Run workflow*. Ela marca o que já existe
-   e não posta nada. A partir daí, cada novidade vira aviso.
+   - Recomendado: `/setjoingroups` → *Disable*. A 2B só conversa no privado.
+2. **Instalar neste PC.** Na pasta do projeto, rode o comando abaixo e cole o token que o BotFather deu. Ele não
+   aparece na tela nem vai para o repositório.
 
-Sem os secrets, o workflow só mostra no log o que mandaria e não grava estado.
+   ```bash
+   powershell -ExecutionPolicy Bypass -File automation/bot-2b/install.ps1
+   ```
 
-O bot do W4K3 (`telegram-w4k3.ps1`, conversa privada para aprovar rascunhos) é outro bot e continua igual.
-A 2B só publica no canal.
+3. **Conferir.** Abra a 2B no Telegram, mande `/start` e ligue um aviso.
+
+**Crie o bot antes de publicar o botão.** Enquanto o usuário estiver livre, qualquer pessoa pode registrá-lo e
+receber os visitantes do site.
+
+Depois de mudar algo em `automation/bot-2b/`, rode o `install.ps1` de novo. Para trocar o token: `install.ps1 -NovoToken`.
+
+## Como funciona
+
+- `automation/bot-2b/bot.js` roda neste PC, pela tarefa "2B - Avisos" do Windows, e inicia ao entrar no sistema.
+  Não precisa de IP público.
+- **Com o PC desligado ou dormindo a 2B não responde.** As mensagens esperam no Telegram por até 24 h e os avisos
+  saem quando o PC voltar.
+- A cada 5 min ele lê os feeds do site publicado e monta um aviso para cada pessoa que ligou aquele assunto.
+- Na primeira leitura de cada feed ele só marca o que já existe, sem avisar.
+- Envio que falha é repetido. Quem bloqueia o bot é apagado.
+- É um bot separado do W4K3 (`telegram-w4k3.ps1`). Nunca use o mesmo token nos dois.
+
+| Arquivo | O que tem |
+|---|---|
+| `messages.js` | o texto dos avisos; as falas da 2B ficam em `VOICE` |
+| `core.js` | menu, escolhas e regras de quem recebe o quê |
+| `bot.js` | conversa com o Telegram e o site |
+| `install.ps1` | instala neste PC |
+
+## Privacidade
+
+De cada pessoa ficam guardados só o número da conversa e as escolhas, em `%USERPROFILE%\.w4k3\2b\state.json`, neste
+PC, e só enquanto houver um aviso ligado. `/parar` apaga na hora. O log não leva número de conversa, texto das
+pessoas nem o token. Não copie essa pasta para o repositório: ele é público, e a lista diz quem acompanha atos.
+
+## Testes
+
+`node tests/bot-2b/bot.test.js` (regras) e `node tests/bot-2b/run.test.js` (o bot inteiro contra um Telegram de
+mentira). Os dois rodam na Action "Validar feeds".
+Para ver os avisos com o conteúdo de hoje, sem enviar: `node automation/bot-2b/bot.js --preview`.

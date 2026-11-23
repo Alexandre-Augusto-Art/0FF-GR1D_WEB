@@ -8,7 +8,7 @@ on:
       - 'js/fact-check/**'
       - 'tests/fact-check/**'
       - 'tests/organize/**'
-      - 'tests/notify/**'
+      - 'tests/bot-2b/**'
   pull_request:
     paths:
       - 'data/**'
@@ -16,7 +16,7 @@ on:
       - 'js/fact-check/**'
       - 'tests/fact-check/**'
       - 'tests/organize/**'
-      - 'tests/notify/**'
+      - 'tests/bot-2b/**'
   workflow_dispatch:
 
 permissions:
@@ -35,4 +35,5 @@ jobs:
       - run: node tests/fact-check/media.test.js
       - run: node tests/fact-check/text.test.js
       - run: node tests/organize/fetch.test.js
-      - run: node tests/notify/notify.test.js
+      - run: node tests/bot-2b/bot.test.js
+      - run: node tests/bot-2b/run.test.js

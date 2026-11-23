@@ -736,6 +736,53 @@ body {
     0 0 40px rgba(34, 211, 238, 0.3);
 }
 
+/* Avisos da 2B no Telegram (página inicial) */
+.notify-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 2.5rem;
+  padding: 0.9rem 1.6rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 15px rgba(0, 255, 132, 0.3);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.notify-cta:hover {
+  background: var(--color-secondary);
+  color: #000;
+  box-shadow: 0 0 25px rgba(0, 255, 132, 0.6);
+}
+
+.notify-cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.notify-cta-icon {
+  font-size: 1.6rem;
+}
+
+.notify-cta-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.notify-cta-text strong {
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+}
+
+.notify-cta-text small {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+}
+
 /* Section dividers */
 .section-divider {
   display: flex;
@@ -744,7 +791,8 @@ body {
   margin: 3rem 0 0;
 }
 
-.section-divider:first-child {
+.section-divider:first-child,
+.notify-cta + .section-divider {
   margin-top: 0;
 }
 
