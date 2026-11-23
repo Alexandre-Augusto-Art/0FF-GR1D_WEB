@@ -1,5 +1,96 @@
 [
   {
+    "id": "2026-11-23",
+    "date": "2026-11-23",
+    "news": {
+      "title": "Quer trabalhar em big techs? Veja vagas abertas no Brasil",
+      "link": "https://www.estadao.com.br/tecmundo/big-techs/quer-trabalhar-em-big-techs-confira-vagas-de-emprego-disponiveis-no-brasil/",
+      "summary": "Na lista atualizada, trazemos vagas abertas no escritório da OpenAI em São Paulo e outras novidades",
+      "source": "Estadão",
+      "publishedDate": "2026-11-22"
+    },
+    "reflection": {
+      "title": "Arasaka no Mundo da IA",
+      "content": "<p>Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller. Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.</p>\n<p>Aqui, o nome é OpenAI, e a tecnologia de IA se chama plataformas de tecnologia. Segundo o Estadão, a OpenAI busca engenheiros de IA aplicada em São Paulo. A empresa exige presença presencial três vezes por semana para o cargo, além de fluência em inglês e espanhol.</p>\n<p><strong>É o sistema controlando a tecnologia, não um erro.</strong></p>\n<p>Em Night City, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "A OpenAI busca engenheiros de IA em São Paulo, em meio a um cenário de controle corporativo e exploração.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em Night City, Arasaka controla a tecnologia de IA, explorando trabalhadores com o Soulkiller.",
+          "legenda": "META = ARASAKA",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Pessoas se tornam peões, perdendo privacidade e autonomia enquanto Arasaka lucra com vigilância e controle.",
+          "legenda": "PEÕES DA ARASAKA",
+          "cena": "marionete"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é OpenAI, e a tecnologia de IA se chama plataformas de tecnologia.",
+          "legenda": "OPENAI = ARASAKA",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Estadão, a OpenAI busca engenheiros de IA aplicada em São Paulo.",
+          "legenda": "HUNTER DE TALENTOS",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "A empresa exige presença presencial três vezes por semana para o cargo, além de fluência em inglês e espanhol.",
+          "legenda": "PRESENCIAL NA ARASAKA",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a tecnologia, não um erro.",
+          "legenda": "SISTEMA CONTROLANDO",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em Night City, ninguém assinou nada. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "pergunta"
+        }
+      ],
+      "espelho": {
+        "obra": "Cyberpunk 2077",
+        "elemento": "Arasaka",
+        "mundo": "Night City",
+        "traducao": [
+          {
+            "real": "desenvolver demonstrações técnicas",
+            "ficcao": "implantes cibernéticos (cyberware)"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "Quer trabalhar em big techs? Veja vagas abertas no Brasil",
+        "link": "https://www.estadao.com.br/tecmundo/big-techs/quer-trabalhar-em-big-techs-confira-vagas-de-emprego-disponiveis-no-brasil/",
+        "source": "Estadão",
+        "date": "2026-11-22"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Cyberpunk 2077"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-23.mp4",
+      "poster": "assets/videos/w4k3/2026-11-23.jpg"
+    }
+  },
+  {
     "id": "2026-11-20",
     "date": "2026-11-20",
     "news": {
