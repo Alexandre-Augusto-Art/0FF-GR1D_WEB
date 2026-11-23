@@ -83,6 +83,11 @@ if (Get-Command python.exe -ErrorAction SilentlyContinue) {
   }
   # o Instagram muda com frequência e o yt-dlp acompanha: atualiza a cada instalação
   & $rpy -m pip install -q --disable-pip-version-check -U yt-dlp
+  # modelo de visão para ler o texto e entender as imagens dos posts (~6 GB, só na primeira vez)
+  if ((Get-Command ollama.exe -ErrorAction SilentlyContinue) -and -not ((& ollama.exe list 2>$null) -match 'qwen2\.5vl:7b')) {
+    Write-Host 'baixando o modelo de visão qwen2.5vl:7b (~6 GB)...'
+    & ollama.exe pull qwen2.5vl:7b
+  }
   Write-Host 'ok: temas a partir de reels (yt-dlp + faster-whisper em %USERPROFILE%\.w4k3\reels)'
 } else {
   Write-Host 'reels: pulado (precisa de python no PATH)'
