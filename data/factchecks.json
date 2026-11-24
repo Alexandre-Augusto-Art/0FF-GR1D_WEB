@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-24T10:09:03.858Z",
+ "updatedAt": "2026-11-24T22:38:49.509Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -13,8 +13,9 @@
   },
   {
    "name": "Boatos.org",
-   "ok": true,
-   "count": 19
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 429"
   },
   {
    "name": "E-farsas",
@@ -33,6 +34,99 @@
   }
  ],
  "items": [
+  {
+   "title": "É falso que Banco do Brasil tenha sido alvo de fraude de R$ 256 bilhões",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/24/e-falso-que-banco-do-brasil-tenha-sido-alvo-de-fraude-de-r-256-bilhoes",
+   "source": "Agência Lupa",
+   "date": "2026-11-24T20:48:50.000Z",
+   "rating": "GOLPE",
+   "summary": "PF investiga suspeitas de irregularidades em operações de crédito rural, mas não cita o Banco do Brasil nem o valor bilionário."
+  },
+  {
+   "title": "Petistas não tentaram invadir hospital onde está Jair Bolsonaro",
+   "link": "https://www.aosfatos.org/noticias/petistas-hospital-jair-bolsonaro",
+   "source": "Aos Fatos",
+   "date": "2026-11-24T20:33:17.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que petistas tenham tentado invadir, no último domingo (22), o hospital onde está internado o ex-presidente Jair Bolsonaro (PL), ao contrário do que alegam posts nas redes sociais. Não há registro de ocorrência do tipo no hospital, e…"
+  },
+  {
+   "title": "Fim da escala 6x1 não levou Burger King a abrir lojas sem atendimento humano",
+   "link": "https://www.aosfatos.org/noticias/escala-6x1-burger-king",
+   "source": "Aos Fatos",
+   "date": "2026-11-24T20:13:30.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">Não é recente nem tem relação com o fim da escala 6x1 a abertura de unidades do Burger King sem atendimento humano em São Paulo, ao contrário do que alegam posts nas redes sociais. A inauguração dessas lojas começou há quatro anos, e o próprio…"
+  },
+  {
+   "title": "É falso que ‘O Globo’ tenha publicado capa sobre vestido usado por Flávio Bolsonaro em fuga do País",
+   "link": "https://www.estadao.com.br/estadao-verifica/interpol-identificou-vestido-usado-por-flavio-bolsonaro-para-fugir-do-brasil-falso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-24T19:46:55.000Z",
+   "rating": "FALSO"
+  },
+  {
+   "title": "Vídeo de descarte de melancias é de 2023; produtores jogavam frutas no chão por causa de preço baixo",
+   "link": "https://www.estadao.com.br/estadao-verifica/video-mostrando-descarte-de-melancias-e-antigo",
+   "source": "Estadão Verifica",
+   "date": "2026-11-24T18:14:37.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É falso que TSE destruiu urnas usadas nas eleições de 2026",
+   "link": "https://www.aosfatos.org/noticias/tse-urnas-eleicoes-2026",
+   "source": "Aos Fatos",
+   "date": "2026-11-24T17:53:09.000Z",
+   "rating": "FALSO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que a Justiça Eleitoral tenha destruído as urnas eletrônicas utilizadas nas eleições de 2026, ao contrário do que alegam postagens nas redes sociais. O TSE (Tribunal Superior Eleitoral) classificou as alegações como falsas e informou que…"
+  },
+  {
+   "title": "É #FAKE que vídeo de descarte de cebolas na Bahia tenha a ver com alta de preços em 2026; cena há dois anos",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/24/e-fake-que-video-de-descarte-de-cebolas-na-bahia-tenha-a-ver-com-alta-de-precos-em-2026-cena-ha-dois-anos.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-24T17:27:24.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que vídeo de descarte de cebolas na Bahia tenha a ver com alta de preços em 2026; cena ocorreu em 2024 Reprodução Circula nas redes sociais um vídeo que supostamente mostra um recente descarte de 17 mil sacos de cebolas na Bahia. As legendas alegam que ação teria o…"
+  },
+  {
+   "title": "Vídeo que mostra ‘jipinho’ chinês de R$ 19 mil não foi feito em São Paulo, e sim na Indonésia",
+   "link": "https://www.estadao.com.br/estadao-verifica/video-que-mostra-jipinho-chines-de-r-19-mil-nao-foi-feito-em-sao-paulo-e-sim-na-indonesia",
+   "source": "Estadão Verifica",
+   "date": "2026-11-24T17:24:05.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Gráfico não prova que sistema de sorteio do STF privilegia Moraes",
+   "link": "https://www.aosfatos.org/noticias/sorteio-stf-moraes",
+   "source": "Aos Fatos",
+   "date": "2026-11-24T16:20:16.000Z",
+   "rating": "ENGANOSO",
+   "summary": "<p>Não é verdade que o ministro do STF (Supremo Tribunal Federal) Alexandre de Moraes recebeu 43,4% dos processos sorteados na Corte, como sugerem publicações nas redes sociais. Os dados apresentados pelos posts se referem apenas a processos criminais e incluem ações que…"
+  },
+  {
+   "title": "Marco Rubio não disse que Lula conspirou contra os EUA",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/24/marco-rubio-nao-disse-que-lula-conspirou-contra-os-eua",
+   "source": "Agência Lupa",
+   "date": "2026-11-24T16:09:13.000Z",
+   "rating": "FALSO",
+   "summary": "Secretário não se manifestou sobre o assunto; post faz referência a falso comunicado que circula nas redes sociais"
+  },
+  {
+   "title": "É antigo vídeo que mostra protesto com faixa contra Lula em Petrolina",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/24/e-antigo-video-que-mostra-protesto-com-faixa-contra-lula-em-petrolina",
+   "source": "Agência Lupa",
+   "date": "2026-11-24T14:57:45.000Z",
+   "rating": "ANTIGO",
+   "summary": "Mobilização de moradores contra possibilidade de falta d’água ocorreu em 19 de dezembro de 2024"
+  },
+  {
+   "title": "Desinformação sobre mpox alimenta ataques contra comunidade LGBTQIA+ nas redes",
+   "link": "https://www.agencialupa.org/reportagem/2026/11/24/desinformacao-sobre-mpox-alimenta-ataques-contra-comunidade-lgbtqia-nas-redes",
+   "source": "Agência Lupa",
+   "date": "2026-11-24T11:00:00.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Publicações enganosas culpam homens gays e atacam influenciadores que relatam infecção; país tem 1.287 casos confirmados da doença"
+  },
   {
    "title": "É falso que programa Pé-de-Meia tenha sido cancelado por falta de verba",
    "link": "https://www.estadao.com.br/estadao-verifica/e-falso-que-programa-pe-de-meia-tenha-sido-cancelado-por-falta-de-verba",
