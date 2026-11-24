@@ -1,5 +1,100 @@
 [
   {
+    "id": "2026-11-24",
+    "date": "2026-11-24",
+    "news": {
+      "title": "Onda de panes em Microsoft, Apple, voos e FBI gera teorias de ciberataque nos EUA",
+      "link": "https://canaltech.com.br/seguranca/onda-de-panes-em-microsoft-apple-voos-e-fbi-gera-teorias-de-ciberataque-nos-eua/",
+      "summary": "As &uacute;ltimas semanas foram repletas de turbul&ecirc;ncias em servi&ccedil;os digitais nos Estados Unidos : o pa&iacute;s norte-americano passou por uma s&eacute;rie de panes e apag&otilde;es em Mi",
+      "source": "Canaltech",
+      "publishedDate": "2026-11-23"
+    },
+    "reflection": {
+      "title": "Cortes na CISA: Blume Controla a Segurança",
+      "content": "<p>Em a cidade do ctOS, Blume controla a infraestrutura digital, monitorando e manipulando a vida de todos. Cidadãos se tornam vulneráveis, perdendo segurança e privacidade enquanto a corporação Blume lucra com vigilância.</p>\n<p>Aqui, o nome é CISA, e a tecnologia de segurança cibernética se chama cortes orçamentários. Segundo o Canaltech, a Agência de Cibersegurança dos EUA passou por cortes severos durante o mandato de Trump. A Microsoft sofreu um apagão global, afetando milhões de usuários e custando milhões em perdas.</p>\n<p><strong>É o sistema controlando a segurança, não um acidente.</strong></p>\n<p>Em a cidade do ctOS, ninguém assinou nada. E você, assinou?</p>",
+      "excerpt": "Blume corta segurança cibernética, deixando a cidade do ctOS vulnerável.",
+      "beats": [
+        {
+          "lado": "ficcao",
+          "fala": "Em a cidade do ctOS, Blume controla a infraestrutura digital, monitorando e manipulando a vida de todos.",
+          "legenda": "infraestrutura digital",
+          "cena": "cidade"
+        },
+        {
+          "lado": "ficcao",
+          "fala": "Cidadãos se tornam vulneráveis, perdendo segurança e privacidade enquanto a corporação Blume lucra com vigilância.",
+          "legenda": "corporação Blume",
+          "cena": "vigilancia"
+        },
+        {
+          "lado": "real",
+          "fala": "Aqui, o nome é CISA, e a tecnologia de segurança cibernética se chama cortes orçamentários.",
+          "legenda": "segurança cibernética",
+          "cena": "manchete"
+        },
+        {
+          "lado": "real",
+          "fala": "Segundo o Canaltech, a Agência de Cibersegurança dos EUA passou por cortes severos durante o mandato de Trump.",
+          "legenda": "Agência de Cibersegurança",
+          "cena": "plataforma"
+        },
+        {
+          "lado": "real",
+          "fala": "A Microsoft sofreu um apagão global, afetando milhões de usuários e custando milhões em perdas.",
+          "legenda": "Microsoft sofreu",
+          "cena": "cidade"
+        },
+        {
+          "lado": "virada",
+          "fala": "É o sistema controlando a segurança, não um acidente.",
+          "legenda": "sistema controlando",
+          "cena": "virada"
+        },
+        {
+          "lado": "chamado",
+          "fala": "Em a cidade do ctOS, ninguém assinou nada. E você, assinou?",
+          "legenda": "E você, assinou?",
+          "cena": "cidade"
+        }
+      ],
+      "espelho": {
+        "obra": "Watch Dogs",
+        "elemento": "ctOS",
+        "mundo": "a cidade do ctOS",
+        "traducao": [
+          {
+            "real": "Cortes orçamentários na CISA",
+            "ficcao": "Reduções de financiamento para o ctOS"
+          },
+          {
+            "real": "Perda de segurança cibernética",
+            "ficcao": "Vulnerabilidades no sistema ctOS"
+          }
+        ]
+      }
+    },
+    "sources": [
+      {
+        "title": "Onda de panes em Microsoft, Apple, voos e FBI gera teorias de ciberataque nos EUA",
+        "link": "https://canaltech.com.br/seguranca/onda-de-panes-em-microsoft-apple-voos-e-fbi-gera-teorias-de-ciberataque-nos-eua/",
+        "source": "Canaltech",
+        "date": "2026-11-23"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Watch Dogs"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-24.mp4",
+      "poster": "assets/videos/w4k3/2026-11-24.jpg"
+    }
+  },
+  {
     "id": "2026-11-23",
     "date": "2026-11-23",
     "news": {
