@@ -1,119 +1,119 @@
 {
- "updatedAt": "2026-11-24T04:06:05.212Z",
+ "updatedAt": "2026-11-24T20:10:55.375Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 42,
+   "manchetes": 49,
    "atos": 0
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 14,
+   "manchetes": 16,
    "atos": 0
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 39,
+   "manchetes": 10,
    "atos": 0
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 42,
+   "manchetes": 41,
    "atos": 0
   },
   {
    "busca": "BA",
    "ok": true,
-   "manchetes": 62,
+   "manchetes": 30,
    "atos": 1
   },
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 27,
-   "atos": 1
+   "manchetes": 59,
+   "atos": 2
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 61,
-   "atos": 1
+   "manchetes": 29,
+   "atos": 2
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 20,
+   "manchetes": 18,
    "atos": 0
   },
   {
    "busca": "GO",
    "ok": true,
-   "manchetes": 15,
+   "manchetes": 47,
    "atos": 0
   },
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 38,
-   "atos": 0
+   "manchetes": 15,
+   "atos": 1
   },
   {
    "busca": "MT",
    "ok": true,
-   "manchetes": 45,
-   "atos": 2
+   "manchetes": 49,
+   "atos": 3
   },
   {
    "busca": "MS",
    "ok": true,
    "manchetes": 29,
-   "atos": 0
+   "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 40,
-   "atos": 0
+   "manchetes": 29,
+   "atos": 1
   },
   {
    "busca": "PA",
    "ok": true,
    "manchetes": 20,
-   "atos": 3
+   "atos": 4
   },
   {
    "busca": "PB",
    "ok": true,
-   "manchetes": 43,
+   "manchetes": 44,
    "atos": 0
   },
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 42,
+   "manchetes": 43,
    "atos": 0
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 50,
+   "manchetes": 22,
    "atos": 1
   },
   {
    "busca": "PI",
    "ok": true,
    "manchetes": 15,
-   "atos": 1
+   "atos": 0
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 94,
-   "atos": 4
+   "manchetes": 28,
+   "atos": 1
   },
   {
    "busca": "RN",
@@ -124,71 +124,83 @@
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 49,
-   "atos": 2
+   "manchetes": 51,
+   "atos": 1
   },
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 14,
+   "manchetes": 44,
    "atos": 0
   },
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 33,
+   "manchetes": 36,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
    "manchetes": 28,
-   "atos": 2
+   "atos": 1
   },
   {
    "busca": "SP",
-   "ok": true,
-   "manchetes": 21,
-   "atos": 0
-  },
-  {
-   "busca": "SE",
-   "ok": true,
-   "manchetes": 16,
-   "atos": 0
-  },
-  {
-   "busca": "TO",
    "ok": true,
    "manchetes": 18,
    "atos": 0
   },
   {
+   "busca": "SE",
+   "ok": true,
+   "manchetes": 18,
+   "atos": 0
+  },
+  {
+   "busca": "TO",
+   "ok": true,
+   "manchetes": 44,
+   "atos": 0
+  },
+  {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 32,
+   "manchetes": 63,
    "atos": 4
   },
   {
    "busca": "movimentos",
    "ok": true,
-   "manchetes": 28,
-   "atos": 3
+   "manchetes": 27,
+   "atos": 2
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 54,
-   "atos": 3
+   "manchetes": 52,
+   "atos": 4
   },
   {
    "busca": "pautas",
    "ok": true,
-   "manchetes": 33,
-   "atos": 2
+   "manchetes": 64,
+   "atos": 0
   }
  ],
  "eventos": [
+  {
+   "id": "f340c2f5eaca",
+   "titulo": "HOJE TEM ATO! SINDJUS convoca categoria para nova mobilização pela derrubada dos Vetos 45/25 e 17/26 nesta terça-feira (24/11)",
+   "tipo": "convocacao",
+   "uf": "DF",
+   "publicadoEm": "2026-11-24T14:25:25.000Z",
+   "fonte": {
+    "nome": "Sindjus-DF",
+    "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOd0ZFQnNEdUNuQWpHdERiMlRWZUZqR0FCVWJ0S0hvMXpZR2tlVHhOQ0NNRF8xdlgwZ2luZEEwYTdYNkRMVGN2TWdQNEMyQk43cEo3M1RmVzNDcTRVT0hkcnBuWkktdXJaQUFyWTUyd2VNLU9NaEtYeUl6YllpSG5jMkU3aW5OU1ByVXV0OWJjRGp2LXp6TWVNVWg2bWZvWDA1ajcwcGMySXFzaktwMDBQX3NMMVRPUXZVUVIxNHpaN2pNcnpGOVg0amYwdkZ4QVVCaGpVdUREejVCdWw5VnczS2dCUQ?oc=5"
+   },
+   "data": "2026-11-24"
+  },
   {
    "id": "0594b3588ded",
    "titulo": "Fenajufe convoca sindicatos para mobilização no Congresso entre os dias 24 e 26 de novembro e ato em frente ao STF",
@@ -215,6 +227,53 @@
    "data": "2026-11-27"
   },
   {
+   "id": "d67f21e5ec14",
+   "titulo": "Documentário sobre juventudes negras da Bahia na Marcha Global das Mulheres Negras será lançado em Salvador (BA)",
+   "tipo": "cobertura",
+   "uf": "BA",
+   "publicadoEm": "2026-11-24T19:23:13.000Z",
+   "fonte": {
+    "nome": "Revista Afirmativa",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9QYTYyZm1YNmJYcGRpcm12NzJuS2hrVDgtVVpDcS1qajcwR2tBbFRjMnBsMlpaZWtBWDlRMDVVR3FiUTd4aVlkeUxmbEFuUm04ZzUyUEQta2x5aXYzTkEzVlU0NUNtSlpITHJzNmU2cTNacmI4X2d6VS16NGNYeEE?oc=5"
+   },
+   "cidade": "Salvador"
+  },
+  {
+   "id": "52904747f1f2",
+   "titulo": "Bancários: mobilização nacional em defesa da saúde após encontro em São Luís",
+   "tipo": "cobertura",
+   "uf": "MA",
+   "publicadoEm": "2026-11-24T18:36:47.000Z",
+   "fonte": {
+    "nome": "Agência Tambor",
+    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNUmFpVFl4YnN1UmtocmJHdE9PUXpoMnhYTmxKRXpia1RPNmx5NHJwRkxESlZ3R3BkdWdiZ3QxVFlzZUJUSlRmQlAweVBwbXpQZ01MclpRc3RwY0s1aUFUbEMzbDh4R2c3WjFYNDB4Q2RRRjlsNm1oM0RFSnpHSXdsbU00b19XUF9mbmlRQUZXeVUyVlVZZTc2dnkzRWxWTi1ybEJ6SUNQdHdnYklrMkVHSQ?oc=5"
+   },
+   "cidade": "São Luís"
+  },
+  {
+   "id": "e6cf80edddc8",
+   "titulo": "Servidores de Belém cobram reajuste salarial e protestam contra cortes no orçamento de 2027",
+   "tipo": "cobertura",
+   "uf": "PA",
+   "publicadoEm": "2026-11-24T14:20:28.000Z",
+   "fonte": {
+    "nome": "Estado do Pará Online",
+    "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeVpSUE1aNl90ZXZHMnd5TVpCRkdKS1R4bGtnZXZoblhoRThwTTI4a3BnbWQ0bWM5LUt3X3Y5ZVNlU2cxQ0FTSDVOVkM3LUR5WE52all6U1hRZEZtLXlQZ3JYYmdCZEFYbnhScVR5bFdVektUTEphMVlucGxFb291dEw2LVMyUkl3QWppemtDVEFRNDhGU1RwYW9fMkNPYjRXUnA4em1nLTQ5dndEM3Bnc1JRYWN5YjQ2LWxISFM5Sk8?oc=5"
+   },
+   "cidade": "Belém"
+  },
+  {
+   "id": "abfb893508dc",
+   "titulo": "Nota sobre a Manifestação dos Professores de apoio à Educação Especial",
+   "tipo": "cobertura",
+   "uf": "MG",
+   "publicadoEm": "2026-11-24T12:59:47.000Z",
+   "fonte": {
+    "nome": "Sind-UTE/MG",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0ROdGd6MTEtUU5fSTIzLW9IN1AxblRhc2luWWhqYlhCbGlJWVFJeWNqemN5dmJLN204U2pZOG1nd2pSVXNTYTRMeXZUX3BWRWJ2TmZ0dHhYYmc3dVpjR05uN0U1N1JydUt5YkdZSkRWWEVLSDVyNlhRZ3RvcUwzSVRrVG5rNFJKNXlLSDRzSWs0T3FXT3Bma0hvN2w4SHU1LVhYWGtydFg?oc=5"
+   }
+  },
+  {
    "id": "104b88d3e6be",
    "titulo": "Protesto do MST, que interdita a BR-155 no sudeste do Pará, cobra compra de fazenda para assentamento",
    "tipo": "cobertura",
@@ -235,7 +294,13 @@
     "nome": "Midiamax",
     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNaHlqMTBvTDhXdl9jandJRXE4Mm1ENWM5VWZPbDJZR3NBTVF2QldnSHhzbTc2ZUtPNVNWSTVoUlI0WUJTamhqNFY5amJHODN1d2FTVW84UnUxaHlSelVwanBhY3lxSndNUElyZ2xmZ1A2dW9hdk1qZi1Cck9xcUlmZ3M4VFFxeHVRckdUekVIdUlXWHkxUHdTSkRpMDF6dlc3ZlZrYmVjN1FXSGlnN3c?oc=5"
    },
-   "cidade": "Campo Grande"
+   "cidade": "Campo Grande",
+   "outrasFontes": [
+    {
+     "nome": "RCN 67",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWjFjOS0tckR0c0tFN1RneEhENDk2UTJRaVp6V0JUbk1hMWp4OF9OcXJXUkxfWTFvbWtfajJxVDBlV3lURmM4c2FfZmY5czZ0bEdiWHdGaUFXVDVhc3ZWR0Z2NmlZaFVVOGNkbnpPSzBhUlFfc1JuTjlIUUxXQkdUTGRRZHZKa0E?oc=5"
+    }
+   ]
   },
   {
    "id": "ef6a45739632",
@@ -382,17 +447,7 @@
    "fonte": {
     "nome": "O Cafezinho",
     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE40NmFHdWU3WXlLWkt2djQ4UWE0WEhVcnVkd2YtbTAzTmVISElrRFpJOHc5WkZHcnRVc3ZOdEFpNDRINVJCVFE0bmx2ZHjSAcoBQVVfeXFMUGw3YUI5d1hYWldWRjVRNV9WU2NMTkZYQmE5c2w5eXlxQllBWWh0NmgyWk5tcFdncFM3LS15M1VuR2VJSzVuUHlnX3pMMmxYY2tRb2NKelBScDQxaGo3Wi02YnR1bk1fVUpKeWdONmdiY2dWNmJCbDBfNXBvZjNLMmhKVDdicjRxb2hLVElKZzBJYldZLUtCVDgtTS1scm10VVROaXE0cVY3Z01LWjgzV1JzTjFKUEx2WW42LWc3Q3ctMjN5RWl4WlpmZw?oc=5"
-   },
-   "outrasFontes": [
-    {
-     "nome": "O Cafezinho",
-     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPOUJxdF9BRlB5WTFENk96MmlxU2lHdE5qN3FXYXdtdm9QZzZuZ2o2Y1RqM1pULVhocmlQZXZYamd0WXFhTExrVktRSmpyeFdlOTRpTW5XY2RLNWNfQmFZaWFBVXpSdEVWZGY4YjA5bzR6Q3Y0U3A2NlFiSzdjSjNaV1N4TnFfeUJwSWtpWnpaYTRVdm1TVTVtZjg5d21EdGcxLW5xWDAwalpVNFFFNk9VSmNXc1pZQktYeFI1cjdB0gG-AUFVX3lxTE85QnF0X0FGUHlZMUQ2T3oyaXFTaUd0Tmo3cVdhd212b1BnNm5najZjVGozWlQtWGhyaVBldlhqZ3RZcWFMTGtWS1FKanJ4V2U5NGlNbldjZEs1Y19CYVlpYUFVelJ0RVZkZjhiMDlvNHpDdjRTcDY2UWJLN2NKM1pXU3hOcV95QnBJa2laelphNFV2bVNVNW1mODl3bUR0ZzEtbnFYMDBqWlU0UUU2T1VKY1dzWllCS1h4UjVyN0E?oc=5"
-    },
-    {
-     "nome": "O Cafezinho",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQd09pZGtlOWN1MWs1bC1oTlBpRTZuR0djdDNVNnVFNklsTDEzZDlqcmZkM0lpZmVsanQ0cG1MYjZEbm9TbzFjbzBSRldfTnVQOTVVU1JKX1VfYmRjQUxwb1BtSkJ4b0lrRnRDdlZGa0swRWZHdENtczJZQ2JtRTZlX1RzNllCWlFjbVBnTDVEOFJYX2VMVFVSU1NKMlZfQjZjRkN2NkZ6Q1kwV3lXTUZMY20tTktRMndr0gG-AUFVX3lxTE85QnF0X0FGUHlZMUQ2T3oyaXFTaUd0Tmo3cVdhd212b1BnNm5najZjVGozWlQtWGhyaVBldlhqZ3RZcWFMTGtWS1FKanJ4V2U5NGlNbldjZEs1Y19CYVlpYUFVelJ0RVZkZjhiMDlvNHpDdjRTcDY2UWJLN2NKM1pXU3hOcV95QnBJa2laelphNFV2bVNVNW1mODl3bUR0ZzEtbnFYMDBqWlU0UUU2T1VKY1dzWllCS1h4UjVyN0E?oc=5"
-    }
-   ]
+   }
   },
   {
    "id": "b27ff521c0c6",
