@@ -1,5 +1,97 @@
 [
   {
+    "id": "2026-11-25",
+    "date": "2026-11-25",
+    "news": {
+      "title": "Austrália cria lei que obriga plataformas a remover conteúdo nocivo",
+      "link": "https://www.estadao.com.br/tecmundo/big-techs/australia-aprova-lei-que-obriga-big-techs-a-remover-conteudos-prejudiciais/",
+      "summary": "As empresas que descumprirem a legislação poderão receber multas bilionárias",
+      "source": "Estadão",
+      "publishedDate": "2026-11-25"
+    },
+    "reflection": {
+      "title": "Big Techs fogem de multas de bilhões",
+      "content": "<p>Você já sentiu o ódio crescendo no seu feed hoje?</p>\n<p><strong>As Big Techs tentam tirar o seu controle sobre o que vê.</strong></p>\n<p>Elas dizem que querem proteger a sua liberdade de escolha.</p>\n<p>Segundo o Estadão, as multas por descumprir a lei australiana podem chegar a US$ 72 milhões.</p>\n<p>Você fica refém de algoritmos que decidem o que deve te afetar.</p>\n<p><strong>Eles lucram com o caos. Você recebe o lixo.</strong></p>\n<p>Dá para aceitar o algoritmo mandando em tudo. Ou dá para guardar esses nomes e cobrar na urna.</p>\n<p><strong>Agora você sabe. Dormir de novo é escolha sua.</strong></p>",
+      "excerpt": "Big Techs tentam impedir leis que priorizam a sua segurança digital.",
+      "beats": [
+        {
+          "lado": "chamado",
+          "fala": "Você já sentiu o ódio crescendo no seu feed hoje?",
+          "legenda": "ÓDIO CRESCENDO",
+          "cena": "mascara"
+        },
+        {
+          "lado": "acusacao",
+          "fala": "As Big Techs tentam tirar o seu controle sobre o que vê.",
+          "legenda": "TENTAM TIRAR",
+          "cena": "marca"
+        },
+        {
+          "lado": "promessa",
+          "fala": "Elas dizem que querem proteger a sua liberdade de escolha.",
+          "legenda": "querem proteger",
+          "cena": "comercial"
+        },
+        {
+          "lado": "prova",
+          "fala": "Segundo o Estadão, as multas por descumprir a lei australiana podem chegar a US$ 72 milhões.",
+          "legenda": "72 MILHÕES",
+          "cena": "manchete"
+        },
+        {
+          "lado": "rosto",
+          "fala": "Você fica refém de algoritmos que decidem o que deve te afetar.",
+          "legenda": "ALGORITMOS QUE DECIDEM",
+          "cena": "multidao"
+        },
+        {
+          "lado": "faca",
+          "fala": "Eles lucram com o caos. Você recebe o lixo.",
+          "legenda": "RECEBE O LIXO",
+          "cena": "cartela"
+        },
+        {
+          "lado": "escolha",
+          "fala": "Dá para aceitar o algoritmo mandando em tudo. Ou dá para guardar esses nomes e cobrar na urna.",
+          "legenda": "E VOCÊ?",
+          "cena": "portas"
+        },
+        {
+          "lado": "assinatura",
+          "fala": "Agora você sabe. Dormir de novo é escolha sua.",
+          "legenda": "",
+          "cena": "assinatura"
+        }
+      ],
+      "denuncia": {
+        "alvo": "Big techs",
+        "situacao": "plano",
+        "vitima": "cidadãos australianos",
+        "jaz": "SUA LIBERDADE"
+      }
+    },
+    "sources": [
+      {
+        "title": "Austrália cria lei que obriga plataformas a remover conteúdo nocivo",
+        "link": "https://www.estadao.com.br/tecmundo/big-techs/australia-aprova-lei-que-obriga-big-techs-a-remover-conteudos-prejudiciais/",
+        "source": "Estadão",
+        "date": "2026-11-25"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Big techs"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-25.mp4",
+      "poster": "assets/videos/w4k3/2026-11-25.jpg"
+    }
+  },
+  {
     "id": "2026-11-24",
     "date": "2026-11-24",
     "news": {
