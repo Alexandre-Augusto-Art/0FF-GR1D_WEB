@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-24T22:38:49.509Z",
+ "updatedAt": "2026-11-25T08:54:23.831Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -13,9 +13,8 @@
   },
   {
    "name": "Boatos.org",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 429"
+   "ok": true,
+   "count": 19
   },
   {
    "name": "E-farsas",
@@ -35,12 +34,36 @@
  ],
  "items": [
   {
+   "title": "É falsa lista de ‘países que não reconheceram vitória de Lula’",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/24/e-falsa-lista-de-paises-que-nao-reconheceram-vitoria-de-lula",
+   "source": "Agência Lupa",
+   "date": "2026-11-24T22:39:35.000Z",
+   "rating": "FALSO",
+   "summary": "Post cita 12 países, no entanto, maior parte se manifestou publicamente sobre a vitória do líder brasileiro"
+  },
+  {
    "title": "É falso que Banco do Brasil tenha sido alvo de fraude de R$ 256 bilhões",
    "link": "https://www.agencialupa.org/jornalismo/2026/11/24/e-falso-que-banco-do-brasil-tenha-sido-alvo-de-fraude-de-r-256-bilhoes",
    "source": "Agência Lupa",
    "date": "2026-11-24T20:48:50.000Z",
    "rating": "GOLPE",
    "summary": "PF investiga suspeitas de irregularidades em operações de crédito rural, mas não cita o Banco do Brasil nem o valor bilionário."
+  },
+  {
+   "title": "É falso que mesários “supersônicos” tenham atuado em cidades diferentes nas eleições de 2026",
+   "link": "https://www.boatos.org/politica/mesarios-supersonicos-atuaram-em-cidades-diferentes-durante-as-eleicoes-de-2026.html",
+   "source": "Boatos.org",
+   "date": "2026-11-24T20:39:20.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um mesmo mesário teria realizado operações em urnas eletrônicas de municípios distantes em intervalos de poucos segundos durante as eleições de 2026, o que indicaria a existência de operadores virtuais. Análise Uma publicação nas redes sociais ironiza…"
+  },
+  {
+   "title": "É falso que radares meteorológicos conseguem movimentar nuvens e direcionar chuvas por meio de ondas eletromagnéticas",
+   "link": "https://www.boatos.org/ciencia/radares-meteorologicos-conseguem-movimentar-nuvens-e-direcionar-chuvas.html",
+   "source": "Boatos.org",
+   "date": "2026-11-24T20:34:17.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Radares meteorológicos utilizariam ondas eletromagnéticas para empurrar nuvens e direcionar chuvas, ventos ou granizo para regiões específicas. Análise Uma publicação nas redes sociais afirma que radares meteorológicos poderiam movimentar nuvens e…"
   },
   {
    "title": "Petistas não tentaram invadir hospital onde está Jair Bolsonaro",
