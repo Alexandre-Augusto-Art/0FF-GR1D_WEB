@@ -1,5 +1,7 @@
 // Base do desenho: utilitários, pontilhado (dither), texto e transições. Tudo em canvas, sem imagem externa.
 export const COR = { cyan: '#19e3f2', magenta: '#f0107a', lime: '#b4ff14', roxo: '#8a1cff', branco: '#f2f2f2', preto: '#050505' };
+// ilustrações geradas no PC, já carregadas pelo Video.jsx (arquivo → Image)
+export const IMAGENS = {};
 export const T = { W: 1080, H: 1920, v: true, cel: 4 };   // tamanho do quadro atual (desenhar() atualiza)
 
 export function rnd(n) {

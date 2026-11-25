@@ -17,7 +17,7 @@
   /noticia [tema]  gera a notícia do dia na hora (ex.: /noticia vigilância).
 
   VÍDEO: a cada rascunho novo, Start-Video roda %USERPROFILE%\.w4k3\video\scripts\gerar.js em segundo plano
-  (voz Chatterbox + Remotion, só neste PC, uns 7 min para 1 min de vídeo) e ele manda o vídeo aqui quando fica pronto.
+  (voz Chatterbox + Remotion, só neste PC, uns 8 min para 1 min de vídeo) e ele manda o vídeo aqui quando fica pronto.
   Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento. Log em logs\video.log.
 
   Roda neste PC por long polling (sem IP público nem webhook). Com o PC dormindo, as mensagens
@@ -140,7 +140,7 @@ function Show-Draft([switch]$daily) {
   if ($av.Count) { $msg += "`n⚠️ a checagem automática ainda viu: $($av -join '; ')" }
   $msg += "`n— $words palavras"
   Send $msg
-  $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 7 minutos." } else { '' }
+  $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 8 minutos." } else { '' }
   if ($daily) {
     $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
     $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.$(if ($p.tema) { " O tema #$($p.tema) continua na lista." }))`n" }

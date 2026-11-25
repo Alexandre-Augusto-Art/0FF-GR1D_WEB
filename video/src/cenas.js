@@ -3,16 +3,17 @@
 // tudo é posicionado a partir do centro (p.cx, p.cy) e da escala p.s.
 // p = { ctx, f (quadro), lf (quadro no plano), len, bp (0..1 na batida), i (nº do plano), vol, ac, seg, P, t }
 import { personagem, abertura as aberturaBoca } from './personagem';
+import { NOVAS, NOVAS_SEM_LEGENDA, NOVAS_SEM_FAIXA } from './cenas2';
 import { COR, T, rnd, clamp, suave, salto, tela, mono, grossa, fina, pb, ascii, bloco, cabe, quebra, carimbo, decifra, derrete, blocos } from './base';
 
-const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
-const cinza = (v) => `rgb(${v},${v},${v})`;
-function rr(x, a, b, w, h, r) { x.beginPath(); x.roundRect(a, b, w, h, r); }
-function cheio(p, cor) { p.ctx.fillStyle = cor; p.ctx.fillRect(0, 0, T.W, T.H); }
-const grad = (x, x0, y0, x1, y1, ...cs) => { const g = x.createLinearGradient(x0, y0, x1, y1); cs.forEach((c, i) => g.addColorStop(i / (cs.length - 1), c)); return g; };
+export const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
+export const cinza = (v) => `rgb(${v},${v},${v})`;
+export function rr(x, a, b, w, h, r) { x.beginPath(); x.roundRect(a, b, w, h, r); }
+export function cheio(p, cor) { p.ctx.fillStyle = cor; p.ctx.fillRect(0, 0, T.W, T.H); }
+export const grad = (x, x0, y0, x1, y1, ...cs) => { const g = x.createLinearGradient(x0, y0, x1, y1); cs.forEach((c, i) => g.addColorStop(i / (cs.length - 1), c)); return g; };
 
 // ---------- peças ----------
-function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
+export function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
   x.save(); x.translate(cx, cy); x.scale(1, aberto);
   const g = x.createRadialGradient(-r * 0.2, -r * 0.2, r * 0.1, 0, 0, r * 1.25);
   g.addColorStop(0, '#fff'); g.addColorStop(0.6, '#d8d8d8'); g.addColorStop(1, '#4a4a4a');
@@ -22,7 +23,7 @@ function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
   x.fillStyle = '#fff'; x.beginPath(); x.arc(px * r * 0.45 - r * 0.1, py * r * 0.45 - r * 0.12, r * 0.08, 0, 7); x.fill();
   x.restore();
 }
-function mao(x, cx, cy, s, rot = 0, fechada = 0) {
+export function mao(x, cx, cy, s, rot = 0, fechada = 0) {
   x.save(); x.translate(cx, cy); x.rotate(rot); x.scale(s, s);
   x.fillStyle = grad(x, -60, 0, 60, 0, '#f4f4f4', '#9a9a9a', '#3a3a3a'); x.strokeStyle = '#000'; x.lineWidth = 5;
   rr(x, -38, 60, 76, 150, 14); x.fill(); x.stroke();              // punho
@@ -32,7 +33,7 @@ function mao(x, cx, cy, s, rot = 0, fechada = 0) {
   x.restore();
 }
 // pessoa (busto); rosto: 0 vazio, 1 olhos assustados
-function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
+export function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
   x.save(); x.translate(cx, cy); x.scale(s, s); x.strokeStyle = '#000'; x.lineWidth = 5;
   x.fillStyle = grad(x, -120, 0, 130, 60, '#cfcfcf', '#777', '#222');
   x.beginPath(); x.moveTo(-130, 240); x.quadraticCurveTo(-130, 74, -36, 62); x.lineTo(36, 62); x.quadraticCurveTo(130, 74, 130, 240); x.closePath(); x.fill(); x.stroke();
@@ -46,17 +47,17 @@ function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
   }
   x.restore();
 }
-function nota(x, cx, cy, w, v = 235) {
+export function nota(x, cx, cy, w, v = 235) {
   const h = w * 0.44;
   x.fillStyle = cinza(v); x.strokeStyle = '#000'; x.lineWidth = w * 0.018;
   x.beginPath(); x.moveTo(cx - w * 0.5, cy + h * 0.1); x.lineTo(cx + w * 0.28, cy - h * 0.42); x.lineTo(cx + w * 0.5, cy - h * 0.05); x.lineTo(cx - w * 0.26, cy + h * 0.5); x.closePath(); x.fill(); x.stroke();
   x.save(); x.beginPath(); x.ellipse(cx + w * 0.01, cy + h * 0.03, w * 0.13, h * 0.2, -0.3, 0, 7); x.fillStyle = cinza(150); x.fill(); x.stroke();
   x.fillStyle = '#000'; x.font = `900 ${w * 0.15}px Arial`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('$', cx + w * 0.01, cy + h * 0.04); x.restore();
 }
-function maco(x, cx, cy, w, n) {
+export function maco(x, cx, cy, w, n) {
   for (let i = 0; i < n; i++) nota(x, cx + (rnd(i * 7) - 0.5) * w * 0.03, cy - i * w * 0.055, w, i === n - 1 ? 245 : 130 + (i % 2) * 60);
 }
-function celular(x, cx, cy, w, rot = 0) {
+export function celular(x, cx, cy, w, rot = 0) {
   const h = w * 1.95;
   x.save(); x.translate(cx, cy); x.rotate(rot);
   x.fillStyle = grad(x, -w / 2, 0, w / 2, 0, '#eee', '#8a8a8a', '#2b2b2b'); rr(x, -w / 2, -h / 2, w, h, w * 0.14); x.fill();
@@ -64,7 +65,7 @@ function celular(x, cx, cy, w, rot = 0) {
   x.restore();
   return h;
 }
-function cursor(ctx, x, y, s) {
+export function cursor(ctx, x, y, s) {
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
   ctx.beginPath(); [[0, 0], [0, 34], [8, 27], [14, 40], [20, 37], [14, 25], [25, 25]].forEach(([a, b], i) => (i ? ctx.lineTo(a, b) : ctx.moveTo(a, b))); ctx.closePath();
   ctx.fillStyle = '#fff'; ctx.fill(); ctx.strokeStyle = '#000'; ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
@@ -78,7 +79,7 @@ export function aneis(p, cor = '#6a6a6a', cx = p.cx, cy = p.cy, escuro = false) 
     for (let r = off - larg; r < R + larg; r += larg * 2) { if (r <= 0) continue; const v = Math.max(20, 150 - (r / R) * 110); x.strokeStyle = cinza(v); x.beginPath(); x.arc(cx, cy, r, 0, 7); x.stroke(); }
   }, { cor, cel: T.v ? 12 : 8, alfa: escuro ? 0.5 : 1 });
 }
-function binario(p, v = 60, cor = '#8a8a8a') {
+export function binario(p, v = 60, cor = '#8a8a8a') {
   const ctx = p.ctx, px = T.v ? 30 : 20, cw = px * 1.3, ch = px * 1.5;
   ctx.font = mono(px); ctx.textBaseline = 'top'; ctx.textAlign = 'left';
   for (let c = 0; c * cw < T.W; c++) {
@@ -106,7 +107,7 @@ export function papel(p, tipo, v = 120, cor = COR.branco, alfa = 1) {
     x.globalCompositeOperation = 'source-atop'; x.fillStyle = `rgba(0,0,0,${1 - v / 255})`; x.fillRect(0, 0, T.W, T.H);
   }, { cor, alfa });
 }
-function cortina(p, cor) {
+export function cortina(p, cor) {
   pb(p.ctx, (x) => {
     const n = T.v ? 12 : 18, w = T.W / n;
     for (let i = 0; i < n; i++) { x.fillStyle = grad(x, i * w, 0, (i + 1) * w, 0, '#181818', '#8f8f8f', '#101010'); x.fillRect(i * w + Math.sin(passo(p.f, 5) * 0.4 + i) * 4, 0, w + 5, T.H); }
@@ -120,7 +121,7 @@ export function mascarado(p, cx, cy, alt, { cor = p.ac } = {}) {
   const larg = alt * 0.62;
   personagem(p.ctx, cx, cy - alt * 0.07, larg, { cor, olhos: cor, vol: p.vol, boca: aberturaBoca(p.P.vol, p.f), t: p.f / 30 });
 }
-const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
+export const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
 
 // ---------- cenas ----------
 function mascara(p) {
@@ -394,10 +395,10 @@ export function cenaFinal(p) {
   if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, T.v ? T.H - 420 : T.H - 40); ctx.textAlign = 'left';
 }
 
-export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao };
+export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao, ...NOVAS };
 // cenas dos rascunhos antigos
 export const ANTIGAS = { apresentador: 'mascara', cidade: 'padrao', obra: 'padrao', plataforma: 'olhocelular', marionete: 'fantoche', virada: 'cartela', pergunta: 'portas' };
 // cenas que já têm o texto na tela: sem legenda por cima
-export const SEM_LEGENDA = new Set(['cartela', 'abertura']);
+export const SEM_LEGENDA = new Set(['cartela', 'abertura', ...NOVAS_SEM_LEGENDA]);
 // cenas em que a faixa com o nome do acusado atrapalha
-export const SEM_FAIXA = new Set(['abertura', 'assinatura', 'marca', 'cartela', 'comercial']);
+export const SEM_FAIXA = new Set(['abertura', 'assinatura', 'marca', 'cartela', 'comercial', ...NOVAS_SEM_FAIXA]);

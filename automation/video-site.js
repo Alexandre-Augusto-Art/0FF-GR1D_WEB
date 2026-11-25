@@ -31,7 +31,7 @@ const rodando = () => {
 
 (async () => {
   let v = achar();
-  // aprovou antes do vídeo ficar pronto: espera o render desta versão (voz e vertical levam uns 6 a 9 min)
+  // aprovou antes do vídeo ficar pronto: espera o render desta versão (voz, ilustrações e vertical levam uns 7 a 10 min)
   for (let t = 0; !v && rodando() && t < 144; t++) { await new Promise((r) => setTimeout(r, 5000)); v = achar(); }
   if (!v) sem('nenhum vídeo desta versão do rascunho');
 

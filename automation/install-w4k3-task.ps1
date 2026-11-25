@@ -88,6 +88,26 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
       if ($LASTEXITCODE -eq 0) { Move-Item "$f.parcial" $f -Force } else { Write-Host "  falhou: o vídeo usa a Piper até baixar" }
     }
   }
+  # ilustrações: SD-Turbo (Stability AI Community License), ~2,7 GB, só na primeira vez; sem ele o vídeo sai só com cenas desenhadas
+  $img = Join-Path $env:USERPROFILE '.w4k3\imagem'
+  $ipy = Join-Path $img 'venv\Scripts\python.exe'
+  if (-not (Test-Path $ipy)) {
+    New-Item -ItemType Directory -Force -Path $img | Out-Null
+    & python.exe -m venv (Join-Path $img 'venv')
+    & $ipy -m pip install -q --disable-pip-version-check torch==2.6.0 diffusers==0.35.2 'transformers<5' accelerate safetensors pillow
+  }
+  if (Test-Path $ipy) {
+    $arqs = 'model_index.json', 'LICENSE.md', 'scheduler/scheduler_config.json', 'tokenizer/merges.txt', 'tokenizer/special_tokens_map.json', 'tokenizer/tokenizer_config.json', 'tokenizer/vocab.json',
+            'text_encoder/config.json', 'text_encoder/model.fp16.safetensors', 'unet/config.json', 'unet/diffusion_pytorch_model.fp16.safetensors', 'vae/config.json', 'vae/diffusion_pytorch_model.fp16.safetensors'
+    foreach ($a in $arqs) {
+      $f = Join-Path $img ('sd-turbo' + $a.Replace('/', ''))
+      if (Test-Path $f) { continue }
+      New-Item -ItemType Directory -Force -Path (Split-Path $f) | Out-Null
+      Write-Host "baixando sd-turbo/$a..."
+      & curl.exe -sSfL -o "$f.parcial" "https://huggingface.co/stabilityai/sd-turbo/resolve/main/$a"
+      if ($LASTEXITCODE -eq 0) { Move-Item "$f.parcial" $f -Force } else { Write-Host '  falhou: o vídeo sai sem ilustrações até baixar' }
+    }
+  }
   Write-Host 'ok: vídeo da análise (Remotion + Chatterbox/Piper em %USERPROFILE%\.w4k3)'
 } else {
   Write-Host 'vídeo: pulado (precisa de node, ffmpeg e python no PATH)'

@@ -229,9 +229,19 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
          (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
        → sem Chatterbox: Piper (scripts/tts.py)
        → FFmpeg: junta, voz um pouco mais grave/"rádio"/glitch, volume por quadro
+       → ilustrações: o modelo de texto (Ollama) escreve uma cena em inglês para até 5 batidas, sem nomes
+         de gente nem de empresa (o código ainda apaga os nomes do texto), e o SD-Turbo desenha cada uma
+         neste PC (scripts/imagens.py, ~8 s cada) como gravura em preto e branco; no vídeo ela passa pelo
+         mesmo pontilhado neon das outras cenas (cenas2.js: ilustracao)
        → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
-         alternando a personagem com metáforas: marca que derrete, comercial que apodrece, leilão,
-         fantoche, contrato, multidão, vigilância, lápide, janelas, manchete, número, portas...
+         alternando a personagem com cenas:
+           - por assunto (as palavras da batida e do texto escolhem): hospital, escola, fábrica, servidor,
+             algemas, balança, prédio, gráfico, radar, terminal, casa, planeta, robô, cadeado, carteira,
+             família, leilão, fantoche, vigilância, celular, contrato, dinheiro, janelas, lápide...
+           - versões sorteadas das batidas fixas: acusação (nome derretendo, letreiro, cartaz), promessa
+             (comercial, outdoor, palco), prova (manchete, documento), golpe final (cartela, tela dividida,
+             pilha de palavras), escolha (portas, estrada)
+           - o que saiu nos 2 últimos vídeos vai para o fim da fila (videos/historico-cenas.json)
        → uma cor de destaque por batida, o resto em preto e branco pontilhado
        → Remotion (src/desenho.js monta o quadro; src/cenas.js tem as cenas; src/base.js os efeitos)
        → vertical 1080x1920 (tela cheia, faixa ALVO/FONTE, legenda pequena) → sendVideo
@@ -243,7 +253,12 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   `pt_BR-faber-medium` de reserva). A conferência usa o faster-whisper de `%USERPROFILE%\.w4k3\reels`, e
   as palavras que ele ouviu dão o tempo da legenda. Notas e frases duvidosas ficam em `logs\video.log`.
 - A Chatterbox põe uma marca d'água inaudível (Perth) no áudio.
-- Uns 9 a 11 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
+- Ilustrações: `%USERPROFILE%\.w4k3\imagem` (venv com diffusers + `sd-turbo`, ~2,7 GB). Licença: Stability AI
+  Community License (aceita pelo dono em 2026-11-25): grátis para uso não comercial; uso comercial exige
+  cadastro na Stability e faturamento abaixo de US$ 1 milhão por ano; as imagens geradas são do projeto.
+  Sem o modelo ou sem resposta do Ollama, o vídeo sai só com as cenas desenhadas (ou com assuntos de reserva).
+  O estilo fica fixo no `imagens.py` (gravura em preto e branco, sem texto); a cor vem do vídeo.
+- Uns 10 a 12 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
   `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
