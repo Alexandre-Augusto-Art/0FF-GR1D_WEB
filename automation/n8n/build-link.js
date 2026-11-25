@@ -1,4 +1,4 @@
-// Copia automation/n8n/code/escrever-espelho.js para dentro do fluxo w4k3-link.json.
+// Copia automation/n8n/code/escrever-denuncia.js para dentro do fluxo w4k3-link.json.
 // Na primeira vez, troca "Prepare Prompt → AI Agent (+ Ollama Chat Model) → Format and Save1"
 // por um único nó de código que conversa com o Ollama em etapas. Uso: node automation/n8n/build-link.js
 const fs = require('fs');
@@ -6,9 +6,12 @@ const path = require('path');
 
 const arq = path.join(__dirname, 'workflows', 'w4k3-link.json');
 const f = JSON.parse(fs.readFileSync(arq, 'utf8'));
-const NOME = 'Escrever (espelho direto)';
-const codigo = fs.readFileSync(path.join(__dirname, 'code', 'escrever-espelho.js'), 'utf8');
+const NOME = 'Escrever (denúncia)';
+const codigo = fs.readFileSync(path.join(__dirname, 'code', 'escrever-denuncia.js'), 'utf8');
 
+// o nó já teve outro nome: renomeia nele e em tudo que aponta para ele
+const ANTIGO = 'Escrever (espelho direto)';
+if (f.nodes.some((x) => x.name === ANTIGO)) Object.assign(f, JSON.parse(JSON.stringify(f).split(ANTIGO).join(NOME)));
 let no = f.nodes.find((x) => x.name === NOME);
 if (!no) {
   const velhos = ['Prepare Prompt', 'AI Agent', 'Ollama Chat Model', 'Format and Save1'];

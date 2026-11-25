@@ -7,7 +7,7 @@
                                          2. senão, se o dia ainda não tem reflexão, monta a NOTÍCIA DO DIA: o fluxo w4k3-pauta.json
                                             lê os RSS de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of
                                             World, The Verge, Ars Technica...) e escolhe a notícia; o w4k3-link.json escreve a
-                                            análise com a lente cyberpunk/distópica. O rascunho vai para você aprovar no Telegram
+                                            denúncia (nome real, fato e impacto na vida das pessoas). O rascunho vai para você aprovar no Telegram
                                             (sem Telegram configurado, publica direto).
     run-w4k3.ps1 -AutoPublish          12:00: se o dia ainda não tem reflexão e a notícia do dia está esperando aprovação,
                                          publica ela e avisa no Telegram.
@@ -129,7 +129,7 @@ function Update-Clone {
 
 function Invoke-Workflow([string]$id, [string]$file) {
   Wait-Ollama
-  # o nó "Escrever (espelho direto)" faz várias chamadas à IA no processador: passa dos 300 s padrão do n8n
+  # o nó "Escrever (denúncia)" faz várias chamadas à IA no processador: passa dos 300 s padrão do n8n
   $env:N8N_RUNNERS_TASK_TIMEOUT = '2400'
   Invoke-Native 'n8n import:workflow' { n8n import:workflow "--input=$(Join-Path $PSScriptRoot "n8n\workflows\$file")" } | Out-Null
   Invoke-Native 'n8n execute' { n8n execute "--id=$id" } -Quiet | Out-Null
@@ -138,10 +138,10 @@ function Invoke-Workflow([string]$id, [string]$file) {
 # Gera o rascunho a partir de um pedido { url, direction, feedback, previousDraft }
 function New-Draft($req) {
   if ($req.url -notmatch '^https?://\S+$') { throw "Link inválido: $($req.url)" }
-  # exemplos de tom: as 3 últimas análises publicadas no formato de batidas (já aprovadas por você)
+  # as 3 últimas denúncias publicadas: servem para o texto novo não repetir as mesmas frases
   $refl = Join-Path $Clone 'data\reflections.json'
   if (Test-Path $refl) {
-    $ex = @(Read-List $refl | Where-Object { $_.reflection.beats } | Select-Object -First 3 |
+    $ex = @(Read-List $refl | Where-Object { $_.reflection.denuncia } | Select-Object -First 3 |
       ForEach-Object { [ordered]@{ titulo = $_.reflection.title; batidas = @($_.reflection.beats | ForEach-Object { $_.fala }) } })
     if ($ex.Count) { $req | Add-Member -NotePropertyName examples -NotePropertyValue $ex -Force }
   }
@@ -287,6 +287,12 @@ try {
     }
     $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
     if ($d.date -ne (Today)) { Write-Host "O rascunho é de $($d.date), não de hoje."; return }
+    # denúncia com alerta (fato não conferido, crime sem apoio, acusação em aberto) nunca sai sem o seu "publicar"
+    if ($d.reflection.segurar) {
+      Write-Host 'Rascunho com alerta de checagem: não publico sozinho.'
+      if (-not $DryRun) { Send-Telegram "⏸ Deu 12:00 e eu NÃO publiquei a notícia do dia: a checagem deixou alertas.`n$($d.reflection.title)`n`nConfira a matéria e toque em Publicar, ou peça mudanças." }
+      return
+    }
     Publish-Draft $Draft 'W4K3 PR0T0C0L: notícia do dia (12h)'
     if (-not $DryRun) {
       [IO.File]::WriteAllText($StateFile, (@{ stage = 'idle'; url = $null; direction = $null } | ConvertTo-Json), $Utf8)

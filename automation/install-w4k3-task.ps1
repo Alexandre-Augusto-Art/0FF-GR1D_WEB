@@ -71,7 +71,7 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
 # ---- Temas a partir de reels: yt-dlp (download sem login) + faster-whisper (transcrição), neste PC ----
 New-Item -ItemType Directory -Force -Path (Join-Path $bin 'reels'), (Join-Path $bin 'n8n\code') | Out-Null
 Copy-Item (Join-Path $PSScriptRoot 'reels\*') (Join-Path $bin 'reels') -Include '*.js', '*.py' -Force
-# as fichas das obras ficam no código do nó de escrita; o reel-tema.js lê de lá
+Remove-Item (Join-Path $bin 'n8n\code\escrever-espelho.js') -ErrorAction SilentlyContinue  # formato antigo
 Copy-Item (Join-Path $PSScriptRoot 'n8n\code\*.js') (Join-Path $bin 'n8n\code') -Force
 if (Get-Command python.exe -ErrorAction SilentlyContinue) {
   $reels = Join-Path $env:USERPROFILE '.w4k3\reels'

@@ -13,7 +13,7 @@
  *   node reel-tema.js pegar [id]                     TEMA|id|busca|direção (sem id: o próximo da fila)
  *   node reel-tema.js usado <id> | devolver <id> | apagar <id>
  *
- * Cada reel: yt-dlp (sem login) → faster-whisper (transcrição) → Ollama (mecanismo, obra, busca)
+ * Cada reel: yt-dlp (sem login) → faster-whisper (transcrição) → Ollama (mecanismo, alvo, busca)
  * → junta com um tema parecido ou cria um novo em %USERPROFILE%\.w4k3\temas.json → avisa no Telegram.
  * O vídeo baixado é apagado depois: só ficam o link, a legenda, um trecho da transcrição e a análise.
  * Reel não é fonte: o tema serve para buscar uma notícia real (pauta com -Tema), não para publicar.
@@ -45,18 +45,6 @@ const semAcento = (t) => String(t || '').toLowerCase().normalize('NFD').replace(
 const raizes = (t) => new Set((semAcento(t).match(/[a-z0-9]{5,}/g) || []).map((w) => w.slice(0, 6)));
 const vivo = (pid) => { try { process.kill(pid, 0); return true; } catch { return false; } };
 const hoje = () => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
-
-// fichas das obras: as mesmas do nó "Escrever (espelho direto)" (uma fonte só)
-function fichas() {
-  for (const f of [path.join(__dirname, '..', 'n8n', 'code', 'escrever-espelho.js')]) {
-    try {
-      const s = fs.readFileSync(f, 'utf8');
-      const a = s.indexOf('const FICHAS = ['), b = s.indexOf('\n];', a);
-      return new Function(s.slice(a, b + 3) + '; return FICHAS;')();
-    } catch {}
-  }
-  return [];
-}
 
 // ---------- Telegram ----------
 async function tg(metodo, corpo) {
@@ -154,7 +142,7 @@ async function processar(job) {
       `${icone} ${juntou ? `Juntei ao tema #${tema.id} (agora ${tema.fontes.length} posts)` : `Tema novo #${tema.id}`}: ${tema.titulo}`,
       '', tema.mecanismo,
       tema.quem_ganha ? `• ganha: ${tema.quem_ganha}` : '', tema.quem_paga ? `• paga: ${tema.quem_paga}` : '',
-      tema.obra ? `• espelho sugerido: ${tema.obra}${tema.por_que ? ' (' + tema.por_que + ')' : ''}` : '',
+      tema.alvo ? `• alvo: ${tema.alvo}` : '',
       `• busca de notícias: ${tema.busca}`,
       a.afirmacoes.length ? `\n🔎 O ${tipo === 'reel' ? 'reel' : 'post'} afirma (checar antes de usar):\n` + a.afirmacoes.map((x) => '- ' + x).join('\n') : '',
       `\n${imagens.length ? `(li ${imagens.length} ${imagens.length > 1 ? 'imagens' : 'imagem'}${m.imagens.length > imagens.length ? ` de ${m.imagens.length}` : ''}) ` : ''}${tr.idioma && tr.idioma !== 'pt' ? `(fala em ${tr.idioma}) ` : ''}/temas mostra a lista. A pauta das 09h usa o primeiro da fila.`,
@@ -257,10 +245,9 @@ async function ia(sistema, pedido, maxTok = 900) {
 }
 
 async function analisar({ tipo = 'reel', legenda, transcricao, idioma, imagens = [], comentario, autor }) {
-  const fx = fichas();
   const slides = imagens.map((im, i) => `${i + 1}. ${im.texto ? 'TEXTO: ' + im.texto.slice(0, 900) : '(sem texto)'}${im.descricao ? ' | MOSTRA: ' + im.descricao : ''}`).join('\n');
   const o = await ia(
-    'Você é o editor de pautas do W4K3 PR0T0C0L, um site brasileiro que compara notícias reais de tecnologia e poder com obras de ficção distópica. Responda só em JSON, em português do Brasil.',
+    'Você é o editor de pautas do W4K3 PR0T0C0L, uma transmissão ativista brasileira que denuncia, com nome real, o que empresas e governos fazem com as pessoas. Responda só em JSON, em português do Brasil.',
     `Um leitor mandou este conteúdo de rede social (${tipo}). Transforme-o num TEMA para uma edição futura.
 
 AUTOR: ${autor || '?'}
@@ -268,19 +255,16 @@ LEGENDA DO POST:
 ${legenda.slice(0, 1500) || '(sem legenda)'}
 ${transcricao ? `\nFALA DO VÍDEO (idioma: ${idioma}):\n${transcricao.slice(0, 5000)}\n` : ''}${slides ? `\nIMAGENS DO POST, NA ORDEM (lidas por um modelo de visão; pode haver erros de leitura):\n${slides.slice(0, 5000)}\n` : ''}${comentario ? '\nCOMENTÁRIO DO EDITOR (prioridade): ' + comentario : ''}
 
-OBRAS DISPONÍVEIS PARA O ESPELHO: ${fx.map((f) => `${f.obra} (${String(f.temas || '').slice(0, 80)})`).join('; ')}
-
 Regras:
 - O tema é o MECANISMO REAL por trás do post (quem faz o quê com quem), não a piada, a arte nem a obra citada. Se o post só fala da ficção, diga qual coisa do mundo real ela espelha.
 - "busca": de 3 a 6 palavras-chave para achar notícias sobre isso em jornais (misture português e inglês, ex.: "Amazon monopólio vendedores marketplace antitrust").
 - "afirmacoes": até 4 afirmações sobre o MUNDO REAL que o post faz (ou insinua pela sátira) e que precisam ser checadas antes de virar texto. Nomeie a empresa, pessoa ou governo real, nunca o da ficção (ex.: "A Amazon pressiona vendedores a baixar preços pela buy box", não "A Arasaka..."). Vazio se não houver.
-- "obra": uma das obras disponíveis, a que tem a mesma engrenagem.
-{"titulo": "até 10 palavras", "resumo": "1 ou 2 frases do que o post mostra", "mecanismo": "1 frase", "quem_ganha": "...", "quem_paga": "...", "obra": "...", "por_que": "até 12 palavras", "busca": "...", "afirmacoes": ["..."]}`);
+- "alvo": a empresa, governo ou pessoa REAL com mais responsabilidade (vazio se o post não deixar claro). Nunca um nome da ficção.
+{"titulo": "até 10 palavras", "resumo": "1 ou 2 frases do que o post mostra", "mecanismo": "1 frase", "quem_ganha": "...", "quem_paga": "...", "alvo": "...", "busca": "...", "afirmacoes": ["..."]}`);
   const s = (v, n) => String(v || '').replace(/\s+/g, ' ').trim().slice(0, n);
-  const obra = fx.find((f) => semAcento(o.obra).includes(semAcento(f.obra.split(':')[0])));
   return {
     titulo: s(o.titulo, 90) || s(legenda, 60) || 'Tema sem título', resumo: s(o.resumo, 400), mecanismo: s(o.mecanismo, 300),
-    quem_ganha: s(o.quem_ganha, 120), quem_paga: s(o.quem_paga, 120), obra: obra ? obra.obra : '', por_que: s(o.por_que, 120),
+    quem_ganha: s(o.quem_ganha, 120), quem_paga: s(o.quem_paga, 120), alvo: s(o.alvo, 60),
     busca: s(o.busca, 120) || s(o.titulo, 60),
     afirmacoes: (Array.isArray(o.afirmacoes) ? o.afirmacoes : []).map((x) => s(x, 200)).filter(Boolean).slice(0, 4),
   };
@@ -295,7 +279,7 @@ function guardar(a, fonte) {
   const parecido = (t) => {
     const r = assinatura(t); let k = 0; for (const x of nova) if (r.has(x)) k++;
     const j = k / Math.max(1, new Set([...nova, ...r]).size);
-    return j + (a.obra && a.obra === t.obra ? 0.08 : 0);
+    return j + (a.alvo && semAcento(a.alvo) === semAcento(t.alvo) ? 0.08 : 0);
   };
   // mesmo link de novo: só atualiza
   let tema = d.temas.find((t) => fonte.url && t.fontes.some((f) => f.url === fonte.url));
@@ -306,7 +290,7 @@ function guardar(a, fonte) {
   }
   if (tema) {
     tema.fontes = tema.fontes.filter((f) => !fonte.url || f.url !== fonte.url).concat(fonte);
-    if (!tema.obra && a.obra) tema.obra = a.obra;
+    if (!tema.alvo && a.alvo) tema.alvo = a.alvo;
   } else {
     tema = { id: d.proximoId++, ...a, status: 'novo', criado: new Date().toISOString(), fontes: [fonte] };
     delete tema.afirmacoes;
@@ -324,7 +308,7 @@ function listar() {
   const nov = fila(d), usados = d.temas.filter((t) => t.status === 'usado').slice(-5).reverse();
   if (!nov.length && !usados.length) return 'Nenhum tema ainda. Mande o link de um reel (Instagram, TikTok ou Shorts) e, se quiser, um comentário junto.';
   const l = ['🗂️ TEMAS PARA AS PRÓXIMAS EDIÇÕES (a pauta das 09h usa o 1º)', ''];
-  nov.forEach((t, i) => l.push(`${i + 1}. #${t.id} ${t.titulo}${t.fontes.length > 1 ? ` (${t.fontes.length} reels)` : ''}${t.obra ? ' · ' + t.obra : ''}\n   busca: ${t.busca}`));
+  nov.forEach((t, i) => l.push(`${i + 1}. #${t.id} ${t.titulo}${t.fontes.length > 1 ? ` (${t.fontes.length} reels)` : ''}${t.alvo ? ' · ' + t.alvo : ''}\n   busca: ${t.busca}`));
   if (usados.length) l.push('', 'Já usados: ' + usados.map((t) => `#${t.id} ${t.titulo} (${t.usadoEm || ''})`).join('; '));
   l.push('', 'usar 3  escreve a análise do tema #3 agora · apagar 3  tira da lista');
   return l.join('\n');
@@ -335,7 +319,7 @@ function pegar(id) {
   const t = id ? d.temas.find((x) => x.id === Number(id)) : fila(d)[0];
   if (!t) return '';
   const coment = t.fontes.map((f) => f.comentario).filter(Boolean).join(' / ');
-  const direcao = [`Tema vindo de reels: ${t.mecanismo || t.resumo}`, t.obra ? `Espelho sugerido: ${t.obra}.` : '', coment ? `Pedido do editor: ${coment}` : '']
+  const direcao = [`Tema vindo de reels: ${t.mecanismo || t.resumo}`, t.alvo ? `Alvo sugerido: ${t.alvo}.` : '', coment ? `Pedido do editor: ${coment}` : '']
     .filter(Boolean).join(' ').replace(/[|\r\n]+/g, ' ');
   return `TEMA|${t.id}|${t.busca.replace(/[|\r\n]+/g, ' ')}|${direcao}`;
 }

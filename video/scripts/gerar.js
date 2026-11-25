@@ -32,6 +32,9 @@ const limpar = (html) => String(html || '')
   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
 // o que a voz lê mal: siglas viram palavras (a legenda mostra o mesmo texto falado)
 const falavel = (s) => s.replace(/\bIAs\b/g, 'inteligências artificiais').replace(/\bIA\b/g, 'inteligência artificial')
+  // moeda: "US$ 7,50" vira "7,50 dólares"; "R$ 2 bilhões" vira "2 bilhões de reais"
+  .replace(/(US\$|R\$|€)\s?(\d[\d.,]*\d|\d)(\s+(?:mil(?!h)|milhão|milhões|bilhão|bilhões|trilhão|trilhões))?/g, (_, m, n, u) =>
+    `${n}${u || ''}${u && !/mil$/.test(u) ? ' de' : ''} ${m === 'R$' ? 'reais' : m === '€' ? 'euros' : 'dólares'}`)
   .replace(/\s+/g, ' ').trim();
 const frasesDe = (p) => p.split(/(?<=[.!?…])\s+(?=["“(]?[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9])/).map((s) => s.trim()).filter(Boolean);
 
@@ -67,6 +70,48 @@ function chaves(frase, usados) {
 // ---------- cenas por parte da análise (O FATO, A LEITURA, O ESPELHO DA FICÇÃO, O CHAMADO) ----------
 const ROTEIRO = [['manchete', 'plataforma'], ['marionete', 'vigilancia'], ['obra', 'vigilancia'], ['pergunta']];
 const TODAS = ['plataforma', 'marionete', 'vigilancia', 'obra', 'pergunta'];
+
+// ---------- planos: cada batida vira vários cortes de ~1,5 s, alternando a máscara e as metáforas ----------
+const PLANO = 1.5 * FPS, MINIMO = 0.75 * FPS;
+const METAFORAS = ['leilao', 'fantoche', 'vigilancia', 'multidao', 'olhocelular', 'contrato', 'dinheiro', 'janelas', 'lapide'];
+function fazerPlanos(segmentos, palavras, d) {
+  const semente = parseInt(crypto.createHash('sha1').update(String(d.reflection.title)).digest('hex').slice(0, 6), 16);
+  const dela = new Set(segmentos.map((s) => s.cena));
+  const reserva = METAFORAS.filter((c) => !dela.has(c));
+  let r = semente % Math.max(1, reserva.length);
+  const outra = () => reserva.length ? reserva[r++ % reserva.length] : 'padrao';
+  const temNumero = (s) => /\d/.test(String(s.fala || '').replace(/(19|20)\d\d/g, ''));
+  const jaz = d.reflection.denuncia && d.reflection.denuncia.jaz;
+  const seq = (s) => {
+    switch (s.lado || s.cena) {
+      case 'abertura': return ['abertura', 'abertura'];
+      case 'chamado': return ['mascara', outra(), 'mascara', 'padrao'];
+      case 'acusacao': return ['marca', 'mascara', 'marca', 'marca'];
+      case 'promessa': return ['comercial', 'comercial', 'mascara', 'comercial'];
+      case 'prova': return temNumero(s) ? ['manchete', 'numero', 'mascara', 'numero', 'manchete'] : ['manchete', 'mascara', 'manchete', outra()];
+      case 'rosto': return [s.cena, 'mascara', outra(), s.cena, outra()];
+      case 'faca': return ['cartela', jaz ? 'lapide' : 'dinheiro', 'cartela', 'cartela'];
+      case 'escolha': return ['mascara', 'portas', 'portas', 'mascara', 'portas'];
+      case 'assinatura': return ['assinatura', 'assinatura'];
+      default: return [s.cena, 'mascara', outra(), s.cena];   // rascunhos antigos
+    }
+  };
+  // corta sempre no começo de uma palavra
+  const inicios = palavras.map((p) => Math.round(p.ini * FPS));
+  const planos = [];
+  segmentos.forEach((s, seg) => {
+    const dur = s.fim - s.ini, lista = seq(s);
+    const n = Math.max(1, Math.min(Math.round(dur / PLANO), 8));
+    const cortes = [s.ini];
+    for (let k = 1; k < n; k++) {
+      const alvo = s.ini + (dur * k) / n;
+      const c = inicios.filter((x) => x > cortes[cortes.length - 1] + MINIMO && x < s.fim - MINIMO).sort((a, b) => Math.abs(a - alvo) - Math.abs(b - alvo))[0];
+      if (c) cortes.push(c);
+    }
+    cortes.forEach((ini, k) => planos.push({ ini, fim: k + 1 < cortes.length ? cortes[k + 1] : s.fim, seg, cena: lista[k % lista.length] }));
+  });
+  return planos;
+}
 
 async function main() {
   if (!draftPath || !fs.existsSync(draftPath)) throw new Error('rascunho não encontrado: ' + draftPath);
@@ -148,7 +193,7 @@ async function main() {
       // a cena e a legenda de impacto vêm do roteiro escrito pela IA
       const b = f.beat;
       const ch = b.legenda ? [{ txt: String(b.legenda).toUpperCase().slice(0, 30), ini: Math.round(f.ini * FPS) + 3 }] : [];
-      return { cena: b.cena || 'manchete', ini, par: 0, chaves: ch, lado: b.lado, legenda: b.legenda || '' };
+      return { cena: b.cena || 'manchete', ini, par: 0, chaves: ch, lado: b.lado, legenda: String(b.legenda || '').toUpperCase(), fala: b.fala };
     }
     const kk = (contPar[f.par] = (contPar[f.par] ?? -1) + 1);
     const lista = ROTEIRO[f.par] || TODAS;
@@ -161,14 +206,15 @@ async function main() {
   });
   segmentos.forEach((g, i) => { g.fim = i + 1 < segmentos.length ? segmentos[i + 1].ini : Math.round(fimFala * FPS); });
 
+  const planos = fazerPlanos(segmentos, palavras, d);
   const props = {
-    fps: FPS, duracao: nq, audio: 'job/voz.wav', vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos,
+    fps: FPS, duracao: nq, audio: 'job/voz.wav', vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos, planos,
     titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '',
-    final: Math.round(fimFala * FPS), espelho: d.reflection.espelho || null,
+    final: Math.round(fimFala * FPS), alvo: (d.reflection.denuncia && d.reflection.denuncia.alvo) || '', jaz: (d.reflection.denuncia && d.reflection.denuncia.jaz) || '',
   };
   const propsPath = opt('--so-props') || path.join(JOB, 'props.json');
   fs.writeFileSync(propsPath, JSON.stringify(props));
-  log(`roteiro: ${segmentos.map((g) => g.cena).join(' > ')} (${total.toFixed(1)} s)`);
+  log(`roteiro: ${planos.map((g) => g.cena).join(' > ')} (${planos.length} planos, ${total.toFixed(1)} s)`);
   if (args.includes('--so-props')) return;
 
   // 5) render (só CPU) e compressão para caber no Telegram (limite de 50 MB para bots).
