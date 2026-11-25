@@ -2,7 +2,7 @@
 /* Põe no site o vídeo da versão aprovada de uma análise do W4K3.
  * Uso: node automation/video-site.js <rascunho-aprovado.json> <clone do site>
  *   - acha o vídeo vertical pelo hash do rascunho em %USERPROFILE%\.w4k3\videos\indice.json
- *     (o video/scripts/gerar.js registra lá); se o render ainda estiver rodando, espera até 6 min
+ *     (o video/scripts/gerar.js registra lá); se o render ainda estiver rodando, espera até 12 min
  *   - recomprime para a web (540x960, ~2 MB por 45 s) em assets/videos/w4k3/<data>.mp4 + capa .jpg
  *   - grava `video: { src, poster }` na entrada de hoje do data/reflections.json do clone
  * Sem vídeo, não faz nada (a publicação segue só com o texto). Sai sempre com 0, menos em erro de uso.
@@ -31,8 +31,8 @@ const rodando = () => {
 
 (async () => {
   let v = achar();
-  // aprovou antes do vídeo ficar pronto: espera o render desta versão (o vertical leva uns 2 a 3 min)
-  for (let t = 0; !v && rodando() && t < 72; t++) { await new Promise((r) => setTimeout(r, 5000)); v = achar(); }
+  // aprovou antes do vídeo ficar pronto: espera o render desta versão (voz e vertical levam uns 6 a 9 min)
+  for (let t = 0; !v && rodando() && t < 144; t++) { await new Promise((r) => setTimeout(r, 5000)); v = achar(); }
   if (!v) sem('nenhum vídeo desta versão do rascunho');
 
   const dir = path.join(clone, 'assets', 'videos', 'w4k3');

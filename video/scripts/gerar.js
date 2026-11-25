@@ -1,5 +1,5 @@
 // Gera o vídeo da análise do W4K3 a partir de um rascunho (draft.json), tudo neste PC:
-//   Piper (voz) → FFmpeg (efeito de voz, volume por quadro) → Remotion (colagem/ASCII/glitch) → MP4
+//   Chatterbox pt-BR (voz, conferida pelo Whisper; Piper de reserva) → FFmpeg (efeito de voz, volume por quadro) → Remotion (colagem/ASCII/glitch) → MP4
 //   e, com --telegram, manda o vídeo para o dono do bot.
 //
 // uso: node scripts/gerar.js <draft.json> [--telegram] [--so-props <saida.json>] [--saida <arquivo.mp4>]
@@ -8,16 +8,21 @@ const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 const { execFileSync } = require('child_process');
+const { falar, juntarOu, alinhar, PAUSA, TOM, RITMO } = require('./fala.js');
 
 const BASE = path.join(os.homedir(), '.w4k3');
 const PROJ = path.join(__dirname, '..');
 const TTS = path.join(BASE, 'tts');
 const PY = path.join(TTS, 'venv', 'Scripts', 'python.exe');
 const MODELO = path.join(TTS, 'pt_BR-faber-medium.onnx');
-const JOB = path.join(BASE, 'video-job');
-const VIDEOS = path.join(BASE, 'videos');
-const PIDFILE = path.join(BASE, 'video.pid');
-const FPS = 30, FINAL = 3.2, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7;
+const CHAT = path.join(TTS, 'chatterbox');
+const PYCHAT = path.join(CHAT, 'venv', 'Scripts', 'python.exe');
+const PYWHISPER = path.join(BASE, 'reels', 'venv', 'Scripts', 'python.exe');
+const SAIDA = process.env.W4K3_VIDEO_SAIDA || BASE;   // testes usam outra pasta para não cruzar com o bot
+const JOB = path.join(SAIDA, 'video-job');
+const VIDEOS = path.join(SAIDA, 'videos');
+const PIDFILE = path.join(SAIDA, 'video.pid');
+const FPS = 30, FINAL = 3.2, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.06;
 
 const args = process.argv.slice(2);
 const draftPath = args[0];
@@ -30,13 +35,9 @@ const run = (cmd, a, o = {}) => execFileSync(cmd, a, { maxBuffer: 1 << 29, windo
 const limpar = (html) => String(html || '')
   .replace(/<\/p>\s*/gi, '\n\n').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
-// o que a voz lê mal: siglas viram palavras (a legenda mostra o mesmo texto falado)
-const falavel = (s) => s.replace(/\bIAs\b/g, 'inteligências artificiais').replace(/\bIA\b/g, 'inteligência artificial')
-  // moeda: "US$ 7,50" vira "7,50 dólares"; "R$ 2 bilhões" vira "2 bilhões de reais"
-  .replace(/(US\$|R\$|€)\s?(\d[\d.,]*\d|\d)(\s+(?:mil(?!h)|milhão|milhões|bilhão|bilhões|trilhão|trilhões))?/g, (_, m, n, u) =>
-    `${n}${u || ''}${u && !/mil$/.test(u) ? ' de' : ''} ${m === 'R$' ? 'reais' : m === '€' ? 'euros' : 'dólares'}`)
-  .replace(/\s+/g, ' ').trim();
-const frasesDe = (p) => p.split(/(?<=[.!?…])\s+(?=["“(]?[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9])/).map((s) => s.trim()).filter(Boolean);
+// a legenda mostra o texto como foi escrito; a voz lê a versão do fala.js (números por extenso, siglas, pausas)
+const tela = (s) => String(s).replace(/\s+/g, ' ').trim();
+const frasesDe = (p) => p.split(/(?<=[.!?…])(?<!\b(?:Dr|Dra|Sr|Sra)\.)\s+(?=["“(]?[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9])/).map((s) => s.trim()).filter(Boolean);
 
 const PARADAS = new Set(('a o os as um uma uns umas de da do das dos em na no nas nos por para pela pelo pelas pelos com sem ' +
   'que quem qual quais como quando onde porque porém mas e ou se seu sua seus suas nosso nossa este esta isso isto esse essa ' +
@@ -113,6 +114,28 @@ function fazerPlanos(segmentos, palavras, d) {
   return planos;
 }
 
+// uma frase por arquivo: f00.wav, f01.wav... Devolve { sr, falas: [{ dur, palavras }] }
+function narrar(frases, wavs) {
+  const fjson = path.join(JOB, 'frases.json');
+  if (fs.existsSync(PYCHAT) && fs.existsSync(path.join(CHAT, 'modelo', 't3_pt_br.safetensors'))) {
+    try {
+      fs.writeFileSync(fjson, JSON.stringify(frases.map((f) => ({ voz: f.voz, tela: f.txt, tom: f.tom }))));
+      const t0 = Date.now();
+      const out = run(PYCHAT, [path.join(__dirname, 'voz.py'), fjson, wavs, fs.existsSync(PYWHISPER) ? PYWHISPER : '-'],
+        { stdio: ['ignore', 'pipe', 'pipe'], timeout: 25 * 60000, env: { ...process.env, PYTHONIOENCODING: 'utf-8' } });
+      const falas = JSON.parse(out.toString().trim().split('\n').pop());
+      if (falas.length !== frases.length) throw new Error('faltou frase');
+      log(`voz: Chatterbox, ${Math.round((Date.now() - t0) / 1000)} s; ` + falas.map((r) => `${r.nota === null ? '-' : Math.round(r.nota * 100) + '%'}${r.vezes > 1 ? '(' + r.vezes + 'x)' : ''}${r.motor === 'chatterbox' ? '' : ' ' + r.motor}`).join(' '));
+      falas.forEach((r, i) => { if (r.nota !== null && r.nota < 0.85) log(`voz: CONFIRA "${frases[i].voz}" (o Whisper ouviu "${r.ouvido}")`); });
+      return { sr: 24000, falas };
+    } catch (e) { log('Chatterbox falhou, vai a Piper: ' + String(e.stderr || '').slice(-400) + ' ' + e.message.slice(0, 200)); }
+  }
+  fs.rmSync(wavs, { recursive: true, force: true });
+  fs.writeFileSync(fjson, JSON.stringify(frases.map((f) => f.voz)));
+  const dur = JSON.parse(run(PY, [path.join(__dirname, 'tts.py'), MODELO, fjson, wavs, '1.0']).toString().trim().split('\n').pop());
+  return { sr: JSON.parse(fs.readFileSync(MODELO + '.json', 'utf8')).audio.sample_rate, falas: dur.map((d) => ({ dur: d, palavras: [] })) };
+}
+
 async function main() {
   if (!draftPath || !fs.existsSync(draftPath)) throw new Error('rascunho não encontrado: ' + draftPath);
   fs.mkdirSync(JOB, { recursive: true }); fs.mkdirSync(VIDEOS, { recursive: true });
@@ -130,34 +153,32 @@ async function main() {
   // frases: título + (batidas do roteiro "espelho direto", ou cada frase de cada parágrafo nos textos antigos).
   // seg = cena a que a frase pertence (uma batida inteira fica numa cena só)
   const beats = Array.isArray(d.reflection.beats) && d.reflection.beats.length ? d.reflection.beats : null;
-  const frases = [{ txt: falavel(titulo.replace(/[.!?]*$/, '.')), par: -1, seg: 0 }];
-  if (beats) beats.forEach((b, i) => frasesDe(b.fala).forEach((f) => frases.push({ txt: falavel(f), par: 0, seg: i + 1, beat: b })));
-  else paragrafos.forEach((p, i) => frasesDe(p).forEach((f) => frases.push({ txt: falavel(f), par: i, seg: frases.length })));
+  const frases = [{ txt: tela(/[.!?]$/.test(titulo) ? titulo : titulo + '.'), par: -1, seg: 0, lado: 'abertura' }];
+  if (beats) beats.forEach((b, i) => frasesDe(juntarOu(b.fala)).forEach((f) => frases.push({ txt: tela(f), par: 0, seg: i + 1, beat: b, lado: b.lado })));
+  else paragrafos.forEach((p, i) => frasesDe(p).forEach((f) => frases.push({ txt: tela(f), par: i, seg: frases.length })));
+  frases.forEach((f) => { f.voz = falar(f.txt); f.tom = TOM[f.lado] ?? 0.5; f.ritmo = ANDAMENTO * (RITMO[f.lado] || 1); });
   log(`"${titulo}": ${beats ? beats.length + ' batidas' : paragrafos.length + ' parágrafos'}, ${frases.length} frases`);
 
   // 1) voz, frase por frase
   const wavs = path.join(JOB, 'frases');
   fs.rmSync(wavs, { recursive: true, force: true });
-  const fjson = path.join(JOB, 'frases.json');
-  fs.writeFileSync(fjson, JSON.stringify(frases.map((f) => f.txt)));
-  const dur = JSON.parse(run(PY, [path.join(__dirname, 'tts.py'), MODELO, fjson, wavs, '0.95']).toString().trim().split('\n').pop());
+  const { sr, falas } = narrar(frases, wavs);
   let t = INICIO;
   frases.forEach((f, i) => {
     if (i > 0) {
       const a = frases[i - 1];
-      t += a.seg === f.seg ? 0.22 : beats ? (a.par < 0 ? 0.6 : 0.35) : (a.par === f.par ? PAUSA_FRASE : PAUSA_PARAGRAFO);
+      t += a.seg === f.seg ? (f.lado === 'assinatura' ? 0.5 : 0.3) : beats ? (PAUSA[a.lado] || 0.4) : (a.par === f.par ? PAUSA_FRASE : PAUSA_PARAGRAFO);
     }
-    f.ini = t; f.fim = t + dur[i]; t = f.fim;
+    f.ini = t; f.fim = t + falas[i].dur / f.ritmo; t = f.fim;
   });
   const fimFala = t + 0.4, total = fimFala + FINAL;
 
   // 2) junta as frases e aplica o efeito "hacker" (mais grave sem mudar a duração, crush, flanger, rádio, eco)
-  const sr = JSON.parse(fs.readFileSync(MODELO + '.json', 'utf8')).audio.sample_rate;
   const pub = path.join(PROJ, 'public', 'job');
   fs.mkdirSync(pub, { recursive: true });
   const voz = path.join(pub, 'voz.wav');
   const ent = [], fil = [];
-  frases.forEach((f, i) => { ent.push('-i', path.join(wavs, `f${String(i).padStart(2, '0')}.wav`)); fil.push(`[${i}]adelay=${Math.round(f.ini * 1000)}:all=1[a${i}]`); });
+  frases.forEach((f, i) => { ent.push('-i', path.join(wavs, `f${String(i).padStart(2, '0')}.wav`)); fil.push(`[${i}]atempo=${f.ritmo.toFixed(4)},adelay=${Math.round(f.ini * 1000)}:all=1[a${i}]`); });
   const fx = `asetrate=${sr}*0.86,aresample=${sr},atempo=${(1 / 0.86).toFixed(4)},acrusher=bits=10:mix=0.25:samples=2,` +
     'flanger=delay=2:depth=3:speed=0.4:width=60,highpass=f=120,lowpass=f=6500,aecho=0.8:0.4:35:0.25,' +
     `acompressor=threshold=0.1:ratio=4,loudnorm=I=-15:TP=-1.5,apad=whole_dur=${total.toFixed(2)},atrim=0:${total.toFixed(2)}`;
@@ -175,13 +196,11 @@ async function main() {
   }
   const vmax = Math.max(...vol) || 1;
 
-  // 4) palavras (tempo proporcional ao tamanho, dentro do tempo exato da frase) e cenas
+  // 4) palavras (no tempo em que o Whisper ouviu cada uma; sem ele, proporcional ao tamanho) e cenas
   const palavras = [];
   frases.forEach((f, s) => {
-    const ws = f.txt.split(/\s+/), pesos = ws.map((w) => w.replace(/[^\p{L}\d]/gu, '').length + 2);
-    const tot = pesos.reduce((a, b) => a + b, 0);
-    let x = f.ini;
-    ws.forEach((w, j) => { const dd = (f.fim - f.ini) * pesos[j] / tot; palavras.push({ w, s, ini: +x.toFixed(3), fim: +(x + dd).toFixed(3) }); x += dd; });
+    const ouvidas = (falas[s].palavras || []).map((o) => ({ w: o.w, ini: f.ini + o.ini / f.ritmo }));
+    alinhar(f.txt.split(/\s+/), ouvidas, f.ini, f.fim).forEach((p) => palavras.push({ w: p.w, s, ini: +p.ini.toFixed(3), fim: +p.fim.toFixed(3) }));
   });
   const contPar = {}, usados = new Set(), grupos = [];
   frases.forEach((f, i) => { const g = grupos[grupos.length - 1]; if (g && g.seg === f.seg) g.fr.push(i); else grupos.push({ seg: f.seg, fr: [i] }); });

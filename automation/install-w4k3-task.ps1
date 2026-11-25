@@ -12,7 +12,7 @@
       "W4K3 - Motivacao 12h"     todo dia 12:00, publica a frase proposta se você não respondeu
       "W4K3 - Telegram"          (opcional) ao entrar no Windows, fica ouvindo links e comandos mandados ao seu bot
   - Copia o projeto de vídeo (video\) para %USERPROFILE%\.w4k3\video, instala as dependências e a voz
-    Piper (pt-BR) em %USERPROFILE%\.w4k3\tts: o bot manda um vídeo narrado de cada rascunho.
+    Chatterbox pt-BR (com a Piper de reserva) em %USERPROFILE%\.w4k3\tts: o bot manda um vídeo narrado de cada rascunho.
   - Instala yt-dlp e faster-whisper em %USERPROFILE%\.w4k3\reels: reels mandados ao bot viram temas
     para edições futuras (automation\reels\reel-tema.js).
   Rode de novo sempre que mudar o fluxo, o script ou o vídeo.
@@ -33,7 +33,7 @@ Copy-Item (Join-Path $PSScriptRoot 'n8n\workflows\*.json') (Join-Path $bin 'n8n\
 Copy-Item (Join-Path $PSScriptRoot 'motivacao\frases.json') (Join-Path $bin 'motivacao') -Force
 $script = Join-Path $bin 'run-w4k3.ps1'
 
-# ---- Vídeo da análise: projeto Remotion (video\) + voz Piper, tudo neste PC ----
+# ---- Vídeo da análise: projeto Remotion (video\) + voz Chatterbox/Piper, tudo neste PC ----
 $videoSrc = Join-Path (Split-Path $PSScriptRoot -Parent) 'video'
 $videoDst = Join-Path $env:USERPROFILE '.w4k3\video'
 if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContinue) -and
@@ -42,7 +42,7 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
   $lock = Join-Path $videoDst 'package-lock.json'
   $npm = -not (Test-Path (Join-Path $videoDst 'node_modules')) -or -not (Test-Path $lock) -or
          ((Get-FileHash $lock).Hash -ne (Get-FileHash (Join-Path $videoSrc 'package-lock.json')).Hash)
-  Copy-Item (Join-Path $videoSrc 'src'), (Join-Path $videoSrc 'scripts') $videoDst -Recurse -Force
+  Copy-Item (Join-Path $videoSrc 'src'), (Join-Path $videoSrc 'scripts'), (Join-Path $videoSrc 'voz') $videoDst -Recurse -Force
   Copy-Item (Join-Path $videoSrc 'package.json'), (Join-Path $videoSrc 'package-lock.json') $videoDst -Force
   if ($npm) {
     Push-Location $videoDst
@@ -63,7 +63,32 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
       Invoke-WebRequest "https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium/pt_BR-faber-medium.$ext" -OutFile $f -UseBasicParsing
     }
   }
-  Write-Host 'ok: vídeo da análise (Remotion + Piper em %USERPROFILE%\.w4k3)'
+  # voz expressiva: Chatterbox pt-BR (MIT) e Supertonic 3 (OpenRAIL-M), ~5 GB, só na primeira vez
+  $chat = Join-Path $tts 'chatterbox'
+  $cpy = Join-Path $chat 'venv\Scripts\python.exe'
+  if (-not (Test-Path $cpy)) {
+    New-Item -ItemType Directory -Force -Path $chat | Out-Null
+    & python.exe -m venv (Join-Path $chat 'venv')
+    & $cpy -m pip install -q --disable-pip-version-check chatterbox-tts==0.1.7 supertonic==1.3.1 'setuptools<81'
+  }
+  if (Test-Path $cpy) {
+    $hf = 'https://huggingface.co'
+    $arqs = @()
+    foreach ($a in 't3_pt_br.safetensors', 's3gen_v3.safetensors', 'grapheme_mtl_merged_expanded_v1.json') { $arqs += , @("$hf/ResembleAI/Chatterbox-Multilingual-pt-br/resolve/main/$a", "modelo\$a") }
+    $arqs += , @("$hf/ResembleAI/chatterbox/resolve/main/ve.safetensors", 'modelo\ve.safetensors')
+    foreach ($a in 'onnx/duration_predictor.onnx', 'onnx/text_encoder.onnx', 'onnx/vector_estimator.onnx', 'onnx/vocoder.onnx', 'onnx/tts.json', 'onnx/unicode_indexer.json', 'voice_styles/M1.json', 'config.json') {
+      $arqs += , @("$hf/Supertone/supertonic-3/resolve/main/$a", ('supertonic-3\' + $a.Replace('/', '\')))
+    }
+    foreach ($par in $arqs) {
+      $f = Join-Path $chat $par[1]
+      if (Test-Path $f) { continue }
+      New-Item -ItemType Directory -Force -Path (Split-Path $f) | Out-Null
+      Write-Host "baixando $($par[1])..."
+      & curl.exe -sSfL -o "$f.parcial" $par[0]
+      if ($LASTEXITCODE -eq 0) { Move-Item "$f.parcial" $f -Force } else { Write-Host "  falhou: o vídeo usa a Piper até baixar" }
+    }
+  }
+  Write-Host 'ok: vídeo da análise (Remotion + Chatterbox/Piper em %USERPROFILE%\.w4k3)'
 } else {
   Write-Host 'vídeo: pulado (precisa de node, ffmpeg e python no PATH)'
 }

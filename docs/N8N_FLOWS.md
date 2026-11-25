@@ -223,7 +223,11 @@ neste PC (sem GPU e sem serviço pago), no estilo colagem/ASCII/glitch.
 ```
 telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
-       título + cada frase → Piper pt-BR (scripts/tts.py, uma frase por arquivo = tempo exato)
+       título + cada frase → fala.js (números por extenso, siglas, endereços, pausas, tom por batida)
+       → Chatterbox pt-BR (scripts/voz.py, uma frase por arquivo) → Whisper ouve cada frase de volta:
+         errou, gera de novo (até 4 vezes); nada prestou, a frase sai na Supertonic M1
+         (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
+       → sem Chatterbox: Piper (scripts/tts.py)
        → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
        → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
          alternando a máscara com metáforas: marca que derrete, comercial que apodrece, leilão,
@@ -235,8 +239,11 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 ```
 
 - Código em `video/` (copiado pelo instalador para `%USERPROFILE%\.w4k3\video`, com `npm ci`);
-  voz em `%USERPROFILE%\.w4k3\tts` (venv com `piper-tts` + `pt_BR-faber-medium`).
-- Uns 4 a 5 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
+  vozes em `%USERPROFILE%\.w4k3\tts` (`chatterbox\`: venv, modelo pt-BR e Supertonic 3; e a Piper
+  `pt_BR-faber-medium` de reserva). A conferência usa o faster-whisper de `%USERPROFILE%\.w4k3\reels`, e
+  as palavras que ele ouviu dão o tempo da legenda. Notas e frases duvidosas ficam em `logs\video.log`.
+- A Chatterbox põe uma marca d'água inaudível (Perth) no áudio.
+- Uns 9 a 11 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
   `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
@@ -244,7 +251,7 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3ideos\indice.json`, que o
   `gerar.js` grava), recomprime para a web (540x960, uns 4 MB por 50 s) em
   `assets/videos/w4k3/<data>.mp4` com uma capa `.jpg` e grava `video: { src, poster }` na entrada. A
-  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 6 min;
+  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 12 min;
   sem vídeo desta versão, publica só o texto.
 - Cada vídeo soma uns 2 MB ao repositório (uns 700 MB por ano publicando todo dia); se crescer
   demais, apague os vídeos antigos de `assets/videos/w4k3` (a página só mostra o da entrada mais nova).
