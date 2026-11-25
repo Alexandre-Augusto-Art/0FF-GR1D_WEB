@@ -1,10 +1,11 @@
 {
- "updatedAt": "2026-11-25T08:54:23.831Z",
+ "updatedAt": "2026-11-25T21:51:53.836Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": true,
-   "count": 20
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 404"
   },
   {
    "name": "Agência Lupa",
@@ -14,7 +15,7 @@
   {
    "name": "Boatos.org",
    "ok": true,
-   "count": 19
+   "count": 20
   },
   {
    "name": "E-farsas",
@@ -33,6 +34,136 @@
   }
  ],
  "items": [
+  {
+   "title": "É antigo vídeo de homem descartando caixas de tomate",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/e-antigo-video-de-homem-descartando-caixas-de-tomate",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T20:27:41.000Z",
+   "rating": "ANTIGO",
+   "summary": "Gravação voltou a ser compartilhada em meio à alta do preço do alimento, mas ele é de 2025"
+  },
+  {
+   "title": "É falso o site que anuncia promoção de Natal com cestas da Cacau Show",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/e-falso-o-site-que-anuncia-promocao-de-natal-com-cestas-da-cacau-show",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T19:56:33.000Z",
+   "rating": "FALSO",
+   "summary": "Página que pede compartilhamento para liberar presente usa marca de chocolate para coletar dados; promoção não existe"
+  },
+  {
+   "title": "Fim da escala 6×1 não altera regras de desconto por falta injustificada",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/fim-da-escala-6x1-nao-altera-regras-de-desconto-por-falta-injustificada",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T19:46:13.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Portaria do ministério de trabalho regulamentou base de cálculo para remuneração de descanso semanal"
+  },
+  {
+   "title": "É #FAKE mensagem de WhatsApp sobre promoção da Cacau Show com brinde de Natal; trata-se de golpe",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/25/e-fake-mensagem-de-whatsapp-sobre-promocao-da-cacau-show-com-brinde-de-natal-trata-se-de-golpe.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-25T19:09:26.000Z",
+   "rating": "GOLPE",
+   "summary": "É #FAKE mensagem de WhatsApp sobre promoção da Cacau Show com brinde de Natal; trata-se de golpe Reprodução Circula no WhatsApp uma mensagem sobre uma suposta promoção de Natal da Cacau Show com brinde de caixa de chocolates. É #FAKE. Selo Fake (Horizontal) g1 📲 Como o…"
+  },
+  {
+   "title": "Foto de Bolsonaro saindo da UTI é de 2025, e não recente",
+   "link": "https://www.estadao.com.br/estadao-verifica/foto-bolsonaro-hospital-2025-fora-de-contexto",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T19:05:00.000Z",
+   "rating": "ANTIGO"
+  },
+  {
+   "title": "Imagem de produtores descartando leite é de protesto em Pernambuco em 2019",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/imagem-de-produtores-descartando-leite-e-de-protesto-em-pernambuco-em-2019",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T18:26:12.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Publicações atribuem fotografia a um suposto protesto em Crissiumal (RS) em novembro de 2026"
+  },
+  {
+   "title": "Vídeo enganoso alerta falsamente que ‘todo mundo’ terá contas bloqueadas por bancos em novembro",
+   "link": "https://www.estadao.com.br/estadao-verifica/todo-mundo-tera-contas-bloqueadas-em-novembro-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T18:22:29.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "É falso que Laís Souza tenha voltado a andar após receber polilaminina",
+   "link": "https://www.boatos.org/esporte/lais-souza-voltou-a-andar-apos-receber-polilaminina-e-abandonou-a-cadeira-de-rodas.html",
+   "source": "Boatos.org",
+   "date": "2026-11-25T17:59:27.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Laís Souza teria voltado a andar após receber polilaminina e abandonado a cadeira de rodas depois de 12 anos. Análise Publicações nas redes sociais afirmam que a ex-ginasta Laís Souza teria voltado a andar depois de receber polilaminina, substância…"
+  },
+  {
+   "title": "É falsa a promoção da Black Friday da Americanas que promete prêmios para quem responder a um questionário",
+   "link": "https://www.boatos.org/brasil/americanas-esta-dando-premios-de-black-friday-para-quem-responder-a-um-questionario.html",
+   "source": "Boatos.org",
+   "date": "2026-11-25T17:56:24.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – A Americanas estaria dando prêmios de Black Friday para quem respondesse a quatro perguntas, compartilhasse a promoção com dez amigos e informasse seu endereço. Análise Uma mensagem que circula nas redes sociais e aplicativos de mensagens afirma que a…"
+  },
+  {
+   "title": "É falso que vazamento de laboratório de clonagem no Texas resultou na fuga de dinossauros para o México",
+   "link": "https://www.boatos.org/ciencia/vazamento-de-laboratorio-de-clonagem-no-texas-resultou-na-fuga-de-dinossauros-para-o-mexico.html",
+   "source": "Boatos.org",
+   "date": "2026-11-25T17:54:35.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Dois pterodáctilos teriam escapado de um laboratório de clonagem no Texas e estariam sobrevoando o México, enquanto centenas de cachorros desapareceriam em Ciudad Juárez. Análise Uma publicação nas redes sociais compartilha um vídeo que afirma que dois…"
+  },
+  {
+   "title": "É falso que Bauducco esteja distribuindo panetones e cestas de Natal grátis por meio de questionários",
+   "link": "https://www.boatos.org/brasil/bauducco-esta-distribuindo-panetones-e-cestas-de-natal-gratis-para-quem-responder-a-questionarios-e-compartilhar-links.html",
+   "source": "Boatos.org",
+   "date": "2026-11-25T17:53:02.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – A Bauducco estaria distribuindo panetones e cestas de Natal gratuitamente para quem respondesse a questionários e compartilhasse links com amigos no WhatsApp. Análise Mensagens que circulam nas redes sociais e no WhatsApp afirmam que a Bauducco estaria…"
+  },
+  {
+   "title": "É falso que Bolsa Família será encerrado em março de 2027",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/e-falso-que-bolsa-familia-sera-encerrado-em-marco-de-2027",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T17:52:46.000Z",
+   "rating": "FALSO",
+   "summary": "Não há anúncios de cortes no programa, que está previsto no Orçamento do ano que vem"
+  },
+  {
+   "title": "Decisão do STF sobre medicamentos do SUS é antiga e não tem relação com Lula",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/25/decisao-do-stf-sobre-medicamentos-do-sus-e-antiga-e-nao-tem-relacao-com-lula",
+   "source": "Agência Lupa",
+   "date": "2026-11-25T17:23:22.000Z",
+   "rating": "ANTIGO",
+   "summary": "Desde 2020 o Supremo limitou a concessão judicial de fármacos não incorporados ao SUS; Corte estabeleceu critérios e exceções"
+  },
+  {
+   "title": "É falso que Trump tenha confirmado fraude nas eleições brasileiras",
+   "link": "https://www.estadao.com.br/estadao-verifica/falso-trump-confirmou-fraude-eleicoes",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T14:13:22.000Z",
+   "rating": "GOLPE"
+  },
+  {
+   "title": "Imagem mostra produtores despejando leite no Nordeste em 2019, e não agora, no Sul",
+   "link": "https://www.estadao.com.br/estadao-verifica/imagem-produtores-despejando-leite-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T12:50:39.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Atendimento digital no Burger King existe desde 2022 e não foi motivado pelo fim da escala 6x1",
+   "link": "https://www.estadao.com.br/estadao-verifica/atendimento-digital-burger-king-nao-foi-motivado-fim-da-escala",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T12:01:26.000Z",
+   "rating": "ANTIGO"
+  },
+  {
+   "title": "É falso que software tenha aumentado votos para Lula a partir de queda na abstenção",
+   "link": "https://www.estadao.com.br/estadao-verifica/provas-fraude-eleicao-software-aumentou-votos-de-lula-com-queda-abstencao-falso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-25T11:56:43.000Z",
+   "rating": "FALSO"
+  },
   {
    "title": "É falsa lista de ‘países que não reconheceram vitória de Lula’",
    "link": "https://www.agencialupa.org/verificacao/2026/11/24/e-falsa-lista-de-paises-que-nao-reconheceram-vitoria-de-lula",
