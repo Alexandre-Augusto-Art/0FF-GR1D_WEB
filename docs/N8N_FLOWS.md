@@ -225,12 +225,12 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
        título + cada frase → fala.js (números por extenso, siglas, endereços, pausas, tom por batida)
        → Chatterbox pt-BR (scripts/voz.py, uma frase por arquivo) → Whisper ouve cada frase de volta:
-         errou, gera de novo (até 4 vezes); nada prestou, a frase sai na Supertonic M1
+         errou, gera de novo (até 3 vezes); nada prestou, a frase sai na Supertonic F3
          (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
        → sem Chatterbox: Piper (scripts/tts.py)
-       → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
+       → FFmpeg: junta, voz um pouco mais grave/"rádio"/glitch, volume por quadro
        → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
-         alternando a máscara com metáforas: marca que derrete, comercial que apodrece, leilão,
+         alternando a personagem com metáforas: marca que derrete, comercial que apodrece, leilão,
          fantoche, contrato, multidão, vigilância, lápide, janelas, manchete, número, portas...
        → uma cor de destaque por batida, o resto em preto e branco pontilhado
        → Remotion (src/desenho.js monta o quadro; src/cenas.js tem as cenas; src/base.js os efeitos)
@@ -258,7 +258,9 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 - Log: `%USERPROFILE%\.w4k3\logs\video.log`. Testar à mão:
   `node video\scripts\gerar.js %USERPROFILE%\.w4k3\draft.json --saida teste.mp4`.
 - Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.
-- Personagem e marca são próprios (máscara com boca de equalizador); não usar caveira, logo ou
+- Personagem e marca são próprios: a personagem é a arte do autor (`03.11.26_2B`, Asset-1 neutra e
+  Asset-2 de boca aberta), redesenhada em `video/src/personagem.js` com as formas do SVG; a boca abre
+  com o volume da voz (feminina, Chatterbox com timbre da Supertonic F3). Não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 
 ### Temas a partir de reels e posts (desde 2026-11-18; posts de imagem desde 2026-11-23)

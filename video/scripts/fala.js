@@ -41,7 +41,7 @@ const FIXO = [
   [/\bIAs\b/g, 'inteligências artificiais'], [/\b(?:IA|I\.A\.|AI)\b/g, 'inteligência artificial'],
   [/\bapps\b/gi, 'aplicativos'], [/\bapp\b/gi, 'aplicativo'], [/\bTVs\b/g, 'tevês'], [/\bTV\b/g, 'tevê'],
   [/\bINSS\b/g, 'í ene ésse ésse'], [/\bOMS\b/g, 'ó ême ésse'], [/\bICE\b/g, 'aice'], [/\bCEOs?\b/g, 'cê í ô'], [/\bEUA\b/g, 'Estados Unidos'],
-  [/\bArs Technica\b/g, 'Ars Téquinica'], [/\bRest of World\b/g, 'Rést ov Uôrld'], [/\bThe Intercept\b/g, 'Di Íntercept'], [/\bWired\b/g, 'Uáired'],
+  [/\bArs Technica\b/g, 'Ars Téquinica'], [/\bRest of World\b/g, 'Rést ov Uôrld'], [/\bThe Intercept\b/g, 'Íntercept'], [/\bWired\b/g, 'Uáired'],
   [/\bBig Techs?\b/gi, 'big téc'], [/\bdata ?centers?\b/gi, 'centro de dados'], [/\bYouTube\b/g, 'Iutúbi'], [/\bGoogle\b/g, 'Gúgou'], [/\bMicrosoft\b/g, 'Máicrossoft'],
   [/\bonline\b/gi, 'onláine'], [/\bsoftwares?\b/gi, 'sóftuer'], [/\bStarlink\b/g, 'Istárlinc'], [/\bdeepfakes?\b/gi, 'dípi fêique'],
   [/\bDr\.\s/g, 'doutor '], [/\bDra\.\s/g, 'doutora '], [/\bSr\.\s/g, 'senhor '], [/\bSra\.\s/g, 'senhora '], [/\bn[º°]\s?(?=\d)/gi, 'número '], [/\bart\.\s?(?=\d)/gi, 'artigo '],

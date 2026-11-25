@@ -2,7 +2,7 @@
 
 Cada frase é gerada e ouvida de volta: se o Whisper entendeu outra coisa (palavra engolida, som inventado),
 gera de novo com outra semente, até 3 vezes, e fica a melhor. Se nenhuma prestar, a frase sai na Supertonic
-M1, a voz sintética que serviu de referência para o timbre (não é a voz de uma pessoa real).
+F3, a voz sintética que serviu de referência para o timbre (não é a voz de uma pessoa real).
 
 uso: python voz.py <frases.json> <pasta_saida> <python_do_whisper ou ->
 frases.json: [{"voz": texto falado, "tela": texto mostrado, "tom": 0 a 1}]
@@ -167,7 +167,7 @@ def main():
                 if st is None:
                     from supertonic import TTS
                     st = TTS(model='supertonic-3', model_dir=str(BASE / 'supertonic-3'), auto_download=False)
-                y, _ = st.synthesize(f['voz'], voice_style=st.get_voice_style('M1'), lang='pt', total_steps=12, speed=1.1)
+                y, _ = st.synthesize(f['voz'], voice_style=st.get_voice_style('F3'), lang='pt', total_steps=12, speed=1.1)
                 y = librosa.resample(np.asarray(y, dtype=np.float32).reshape(-1), orig_sr=st.sample_rate, target_sr=M.sr)
                 c = avaliar(y, f)
                 if c[1] is not None and c[1] > melhor[1]:

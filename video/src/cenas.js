@@ -2,6 +2,7 @@
 // preto e branco pontilhado e UMA cor de destaque por batida (p.ac). Servem para o vertical e o horizontal:
 // tudo é posicionado a partir do centro (p.cx, p.cy) e da escala p.s.
 // p = { ctx, f (quadro), lf (quadro no plano), len, bp (0..1 na batida), i (nº do plano), vol, ac, seg, P, t }
+import { personagem, abertura as aberturaBoca } from './personagem';
 import { COR, T, rnd, clamp, suave, salto, tela, mono, grossa, fina, pb, ascii, bloco, cabe, quebra, carimbo, decifra, derrete, blocos } from './base';
 
 const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
@@ -112,55 +113,17 @@ function cortina(p, cor) {
   }, { cor, escuro: '#0a0006' });
 }
 
-// ---------- a máscara do W4K3 (desenho próprio: placa branca com fendas e boca de equalizador) ----------
-function figura(t, vol, w, h) {
-  const c = tela('fig_corpo', w, h), x = c._x;
-  let g = x.createLinearGradient(0, h * 0.55, 0, h);
-  g.addColorStop(0, '#707070'); g.addColorStop(1, '#1a1a1a');
-  x.fillStyle = g; x.beginPath(); x.moveTo(0, h);
-  x.quadraticCurveTo(w * 0.04, h * 0.66, w * 0.5, h * 0.6); x.quadraticCurveTo(w * 0.96, h * 0.66, w, h); x.fill();
-  g = x.createRadialGradient(w * 0.34, h * 0.14, 10, w * 0.5, h * 0.4, w * 0.62);
-  g.addColorStop(0, '#e2e2e2'); g.addColorStop(0.45, '#727272'); g.addColorStop(1, '#141414');
-  x.fillStyle = g; x.beginPath(); x.moveTo(w * 0.5, h * 0.03);
-  x.bezierCurveTo(w * 0.86, h * 0.03, w * 0.95, h * 0.42, w * 0.82, h * 0.72);
-  x.lineTo(w * 0.18, h * 0.72);
-  x.bezierCurveTo(w * 0.05, h * 0.42, w * 0.14, h * 0.03, w * 0.5, h * 0.03); x.fill();
-  g = x.createRadialGradient(w * 0.5, h * 0.42, w * 0.05, w * 0.5, h * 0.42, w * 0.27);
-  g.addColorStop(0, '#000'); g.addColorStop(0.75, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
-  x.fillStyle = g; x.beginPath(); x.ellipse(w * 0.5, h * 0.42, w * 0.27, h * 0.27, 0, 0, 7); x.fill();
-  const m = tela('fig_masc', w, h), y = m._x;
-  g = y.createLinearGradient(w * 0.35, h * 0.22, w * 0.62, h * 0.62);
-  g.addColorStop(0, '#ffffff'); g.addColorStop(0.6, '#bcbcbc'); g.addColorStop(1, '#575757');
-  y.fillStyle = g; y.beginPath(); y.ellipse(w * 0.5, h * 0.43, w * 0.165, h * 0.205, 0, 0, 7); y.fill();
-  y.globalCompositeOperation = 'destination-out';
-  for (const [ex, r] of [[0.43, 0.22], [0.57, -0.22]]) { y.save(); y.translate(w * ex, h * 0.37); y.rotate(r); y.fillRect(-w * 0.055, -h * 0.017, w * 0.11, h * 0.034); y.restore(); }
-  const n = 7, bw = w * 0.022, gap = w * 0.012, x0 = w * 0.5 - (n * bw + (n - 1) * gap) / 2;
-  for (let i = 0; i < n; i++) {
-    const k = Math.min(1, 0.15 + vol * (0.55 + 0.45 * rnd(i * 97 + Math.floor(t * 12))) * 1.5);
-    const bh = h * 0.012 + h * 0.075 * k * (1 - Math.abs(i - 3) / 5);
-    y.fillRect(x0 + i * (bw + gap), h * 0.53 - bh / 2, bw, bh);
-  }
-  y.globalCompositeOperation = 'source-over';
-  return { corpo: c, mascara: m };
-}
-// (cx, cy) = centro da figura; alt = altura na tela
+// ---------- a personagem do W4K3 (personagem.js, arte do autor) ----------
+// (cx, cy) = centro da figura; alt = tamanho de referência (o mesmo das cenas antigas)
 export function mascarado(p, cx, cy, alt, { cor = '#e6e6e6', olhos = p.ac } = {}) {
-  const ctx = p.ctx, t = p.f / 30, h = Math.round(alt), w = Math.round(alt * 0.815);
-  const { corpo, mascara } = figura(t, p.vol, w, h);
-  let ox = cx - w / 2, oy = cy - h / 2 + Math.sin(t * 2.2) * 5;
-  if (p.vol > 0.55) ox += (rnd(p.f * 13) - 0.5) * p.vol * 16;
-  pb(ctx, (x) => x.drawImage(corpo, ox, oy), { cor, escuro: '#000000' });
-  const cw = Math.max(6, Math.round(alt / 110)), ch = Math.round(cw * 1.33);
-  ascii(mascara, ctx, ox, oy, cw, ch, '#f4f4f4');
-  ctx.save(); ctx.fillStyle = olhos; ctx.shadowColor = olhos; ctx.shadowBlur = alt * 0.03; ctx.globalAlpha = 0.35 + p.vol * 0.65;
-  for (const [ex, r] of [[0.43, 0.22], [0.57, -0.22]]) { ctx.save(); ctx.translate(ox + w * ex, oy + h * 0.37); ctx.rotate(r); ctx.fillRect(-w * 0.04, -h * 0.008, w * 0.08, h * 0.016); ctx.restore(); }
-  ctx.restore();
+  const larg = alt * 0.62;
+  personagem(p.ctx, cx, cy - alt * 0.07, larg, { cor, olhos, vol: p.vol, boca: aberturaBoca(p.P.vol, p.f), t: p.f / 30 });
 }
 const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
 
 // ---------- cenas ----------
 function mascara(p) {
-  const k = p.i % 5, base = T.H - (T.v ? 250 : 40);
+  const k = p.i % 5;
   if (k === 0) papel(p, 'olhos', 120);
   else if (k === 1) { cheio(p, '#e9e9e9'); papel(p, 'x', 190, '#b9b9b9'); }
   else if (k === 2) aneis(p, '#777777');
@@ -169,7 +132,8 @@ function mascara(p) {
   const enq = [1.0, 1.25, 1.55][(p.i + (p.seg.k || 0)) % 3], zoom = 1 + p.lf * 0.0016;
   const alt = (T.v ? 1150 : 620) * enq * zoom;
   const dx = T.v ? 0 : [0, -170, 190][p.i % 3];
-  mascarado(p, p.cx + dx, base - alt * 0.36 + (T.v ? 60 : 30), alt, { cor: k === 1 ? '#777777' : '#e6e6e6' });
+  // rosto acima da legenda e do carimbo (a boca fica na metade de baixo)
+  mascarado(p, p.cx + dx, T.H * 0.45 + alt * 0.07, alt, { cor: k === 1 ? '#777777' : '#e6e6e6' });
 }
 // nome do acusado: começa limpo, como anúncio, e derrete
 function marca(p) {

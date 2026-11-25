@@ -22,7 +22,8 @@ const SAIDA = process.env.W4K3_VIDEO_SAIDA || BASE;   // testes usam outra pasta
 const JOB = path.join(SAIDA, 'video-job');
 const VIDEOS = path.join(SAIDA, 'videos');
 const PIDFILE = path.join(SAIDA, 'video.pid');
-const FPS = 30, FINAL = 3.2, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.06;
+const FPS = 30, FINAL = 3.2, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.12;
+const TOM_VOZ = 0.95;   // o efeito abaixa um pouco o tom (0.86 deixava a voz feminina quase masculina)
 
 const args = process.argv.slice(2);
 const draftPath = args[0];
@@ -179,7 +180,7 @@ async function main() {
   const voz = path.join(pub, 'voz.wav');
   const ent = [], fil = [];
   frases.forEach((f, i) => { ent.push('-i', path.join(wavs, `f${String(i).padStart(2, '0')}.wav`)); fil.push(`[${i}]atempo=${f.ritmo.toFixed(4)},adelay=${Math.round(f.ini * 1000)}:all=1[a${i}]`); });
-  const fx = `asetrate=${sr}*0.86,aresample=${sr},atempo=${(1 / 0.86).toFixed(4)},acrusher=bits=10:mix=0.25:samples=2,` +
+  const fx = `asetrate=${sr}*${TOM_VOZ},aresample=${sr},atempo=${(1 / TOM_VOZ).toFixed(4)},acrusher=bits=10:mix=0.25:samples=2,` +
     'flanger=delay=2:depth=3:speed=0.4:width=60,highpass=f=120,lowpass=f=6500,aecho=0.8:0.4:35:0.25,' +
     `acompressor=threshold=0.1:ratio=4,loudnorm=I=-15:TP=-1.5,apad=whole_dur=${total.toFixed(2)},atrim=0:${total.toFixed(2)}`;
   const mix = frases.map((_, i) => `[a${i}]`).join('') + `amix=inputs=${frases.length}:normalize=0:duration=longest,${fx}`;
