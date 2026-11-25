@@ -29,9 +29,10 @@ if (isMotivacao) {
 } else {
   entry = { ...draft, id: today, date: today };
   if (entry.reflection) {
-    // análise interna e avisos da checagem só servem ao rascunho; batidas e espelho ficam
-    // (o bot usa as batidas aprovadas como exemplo de tom para os próximos textos)
-    const { analise, avisos, ...r } = entry.reflection;
+    // análise interna, avisos da checagem e a saída crua da IA só servem ao rascunho; as batidas ficam
+    // (o próximo texto usa as publicadas para não repetir frases)
+    const { analise, avisos, segurar, ...r } = entry.reflection;
+    if (r.denuncia) { const { bruto, ...d } = r.denuncia; r.denuncia = d; }
     entry.reflection = r;
   }
   validate = validateW4K3;

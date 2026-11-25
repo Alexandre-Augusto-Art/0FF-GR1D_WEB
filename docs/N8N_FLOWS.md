@@ -16,8 +16,7 @@ descreve **o estado real**: quais fluxos existem, onde estão e o que está ou n
   escrever uma reflexão e grava `data/reflections.json`.
 - **Estado atual (2026-11-16): W4K3 com notícia do dia aprovada no Telegram.** Todo dia às 09:00
   o fluxo `w4k3-pauta.json` lê os RSS de sites de tecnologia e sociedade e escolhe uma notícia real;
-  o `w4k3-link.json` escreve a análise crítica com referências de cyberpunk, Watch Dogs, V de
-  Vingança, Jogos Vorazes, Blade Runner etc., e o rascunho vai para você aprovar ou ajustar no
+  o `w4k3-link.json` escreve a denúncia (nome real, fato e impacto na vida das pessoas) e o rascunho vai para você aprovar ou ajustar no
   Telegram, como na Motivação Diária. Veja [Notícia do dia](#notícia-do-dia-desde-2026-11-16).
   O n8n grava os arquivos e `automation/run-w4k3.ps1` valida, faz commit e push no `main`.
   Os exports antigos (seções abaixo) ficam só como histórico.
@@ -156,8 +155,8 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
   mais recentes, e penaliza ofertas, reviews e guias de compra. No máximo 2 por fonte entre as 8.
 - **Paywall:** Nexo, Intercept e Ars Technica não deixam ler a página; nesses casos a análise usa
   o texto que vem no próprio RSS (`fallback`).
-- **A análise** (nó "Escrever (espelho direto)" do `w4k3-link.json`, que também vale para links
-  que você manda): formato **espelho direto**, veja a seção abaixo. A obra escolhida vira tag da
+- **A análise** (nó "Escrever (denúncia)" do `w4k3-link.json`, que também vale para links
+  que você manda): formato **denúncia**, veja a seção abaixo. O alvo vira tag da
   entrada, junto com `notícia-do-dia` (ou `link-enviado`).
 - **No Telegram:** o botão ✏️ Sugerir mudanças (ou só escrever o que quer mudar) reescreve o rascunho; "Outra notícia" pula as já
   propostas hoje; `/noticia` gera na hora; `/noticia vigilância` procura uma notícia sobre o tema
@@ -178,35 +177,43 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
   sozinho a partir do desligado é preciso ativar "Power On By RTC" na BIOS (ASUS: Advanced →
   APM Configuration) e entrar no Windows (a tarefa roda na sua sessão).
 
-### Formato "espelho direto" (desde 2026-11-17)
+### Formato "denúncia" (desde 2026-11-25; antes era o "espelho direto", com ficção)
 
-Inspirado em reels que dizem que a notícia real **é** a coisa da ficção com outro nome (não que
-ela "lembra"). O nó `Escrever (espelho direto)` (fonte editável em
-`automation/n8n/code/escrever-espelho.js`; `node automation/n8n/build-link.js` copia para o fluxo)
-fala com o Ollama em etapas curtas, porque o modelo local erra menos com tarefas pequenas:
+Transmissão ativista curta: o nome real de quem fez, o que fez e o que isso tira de quem assiste. Tom
+ácido e de manchete; **o exagero fica no tom, nunca no fato**. Nada de ficção. O nó
+`Escrever (denúncia)` (fonte editável em `automation/n8n/code/escrever-denuncia.js`;
+`node automation/n8n/build-link.js` copia para o fluxo) fala com o Ollama em etapas:
 
 ```
-1. mecanismo  só os fatos da matéria, quem faz o quê com quem, quem ganha, quem paga
-2. espelho    a obra com a MESMA engrenagem (fichas com temas) + tradução real → ficção
-              (ex.: Meta = Arasaka, treinar IA = Soulkiller)
-3. batidas    6 a 9 falas curtas, 130 a 190 palavras: abre dentro da obra ("Em Night City...")
-              → "Aqui, o nome é..." → fatos com a fonte → virada ("Não é falha. É o modelo
-              de negócio.") → chamado; cada batida tem legenda de 2 a 5 palavras e a cena do vídeo
-4. checagem   por código: números que não estão na matéria nem na ficha, fonte citada, ordem das
-              batidas, palavras proibidas ("lembra", "remete"...); se falhar, uma reescrita
+1. dossiê     há denúncia? (lançamento, dica e promoção são recusados e a pauta tenta a próxima) alvo, vítima, promessa, estrago e fatos; cada fato traz o TRECHO da matéria que o prova
+              e o código confere se o trecho existe (fato sem trecho é descartado)
+2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → faca
+              + escolha ("Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
+              + assinatura fixa ("Agora você sabe. Dormir de novo é escolha sua.")
+3. checagem   por código: números, nomes próprios, fonte, alvo citado, frases longas, jargão, ficção,
+              frases copiadas dos exemplos ou das 3 últimas edições, e CRIME (roubo, fraude, mentira,
+              espionagem...) só se a matéria disser; acusação em aberto precisa dizer que é acusação
+4. conferir   uma segunda leitura da IA compara título e batidas com a matéria
+              (até 2 reescritas; o que sobrar aparece como aviso no Telegram)
 ```
 
-- A entrada guarda `reflection.beats` (as batidas) e `reflection.espelho`; o texto do site é a
-  junção das batidas. `analise` e `avisos` só existem no rascunho (o `publish-entry.js` tira).
-- **Aprende com você:** o `run-w4k3.ps1` manda as 3 últimas análises publicadas com batidas como
-  exemplo de tom (você aprova, e os seus ajustes viram o padrão).
-- Num ajuste, a etapa 1 é reaproveitada; a 2 só roda de novo se você pedir outra obra.
-- No CPU leva uns 8 a 12 minutos (4 chamadas). Por isso o `run-w4k3.ps1` sobe o limite do nó de
-  código do n8n (`N8N_RUNNERS_TASK_TIMEOUT=2400`).
-- No Telegram, o rascunho mostra o espelho (obra, elemento e tradução) e o que a checagem ainda
-  apontou, se apontou algo.
-- Com a 3090: trocar `MODELO` no nó por um de ~30B (Qwen2.5-32B ou Gemma 3 27B) melhora o tom e a
-  fidelidade aos fatos.
+- A entrada guarda `reflection.beats` e `reflection.denuncia` (alvo, situação, vítima, jaz); o texto do
+  site é a junção das batidas. `analise`, `avisos` e `denuncia.bruto` só existem no rascunho.
+- As 3 últimas denúncias publicadas vão no pedido só para o texto novo não repetir as frases delas.
+- Um tema vindo de reel não libera nomes nem números: só a matéria e o que você escrever liberam.
+- **Crime** só vale se estiver no título, no resumo ou nas frases escolhidas, porque a página traz chamadas
+  de outras matérias.
+- **Rede de segurança:** acusação em aberto sem "é acusado/investigado" é reescrita por código, e o
+  rascunho sai com `segurar: true` quando sobra alerta sério: aí o `-AutoPublish` das 12:00 não publica e
+  o bot mostra os alertas e exige uma segunda confirmação (só pelo botão) antes de publicar ou agendar.
+- **A aprovação é sua:** a checagem reduz o erro, não garante. Empresa real + acusação errada = processo.
+  Leia os avisos e a matéria antes de publicar.
+- Num ajuste, o dossiê é reaproveitado.
+- **Modelo:** `gemma4:26b-a4b-it-qat` (2026-11-25). No teste com as mesmas notícias escreveu a ~11 tokens/s
+  (o `qwen2.5:14b` fez ~3,5) e recusou uma notícia sem denúncia que o Qwen transformou em acusação.
+- No CPU leva de 4 a 8 minutos. Por isso o `run-w4k3.ps1` sobe o limite do nó de código do n8n
+  (`N8N_RUNNERS_TASK_TIMEOUT=2400`).
+- Com a 3090: trocar `MODELO` no nó por um de ~30B melhora o tom e a fidelidade aos fatos.
 
 ### Vídeo da análise (desde 2026-11-17)
 
@@ -218,11 +225,12 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
        título + cada frase → Piper pt-BR (scripts/tts.py, uma frase por arquivo = tempo exato)
        → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
-       → uma cena por batida (a cena e a legenda de impacto vêm do roteiro; textos antigos sem
-         batidas usam cenas por parágrafo): apresentador, cidade (a torre troca o nome real pelo
-         da ficção), manchete, plataforma, vigilância, marionete, obra, virada, pergunta
-       → Remotion (src/desenho.js, tudo desenhado em canvas)
-       → vertical 1080x1920 (faixa da obra, cena, legenda grande no centro) → sendVideo
+       → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
+         alternando a máscara com metáforas: marca que derrete, comercial que apodrece, leilão,
+         fantoche, contrato, multidão, vigilância, lápide, janelas, manchete, número, portas...
+       → uma cor de destaque por batida, o resto em preto e branco pontilhado
+       → Remotion (src/desenho.js monta o quadro; src/cenas.js tem as cenas; src/base.js os efeitos)
+       → vertical 1080x1920 (tela cheia, faixa ALVO/FONTE, legenda pequena) → sendVideo
        → horizontal 1280x720 (fica só em %USERPROFILE%\.w4k3\videos)
 ```
 
@@ -234,7 +242,7 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
 - **No site:** ao publicar, o `automation/video-site.js` (chamado pelo `run-w4k3.ps1`) acha o vídeo
   vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3ideos\indice.json`, que o
-  `gerar.js` grava), recomprime para a web (540x960, uns 2 MB por 45 s) em
+  `gerar.js` grava), recomprime para a web (540x960, uns 4 MB por 50 s) em
   `assets/videos/w4k3/<data>.mp4` com uma capa `.jpg` e grava `video: { src, poster }` na entrada. A
   página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 6 min;
   sem vídeo desta versão, publica só o texto.
@@ -260,7 +268,7 @@ link/vídeo → automation/reels/reel-tema.js (em segundo plano, fila; o bot con
   → vídeos: faster-whisper (transcrever.py; "small" no CPU, uns 35 s para 1min45 de reel)
   → imagens (até 6 por post): qwen2.5vl:7b no Ollama transcreve o texto de cada slide e
     descreve a imagem (uns 1 a 1,5 min por imagem no CPU; segundos com a 3090)
-  → Ollama: título, mecanismo real, quem ganha/paga, obra sugerida (das fichas do espelho),
+  → Ollama: título, mecanismo real, quem ganha/paga, alvo,
     palavras de busca e afirmações a checar
   → junta com um tema parecido ou cria um novo em %USERPROFILE%\.w4k3\temas.json
   → mensagem no Telegram com [✍️ Escrever agora] [🗑 Apagar tema]
@@ -282,7 +290,7 @@ link/vídeo → automation/reels/reel-tema.js (em segundo plano, fila; o bot con
 
 Fluxo `automation/n8n/workflows/w4k3-link.json` (id `W4K3linkNoticia1`) gera só um **rascunho**:
 `link.json {url, direction, feedback?, previousDraft?} → Baixar notícia (HTTP) → Extrair notícia
-(og:title, og:description, data, parágrafos) → Escrever (espelho direto) (texto da matéria +
+(og:title, og:description, data, parágrafos) → Escrever (denúncia) (texto da matéria +
 direcionamento + versão anterior e ajustes; Ollama em etapas) → Validar rascunho → draft.json`.
 O mesmo fluxo escreve a notícia do dia (`mode: "pauta"`).
 Quem publica é o `run-w4k3.ps1 -Publish` (usa `automation/publish-entry.js`: data de hoje,

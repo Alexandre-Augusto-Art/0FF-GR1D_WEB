@@ -11,7 +11,7 @@
   Mandar um link novo começa outro rascunho (o anterior é descartado).
 
   NOTÍCIA DO DIA: às 09:00 o run-w4k3.ps1 escolhe uma notícia real nos RSS de tecnologia e sociedade,
-  escreve a análise com a lente cyberpunk/distópica e chama este script com -AnnounceDaily, que manda
+  escreve a denúncia (nome real de quem fez, o que fez, o que tira de você) e chama este script com -AnnounceDaily, que manda
   o rascunho aqui: [✅ Publicar agora] [✏️ Sugerir mudanças] [🔄 Outra notícia] [🗑 Descartar]. Ajustes por texto livre,
   como num link. Sem resposta até as 12:00, o run-w4k3.ps1 -AutoPublish publica.
   /noticia [tema]  gera a notícia do dia na hora (ex.: /noticia vigilância).
@@ -82,7 +82,9 @@ $BtnReview  = @(@(@{ text = '✅ Aprovar'; callback_data = 'approve' }, @{ text 
                 @(@{ text = '🗑 Descartar'; callback_data = 'cancel' }))
 $BtnDaily   = @(@(@{ text = '✅ Publicar agora'; callback_data = 'now' }, @{ text = '✏️ Sugerir mudanças'; callback_data = 'suggest' }),
                 @(@{ text = '🔄 Outra notícia'; callback_data = 'pauta_new' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }))
-$SuggestHelp = "✏️ Escreva aqui o que você quer mudar, do jeito que falaria com uma pessoa. Exemplos:`n• mais curto / mais direto`n• compare com Jogos Vorazes em vez de Watch Dogs`n• foque nos trabalhadores, não na empresa`n• troque o título`n• tom mais irônico`n`nEu reescrevo e te mando a nova versão para aprovar."
+$SuggestHelp = "✏️ Escreva aqui o que você quer mudar, do jeito que falaria com uma pessoa. Exemplos:`n• mais curto / mais direto`n• mais pesado na acusação`n• foque nos trabalhadores, não na empresa`n• troque o título`n• tom mais irônico`n`nEu reescrevo e te mando a nova versão para aprovar."
+# o botão de confirmar leva a marca do rascunho: um botão antigo não publica um rascunho novo
+function Draft-Marca { return (Get-FileHash $Draft -Algorithm SHA1).Hash.Substring(0, 10).ToLower() }
 $BtnPublish = @(, @(@{ text = '🚀 Publicar agora'; callback_data = 'now' }, @{ text = '⏰ No horário padrão (09:00)'; callback_data = 'at9' }))
 
 function Next9h {
@@ -125,13 +127,14 @@ function Show-Draft([switch]$daily) {
   $body = [System.Net.WebUtility]::HtmlDecode($body).Trim()
   $words = ($body -split '\s+').Count
   $head = if ($daily) { '📰 NOTÍCIA DO DIA (rascunho)' } else { '📝 RASCUNHO' }
+  if ($d.reflection.segurar) { $head = "🔴 COM ALERTA: confira a matéria antes de publicar`n$head" }
   $refs = @($d.tags | Where-Object { $_ -notin 'reflexão', 'notícia', 'antisistema', 'crítica', 'notícia-do-dia', 'link-enviado' })
   $msg = "{0}`n`n{1}`n`n{2}`n`n— notícia base: {3} ({4})`n{5}" -f $head, $d.reflection.title, $body, $d.news.title, $d.news.source, $d.news.link
-  if ($refs.Count) { $msg += "`n— referências: $($refs -join ', ')" }
-  $esp = $d.reflection.espelho
-  if ($esp) {
-    $tr = @($esp.traducao | ForEach-Object { "$($_.real) = $($_.ficcao)" }) -join '; '
-    $msg += "`n— espelho: $($esp.obra) ($($esp.elemento))" + $(if ($tr) { " · $tr" } else { '' })
+  if ($refs.Count -and -not $d.reflection.denuncia) { $msg += "`n— referências: $($refs -join ', ')" }
+  $den = $d.reflection.denuncia
+  if ($den) {
+    $sit = if ("$($den.situacao)" -match 'acus') { ' · ACUSAÇÃO em aberto, não é fato provado' } elseif ("$($den.situacao)" -match 'plano') { ' · ainda é plano' } else { '' }
+    $msg += "`n— alvo: $($den.alvo) · quem sofre: $($den.vitima)$sit"
   }
   $av = @($d.reflection.avisos | Where-Object { $_ })
   if ($av.Count) { $msg += "`n⚠️ a checagem automática ainda viu: $($av -join '; ')" }
@@ -142,7 +145,8 @@ function Show-Draft([switch]$daily) {
     $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
     $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.$(if ($p.tema) { " O tema #$($p.tema) continua na lista." }))`n" }
             elseif ($p -and $p.tema) { "(Notícia achada a partir do tema #$($p.tema) da sua lista de reels; ele saiu da fila.)`n" } else { '' }
-    Send ($note + 'Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. Sem resposta até as 12:00, publico este.' + $vid) $BtnDaily
+    $fimMsg = if ($d.reflection.segurar) { '⚠️ Este tem alerta da checagem: confira a matéria. Sem o seu "publicar", ele NÃO sai às 12:00.' } else { 'Sem resposta até as 12:00, publico este.' }
+    Send ($note + "Publique, sugira mudanças (ou só escreva o que quer mudar), ou peça outra notícia. $fimMsg" + $vid) $BtnDaily
   } else {
     Send ('Aprove ou sugira mudanças (pode só escrever o que quer mudar):' + $vid) $BtnReview
   }
@@ -227,6 +231,27 @@ function Make-Pauta([string]$topic, [switch]$another, [string]$tema) {
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
     Send "Não consegui montar a notícia do dia. $($r.err)`nTente de novo: /noticia"
   }
+}
+
+# Rascunho com alerta sério: mostra os alertas e só segue com a segunda confirmação
+# ($proximo: 'now' publica agora, 'at9' agenda). Devolve $true se segurou.
+function Stop-ForAlerta($state, [string]$proximo) {
+  if (-not (Test-Path $Draft)) { return $false }
+  $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
+  if (-not $d.reflection.segurar) { return $false }
+  $state.stage = 'alerta'
+  $state | Add-Member -NotePropertyName proximo -NotePropertyValue $proximo -Force
+  Save-State $state
+  $av = @($d.reflection.avisos | Where-Object { $_ } | ForEach-Object { "• $_" }) -join "`n"
+  Send "🔴 AINDA NÃO PUBLIQUEI. A checagem encontrou:`n`n$av`n`nTítulo: $($d.reflection.title)`nMatéria: $($d.news.link)`n`nAbra a matéria e confira. Uma acusação errada contra empresa ou pessoa real pode virar processo. Para publicar assim mesmo, toque no botão abaixo; para mudar, escreva o ajuste." @(@(@{ text = '✏️ Corrigir'; callback_data = 'suggest' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }),
+    @(, @{ text = '⚠️ Conferi a matéria, publicar'; callback_data = "alert_yes_$(Draft-Marca)" }))
+  return $true
+}
+function Set-At9 {
+  Copy-Item $Draft $Pending -Force
+  Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
+  Remove-Item $Draft -ErrorAction SilentlyContinue
+  Send "⏰ Agendado para $((Next9h).ToString('dd/MM')) às 09:00. Ele entra no lugar da reflexão automática desse dia. Eu aviso quando publicar."
 }
 
 function Publish-Now($state) {
@@ -317,7 +342,7 @@ function Handle([string]$text, [string]$action) {
   $low = $t.ToLowerInvariant()
 
   if ($low -in '/start', '/ajuda', '/help', 'ajuda') {
-    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a análise crítica com referências de cyberpunk, Watch Dogs, V de Vingança, Jogos Vorazes, Blade Runner. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos curtos, de 1 a 2 minutos de leitura. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico.`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e cite a resistência estudantil`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nTEMAS A PARTIR DE REELS E POSTS`nMande o link de um reel ou post (Instagram, TikTok ou Shorts), o próprio vídeo, ou imagens (prints, slides; um álbum vira um post só), com um comentário se quiser. Eu transcrevo a fala, leio o texto das imagens e analiso aqui no PC e guardo como tema para edições futuras (posts parecidos viram um tema só). A notícia das 09h usa o 1º da lista e busca uma notícia real sobre ele.`n/temas  a lista`nusar 3  escreve a análise do tema #3 agora`napagar 3  tira da lista`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
+    Send "0FF-GR1D_WEB · bot do projeto`n`nNOTÍCIA DO DIA (W4K3)`nTodo dia às 09:00 eu escolho uma notícia real de tecnologia e sociedade (MIT Tech Review, Nexo, Intercept, WIRED, Rest of World, The Verge, Ars Technica...) e mando a denúncia: curta, ácida, com o nome real de quem fez e o que isso tira de você. Os fatos são só os da notícia. Publique, toque em ✏️ Sugerir mudanças (ou só escreva o que quer mudar) ou peça outra notícia. Textos de menos de 1 minuto. Logo depois do texto chega um vídeo narrado da análise (feito neste PC). Sem resposta até as 12:00, publico (menos se a checagem deixou alerta).`n/noticia  notícia do dia agora`n/noticia vigilância  uma notícia sobre esse tema`n`nW4K3 A PARTIR DE UM LINK`n1. Mande o link da notícia e, na mesma mensagem, o que você quer que eu fale sobre ela.`n   Ex.: https://... foque na precarização do trabalho e no que os entregadores perdem`n2. Eu devolvo o rascunho.`n3. Responda com ajustes quantas vezes quiser.`n4. Aprove e escolha: publicar agora ou às 09:00.`n`nTEMAS A PARTIR DE REELS E POSTS`nMande o link de um reel ou post (Instagram, TikTok ou Shorts), o próprio vídeo, ou imagens (prints, slides; um álbum vira um post só), com um comentário se quiser. Eu transcrevo a fala, leio o texto das imagens e analiso aqui no PC e guardo como tema para edições futuras (posts parecidos viram um tema só). A notícia das 09h usa o 1º da lista e busca uma notícia real sobre ele.`n/temas  a lista`nusar 3  escreve a análise do tema #3 agora`napagar 3  tira da lista`n`nMOTIVAÇÃO DIÁRIA`nTodo dia às 09:10 eu proponho uma frase (filmes, séries, jogos). Aprove ou peça outra; sem resposta até as 12:00, publico a proposta.`n/frase  proposta nova agora`n/frase jogos vorazes  uma frase nessa linha (obra, tema ou tipo)`nfrase: texto — obra  a sua própria frase`n`n/status  o que está em andamento`n/cancelar  descarta o rascunho W4K3"
     return
   }
   if ($low -in '/status', 'status') {
@@ -386,7 +411,7 @@ function Handle([string]$text, [string]$action) {
   switch ($state.stage) {
     'review' {
       if ($state.daily -and ($action -eq 'now' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍', 'publicar', 'publica', 'agora')) {
-        Publish-Now $state
+        if (-not (Stop-ForAlerta $state 'now')) { Publish-Now $state }
       } elseif ($action -eq 'approve' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍') {
         $state.stage = 'confirm'; Save-State $state
         Send 'Aprovado. Quando publico?' $BtnPublish
@@ -402,14 +427,26 @@ function Handle([string]$text, [string]$action) {
     }
     'confirm' {
       if ($action -eq 'now' -or $low -in 'agora', 'publicar', 'publica', 'publicar agora') {
-        Publish-Now $state
+        if (-not (Stop-ForAlerta $state 'now')) { Publish-Now $state }
       } elseif ($action -eq 'at9' -or $low -in '9h', '09h', '9', 'depois', 'horario padrao', 'horário padrão') {
-        Copy-Item $Draft $Pending -Force
-        Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
-        Remove-Item $Draft -ErrorAction SilentlyContinue
-        Send "⏰ Agendado para $((Next9h).ToString('dd/MM')) às 09:00. Ele entra no lugar da reflexão automática desse dia. Eu aviso quando publicar."
+        if (-not (Stop-ForAlerta $state 'at9')) { Set-At9 }
       } elseif (-not $action) {
         # Ainda dá para ajustar nesta etapa
+        $state.stage = 'review'; Save-State $state
+        Send "Ajustando com base no que você pediu (uns 5 minutos)..."
+        Make-Draft $state $t
+      }
+    }
+    'alerta' {
+      # só o botão confirma: "ok", "sim" e "publicar" digitados voltam a mostrar o alerta
+      if ($action -and (Test-Path $Draft) -and $action -eq "alert_yes_$(Draft-Marca)") {
+        if ($state.proximo -eq 'at9') { Set-At9 } else { Publish-Now $state }
+      } elseif ($action -eq 'suggest') {
+        $state.stage = 'review'; Save-State $state
+        Send $SuggestHelp $(if ($state.daily) { $BtnDaily } else { $BtnReview })
+      } elseif ($action -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍', 'publicar', 'publica', 'agora', 'publicar agora', '9h', '09h') {
+        Stop-ForAlerta $state $(if ($state.proximo) { $state.proximo } else { 'now' }) | Out-Null
+      } else {
         $state.stage = 'review'; Save-State $state
         Send "Ajustando com base no que você pediu (uns 5 minutos)..."
         Make-Draft $state $t

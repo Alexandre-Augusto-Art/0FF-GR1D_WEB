@@ -43,7 +43,7 @@ const rodando = () => {
   const tVid = path.join(tmp, 'v.mp4'), tCapa = path.join(tmp, 'v.jpg');
   // -xerror: qualquer erro no vídeo de origem (arquivo truncado etc.) aborta em vez de gerar um vídeo pela metade
   const ff = (a) => execFileSync('ffmpeg', ['-y', '-v', 'error', '-xerror', ...a], { windowsHide: true, maxBuffer: 1 << 26 });
-  ff(['-i', v.vertical, '-vf', 'scale=540:960', '-c:v', 'libx264', '-crf', '32', '-preset', 'slow', '-pix_fmt', 'yuv420p',
+  ff(['-i', v.vertical, '-vf', 'fps=24,scale=540:960:flags=area,hqdn3d=3:3:6:6', '-c:v', 'libx264', '-crf', '38', '-preset', 'slow', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '64k', '-ac', '1', '-movflags', '+faststart', tVid]);
   // capa: um quadro do apresentador, logo depois da abertura
   ff(['-ss', '2.5', '-i', v.vertical, '-frames:v', '1', '-vf', 'scale=540:960', '-q:v', '5', tCapa]);
