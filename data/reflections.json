@@ -1,5 +1,97 @@
 [
   {
+    "id": "2026-11-25",
+    "date": "2026-11-25",
+    "news": {
+      "title": "Kagi Mail: conheça o novo rival do Gmail sem anúncios e rastreamento",
+      "link": "https://www.estadao.com.br/tecmundo/produto-e-review/kagi-mail-rival-do-gmail-estreia-com-foco-em-privacidade-recursos-de-ia-e-teste-gratuito/",
+      "summary": "O serviço de email da Kagi oferece aliases ilimitados e 50 GB de armazenamento",
+      "source": "Estadão",
+      "publishedDate": "2026-11-25"
+    },
+    "reflection": {
+      "title": "Kagi roubou sua segurança",
+      "content": "<p>Você já usou e-mail sem anúncios e rastreamento? Então escuta.</p>\n<p><strong>Kagi deixou seu e-mail aberto para golpes de phishing.</strong></p>\n<p>Kagi promete e-mail seguro e sem anúncios.</p>\n<p>Segundo o Estadão, golpes de phishing podem te causar um prejuízo enorme.</p>\n<p>O mundo precisa de mais um serviço de e-mail? Você perde dinheiro.</p>\n<p><strong>Você paga Kagi. Golpes ganham.</strong></p>\n<p>Dá para torcer para o phishing ser legal. Ou dá para registrar no consumidor.gov.br quando fizerem o mesmo com você.</p>\n<p><strong>Agora você sabe. Dormir de novo é escolha sua.</strong></p>",
+      "excerpt": "Kagi Mail promete segurança, mas pode te deixar vulnerável a golpes de phishing.",
+      "beats": [
+        {
+          "lado": "chamado",
+          "fala": "Você já usou e-mail sem anúncios e rastreamento? Então escuta.",
+          "legenda": "ANÚNCIOS E RASTREAMENTO",
+          "cena": "mascara"
+        },
+        {
+          "lado": "acusacao",
+          "fala": "Kagi deixou seu e-mail aberto para golpes de phishing.",
+          "legenda": "E-MAIL ABERTO",
+          "cena": "marca"
+        },
+        {
+          "lado": "promessa",
+          "fala": "Kagi promete e-mail seguro e sem anúncios.",
+          "legenda": "kagi promete e-mail seguro e sem anúncios",
+          "cena": "comercial"
+        },
+        {
+          "lado": "prova",
+          "fala": "Segundo o Estadão, golpes de phishing podem te causar um prejuízo enorme.",
+          "legenda": "PREJUÍZO ENORME",
+          "cena": "manchete"
+        },
+        {
+          "lado": "rosto",
+          "fala": "O mundo precisa de mais um serviço de e-mail? Você perde dinheiro.",
+          "legenda": "PERDE DINHEIRO",
+          "cena": "dinheiro"
+        },
+        {
+          "lado": "faca",
+          "fala": "Você paga Kagi. Golpes ganham.",
+          "legenda": "GOLPES GANHAM",
+          "cena": "cartela"
+        },
+        {
+          "lado": "escolha",
+          "fala": "Dá para torcer para o phishing ser legal. Ou dá para registrar no consumidor.gov.br quando fizerem o mesmo com você.",
+          "legenda": "E VOCÊ?",
+          "cena": "portas"
+        },
+        {
+          "lado": "assinatura",
+          "fala": "Agora você sabe. Dormir de novo é escolha sua.",
+          "legenda": "",
+          "cena": "assinatura"
+        }
+      ],
+      "denuncia": {
+        "alvo": "Kagi",
+        "situacao": "plano",
+        "vitima": "usuários de e-mail",
+        "jaz": "SUA PRIVACIDADE"
+      }
+    },
+    "sources": [
+      {
+        "title": "Kagi Mail: conheça o novo rival do Gmail sem anúncios e rastreamento",
+        "link": "https://www.estadao.com.br/tecmundo/produto-e-review/kagi-mail-rival-do-gmail-estreia-com-foco-em-privacidade-recursos-de-ia-e-teste-gratuito/",
+        "source": "Estadão",
+        "date": "2026-11-25"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Kagi"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-25.mp4",
+      "poster": "assets/videos/w4k3/2026-11-25.jpg"
+    }
+  },
+  {
     "id": "2026-11-24",
     "date": "2026-11-24",
     "news": {
