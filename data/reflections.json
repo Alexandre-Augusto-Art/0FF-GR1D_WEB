@@ -3,56 +3,56 @@
     "id": "2026-11-25",
     "date": "2026-11-25",
     "news": {
-      "title": "Austrália cria lei que obriga plataformas a remover conteúdo nocivo",
-      "link": "https://www.estadao.com.br/tecmundo/big-techs/australia-aprova-lei-que-obriga-big-techs-a-remover-conteudos-prejudiciais/",
-      "summary": "As empresas que descumprirem a legislação poderão receber multas bilionárias",
-      "source": "Estadão",
-      "publishedDate": "2026-11-25"
+      "title": "Ajuste fiscal: o que foi aprovado e por que não deve parar por aí",
+      "link": "https://www.nexojornal.com.br/expresso/2026/11/24/ajuste-fiscal-lula-aprovado-governo-lula-economia-brasil",
+      "summary": "Presidente Lula sanciona pacote avalizado pelo Congresso com ações para as contas públicas. 2ª rodada de medidas pode vir ainda em 2026 O presidente Luiz Inácio Lula da Silva (PT) sancionou nesta terça-feira (24) o pacote de ajuste fiscal que foi aprovado pela Câmara na segunda-feira (23). O texto prevê medidas para elevar a arrecadação e permitir maior contenção de gastos a partir do próximo ano. A proposta foi aprovada por 353 votos a favor e 128 contra, a maioria do PL. Houve cinco abstenções de deputados do PT e do PSOL, após o tema ter dividido parte da esquerda. R$ 45 bilhões a R$ 56 bil",
+      "source": "Nexo Jornal",
+      "publishedDate": "2026-11-24"
     },
     "reflection": {
-      "title": "Big Techs fogem de multas de bilhões",
-      "content": "<p>Você já sentiu o ódio crescendo no seu feed hoje?</p>\n<p><strong>As Big Techs tentam tirar o seu controle sobre o que vê.</strong></p>\n<p>Elas dizem que querem proteger a sua liberdade de escolha.</p>\n<p>Segundo o Estadão, as multas por descumprir a lei australiana podem chegar a US$ 72 milhões.</p>\n<p>Você fica refém de algoritmos que decidem o que deve te afetar.</p>\n<p><strong>Eles lucram com o caos. Você recebe o lixo.</strong></p>\n<p>Dá para aceitar o algoritmo mandando em tudo. Ou dá para guardar esses nomes e cobrar na urna.</p>\n<p><strong>Agora você sabe. Dormir de novo é escolha sua.</strong></p>",
-      "excerpt": "Big Techs tentam impedir leis que priorizam a sua segurança digital.",
+      "title": "Governo Federal corta dinheiro da sua saúde",
+      "content": "<p>Você já tentou marcar um exame e não conseguiu vaga?</p>\n<p><strong>O Governo Federal tirou o dinheiro do seu remédio para pagar o diesel.</strong></p>\n<p>Eles dizem que os programas sociais continuam protegidos de qualquer corte.</p>\n<p>Segundo o Nexo Jornal, o governo pode usar um crédito de R$ 10,5 bilhões para pagar subvenções ao setor do diesel.</p>\n<p>O Congresso aprovou retirar receitas do petróleo que deveriam ir para o piso da saúde.</p>\n<p><strong>Você paga a conta caro. O diesel fica mais barato.</strong></p>\n<p>Dá para esperar o próximo corte no orçamento. Ou dá para pedir os documentos pela Lei de Acesso à Informação.</p>\n<p><strong>Agora você sabe. Dormir de novo é escolha sua.</strong></p>",
+      "excerpt": "O governo corta gastos na saúde para subsidiar o setor de combustível.",
       "beats": [
         {
           "lado": "chamado",
-          "fala": "Você já sentiu o ódio crescendo no seu feed hoje?",
-          "legenda": "ÓDIO CRESCENDO",
+          "fala": "Você já tentou marcar um exame e não conseguiu vaga?",
+          "legenda": "TENTOU MARCAR",
           "cena": "mascara"
         },
         {
           "lado": "acusacao",
-          "fala": "As Big Techs tentam tirar o seu controle sobre o que vê.",
-          "legenda": "TENTAM TIRAR",
+          "fala": "O Governo Federal tirou o dinheiro do seu remédio para pagar o diesel.",
+          "legenda": "TIROU O DINHEIRO",
           "cena": "marca"
         },
         {
           "lado": "promessa",
-          "fala": "Elas dizem que querem proteger a sua liberdade de escolha.",
-          "legenda": "querem proteger",
+          "fala": "Eles dizem que os programas sociais continuam protegidos de qualquer corte.",
+          "legenda": "programas sociais continuam",
           "cena": "comercial"
         },
         {
           "lado": "prova",
-          "fala": "Segundo o Estadão, as multas por descumprir a lei australiana podem chegar a US$ 72 milhões.",
-          "legenda": "72 MILHÕES",
+          "fala": "Segundo o Nexo Jornal, o governo pode usar um crédito de R$ 10,5 bilhões para pagar subvenções ao setor do diesel.",
+          "legenda": "5 BILHÕES",
           "cena": "manchete"
         },
         {
           "lado": "rosto",
-          "fala": "Você fica refém de algoritmos que decidem o que deve te afetar.",
-          "legenda": "ALGORITMOS QUE DECIDEM",
-          "cena": "multidao"
+          "fala": "O Congresso aprovou retirar receitas do petróleo que deveriam ir para o piso da saúde.",
+          "legenda": "CONGRESSO APROVOU RETIRAR",
+          "cena": "lapide"
         },
         {
           "lado": "faca",
-          "fala": "Eles lucram com o caos. Você recebe o lixo.",
-          "legenda": "RECEBE O LIXO",
+          "fala": "Você paga a conta caro. O diesel fica mais barato.",
+          "legenda": "DIESEL FICA",
           "cena": "cartela"
         },
         {
           "lado": "escolha",
-          "fala": "Dá para aceitar o algoritmo mandando em tudo. Ou dá para guardar esses nomes e cobrar na urna.",
+          "fala": "Dá para esperar o próximo corte no orçamento. Ou dá para pedir os documentos pela Lei de Acesso à Informação.",
           "legenda": "E VOCÊ?",
           "cena": "portas"
         },
@@ -64,18 +64,18 @@
         }
       ],
       "denuncia": {
-        "alvo": "Big techs",
-        "situacao": "plano",
-        "vitima": "cidadãos australianos",
-        "jaz": "SUA LIBERDADE"
+        "alvo": "Governo Federal",
+        "situacao": "fato",
+        "vitima": "população e setor de saúde",
+        "jaz": "SUA SAÚDE"
       }
     },
     "sources": [
       {
-        "title": "Austrália cria lei que obriga plataformas a remover conteúdo nocivo",
-        "link": "https://www.estadao.com.br/tecmundo/big-techs/australia-aprova-lei-que-obriga-big-techs-a-remover-conteudos-prejudiciais/",
-        "source": "Estadão",
-        "date": "2026-11-25"
+        "title": "Ajuste fiscal: o que foi aprovado e por que não deve parar por aí",
+        "link": "https://www.nexojornal.com.br/expresso/2026/11/24/ajuste-fiscal-lula-aprovado-governo-lula-economia-brasil",
+        "source": "Nexo Jornal",
+        "date": "2026-11-24"
       }
     ],
     "tags": [
@@ -84,7 +84,7 @@
       "antisistema",
       "crítica",
       "notícia-do-dia",
-      "Big techs"
+      "Governo Federal"
     ],
     "video": {
       "src": "assets/videos/w4k3/2026-11-25.mp4",
