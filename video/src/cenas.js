@@ -115,9 +115,10 @@ function cortina(p, cor) {
 
 // ---------- a personagem do W4K3 (personagem.js, arte do autor) ----------
 // (cx, cy) = centro da figura; alt = tamanho de referência (o mesmo das cenas antigas)
-export function mascarado(p, cx, cy, alt, { cor = '#e6e6e6', olhos = p.ac } = {}) {
+// o rosto inteiro (pontilhado) e os olhos (sólidos, com brilho) na mesma cor neon
+export function mascarado(p, cx, cy, alt, { cor = p.ac } = {}) {
   const larg = alt * 0.62;
-  personagem(p.ctx, cx, cy - alt * 0.07, larg, { cor, olhos, vol: p.vol, boca: aberturaBoca(p.P.vol, p.f), t: p.f / 30 });
+  personagem(p.ctx, cx, cy - alt * 0.07, larg, { cor, olhos: cor, vol: p.vol, boca: aberturaBoca(p.P.vol, p.f), t: p.f / 30 });
 }
 const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
 
@@ -127,13 +128,13 @@ function mascara(p) {
   if (k === 0) papel(p, 'olhos', 120);
   else if (k === 1) { cheio(p, '#e9e9e9'); papel(p, 'x', 190, '#b9b9b9'); }
   else if (k === 2) aneis(p, '#777777');
-  else if (k === 3) { binario(p); pb(p.ctx, (x) => { x.fillStyle = grad(x, 0, T.H * 0.3, 0, T.H, '#000', '#6a6a6a'); x.fillRect(0, T.H * 0.35, T.W, T.H); }, { cor: p.ac, cel: T.v ? 10 : 7 }); }
+  else if (k === 3) { binario(p); pb(p.ctx, (x) => { x.fillStyle = grad(x, 0, T.H * 0.3, 0, T.H, '#000', '#6a6a6a'); x.fillRect(0, T.H * 0.35, T.W, T.H); }, { cor: '#6a6a6a', cel: T.v ? 10 : 7 }); }   // cinza: a personagem já está na cor neon
   else papel(p, 'maos', 130);
   const enq = [1.0, 1.25, 1.55][(p.i + (p.seg.k || 0)) % 3], zoom = 1 + p.lf * 0.0016;
   const alt = (T.v ? 1150 : 620) * enq * zoom;
   const dx = T.v ? 0 : [0, -170, 190][p.i % 3];
   // rosto acima da legenda e do carimbo (a boca fica na metade de baixo)
-  mascarado(p, p.cx + dx, T.H * 0.45 + alt * 0.07, alt, { cor: k === 1 ? '#777777' : '#e6e6e6' });
+  mascarado(p, p.cx + dx, T.H * 0.45 + alt * 0.07, alt);
 }
 // nome do acusado: começa limpo, como anúncio, e derrete
 function marca(p) {
@@ -361,7 +362,7 @@ function padrao(p) { cheio(p, p.i % 2 ? '#000' : '#0a0a0a'); papel(p, p.i % 2 ? 
 // logo do W4K3 em ASCII, sobre anéis
 function logo(p, k = 1) {
   const ctx = p.ctx; aneis(p, '#555555');
-  mascarado(p, p.cx, p.cy - (T.v ? 230 : 70), (T.v ? 900 : 470), { olhos: COR.lime });
+  mascarado(p, p.cx, p.cy - (T.v ? 230 : 70), (T.v ? 900 : 470), { cor: COR.lime });
   const txt = 'W4K3', px = T.v ? 330 : 170, c0 = tela('medlogo', 10, 10)._x; c0.font = grossa(px);
   const w = Math.ceil(c0.measureText(txt).width), c = tela('logoasc', w + 10, Math.ceil(px * 1.25)), x = c._x;
   x.fillStyle = '#fff'; x.font = grossa(px); x.textBaseline = 'top'; x.fillText(txt, 0, 0);
@@ -385,7 +386,7 @@ function abertura(p) {
   });
 }
 function assinatura(p) {
-  if (p.bp < 0.45) { aneis(p, '#5a5a5a'); mascarado(p, p.cx, p.cy + (T.v ? 260 : 130), (T.v ? 1500 : 800) * (1 + p.bp * 0.3), { olhos: COR.lime }); } else logo(p, suave(p.lf / 6));
+  if (p.bp < 0.45) { aneis(p, '#5a5a5a'); mascarado(p, p.cx, p.cy + (T.v ? 260 : 130), (T.v ? 1500 : 800) * (1 + p.bp * 0.3), { cor: COR.lime }); } else logo(p, suave(p.lf / 6));
 }
 export function cenaFinal(p) {
   logo(p);

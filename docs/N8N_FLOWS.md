@@ -259,7 +259,7 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   `node video\scripts\gerar.js %USERPROFILE%\.w4k3\draft.json --saida teste.mp4`.
 - Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.
 - Personagem e marca são próprios: a personagem é a arte do autor (`03.11.26_2B`, Asset-1 neutra e
-  Asset-2 de boca aberta), redesenhada em `video/src/personagem.js` com as formas do SVG; a boca abre
+  Asset-2 de boca aberta), redesenhada em `video/src/personagem.js` com as formas do SVG, toda na cor neon da batida; a boca abre
   com o volume da voz (feminina, Chatterbox com timbre da Supertonic F3). Não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 

@@ -51,11 +51,11 @@ export function personagem(ctx, cx, cy, larg, { cor = '#e6e6e6', olhos = '#19e3f
   const giro = Math.sin(t * 1.3) * 0.018 + (boca - 0.4) * 0.012;
   const posiciona = (x) => { x.translate(ox, oy); x.rotate(giro); x.scale(s, s); x.translate(-CX, -CY); };
 
-  // rosto em preto e branco pontilhado (luz vindo de cima, à esquerda)
+  // rosto pontilhado na cor neon (luz vindo de cima, à esquerda)
   pb(ctx, (x) => {
     posiciona(x);
     const g = x.createLinearGradient(150, 0, 1000, 950);
-    g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, '#b8b8b8'); g.addColorStop(1, '#4a4a4a');
+    g.addColorStop(0, '#ffffff'); g.addColorStop(0.55, '#d0d0d0'); g.addColorStop(1, '#707070');
     x.fillStyle = g;
     ROSTO.forEach((p) => x.fill(p, 'evenodd'));
     if (boca > 0.02) queixo(x, boca);
