@@ -69,6 +69,11 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
 }
 
 # ---- Temas a partir de reels: yt-dlp (download sem login) + faster-whisper (transcrição), neste PC ----
+# modelo que escreve a denúncia (~15 GB, só na primeira vez)
+if ((Get-Command ollama.exe -ErrorAction SilentlyContinue) -and -not ((& ollama.exe list 2>$null) -match 'gemma4:26b-a4b-it-qat')) {
+  Write-Host 'baixando o modelo de escrita gemma4:26b-a4b-it-qat (~15 GB)...'
+  & ollama.exe pull gemma4:26b-a4b-it-qat
+}
 New-Item -ItemType Directory -Force -Path (Join-Path $bin 'reels'), (Join-Path $bin 'n8n\code') | Out-Null
 Copy-Item (Join-Path $PSScriptRoot 'reels\*') (Join-Path $bin 'reels') -Include '*.js', '*.py' -Force
 Remove-Item (Join-Path $bin 'n8n\code\escrever-espelho.js') -ErrorAction SilentlyContinue  # formato antigo

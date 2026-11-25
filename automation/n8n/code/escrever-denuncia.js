@@ -9,7 +9,7 @@
 //      frases copiadas dos exemplos ou das últimas edições
 //   4. checagem de fatos por uma segunda leitura da IA; se algo falhar, uma reescrita
 const OLLAMA = 'http://127.0.0.1:11434/api/chat';
-const MODELO = 'qwen2.5:14b';
+const MODELO = 'gemma4:26b-a4b-it-qat';   // MoE: no processador escreve ~3x mais rápido que o qwen2.5:14b
 const ASSINATURA = 'Agora você sabe. Dormir de novo é escolha sua.';
 const helpers = this.helpers;
 
@@ -111,7 +111,7 @@ async function ia(sistema, pedido, maxTok, temp) {
   const r = await helpers.httpRequest({
     method: 'POST', url: OLLAMA, json: true, timeout: 1200000,
     body: {
-      model: MODELO, stream: false, format: 'json',
+      model: MODELO, stream: false, think: false, format: 'json',
       options: { temperature: temp, num_ctx: 8192, num_predict: maxTok },
       messages: [{ role: 'system', content: sistema }, { role: 'user', content: pedido }],
     },
@@ -126,7 +126,6 @@ async function ia(sistema, pedido, maxTok, temp) {
 const SISTEMA = 'Você escreve para o W4K3 PR0T0C0L, transmissão ativista brasileira que denuncia, com nome e sobrenome, o que empresas e governos fazem com as pessoas. Português brasileiro falado, simples, que qualquer um entende de primeira. Nunca inventa fatos, números, nomes nem crimes. Nunca cita filmes, jogos ou livros. Responde SOMENTE com JSON válido.';
 
 // ---------- 1. dossiê ----------
-const fonteTxt = semAcento(news.title + ' ' + (news.summary || '') + ' ' + corpo).replace(/[^a-z0-9]+/g, ' ');
 const digitos = (t) => new Set((String(t).match(/\d[\d.,]*/g) || []).map((x) => x.replace(/[.,]+$/, '').replace(/[.,]/g, '')));
 const tiraZeros = (x) => x.replace(/0+$/, '');
 // frases da matéria, numeradas (o título e o resumo entram como as primeiras)
@@ -137,27 +136,35 @@ if (!dossie || !ajuste) {
 ${frasesMateria.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 ${direcao ? '\nDIRECIONAMENTO DO AUTOR (prioridade, se a notícia permitir): ' + direcao + '\n' : ''}
 1) Escolha as 6 frases que mais revoltam um leitor comum: pessoa de carne e osso, criança, dinheiro exato, número chocante, abuso, contradição, ameaça. Prefira cenas concretas a frases gerais. Copie o número da frase e TRADUZA para português simples, fiel, sem somar nem mudar nada, mantendo nomes e números.
+Ignore chamadas para outras matérias, propaganda e avisos do próprio site: só valem frases sobre o assunto do título.
 2) Diga quem tem o poder nessa história. Use SÓ as frases acima, nada de fora.
-{"frases": [{"n": 12, "pt": "tradução fiel"}],
+3) "denuncia": true SÓ se a notícia mostra alguém com poder prejudicando, vigiando, explorando, enganando ou tirando direito de pessoas. Lançamento de produto, teste, dica, promoção, resultado de empresa, curiosidade ou falha sem responsável: false. Na dúvida, false. Não force um culpado.
+{"denuncia": true ou false, "motivo": "até 12 palavras",
+ "frases": [{"n": 12, "pt": "tradução fiel"}],
  "alvo": "nome próprio, curto, da empresa, governo ou pessoa com mais PODER e responsabilidade (ex.: Meta, Amazon, Governo Trump)",
  "fez_o_que": "o que o alvo fez, concreto, até 15 palavras",
  "situacao": "fato" se a notícia dá como certo, "acusacao" se é processo, denúncia ou suspeita, "plano" se ainda vai acontecer,
  "promessa": "o que o alvo promete, anuncia ou usa de desculpa na notícia (vazio se não disser)",
  "vitima": "quem sofre, concreto (ex.: mães, entregadores, alunos)",
  "estrago": "o que muda no bolso, no corpo, na casa ou na rotina dessas pessoas"}`, 1000, 0.15);
-  const fatos = [], descartados = [];
+  const fatos = [], descartados = [], originais = [];
   for (const x of Array.isArray(r.frases) ? r.frases : []) {
     const orig = frasesMateria[Number(x && x.n) - 1], pt = limpo(x && x.pt);
     if (!orig || !pt) continue;
     const nums = digitos(orig);   // a tradução não pode ter número que a frase original não tem
     const ruim = [...digitos(pt)].some((d) => !nums.has(d) && ![...nums].some((y) => tiraZeros(y) === tiraZeros(d)));
-    if (ruim) descartados.push(pt); else fatos.push(pt);
+    if (ruim) descartados.push(pt); else { fatos.push(pt); originais.push(orig); }
   }
-  dossie = { ...r, frases: undefined, fatos, descartados, sem_prova: fatos.length < 2 };
+  // notícia sem denúncia não vira acusação: na pauta, passa para a próxima candidata
+  const semDenuncia = r.denuncia === false || /^(false|n[aã]o)$/i.test(String(r.denuncia));
+  if (semDenuncia && req.mode === 'pauta') throw new Error(`SEM DENÚNCIA: ${news.title} (${limpo(r.motivo)})`);
+  dossie = { ...r, frases: undefined, fatos, descartados, originais, sem_denuncia: semDenuncia, sem_prova: fatos.length < 2 };
   if (fatos.length < 2) dossie.fatos = [...fatos, ...frasesMateria.slice(0, 5)];
   dossie.alvo = limpo(r.alvo).split(/[,;(/]| e /)[0].trim().slice(0, 40);
 }
 const alvo = dossie.alvo || fonte;
+// crime só vale se estiver no título, no resumo ou nas frases escolhidas (a página traz chamadas de outras matérias)
+const fonteCrime = semAcento([news.title, news.summary, ...(dossie.originais || []), ...dossie.fatos].join(' ')).replace(/[^a-z0-9]+/g, ' ');
 const acusacaoAberta = /acus/i.test(dossie.situacao || '');
 
 // ---------- 2. batidas ----------
@@ -242,7 +249,7 @@ function checar(o) {
     for (const [re, prova] of CRIMES) {
       const m = b.match(re);
       if (!m) continue;
-      if (!prova.test(fonteTxt)) p.push(`"${k}" acusa de "${m[0]}", e a notícia não fala nisso: troque por um verbo que ela sustente`);
+      if (!prova.test(fonteCrime)) p.push(`"${k}" acusa de "${m[0]}", e a notícia não fala nisso: troque por um verbo que ela sustente`);
       else if (acusacaoAberta && k !== 'esperar' && !RESSALVA.test(t)) p.push(`"${k}": fala em "${m[0]}" como se fosse provado; diga que é acusação`);
     }
   }
@@ -365,7 +372,8 @@ const content = batidas.map((b) => `<p>${fortes.has(b.lado) ? '<strong>' + esc(b
 
 const avisos = [...fatosRuins.map((x) => 'CONFIRA ' + x), ...problemas];
 if (dossie.sem_prova) avisos.unshift('a IA não copiou os trechos que provam os fatos: leia a notícia antes de aprovar');
-const segurar = fatosRuins.length > 0 || dossie.sem_prova || acusacaoAberta || problemas.some((x) => /acusa de|não está na notícia|junta pedaços|não está nos fatos|provado|ficção/.test(x));
+if (dossie.sem_denuncia) avisos.unshift(`esta notícia não parece ter denúncia (${limpo(dossie.motivo)}): o texto pode estar forçando um culpado`);
+const segurar = !!dossie.sem_denuncia || fatosRuins.length > 0 || dossie.sem_prova || acusacaoAberta || problemas.some((x) => /acusa de|não está na notícia|junta pedaços|não está nos fatos|provado|ficção/.test(x));
 if (acusacaoAberta) avisos.push('a notícia trata de acusação ou processo, não de fato provado');
 
 const today = n.today;

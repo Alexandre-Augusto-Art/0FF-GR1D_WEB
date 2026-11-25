@@ -191,7 +191,8 @@ function New-Pauta([string]$topic, [switch]$another, [string]$direction = '') {
   # o direcionamento do tema só vale se a notícia for sobre ele (sem notícia do tema, a pauta é geral)
   if (-not $p.matched) { $direction = '' }
   $last = $null
-  foreach ($c in @($p.candidates | Select-Object -First 3)) {
+  # a escrita recusa notícia sem denúncia (lançamento, dica, promoção): tenta até 6 candidatas
+  foreach ($c in @($p.candidates | Select-Object -First 6)) {
     Write-Host "Candidata ($($c.score)): $($c.title) [$($c.source)]"
     try {
       # fallback: se a página tiver paywall ou bloquear robôs, a análise usa o texto que veio no RSS
@@ -255,6 +256,11 @@ function Push-Reflections([string]$message) {
 }
 
 # Publica um rascunho aprovado (recebe a data de hoje)
+# caminhos sem ninguém olhando: rascunho com alerta da checagem não sai
+function Assert-SemAlerta([string]$file) {
+  $d = Get-Content $file -Raw -Encoding UTF8 | ConvertFrom-Json
+  if ($d.reflection.segurar) { throw "Não publicado: a checagem deixou alertas ($(@($d.reflection.avisos) -join '; '))" }
+}
 function Publish-Draft([string]$file, [string]$message) {
   Wait-Internet
   Update-Clone
@@ -310,6 +316,7 @@ try {
   elseif ($Url) {
     Wait-Internet
     New-Draft ([pscustomobject]@{ url = $Url; direction = $Direction })
+    Assert-SemAlerta $Draft
     Publish-Draft $Draft 'W4K3 PR0T0C0L: reflexão a partir de link'
   }
   elseif (Test-Path $Pending) {
@@ -325,11 +332,15 @@ try {
     Wait-Internet
     Update-Clone
     if ((Test-HasToday) -and -not $Force) { Write-Host "Já existe reflexão de $(Today), nada a fazer (use -Force)."; return }
-    if (-not (New-PautaTema '')) { New-Pauta '' }
+    # tema da fila sem notícia que sirva: cai na pauta geral
+    $ok = $false
+    try { $ok = New-PautaTema '' } catch { Write-Host "O tema da fila não rendeu notícia: $_"; $script:TemaId = $null }
+    if (-not $ok) { New-Pauta '' }
     if (Test-Telegram) {
       Send-DailyDraft
     } else {
       Write-Host 'Telegram não configurado: publicando direto.'
+      Assert-SemAlerta $Draft
       Publish-Draft $Draft 'W4K3 PR0T0C0L: notícia do dia'
     }
   }

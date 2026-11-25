@@ -185,7 +185,7 @@ Transmissão ativista curta: o nome real de quem fez, o que fez e o que isso tir
 `node automation/n8n/build-link.js` copia para o fluxo) fala com o Ollama em etapas:
 
 ```
-1. dossiê     alvo, vítima, promessa, estrago e fatos; cada fato traz o TRECHO da matéria que o prova
+1. dossiê     há denúncia? (lançamento, dica e promoção são recusados e a pauta tenta a próxima) alvo, vítima, promessa, estrago e fatos; cada fato traz o TRECHO da matéria que o prova
               e o código confere se o trecho existe (fato sem trecho é descartado)
 2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → faca
               + escolha ("Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
@@ -201,12 +201,17 @@ Transmissão ativista curta: o nome real de quem fez, o que fez e o que isso tir
   site é a junção das batidas. `analise`, `avisos` e `denuncia.bruto` só existem no rascunho.
 - As 3 últimas denúncias publicadas vão no pedido só para o texto novo não repetir as frases delas.
 - Um tema vindo de reel não libera nomes nem números: só a matéria e o que você escrever liberam.
+- **Crime** só vale se estiver no título, no resumo ou nas frases escolhidas, porque a página traz chamadas
+  de outras matérias.
 - **Rede de segurança:** acusação em aberto sem "é acusado/investigado" é reescrita por código, e o
-  rascunho sai com `segurar: true` quando sobra alerta sério: aí o `-AutoPublish` das 12:00 não publica.
+  rascunho sai com `segurar: true` quando sobra alerta sério: aí o `-AutoPublish` das 12:00 não publica e
+  o bot mostra os alertas e exige uma segunda confirmação (só pelo botão) antes de publicar ou agendar.
 - **A aprovação é sua:** a checagem reduz o erro, não garante. Empresa real + acusação errada = processo.
   Leia os avisos e a matéria antes de publicar.
 - Num ajuste, o dossiê é reaproveitado.
-- No CPU leva de 10 a 20 minutos. Por isso o `run-w4k3.ps1` sobe o limite do nó de código do n8n
+- **Modelo:** `gemma4:26b-a4b-it-qat` (2026-11-25). No teste com as mesmas notícias escreveu a ~11 tokens/s
+  (o `qwen2.5:14b` fez ~3,5) e recusou uma notícia sem denúncia que o Qwen transformou em acusação.
+- No CPU leva de 4 a 8 minutos. Por isso o `run-w4k3.ps1` sobe o limite do nó de código do n8n
   (`N8N_RUNNERS_TASK_TIMEOUT=2400`).
 - Com a 3090: trocar `MODELO` no nó por um de ~30B melhora o tom e a fidelidade aos fatos.
 

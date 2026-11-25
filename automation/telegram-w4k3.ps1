@@ -83,6 +83,8 @@ $BtnReview  = @(@(@{ text = '✅ Aprovar'; callback_data = 'approve' }, @{ text 
 $BtnDaily   = @(@(@{ text = '✅ Publicar agora'; callback_data = 'now' }, @{ text = '✏️ Sugerir mudanças'; callback_data = 'suggest' }),
                 @(@{ text = '🔄 Outra notícia'; callback_data = 'pauta_new' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }))
 $SuggestHelp = "✏️ Escreva aqui o que você quer mudar, do jeito que falaria com uma pessoa. Exemplos:`n• mais curto / mais direto`n• mais pesado na acusação`n• foque nos trabalhadores, não na empresa`n• troque o título`n• tom mais irônico`n`nEu reescrevo e te mando a nova versão para aprovar."
+# o botão de confirmar leva a marca do rascunho: um botão antigo não publica um rascunho novo
+function Draft-Marca { return (Get-FileHash $Draft -Algorithm SHA1).Hash.Substring(0, 10).ToLower() }
 $BtnPublish = @(, @(@{ text = '🚀 Publicar agora'; callback_data = 'now' }, @{ text = '⏰ No horário padrão (09:00)'; callback_data = 'at9' }))
 
 function Next9h {
@@ -125,6 +127,7 @@ function Show-Draft([switch]$daily) {
   $body = [System.Net.WebUtility]::HtmlDecode($body).Trim()
   $words = ($body -split '\s+').Count
   $head = if ($daily) { '📰 NOTÍCIA DO DIA (rascunho)' } else { '📝 RASCUNHO' }
+  if ($d.reflection.segurar) { $head = "🔴 COM ALERTA: confira a matéria antes de publicar`n$head" }
   $refs = @($d.tags | Where-Object { $_ -notin 'reflexão', 'notícia', 'antisistema', 'crítica', 'notícia-do-dia', 'link-enviado' })
   $msg = "{0}`n`n{1}`n`n{2}`n`n— notícia base: {3} ({4})`n{5}" -f $head, $d.reflection.title, $body, $d.news.title, $d.news.source, $d.news.link
   if ($refs.Count -and -not $d.reflection.denuncia) { $msg += "`n— referências: $($refs -join ', ')" }
@@ -228,6 +231,27 @@ function Make-Pauta([string]$topic, [switch]$another, [string]$tema) {
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
     Send "Não consegui montar a notícia do dia. $($r.err)`nTente de novo: /noticia"
   }
+}
+
+# Rascunho com alerta sério: mostra os alertas e só segue com a segunda confirmação
+# ($proximo: 'now' publica agora, 'at9' agenda). Devolve $true se segurou.
+function Stop-ForAlerta($state, [string]$proximo) {
+  if (-not (Test-Path $Draft)) { return $false }
+  $d = Get-Content $Draft -Raw -Encoding UTF8 | ConvertFrom-Json
+  if (-not $d.reflection.segurar) { return $false }
+  $state.stage = 'alerta'
+  $state | Add-Member -NotePropertyName proximo -NotePropertyValue $proximo -Force
+  Save-State $state
+  $av = @($d.reflection.avisos | Where-Object { $_ } | ForEach-Object { "• $_" }) -join "`n"
+  Send "🔴 AINDA NÃO PUBLIQUEI. A checagem encontrou:`n`n$av`n`nTítulo: $($d.reflection.title)`nMatéria: $($d.news.link)`n`nAbra a matéria e confira. Uma acusação errada contra empresa ou pessoa real pode virar processo. Para publicar assim mesmo, toque no botão abaixo; para mudar, escreva o ajuste." @(@(@{ text = '✏️ Corrigir'; callback_data = 'suggest' }, @{ text = '🗑 Descartar'; callback_data = 'cancel' }),
+    @(, @{ text = '⚠️ Conferi a matéria, publicar'; callback_data = "alert_yes_$(Draft-Marca)" }))
+  return $true
+}
+function Set-At9 {
+  Copy-Item $Draft $Pending -Force
+  Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
+  Remove-Item $Draft -ErrorAction SilentlyContinue
+  Send "⏰ Agendado para $((Next9h).ToString('dd/MM')) às 09:00. Ele entra no lugar da reflexão automática desse dia. Eu aviso quando publicar."
 }
 
 function Publish-Now($state) {
@@ -387,7 +411,7 @@ function Handle([string]$text, [string]$action) {
   switch ($state.stage) {
     'review' {
       if ($state.daily -and ($action -eq 'now' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍', 'publicar', 'publica', 'agora')) {
-        Publish-Now $state
+        if (-not (Stop-ForAlerta $state 'now')) { Publish-Now $state }
       } elseif ($action -eq 'approve' -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍') {
         $state.stage = 'confirm'; Save-State $state
         Send 'Aprovado. Quando publico?' $BtnPublish
@@ -403,14 +427,26 @@ function Handle([string]$text, [string]$action) {
     }
     'confirm' {
       if ($action -eq 'now' -or $low -in 'agora', 'publicar', 'publica', 'publicar agora') {
-        Publish-Now $state
+        if (-not (Stop-ForAlerta $state 'now')) { Publish-Now $state }
       } elseif ($action -eq 'at9' -or $low -in '9h', '09h', '9', 'depois', 'horario padrao', 'horário padrão') {
-        Copy-Item $Draft $Pending -Force
-        Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
-        Remove-Item $Draft -ErrorAction SilentlyContinue
-        Send "⏰ Agendado para $((Next9h).ToString('dd/MM')) às 09:00. Ele entra no lugar da reflexão automática desse dia. Eu aviso quando publicar."
+        if (-not (Stop-ForAlerta $state 'at9')) { Set-At9 }
       } elseif (-not $action) {
         # Ainda dá para ajustar nesta etapa
+        $state.stage = 'review'; Save-State $state
+        Send "Ajustando com base no que você pediu (uns 5 minutos)..."
+        Make-Draft $state $t
+      }
+    }
+    'alerta' {
+      # só o botão confirma: "ok", "sim" e "publicar" digitados voltam a mostrar o alerta
+      if ($action -and (Test-Path $Draft) -and $action -eq "alert_yes_$(Draft-Marca)") {
+        if ($state.proximo -eq 'at9') { Set-At9 } else { Publish-Now $state }
+      } elseif ($action -eq 'suggest') {
+        $state.stage = 'review'; Save-State $state
+        Send $SuggestHelp $(if ($state.daily) { $BtnDaily } else { $BtnReview })
+      } elseif ($action -or $low -in 'ok', 'aprovar', 'aprovado', 'aprova', 'pode', 'sim', '👍', 'publicar', 'publica', 'agora', 'publicar agora', '9h', '09h') {
+        Stop-ForAlerta $state $(if ($state.proximo) { $state.proximo } else { 'now' }) | Out-Null
+      } else {
         $state.stage = 'review'; Save-State $state
         Send "Ajustando com base no que você pediu (uns 5 minutos)..."
         Make-Draft $state $t
