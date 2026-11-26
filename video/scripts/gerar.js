@@ -173,65 +173,6 @@ function fazerPlanos(segmentos, palavras, d, nImagens) {
 // número "aleatório" fixo (o mesmo vídeo sempre sai igual)
 function rnd(n) { let t = (Math.floor(n) * 2654435761) >>> 0; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }
 
-// ---------- ilustrações geradas no PC (SD-Turbo): uma por batida forte, sempre no mesmo estilo ----------
-const PYIMG = path.join(BASE, 'imagem', 'venv', 'Scripts', 'python.exe');
-const OLLAMA = process.env.W4K3_OLLAMA || 'http://127.0.0.1:11434';
-const MODELO_TEXTO = process.env.W4K3_MODELO || 'gemma4:26b-a4b-it-qat';
-// assunto de reserva (quando o modelo de texto não responde), pelo tema da batida
-const RESERVA = {
-  hospital: 'an empty hospital bed in a dark corridor', escola: 'empty school desks in a dark classroom', fabrica: 'workers on an endless factory conveyor belt',
-  servidor: 'endless rows of server racks in a dark data center', robo: 'a giant robot head looming over tiny people', algemas: 'handcuffs on a table under a lamp',
-  balanca: 'scales of justice tilting toward a pile of money', predio: 'a giant corporate skyscraper over tiny houses', grafico: 'a falling chart line over a crowd',
-  radar: 'a radar screen tracking small human figures', terminal: 'a hooded hacker typing in front of glowing screens', cadeado: 'a broken padlock spilling documents',
-  casa: 'a small house with an eviction notice on the door', planeta: 'smoke stacks covering the earth in dark smoke', carteira: 'an empty open wallet on a table',
-  familia: 'a worried family sitting at a kitchen table at night', olhocelular: 'a giant smartphone with an eye watching a person', contrato: 'a giant contract crushing a tiny person',
-  fantoche: 'a giant hand holding puppet strings over a crowd', dinheiro: 'piles of money in a dark vault', leilao: 'a person standing on an auction block',
-  vigilancia: 'surveillance cameras on every wall watching a lonely person', janelas: 'a person drowning in pop-up windows', lapide: 'a lonely grave in a dark field',
-};
-function http(url, corpo, ms) {
-  return new Promise((ok, ko) => {
-    const u = new URL(url), mod = require(u.protocol === 'https:' ? 'https' : 'http');
-    const r = mod.request(u, { method: 'POST', headers: { 'content-type': 'application/json' }, timeout: ms }, (s) => { let t = ''; s.setEncoding('utf8'); s.on('data', (x) => { t += x; }); s.on('end', () => { try { ok(JSON.parse(t)); } catch (e) { ko(e); } }); });
-    r.on('timeout', () => r.destroy(new Error('tempo esgotado'))); r.on('error', ko); r.end(JSON.stringify(corpo));
-  });
-}
-// nomes de gente e de empresa nunca vão para o gerador de imagem (não desenhar pessoa real nem marca)
-function semNomes(txt, d) {
-  const proibidas = new Set();
-  const fontes = [d.reflection.title, d.reflection.denuncia && d.reflection.denuncia.alvo, d.news && d.news.source, ...(d.reflection.beats || []).map((b) => b.fala)].join(' ');
-  for (const m of fontes.matchAll(/\p{Lu}[\p{L}'-]+/gu)) proibidas.add(sa(m[0]));   // o pedido é em inglês: palavra com maiúscula do texto em português é nome
-  return String(txt).split(/\s+/).filter((w) => !proibidas.has(sa(w.replace(/[^\p{L}'-]/gu, ''))) && !/^\p{Lu}\p{L}*\p{Lu}/u.test(w)).join(' ');
-}
-async function ilustrar(d, alvo) {
-  if (!fs.existsSync(PYIMG) || !fs.existsSync(path.join(BASE, 'imagem', 'sd-turbo', 'model_index.json'))) return [];
-  let pedidos = null;
-  try {
-    const t0 = Date.now();
-    const r = await http(OLLAMA + '/api/chat', {
-      model: MODELO_TEXTO, stream: false, think: false, format: 'json', options: { temperature: 0.4 }, keep_alive: '2m',
-      messages: [{ role: 'system', content: 'You write short prompts for a black and white illustration generator.' }, { role: 'user', content:
-        'For each sentence below write ONE concrete visual scene in English (8 to 14 words) that shows what it means for ordinary people: ' +
-        'objects, places, anonymous people, symbolic metaphors. Never use names of people, companies, brands, countries or logos. No text in the image.\n' +
-        alvo.map((s, i) => `${i + 1}. ${s.fala}`).join('\n') + '\nAnswer JSON: {"cenas": ["...", ...]} with exactly ' + alvo.length + ' items.' }],
-    }, 180000);
-    const l = JSON.parse(r.message.content).cenas;
-    if (Array.isArray(l) && l.length) pedidos = l.slice(0, alvo.length).map((x) => semNomes(x, d)).filter((x) => x.split(' ').length >= 4);
-    log(`ilustrações: pedidos escritos em ${Math.round((Date.now() - t0) / 1000)} s`);
-  } catch (e) { log('ilustrações: modelo de texto não respondeu, uso os assuntos de reserva (' + e.message + ')'); }
-  if (!pedidos || !pedidos.length) pedidos = alvo.map((s) => RESERVA[temasDe(s.fala)[0]] || RESERVA[GERAIS[(s.k || 0) % GERAIS.length]]);
-  pedidos = pedidos.map((x) => x + ', anonymous faceless figures');
-  const pj = path.join(JOB, 'imagens.json'), pasta = path.join(PROJ, 'public', 'job', 'img');
-  fs.rmSync(pasta, { recursive: true, force: true });
-  fs.writeFileSync(pj, JSON.stringify(pedidos));
-  try {
-    const t0 = Date.now();
-    const out = run(PYIMG, [path.join(__dirname, 'imagens.py'), pj, pasta], { stdio: ['ignore', 'pipe', 'pipe'], timeout: 10 * 60000, env: { ...process.env, PYTHONIOENCODING: 'utf-8' } });
-    const fs2 = JSON.parse(out.toString().trim().split('\n').pop());
-    log(`ilustrações: ${fs2.length} em ${Math.round((Date.now() - t0) / 1000)} s: ${pedidos.join(' | ')}`);
-    return fs2.map((f) => 'job/img/' + f);
-  } catch (e) { log('ilustrações falharam, o vídeo sai só com as cenas desenhadas: ' + String(e.stderr || '').slice(-300) + e.message.slice(0, 200)); return []; }
-}
-
 // uma frase por arquivo: f00.wav, f01.wav... Devolve { sr, falas: [{ dur, palavras }] }
 function narrar(frases, wavs) {
   const fjson = path.join(JOB, 'frases.json');
@@ -344,11 +285,8 @@ async function main() {
   segmentos.forEach((g, i) => { g.fim = i + 1 < segmentos.length ? segmentos[i + 1].ini : Math.round(fimFala * FPS); });
 
   segmentos.forEach((s, i) => { s.k = i; });
-  // primeiro os cortes; depois só as ilustrações que entraram, cada uma desenhada a partir da fala do seu trecho
-  const planos = fazerPlanos(segmentos, palavras, d, beats ? 5 : 0);
-  const ilus = planos.filter((p) => p.cena === 'ilustracao');
-  const imagens = ilus.length ? await ilustrar(d, ilus.map((p) => segmentos[p.seg])) : [];
-  ilus.forEach((p, i) => { if (i < imagens.length) p.img = i; else p.cena = 'mascara'; });
+  const planos = fazerPlanos(segmentos, palavras, d, 0);
+  const imagens = [];   // ilustrações prontas (props.imagens + plano.img); hoje nenhuma
   const props = {
     fps: FPS, duracao: nq, audio: 'job/voz.wav', imagens, vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos, planos,
     titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '',
