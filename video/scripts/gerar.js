@@ -146,6 +146,7 @@ function fazerPlanos(segmentos, palavras, d, nImagens) {
       case 'promessa': return [V, V, 'mascara', V];
       case 'prova': return temNumero(s) ? [V, 'numero', ilu(s), 'numero', tema(s)] : [V, ilu(s), 'mascara', tema(s)];
       case 'rosto': return [ilu(s), 'mascara', tema(s), s.cena && s.cena !== 'multidao' ? s.cena : tema(s), tema(s)];
+      case 'leitura': return ['mascara', tema(s), 'mascara', ilu(s), 'mascara'];   // o manifesto: a personagem fala direto com você
       case 'faca': return [V, jaz ? 'lapide' : ilu(s), V, V];
       case 'escolha': return ['mascara', V, V, 'mascara', V];
       case 'assinatura': return ['assinatura', 'assinatura'];

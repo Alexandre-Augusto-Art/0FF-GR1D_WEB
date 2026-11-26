@@ -4,7 +4,7 @@ import { COR, T, rnd, clamp, tela, mono, grossa, bloco, carimbo, derrete, blocos
 import { CENAS, ANTIGAS, SEM_LEGENDA, SEM_FAIXA, cenaFinal } from './cenas';
 
 // uma cor de destaque por batida; o resto do quadro é preto e branco
-const COR_DO_LADO = { chamado: COR.cyan, acusacao: COR.magenta, promessa: COR.cyan, prova: COR.lime, rosto: COR.magenta, faca: COR.magenta, escolha: COR.lime, assinatura: COR.lime };
+const COR_DO_LADO = { chamado: COR.cyan, acusacao: COR.magenta, promessa: COR.cyan, prova: COR.lime, rosto: COR.magenta, leitura: COR.cyan, faca: COR.magenta, escolha: COR.lime, assinatura: COR.lime };
 const RODIZIO = [COR.magenta, COR.cyan, COR.lime];
 
 function grupos(palavras, max) {

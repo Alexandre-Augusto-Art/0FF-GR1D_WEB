@@ -188,14 +188,20 @@ DedSec em Watch Dogs 2): abre com uma chamada fixa sorteada ("Interrompemos a su
 vendido") e "Hora de acordar." antes da escolha. É **teoria da conspiração na forma, nunca no conteúdo**:
 o código barra "não é coincidência", "querem te controlar", "nova ordem", "elite global" e insinuação
 de segredo, acobertamento ou combinação que a matéria não sustente (lista `INSINUA`), e a segunda
-leitura conta como erro ligar dois fatos como causa e efeito quando a matéria não liga. O nó
+leitura conta como erro ligar dois fatos como causa e efeito quando a matéria não liga.
+
+O texto é um **manifesto, não divulgação de notícia**: a batida `leitura` (entre o rosto e a faca) diz o
+que os fatos significam, como opinião do W4K3 ("Para nós,", "Na prática,", "Sejamos claros:"), e quem
+fornece os meios responde pelo fim (ex.: "quem fornece a inteligência para o ataque também é
+responsável pela morte"). A conclusão pode ser dura, mas parte dos fatos da matéria: não traz lugar,
+vítima, número ou ataque que ela não tenha (a segunda leitura confere isso). O nó
 `Escrever (denúncia)` (fonte editável em `automation/n8n/code/escrever-denuncia.js`;
 `node automation/n8n/build-link.js` copia para o fluxo) fala com o Ollama em etapas:
 
 ```
 1. dossiê     há denúncia? (lançamento, dica e promoção são recusados e a pauta tenta a próxima) alvo, vítima, promessa, estrago e fatos; cada fato traz o TRECHO da matéria que o prova
               e o código confere se o trecho existe (fato sem trecho é descartado)
-2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → faca
+2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → leitura → faca
               + escolha ("Hora de acordar. Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
               + assinatura fixa ("Agora você sabe. Dormir de novo é escolha sua.")
 3. checagem   por código: números, nomes próprios, fonte, alvo citado, frases longas, jargão, ficção,
@@ -205,6 +211,9 @@ leitura conta como erro ligar dois fatos como causa e efeito quando a matéria n
               (até 2 reescritas; o que sobrar aparece como aviso no Telegram)
 ```
 
+- Ação final: a Lei de Acesso à Informação só vale para órgão público brasileiro (`PUBLICO_BR`); contra
+  empresa estrangeira vira "descobrir quem compra dessa empresa e cobrar em público" (`cumplices`).
+- Título: palavra vaga (caos, polêmica, problema, crise) é barrada; pede o detalhe mais concreto.
 - A entrada guarda `reflection.beats` e `reflection.denuncia` (alvo, situação, vítima, jaz); o texto do
   site é a junção das batidas. `analise`, `avisos` e `denuncia.bruto` só existem no rascunho.
 - As 3 últimas denúncias publicadas vão no pedido só para o texto novo não repetir as frases delas.

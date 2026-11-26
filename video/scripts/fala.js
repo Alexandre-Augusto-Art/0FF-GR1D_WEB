@@ -83,10 +83,10 @@ function falar(txt) {
 const juntarOu = (fala) => String(fala).replace(/[.!]\s+Ou\s+(?=d[áa]\s+(?:para|pra)\b)/g, ', ou ');
 
 // silêncio (s) depois da última frase de cada batida e tom (0 = frio, 1 = exaltado)
-const PAUSA = { abertura: 0.6, chamado: 0.5, acusacao: 0.6, promessa: 0.4, prova: 0.45, rosto: 0.5, faca: 0.6, escolha: 0.75, assinatura: 0.3 };
-const TOM = { abertura: 0.75, chamado: 0.6, acusacao: 0.9, promessa: 0.35, prova: 0.5, rosto: 0.55, faca: 0.85, escolha: 0.6, assinatura: 0.5 };
+const PAUSA = { abertura: 0.6, chamado: 0.5, acusacao: 0.6, promessa: 0.4, prova: 0.45, rosto: 0.5, leitura: 0.6, faca: 0.6, escolha: 0.75, assinatura: 0.3 };
+const TOM = { abertura: 0.75, chamado: 0.6, acusacao: 0.9, promessa: 0.35, prova: 0.5, rosto: 0.55, leitura: 0.9, faca: 0.85, escolha: 0.6, assinatura: 0.5 };
 // velocidade de cada trecho (1 = normal)
-const RITMO = { abertura: 1, chamado: 1.02, acusacao: 1.04, promessa: 1, prova: 1.02, rosto: 0.97, faca: 0.95, escolha: 1.02, assinatura: 0.93 };
+const RITMO = { abertura: 1, chamado: 1.02, acusacao: 1.04, promessa: 1, prova: 1.02, rosto: 0.97, leitura: 0.96, faca: 0.95, escolha: 1.02, assinatura: 0.93 };
 
 // tempo de cada palavra mostrada, a partir das palavras que o Whisper ouviu: as iguais são âncoras,
 // as outras ("R$ 500" x "quinhentos reais") se espalham entre elas pelo tamanho
