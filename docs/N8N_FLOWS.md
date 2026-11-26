@@ -180,16 +180,30 @@ run-w4k3.ps1 (09:00, ou o bot com /noticia)
 ### Formato "denúncia" (desde 2026-11-25; antes era o "espelho direto", com ficção)
 
 Transmissão ativista curta: o nome real de quem fez, o que fez e o que isso tira de quem assiste. Tom
-ácido e de manchete; **o exagero fica no tom, nunca no fato**. Nada de ficção. O nó
+ácido e de manchete; **o exagero fica no tom, nunca no fato**. Nada de ficção.
+
+Desde 2026-11-26 o tom é de **transmissão clandestina que revela um esquema** (estudado na mensagem do
+DedSec em Watch Dogs 2): abre com uma chamada fixa sorteada ("Interrompemos a sua programação.",
+"Atenção, cidadãos conectados."...), fala de "eles" contra "você", ironia amarga ("você paga para ser
+vendido") e "Hora de acordar." antes da escolha. É **teoria da conspiração na forma, nunca no conteúdo**:
+o código barra "não é coincidência", "querem te controlar", "nova ordem", "elite global" e insinuação
+de segredo, acobertamento ou combinação que a matéria não sustente (lista `INSINUA`), e a segunda
+leitura conta como erro ligar dois fatos como causa e efeito quando a matéria não liga.
+
+O texto é um **manifesto, não divulgação de notícia**: a batida `leitura` (entre o rosto e a faca) diz o
+que os fatos significam, como opinião do W4K3 ("Para nós,", "Na prática,", "Sejamos claros:"), e quem
+fornece os meios responde pelo fim (ex.: "quem fornece a inteligência para o ataque também é
+responsável pela morte"). A conclusão pode ser dura, mas parte dos fatos da matéria: não traz lugar,
+vítima, número ou ataque que ela não tenha (a segunda leitura confere isso). O nó
 `Escrever (denúncia)` (fonte editável em `automation/n8n/code/escrever-denuncia.js`;
 `node automation/n8n/build-link.js` copia para o fluxo) fala com o Ollama em etapas:
 
 ```
 1. dossiê     há denúncia? (lançamento, dica e promoção são recusados e a pauta tenta a próxima) alvo, vítima, promessa, estrago e fatos; cada fato traz o TRECHO da matéria que o prova
               e o código confere se o trecho existe (fato sem trecho é descartado)
-2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → faca
-              + escolha ("Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
-              + assinatura fixa ("Agora você sabe. Dormir de novo é escolha sua.")
+2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → leitura → faca
+              + escolha ("Hora de acordar. Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
+              + assinatura fixa ("Agora você sabe a verdade. Resistir é sua única opção.")
 3. checagem   por código: números, nomes próprios, fonte, alvo citado, frases longas, jargão, ficção,
               frases copiadas dos exemplos ou das 3 últimas edições, e CRIME (roubo, fraude, mentira,
               espionagem...) só se a matéria disser; acusação em aberto precisa dizer que é acusação
@@ -197,6 +211,9 @@ Transmissão ativista curta: o nome real de quem fez, o que fez e o que isso tir
               (até 2 reescritas; o que sobrar aparece como aviso no Telegram)
 ```
 
+- Ação final: a Lei de Acesso à Informação só vale para órgão público brasileiro (`PUBLICO_BR`); contra
+  empresa estrangeira vira "descobrir quem compra dessa empresa e cobrar em público" (`cumplices`).
+- Título: palavra vaga (caos, polêmica, problema, crise) é barrada; pede o detalhe mais concreto.
 - A entrada guarda `reflection.beats` e `reflection.denuncia` (alvo, situação, vítima, jaz); o texto do
   site é a junção das batidas. `analise`, `avisos` e `denuncia.bruto` só existem no rascunho.
 - As 3 últimas denúncias publicadas vão no pedido só para o texto novo não repetir as frases delas.
@@ -244,6 +261,8 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
            - o que saiu nos 2 últimos vídeos vai para o fim da fila (videos/historico-cenas.json)
        → uma cor de destaque por batida, o resto em preto e branco pontilhado
        → Remotion (src/desenho.js monta o quadro; src/cenas.js tem as cenas; src/base.js os efeitos)
+       → fim: logo e depois a tela FONTES (veículo, título da matéria, data e site) com o crédito dos
+         ícones, ~5 s a mais
        → vertical 1080x1920 (tela cheia, faixa ALVO/FONTE, legenda pequena) → sendVideo
        → horizontal 1280x720 (fica só em %USERPROFILE%\.w4k3\videos)
 ```

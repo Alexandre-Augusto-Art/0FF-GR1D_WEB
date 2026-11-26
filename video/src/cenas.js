@@ -391,18 +391,43 @@ function assinatura(p) {
   if (p.bp < 0.45) { aneis(p, '#5a5a5a'); mascarado(p, p.cx, p.cy + (T.v ? 260 : 130), (T.v ? 1500 : 800) * (1 + p.bp * 0.3), { cor: COR.lime }); } else logo(p, suave(p.lf / 6));
 }
 export function cenaFinal(p) {
-  logo(p);
-  const ctx = p.ctx; ctx.font = mono(T.v ? 32 : 20); ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  const y0 = T.v ? T.H - 420 : T.H - 82, linhas = [].concat(p.P.creditos || []);
-  ctx.fillStyle = '#000'; ctx.globalAlpha = 0.8; ctx.fillRect(0, y0 - (T.v ? 34 : 20), T.W, (T.v ? 68 : 40) + linhas.length * (T.v ? 34 : 21)); ctx.globalAlpha = 1; ctx.fillStyle = '#8a8a8a';
-  if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, y0);
-  // crédito obrigatório dos ícones (CC BY 3.0)
-  linhas.forEach((l, i) => {
-    let px = T.v ? 24 : 15; ctx.font = mono(px);
-    while (ctx.measureText(l).width > T.W * 0.9 && px > 10) ctx.font = mono(--px);
-    ctx.fillStyle = '#7a7a7a'; ctx.fillText(l, p.cx, y0 + (T.v ? 46 : 26) + i * px * 1.4);
+  const P = p.P, fontes = P.fontes || [], creditos = [].concat(P.creditos || []);
+  if (!fontes.length || p.lf < (P.logo || 96)) {
+    logo(p);
+    const ctx = p.ctx; ctx.font = mono(T.v ? 32 : 20); ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    if (P.fonte && !fontes.length) ctx.fillText('fonte: ' + P.fonte, p.cx, T.v ? T.H - 420 : T.H - 82);
+    ctx.textAlign = 'left';
+    return;
+  }
+  creditosFinais(p, fontes, creditos, p.lf - (P.logo || 96));
+}
+// tela de créditos: as fontes de cada fato, para quem quiser conferir, e o crédito dos ícones
+function creditosFinais(p, fontes, creditos, lf) {
+  const ctx = p.ctx, v = T.v, m = T.W * 0.08, larg = T.W - m * 2;
+  cheio(p, '#030303'); binario(p, 30);
+  ctx.fillStyle = 'rgba(0,0,0,0.75)'; ctx.fillRect(0, 0, T.W, T.H);
+  let y = v ? T.H * 0.2 : T.H * 0.12;
+  carimbo(ctx, 'FONTES', m, y, COR.lime, lf * 2, v ? 64 : 40, false);
+  y += v ? 140 : 80;
+  fontes.forEach((f, i) => {
+    const ent = clamp((lf - 4 - i * 6) / 8); if (ent <= 0) return;
+    ctx.globalAlpha = ent; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.font = grossa(v ? 64 : 40); ctx.fillStyle = COR.branco; ctx.fillText(String(f.veiculo || '').toUpperCase(), m, y, larg);
+    y += v ? 86 : 52;
+    ctx.font = mono(v ? 34 : 21); ctx.fillStyle = '#bdbdbd';
+    for (const l of quebra(ctx, '"' + f.titulo + '"', larg).slice(0, 4)) { ctx.fillText(l, m, y); y += v ? 46 : 28; }
+    ctx.fillStyle = COR.lime; ctx.fillText([f.data, f.site].filter(Boolean).join('  ·  '), m, y + (v ? 10 : 6));
+    y += v ? 110 : 64;
+    ctx.globalAlpha = 1;
   });
-  ctx.textAlign = 'left';
+  const ent = clamp((lf - 16) / 10);
+  if (ent > 0 && creditos.length) {
+    ctx.globalAlpha = ent; ctx.fillStyle = '#7a7a7a'; ctx.fillRect(m, y, larg * 0.3, 3); y += v ? 30 : 18;
+    for (const l of creditos) { let px = v ? 28 : 17; ctx.font = mono(px); while (ctx.measureText(l).width > larg && px > 10) ctx.font = mono(--px); ctx.fillText(l, m, y); y += px * 1.5; }
+    ctx.globalAlpha = 1;
+  }
+  ctx.font = mono(v ? 30 : 18); ctx.fillStyle = '#5a5a5a'; ctx.textBaseline = 'bottom'; ctx.fillText('confira você mesmo. // W4K3 PR0T0C0L', m, T.H - (v ? 300 : 30));
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
 }
 
 export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao, ...NOVAS };

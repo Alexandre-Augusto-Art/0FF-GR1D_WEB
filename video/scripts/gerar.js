@@ -23,7 +23,7 @@ const SAIDA = process.env.W4K3_VIDEO_SAIDA || BASE;   // testes usam outra pasta
 const JOB = path.join(SAIDA, 'video-job');
 const VIDEOS = path.join(SAIDA, 'videos');
 const PIDFILE = path.join(SAIDA, 'video.pid');
-const FPS = 30, FINAL = 3.2, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.12;
+const FPS = 30, FINAL = 3.2, CREDITOS = 5, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.12;
 const TOM_VOZ = 0.95;   // o efeito abaixa um pouco o tom (0.86 deixava a voz feminina quase masculina)
 
 const args = process.argv.slice(2);
@@ -87,7 +87,7 @@ const TEMAS = [
   [/dados|servidor|nuvem|data ?center|algoritm|armazen|vazament/, ['servidor', 'cadeado', 'olhocelular']],
   [/inteligencia artificial|\bia\b|robo|automa|chatbot|modelo de linguagem|openai|gpt/, ['robo', 'servidor']],
   // algemas só para quem já foi preso ou condenado: investigação e denúncia ainda não são culpa
-  [/pres[oa]s?|prend|pris[aã]o|condenad|algema/, ['algemas', 'balanca']],
+  [/\bpres[oa]s?\b|\bprend|pris[aã]o|condenad|algema/, ['algemas', 'balanca']],
   [/policia|investig|crime|criminos|denunci|process|fraude|corrup|acusad/, ['balanca', 'vigilancia', 'documento']],
   [/justica|tribunal|juiz|lei\b|multa|stf|supremo|regula|congresso|senado|camara/, ['balanca', 'fantoche']],
   [/empresa|corpora|big tech|bilionari|ceo|acionist|monopol|gigante/, ['predio', 'dinheiro', 'grafico']],
@@ -146,6 +146,7 @@ function fazerPlanos(segmentos, palavras, d, nImagens) {
       case 'promessa': return [V, V, 'mascara', V];
       case 'prova': return temNumero(s) ? [V, 'numero', ilu(s), 'numero', tema(s)] : [V, ilu(s), 'mascara', tema(s)];
       case 'rosto': return [ilu(s), 'mascara', tema(s), s.cena && s.cena !== 'multidao' ? s.cena : tema(s), tema(s)];
+      case 'leitura': return ['mascara', tema(s), 'mascara', ilu(s), 'mascara'];   // o manifesto: a personagem fala direto com você
       case 'faca': return [V, jaz ? 'lapide' : ilu(s), V, V];
       case 'escolha': return ['mascara', V, V, 'mascara', V];
       case 'assinatura': return ['assinatura', 'assinatura'];
@@ -196,6 +197,16 @@ function narrar(frases, wavs) {
   return { sr: JSON.parse(fs.readFileSync(MODELO + '.json', 'utf8')).audio.sample_rate, falas: dur.map((d) => ({ dur: d, palavras: [] })) };
 }
 
+// créditos: a matéria que sustenta cada fato (veículo, título, data e site), para quem quiser conferir
+function fontesDe(d) {
+  if (!d.news || !d.news.title) return [];
+  let site = '', data = '';
+  try { site = new URL(d.news.link).hostname.replace(/^www\./, ''); } catch {}
+  const dt = new Date(d.news.publishedDate || d.date);
+  if (!isNaN(dt)) data = dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'America/Sao_Paulo' });
+  return [{ veiculo: String(d.news.source || site).replace(/\s*\(.*\)\s*$/, ''), titulo: d.news.title, data, site }];
+}
+
 async function main() {
   if (!draftPath || !fs.existsSync(draftPath)) throw new Error('rascunho não encontrado: ' + draftPath);
   fs.mkdirSync(JOB, { recursive: true }); fs.mkdirSync(VIDEOS, { recursive: true });
@@ -231,7 +242,7 @@ async function main() {
     }
     f.ini = t; f.fim = t + falas[i].dur / f.ritmo; t = f.fim;
   });
-  const fimFala = t + 0.4, total = fimFala + FINAL;
+  const fimFala = t + 0.4, total = fimFala + FINAL + (d.news && d.news.title ? CREDITOS : 0);   // logo e depois as fontes
 
   // 2) junta as frases e aplica o efeito "hacker" (mais grave sem mudar a duração, crush, flanger, rádio, eco)
   const pub = path.join(PROJ, 'public', 'job');
@@ -300,7 +311,7 @@ async function main() {
   const creditos = ic.autores.length ? ['ícones: game-icons.net · CC BY 3.0', 'por ' + ic.autores.map(nomeAutor).join(', ')] : [];
   const props = {
     fps: FPS, duracao: nq, audio: 'job/voz.wav', imagens, icones: ic.icones, creditos, vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos, planos,
-    titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '',
+    titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '', fontes: fontesDe(d), logo: Math.round(FINAL * FPS),
     final: Math.round(fimFala * FPS), alvo: (d.reflection.denuncia && d.reflection.denuncia.alvo) || '', jaz: (d.reflection.denuncia && d.reflection.denuncia.jaz) || '',
   };
   const propsPath = opt('--so-props') || path.join(JOB, 'props.json');
