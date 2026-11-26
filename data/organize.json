@@ -1,185 +1,185 @@
 {
- "updatedAt": "2026-11-26T01:57:51.339Z",
+ "updatedAt": "2026-11-26T19:00:49.764Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 16,
-   "atos": 3
-  },
-  {
-   "busca": "AL",
-   "ok": true,
-   "manchetes": 45,
-   "atos": 1
-  },
-  {
-   "busca": "AP",
-   "ok": true,
-   "manchetes": 44,
-   "atos": 1
-  },
-  {
-   "busca": "AM",
-   "ok": true,
-   "manchetes": 48,
-   "atos": 6
-  },
-  {
-   "busca": "BA",
-   "ok": true,
-   "manchetes": 60,
-   "atos": 3
-  },
-  {
-   "busca": "CE",
-   "ok": true,
-   "manchetes": 27,
-   "atos": 1
-  },
-  {
-   "busca": "DF",
-   "ok": true,
-   "manchetes": 64,
-   "atos": 2
-  },
-  {
-   "busca": "ES",
-   "ok": true,
-   "manchetes": 21,
-   "atos": 0
-  },
-  {
-   "busca": "GO",
-   "ok": true,
-   "manchetes": 18,
-   "atos": 0
-  },
-  {
-   "busca": "MA",
-   "ok": true,
-   "manchetes": 43,
-   "atos": 1
-  },
-  {
-   "busca": "MT",
-   "ok": true,
-   "manchetes": 43,
-   "atos": 3
-  },
-  {
-   "busca": "MS",
-   "ok": true,
-   "manchetes": 29,
-   "atos": 1
-  },
-  {
-   "busca": "MG",
-   "ok": true,
-   "manchetes": 25,
-   "atos": 3
-  },
-  {
-   "busca": "PA",
-   "ok": true,
-   "manchetes": 55,
+   "manchetes": 46,
    "atos": 5
   },
   {
-   "busca": "PB",
-   "ok": true,
-   "manchetes": 44,
-   "atos": 0
-  },
-  {
-   "busca": "PR",
-   "ok": true,
-   "manchetes": 46,
-   "atos": 0
-  },
-  {
-   "busca": "PE",
-   "ok": true,
-   "manchetes": 52,
-   "atos": 1
-  },
-  {
-   "busca": "PI",
-   "ok": true,
-   "manchetes": 41,
-   "atos": 2
-  },
-  {
-   "busca": "RJ",
-   "ok": true,
-   "manchetes": 28,
-   "atos": 2
-  },
-  {
-   "busca": "RN",
-   "ok": true,
-   "manchetes": 58,
-   "atos": 1
-  },
-  {
-   "busca": "RS",
-   "ok": true,
-   "manchetes": 54,
-   "atos": 1
-  },
-  {
-   "busca": "RO",
-   "ok": true,
-   "manchetes": 8,
-   "atos": 0
-  },
-  {
-   "busca": "RR",
-   "ok": true,
-   "manchetes": 33,
-   "atos": 0
-  },
-  {
-   "busca": "SC",
-   "ok": true,
-   "manchetes": 28,
-   "atos": 1
-  },
-  {
-   "busca": "SP",
-   "ok": true,
-   "manchetes": 49,
-   "atos": 3
-  },
-  {
-   "busca": "SE",
-   "ok": true,
-   "manchetes": 40,
-   "atos": 0
-  },
-  {
-   "busca": "TO",
+   "busca": "AL",
    "ok": true,
    "manchetes": 42,
    "atos": 1
   },
   {
+   "busca": "AP",
+   "ok": true,
+   "manchetes": 37,
+   "atos": 1
+  },
+  {
+   "busca": "AM",
+   "ok": true,
+   "manchetes": 18,
+   "atos": 4
+  },
+  {
+   "busca": "BA",
+   "ok": true,
+   "manchetes": 59,
+   "atos": 3
+  },
+  {
+   "busca": "CE",
+   "ok": true,
+   "manchetes": 28,
+   "atos": 1
+  },
+  {
+   "busca": "DF",
+   "ok": true,
+   "manchetes": 29,
+   "atos": 0
+  },
+  {
+   "busca": "ES",
+   "ok": true,
+   "manchetes": 28,
+   "atos": 1
+  },
+  {
+   "busca": "GO",
+   "ok": true,
+   "manchetes": 15,
+   "atos": 0
+  },
+  {
+   "busca": "MA",
+   "ok": true,
+   "manchetes": 46,
+   "atos": 1
+  },
+  {
+   "busca": "MT",
+   "ok": true,
+   "manchetes": 24,
+   "atos": 1
+  },
+  {
+   "busca": "MS",
+   "ok": true,
+   "manchetes": 25,
+   "atos": 1
+  },
+  {
+   "busca": "MG",
+   "ok": true,
+   "manchetes": 41,
+   "atos": 2
+  },
+  {
+   "busca": "PA",
+   "ok": true,
+   "manchetes": 22,
+   "atos": 3
+  },
+  {
+   "busca": "PB",
+   "ok": true,
+   "manchetes": 41,
+   "atos": 0
+  },
+  {
+   "busca": "PR",
+   "ok": true,
+   "manchetes": 41,
+   "atos": 0
+  },
+  {
+   "busca": "PE",
+   "ok": true,
+   "manchetes": 54,
+   "atos": 1
+  },
+  {
+   "busca": "PI",
+   "ok": true,
+   "manchetes": 45,
+   "atos": 2
+  },
+  {
+   "busca": "RJ",
+   "ok": true,
+   "manchetes": 27,
+   "atos": 4
+  },
+  {
+   "busca": "RN",
+   "ok": true,
+   "manchetes": 30,
+   "atos": 3
+  },
+  {
+   "busca": "RS",
+   "ok": true,
+   "manchetes": 31,
+   "atos": 1
+  },
+  {
+   "busca": "RO",
+   "ok": true,
+   "manchetes": 38,
+   "atos": 1
+  },
+  {
+   "busca": "RR",
+   "ok": true,
+   "manchetes": 13,
+   "atos": 0
+  },
+  {
+   "busca": "SC",
+   "ok": true,
+   "manchetes": 59,
+   "atos": 0
+  },
+  {
+   "busca": "SP",
+   "ok": true,
+   "manchetes": 44,
+   "atos": 3
+  },
+  {
+   "busca": "SE",
+   "ok": true,
+   "manchetes": 41,
+   "atos": 0
+  },
+  {
+   "busca": "TO",
+   "ok": true,
+   "manchetes": 18,
+   "atos": 1
+  },
+  {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 55,
+   "manchetes": 31,
    "atos": 3
   },
   {
    "busca": "movimentos",
    "ok": true,
-   "manchetes": 53,
+   "manchetes": 27,
    "atos": 3
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 46,
-   "atos": 8
+   "manchetes": 45,
+   "atos": 9
   },
   {
    "busca": "pautas",
@@ -189,20 +189,6 @@
   }
  ],
  "eventos": [
-  {
-   "id": "914e5353a989",
-   "titulo": "O Partido dos Trabalhadores de Alagoas (PT-AL) organiza, nesta quarta-feira (25), uma manifestação em defesa da vida e da segurança das mulheres, às 7h, na passarela do Centro Educacional de Pesquisa Aplicada (Cepa),…",
-   "tipo": "convocacao",
-   "uf": "AL",
-   "publicadoEm": "2026-11-24T20:26:32.000Z",
-   "fonte": {
-    "nome": "Instagram",
-    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBzR3RqUjZMVmVIVG9UZDUtQnNOM3kyOTl6dFVpeEFWX2RIWlJHUEFLbFFfZGNFNUFPNGFRbUFVUDREZGlRRlIxVUNXOHhsYVRLOFE?oc=5"
-   },
-   "cidade": "Maceió",
-   "data": "2026-11-25",
-   "hora": "07:00"
-  },
   {
    "id": "530afe771616",
    "titulo": "Jornal Midiamax. . Cerca de 250 profissionais de Enfermagem da Santa Casa de Campo Grande ainda não receberam integralmente os salários referentes a outubro. Diante da situação e da falta de posicionamento da…",
@@ -266,6 +252,90 @@
    },
    "cidade": "São Paulo",
    "data": "2026-11-29"
+  },
+  {
+   "id": "662e388aa6dd",
+   "titulo": "Palestina Livre: segunda-feira (30/11) é dia de ato no Rio de Janeiro -",
+   "tipo": "convocacao",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-26T14:09:01.000Z",
+   "fonte": {
+    "nome": "Sindipetro RJ -",
+    "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX04zMUp4VkVXNFZrQUVhWTZBcWJlTlhlWmJUdjlDbkhlemNOX3Z0T2xhYlNYYkpyWlotUElNVWhUeGdkUlVBOUhEUmVzdWMxU0N0VElLdUg1anRSUjdOS1MydmtyUEJxYVhuenVHaGZrZG5ZMDFSb25NenFieHVqdVJsNlhlU19hZTU4VnFZN3lrYTJlZm80ag?oc=5"
+   },
+   "cidade": "Rio de Janeiro",
+   "data": "2026-11-30"
+  },
+  {
+   "id": "b968ad9ef3c5",
+   "titulo": "Manifestação de interesse para remoção de servidores da Seduc-MT começa em 30 de novembro",
+   "tipo": "convocacao",
+   "uf": "MT",
+   "publicadoEm": "2026-11-24T10:34:00.000Z",
+   "fonte": {
+    "nome": "Seduc - MT",
+    "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPQXdmZVhWSU5sVUQ1cnFWbUdzNlNVb01QTEtpWmxNdG85Sk9hNTVCX3c0c1hwNlYzcGUzd2txbk5tOVVFZmNkNXlENTNqMHN4MWE3Q0JPS2FsZ2xQY1RXQTdCbEtTczhBZE9wZ01yVkZRRUgzVWw3MDJXSWFUR2lad0RvbFg2YXBfbzNHODNWMWtrYk5lWUlGNU5oMGZjSTlXRFZjNEJDSjNRd2xwaks0R2t2UVBFMnVjLUJ0QWNkUkktb0pfZFMwMmh5cWRTQmtUT2hraTllQnp1NVZ1anc?oc=5"
+   },
+   "data": "2026-11-30"
+  },
+  {
+   "id": "e2dbb3966965",
+   "titulo": "Justiça e Polícia avançam contra grupo que espancou professor em ato homofóbico no Rio",
+   "tipo": "cobertura",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-26T18:49:53.000Z",
+   "fonte": {
+    "nome": "Plantão Brasil",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOaGk3Zk5WQXlJQkJudHJRWUZjdTBlRzFfVEoyRjQwZWE5TW9ia0NSRUdEYWY2OXpPNU8yeDh6MExVNzdzYmJBaXRnS1gyQlVTTDdXQ0Y5VUJhOGNrckd0NFU5NGpaX3VLd2Zld1NBcV9tQUVYc2FvR1E4NGx5d05ORGhjVTcwQkVkS3VFd0MxUW9ySkNkbHdBVk56LS1SbnVZWktWTlZPQVZPX0FtODZVSlNVM2NudXBvbS1BN3dTdlBCYlZjX2tEM1RJUzA?oc=5"
+   },
+   "cidade": "Rio de Janeiro"
+  },
+  {
+   "id": "a8abe28c4ccb",
+   "titulo": "Sampi Campinas: Servidores miram vereadores e convocam novo ato contra reforma",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-26T16:02:41.000Z",
+   "fonte": {
+    "nome": "sampi.net.br",
+    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOGtQcU5DWEpOMFZEaUJacEQzQWU3UjJNZUJVRVlWLVM1U1RhWV9GTmI1eVpMbjJZSGNSd3JlNll3N1Z0WjZLbXU0Mzg3VlpNYlhTcnk5dWlEbVdibVM0TUpXV215WmJzRjhvRDBUY1VKVUxVVVRDTkM3cWpNemZmcFRRcW1jMUFRaFZ2N0J5d2JIdFdpU093ckl0dFlKZm5ybzdtYWo1Z1plTVpscmZnSFVkSUFWT3FlN0RYZFpXME9fOHVU?oc=5"
+   },
+   "cidade": "Campinas"
+  },
+  {
+   "id": "77e6f549be3d",
+   "titulo": "Marco Altberg leva às ruas sua trajetória de resistência em ato pela democracia ao lado de Lula, em Copacabana",
+   "tipo": "cobertura",
+   "uf": "BR",
+   "publicadoEm": "2026-11-26T13:32:16.000Z",
+   "fonte": {
+    "nome": "A Redação",
+    "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcVBoNTJfNTZ6WWxFdWRNb0swM3RkVFZNdVdVbWdfZGhYZ3RiOGxzcHJCMFBodmlTR1BjanNSbXJ3LTBIMENleEFnT1ZfWXM3V2pPbHpiUEdNb2JhZklmXzZmS2VXSWxJYWtEcjRnbmtmQkV5ZFZvRExLdktmekZLbm56SGhUdU5Ea2hkbVV0VFBhdnJZWGVVTmZSUzZoamkxZ29ZNG9UWmIyQ0E4SGFFZnRvZlVISVJsaDVpWjJtMHpUdTN1aHRQRGF3cV9rWFU?oc=5"
+   }
+  },
+  {
+   "id": "26284374f2d6",
+   "titulo": "Terceirizados protestam em frente à Semed em Manaus e cobram salários e benefícios atrasados",
+   "tipo": "cobertura",
+   "uf": "AM",
+   "publicadoEm": "2026-11-26T13:24:38.000Z",
+   "fonte": {
+    "nome": "Portal Mário Adolfo",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOSWtMZmhHY05RUjRHaXdCLWw4Qi1RLXVnZWhBMjZiZklQVHVBUVpwQkVueUFpQWR4SkFEX3JzOVNmRzVNbmxVNWw2TVdmWXdGcDdySENaenBiNDB3VTNub3YtTHZqd1ZkZWZWLWo1TGJOak1CQ3NLa1lXZW1HUTgzOWNrald4SkVhUF9LNThZV3U1Q2REWEJJemZNbkMxUmhoVnRuMTZ5cXNtbk4zMk1zQ1k2aVBOLUJt?oc=5"
+   },
+   "cidade": "Manaus"
+  },
+  {
+   "id": "61c5052a7733",
+   "titulo": "VÍDEO: Picape envolvida em acidente fatal é depredada durante protesto de motoboys em Porto Velho",
+   "tipo": "cobertura",
+   "uf": "RO",
+   "publicadoEm": "2026-11-26T10:28:57.000Z",
+   "fonte": {
+    "nome": "Portal SGC",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPUFdNLWZzd3Z6cGxDN2V6VVI0TE1BbmJ4UXhHLWFwQTJDUGhlQ2JNeUNZMjg0ZjFtNDFLcFZCTmVKZ19feEZIWnFHdzI4X1NKZE8tRHpQd0JSYmc5S3Vyb0doTUpFOGZTM2xjQUFoZGN6OC1NMXN2YTQzSERySzlkX0hkTURwc2o0di0wVXlCaG1lRENrbUZmcFd1X2Z3S29vWE5Uc09aa01EeUgyQWFUNjdmVVpOOWd1MmxPY1RkUUZ0V05WWTFWWjR1aTI?oc=5"
+   },
+   "cidade": "Porto Velho"
   },
   {
    "id": "f43edb968166",
@@ -358,14 +428,6 @@
    "cidade": "Manaus",
    "outrasFontes": [
     {
-     "nome": "Portal Mário Adolfo",
-     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNNXZfSEtuOUoyVm5hSjNaWUFUVGJSZk1pdEJIdnROVm51Sk1LMFVQUWdOZUxsdGZia1I3R3NwZEhjMW9MdXAxV3o4ZmxXRmhMcFFET1NYRlNzU1JxSDdFSkFWZk44S0U1aEpyM0Ixdnp1ZUEzSWlTNGZlY0dfZnA3aWlZY3FkbG9wSlhUVU1jdGhoYmpN?oc=5"
-    },
-    {
-     "nome": "Imediato Online",
-     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVlZ0MkVkNUpmSk5VdEJjYlU1eS1nd2hWaEpkTW45MmQ4eXEwdktrcTRoY1NJZW5oM0tkV0FMcl8zZXliNTltbEE4Mk9xX3ppUGZxcFRfaEwwTWVlVUNhOTNQR1ZOYlE4V0t2enVNZWZabDFrTFhhUmRxaVFRTDZjbTVCb0pOWUNhUGY1SjM0X3R5XzJMb0ZOb3U1TEV5VFA2VG9uZHRCX1hxS2JvdG5rVHd3eG5fcVFHUXU5eVFyX24wTFdsQVo1RHQ0eUtSRGJ6Mml3MjFfcw?oc=5"
-    },
-    {
      "nome": "A Crítica",
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNVExkZ3RHYlVXMVlKSXctY0dIWTViMjA3U05WSk1aVm96ZXlpajZyZ2dJcW42dVg1SVoxZEw4cVJ1RXNxOVlWeVJNVkhIYjcwd0JURXkyZEs1MWJMWmFTaE9ZeWEwSl9yUFcyV1hFOVBpRWdPZU04U1RvQ2w3c2Z5TVhfNHh2S3QzQV9YVkZ3WHBnbnhNX0dIcXJxSGxKVWpWQ3hqTEpR?oc=5"
     }
@@ -420,7 +482,7 @@
   {
    "id": "0f854c33eaf4",
    "titulo": "Após assassinato de motorista de aplicativo, trabalhadores anunciam protesto e fechamento da Ponte Metálica em Rio Branco",
-   "tipo": "cobertura",
+   "tipo": "convocacao",
    "uf": "AC",
    "publicadoEm": "2026-11-24T21:14:02.000Z",
    "fonte": {
@@ -436,6 +498,14 @@
     {
      "nome": "A Gazeta do Acre",
      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQRE82cVFkdG5SN0dIMnV2elFTV1R1M1dFUXRac2lFcXNyNEpfR0tYRkZLZlF0akFpLXliM3AwWEhvTm1SR2luOHlYX0J5MlQ5ZU1SM3N1QTQ1QlFIbGJMc2pkTS04VDE5WE1HWlhybVh6NFdJbDVrdmRDejVVXzZidTJlY1JtcXpvTHlieDdPUmNEMEg2dUJod2h5OWNieUJlcktYZ3BkXy01YVRLUUF0Um0ySmVTNndIOFlBNkhMYm9pMjVJdDZmX1ZmaERsejcyX19OaWtRZEhabFZfdnc?oc=5"
+    },
+    {
+     "nome": "AcreNews",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMXJlc1otWGo4VEFVYWZndXhFUnhMQ3p6ZG5EaFYzZzVqenVNWVJxTjJESGVBVXhFRnZRSmM4SnpueDlneU8xMXhfZ2JyNi1yak85bS1zRTc0SUNsOXpnZUJRZEVBdjlfR0ZSc1hqYzVoTkFyc0JielFZeVhLaFlEZ0NfcWRjQXd4RUdRT2k1bVprX1VXM1NpMHRRSm03QmdMQk95WU9TRjFmdHVOLUZWaUJ6alJiXzNxdE5uOWlRejk?oc=5"
+    },
+    {
+     "nome": "A Gazeta do Acre",
+     "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQNXpjUUNEeDJmbW1aWG1SZGVIZUpPaEk0bWpYYTdZX2Y5QWtnWmJ0YVdzc284RC1mcm9MbmtEeEc4YUVrNk45WlEyaFR2UkktLTRwR0ZXakR1emVNOENmQmxsMVhZSHhiRWQ5SXBwNEp2V2doTEZZeDBoUVFOVXdNcXlwdkxpdWI2Rjd5WkZ0STgxNnhGaWJIWnptWFIxZFdsX0VEcTkyU2tYQmdHc1pYSkVSQlFJdjd6TXdBT1lnN012VVhnUDB4TGdmRUVoN0pYSlIzTjZ2Skdla0otSjBWUTJWT1RrQTczS3ZrSkxSOWFVTDBWVnlOUExLRFJTdw?oc=5"
     }
    ]
   },
@@ -504,26 +574,26 @@
    "titulo": "Nota sobre a Manifestação dos Professores de apoio à Educação Especial",
    "tipo": "cobertura",
    "uf": "MG",
-   "publicadoEm": "2026-11-24T12:59:47.000Z",
+   "publicadoEm": "2026-11-24T12:56:56.000Z",
    "fonte": {
     "nome": "Sind-UTE/MG",
     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0ROdGd6MTEtUU5fSTIzLW9IN1AxblRhc2luWWhqYlhCbGlJWVFJeWNqemN5dmJLN204U2pZOG1nd2pSVXNTYTRMeXZUX3BWRWJ2TmZ0dHhYYmc3dVpjR05uN0U1N1JydUt5YkdZSkRWWEVLSDVyNlhRZ3RvcUwzSVRrVG5rNFJKNXlLSDRzSWs0T3FXT3Bma0hvN2w4SHU1LVhYWGtydFg?oc=5"
    }
   },
   {
-   "id": "32bb1c6e622e",
+   "id": "104b88d3e6be",
    "titulo": "Protesto do MST, que interdita a BR-155 no sudeste do Pará, cobra compra de fazenda para assentamento",
    "tipo": "cobertura",
    "uf": "PA",
    "publicadoEm": "2026-11-23T19:25:04.000Z",
    "fonte": {
     "nome": "G1",
-    "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNQzhVZFhtbldyZHFCcFdOdEZqWFEwbjZWbGZzTnNlWlg5ZEFRVThORExHVmlBb1ExNDVqXzlDY3pOUWpENkl0VEhFZUQ0akNXcXlJYkpJQWdRN3FLT3NiM2ZZYUNLOE0wYVpla1MzQjlzb2NsamtCbWpydVpPY2FnRW4xZE45amU1T24zT3lDUEwteHF0Y0xQVk1fWHA5X19HanlvaUFRZlNsNE1penZDSlVxamlvSU1uZDNSU2NKZXhSY2lWWGFNU1N3NU9FN3hVR0h1WlhDSEZFWHZQalc2UUowSUNvRzRqckxLSHp1UUNjc0JPN3lN0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
+    "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOZUNDeDJYOW82S1BEYVRKcUgyUk94T3kxWjZPUGlJNDM1RlE0QjZjVy1kcEVMUDFsTkdKZ1lNN0p5bTlxYm40SExWR0QyNHFQY3U0M3hfb3VmaEx2ZzhxclM5WU53NE1VdGpsZFVfOGc3cjNwbDVUQmFHSEJkWEE2cGplNW5FSUFwdEhDMC1EdmJvNDN0azRsUEF6VGxjS1ZJVjQtSGNIOE1oVGZSMmRYNFlfT04xUlo1NkRCX3VIUzlmTmZoZUEyeTdQcFhvNlF0YlVkbFhiamR1azhoSFduclNZQllTVDRM0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
    },
    "outrasFontes": [
     {
      "nome": "G1",
-     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOZUNDeDJYOW82S1BEYVRKcUgyUk94T3kxWjZPUGlJNDM1RlE0QjZjVy1kcEVMUDFsTkdKZ1lNN0p5bTlxYm40SExWR0QyNHFQY3U0M3hfb3VmaEx2ZzhxclM5WU53NE1VdGpsZFVfOGc3cjNwbDVUQmFHSEJkWEE2cGplNW5FSUFwdEhDMC1EdmJvNDN0azRsUEF6VGxjS1ZJVjQtSGNIOE1oVGZSMmRYNFlfT04xUlo1NkRCX3VIUzlmTmZoZUEyeTdQcFhvNlF0YlVkbFhiamR1azhoSFduclNZQllTVDRM0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
+     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNQzhVZFhtbldyZHFCcFdOdEZqWFEwbjZWbGZzTnNlWlg5ZEFRVThORExHVmlBb1ExNDVqXzlDY3pOUWpENkl0VEhFZUQ0akNXcXlJYkpJQWdRN3FLT3NiM2ZZYUNLOE0wYVpla1MzQjlzb2NsamtCbWpydVpPY2FnRW4xZE45amU1T24zT3lDUEwteHF0Y0xQVk1fWHA5X19HanlvaUFRZlNsNE1penZDSlVxamlvSU1uZDNSU2NKZXhSY2lWWGFNU1N3NU9FN3hVR0h1WlhDSEZFWHZQalc2UUowSUNvRzRqckxLSHp1UUNjc0JPN3lN0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
     }
    ]
   },
@@ -683,41 +753,6 @@
    }
   },
   {
-   "id": "51af2d1dd4df",
-   "titulo": "Carlos Ignácio participou da 23ª Marcha da Consciência Negra de São Paulo, na avenida Paulista/Paulo Pinto/Agência Brasil",
-   "tipo": "cobertura",
-   "uf": "SP",
-   "publicadoEm": "2026-11-23T01:31:44.000Z",
-   "fonte": {
-    "nome": "- Misto Brasil",
-    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQblBuc2c1MEFKamhZNFBPaXpWVEpQd0gzXzRFWWVOM1hfVkxSYVhzRDAtTDNxejN2bnhQcnFubjE4bFR1bzRfUHp2bGFEVTdFRnEzM2tnbDBVYkpVNzZxVzVpWkc4ZzdBN2N5MHlLbGJwWHh3VXZWekEzRlN2Mk9wN2hrVm92ejJiSlFqMGdkNTFXUTJnY1QxenU4S2M5LVlJMjhkX3lLdHFVZnk0VlNRYVdtVUdNTy0wQlc3eDRpLXAtSHZxSnNZYmJXLXFsM0V6amQxM3gzRUhQMHViQkhicUtwMm9wSVU2emI3UE4zU0pDc0Jm0gH0AUFVX3lxTFBuUG5zZzUwQUpqaFk0UE9pelZUSlB3SDNfNEVZZU4zWF9WTFJhWHNEMC1MM3F6M3ZueFBycW5uMThsVHVvNF9QenZsYURVN0VGcTMza2dsMFViSlU3NnFXNWlaRzhnN0E3Y3kweUtsYnBYeHdVdlZ6QTNGU3YyT3A3aGtWb3Z6MmJKUWowZ2Q1MVdRMmdjVDF6dThLYzktWUkyOGRfeUt0cVVmeTRWU1FhV21VR01PLTBCVzd4NGktcC1IdnFKc1liYlctcWwzRXpqZDEzeDNFSFAwdWJCSGJxS3Ayb3BJVTZ6YjdQTjNTSkNzQmY?oc=5"
-   },
-   "cidade": "São Paulo"
-  },
-  {
-   "id": "ade924e0db41",
-   "titulo": "Projeto de deputada catarinense que cria mobilização nacional de 21 dias contra o racismo e a violência contra a mulher segue para sanção presidencial",
-   "tipo": "cobertura",
-   "uf": "SC",
-   "publicadoEm": "2026-11-22T19:00:00.000Z",
-   "fonte": {
-    "nome": "Rádio Araranguá FM 95.5",
-    "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPNlRqNk5yTXRCNFowNWFNeV9paGdlejBmb25yeFNsbzRQNHF1LTlNVzZ0NlptbU9OaVk2MFdCbzJJMjRrYWhGZTd6eDljamFSaERrbkV0OWcyQVV2b3JibG0ydl90UG9ZM0V1bnBXSFJmcktDWWxOcU0yaWlSWTlCV2JhLVVxRkhFbG93UkZ5UkhOcWZmbzIzOHpuWGN5dWFuM3RpQ0duMHJNdktjY2JkeTZwc0pyanlBMW9ob056VTh5YjZycFBVaTFTcWJJZXQ2VU5ZeFF0alJna2gzVXUyYUtnd09DUVFTTTUzc1E3M05IdDZQZWI3bkxLcFFOM0V0V1FUTGpyZUtUMUZTUEE?oc=5"
-   }
-  },
-  {
-   "id": "c1d1bf9ce3cb",
-   "titulo": "Ato homenageia Catarina Kasten um ano após feminicídio em Florianópolis",
-   "tipo": "cobertura",
-   "uf": "SC",
-   "publicadoEm": "2026-11-22T09:11:44.000Z",
-   "fonte": {
-    "nome": "ND Mais",
-    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQT2FBX01HUTV4WmQtWmVHbFBfSUlhNnI0YnF6TEhNT2pTRklpZk1xZGdTSl9Fd2xQWGJDbXluMktlZnFDQkxKV2ZBTk1yNUFaV0prMGhLNS1zZkM3V0xhTFpaczdpT0dtdHkycWZ6N28yS2wyRXo2cmRhdkxXb0ExSFV6NWpCWlhqOU9WVE1rRE52UXZPR1NpRF9EMzRzdDA4S0E?oc=5"
-   },
-   "cidade": "Florianópolis"
-  },
-  {
    "id": "5deabf0f64f5",
    "titulo": "Violência digital: Sisejufe convoca servidoras para mobilização nacional em defesa das mulheres",
    "tipo": "convocacao",
@@ -854,24 +889,6 @@
     {
      "nome": "O Cafezinho",
      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOOVpaQlozMTRfM3V0YzNFT29TTmd4WU5vLWJyQzdvYmJKM0Y5RDdjV2p4WTFrdlVOVWRKTmJ1Vk5RY2lwbnktYktrSk03WkltaG5MWGFWYldoVzg2bERieWR1b01GUHUzeHk0SUFCSmZJcGJiSGVoU2tGOHZiMjNFWGJR0gGHAUFVX3lxTFB3MkpqUFdBZHNfM3diT1lMZXRpVlJLZ3VkQ0JwakVuUzJTc1ZXSUNwYnl3WmxXZ2c0N09GTWJ5REVUYVpKVGRjX1A5SGxyVG50cE1vNDRMUGlHaVVfeGh6d2F3dDVaam9HTTZaRXlDRG5UbENCWVAtOUxEeDlUc200QkdJbmlQOA?oc=5"
-    }
-   ]
-  },
-  {
-   "id": "27b54b904472",
-   "titulo": "Grupos de esquerda que pediram voto em Lula convocam protesto contra o ajuste fiscal em Florianópolis",
-   "tipo": "convocacao",
-   "uf": "SC",
-   "publicadoEm": "2026-11-16T00:44:00.000Z",
-   "fonte": {
-    "nome": "TopElegance",
-    "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPenc2WHE5Q0ZrUFF6dm9YZFFYNmFOWVpsVXFTYXI1QUVEYUgzaUN1OVpGeXV6UEJ5LW9vU0hPelJ0R1lRX3hiRm9ieE5LNWR5ZjhCbktxc0xfbTlScFByM2hGcXBWaGdfRFFmLWI1dWd6ZFFRMldwNGsxeW1paUhHYmVWcWpldEhaVTdVZFUzN0Y1U3MtZGozV2s3MmtvQnh0V1czZk5MYWpQdlNqM2M5NHhBN0QwbkxpQTdXOWdnVk0wYVVfSDM5dWZWc1M2bm1WVVZMWk96WFY?oc=5"
-   },
-   "cidade": "Florianópolis",
-   "outrasFontes": [
-    {
-     "nome": "Jornal TopNews",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVnJ2S2FCOTN3bEc3eFVOd1VhU1VpVzFFRlFnd1lfNmo5OGV2QlV3eU5GUlVfTmF1bzFIdGRpU0NteEFHNkk0amZ0Q0dZb2s2YzB0T2NZRkwydXB4ZHBCb1Y5bG1IM2RSX0lOS2dwaWN1d1ZBMHdEdW1XemZhcnBjRkxNOEhxekhhamNyX2VER0hXS2NEWVdCR19NamNRVGFvSmpEMl9rOXFQRmFrN0dpcGFKTFRHeElZQXgybk14YjEyUlVDS1ptOTEweVpxUQ?oc=5"
     }
    ]
   }
