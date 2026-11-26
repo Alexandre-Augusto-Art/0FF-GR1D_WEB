@@ -242,8 +242,9 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
        título + cada frase → fala.js (números por extenso, siglas, endereços, pausas, tom por batida)
        → Chatterbox pt-BR (scripts/voz.py, uma frase por arquivo) → Whisper ouve cada frase de volta:
-         errou, gera de novo (até 3 vezes); nada prestou, a frase sai na Supertonic F3
-         (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
+         errou, gera de novo (até 4 vezes, aceita com 95%); nada prestou, a frase sai na Supertonic F2
+         (a referência do timbre, em video/voz, foi desenhada por descrição no Qwen3-TTS VoiceDesign,
+         Apache 2.0: jovem, clara, rebelde; não é voz de pessoa real)
        → sem Chatterbox: Piper (scripts/tts.py)
        → FFmpeg: junta, voz um pouco mais grave/"rádio"/glitch, volume por quadro
        → ícones: o modelo de texto (Ollama) diz em inglês o que aparece em cada batida, o código acha os
@@ -293,7 +294,7 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 - Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.
 - Personagem e marca são próprios: a personagem é a arte do autor (`03.11.26_2B`, Asset-1 neutra, Asset-3 de olhos fechados e
   Asset-2 de boca aberta), redesenhada em `video/src/personagem.js` com as formas do SVG, toda na cor neon da batida; a boca abre
-  com o volume da voz (feminina, Chatterbox com timbre da Supertonic F3). Não usar caveira, logo ou
+  com o volume da voz (feminina e jovem, Chatterbox com timbre desenhado no Qwen3-TTS VoiceDesign). Não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 
 ### Temas a partir de reels e posts (desde 2026-11-18; posts de imagem desde 2026-11-23)

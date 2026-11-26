@@ -1,8 +1,8 @@
 """Narração expressiva local (Chatterbox pt-BR), uma frase por arquivo, conferida pelo Whisper.
 
 Cada frase é gerada e ouvida de volta: se o Whisper entendeu outra coisa (palavra engolida, som inventado),
-gera de novo com outra semente, até 3 vezes, e fica a melhor. Se nenhuma prestar, a frase sai na Supertonic
-F3, a voz sintética que serviu de referência para o timbre (não é a voz de uma pessoa real).
+gera de novo com outra semente, até 4 vezes, e fica a melhor. Se nenhuma prestar, a frase sai na Supertonic
+F2. A voz de referência (video/voz) foi desenhada por descrição no Qwen3-TTS VoiceDesign: não é voz de pessoa real.
 
 uso: python voz.py <frases.json> <pasta_saida> <python_do_whisper ou ->
 frases.json: [{"voz": texto falado, "tela": texto mostrado, "tom": 0 a 1}]
@@ -34,7 +34,8 @@ torch.set_num_threads(min(10, os.cpu_count() or 4))
 BASE = Path.home() / '.w4k3' / 'tts' / 'chatterbox'
 D = BASE / 'modelo'
 REF = Path(__file__).resolve().parent.parent / 'voz' / 'referencia.flac'
-BOA, RUIM, TENTATIVAS = 0.9, 0.8, 3
+# exagero e apego ao texto medidos com o Whisper (2026-11-26): 0,4+0,3 x tom e 0,5 erram menos e variam mais o tom
+BOA, RUIM, TENTATIVAS = 0.95, 0.8, 4
 
 
 def carregar():
@@ -153,12 +154,12 @@ def main():
         melhor, k = None, 0
         for k in range(TENTATIVAS):
             torch.manual_seed(1000 + i * 31 + k * 7)
-            x = M.generate(f['voz'], 'pt', exaggeration=0.45 + 0.45 * f['tom'], cfg_weight=0.4, temperature=0.8 - 0.06 * k)
+            x = M.generate(f['voz'], 'pt', exaggeration=0.4 + 0.3 * f['tom'], cfg_weight=0.5, temperature=0.8 - 0.06 * k)
             c = avaliar(x.numpy().reshape(-1), f)
             if melhor is None or (c[1] or 0) > (melhor[1] or 0):
                 melhor = c
             # nome próprio o Whisper quase nunca escreve igual: na segunda vez aceita um pouco menos
-            if c[1] is None or c[1] >= BOA or (k == 1 and melhor[1] >= 0.86):
+            if c[1] is None or c[1] >= BOA or (k >= 1 and melhor[1] >= 0.92):
                 break
         motor = 'chatterbox'
         if melhor[1] is not None and melhor[1] < RUIM:
@@ -167,7 +168,7 @@ def main():
                 if st is None:
                     from supertonic import TTS
                     st = TTS(model='supertonic-3', model_dir=str(BASE / 'supertonic-3'), auto_download=False)
-                y, _ = st.synthesize(f['voz'], voice_style=st.get_voice_style('F3'), lang='pt', total_steps=12, speed=1.1)
+                y, _ = st.synthesize(f['voz'], voice_style=st.get_voice_style('F2'), lang='pt', total_steps=12, speed=1.1)
                 y = librosa.resample(np.asarray(y, dtype=np.float32).reshape(-1), orig_sr=st.sample_rate, target_sr=M.sr)
                 c = avaliar(y, f)
                 if c[1] is not None and c[1] > melhor[1]:

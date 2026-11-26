@@ -76,7 +76,7 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
     $arqs = @()
     foreach ($a in 't3_pt_br.safetensors', 's3gen_v3.safetensors', 'grapheme_mtl_merged_expanded_v1.json') { $arqs += , @("$hf/ResembleAI/Chatterbox-Multilingual-pt-br/resolve/main/$a", "modelo\$a") }
     $arqs += , @("$hf/ResembleAI/chatterbox/resolve/main/ve.safetensors", 'modelo\ve.safetensors')
-    foreach ($a in 'onnx/duration_predictor.onnx', 'onnx/text_encoder.onnx', 'onnx/vector_estimator.onnx', 'onnx/vocoder.onnx', 'onnx/tts.json', 'onnx/unicode_indexer.json', 'voice_styles/F3.json', 'config.json') {
+    foreach ($a in 'onnx/duration_predictor.onnx', 'onnx/text_encoder.onnx', 'onnx/vector_estimator.onnx', 'onnx/vocoder.onnx', 'onnx/tts.json', 'onnx/unicode_indexer.json', 'voice_styles/F2.json', 'config.json') {
       $arqs += , @("$hf/Supertone/supertonic-3/resolve/main/$a", ('supertonic-3\' + $a.Replace('/', '\')))
     }
     foreach ($par in $arqs) {

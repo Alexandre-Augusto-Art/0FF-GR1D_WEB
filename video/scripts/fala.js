@@ -44,6 +44,12 @@ const FIXO = [
   [/\bArs Technica\b/g, 'Ars Téquinica'], [/\bRest of World\b/g, 'Rést ov Uôrld'], [/\bThe Intercept\b/g, 'Íntercept'], [/\bWired\b/g, 'Uáired'],
   [/\bBig Techs?\b/gi, 'big téc'], [/\bdata ?centers?\b/gi, 'centro de dados'], [/\bYouTube\b/g, 'Iutúbi'], [/\bGoogle\b/g, 'Gúgou'], [/\bMicrosoft\b/g, 'Máicrossoft'],
   [/\bonline\b/gi, 'onláine'], [/\bsoftwares?\b/gi, 'sóftuer'], [/\bStarlink\b/g, 'Istárlinc'], [/\bdeepfakes?\b/gi, 'dípi fêique'],
+  // nomes estrangeiros que a voz lê "aportuguesado" (Palantir virava "Palantira"): grafia de como se fala
+  [/\bPalantir\b/g, 'Pálantir'], [/\bOpenAI\b/g, 'Ópen Ei Ai'], [/\bChatGPT\b/g, 'Chat gê pê tê'], [/\bFacebook\b/g, 'Feicibúqui'], [/\bWhatsApp\b/g, 'Uótsap'],
+  [/\bApple\b/g, 'Épou'], [/\bAmazon\b/g, 'Ámazon'], [/\bNvidia\b/gi, 'Envídia'], [/\bTikTok\b/g, 'Tíquitóqui'], [/\bLinkedIn\b/g, 'Linquedín'], [/\bSpotify\b/g, 'Spotifái'],
+  [/\bUber\b/g, 'Úber'], [/\bAirbnb\b/g, 'Érbi en bi'], [/\bTwitter\b/g, 'Tuíter'], [/\bElon Musk\b/g, 'Ílon Másqui'], [/\bMark Zuckerberg\b/g, 'Márqui Zúquerberg'],
+  [/\bJeff Bezos\b/g, 'Jéf Bêizos'], [/\bSam Altman\b/g, 'Sám Ótman'], [/\bPeter Thiel\b/g, 'Píter Tíl'], [/\bAlex Karp\b/g, 'Álex Carp'], [/\bClearview\b/g, 'Clírviu'],
+  [/\bCambridge Analytica\b/g, 'Quêimbridj Análitica'], [/\bRest of World\b/g, 'Rést ov Uôrld'], [/\bAFSC\b/g, 'á éfe ésse cê'],
   [/\bDr\.\s/g, 'doutor '], [/\bDra\.\s/g, 'doutora '], [/\bSr\.\s/g, 'senhor '], [/\bSra\.\s/g, 'senhora '], [/\bn[º°]\s?(?=\d)/gi, 'número '], [/\bart\.\s?(?=\d)/gi, 'artigo '],
 ];
 // "consumidor.gov.br" → "consumidor ponto góvi ponto bê érre"
@@ -70,6 +76,8 @@ function falar(txt) {
     .replace(new RegExp(`(?<![\\p{L}\\d])${N}(?![\\p{L}\\d])`, 'gu'), (_, n) => numero(n));
   // siglas: 2 a 5 maiúsculas seguidas
   s = s.replace(/(?<![\p{L}\d])[A-Z]{2,5}(?![\p{L}\d])/gu, (w) => (PALAVRA.has(w) ? w.charAt(0) + w.slice(1).toLowerCase() : letras(w)));
+  // abertura curta com dois-pontos ("Sejamos claros: quem...") vira frase própria: emendada, a voz atropela
+  s = s.replace(/^((?:[^\s:]+\s){0,2}[^\s:]+):\s+(\p{L})/u, (_, a, b) => a + '. ' + b.toUpperCase());
   // sinais que a voz não entende viram pausa de vírgula; ponto no meio da frase não fica
   s = s.replace(/["“”‘’«»*_#]/g, '').replace(/\s*[([]\s*/g, ', ').replace(/\s*[)\]]\s*/g, ', ').replace(/\s*(?:—|–|;|:|\s-\s)\s*/g, ', ')
     .replace(/\s*&\s*/g, ' e ').replace(/\s*\/\s*/g, ' ou ').replace(/\+/g, ' mais ').replace(/…/g, '...')
