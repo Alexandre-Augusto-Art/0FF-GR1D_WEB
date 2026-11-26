@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-26T08:40:08.656Z",
+ "updatedAt": "2026-11-26T21:45:39.181Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -14,7 +14,7 @@
   {
    "name": "Boatos.org",
    "ok": true,
-   "count": 20
+   "count": 21
   },
   {
    "name": "E-farsas",
@@ -33,6 +33,89 @@
   }
  ],
  "items": [
+  {
+   "title": "É falso que receber valores via Pix corta automaticamente o BPC",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/26/e-falso-que-receber-valores-via-pix-corta-automaticamente-o-bpc",
+   "source": "Agência Lupa",
+   "date": "2026-11-26T18:34:31.000Z",
+   "rating": "FALSO",
+   "summary": "Não há regra que suspenda o benefício automaticamente por transferências via Pix; segundo o INSS, análise de renda considera os dados do CadÚnico e do CNIS."
+  },
+  {
+   "title": "É #FAKE que Burger King inaugurou lojas sem atendimento humano após fim da escala 6x1; sistema funciona desde 2022",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/26/e-fake-que-burger-king-inaugurou-lojas-sem-atendimento-humano-apos-fim-da-escala-6x1-sistema-funciona-desde-2022.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-26T18:32:29.000Z",
+   "rating": "FALSO",
+   "summary": "É #FAKE que Burger King inaugurou lojas sem atendimento humano após fim da escala 6x1; modelo funciona desde 2022 Reprodução Circulam nas redes sociais publicações alegando que o Burger King inaugurou lojas sem atendimento humano após a aprovação do fim da escala 6x1. É…"
+  },
+  {
+   "title": "LatamChequea alerta sobre diligência do governo colombiano em contexto de assédio a imprensa",
+   "link": "https://www.estadao.com.br/estadao-verifica/latamchequea-alerta-sobre-diligencia-do-governo-colombiano-em-contexto-de-assedio-a-imprensa",
+   "source": "Estadão Verifica",
+   "date": "2026-11-26T18:10:44.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É golpe a promoção que promete caixas de presente de Natal da Casa Bauducco por meio de questionário",
+   "link": "https://www.boatos.org/brasil/casa-bauducco-esta-distribuindo-caixas-de-presente-de-natal-para-quem-responder-a-um-questionario.html",
+   "source": "Boatos.org",
+   "date": "2026-11-26T16:37:02.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – A Casa Bauducco estaria distribuindo caixas de presente de Natal para quem respondesse a um questionário, escolhesse uma caixa premiada e compartilhasse a promoção com amigos. Análise Uma página que utiliza o nome da Casa Bauducco oferece uma caixa de…"
+  },
+  {
+   "title": "É falso que navio tenha chegado ao Brasil com 750 mil caixas inteligentes para supermercados",
+   "link": "https://www.boatos.org/brasil/navio-cargueiro-chegou-ao-brasil-com-750-mil-caixas-inteligentes-para-supermercados.html",
+   "source": "Boatos.org",
+   "date": "2026-11-26T16:33:25.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Um navio cargueiro teria chegado ao Brasil com 750 mil caixas inteligentes para supermercados, equipamentos que poderiam provocar até 2 milhões de demissões no setor. Análise Uma publicação nas redes sociais afirma que um navio cargueiro teria acabado de…"
+  },
+  {
+   "title": "É falso que 13 mil médicos tenham tirado nota zero no Enamed de 2026",
+   "link": "https://www.boatos.org/brasil/13-mil-medicos-tiraram-nota-zero-no-exame-do-enamed-de-2026.html",
+   "source": "Boatos.org",
+   "date": "2026-11-26T16:32:45.000Z",
+   "rating": "FALSO",
+   "summary": "Boatos.org Boato – Cerca de 13 mil médicos teriam tirado nota zero no Enamed e ficariam impedidos de obter registro profissional nos Conselhos Regionais de Medicina. Análise Um vídeo que circula nas redes sociais afirma que cerca de 13 mil formandos em Medicina não…"
+  },
+  {
+   "title": "Vídeo em que grupo hostiliza Alexandre de Moraes é antigo",
+   "link": "https://www.estadao.com.br/estadao-verifica/video-em-que-grupo-hostiliza-alexandre-de-moraes-e-antigo",
+   "source": "Estadão Verifica",
+   "date": "2026-11-26T16:32:14.000Z",
+   "rating": "ANTIGO"
+  },
+  {
+   "title": "É golpe a promoção de Natal do Assaí que promete prêmio de R$ 1.000 por meio de questionário",
+   "link": "https://www.boatos.org/brasil/assai-esta-dando-premio-de-r-1-000-em-promocao-de-natal-de-2026-por-meio-de-questionario-no-whatsapp.html",
+   "source": "Boatos.org",
+   "date": "2026-11-26T16:31:53.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – O Assaí Atacadista estaria distribuindo um prêmio de R$ 1.000 em uma promoção de Natal de 2026 para quem respondesse a quatro perguntas, escolhesse uma caixa premiada e compartilhasse a mensagem com amigos. Análise Uma mensagem que circula nas redes sociais…"
+  },
+  {
+   "title": "Post enganoso diz que PT apresentou projeto para taxar MEIs em 15%",
+   "link": "https://www.estadao.com.br/estadao-verifica/pt-apresentou-projeto-para-taxar-meis-em-15-enganoso",
+   "source": "Estadão Verifica",
+   "date": "2026-11-26T16:25:00.000Z",
+   "rating": "ENGANOSO"
+  },
+  {
+   "title": "Vídeo com críticas a iluminação vermelha do Palácio do Planalto desinforma ao ignorar contexto",
+   "link": "https://www.estadao.com.br/estadao-verifica/iluminacao-vermelha-palacio-planalto-sebastiao-coelho",
+   "source": "Estadão Verifica",
+   "date": "2026-11-26T15:55:13.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Banco do Brasil não emprestou dinheiro a CPF inexistente com 112 fazendas fantasmas",
+   "link": "https://www.estadao.com.br/estadao-verifica/cpf-fantasma-emprestimo-banco-do-brasil-lula-fraude-ladrao",
+   "source": "Estadão Verifica",
+   "date": "2026-11-26T11:23:07.000Z",
+   "rating": "FALSO"
+  },
   {
    "title": "Flávio Bolsonaro pediu impeachment de Moraes em 2025, não recentemente",
    "link": "https://www.aosfatos.org/noticias/flavio-bolsonaro-impeachment-moraes",
