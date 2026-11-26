@@ -203,7 +203,7 @@ vítima, número ou ataque que ela não tenha (a segunda leitura confere isso). 
               e o código confere se o trecho existe (fato sem trecho é descartado)
 2. batidas    chamado → acusação → promessa → prova (com a fonte) → rosto → leitura → faca
               + escolha ("Hora de acordar. Dá para X. Ou dá para Y": Y vem da lista ACOES, escrita à mão)
-              + assinatura fixa ("Agora você sabe. Dormir de novo é escolha sua.")
+              + assinatura fixa ("Agora você sabe a verdade. Resistir é sua única opção.")
 3. checagem   por código: números, nomes próprios, fonte, alvo citado, frases longas, jargão, ficção,
               frases copiadas dos exemplos ou das 3 últimas edições, e CRIME (roubo, fraude, mentira,
               espionagem...) só se a matéria disser; acusação em aberto precisa dizer que é acusação

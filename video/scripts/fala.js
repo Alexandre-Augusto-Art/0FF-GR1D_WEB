@@ -74,7 +74,8 @@ function falar(txt) {
   s = s.replace(/["“”‘’«»*_#]/g, '').replace(/\s*[([]\s*/g, ', ').replace(/\s*[)\]]\s*/g, ', ').replace(/\s*(?:—|–|;|:|\s-\s)\s*/g, ', ')
     .replace(/\s*&\s*/g, ' e ').replace(/\s*\/\s*/g, ' ou ').replace(/\+/g, ' mais ').replace(/…/g, '...')
     .replace(/\s+,/g, ',').replace(/,(?:\s*,)+/g, ',').replace(/,\s*([.!?])/g, '$1').replace(/^\s*,\s*/, '').replace(/([!?])[.!?]+/g, '$1').replace(/\s+/g, ' ').trim();
-  // "Segundo o Fulano, ..." e "Dormir de novo é ..." sem atropelo
+  // verbo no infinitivo + "é": sem a pausa a voz engole o "é" ("Resistir a sua única opção")
+  s = s.replace(/^(\p{Lu}\p{Ll}+(?:ar|er|ir|or)) é /u, '$1, é ');
   if (!/[.!?]$/.test(s)) s += '.';
   return s;
 }

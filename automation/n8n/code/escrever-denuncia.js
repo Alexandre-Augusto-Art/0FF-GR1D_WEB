@@ -10,7 +10,7 @@
 //   4. checagem de fatos por uma segunda leitura da IA; se algo falhar, uma reescrita
 const OLLAMA = 'http://127.0.0.1:11434/api/chat';
 const MODELO = 'gemma4:26b-a4b-it-qat';   // MoE: no processador escreve ~3x mais rápido que o qwen2.5:14b
-const ASSINATURA = 'Agora você sabe. Dormir de novo é escolha sua.';
+const ASSINATURA = 'Agora você sabe a verdade. Resistir é sua única opção.';
 // abertura de transmissão clandestina (fixa, sorteada pelo título): chama a atenção sem afirmar nada sobre ninguém
 const ABERTURAS = ['Interrompemos a sua programação.', 'Atenção, cidadãos conectados.', 'Isto é uma transmissão do W4K3.', 'Acorda. Isso é com você.', 'Olha bem para a sua tela.', 'Larga o feed um minuto.'];
 // insinuação de conspiração só vale se a própria notícia disser (sigilo, acordo escondido, plano...)
