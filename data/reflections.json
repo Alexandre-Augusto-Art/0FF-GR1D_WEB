@@ -1,5 +1,96 @@
 [
   {
+    "id": "2026-11-26",
+    "date": "2026-11-26",
+    "news": {
+      "title": "What is Palantir? And why is this corporation so dangerous?",
+      "link": "https://afsc.org/palantir-explainer",
+      "summary": "What is Palantir? And why is this corporation so dangerous?",
+      "source": "AFSC (American Friends Service Committee)",
+      "publishedDate": "2026-02-11"
+    },
+    "reflection": {
+      "title": "Palantir é acusada de planejar ataques militares",
+      "content": "<p>Atenção, cidadãos conectados. Você acha que seus dados só servem para anúncios? Repara bem.</p>\n<p><strong>A Palantir é acusada de transformar seus dados pessoais em armas.</strong></p>\n<p>Prometeram tecnologia de ponta para organizar o mundo moderno.</p>\n<p>Segundo o AFSC, a Palantir é acusada de apoiar Israel em operações militares no Líbano e em Gaza.</p>\n<p>Imigrantes têm endereços e histórico de saúde centralizados para facilitar deportações pelo ICE.</p>\n<p><strong>Sejamos claros: quem fornece a inteligência para o ataque também é responsável pela morte.</strong></p>\n<p><strong>Você fornece os dados. Eles fabricam o alvo.</strong></p>\n<p>Hora de acordar. Dá para esperar o fim da sua privacidade. Ou dá para descobrir quem compra dessa empresa e cobrar em público.</p>\n<p><strong>Agora você sabe a verdade. Resistir é sua única opção.</strong></p>",
+      "excerpt": "Palantir é acusada de usar IA para vigilância de massa e apoio a ataques militares.",
+      "beats": [
+        {
+          "lado": "chamado",
+          "fala": "Atenção, cidadãos conectados. Você acha que seus dados só servem para anúncios? Repara bem.",
+          "legenda": "CIDADÃOS CONECTADOS",
+          "cena": "mascara"
+        },
+        {
+          "lado": "acusacao",
+          "fala": "A Palantir é acusada de transformar seus dados pessoais em armas.",
+          "legenda": "DADOS PESSOAIS",
+          "cena": "marca"
+        },
+        {
+          "lado": "promessa",
+          "fala": "Prometeram tecnologia de ponta para organizar o mundo moderno.",
+          "legenda": "prometeram tecnologia de ponta para organizar o mundo moderno",
+          "cena": "comercial"
+        },
+        {
+          "lado": "prova",
+          "fala": "Segundo o AFSC, a Palantir é acusada de apoiar Israel em operações militares no Líbano e em Gaza.",
+          "legenda": "OPERAÇÕES MILITARES",
+          "cena": "manchete"
+        },
+        {
+          "lado": "rosto",
+          "fala": "Imigrantes têm endereços e histórico de saúde centralizados para facilitar deportações pelo ICE.",
+          "legenda": "FACILITAR DEPORTAÇÕES",
+          "cena": "lapide"
+        },
+        {
+          "lado": "leitura",
+          "fala": "Sejamos claros: quem fornece a inteligência para o ataque também é responsável pela morte.",
+          "legenda": "SEJAMOS CLAROS",
+          "cena": "mascara"
+        },
+        {
+          "lado": "faca",
+          "fala": "Você fornece os dados. Eles fabricam o alvo.",
+          "legenda": "FORNECE OS DADOS",
+          "cena": "cartela"
+        },
+        {
+          "lado": "escolha",
+          "fala": "Hora de acordar. Dá para esperar o fim da sua privacidade. Ou dá para descobrir quem compra dessa empresa e cobrar em público.",
+          "legenda": "E VOCÊ?",
+          "cena": "portas"
+        },
+        {
+          "lado": "assinatura",
+          "fala": "Agora você sabe a verdade. Resistir é sua única opção.",
+          "legenda": "",
+          "cena": "assinatura"
+        }
+      ],
+      "denuncia": {
+        "alvo": "Palantir",
+        "situacao": "acusacao",
+        "vitima": "Imigrantes, refugiados, pessoas em Gaza e o público em geral.",
+        "jaz": "SUA SEGURANÇA"
+      }
+    },
+    "sources": [],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "link-enviado",
+      "Palantir"
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-26.mp4",
+      "poster": "assets/videos/w4k3/2026-11-26.jpg"
+    }
+  },
+  {
     "id": "2026-11-25",
     "date": "2026-11-25",
     "news": {
