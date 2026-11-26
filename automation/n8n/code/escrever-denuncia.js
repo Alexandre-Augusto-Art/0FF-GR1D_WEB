@@ -11,6 +11,17 @@
 const OLLAMA = 'http://127.0.0.1:11434/api/chat';
 const MODELO = 'gemma4:26b-a4b-it-qat';   // MoE: no processador escreve ~3x mais rápido que o qwen2.5:14b
 const ASSINATURA = 'Agora você sabe. Dormir de novo é escolha sua.';
+// abertura de transmissão clandestina (fixa, sorteada pelo título): chama a atenção sem afirmar nada sobre ninguém
+const ABERTURAS = ['Interrompemos a sua programação.', 'Atenção, cidadãos conectados.', 'Isto é uma transmissão do W4K3.', 'Acorda. Isso é com você.', 'Olha bem para a sua tela.', 'Larga o feed um minuto.'];
+// insinuação de conspiração só vale se a própria notícia disser (sigilo, acordo escondido, plano...)
+const INSINUA = [
+  [/plano secreto|secretamente|em segredo|\bsecret/, /secret|sigil|confidenc|em segredo|vazad/], [/escond|acobert|abafa/, /escond|ocult|acobert|abaf|omit/],
+  [/combinad|conchav|conluio|mancomun/, /acordo|combin|conluio|cartel/], [/te vigia[mr]? 24|vigiam tudo|sabem tudo sobre voce/, /vigil|monitor|rastre|espion/],
+  // estas nunca valem: afirmam uma intenção que nenhuma notícia sustenta sozinha
+  [/nao e coincid|coincidencia|querem (te|nos|voce) controlar|controle total|nova ordem|elite global|conspira/, /(?!)/],
+  // "é azar? pensa de novo" afirma que há uma causa por trás: só se a matéria ligar os fatos (aí reescreva sem a pergunta)
+  [/\b(so |por )?(azar|acaso|sorte)\b[^.?!]*[?!.]\s*(pensa|repara|olha) de novo|nao (foi|e) (por )?(azar|acaso|sorte)/, /(?!)/],
+];
 const helpers = this.helpers;
 
 const n = $input.first().json;
@@ -123,7 +134,7 @@ async function ia(sistema, pedido, maxTok, temp) {
     throw new Error('A IA não devolveu JSON: ' + txt.slice(0, 200));
   }
 }
-const SISTEMA = 'Você escreve para o W4K3 PR0T0C0L, transmissão ativista brasileira que denuncia, com nome e sobrenome, o que empresas e governos fazem com as pessoas. Português brasileiro falado, simples, que qualquer um entende de primeira. Nunca inventa fatos, números, nomes nem crimes. Nunca cita filmes, jogos ou livros. Responde SOMENTE com JSON válido.';
+const SISTEMA = 'Você escreve para o W4K3 PR0T0C0L, transmissão hacker clandestina brasileira que expõe, com nome e sobrenome, o que empresas e governos fazem com as pessoas. Tom de alerta máximo, sensacionalista e direto, como quem revela um esquema e acorda quem ouve: "eles" contra "você", ironia amarga, frases curtas como tapa. Português brasileiro falado, simples, que qualquer um entende de primeira. Nunca inventa fatos, números, nomes nem crimes. Nunca cita filmes, jogos ou livros. Responde SOMENTE com JSON válido.';
 
 // ---------- 1. dossiê ----------
 const digitos = (t) => new Set((String(t).match(/\d[\d.,]*/g) || []).map((x) => x.replace(/[.,]+$/, '').replace(/[.,]/g, '')));
@@ -181,12 +192,12 @@ ${dossie.fatos.map((f, i) => `${i + 1}. ${f}`).join('\n')}
 ${direcao ? '\nDIRECIONAMENTO DO AUTOR (prioridade máxima): ' + direcao : ''}
 
 ESCREVA FRASES COMPLETAS, FALADAS, com sujeito e verbo (nada de telegrama):
-- "chamado" (8 a 13 palavras): pergunta ou aviso para quem sofre isso, com uma cena do dia a dia dessa pessoa.
-- "acusacao" (9 a 14 palavras): manchete de escândalo: ${alvo} + verbo + COISA CONCRETA que dá para ver (salário, casa, rosto, remédio, voo, filho, salvar o emprego) + de quem tirou. Nada de ideia abstrata ("segurança", "privacidade", "confiança").
-- "promessa" (8 a 14 palavras): a fachada bonita, com ironia.
+- "chamado" (8 a 13 palavras): alerta que acorda quem ouve, a partir de uma cena do dia a dia dela, como quem diz "você acha que é só isso? pensa de novo". Ex. de jeito: "Você acha que está só pedindo comida? Repara no que pedem de volta."
+- "acusacao" (9 a 14 palavras): a revelação, em manchete de escândalo: ${alvo} + verbo + COISA CONCRETA que dá para ver (salário, casa, rosto, remédio, voo, filho, salvar o emprego) + de quem tirou. Nada de ideia abstrata ("segurança", "privacidade", "confiança").
+- "promessa" (8 a 14 palavras): a história bonita que te venderam, com ironia ácida (ex.: "Te venderam conveniência. Embrulhada para presente.").
 - "prova": {"fato": número do fato mais chocante, "texto": "Segundo o ${fonte}, ..." (14 a 24 palavras) contando SÓ esse fato, com pessoa e número exatos}.
 - "rosto": {"fato": número de OUTRO fato, com gente comum sofrendo, "texto": 12 a 22 palavras contando SÓ esse fato: quem é, o que perdeu, quanto sobrou}. Não junte dois fatos. Não invente causa.
-- "facas": 3 opções, cada uma {"a": "frase de 4 a 7 palavras: o que VOCÊ fez, deu ou acreditou", "b": "frase de 4 a 7 palavras: o que ELES ganharam ou o que sobrou para você"}. A "b" vira a "a" do avesso.
+- "facas": 3 opções, cada uma {"a": "frase de 4 a 7 palavras: o que VOCÊ fez, deu ou acreditou", "b": "frase de 4 a 7 palavras: o que ELES ganharam ou o que sobrou para você"}. A "b" vira a "a" do avesso, com ironia amarga (ex.: "Você paga a mensalidade." / "Eles vendem você de brinde.").
 - "esperar" (4 a 9 palavras): a saída covarde, começando com verbo no infinitivo, sem ponto final.
 - "acao": a chave que combina: ${Object.entries(ACOES).map(([k, v]) => `${k} (${v[1]})`).join('; ')}
 ${acusacaoAberta ? '- ATENÇÃO: nada foi provado. O título, a "acusacao" e a "prova" TÊM de dizer "é acusado de", "é investigado por" ou "é processado por". Sem isso, o texto não serve.\n' : ''}- "titulos": 3 manchetes sensacionalistas (5 a 9 palavras), com ${alvo}, verbo e o detalhe mais chocante dos fatos.
@@ -196,6 +207,8 @@ ${acusacaoAberta ? '- ATENÇÃO: nada foi provado. O título, a "acusacao" e a "
 REGRAS:
 - Palavra simples, frase de até 12 palavras, voz ativa. Uma criança de 12 anos entende.
 - Exagere no TOM, nunca no FATO. Crime (roubo, fraude, mentira, espionagem) só se a notícia usar essa palavra.
+- Não ligue dois fatos como causa e efeito, nem insinuando ("acha que foi azar? pensa de novo"), se a notícia não liga os dois.
+- Cara de teoria da conspiração na FORMA, nunca no CONTEÚDO: pode usar "eles", "repara", "junta as peças", "acorda", perguntas que incomodam. Não pode dizer que algo é secreto, escondido, combinado, planejado ou "não é coincidência" se os fatos não disserem isso.
 - Fale "você". Proibido: "sociedade", "usuários", "indivíduos", "impacto", "cenário".
 - Números em algarismos, iguais aos da notícia (US$ 7,50; 13 anos).
 - Nenhum filme, jogo, série ou livro.
@@ -264,6 +277,9 @@ function checar(o) {
   if (acusacaoAberta) for (const k of ['acusacao', 'titulo', 'prova']) if (!RESSALVA.test(o[k] || '')) p.push(`"${k}": ainda não foi provado; diga que ${alvo} é acusado, investigado ou processado`);
   if (fichaFonte.length && !fichaFonte.some((w) => semAcento(o.prova).includes(w))) p.push(`a "prova" tem de citar a fonte: ${fonte}`);
   if (FICCAO.test(tudo + ' ' + (o.titulo || ''))) p.push('tire a referência de ficção: só o mundo real');
+  // insinuação de conspiração (segredo, acobertamento, combinação) só se a notícia sustentar
+  const insin = semAcento(tudo + ' ' + (o.titulo || '') + ' ' + (o.resumo || '') + ' ' + (o.esperar || ''));
+  for (const [re, prova] of INSINUA) { const m = insin.match(re); if (m && !prova.test(fonteCrime + ' ' + semAcento(corpo))) p.push(`insinua "${m[0]}", e a notícia não sustenta isso: mantenha o tom, tire a insinuação`); }
   for (const w of ENROLACAO) if (low.includes(w)) p.push(`tire "${w}": vá direto`);
   if ((tudo.match(/voc[eê]/gi) || []).length < 2) p.push('fale com "você" em pelo menos duas batidas');
   if (frasesDe(o.faca).length < 2) p.push('a "faca" precisa de duas frases que se batem');
@@ -292,9 +308,9 @@ ${corpo.slice(0, 7000)}
 
 Frases de um texto sobre essa matéria:
 titulo: ${o.titulo}
-${['acusacao', 'promessa', 'prova', 'rosto'].map((k) => `${k}: ${o[k]}`).join('\n')}
+${['chamado', 'acusacao', 'promessa', 'prova', 'rosto', 'faca'].map((k) => `${k}: ${o[k]}`).join('\n')}
 
-Para cada frase: ela afirma algum FATO (quem fez, o quê, quanto, com quem) que a matéria NÃO diz ou contradiz? Ironia, opinião, metáfora e verbo forte não contam como erro. Trocar a pessoa, o lugar, o número, o papel (quem faz e quem sofre) ou dar como certo o que é suspeita CONTA como erro.
+Para cada frase: ela afirma algum FATO (quem fez, o quê, quanto, com quem) que a matéria NÃO diz ou contradiz? Ironia, opinião, metáfora e verbo forte não contam como erro. Trocar a pessoa, o lugar, o número, o papel (quem faz e quem sofre), dar como certo o que é suspeita ou ligar dois fatos como causa e efeito (inclusive insinuando, com "pensa de novo", "não foi azar", "por isso") quando a matéria não liga CONTA como erro.
 {"erros": [{"batida": "prova", "problema": "o que está errado, até 15 palavras", "certo": "o que a matéria diz"}]}
 Sem erro: {"erros": []}`, 500, 0.1);
     return (Array.isArray(r.erros) ? r.erros : []).filter((e) => e && e.batida && e.problema && !/nenhum|sem erro|correto/i.test(e.problema))
@@ -357,13 +373,16 @@ function legendaDe(fala, ja) {
   }
   return (melhor || palavras(fala).slice(-3).join(' ').replace(/[.!?…]+$/, '')).toUpperCase().slice(0, 32);
 }
+// abertura da transmissão antes do chamado
+const sorteio = [...String(roteiro.titulo || news.title)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+roteiro.chamado = ABERTURAS[sorteio % ABERTURAS.length] + ' ' + fim(roteiro.chamado);
 const ja = new Set(semAcento(alvo + ' ' + fonte).split(/[^a-z0-9]+/).filter((w) => w.length > 2));
 const batidas = LADOS.map((k) => {
   const fala = frasesDe(fim(roteiro[k])).map((f) => f.charAt(0).toUpperCase() + f.slice(1)).join(' ');
   const m = k === 'rosto' && METAFORAS.find(([re]) => re.test(semAcento(fala)));
   return { lado: k, fala, legenda: k === 'promessa' ? (palavras(fala).length <= 9 ? minus(fala) : legendaDe(fala, ja).toLowerCase()) : legendaDe(fala, ja), cena: m ? m[1] : CENA_DO_LADO[k] };
 }).filter((x) => x.fala.length > 2);
-batidas.push({ lado: 'escolha', fala: `Dá para ${esperar}. Ou dá para ${acaoTxt}.`, legenda: 'E VOCÊ?', cena: 'portas' });
+batidas.push({ lado: 'escolha', fala: `Hora de acordar. Dá para ${esperar}. Ou dá para ${acaoTxt}.`, legenda: 'E VOCÊ?', cena: 'portas' });
 batidas.push({ lado: 'assinatura', fala: ASSINATURA, legenda: '', cena: 'assinatura' });
 
 const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -373,7 +392,7 @@ const content = batidas.map((b) => `<p>${fortes.has(b.lado) ? '<strong>' + esc(b
 const avisos = [...fatosRuins.map((x) => 'CONFIRA ' + x), ...problemas];
 if (dossie.sem_prova) avisos.unshift('a IA não copiou os trechos que provam os fatos: leia a notícia antes de aprovar');
 if (dossie.sem_denuncia) avisos.unshift(`esta notícia não parece ter denúncia (${limpo(dossie.motivo)}): o texto pode estar forçando um culpado`);
-const segurar = !!dossie.sem_denuncia || fatosRuins.length > 0 || dossie.sem_prova || acusacaoAberta || problemas.some((x) => /acusa de|não está na notícia|junta pedaços|não está nos fatos|provado|ficção/.test(x));
+const segurar = !!dossie.sem_denuncia || fatosRuins.length > 0 || dossie.sem_prova || acusacaoAberta || problemas.some((x) => /acusa de|não está na notícia|junta pedaços|não está nos fatos|provado|ficção|insinua/.test(x));
 if (acusacaoAberta) avisos.push('a notícia trata de acusação ou processo, não de fato provado');
 
 const today = n.today;
