@@ -402,34 +402,59 @@ function estrada(p) {
   });
 }
 
-// ---------- ilustração gerada no PC (pontilhado na cor neon, com zoom lento) ----------
-function ilustracao(p) {
-  const lista = p.P.imagens || [], img = IMAGENS[lista[p.img ?? 0]];
-  if (!img) return hospitalOuMascara(p);
-  const ctx = p.ctx; cheio(p, '#000');
-  const lado = Math.min(T.W, T.H) * (T.v ? 1.0 : 0.95) * (1.04 + p.lf * 0.0022), x0 = p.cx - lado / 2 + Math.sin(p.f / 40) * 12, y0 = (T.v ? T.H * 0.4 : p.cy) - lado / 2;
-  // gravura de fundo claro vira negativo: traço neon sobre preto, como o resto do vídeo
-  const f = (claro(img) ? 'invert(1) ' : '') + 'brightness(0.7) contrast(1.6)';   // só as luzes da gravura viram neon
-  pb(ctx, (x) => { x.filter = f; x.drawImage(img, x0, y0, lado, lado); x.filter = 'none'; }, { cor: p.ac, escuro: '#000000', cel: T.v ? 4 : 3 });
-  // cantos de "arquivo" em branco
-  const m = S(p, 50); ctx.strokeStyle = COR.branco; ctx.lineWidth = S(p, 6); ctx.beginPath();
-  for (const [a, b] of [[0, 0], [1, 0], [0, 1], [1, 1]]) { const cx = x0 + a * lado + (a ? -m : m) * 0.6, cy = y0 + b * lado + (b ? -m : m) * 0.6; ctx.moveTo(cx, cy + (b ? -m : m)); ctx.lineTo(cx, cy); ctx.lineTo(cx + (a ? -m : m), cy); }
-  ctx.stroke();
+// ---------- ícones vetoriais (Game-icons, escolhidos por trecho no scripts/icones.js) ----------
+// os ícones vêm brancos sobre fundo transparente; aqui ganham sombra pontilhada, contorno e a cor da batida
+export const iconesDe = (p) => ((p.P.icones || {})[p.seg.k] || []).map((f) => IMAGENS[f]).filter(Boolean);
+export function icone(ctx, img, cx, cy, lado, { cor = COR.branco, contorno = null, giro = 0, cel = T.cel } = {}) {
+  pb(ctx, (x) => {
+    x.save(); x.translate(cx, cy); x.rotate(giro); x.drawImage(img, -lado / 2, -lado / 2, lado, lado);
+    x.globalCompositeOperation = 'source-atop'; x.fillStyle = grad(x, -lado / 2, -lado / 2, lado / 2, lado / 2, '#ffffff', '#c8c8c8', '#5c5c5c'); x.fillRect(-lado / 2, -lado / 2, lado, lado);
+    x.restore();
+  }, { cor, escuro: '#000000', contorno, cel });
 }
-const _claro = new Map();
-function claro(img) {
-  if (!_claro.has(img)) {
-    const c = document.createElement('canvas'); c.width = c.height = 32; const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0, 32, 32);
-    // fundo = bordas da imagem
-    const d = x.getImageData(0, 0, 32, 32).data; let s = 0, n = 0;
-    for (let y = 0; y < 32; y++) for (let k = 0; k < 32; k++) if (y < 3 || y > 28 || k < 3 || k > 28) { s += d[(y * 32 + k) * 4]; n++; }
-    _claro.set(img, s / n > 170);
+// parede de ícones repetidos, andando devagar (fundo)
+export function paredeIcones(p, imgs, v = '#4a4a4a') {
+  const d = T.v ? 230 : 150, dx = (p.f * 1.2) % d;
+  pb(p.ctx, (x) => {
+    for (let y = -1, id = 0; y * d < T.H + d; y++) for (let c = -1; c * d < T.W + d; c++, id++) {
+      const img = imgs[(((id + y) % imgs.length) + imgs.length) % imgs.length], cx = c * d + (y & 1 ? d / 2 : 0) + dx, cy = y * d + d / 2;
+      x.save(); x.translate(cx, cy); x.rotate(Math.sin(passo(p.f, 6) * 0.3 + id) * 0.08); x.drawImage(img, -d * 0.32, -d * 0.32, d * 0.64, d * 0.64); x.restore();
+    }
+    x.globalCompositeOperation = 'source-atop'; x.fillStyle = 'rgba(0,0,0,0.45)'; x.fillRect(0, 0, T.W, T.H);
+  }, { cor: v, cel: T.v ? 6 : 4 });
+}
+function icones(p) {
+  const ctx = p.ctx, imgs = iconesDe(p);
+  if (!imgs.length) return papel(p, 'olhos', 120);
+  const L = ((p.seg.k || 0) + p.i) % 3, e = salto(p.lf / 8), base = Math.min(T.W, T.H * 0.62);
+  if (L === 0) {
+    // herói: o principal grande no centro, os outros entrando pelos lados
+    aneis(p, '#383838');
+    imgs.slice(1).forEach((img, i) => {
+      const lado = i ? 1 : -1, ent = salto((p.lf - 6 - i * 4) / 8);
+      icone(ctx, img, p.cx + lado * (T.W * 0.3) + lado * (1 - ent) * T.W * 0.4, p.cy + (T.v ? S(p, 380) : S(p, 160)) * (i ? 1 : -1), base * 0.3, { giro: lado * 0.12 });
+    });
+    icone(ctx, imgs[0], p.cx, p.cy, base * 0.66 * (0.7 + 0.3 * e) * (1 + p.lf * 0.0018), { cor: p.ac, contorno: COR.branco });
+    ctx.globalAlpha = 0.6; ctx.fillStyle = p.ac; ctx.fillRect(0, p.cy - base * 0.4 + ((p.f * 9) % (base * 0.8)), T.W, S(p, 5)); ctx.globalAlpha = 1;
+  } else if (L === 1) {
+    // parede: todos repetidos ao fundo; um salta para a frente
+    paredeIcones(p, imgs);
+    const img = imgs[passo(p.lf, 12) % imgs.length];
+    ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(p.cx, p.cy, base * 0.42 * e, 0, 7); ctx.fill();
+    ctx.strokeStyle = p.ac; ctx.lineWidth = S(p, 10); ctx.stroke();
+    icone(ctx, img, p.cx, p.cy, base * 0.6 * e, { cor: p.ac });
+  } else {
+    // cartaz: faixa na cor da batida, ícone preto contornado de branco, os outros pequenos em volta
+    cheio(p, '#050505');
+    ctx.save(); ctx.translate(p.cx, p.cy); ctx.rotate(-0.06); ctx.fillStyle = p.ac; ctx.fillRect(-T.W, -base * 0.42, T.W * 2, base * 0.84);
+    ctx.fillStyle = '#000'; for (let k = -12; k < 12; k++) { ctx.beginPath(); ctx.moveTo(k * S(p, 90), -base * 0.42); ctx.lineTo(k * S(p, 90) + S(p, 30), -base * 0.42); ctx.lineTo(k * S(p, 90) - S(p, 30), -base * 0.42 - S(p, 30)); ctx.fill(); }
+    ctx.restore();
+    icone(ctx, imgs[0], p.cx, p.cy, base * 0.7 * e, { cor: '#111111', contorno: COR.branco });
+    imgs.slice(1).forEach((img, i) => { const a = p.f / 40 + i * Math.PI; icone(ctx, img, p.cx + Math.cos(a) * base * 0.55, p.cy + Math.sin(a) * base * 0.55 + (T.v ? S(p, 120) : 0), base * 0.22, { cor: COR.branco }); });
   }
-  return _claro.get(img);
 }
-const hospitalOuMascara = (p) => papel(p, 'olhos', 120);   // imagem não carregou: só o fundo
 
 export const NOVAS = { hospital, escola, fabrica, servidor, algemas, balanca, predio, grafico, radar, terminal, casa, planeta, robo, cadeado, carteira, familia,
-  letreiro, procurado, outdoor, palco, documento, divisao, pilha, estrada, ilustracao };
+  letreiro, procurado, outdoor, palco, documento, divisao, pilha, estrada, icones };
 export const NOVAS_SEM_LEGENDA = ['divisao', 'pilha', 'terminal'];
 export const NOVAS_SEM_FAIXA = ['letreiro', 'procurado', 'divisao', 'pilha', 'outdoor', 'palco'];

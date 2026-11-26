@@ -9,6 +9,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 const { falar, juntarOu, alinhar, PAUSA, TOM, RITMO } = require('./fala.js');
+const icones = require('./icones.js');
 
 const BASE = path.join(os.homedir(), '.w4k3');
 const PROJ = path.join(__dirname, '..');
@@ -133,7 +134,7 @@ function fazerPlanos(segmentos, palavras, d, nImagens) {
   const escolhidas = {};
   for (const lado of Object.keys(VERSOES)) escolhidas[lado] = versao(lado);
   let img = 0;
-  const ilu = (s) => (img < nImagens ? (img++, 'ilustracao') : tema(s));
+  const ilu = (s) => (img < nImagens ? (img++, 'icones') : tema(s));
   const temNumero = (s) => /\d/.test(String(s.fala || '').replace(/(19|20)\d\d/g, ''));
   const jaz = d.reflection.denuncia && d.reflection.denuncia.jaz;
   const seq = (s) => {
@@ -285,10 +286,20 @@ async function main() {
   segmentos.forEach((g, i) => { g.fim = i + 1 < segmentos.length ? segmentos[i + 1].ini : Math.round(fimFala * FPS); });
 
   segmentos.forEach((s, i) => { s.k = i; });
-  const planos = fazerPlanos(segmentos, palavras, d, 0);
-  const imagens = [];   // ilustrações prontas (props.imagens + plano.img); hoje nenhuma
+  // ícones vetoriais (Game-icons) para cada batida: cena própria e parede atrás da personagem
+  const planos = fazerPlanos(segmentos, palavras, d, beats ? 6 : 0);
+  let escolhidos = {};
+  if (beats) {
+    try { escolhidos = await icones.escolher(segmentos.filter((s) => s.lado && !['abertura', 'assinatura'].includes(s.lado)).map((s) => ({ k: s.k, fala: s.fala })), log); }
+    catch (e) { log('ícones falharam: ' + e.message); }
+  }
+  const ic = icones.copiar(escolhidos, path.join(PROJ, 'public', 'job', 'icones'), 'job/icones/');
+  planos.forEach((p) => { if (p.cena === 'icones' && !ic.icones[segmentos[p.seg].k]) p.cena = 'mascara'; });
+  const imagens = Object.values(ic.icones).flat();
+  const nomeAutor = (a) => a.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
+  const creditos = ic.autores.length ? ['ícones: game-icons.net · CC BY 3.0', 'por ' + ic.autores.map(nomeAutor).join(', ')] : [];
   const props = {
-    fps: FPS, duracao: nq, audio: 'job/voz.wav', imagens, vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos, planos,
+    fps: FPS, duracao: nq, audio: 'job/voz.wav', imagens, icones: ic.icones, creditos, vol: vol.map((v) => +(v / vmax).toFixed(3)), palavras, segmentos, planos,
     titulo, fonte: d.news && d.news.source || '', noticia: d.news && d.news.title || '', refs, data: d.date || '',
     final: Math.round(fimFala * FPS), alvo: (d.reflection.denuncia && d.reflection.denuncia.alvo) || '', jaz: (d.reflection.denuncia && d.reflection.denuncia.jaz) || '',
   };

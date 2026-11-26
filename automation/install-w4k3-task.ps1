@@ -88,6 +88,20 @@ if ((Test-Path $videoSrc) -and (Get-Command node.exe -ErrorAction SilentlyContin
       if ($LASTEXITCODE -eq 0) { Move-Item "$f.parcial" $f -Force } else { Write-Host "  falhou: o vídeo usa a Piper até baixar" }
     }
   }
+  # ícones vetoriais da Game-icons (CC BY 3.0, crédito no fim de cada vídeo), ~4 MB, só na primeira vez
+  $ico = Join-Path $env:USERPROFILE '.w4k3\icones'
+  if (-not (Test-Path (Join-Path $ico 'license.txt'))) {
+    $zip = Join-Path $env:TEMP 'game-icons.zip'
+    & curl.exe -sSfL -o $zip 'https://codeload.github.com/game-icons/icons/zip/refs/heads/master'
+    if ($LASTEXITCODE -eq 0) {
+      $tmp = Join-Path $env:TEMP 'game-icons'
+      Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+      Expand-Archive $zip $tmp -Force
+      Remove-Item $ico -Recurse -Force -ErrorAction SilentlyContinue
+      Move-Item (Join-Path $tmp 'icons-master') $ico
+      Remove-Item $zip, $tmp -Recurse -Force -ErrorAction SilentlyContinue
+    } else { Write-Host 'ícones: download falhou; o vídeo sai sem ícones até baixar' }
+  }
   Write-Host 'ok: vídeo da análise (Remotion + Chatterbox/Piper em %USERPROFILE%\.w4k3)'
 } else {
   Write-Host 'vídeo: pulado (precisa de node, ffmpeg e python no PATH)'

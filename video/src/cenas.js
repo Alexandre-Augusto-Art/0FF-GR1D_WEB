@@ -3,7 +3,7 @@
 // tudo é posicionado a partir do centro (p.cx, p.cy) e da escala p.s.
 // p = { ctx, f (quadro), lf (quadro no plano), len, bp (0..1 na batida), i (nº do plano), vol, ac, seg, P, t }
 import { personagem, abertura as aberturaBoca } from './personagem';
-import { NOVAS, NOVAS_SEM_LEGENDA, NOVAS_SEM_FAIXA } from './cenas2';
+import { NOVAS, NOVAS_SEM_LEGENDA, NOVAS_SEM_FAIXA, iconesDe, paredeIcones } from './cenas2';
 import { COR, T, rnd, clamp, suave, salto, tela, mono, grossa, fina, pb, ascii, bloco, cabe, quebra, carimbo, decifra, derrete, blocos } from './base';
 
 export const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
@@ -130,6 +130,7 @@ function mascara(p) {
   else if (k === 1) { cheio(p, '#e9e9e9'); papel(p, 'x', 190, '#b9b9b9'); }
   else if (k === 2) aneis(p, '#777777');
   else if (k === 3) { binario(p); pb(p.ctx, (x) => { x.fillStyle = grad(x, 0, T.H * 0.3, 0, T.H, '#000', '#6a6a6a'); x.fillRect(0, T.H * 0.35, T.W, T.H); }, { cor: '#6a6a6a', cel: T.v ? 10 : 7 }); }   // cinza: a personagem já está na cor neon
+  else if (iconesDe(p).length) paredeIcones(p, iconesDe(p));   // os ícones do trecho atrás da personagem
   else papel(p, 'maos', 130);
   const enq = [1.0, 1.25, 1.55][(p.i + (p.seg.k || 0)) % 3], zoom = 1 + p.lf * 0.0016;
   const alt = (T.v ? 1150 : 620) * enq * zoom;
@@ -392,7 +393,16 @@ function assinatura(p) {
 export function cenaFinal(p) {
   logo(p);
   const ctx = p.ctx; ctx.font = mono(T.v ? 32 : 20); ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, T.v ? T.H - 420 : T.H - 40); ctx.textAlign = 'left';
+  const y0 = T.v ? T.H - 420 : T.H - 82, linhas = [].concat(p.P.creditos || []);
+  ctx.fillStyle = '#000'; ctx.globalAlpha = 0.8; ctx.fillRect(0, y0 - (T.v ? 34 : 20), T.W, (T.v ? 68 : 40) + linhas.length * (T.v ? 34 : 21)); ctx.globalAlpha = 1; ctx.fillStyle = '#8a8a8a';
+  if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, y0);
+  // crédito obrigatório dos ícones (CC BY 3.0)
+  linhas.forEach((l, i) => {
+    let px = T.v ? 24 : 15; ctx.font = mono(px);
+    while (ctx.measureText(l).width > T.W * 0.9 && px > 10) ctx.font = mono(--px);
+    ctx.fillStyle = '#7a7a7a'; ctx.fillText(l, p.cx, y0 + (T.v ? 46 : 26) + i * px * 1.4);
+  });
+  ctx.textAlign = 'left';
 }
 
 export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao, ...NOVAS };

@@ -229,6 +229,10 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
          (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
        → sem Chatterbox: Piper (scripts/tts.py)
        → FFmpeg: junta, voz um pouco mais grave/"rádio"/glitch, volume por quadro
+       → ícones: o modelo de texto (Ollama) diz em inglês o que aparece em cada batida, o código acha os
+         candidatos pelo nome entre ~3.900 silhuetas da Game-icons e o modelo escolhe até 3 por batida
+         (scripts/icones.js, ~30 s); viram cena própria (cenas2.js: icones, em 3 composições) e parede
+         atrás da personagem
        → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
          alternando a personagem com cenas:
            - por assunto (as palavras da batida e do texto escolhem): hospital, escola, fábrica, servidor,
@@ -249,6 +253,10 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   `pt_BR-faber-medium` de reserva). A conferência usa o faster-whisper de `%USERPROFILE%\.w4k3\reels`, e
   as palavras que ele ouviu dão o tempo da legenda. Notas e frases duvidosas ficam em `logs\video.log`.
 - A Chatterbox põe uma marca d'água inaudível (Perth) no áudio.
+- Ícones: `%USERPROFILE%\.w4k3\icones` (repositório game-icons/icons, ~4 MB). Licença CC BY 3.0: o crédito
+  (autores + game-icons.net) aparece no fim de cada vídeo. Ícones de fantasia, armas e gore ficam de fora
+  (lista `FORA` no icones.js). Sem os ícones ou sem resposta do Ollama, usa palavras de reserva por assunto
+  ou só as cenas desenhadas.
 - Uns 9 a 11 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
   `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
