@@ -2,16 +2,18 @@
 // preto e branco pontilhado e UMA cor de destaque por batida (p.ac). Servem para o vertical e o horizontal:
 // tudo é posicionado a partir do centro (p.cx, p.cy) e da escala p.s.
 // p = { ctx, f (quadro), lf (quadro no plano), len, bp (0..1 na batida), i (nº do plano), vol, ac, seg, P, t }
+import { personagem, abertura as aberturaBoca } from './personagem';
+import { NOVAS, NOVAS_SEM_LEGENDA, NOVAS_SEM_FAIXA, iconesDe, paredeIcones } from './cenas2';
 import { COR, T, rnd, clamp, suave, salto, tela, mono, grossa, fina, pb, ascii, bloco, cabe, quebra, carimbo, decifra, derrete, blocos } from './base';
 
-const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
-const cinza = (v) => `rgb(${v},${v},${v})`;
-function rr(x, a, b, w, h, r) { x.beginPath(); x.roundRect(a, b, w, h, r); }
-function cheio(p, cor) { p.ctx.fillStyle = cor; p.ctx.fillRect(0, 0, T.W, T.H); }
-const grad = (x, x0, y0, x1, y1, ...cs) => { const g = x.createLinearGradient(x0, y0, x1, y1); cs.forEach((c, i) => g.addColorStop(i / (cs.length - 1), c)); return g; };
+export const passo = (f, n = 3) => Math.floor(f / n);     // animação "a 10 quadros", como colagem
+export const cinza = (v) => `rgb(${v},${v},${v})`;
+export function rr(x, a, b, w, h, r) { x.beginPath(); x.roundRect(a, b, w, h, r); }
+export function cheio(p, cor) { p.ctx.fillStyle = cor; p.ctx.fillRect(0, 0, T.W, T.H); }
+export const grad = (x, x0, y0, x1, y1, ...cs) => { const g = x.createLinearGradient(x0, y0, x1, y1); cs.forEach((c, i) => g.addColorStop(i / (cs.length - 1), c)); return g; };
 
 // ---------- peças ----------
-function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
+export function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
   x.save(); x.translate(cx, cy); x.scale(1, aberto);
   const g = x.createRadialGradient(-r * 0.2, -r * 0.2, r * 0.1, 0, 0, r * 1.25);
   g.addColorStop(0, '#fff'); g.addColorStop(0.6, '#d8d8d8'); g.addColorStop(1, '#4a4a4a');
@@ -21,7 +23,7 @@ function olho(x, cx, cy, r, px = 0, py = 0, aberto = 1) {
   x.fillStyle = '#fff'; x.beginPath(); x.arc(px * r * 0.45 - r * 0.1, py * r * 0.45 - r * 0.12, r * 0.08, 0, 7); x.fill();
   x.restore();
 }
-function mao(x, cx, cy, s, rot = 0, fechada = 0) {
+export function mao(x, cx, cy, s, rot = 0, fechada = 0) {
   x.save(); x.translate(cx, cy); x.rotate(rot); x.scale(s, s);
   x.fillStyle = grad(x, -60, 0, 60, 0, '#f4f4f4', '#9a9a9a', '#3a3a3a'); x.strokeStyle = '#000'; x.lineWidth = 5;
   rr(x, -38, 60, 76, 150, 14); x.fill(); x.stroke();              // punho
@@ -31,7 +33,7 @@ function mao(x, cx, cy, s, rot = 0, fechada = 0) {
   x.restore();
 }
 // pessoa (busto); rosto: 0 vazio, 1 olhos assustados
-function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
+export function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
   x.save(); x.translate(cx, cy); x.scale(s, s); x.strokeStyle = '#000'; x.lineWidth = 5;
   x.fillStyle = grad(x, -120, 0, 130, 60, '#cfcfcf', '#777', '#222');
   x.beginPath(); x.moveTo(-130, 240); x.quadraticCurveTo(-130, 74, -36, 62); x.lineTo(36, 62); x.quadraticCurveTo(130, 74, 130, 240); x.closePath(); x.fill(); x.stroke();
@@ -45,17 +47,17 @@ function pessoa(x, cx, cy, s, rosto = 0, boca = 0) {
   }
   x.restore();
 }
-function nota(x, cx, cy, w, v = 235) {
+export function nota(x, cx, cy, w, v = 235) {
   const h = w * 0.44;
   x.fillStyle = cinza(v); x.strokeStyle = '#000'; x.lineWidth = w * 0.018;
   x.beginPath(); x.moveTo(cx - w * 0.5, cy + h * 0.1); x.lineTo(cx + w * 0.28, cy - h * 0.42); x.lineTo(cx + w * 0.5, cy - h * 0.05); x.lineTo(cx - w * 0.26, cy + h * 0.5); x.closePath(); x.fill(); x.stroke();
   x.save(); x.beginPath(); x.ellipse(cx + w * 0.01, cy + h * 0.03, w * 0.13, h * 0.2, -0.3, 0, 7); x.fillStyle = cinza(150); x.fill(); x.stroke();
   x.fillStyle = '#000'; x.font = `900 ${w * 0.15}px Arial`; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('$', cx + w * 0.01, cy + h * 0.04); x.restore();
 }
-function maco(x, cx, cy, w, n) {
+export function maco(x, cx, cy, w, n) {
   for (let i = 0; i < n; i++) nota(x, cx + (rnd(i * 7) - 0.5) * w * 0.03, cy - i * w * 0.055, w, i === n - 1 ? 245 : 130 + (i % 2) * 60);
 }
-function celular(x, cx, cy, w, rot = 0) {
+export function celular(x, cx, cy, w, rot = 0) {
   const h = w * 1.95;
   x.save(); x.translate(cx, cy); x.rotate(rot);
   x.fillStyle = grad(x, -w / 2, 0, w / 2, 0, '#eee', '#8a8a8a', '#2b2b2b'); rr(x, -w / 2, -h / 2, w, h, w * 0.14); x.fill();
@@ -63,7 +65,7 @@ function celular(x, cx, cy, w, rot = 0) {
   x.restore();
   return h;
 }
-function cursor(ctx, x, y, s) {
+export function cursor(ctx, x, y, s) {
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
   ctx.beginPath(); [[0, 0], [0, 34], [8, 27], [14, 40], [20, 37], [14, 25], [25, 25]].forEach(([a, b], i) => (i ? ctx.lineTo(a, b) : ctx.moveTo(a, b))); ctx.closePath();
   ctx.fillStyle = '#fff'; ctx.fill(); ctx.strokeStyle = '#000'; ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
@@ -77,7 +79,7 @@ export function aneis(p, cor = '#6a6a6a', cx = p.cx, cy = p.cy, escuro = false) 
     for (let r = off - larg; r < R + larg; r += larg * 2) { if (r <= 0) continue; const v = Math.max(20, 150 - (r / R) * 110); x.strokeStyle = cinza(v); x.beginPath(); x.arc(cx, cy, r, 0, 7); x.stroke(); }
   }, { cor, cel: T.v ? 12 : 8, alfa: escuro ? 0.5 : 1 });
 }
-function binario(p, v = 60, cor = '#8a8a8a') {
+export function binario(p, v = 60, cor = '#8a8a8a') {
   const ctx = p.ctx, px = T.v ? 30 : 20, cw = px * 1.3, ch = px * 1.5;
   ctx.font = mono(px); ctx.textBaseline = 'top'; ctx.textAlign = 'left';
   for (let c = 0; c * cw < T.W; c++) {
@@ -105,71 +107,36 @@ export function papel(p, tipo, v = 120, cor = COR.branco, alfa = 1) {
     x.globalCompositeOperation = 'source-atop'; x.fillStyle = `rgba(0,0,0,${1 - v / 255})`; x.fillRect(0, 0, T.W, T.H);
   }, { cor, alfa });
 }
-function cortina(p, cor) {
+export function cortina(p, cor) {
   pb(p.ctx, (x) => {
     const n = T.v ? 12 : 18, w = T.W / n;
     for (let i = 0; i < n; i++) { x.fillStyle = grad(x, i * w, 0, (i + 1) * w, 0, '#181818', '#8f8f8f', '#101010'); x.fillRect(i * w + Math.sin(passo(p.f, 5) * 0.4 + i) * 4, 0, w + 5, T.H); }
   }, { cor, escuro: '#0a0006' });
 }
 
-// ---------- a máscara do W4K3 (desenho próprio: placa branca com fendas e boca de equalizador) ----------
-function figura(t, vol, w, h) {
-  const c = tela('fig_corpo', w, h), x = c._x;
-  let g = x.createLinearGradient(0, h * 0.55, 0, h);
-  g.addColorStop(0, '#707070'); g.addColorStop(1, '#1a1a1a');
-  x.fillStyle = g; x.beginPath(); x.moveTo(0, h);
-  x.quadraticCurveTo(w * 0.04, h * 0.66, w * 0.5, h * 0.6); x.quadraticCurveTo(w * 0.96, h * 0.66, w, h); x.fill();
-  g = x.createRadialGradient(w * 0.34, h * 0.14, 10, w * 0.5, h * 0.4, w * 0.62);
-  g.addColorStop(0, '#e2e2e2'); g.addColorStop(0.45, '#727272'); g.addColorStop(1, '#141414');
-  x.fillStyle = g; x.beginPath(); x.moveTo(w * 0.5, h * 0.03);
-  x.bezierCurveTo(w * 0.86, h * 0.03, w * 0.95, h * 0.42, w * 0.82, h * 0.72);
-  x.lineTo(w * 0.18, h * 0.72);
-  x.bezierCurveTo(w * 0.05, h * 0.42, w * 0.14, h * 0.03, w * 0.5, h * 0.03); x.fill();
-  g = x.createRadialGradient(w * 0.5, h * 0.42, w * 0.05, w * 0.5, h * 0.42, w * 0.27);
-  g.addColorStop(0, '#000'); g.addColorStop(0.75, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)');
-  x.fillStyle = g; x.beginPath(); x.ellipse(w * 0.5, h * 0.42, w * 0.27, h * 0.27, 0, 0, 7); x.fill();
-  const m = tela('fig_masc', w, h), y = m._x;
-  g = y.createLinearGradient(w * 0.35, h * 0.22, w * 0.62, h * 0.62);
-  g.addColorStop(0, '#ffffff'); g.addColorStop(0.6, '#bcbcbc'); g.addColorStop(1, '#575757');
-  y.fillStyle = g; y.beginPath(); y.ellipse(w * 0.5, h * 0.43, w * 0.165, h * 0.205, 0, 0, 7); y.fill();
-  y.globalCompositeOperation = 'destination-out';
-  for (const [ex, r] of [[0.43, 0.22], [0.57, -0.22]]) { y.save(); y.translate(w * ex, h * 0.37); y.rotate(r); y.fillRect(-w * 0.055, -h * 0.017, w * 0.11, h * 0.034); y.restore(); }
-  const n = 7, bw = w * 0.022, gap = w * 0.012, x0 = w * 0.5 - (n * bw + (n - 1) * gap) / 2;
-  for (let i = 0; i < n; i++) {
-    const k = Math.min(1, 0.15 + vol * (0.55 + 0.45 * rnd(i * 97 + Math.floor(t * 12))) * 1.5);
-    const bh = h * 0.012 + h * 0.075 * k * (1 - Math.abs(i - 3) / 5);
-    y.fillRect(x0 + i * (bw + gap), h * 0.53 - bh / 2, bw, bh);
-  }
-  y.globalCompositeOperation = 'source-over';
-  return { corpo: c, mascara: m };
+// ---------- a personagem do W4K3 (personagem.js, arte do autor) ----------
+// (cx, cy) = centro da figura; alt = tamanho de referência (o mesmo das cenas antigas)
+// o rosto inteiro (pontilhado) e os olhos (sólidos, com brilho) na mesma cor neon
+export function mascarado(p, cx, cy, alt, { cor = p.ac } = {}) {
+  const larg = alt * 0.62;
+  personagem(p.ctx, cx, cy - alt * 0.07, larg, { cor, olhos: cor, vol: p.vol, boca: aberturaBoca(p.P.vol, p.f), t: p.f / 30 });
 }
-// (cx, cy) = centro da figura; alt = altura na tela
-export function mascarado(p, cx, cy, alt, { cor = '#e6e6e6', olhos = p.ac } = {}) {
-  const ctx = p.ctx, t = p.f / 30, h = Math.round(alt), w = Math.round(alt * 0.815);
-  const { corpo, mascara } = figura(t, p.vol, w, h);
-  let ox = cx - w / 2, oy = cy - h / 2 + Math.sin(t * 2.2) * 5;
-  if (p.vol > 0.55) ox += (rnd(p.f * 13) - 0.5) * p.vol * 16;
-  pb(ctx, (x) => x.drawImage(corpo, ox, oy), { cor, escuro: '#000000' });
-  const cw = Math.max(6, Math.round(alt / 110)), ch = Math.round(cw * 1.33);
-  ascii(mascara, ctx, ox, oy, cw, ch, '#f4f4f4');
-  ctx.save(); ctx.fillStyle = olhos; ctx.shadowColor = olhos; ctx.shadowBlur = alt * 0.03; ctx.globalAlpha = 0.35 + p.vol * 0.65;
-  for (const [ex, r] of [[0.43, 0.22], [0.57, -0.22]]) { ctx.save(); ctx.translate(ox + w * ex, oy + h * 0.37); ctx.rotate(r); ctx.fillRect(-w * 0.04, -h * 0.008, w * 0.08, h * 0.016); ctx.restore(); }
-  ctx.restore();
-}
-const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
+export const alvoDe = (P) => String(P.alvo || P.fonte || 'W4K3').toUpperCase();
 
 // ---------- cenas ----------
 function mascara(p) {
-  const k = p.i % 5, base = T.H - (T.v ? 250 : 40);
+  const k = p.i % 5;
   if (k === 0) papel(p, 'olhos', 120);
   else if (k === 1) { cheio(p, '#e9e9e9'); papel(p, 'x', 190, '#b9b9b9'); }
   else if (k === 2) aneis(p, '#777777');
-  else if (k === 3) { binario(p); pb(p.ctx, (x) => { x.fillStyle = grad(x, 0, T.H * 0.3, 0, T.H, '#000', '#6a6a6a'); x.fillRect(0, T.H * 0.35, T.W, T.H); }, { cor: p.ac, cel: T.v ? 10 : 7 }); }
+  else if (k === 3) { binario(p); pb(p.ctx, (x) => { x.fillStyle = grad(x, 0, T.H * 0.3, 0, T.H, '#000', '#6a6a6a'); x.fillRect(0, T.H * 0.35, T.W, T.H); }, { cor: '#6a6a6a', cel: T.v ? 10 : 7 }); }   // cinza: a personagem já está na cor neon
+  else if (iconesDe(p).length) paredeIcones(p, iconesDe(p));   // os ícones do trecho atrás da personagem
   else papel(p, 'maos', 130);
   const enq = [1.0, 1.25, 1.55][(p.i + (p.seg.k || 0)) % 3], zoom = 1 + p.lf * 0.0016;
   const alt = (T.v ? 1150 : 620) * enq * zoom;
   const dx = T.v ? 0 : [0, -170, 190][p.i % 3];
-  mascarado(p, p.cx + dx, base - alt * 0.36 + (T.v ? 60 : 30), alt, { cor: k === 1 ? '#777777' : '#e6e6e6' });
+  // rosto acima da legenda e do carimbo (a boca fica na metade de baixo)
+  mascarado(p, p.cx + dx, T.H * 0.45 + alt * 0.07, alt);
 }
 // nome do acusado: começa limpo, como anúncio, e derrete
 function marca(p) {
@@ -397,7 +364,7 @@ function padrao(p) { cheio(p, p.i % 2 ? '#000' : '#0a0a0a'); papel(p, p.i % 2 ? 
 // logo do W4K3 em ASCII, sobre anéis
 function logo(p, k = 1) {
   const ctx = p.ctx; aneis(p, '#555555');
-  mascarado(p, p.cx, p.cy - (T.v ? 230 : 70), (T.v ? 900 : 470), { olhos: COR.lime });
+  mascarado(p, p.cx, p.cy - (T.v ? 230 : 70), (T.v ? 900 : 470), { cor: COR.lime });
   const txt = 'W4K3', px = T.v ? 330 : 170, c0 = tela('medlogo', 10, 10)._x; c0.font = grossa(px);
   const w = Math.ceil(c0.measureText(txt).width), c = tela('logoasc', w + 10, Math.ceil(px * 1.25)), x = c._x;
   x.fillStyle = '#fff'; x.font = grossa(px); x.textBaseline = 'top'; x.fillText(txt, 0, 0);
@@ -421,18 +388,27 @@ function abertura(p) {
   });
 }
 function assinatura(p) {
-  if (p.bp < 0.45) { aneis(p, '#5a5a5a'); mascarado(p, p.cx, p.cy + (T.v ? 260 : 130), (T.v ? 1500 : 800) * (1 + p.bp * 0.3), { olhos: COR.lime }); } else logo(p, suave(p.lf / 6));
+  if (p.bp < 0.45) { aneis(p, '#5a5a5a'); mascarado(p, p.cx, p.cy + (T.v ? 260 : 130), (T.v ? 1500 : 800) * (1 + p.bp * 0.3), { cor: COR.lime }); } else logo(p, suave(p.lf / 6));
 }
 export function cenaFinal(p) {
   logo(p);
   const ctx = p.ctx; ctx.font = mono(T.v ? 32 : 20); ctx.fillStyle = '#8a8a8a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, T.v ? T.H - 420 : T.H - 40); ctx.textAlign = 'left';
+  const y0 = T.v ? T.H - 420 : T.H - 82, linhas = [].concat(p.P.creditos || []);
+  ctx.fillStyle = '#000'; ctx.globalAlpha = 0.8; ctx.fillRect(0, y0 - (T.v ? 34 : 20), T.W, (T.v ? 68 : 40) + linhas.length * (T.v ? 34 : 21)); ctx.globalAlpha = 1; ctx.fillStyle = '#8a8a8a';
+  if (p.P.fonte) ctx.fillText('fonte: ' + p.P.fonte, p.cx, y0);
+  // crédito obrigatório dos ícones (CC BY 3.0)
+  linhas.forEach((l, i) => {
+    let px = T.v ? 24 : 15; ctx.font = mono(px);
+    while (ctx.measureText(l).width > T.W * 0.9 && px > 10) ctx.font = mono(--px);
+    ctx.fillStyle = '#7a7a7a'; ctx.fillText(l, p.cx, y0 + (T.v ? 46 : 26) + i * px * 1.4);
+  });
+  ctx.textAlign = 'left';
 }
 
-export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao };
+export const CENAS = { abertura, assinatura, mascara, marca, comercial, olhocelular, leilao, dinheiro, fantoche, contrato, multidao, vigilancia, lapide, janelas, manchete, numero, cartela, portas, padrao, ...NOVAS };
 // cenas dos rascunhos antigos
 export const ANTIGAS = { apresentador: 'mascara', cidade: 'padrao', obra: 'padrao', plataforma: 'olhocelular', marionete: 'fantoche', virada: 'cartela', pergunta: 'portas' };
 // cenas que já têm o texto na tela: sem legenda por cima
-export const SEM_LEGENDA = new Set(['cartela', 'abertura']);
+export const SEM_LEGENDA = new Set(['cartela', 'abertura', ...NOVAS_SEM_LEGENDA]);
 // cenas em que a faixa com o nome do acusado atrapalha
-export const SEM_FAIXA = new Set(['abertura', 'assinatura', 'marca', 'cartela', 'comercial']);
+export const SEM_FAIXA = new Set(['abertura', 'assinatura', 'marca', 'cartela', 'comercial', ...NOVAS_SEM_FAIXA]);

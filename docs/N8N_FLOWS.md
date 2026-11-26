@@ -223,11 +223,25 @@ neste PC (sem GPU e sem serviço pago), no estilo colagem/ASCII/glitch.
 ```
 telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   → %USERPROFILE%\.w4k3\video\scripts\gerar.js <draft.json> --telegram
-       título + cada frase → Piper pt-BR (scripts/tts.py, uma frase por arquivo = tempo exato)
-       → FFmpeg: junta, voz grave/"rádio"/glitch, volume por quadro
+       título + cada frase → fala.js (números por extenso, siglas, endereços, pausas, tom por batida)
+       → Chatterbox pt-BR (scripts/voz.py, uma frase por arquivo) → Whisper ouve cada frase de volta:
+         errou, gera de novo (até 3 vezes); nada prestou, a frase sai na Supertonic F3
+         (a mesma síntese que serviu de referência do timbre, em video/voz; não é voz de pessoa real)
+       → sem Chatterbox: Piper (scripts/tts.py)
+       → FFmpeg: junta, voz um pouco mais grave/"rádio"/glitch, volume por quadro
+       → ícones: o modelo de texto (Ollama) diz em inglês o que aparece em cada batida, o código acha os
+         candidatos pelo nome entre ~3.900 silhuetas da Game-icons e o modelo escolhe até 3 por batida
+         (scripts/icones.js, ~30 s); viram cena própria (cenas2.js: icones, em 3 composições) e parede
+         atrás da personagem
        → cada batida vira cortes de ~1,5 s, sempre no começo de uma palavra (fazerPlanos no gerar.js),
-         alternando a máscara com metáforas: marca que derrete, comercial que apodrece, leilão,
-         fantoche, contrato, multidão, vigilância, lápide, janelas, manchete, número, portas...
+         alternando a personagem com cenas:
+           - por assunto (as palavras da batida e do texto escolhem): hospital, escola, fábrica, servidor,
+             algemas, balança, prédio, gráfico, radar, terminal, casa, planeta, robô, cadeado, carteira,
+             família, leilão, fantoche, vigilância, celular, contrato, dinheiro, janelas, lápide...
+           - versões sorteadas das batidas fixas: acusação (nome derretendo, letreiro, cartaz), promessa
+             (comercial, outdoor, palco), prova (manchete, documento), golpe final (cartela, tela dividida,
+             pilha de palavras), escolha (portas, estrada)
+           - o que saiu nos 2 últimos vídeos vai para o fim da fila (videos/historico-cenas.json)
        → uma cor de destaque por batida, o resto em preto e branco pontilhado
        → Remotion (src/desenho.js monta o quadro; src/cenas.js tem as cenas; src/base.js os efeitos)
        → vertical 1080x1920 (tela cheia, faixa ALVO/FONTE, legenda pequena) → sendVideo
@@ -235,8 +249,15 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 ```
 
 - Código em `video/` (copiado pelo instalador para `%USERPROFILE%\.w4k3\video`, com `npm ci`);
-  voz em `%USERPROFILE%\.w4k3\tts` (venv com `piper-tts` + `pt_BR-faber-medium`).
-- Uns 4 a 5 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
+  vozes em `%USERPROFILE%\.w4k3\tts` (`chatterbox\`: venv, modelo pt-BR e Supertonic 3; e a Piper
+  `pt_BR-faber-medium` de reserva). A conferência usa o faster-whisper de `%USERPROFILE%\.w4k3\reels`, e
+  as palavras que ele ouviu dão o tempo da legenda. Notas e frases duvidosas ficam em `logs\video.log`.
+- A Chatterbox põe uma marca d'água inaudível (Perth) no áudio.
+- Ícones: `%USERPROFILE%\.w4k3\icones` (repositório game-icons/icons, ~4 MB). Licença CC BY 3.0: o crédito
+  (autores + game-icons.net) aparece no fim de cada vídeo. Ícones de fantasia, armas e gore ficam de fora
+  (lista `FORA` no icones.js). Sem os ícones ou sem resposta do Ollama, usa palavras de reserva por assunto
+  ou só as cenas desenhadas.
+- Uns 9 a 11 minutos no total para 1 minuto de vídeo (vertical, envio, horizontal). Vídeos ficam em
   `%USERPROFILE%\.w4k3\videos` (os 30 últimos). `--so-vertical` pula o horizontal.
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
@@ -244,14 +265,16 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
   vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3ideos\indice.json`, que o
   `gerar.js` grava), recomprime para a web (540x960, uns 4 MB por 50 s) em
   `assets/videos/w4k3/<data>.mp4` com uma capa `.jpg` e grava `video: { src, poster }` na entrada. A
-  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 6 min;
+  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 12 min;
   sem vídeo desta versão, publica só o texto.
 - Cada vídeo soma uns 2 MB ao repositório (uns 700 MB por ano publicando todo dia); se crescer
   demais, apague os vídeos antigos de `assets/videos/w4k3` (a página só mostra o da entrada mais nova).
 - Log: `%USERPROFILE%\.w4k3\logs\video.log`. Testar à mão:
   `node video\scripts\gerar.js %USERPROFILE%\.w4k3\draft.json --saida teste.mp4`.
 - Editar o visual ao vivo: `npm run exemplo` e `npm run estudio` dentro de `video\`.
-- Personagem e marca são próprios (máscara com boca de equalizador); não usar caveira, logo ou
+- Personagem e marca são próprios: a personagem é a arte do autor (`03.11.26_2B`, Asset-1 neutra, Asset-3 de olhos fechados e
+  Asset-2 de boca aberta), redesenhada em `video/src/personagem.js` com as formas do SVG, toda na cor neon da batida; a boca abre
+  com o volume da voz (feminina, Chatterbox com timbre da Supertonic F3). Não usar caveira, logo ou
   cenas do Watch Dogs (direitos autorais).
 
 ### Temas a partir de reels e posts (desde 2026-11-18; posts de imagem desde 2026-11-23)

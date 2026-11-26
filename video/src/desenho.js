@@ -64,7 +64,7 @@ export function desenhar(ctx, frame, P) {
   if (ip >= 0) {
     const pl = _planos[ip], seg = P.segmentos[pl.seg], cena = ANTIGAS[pl.cena] || (CENAS[pl.cena] ? pl.cena : 'mascara');
     const ac = COR_DO_LADO[seg.lado] || RODIZIO[pl.seg % 3];
-    const lf = frame - pl.ini, p = { ...base, lf, len: Math.max(1, pl.fim - pl.ini), bp: clamp((frame - seg.ini) / Math.max(1, seg.fim - seg.ini)), i: ip, ac, seg };
+    const lf = frame - pl.ini, p = { ...base, lf, len: Math.max(1, pl.fim - pl.ini), bp: clamp((frame - seg.ini) / Math.max(1, seg.fim - seg.ini)), i: ip, ac, seg, img: pl.img };
     CENAS[cena](p);
 
     // transição: o começo de cada plano ainda "chega quebrado"; o tipo varia de corte para corte
@@ -74,7 +74,7 @@ export function desenhar(ctx, frame, P) {
 
     if (!SEM_FAIXA.has(cena)) faixa(ctx, P, ac, lf);
     // soco da batida: só no primeiro plano dela em que a cena não mostra texto grande
-    const primeiro = _planos.findIndex((x) => x.seg === pl.seg && !['cartela', 'marca', 'comercial', 'numero', 'janelas', 'abertura', 'assinatura', 'portas', 'lapide', 'manchete'].includes(x.cena)) === ip;
+    const primeiro = _planos.findIndex((x) => x.seg === pl.seg && !['cartela', 'marca', 'comercial', 'numero', 'janelas', 'abertura', 'assinatura', 'portas', 'lapide', 'manchete', 'letreiro', 'procurado', 'outdoor', 'palco', 'documento', 'divisao', 'pilha', 'estrada', 'escola', 'terminal', 'grafico', 'algemas', 'radar', 'casa', 'carteira'].includes(x.cena)) === ip;
     if (primeiro && seg.legenda && !['assinatura', 'promessa', 'faca', 'escolha'].includes(seg.lado)) carimbo(ctx, seg.legenda.slice(0, 30), v ? W / 2 : W * 0.8, v ? 1300 : 60, ac, lf - 3, v ? 54 : 34, true);
     if (!SEM_LEGENDA.has(cena)) legenda(ctx, _gs, t, W / 2, v ? 1455 : H - 78, v ? 66 : 42, W * 0.84, ac);
   } else cenaFinal({ ...base, lf: frame - P.final, len: P.duracao - P.final, bp: 1, i: 0, ac: COR.lime, seg: {} });
