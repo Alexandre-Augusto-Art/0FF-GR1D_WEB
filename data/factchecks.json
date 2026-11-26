@@ -1,11 +1,10 @@
 {
- "updatedAt": "2026-11-25T21:51:53.836Z",
+ "updatedAt": "2026-11-26T08:40:08.656Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 404"
+   "ok": true,
+   "count": 20
   },
   {
    "name": "Agência Lupa",
@@ -35,6 +34,14 @@
  ],
  "items": [
   {
+   "title": "Flávio Bolsonaro pediu impeachment de Moraes em 2025, não recentemente",
+   "link": "https://www.aosfatos.org/noticias/flavio-bolsonaro-impeachment-moraes",
+   "source": "Aos Fatos",
+   "date": "2026-11-25T21:22:29.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p style=\" margin-bottom:13px\">Não é verdade que Flávio Bolsonaro (PL-RJ) tenha protocolado recentemente um pedido de impeachment contra o ministro do STF (Supremo Tribunal Federal) Alexandre de Moraes, como afirmam postagens nas redes sociais. Nenhum dos 29 pedidos do gênero…"
+  },
+  {
    "title": "É antigo vídeo de homem descartando caixas de tomate",
    "link": "https://www.agencialupa.org/verificacao/2026/11/25/e-antigo-video-de-homem-descartando-caixas-de-tomate",
    "source": "Agência Lupa",
@@ -51,12 +58,28 @@
    "summary": "Página que pede compartilhamento para liberar presente usa marca de chocolate para coletar dados; promoção não existe"
   },
   {
+   "title": "Documento da USAID é tirado de contexto para isentar Bolsonaro por tentativa de golpe",
+   "link": "https://www.aosfatos.org/noticias/documento-usaid-bolsonaro-golpe",
+   "source": "Aos Fatos",
+   "date": "2026-11-25T19:49:39.000Z",
+   "rating": "FORA DE CONTEXTO",
+   "summary": "<p>Bolsonaristas têm alegado de forma enganosa que relatório divulgado nesta quarta-feira (25) pelo governo norte-americano, chamado de “USAID Files”, teria provado que não existiu tentativa de golpe de Estado após as eleições de 2022. O documento citado, no entanto, não traz…"
+  },
+  {
    "title": "Fim da escala 6×1 não altera regras de desconto por falta injustificada",
    "link": "https://www.agencialupa.org/verificacao/2026/11/25/fim-da-escala-6x1-nao-altera-regras-de-desconto-por-falta-injustificada",
    "source": "Agência Lupa",
    "date": "2026-11-25T19:46:13.000Z",
    "rating": "CHECAGEM",
    "summary": "Portaria do ministério de trabalho regulamentou base de cálculo para remuneração de descanso semanal"
+  },
+  {
+   "title": "Vídeo que mostra descarte de melancias é de 2023, não atual",
+   "link": "https://www.aosfatos.org/noticias/video-descarte-melancias",
+   "source": "Aos Fatos",
+   "date": "2026-11-25T19:30:42.000Z",
+   "rating": "ANTIGO",
+   "summary": "<p style=\" margin-bottom:13px\">É falso que um vídeo que mostra dois homens em cima de um caminhão descartando melancias seja recente, ao contrário do que afirmam postagens nas redes sociais. A gravação circula na internet desde 2023. Também não há registros atuais de…"
   },
   {
    "title": "É #FAKE mensagem de WhatsApp sobre promoção da Cacau Show com brinde de Natal; trata-se de golpe",
@@ -72,6 +95,14 @@
    "source": "Estadão Verifica",
    "date": "2026-11-25T19:05:00.000Z",
    "rating": "ANTIGO"
+  },
+  {
+   "title": "PF não visitará casas de beneficiários do BPC e do Bolsa Família a partir de 2027",
+   "link": "https://www.aosfatos.org/noticias/pf-bolsa-familia-bpc",
+   "source": "Aos Fatos",
+   "date": "2026-11-25T19:01:39.000Z",
+   "rating": "CHECAGEM",
+   "summary": "<p>Não é verdade que, a partir de 2027, policiais federais passarão a visitar beneficiários do BPC (Benefício de Prestação Continuada) e do Bolsa Família para fiscalizar cadastros, como afirmam publicações nas redes. Não há previsão de ações do tipo por parte da PF (Polícia…"
   },
   {
    "title": "Imagem de produtores descartando leite é de protesto em Pernambuco em 2019",
