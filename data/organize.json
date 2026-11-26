@@ -1,34 +1,34 @@
 {
- "updatedAt": "2026-11-25T19:16:38.598Z",
+ "updatedAt": "2026-11-26T01:57:51.339Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 50,
-   "atos": 6
+   "manchetes": 16,
+   "atos": 3
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 16,
-   "atos": 2
+   "manchetes": 45,
+   "atos": 1
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 43,
-   "atos": 2
+   "manchetes": 44,
+   "atos": 1
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 20,
-   "atos": 3
+   "manchetes": 48,
+   "atos": 6
   },
   {
    "busca": "BA",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 60,
    "atos": 3
   },
   {
@@ -40,13 +40,13 @@
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 64,
    "atos": 2
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 21,
    "atos": 0
   },
   {
@@ -64,110 +64,110 @@
   {
    "busca": "MT",
    "ok": true,
-   "manchetes": 47,
+   "manchetes": 43,
    "atos": 3
   },
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 27,
-   "atos": 2
+   "manchetes": 29,
+   "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 30,
-   "atos": 2
+   "manchetes": 25,
+   "atos": 3
   },
   {
    "busca": "PA",
    "ok": true,
-   "manchetes": 21,
-   "atos": 4
+   "manchetes": 55,
+   "atos": 5
   },
   {
    "busca": "PB",
    "ok": true,
-   "manchetes": 14,
+   "manchetes": 44,
    "atos": 0
   },
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 50,
+   "manchetes": 46,
    "atos": 0
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 24,
+   "manchetes": 52,
    "atos": 1
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 18,
-   "atos": 0
+   "manchetes": 41,
+   "atos": 2
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 28,
    "atos": 2
   },
   {
    "busca": "RN",
    "ok": true,
-   "manchetes": 60,
-   "atos": 2
+   "manchetes": 58,
+   "atos": 1
   },
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 30,
-   "atos": 0
+   "manchetes": 54,
+   "atos": 1
   },
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 39,
+   "manchetes": 8,
    "atos": 0
   },
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 15,
+   "manchetes": 33,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
-   "manchetes": 58,
-   "atos": 4
+   "manchetes": 28,
+   "atos": 1
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 19,
-   "atos": 1
+   "manchetes": 49,
+   "atos": 3
   },
   {
    "busca": "SE",
    "ok": true,
-   "manchetes": 17,
+   "manchetes": 40,
    "atos": 0
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 20,
+   "manchetes": 42,
    "atos": 1
   },
   {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 56,
-   "atos": 4
+   "manchetes": 55,
+   "atos": 3
   },
   {
    "busca": "movimentos",
@@ -178,7 +178,7 @@
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 47,
+   "manchetes": 46,
    "atos": 8
   },
   {
@@ -242,6 +242,62 @@
    "data": "2026-11-27"
   },
   {
+   "id": "fa161141d376",
+   "titulo": "Contra o racismo e em reconhecimento à cultura afro-brasileira, ato acontece em Londrina no próximo domingo (29)",
+   "tipo": "convocacao",
+   "uf": "PR",
+   "publicadoEm": "2026-11-26T00:38:19.000Z",
+   "fonte": {
+    "nome": "Portal Verdade",
+    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQX3plLXZXcGt0bmpWNFpFVkdqZHFnNjJLWGlzWGZvamVEVFg4eWlCUzR6MWxNNTB3TVdUNzA1N0pBUmtTUWtfZUtNdHVwbEw3WUw4YVBIYkZackx0eUVaeF9BdkE2b1E0d2Z5blI1bHJ5TllybFozX0hOS1RGLWo5TjdGMHlnTlZzbVJ3WnZBNWIxS19naTltelNhR21KY3QycmtUY3dCMjZEaUhPdWljWHc4Z1dxUmlGYncwV09RVWFwdEhBcExvb1ZNYmdRSWF6YXdaSHd2RnduRkQzLU5fZC1xWk01OUJFbHc?oc=5"
+   },
+   "cidade": "Londrina",
+   "data": "2026-11-29"
+  },
+  {
+   "id": "48b24f2b2b38",
+   "titulo": "São Paulo vai às ruas neste domingo (29/11) pelo Dia Internacional de Solidariedade ao Povo Palestino",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-25T21:46:38.000Z",
+   "fonte": {
+    "nome": "mst.org.br",
+    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOREVXOTZlWEM5aFI1RG5XY3dvUHpqWUtjaWNzWGRCd25ZTVZ6d3R2Zzlwb0UzdnFnXzgzbkMyejdURDVhTDJYVVloa242QU9tLTB4XzNXd3pabEhYbmIwV2ZWbkF5ZVhXamlyb2lqX3FObi1UYjRWbHltb2ZBcDFvcmJmd3FvSWlyZmQ4a0ZoVDlZZ2RtVW1LNzJ5a29rdzNKeFNuaGZfa2lKenRlRFVld29VY0lLQ25NZFJHbmtxMHFlcHlGOTUxVDRB?oc=5"
+   },
+   "cidade": "São Paulo",
+   "data": "2026-11-29"
+  },
+  {
+   "id": "f43edb968166",
+   "titulo": "Servidores da Educação protestam em Manaus contra suspensão de plano de saúde",
+   "tipo": "cobertura",
+   "uf": "AM",
+   "publicadoEm": "2026-11-26T00:49:56.000Z",
+   "fonte": {
+    "nome": "G1",
+    "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOZm5XeXNWQzhHSHoxZUlMV0E3YkJzWDlpRDVfZ0xMUk8xdV81YkItdmdJZjZtMWVhZXdXMjd3TUVJNlBWT2M3Y2FTVVA2R1I3ekFUVEZyMDQ2MjRYVTFqdW03MmJnY01EZ1ExcEZVLXhHN3AzNW13emFpQ2tERnA4TnBVWklKeGd2STdLUW5WMFZ0cE51clpaWjVWbnRncndsS05XV0FxVlhiRXBXOURYbnRQZXAyamxySGNpWTZ4cWZDT3N2S2tqNkJJam9WOHZT0gHfAUFVX3lxTE1JaE8yanVCU1ZlMG1GUmwyWFdZeDR3TG80NnpPNS1RVnk1bHpYZVgxSWEzWFN5QUhKZXNlYkk3N0hrVUJpVGgyeWdaQVZLZFNMUERDTXB5bGN2Y0p3MDJydVF2NUJ0S1lZYnR1SUdFOUQ3amxHZjk1SVU0NU5UUzd0ZWhpZGpJM2ZkVVI2aFRZQXFXS0U3dHNEckhrMXRGVlJ1YlNVcXFDRzF3Tks4TFdWaWdFcWgyM09ERUR5ZndUREcxQThteVNTNzRXWUpvdWNLU3N4YllhTlV3eHNXS2c?oc=5"
+   },
+   "cidade": "Manaus"
+  },
+  {
+   "id": "9d9b1a76e105",
+   "titulo": "Vídeo: Em protesto, Servidores de Salvador ameaçam boicotar Réveillon e Carnaval",
+   "tipo": "cobertura",
+   "uf": "BA",
+   "publicadoEm": "2026-11-25T23:20:15.000Z",
+   "fonte": {
+    "nome": "Farol da Bahia",
+    "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQeXZUcDdhVC10RnB1ZlBpb3lpTjNGZ3R4ZGUyTzhVeVh0aF9NRERkYTM0MGMzUVQ1QXdNYVc2aDJJSy1xQmlNV082M25QRWJNbXVxRmlGbmhFX2xZaG9KU2NKSS1QdUFYQkNGemZkUE9qUzV1S3llUE53a2o1aXExWnFVZkFLZkdQWV9xbm9qU2g4bUI4VU5LQ2F4cC02N1Y5eDRGR2J3aV9DN1FVaXNCV0Z5Mk4zTFJhZlRkWWxFMXBqQQ?oc=5"
+   },
+   "cidade": "Salvador",
+   "outrasFontes": [
+    {
+     "nome": "Farol da Bahia",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOV3c5SUY3dzVwLWFJNkFvZGk3ejhjTEtMa3lUNHFkbE5lOENnZE9fVnlXZkZrM1k2NlU2ZmFENjRyVWhpYjdtLUhrRXVtWXpUd01LMHlQd0Ftc0UwdmVmYmEzYjBKbFJzS0hvS1Q3WWVsZ1VtdW5ZR243MjMxb0ZkNXp1cjlBVGhLUE1US3M0NVF1TWtHUVkyT1d2ampEUmI1MXFOb09ud1NRZ2x3YV9KMHVMME11cTJqeGc?oc=5"
+    }
+   ]
+  },
+  {
    "id": "2170b0e40a6d",
    "titulo": "Prefeitura de Salvador recebe prêmios, mas servidores protestam por auxílio-alimentação de R$ 13",
    "tipo": "cobertura",
@@ -282,7 +338,7 @@
    "titulo": "Aldo Santos defende reparação histórica durante Marcha Antirracista de São Bernardo",
    "tipo": "cobertura",
    "uf": "SP",
-   "publicadoEm": "2026-11-25T15:26:09.000Z",
+   "publicadoEm": "2026-11-25T15:25:39.000Z",
    "fonte": {
     "nome": "ABC Repórter",
     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQOEl4TTFsUkV1ZDJHNnB0VTlLV3B6Y0RzY0tITnFfMWFNRVNpRHZ4VFRzdzV1QUIzVGdvVE9GTlAwRVVfUWtYaW9rRHNwVmFFVzJaa0VKbnR6TktVS1lYc1pJbTFySkJQaUlCc3NINFdoZGlQYUh5TENyTUNrVFJTdXZrRk52dU1lR09uWXlESQ?oc=5"
@@ -304,6 +360,14 @@
     {
      "nome": "Portal Mário Adolfo",
      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNNXZfSEtuOUoyVm5hSjNaWUFUVGJSZk1pdEJIdnROVm51Sk1LMFVQUWdOZUxsdGZia1I3R3NwZEhjMW9MdXAxV3o4ZmxXRmhMcFFET1NYRlNzU1JxSDdFSkFWZk44S0U1aEpyM0Ixdnp1ZUEzSWlTNGZlY0dfZnA3aWlZY3FkbG9wSlhUVU1jdGhoYmpN?oc=5"
+    },
+    {
+     "nome": "Imediato Online",
+     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNVlZ0MkVkNUpmSk5VdEJjYlU1eS1nd2hWaEpkTW45MmQ4eXEwdktrcTRoY1NJZW5oM0tkV0FMcl8zZXliNTltbEE4Mk9xX3ppUGZxcFRfaEwwTWVlVUNhOTNQR1ZOYlE4V0t2enVNZWZabDFrTFhhUmRxaVFRTDZjbTVCb0pOWUNhUGY1SjM0X3R5XzJMb0ZOb3U1TEV5VFA2VG9uZHRCX1hxS2JvdG5rVHd3eG5fcVFHUXU5eVFyX24wTFdsQVo1RHQ0eUtSRGJ6Mml3MjFfcw?oc=5"
+    },
+    {
+     "nome": "A Crítica",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNVExkZ3RHYlVXMVlKSXctY0dIWTViMjA3U05WSk1aVm96ZXlpajZyZ2dJcW42dVg1SVoxZEw4cVJ1RXNxOVlWeVJNVkhIYjcwd0JURXkyZEs1MWJMWmFTaE9ZeWEwSl9yUFcyV1hFOVBpRWdPZU04U1RvQ2w3c2Z5TVhfNHh2S3QzQV9YVkZ3WHBnbnhNX0dIcXJxSGxKVWpWQ3hqTEpR?oc=5"
     }
    ]
   },
@@ -356,7 +420,7 @@
   {
    "id": "0f854c33eaf4",
    "titulo": "Após assassinato de motorista de aplicativo, trabalhadores anunciam protesto e fechamento da Ponte Metálica em Rio Branco",
-   "tipo": "convocacao",
+   "tipo": "cobertura",
    "uf": "AC",
    "publicadoEm": "2026-11-24T21:14:02.000Z",
    "fonte": {
@@ -372,18 +436,6 @@
     {
      "nome": "A Gazeta do Acre",
      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQRE82cVFkdG5SN0dIMnV2elFTV1R1M1dFUXRac2lFcXNyNEpfR0tYRkZLZlF0akFpLXliM3AwWEhvTm1SR2luOHlYX0J5MlQ5ZU1SM3N1QTQ1QlFIbGJMc2pkTS04VDE5WE1HWlhybVh6NFdJbDVrdmRDejVVXzZidTJlY1JtcXpvTHlieDdPUmNEMEg2dUJod2h5OWNieUJlcktYZ3BkXy01YVRLUUF0Um0ySmVTNndIOFlBNkhMYm9pMjVJdDZmX1ZmaERsejcyX19OaWtRZEhabFZfdnc?oc=5"
-    },
-    {
-     "nome": "ac24horas",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPU21nRlpEbUFBUDdldEpXMi1JbUhsb0kzLTVBUldJdXlQVmw4aTZrVzFETnpEckJmTE11cUJPcGg5VlBLNUhCTk4wd1pHcTRBaEVjOU5qQ241aC1NYkoxZ01pSkFQMmxVRmt5SDdkWEw4ZzZjbkxXNzRUUTVuZXhrRm5vZkdpcmZ2WkFDekx4aDFPTTFISHBuS3kyRDhrcnBa0gGmAUFVX3lxTFBrYVREeDdKcnFoaHpjR0FZdkZyQVFTWjlyLUFtMG5ybTAtRDJYU185VlB2MGNBZWk4cUVkcUhqeWlZY3Q5MlVvSVp4MzBSRHhlU2FVcDM2bHp2VWtDSjFEQWhKR0txcXcwci12eUNDME51Z01QX2RYNGRQS28xRHBJZmpzX180NmRFUDI0bE95aXUwM01EN2VjempPdThIM3RZYlRLRkE?oc=5"
-    },
-    {
-     "nome": "AcreNews",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMXJlc1otWGo4VEFVYWZndXhFUnhMQ3p6ZG5EaFYzZzVqenVNWVJxTjJESGVBVXhFRnZRSmM4SnpueDlneU8xMXhfZ2JyNi1yak85bS1zRTc0SUNsOXpnZUJRZEVBdjlfR0ZSc1hqYzVoTkFyc0JielFZeVhLaFlEZ0NfcWRjQXd4RUdRT2k1bVprX1VXM1NpMHRRSm03QmdMQk95WU9TRjFmdHVOLUZWaUJ6alJiXzNxdE5uOWlRejk?oc=5"
-    },
-    {
-     "nome": "A Gazeta do Acre",
-     "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQNXpjUUNEeDJmbW1aWG1SZGVIZUpPaEk0bWpYYTdZX2Y5QWtnWmJ0YVdzc284RC1mcm9MbmtEeEc4YUVrNk45WlEyaFR2UkktLTRwR0ZXakR1emVNOENmQmxsMVhZSHhiRWQ5SXBwNEp2V2doTEZZeDBoUVFOVXdNcXlwdkxpdWI2Rjd5WkZ0STgxNnhGaWJIWnptWFIxZFdsX0VEcTkyU2tYQmdHc1pYSkVSQlFJdjd6TXdBT1lnN012VVhnUDB4TGdmRUVoN0pYSlIzTjZ2Skdla0otSjBWUTJWT1RrQTczS3ZrSkxSOWFVTDBWVnlOUExLRFJTdw?oc=5"
     }
    ]
   },
@@ -518,17 +570,21 @@
    "cidade": "Teresina"
   },
   {
-   "id": "bd6f0af41068",
+   "id": "a3c622d0f78e",
    "titulo": "Florianópolis recebe caminhada pelo fim do feminicídio em meio à alta de casos em SC e no país; veja detalhes",
    "tipo": "cobertura",
    "uf": "SC",
    "publicadoEm": "2026-11-23T16:34:33.000Z",
    "fonte": {
     "nome": "G1",
-    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNeGY3OVgwU2hxX0hueHM0ZGF0dHpvZUJHLVdLRE5JRWJ2bEx4UFF4R3lzTmVyOVVTUVVnVjI4VWZfTWlTdUI0LWJnc1R0NEplcThxTVNCUjBlOHJOUVJJQVpKM1hILW55c3hxZjA3akpnelZwMFpBZ09VLUdCdlVhR1FDWGYxOFBVNGtWWER5VWUzMkhNdExZTFJ1Y0Z1TVFBRkFTdTZ0R0dNejRYZWJTdlByRDhsLTc5bTZLQ3I2dWhUX2Q4VVVYVmpvR01VNHlYT2Q2ZG9ka9IB1wFBVV95cUxNeGY3OVgwU2hxX0hueHM0ZGF0dHpvZUJHLVdLRE5JRWJ2bEx4UFF4R3lzTmVyOVVTUVVnVjI4VWZfTWlTdUI0LWJnc1R0NEplcThxTVNCUjBlOHJOUVJJQVpKM1hILW55c3hxZjA3akpnelZwMFpBZ09VLUdCdlVhR1FDWGYxOFBVNGtWWER5VWUzMkhNdExZTFJ1Y0Z1TVFBRkFTdTZ0R0dNejRYZWJTdlByRDhsLTc5bTZLQ3I2dWhUX2Q4VVVYVmpvR01VNHlYT2Q2ZG9kaw?oc=5"
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOMGpiSFJwSlZON2RpM3VrdzVSYjNIRmc0MW1FQjI3RjZRZjYtQ1FDQVFGNXNfUlNSZWFCdENjU19EUUozX25BbmliSkJhNV9uTXcwVGZrRmt3OUZZN3pzd2FZUnNIdVBDalIzOHJ5dlZxcHlocUEwWm1YVF8tSS05bnpMTkZqVTZQTWcySWNtbnBlVi1PMWtvSGY3V2xxbDBuWXBJVWVueW8tXzNqMlFsZjNoZ0FsdWxQS2xqd28tRjBVRk5nTVlRTNIB1wFBVV95cUxNeGY3OVgwU2hxX0hueHM0ZGF0dHpvZUJHLVdLRE5JRWJ2bEx4UFF4R3lzTmVyOVVTUVVnVjI4VWZfTWlTdUI0LWJnc1R0NEplcThxTVNCUjBlOHJOUVJJQVpKM1hILW55c3hxZjA3akpnelZwMFpBZ09VLUdCdlVhR1FDWGYxOFBVNGtWWER5VWUzMkhNdExZTFJ1Y0Z1TVFBRkFTdTZ0R0dNejRYZWJTdlByRDhsLTc5bTZLQ3I2dWhUX2Q4VVVYVmpvR01VNHlYT2Q2ZG9kaw?oc=5"
    },
    "cidade": "Florianópolis",
    "outrasFontes": [
+    {
+     "nome": "G1",
+     "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNeGY3OVgwU2hxX0hueHM0ZGF0dHpvZUJHLVdLRE5JRWJ2bEx4UFF4R3lzTmVyOVVTUVVnVjI4VWZfTWlTdUI0LWJnc1R0NEplcThxTVNCUjBlOHJOUVJJQVpKM1hILW55c3hxZjA3akpnelZwMFpBZ09VLUdCdlVhR1FDWGYxOFBVNGtWWER5VWUzMkhNdExZTFJ1Y0Z1TVFBRkFTdTZ0R0dNejRYZWJTdlByRDhsLTc5bTZLQ3I2dWhUX2Q4VVVYVmpvR01VNHlYT2Q2ZG9ka9IB1wFBVV95cUxNeGY3OVgwU2hxX0hueHM0ZGF0dHpvZUJHLVdLRE5JRWJ2bEx4UFF4R3lzTmVyOVVTUVVnVjI4VWZfTWlTdUI0LWJnc1R0NEplcThxTVNCUjBlOHJOUVJJQVpKM1hILW55c3hxZjA3akpnelZwMFpBZ09VLUdCdlVhR1FDWGYxOFBVNGtWWER5VWUzMkhNdExZTFJ1Y0Z1TVFBRkFTdTZ0R0dNejRYZWJTdlByRDhsLTc5bTZLQ3I2dWhUX2Q4VVVYVmpvR01VNHlYT2Q2ZG9kaw?oc=5"
+    },
     {
      "nome": "Guararema News",
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPTHBDdkpWUENhUHdLUEE2aVhvWlNPaUd6YTdCNlRMR1ZjWm9wcmY4dnZ0TEhadDA3dmZwT2xkbi0ydml5U3BCanp4eHI3ZXF2Sy0xYlFOOGphVWdfQnJYcHQ1R3l2bVd3QWUyaC1kRDUwaU0zRE9yVTdRZzVpS053aEVLZVZJNVFWdTVqYWFId2RSdnlKNkoxZV9LZ0czSVVsVTFRaTR3?oc=5"
@@ -627,6 +683,18 @@
    }
   },
   {
+   "id": "51af2d1dd4df",
+   "titulo": "Carlos Ignácio participou da 23ª Marcha da Consciência Negra de São Paulo, na avenida Paulista/Paulo Pinto/Agência Brasil",
+   "tipo": "cobertura",
+   "uf": "SP",
+   "publicadoEm": "2026-11-23T01:31:44.000Z",
+   "fonte": {
+    "nome": "- Misto Brasil",
+    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQblBuc2c1MEFKamhZNFBPaXpWVEpQd0gzXzRFWWVOM1hfVkxSYVhzRDAtTDNxejN2bnhQcnFubjE4bFR1bzRfUHp2bGFEVTdFRnEzM2tnbDBVYkpVNzZxVzVpWkc4ZzdBN2N5MHlLbGJwWHh3VXZWekEzRlN2Mk9wN2hrVm92ejJiSlFqMGdkNTFXUTJnY1QxenU4S2M5LVlJMjhkX3lLdHFVZnk0VlNRYVdtVUdNTy0wQlc3eDRpLXAtSHZxSnNZYmJXLXFsM0V6amQxM3gzRUhQMHViQkhicUtwMm9wSVU2emI3UE4zU0pDc0Jm0gH0AUFVX3lxTFBuUG5zZzUwQUpqaFk0UE9pelZUSlB3SDNfNEVZZU4zWF9WTFJhWHNEMC1MM3F6M3ZueFBycW5uMThsVHVvNF9QenZsYURVN0VGcTMza2dsMFViSlU3NnFXNWlaRzhnN0E3Y3kweUtsYnBYeHdVdlZ6QTNGU3YyT3A3aGtWb3Z6MmJKUWowZ2Q1MVdRMmdjVDF6dThLYzktWUkyOGRfeUt0cVVmeTRWU1FhV21VR01PLTBCVzd4NGktcC1IdnFKc1liYlctcWwzRXpqZDEzeDNFSFAwdWJCSGJxS3Ayb3BJVTZ6YjdQTjNTSkNzQmY?oc=5"
+   },
+   "cidade": "São Paulo"
+  },
+  {
    "id": "ade924e0db41",
    "titulo": "Projeto de deputada catarinense que cria mobilização nacional de 21 dias contra o racismo e a violência contra a mulher segue para sanção presidencial",
    "tipo": "cobertura",
@@ -661,15 +729,21 @@
    }
   },
   {
-   "id": "7a65ef802a48",
+   "id": "b8b7a6a99e33",
    "titulo": "Governo marca ato com Lula para declarar terra indígena do povo de Raoni",
    "tipo": "convocacao",
    "uf": "BR",
    "publicadoEm": "2026-11-19T18:25:00.000Z",
    "fonte": {
     "nome": "O Cafezinho",
-    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE40NmFHdWU3WXlLWkt2djQ4UWE0WEhVcnVkd2YtbTAzTmVISElrRFpJOHc5WkZHcnRVc3ZOdEFpNDRINVJCVFE0bmx2ZHjSAcoBQVVfeXFMUGw3YUI5d1hYWldWRjVRNV9WU2NMTkZYQmE5c2w5eXlxQllBWWh0NmgyWk5tcFdncFM3LS15M1VuR2VJSzVuUHlnX3pMMmxYY2tRb2NKelBScDQxaGo3Wi02YnR1bk1fVUpKeWdONmdiY2dWNmJCbDBfNXBvZjNLMmhKVDdicjRxb2hLVElKZzBJYldZLUtCVDgtTS1scm10VVROaXE0cVY3Z01LWjgzV1JzTjFKUEx2WW42LWc3Q3ctMjN5RWl4WlpmZw?oc=5"
-   }
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQd09pZGtlOWN1MWs1bC1oTlBpRTZuR0djdDNVNnVFNklsTDEzZDlqcmZkM0lpZmVsanQ0cG1MYjZEbm9TbzFjbzBSRldfTnVQOTVVU1JKX1VfYmRjQUxwb1BtSkJ4b0lrRnRDdlZGa0swRWZHdENtczJZQ2JtRTZlX1RzNllCWlFjbVBnTDVEOFJYX2VMVFVSU1NKMlZfQjZjRkN2NkZ6Q1kwV3lXTUZMY20tTktRMndr0gG-AUFVX3lxTE85QnF0X0FGUHlZMUQ2T3oyaXFTaUd0Tmo3cVdhd212b1BnNm5najZjVGozWlQtWGhyaVBldlhqZ3RZcWFMTGtWS1FKanJ4V2U5NGlNbldjZEs1Y19CYVlpYUFVelJ0RVZkZjhiMDlvNHpDdjRTcDY2UWJLN2NKM1pXU3hOcV95QnBJa2laelphNFV2bVNVNW1mODl3bUR0ZzEtbnFYMDBqWlU0UUU2T1VKY1dzWllCS1h4UjVyN0E?oc=5"
+   },
+   "outrasFontes": [
+    {
+     "nome": "O Cafezinho",
+     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE40NmFHdWU3WXlLWkt2djQ4UWE0WEhVcnVkd2YtbTAzTmVISElrRFpJOHc5WkZHcnRVc3ZOdEFpNDRINVJCVFE0bmx2ZHjSAcoBQVVfeXFMUGw3YUI5d1hYWldWRjVRNV9WU2NMTkZYQmE5c2w5eXlxQllBWWh0NmgyWk5tcFdncFM3LS15M1VuR2VJSzVuUHlnX3pMMmxYY2tRb2NKelBScDQxaGo3Wi02YnR1bk1fVUpKeWdONmdiY2dWNmJCbDBfNXBvZjNLMmhKVDdicjRxb2hLVElKZzBJYldZLUtCVDgtTS1scm10VVROaXE0cVY3Z01LWjgzV1JzTjFKUEx2WW42LWc3Q3ctMjN5RWl4WlpmZw?oc=5"
+    }
+   ]
   },
   {
    "id": "b27ff521c0c6",
