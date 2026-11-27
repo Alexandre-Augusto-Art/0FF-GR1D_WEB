@@ -91,7 +91,11 @@
       "crítica",
       "notícia-do-dia",
       "SpaceX"
-    ]
+    ],
+    "video": {
+      "src": "assets/videos/w4k3/2026-11-27.mp4",
+      "poster": "assets/videos/w4k3/2026-11-27.jpg"
+    }
   },
   {
     "id": "2026-11-26",
