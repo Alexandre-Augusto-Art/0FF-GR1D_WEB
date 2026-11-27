@@ -1,5 +1,99 @@
 [
   {
+    "id": "2026-11-27",
+    "date": "2026-11-27",
+    "news": {
+      "title": "Funcionários da Rockstar rejeitam criação de sindicato após lançamento de GTA 6",
+      "link": "https://www.estadao.com.br/tecmundo/voxel/funcionarios-da-rockstar-rejeitam-criacao-de-sindicato-apos-lancamento-de-gta-6/",
+      "summary": "Após votação, 75% dos trabalhadores que participaram do pleito votaram contra a criação do sindicato. Veja posicionamento da Rockstar Games",
+      "source": "Estadão",
+      "publishedDate": "2026-11-27"
+    },
+    "reflection": {
+      "title": "Rockstar Games enfrenta processo por demitir 34 funcionários",
+      "content": "<p>Interrompemos a sua programação. Você acha que é só diversão no controle? Repara no que está por trás.</p>\n<p><strong>A Rockstar Games é processada por demitir quem tentava organizar um sindicato.</strong></p>\n<p>Prometeram construir grandes conquistas sobre o trabalho de toda a equipe.</p>\n<p>Segundo o Estadão, cerca de 34 funcionários foram dispensados em escritórios do Reino Unido e do Canadá no caso.</p>\n<p>Trabalhadores perderam a chance de negociar salários, bônus, férias e planos de aposentadoria.</p>\n<p><strong>Sejamos claros: quem fornece o prazer digital não quer que o trabalhador tenha voz.</strong></p>\n<p><strong>Você compra o jogo. Eles demitem quem pede direitos.</strong></p>\n<p>Hora de acordar. Dá para torcer para a diversão não custar o emprego alheio. Ou dá para denunciar ao Ministério Público do Trabalho quando fizerem o mesmo com você.</p>\n<p><strong>Agora você sabe a verdade. Resistir é sua única opção.</strong></p>",
+      "excerpt": "Rockstar Games enfrenta processo por demissões de funcionários que buscavam organização sindical.",
+      "beats": [
+        {
+          "lado": "chamado",
+          "fala": "Interrompemos a sua programação. Você acha que é só diversão no controle? Repara no que está por trás.",
+          "legenda": "DIVERSÃO NO CONTROLE",
+          "cena": "mascara"
+        },
+        {
+          "lado": "acusacao",
+          "fala": "A Rockstar Games é processada por demitir quem tentava organizar um sindicato.",
+          "legenda": "TENTAVA ORGANIZAR",
+          "cena": "marca"
+        },
+        {
+          "lado": "promessa",
+          "fala": "Prometeram construir grandes conquistas sobre o trabalho de toda a equipe.",
+          "legenda": "prometeram construir grandes",
+          "cena": "comercial"
+        },
+        {
+          "lado": "prova",
+          "fala": "Segundo o Estadão, cerca de 34 funcionários foram dispensados em escritórios do Reino Unido e do Canadá no caso.",
+          "legenda": "34 FUNCIONÁRIOS",
+          "cena": "manchete"
+        },
+        {
+          "lado": "rosto",
+          "fala": "Trabalhadores perderam a chance de negociar salários, bônus, férias e planos de aposentadoria.",
+          "legenda": "TRABALHADORES PERDERAM",
+          "cena": "leilao"
+        },
+        {
+          "lado": "leitura",
+          "fala": "Sejamos claros: quem fornece o prazer digital não quer que o trabalhador tenha voz.",
+          "legenda": "SEJAMOS CLAROS",
+          "cena": "mascara"
+        },
+        {
+          "lado": "faca",
+          "fala": "Você compra o jogo. Eles demitem quem pede direitos.",
+          "legenda": "PEDE DIREITOS",
+          "cena": "cartela"
+        },
+        {
+          "lado": "escolha",
+          "fala": "Hora de acordar. Dá para torcer para a diversão não custar o emprego alheio. Ou dá para denunciar ao Ministério Público do Trabalho quando fizerem o mesmo com você.",
+          "legenda": "E VOCÊ?",
+          "cena": "portas"
+        },
+        {
+          "lado": "assinatura",
+          "fala": "Agora você sabe a verdade. Resistir é sua única opção.",
+          "legenda": "",
+          "cena": "assinatura"
+        }
+      ],
+      "denuncia": {
+        "alvo": "Rockstar Games",
+        "situacao": "acusacao",
+        "vitima": "34 funcionários dos escritórios do Reino Unido e do Canadá",
+        "jaz": "SUA EMPATIA"
+      }
+    },
+    "sources": [
+      {
+        "title": "Funcionários da Rockstar rejeitam criação de sindicato após lançamento de GTA 6",
+        "link": "https://www.estadao.com.br/tecmundo/voxel/funcionarios-da-rockstar-rejeitam-criacao-de-sindicato-apos-lancamento-de-gta-6/",
+        "source": "Estadão",
+        "date": "2026-11-27"
+      }
+    ],
+    "tags": [
+      "reflexão",
+      "notícia",
+      "antisistema",
+      "crítica",
+      "notícia-do-dia",
+      "Rockstar Games"
+    ]
+  },
+  {
     "id": "2026-11-26",
     "date": "2026-11-26",
     "news": {
