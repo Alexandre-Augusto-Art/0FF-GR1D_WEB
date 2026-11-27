@@ -42,6 +42,7 @@ param(
   [string]$Direction,
   [switch]$DryRun,
   [switch]$Force,
+  [switch]$VideoPendente,
   [int]$KeepAwakeMinutes = 0
 )
 
@@ -313,6 +314,17 @@ try {
   elseif ($Publish) {
     Publish-Draft $Publish 'W4K3 PR0T0C0L: reflexão aprovada'
   }
+  elseif ($VideoPendente) {
+    # texto aprovado antes do vídeo ficar pronto: o gerar.js chama isto quando o render termina
+    Wait-Internet
+    Update-Clone
+    $out = Invoke-Native 'vídeo pendente para o site' { node (Join-Path $PSScriptRoot 'video-site.js') --pendente $Clone }
+    $line = $out | Where-Object { $_ -like 'VIDEO|*' } | Select-Object -Last 1
+    if ($line -like 'VIDEO|assets/*') {
+      Push-Reflections 'W4K3 PR0T0C0L: vídeo da reflexão'
+      if (-not $DryRun) { Send-Telegram "🎬 O vídeo da reflexão aprovada entrou no site.`n$Site" }
+    }
+  }
   elseif ($Url) {
     Wait-Internet
     New-Draft ([pscustomobject]@{ url = $Url; direction = $Direction })
@@ -348,6 +360,7 @@ try {
 catch {
   Write-Host "`nERRO: $_"
   if ($AutoPublish) { Send-Telegram "W4K3: a publicação das 12h falhou. $_" }
+  elseif ($VideoPendente) { Send-Telegram "W4K3: o vídeo da reflexão aprovada não entrou no site. $_" }
   elseif (-not $Pauta -and -not $Request -and -not $Publish -and -not $Url) { Send-Telegram "W4K3: a notícia do dia (09h) falhou. $_" }
   $Host.SetShouldExit(1)
   exit 1

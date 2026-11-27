@@ -17,8 +17,9 @@
   /noticia [tema]  gera a notícia do dia na hora (ex.: /noticia vigilância).
 
   VÍDEO: a cada rascunho novo, Start-Video roda %USERPROFILE%\.w4k3\video\scripts\gerar.js em segundo plano
-  (voz Chatterbox + Remotion, só neste PC, uns 7 min para 1 min de vídeo) e ele manda o vídeo aqui quando fica pronto.
-  Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento. Log em logs\video.log.
+  (voz Chatterbox + Remotion, só neste PC, uns 30 min para 1 min de vídeo) e ele manda o vídeo aqui quando fica pronto.
+  Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento, menos o de um texto já publicado
+  (video-pendente.json): esse termina, entra no site sozinho e depois começa o do rascunho atual. Log em logs\video.log.
 
   Roda neste PC por long polling (sem IP público nem webhook). Com o PC dormindo, as mensagens
   esperam no Telegram (até 24 h). Configuração: install-w4k3-task.ps1 -TelegramToken "<token>".
@@ -96,8 +97,16 @@ function Next9h {
 # ---------- Vídeo da análise (video\scripts\gerar.js: Chatterbox + Remotion, só neste PC) ----------
 $VideoDir = Join-Path $Base 'video'
 $VideoPid = Join-Path $Base 'video.pid'
+$VideoPendente = Join-Path $Base 'video-pendente.json'
+# render de um texto já publicado (o video-site.js anotou): ele termina e entra no site sozinho
+function Test-VideoAprovado {
+  if (-not (Test-Path $VideoPendente)) { return $false }
+  try { $pp = Get-Content $VideoPendente -Raw | ConvertFrom-Json } catch { return $false }
+  return [bool]($pp.pid -and (Get-Process -Id $pp.pid -ErrorAction SilentlyContinue))
+}
 function Stop-Video {
   if (-not (Test-Path $VideoPid)) { return }
+  if (Test-VideoAprovado) { Log 'video: render do texto aprovado continua'; return }
   $old = (Get-Content $VideoPid -Raw).Trim()
   if ($old -and (Get-Process -Id $old -ErrorAction SilentlyContinue)) {
     # /T derruba junto o Chrome do Remotion e o FFmpeg
@@ -110,14 +119,16 @@ function Stop-Video {
 function Start-Video {
   $gerar = Join-Path $VideoDir 'scripts\gerar.js'
   $node = Get-Command node.exe -ErrorAction SilentlyContinue
-  if (-not (Test-Path $gerar) -or -not $node -or -not (Test-Path (Join-Path $VideoDir 'node_modules'))) { return $false }
+  if (-not (Test-Path $gerar) -or -not $node -or -not (Test-Path (Join-Path $VideoDir 'node_modules'))) { return '' }
+  # um render por vez: o do texto aprovado termina primeiro e depois ele mesmo começa o deste rascunho
+  if (Test-VideoAprovado) { Log 'video: rascunho novo espera o render do texto aprovado'; return 'depois' }
   Stop-Video
   $log = Join-Path $Base 'logs\video.log'
   $p = Start-Process -FilePath $node.Source -ArgumentList @("`"$gerar`"", "`"$Draft`"", '--telegram') -WorkingDirectory $VideoDir `
        -WindowStyle Hidden -RedirectStandardOutput $log -RedirectStandardError "$log.err" -PassThru
   [IO.File]::WriteAllText($VideoPid, "$($p.Id)")
   Log "video: job $($p.Id) iniciado"
-  return $true
+  return 'agora'
 }
 
 function Show-Draft([switch]$daily) {
@@ -140,7 +151,11 @@ function Show-Draft([switch]$daily) {
   if ($av.Count) { $msg += "`n⚠️ a checagem automática ainda viu: $($av -join '; ')" }
   $msg += "`n— $words palavras"
   Send $msg
-  $vid = if (Start-Video) { "`n🎬 O vídeo desta versão chega em uns 7 minutos." } else { '' }
+  $vid = switch (Start-Video) {
+    'agora'  { "`n🎬 O vídeo desta versão chega em uns 30 minutos." }
+    'depois' { "`n🎬 O vídeo desta versão começa quando terminar o do texto já publicado (uns 30 minutos cada)." }
+    default  { '' }
+  }
   if ($daily) {
     $p = if (Test-Path $PautaFile) { Get-Content $PautaFile -Raw -Encoding UTF8 | ConvertFrom-Json } else { $null }
     $note = if ($p -and $p.topic -and -not $p.matched) { "(Não achei notícia recente sobre `"$($p.topic)`"; escolhi entre as gerais.$(if ($p.tema) { " O tema #$($p.tema) continua na lista." }))`n" }
@@ -261,7 +276,8 @@ function Publish-Now($state) {
   $r = Run-Runner @('-Publish', $snap) 'RESULTADO'
   if ($r.ok) {
     $p = $r.line.Split('|')
-    Send "🚀 Publicado ($($p[1])): $($p[2])`n`nNo site em 1 ou 2 minutos:`n$Site"
+    $vnote = if (Test-VideoAprovado) { "`n🎬 O vídeo ainda está sendo feito: entra no site sozinho quando ficar pronto, e eu aviso." } else { '' }
+    Send "🚀 Publicado ($($p[1])): $($p[2])`n`nNo site em 1 ou 2 minutos:`n$Site$vnote"
     Save-State ([pscustomobject]@{ stage = 'idle'; url = $null; direction = $null })
     Remove-Item $Draft -ErrorAction SilentlyContinue
   } else {
