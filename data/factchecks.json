@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-26T21:45:39.181Z",
+ "updatedAt": "2026-11-27T08:51:12.736Z",
  "sources": [
   {
    "name": "Aos Fatos",
@@ -13,8 +13,9 @@
   },
   {
    "name": "Boatos.org",
-   "ok": true,
-   "count": 21
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 522"
   },
   {
    "name": "E-farsas",
@@ -33,6 +34,14 @@
   }
  ],
  "items": [
+  {
+   "title": "É golpe promoção que anuncia Smart TV de 43 polegadas por R$ 317",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/26/e-golpe-promocao-que-anuncia-smart-tv-de-43-polegadas-por-r-317",
+   "source": "Agência Lupa",
+   "date": "2026-11-26T21:47:13.000Z",
+   "rating": "GOLPE",
+   "summary": "Golpistas simulam reportagem jornalística para divulgar falsa promoção de Black Friday de fabricante de eletrônicos"
+  },
   {
    "title": "É falso que receber valores via Pix corta automaticamente o BPC",
    "link": "https://www.agencialupa.org/verificacao/2026/11/26/e-falso-que-receber-valores-via-pix-corta-automaticamente-o-bpc",
