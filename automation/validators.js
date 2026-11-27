@@ -235,6 +235,42 @@ function validateFactChecks(data) {
   return errors;
 }
 
+/* ---------- Eventos: data/eventos.json (agenda presencial, editado à mão) ----------
+ * { atualizadoEm?: "AAAA-MM-DD",
+ *   eventos: [ {
+ *     id: "2026-12-05-feira-x" (único; não mude depois de publicar, senão a 2B avisa de novo),
+ *     titulo, data: "AAAA-MM-DD", fim?: "AAAA-MM-DD" (vários dias), hora?: "HH:MM", horaFim?: "HH:MM",
+ *     local: "nome do lugar e endereço", cidade?, uf?: "SP" | ... ,
+ *     papel?: "Palestra" | "Estande" | ... (o que vou fazer lá), descricao?, link?: "https://..." } ] }
+ * A ordem não importa: o site e a 2B ordenam pela data.
+ */
+function validateEventos(data) {
+  const errors = [];
+  if (!isObj(data)) return ['o arquivo deve ser um objeto {}'];
+  if (data.atualizadoEm !== undefined && !isDate(data.atualizadoEm)) errors.push('atualizadoEm: use AAAA-MM-DD');
+  if (!Array.isArray(data.eventos)) return errors.concat('eventos: deve ser uma lista []');
+  const ids = new Set();
+  data.eventos.forEach((e, i) => {
+    const p = `eventos[${i}]`;
+    if (!isObj(e)) { errors.push(`${p}: deve ser um objeto`); return; }
+    if (!isText(e.id) || !/^[a-z0-9-]+$/.test(e.id)) errors.push(`${p}.id: use só letras minúsculas, números e hífen`);
+    else if (ids.has(e.id)) errors.push(`${p}.id: "${e.id}" repetido`);
+    ids.add(e.id);
+    if (!isText(e.titulo, 3)) errors.push(`${p}.titulo: vazio`);
+    if (!isDate(e.data)) errors.push(`${p}.data: use AAAA-MM-DD`);
+    if (e.fim !== undefined && (!isDate(e.fim) || (isDate(e.data) && e.fim < e.data))) errors.push(`${p}.fim: AAAA-MM-DD, igual ou depois de data`);
+    if (e.hora !== undefined && !TIME_RE.test(e.hora)) errors.push(`${p}.hora: use HH:MM`);
+    if (e.horaFim !== undefined && !TIME_RE.test(e.horaFim)) errors.push(`${p}.horaFim: use HH:MM`);
+    if (!isText(e.local, 3)) errors.push(`${p}.local: vazio`);
+    if (e.cidade !== undefined && !isText(e.cidade)) errors.push(`${p}.cidade: vazio`);
+    if (e.uf !== undefined && !UFS.includes(e.uf)) errors.push(`${p}.uf: sigla de estado (SP, RJ...)`);
+    for (const k of ['papel', 'descricao']) if (e[k] !== undefined && typeof e[k] !== 'string') errors.push(`${p}.${k}: deve ser texto`);
+    if (e.descricao && e.descricao.length > 1000) errors.push(`${p}.descricao: longa demais (máx. 1000 caracteres)`);
+    if (e.link !== undefined && !/^https?:\/\/\S+$/.test(e.link)) errors.push(`${p}.link: use https://...`);
+  });
+  return errors;
+}
+
 /** Junta a entrada nova às antigas: tira a do mesmo dia, põe a nova no topo e guarda só as `max` mais recentes. */
 function addEntry(list, entry, max = 60) {
   const rest = (Array.isArray(list) ? list : []).filter(e => e && e.date !== entry.date);
@@ -246,9 +282,10 @@ const FEEDS = {
   'data/motivations.json': validateMotivacao,
   'data/organize.json': validateOrganize,
   'data/factcheck.json': validateFactCheck,
-  'data/factchecks.json': validateFactChecks
+  'data/factchecks.json': validateFactChecks,
+  'data/eventos.json': validateEventos
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { validateW4K3, validateMotivacao, validateOrganize, validateFactCheck, validateFactChecks, addEntry, FEEDS };
+  module.exports = { validateW4K3, validateMotivacao, validateOrganize, validateFactCheck, validateFactChecks, validateEventos, addEntry, FEEDS };
 }

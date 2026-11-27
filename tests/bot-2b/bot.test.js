@@ -14,6 +14,8 @@ const refl = id => ({ id, date: id, news: { title: 'Notícia', link: 'https://x.
 const ato = (id, extra = {}) => ({ id, titulo: `Ato ${id}.`, tipo: 'convocacao', uf: 'SP', cidade: 'São Paulo', data: '2026-11-18', publicadoEm: '2026-11-17T10:00:00Z', fonte: { nome: 'J', url: 'https://j.com/' + id }, ...extra });
 const fc = n => ({ title: `Checagem ${n}.`, link: `https://agencia.com/${n}`, source: 'Lupa', date: `2026-11-17T${String(n % 24).padStart(2, '0')}:00:00Z`, rating: 'FALSO' });
 
+const ev = (id, extra = {}) => ({ id, titulo: `Evento ${id}`, data: '2026-11-25', hora: '19:00', local: 'Casa <X>', cidade: 'São Paulo', uf: 'SP', papel: 'Palestra', ...extra });
+const evs = list => ({ eventos: list });
 const say = (text, id = 10, type = 'private') => ({ update_id: 1, message: { text, chat: { id, type } } });
 const tap = (data, id = 10, type = 'private') => ({ update_id: 1, callback_query: { id: 'q', data, message: { message_id: 5, chat: { id, type } } } });
 const withSubs = (subs, seen) => ({ ...emptyState(), subs, seen });
@@ -24,7 +26,7 @@ check('/start mostra o menu e não guarda nada', () => {
   const s = emptyState();
   const calls = handleUpdate(s, say('/start site'));
   assert.strictEqual(calls[0].method, 'sendMessage');
-  assert.deepStrictEqual(keys(calls).map(k => k.callback_data), ['t:w4k3', 't:motivacao', 't:organize', 't:factchecks']);
+  assert.deepStrictEqual(keys(calls).map(k => k.callback_data), ['t:w4k3', 't:motivacao', 't:organize', 't:factchecks', 't:eventos']);
   assert.ok(keys(calls).every(k => k.text.startsWith('⬜')));
   assert.deepStrictEqual(s.subs, {});
 });
@@ -142,6 +144,41 @@ check('Fact Check: resumo com as 10 mais recentes', () => {
   const t = s.outbox[0].text;
   assert.ok(t.includes('14 checagens novas') && t.includes('+ 4 no site') && !t.includes('Checagem 4.'));
   assert.ok(t.indexOf('Checagem 14.') < t.indexOf('Checagem 13.'), 'mais recente primeiro');
+});
+
+check('Eventos: agenda vazia no começo, o primeiro evento já é avisado', () => {
+  const s = withSubs({ 1: { topics: ['eventos'], ufs: [] } }, {});
+  assert.strictEqual(collect(s, { eventos: evs([]) }, NOW), 0);
+  assert.deepStrictEqual(s.seen.eventos, []);
+  assert.strictEqual(collect(s, { eventos: evs([ev('a')]) }, NOW), 1);
+  const t = s.outbox[0].text;
+  assert.ok(t.includes('EVENTO NOVO') && t.includes('Evento a') && t.includes('qua 25/11 · 19:00') && t.includes('Casa &lt;X&gt; · São Paulo/SP') && t.includes('🎤 Palestra'), t);
+  assert.strictEqual(collect(s, { eventos: evs([ev('a')]) }, NOW), 0);
+});
+check('Eventos: evento que já passou não vira aviso', () => {
+  const s = withSubs({ 1: { topics: ['eventos'], ufs: [] } }, { eventos: [] });
+  assert.strictEqual(collect(s, { eventos: evs([ev('velho', { data: '2026-11-10' }), ev('longo', { data: '2026-11-15', fim: '2026-11-18' })]) }, NOW), 1);
+  assert.ok(s.outbox[0].text.includes('Evento longo') && s.outbox[0].text.includes('15/11 a 18/11'));
+});
+check('Eventos: lembrete na véspera, uma vez só', () => {
+  const s = withSubs({ 1: { topics: ['eventos'], ufs: [] } }, { eventos: [] });
+  const d = { eventos: evs([ev('a', { data: '2026-11-20' })]) };
+  collect(s, d, NOW);
+  assert.strictEqual(s.outbox.length, 1);
+  assert.strictEqual(collect(s, d, Date.parse('2026-11-19T09:00:00-03:00')), 1);
+  assert.ok(s.outbox[1].text.includes('EVENTO AMANHÃ'));
+  assert.strictEqual(collect(s, d, Date.parse('2026-11-20T09:00:00-03:00')), 0, 'no dia não repete');
+});
+check('Eventos: PC desligado na véspera, lembrete sai no dia', () => {
+  const s = withSubs({ 1: { topics: ['eventos'], ufs: [] } }, { eventos: ['a'] });
+  assert.strictEqual(collect(s, { eventos: evs([ev('a', { data: '2026-11-17' })]) }, NOW), 1);
+  assert.ok(s.outbox[0].text.includes('EVENTO HOJE'));
+});
+check('Eventos: novo para amanhã manda só um aviso', () => {
+  const s = withSubs({ 1: { topics: ['eventos'], ufs: [] } }, { eventos: [] });
+  assert.strictEqual(collect(s, { eventos: evs([ev('b', { data: '2026-11-18' })]) }, NOW), 1);
+  assert.ok(s.outbox[0].text.includes('EVENTO NOVO'));
+  assert.strictEqual(collect(s, { eventos: evs([ev('b', { data: '2026-11-18' })]) }, NOW), 0);
 });
 
 // ---------- entrega ----------

@@ -142,7 +142,7 @@ async function main() {
   if (process.argv.includes('--preview')) {
     const datas = await fetchFeeds();
     for (const [key, feed] of Object.entries(FEEDS)) {
-      const list = ((datas[key] && feed.list(datas[key])) || []).filter(e => !feed.relevant || feed.relevant(e, Date.now()));
+      const list = ((datas[key] && feed.list(datas[key], Date.now())) || []).filter(e => !feed.relevant || feed.relevant(e, Date.now()));
       for (const m of feed.format(list.slice(0, key === 'w4k3' || key === 'motivacao' ? 1 : 5))) console.log(`\n----- ${key} -----\n${m.text}`);
     }
     return;

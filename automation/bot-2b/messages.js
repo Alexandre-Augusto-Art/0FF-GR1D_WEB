@@ -13,6 +13,8 @@ const VOICE = {
   motivacao: ['2B: combustível do dia.', 'Para não esquecer por que a gente luta.', '2B online. Uma frase antes de sair.'],
   organize: ['2B: tem gente indo para a rua.', 'Convocação recebida. Confira antes de ir.', '2B online. Atos marcados no radar.'],
   factchecks: ['2B: checagens novas no sistema.', 'Antes de repassar, confere aqui.', '2B online. As agências checaram isto.'],
+  eventos: ['2B: agenda nova. Vai ter gente nossa lá.', 'Coordenadas recebidas. Encontro marcado.', '2B online. Ponto de encontro no radar.'],
+  lembrete: ['2B: lembrete de encontro.', 'Não esquece: é logo ali.', '2B online. Contagem regressiva.'],
 };
 
 // ---------- util ----------
@@ -44,8 +46,13 @@ function chunk(header, pieces, footer) {
   return parts.map(all);
 }
 
+/** Dia de AAAA-MM-DD + n dias. */
+const addDays = (iso, n) => new Date(Date.parse(iso + 'T12:00:00Z') + n * 864e5).toISOString().slice(0, 10);
+const WEEKDAY = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+const weekday = iso => WEEKDAY[new Date(iso + 'T12:00:00Z').getUTCDay()];
+
 // ---------- feeds ----------
-// label: nome no menu do bot; file: de onde vem; list: entradas (null = formato errado); id: id de cada uma;
+// label: nome no menu do bot; file: de onde vem; list(dados, agora): entradas (null = formato errado); id: id de cada uma;
 // relevant: quais viram aviso; format(entradas): mensagens prontas para o Telegram, [{ text, preview }].
 const FEEDS = {
   w4k3: {
@@ -137,6 +144,56 @@ const FEEDS = {
       const header = `${pick(VOICE.factchecks, shown[0].link)}\n<b>FACT CHECK · ${n} checage${n > 1 ? 'ns novas' : 'm nova'}</b>\n`;
       const footer = `${rest > 0 ? `\n+ ${rest} no site.` : ''}\n▶ ${link(SITE + 'fact-check.html', 'Checar uma mensagem que você recebeu')}`;
       return chunk(header, pieces, footer).map(text => ({ text, preview: false }));
+    },
+  },
+
+  // Agenda presencial (data/eventos.json, editado à mão). Dois avisos por evento: quando ele entra na agenda e um
+  // lembrete na véspera (ou no dia, se o PC estava desligado na véspera). Cada um sai uma vez só.
+  eventos: {
+    label: 'Eventos (onde vou estar)',
+    file: 'data/eventos.json',
+    emptyOk: true,     // a agenda pode começar vazia: o primeiro evento já é avisado
+    list: (d, now = Date.now()) => {
+      if (!d || !Array.isArray(d.eventos)) return null;
+      const today = todayBR(now);
+      const out = [];
+      for (const e of d.eventos) {
+        if (!e || !e.id || !e.data) continue;
+        out.push({ ...e, aviso: 'novo' });
+        if (e.data === today || e.data === addDays(today, 1)) out.push({ ...e, id: `lembrete:${e.id}`, aviso: 'lembrete', quando: e.data === today ? 'HOJE' : 'AMANHÃ' });
+      }
+      return out;
+    },
+    id: e => e.id,
+    relevant: (e, now) => (e.fim || e.data) >= todayBR(now),
+    format: entries => {
+      // Evento novo que já é amanhã: o aviso de novo basta.
+      const novos = new Set(entries.filter(e => e.aviso === 'novo').map(e => e.id));
+      const list = entries.filter(e => e.aviso === 'novo' || !novos.has(e.id.slice('lembrete:'.length)))
+        .sort((a, b) => (a.data + (a.hora || '')).localeCompare(b.data + (b.hora || '')));
+      return list.map(e => {
+        const lembrete = e.aviso === 'lembrete';
+        const dia = `${weekday(e.data)} ${ddmm(e.data)}${e.fim && e.fim !== e.data ? ` a ${ddmm(e.fim)}` : ''}`;
+        const hora = e.hora ? ` · ${e.hora}${e.horaFim ? `–${e.horaFim}` : ''}` : '';
+        const onde = [e.local, [e.cidade, e.uf].filter(Boolean).join('/')].filter(Boolean).join(' · ');
+        return {
+          text: join([
+            pick(lembrete ? VOICE.lembrete : VOICE.eventos, e.id),
+            `<b>${lembrete ? `EVENTO ${e.quando}` : 'EVENTO NOVO NA AGENDA'}</b>`,
+            '',
+            `<b>${esc(e.titulo)}</b>`,
+            e.papel ? `🎤 ${esc(e.papel)}` : null,
+            `🗓 ${esc(dia + hora)}`,
+            onde ? `📍 ${esc(onde)}` : null,
+            e.descricao && !lembrete ? '' : null,
+            e.descricao && !lembrete ? esc(cut(stripHtml(e.descricao), 400)) : null,
+            '',
+            e.link ? `🔗 ${link(e.link, 'Mais informações / inscrição')}` : null,
+            `▶ ${link(SITE + 'eventos.html', 'Agenda completa')}`,
+          ]),
+          preview: false,
+        };
+      });
     },
   },
 };
