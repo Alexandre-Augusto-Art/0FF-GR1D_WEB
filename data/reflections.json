@@ -3,62 +3,62 @@
     "id": "2026-11-27",
     "date": "2026-11-27",
     "news": {
-      "title": "Funcionários da Rockstar rejeitam criação de sindicato após lançamento de GTA 6",
-      "link": "https://www.estadao.com.br/tecmundo/voxel/funcionarios-da-rockstar-rejeitam-criacao-de-sindicato-apos-lancamento-de-gta-6/",
-      "summary": "Após votação, 75% dos trabalhadores que participaram do pleito votaram contra a criação do sindicato. Veja posicionamento da Rockstar Games",
-      "source": "Estadão",
-      "publishedDate": "2026-11-27"
+      "title": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites into space",
+      "link": "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+      "summary": "Big tech and billionaires are racing to put AI data centers in space.",
+      "source": "The Verge",
+      "publishedDate": "2026-11-25"
     },
     "reflection": {
-      "title": "Rockstar Games enfrenta processo por demitir 34 funcionários",
-      "content": "<p>Interrompemos a sua programação. Você acha que é só diversão no controle? Repara no que está por trás.</p>\n<p><strong>A Rockstar Games é processada por demitir quem tentava organizar um sindicato.</strong></p>\n<p>Prometeram construir grandes conquistas sobre o trabalho de toda a equipe.</p>\n<p>Segundo o Estadão, cerca de 34 funcionários foram dispensados em escritórios do Reino Unido e do Canadá no caso.</p>\n<p>Trabalhadores perderam a chance de negociar salários, bônus, férias e planos de aposentadoria.</p>\n<p><strong>Sejamos claros: quem fornece o prazer digital não quer que o trabalhador tenha voz.</strong></p>\n<p><strong>Você compra o jogo. Eles demitem quem pede direitos.</strong></p>\n<p>Hora de acordar. Dá para torcer para a diversão não custar o emprego alheio. Ou dá para denunciar ao Ministério Público do Trabalho quando fizerem o mesmo com você.</p>\n<p><strong>Agora você sabe a verdade. Resistir é sua única opção.</strong></p>",
-      "excerpt": "Rockstar Games enfrenta processo por demissões de funcionários que buscavam organização sindical.",
+      "title": "SpaceX quer 1 milhão de satélites no céu",
+      "content": "<p>Isto é uma transmissão do W4K3. Você acha que o céu é infinito e livre? Repara bem.</p>\n<p><strong>A SpaceX quer ocupar o espaço com 1 milhão de satélites de IA.</strong></p>\n<p>Te venderam energia solar limpa. Entregaram um lixo espacial gigante.</p>\n<p>Segundo o The Verge, a SpaceX deve atingir a marca de 1 milhão de satélites até o ano de 2040.</p>\n<p>O projeto Starmind quer capturar energia solar no espaço para alimentar a IA na Terra.</p>\n<p><strong>Sejamos claros: quem quer o céu para a própria IA. Não se importa com o lixo que deixa.</strong></p>\n<p><strong>Você olha para o céu. Eles instalam um servidor.</strong></p>\n<p>Hora de acordar. Dá para torcer para não bater em nada. Ou dá para se juntar a quem já está lutando contra isso na sua cidade.</p>\n<p><strong>Agora você sabe a verdade. Resistir é sua única opção.</strong></p>",
+      "excerpt": "SpaceX planeja lançar 1 milhão de satélites de IA e deixa o descarte para depois.",
       "beats": [
         {
           "lado": "chamado",
-          "fala": "Interrompemos a sua programação. Você acha que é só diversão no controle? Repara no que está por trás.",
-          "legenda": "DIVERSÃO NO CONTROLE",
+          "fala": "Isto é uma transmissão do W4K3. Você acha que o céu é infinito e livre? Repara bem.",
+          "legenda": "TRANSMISSÃO DO W4K3",
           "cena": "mascara"
         },
         {
           "lado": "acusacao",
-          "fala": "A Rockstar Games é processada por demitir quem tentava organizar um sindicato.",
-          "legenda": "TENTAVA ORGANIZAR",
+          "fala": "A SpaceX quer ocupar o espaço com 1 milhão de satélites de IA.",
+          "legenda": "1 MILHÃO",
           "cena": "marca"
         },
         {
           "lado": "promessa",
-          "fala": "Prometeram construir grandes conquistas sobre o trabalho de toda a equipe.",
-          "legenda": "prometeram construir grandes",
+          "fala": "Te venderam energia solar limpa. Entregaram um lixo espacial gigante.",
+          "legenda": "venderam energia",
           "cena": "comercial"
         },
         {
           "lado": "prova",
-          "fala": "Segundo o Estadão, cerca de 34 funcionários foram dispensados em escritórios do Reino Unido e do Canadá no caso.",
-          "legenda": "34 FUNCIONÁRIOS",
+          "fala": "Segundo o The Verge, a SpaceX deve atingir a marca de 1 milhão de satélites até o ano de 2040.",
+          "legenda": "1 MILHÃO",
           "cena": "manchete"
         },
         {
           "lado": "rosto",
-          "fala": "Trabalhadores perderam a chance de negociar salários, bônus, férias e planos de aposentadoria.",
-          "legenda": "TRABALHADORES PERDERAM",
-          "cena": "leilao"
+          "fala": "O projeto Starmind quer capturar energia solar no espaço para alimentar a IA na Terra.",
+          "legenda": "PROJETO STARMIND",
+          "cena": "multidao"
         },
         {
           "lado": "leitura",
-          "fala": "Sejamos claros: quem fornece o prazer digital não quer que o trabalhador tenha voz.",
+          "fala": "Sejamos claros: quem quer o céu para a própria IA. Não se importa com o lixo que deixa.",
           "legenda": "SEJAMOS CLAROS",
           "cena": "mascara"
         },
         {
           "lado": "faca",
-          "fala": "Você compra o jogo. Eles demitem quem pede direitos.",
-          "legenda": "PEDE DIREITOS",
+          "fala": "Você olha para o céu. Eles instalam um servidor.",
+          "legenda": "INSTALAM UM SERVIDOR",
           "cena": "cartela"
         },
         {
           "lado": "escolha",
-          "fala": "Hora de acordar. Dá para torcer para a diversão não custar o emprego alheio. Ou dá para denunciar ao Ministério Público do Trabalho quando fizerem o mesmo com você.",
+          "fala": "Hora de acordar. Dá para torcer para não bater em nada. Ou dá para se juntar a quem já está lutando contra isso na sua cidade.",
           "legenda": "E VOCÊ?",
           "cena": "portas"
         },
@@ -70,18 +70,18 @@
         }
       ],
       "denuncia": {
-        "alvo": "Rockstar Games",
-        "situacao": "acusacao",
-        "vitima": "34 funcionários dos escritórios do Reino Unido e do Canadá",
-        "jaz": "SUA EMPATIA"
+        "alvo": "SpaceX",
+        "situacao": "plano",
+        "vitima": "pessoas na Terra",
+        "jaz": "SEU CÉU LIMPO"
       }
     },
     "sources": [
       {
-        "title": "Funcionários da Rockstar rejeitam criação de sindicato após lançamento de GTA 6",
-        "link": "https://www.estadao.com.br/tecmundo/voxel/funcionarios-da-rockstar-rejeitam-criacao-de-sindicato-apos-lancamento-de-gta-6/",
-        "source": "Estadão",
-        "date": "2026-11-27"
+        "title": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites into space",
+        "link": "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+        "source": "The Verge",
+        "date": "2026-11-25"
       }
     ],
     "tags": [
@@ -90,7 +90,7 @@
       "antisistema",
       "crítica",
       "notícia-do-dia",
-      "Rockstar Games"
+      "SpaceX"
     ]
   },
   {
