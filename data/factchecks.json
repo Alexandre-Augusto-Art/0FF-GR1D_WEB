@@ -1,10 +1,11 @@
 {
- "updatedAt": "2026-11-27T08:51:12.736Z",
+ "updatedAt": "2026-11-27T21:29:16.559Z",
  "sources": [
   {
    "name": "Aos Fatos",
-   "ok": true,
-   "count": 20
+   "ok": false,
+   "count": 0,
+   "error": "HTTP 404"
   },
   {
    "name": "Agência Lupa",
@@ -13,9 +14,8 @@
   },
   {
    "name": "Boatos.org",
-   "ok": false,
-   "count": 0,
-   "error": "HTTP 522"
+   "ok": true,
+   "count": 20
   },
   {
    "name": "E-farsas",
@@ -34,6 +34,123 @@
   }
  ],
  "items": [
+  {
+   "title": "Repetição de registro de título de mesário não comprova fraude em eleição",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/27/repeticao-de-registro-de-titulo-de-mesario-nao-comprova-fraude-em-eleicao",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T20:51:06.000Z",
+   "rating": "ENGANOSO",
+   "summary": "Erros de digitação explicam repetição de títulos de eleitor no log das urnas; verificação de presença também usa biometria"
+  },
+  {
+   "title": "#NÃOÉBEMASSIM: STF não proibiu pacientes de irem à Justiça por remédios fora da lista do SUS, mas impôs condições para liberação",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/27/naoebemassim-stf-nao-proibiu-pacientes-de-irem-a-justica-por-remedios-fora-da-lista-do-sus-mas-impos-condicoes-para-liberacao.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-27T19:48:02.000Z",
+   "rating": "FALSO",
+   "summary": "Decisão do STF não proibe obtenção de medicamentos, mas faz restrições g1 Circulam nas redes sociais publicações alegando que o Supremo Tribunal Federal (STF) proibiu pacientes de recorrerem à Justiça para conseguir medicamentos fora da lista do Sistema Único de Saúde (SUS).…"
+  },
+  {
+   "title": "Redução de limite do cartão de crédito por BC não impacta todos os clientes",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/27/reducao-de-limite-do-cartao-de-credito-por-bc-nao-impacta-todos-os-clientes",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T15:56:43.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Medida vale apenas para pessoas que deixam de pagar três ou mais faturas; regra vale a partir de 2027"
+  },
+  {
+   "title": "Post omite variações do dólar ao comparar gestões Bolsonaro e Lula",
+   "link": "https://www.agencialupa.org/jornalismo/2026/11/27/post-omite-variacoes-do-dolar-ao-comparar-gestoes-bolsonaro-e-lula",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T15:40:07.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Cotação de R$ 3,78 foi registrada somente nos primeiros meses do governo Bolsonaro"
+  },
+  {
+   "title": "É golpe a promoção que promete R$ 1.000 de presente de Natal do Supermercados BH",
+   "link": "https://www.boatos.org/brasil/supermercados-bh-esta-dando-r-1-000-de-presente-de-natal-em-troca-de-respostas-a-um-questionario.html",
+   "source": "Boatos.org",
+   "date": "2026-11-27T15:05:53.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – O Supermercados BH estaria distribuindo R$ 1.000 em uma promoção de Natal de 2026 para quem respondesse a um questionário, escolhesse uma caixa premiada e compartilhasse a mensagem com amigos. Análise Uma mensagem que circula nas redes sociais e no WhatsApp…"
+  },
+  {
+   "title": "Mercadona Christmas promotion promising a 1,000 prize via questionnaire is a scam",
+   "link": "https://www.boatos.org/english/is-mercadona-giving-away-a-1000-prize-in-a-2026-christmas-promotion-via-questionnaire.html",
+   "source": "Boatos.org",
+   "date": "2026-11-27T15:05:37.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Boatos.org Rumor – Mercadona is allegedly giving away a 1,000 prize in a 2026 Christmas promotion to anyone who answers a questionnaire, selects a winning box, and shares the message with friends. Analysis A message circulating online claims that the Spanish supermarket chain…"
+  },
+  {
+   "title": "É golpe a promoção de Natal da Mercadona que promete prêmio de 1.000 por meio de questionário",
+   "link": "https://www.boatos.org/mundo/mercadona-esta-dando-premio-de-1-000-em-promocao-de-natal-de-2026-por-meio-de-questionario.html",
+   "source": "Boatos.org",
+   "date": "2026-11-27T15:04:56.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – A Mercadona estaria distribuindo um prêmio de 1.000 em uma promoção de Natal de 2026 para quem respondesse a um questionário, escolhesse uma caixa premiada e compartilhasse a mensagem com amigos. Análise Uma mensagem que circula na internet afirma que a…"
+  },
+  {
+   "title": "É golpe a promoção que promete prêmios de até R$ 30 mil em raspadinha de aniversário do Mercado Livre",
+   "link": "https://www.boatos.org/tecnologia/mercado-livre-esta-dando-premios-de-aniversario-de-25-anos-para-quem-compartilhar-no-whatsapp.html",
+   "source": "Boatos.org",
+   "date": "2026-11-27T15:03:28.000Z",
+   "rating": "GOLPE",
+   "summary": "Boatos.org Boato – O Mercado Livre estaria distribuindo prêmios de até R$ 30 mil por meio de uma raspadinha online em comemoração aos seus 25 anos. Para receber o dinheiro, seria necessário informar nome completo e chave Pix e compartilhar a promoção com três grupos no…"
+  },
+  {
+   "title": "É #FAKE vídeo de balões de Dora Aventureira e agentes do ICE em desfile de Ação de Graças de Nova York; cena foi criada com IA",
+   "link": "https://g1.globo.com/fato-ou-fake/noticia/2026/11/27/e-fake-video-de-baloes-de-dora-aventureira-e-agentes-do-ice-em-desfile-de-acao-de-gracas-de-nova-york-cena-foi-criada-com-ia.ghtml",
+   "source": "Fato ou Fake (g1)",
+   "date": "2026-11-27T14:26:20.000Z",
+   "rating": "FEITO COM IA",
+   "summary": "É #FAKE vídeo de balões de Dora Aventureira e agentes do ICE em desfile de Ação de Graças de Nova York; cena foi criada com IA Reprodução Circula nas redes sociais um vídeo que supostamente mostra balões de agentes do Serviço de Imigração e Controle de Alfândegas (ICE, na…"
+  },
+  {
+   "title": "Não há registro de manifestação de partidos de esquerda contra PEC anunciada por Nikolas Ferreira",
+   "link": "https://www.estadao.com.br/estadao-verifica/nao-ha-registro-de-manifestacao-de-partidos-de-esquerda-contra-pec-anunciada-por-nikolas-ferreira",
+   "source": "Estadão Verifica",
+   "date": "2026-11-27T13:39:00.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "É de 2023 vídeo de agricultores descartando melancias",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/27/e-de-2023-video-de-agricultores-descartando-melancias",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T13:38:58.000Z",
+   "rating": "ANTIGO",
+   "summary": "Gravação original foi publicada no TikTok em novembro de 2023 e mostra descarte de frutas atribuído à falta de compradores e preço"
+  },
+  {
+   "title": "Postagens promovem Lugol para tratar doenças, contrariando orientações de médicos e da Anvisa",
+   "link": "https://www.estadao.com.br/estadao-verifica/postagens-promovem-lugol-para-tratar-doencas-contrariando-orientacoes-de-medicos-e-da-anvisa",
+   "source": "Estadão Verifica",
+   "date": "2026-11-27T13:04:16.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "VigIA: regras do TSE não impediram conteúdos irregulares de circular na eleição de 2026",
+   "link": "https://www.agencialupa.org/reportagem/2026/11/27/vigia-regras-do-tse-nao-impediram-conteudos-irregulares-de-circular-na-eleicao-de-2026",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T13:00:00.000Z",
+   "rating": "CHECAGEM",
+   "summary": "Monitoramento identificou 2.563 publicações com IA em sete redes; maioria não foi sinalizada e centenas circularam em período proibido"
+  },
+  {
+   "title": "Publicações tiram de contexto vídeos de descartes de tomate",
+   "link": "https://www.estadao.com.br/estadao-verifica/publicacoes-tiram-contexto-descarte-tomates",
+   "source": "Estadão Verifica",
+   "date": "2026-11-27T12:51:44.000Z",
+   "rating": "CHECAGEM"
+  },
+  {
+   "title": "Governo não determinou que Polícia Federal visite beneficiários do Bolsa Família",
+   "link": "https://www.agencialupa.org/verificacao/2026/11/27/governo-nao-determinou-que-policia-federal-visite-beneficiarios-do-bolsa-familia",
+   "source": "Agência Lupa",
+   "date": "2026-11-27T11:57:10.000Z",
+   "rating": "FALSO",
+   "summary": "Posts enganosos distorcem acordo anunciado pelo governo federal que estabeleceu parceria para coibir fraudes digitais que usam o nome de programas sociais"
+  },
   {
    "title": "É golpe promoção que anuncia Smart TV de 43 polegadas por R$ 317",
    "link": "https://www.agencialupa.org/verificacao/2026/11/26/e-golpe-promocao-que-anuncia-smart-tv-de-43-polegadas-por-r-317",
