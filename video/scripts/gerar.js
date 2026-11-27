@@ -7,7 +7,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawn } = require('child_process');
 const { falar, juntarOu, alinhar, PAUSA, TOM, RITMO } = require('./fala.js');
 const icones = require('./icones.js');
 
@@ -23,6 +23,9 @@ const SAIDA = process.env.W4K3_VIDEO_SAIDA || BASE;   // testes usam outra pasta
 const JOB = path.join(SAIDA, 'video-job');
 const VIDEOS = path.join(SAIDA, 'videos');
 const PIDFILE = path.join(SAIDA, 'video.pid');
+// texto publicado antes do vídeo ficar pronto (o automation/video-site.js anota): {hash, data, pid}
+const PENDENTE = path.join(BASE, 'video-pendente.json');
+const pendente = () => { try { return SAIDA === BASE ? JSON.parse(fs.readFileSync(PENDENTE, 'utf8')) : null; } catch { return null; } };
 const FPS = 30, FINAL = 3.2, CREDITOS = 5, INICIO = 0.3, PAUSA_FRASE = 0.35, PAUSA_PARAGRAFO = 0.7, ANDAMENTO = 1.12;
 const TOM_VOZ = 0.95;   // o efeito abaixa um pouco o tom (0.86 deixava a voz feminina quase masculina)
 
@@ -207,11 +210,13 @@ function fontesDe(d) {
   return [{ veiculo: String(d.news.source || site).replace(/\s*\(.*\)\s*$/, ''), titulo: d.news.title, data, site }];
 }
 
+let aprovado = false, hashInicio = null;
 async function main() {
   if (!draftPath || !fs.existsSync(draftPath)) throw new Error('rascunho não encontrado: ' + draftPath);
   fs.mkdirSync(JOB, { recursive: true }); fs.mkdirSync(VIDEOS, { recursive: true });
   fs.writeFileSync(PIDFILE, String(process.pid));
   const hash0 = hash(draftPath);
+  hashInicio = hash0;
   // vídeo desta versão vai ser refeito: tira do índice até o novo ficar pronto (o publicar espera)
   registra(hash0, null);
   const snap = path.join(JOB, 'draft.json');
@@ -341,6 +346,13 @@ async function main() {
   };
   const vertical = renderiza('W4K3V', base + '-vertical.mp4');
   registra(hash0, { vertical, titulo });
+  aprovado = (pendente() || {}).hash === hash0;
+  if (aprovado) {
+    // já publicado sem vídeo: põe no site agora (o run-w4k3.ps1 roda o video-site.js --pendente)
+    const ps = path.join(BASE, 'bin', 'run-w4k3.ps1');
+    spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ps, '-VideoPendente'], { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+    log('texto já publicado: vídeo indo para o site');
+  }
   if (args.includes('--telegram')) await enviar(vertical, draftPath, hash0, titulo, total, 1080, 1920);
   if (!args.includes('--so-vertical')) renderiza('W4K3', base + '-horizontal.mp4');
   // guarda só os 30 mais recentes
@@ -379,5 +391,21 @@ async function enviar(arquivo, draft, hash0, titulo, dur, largura, altura) {
 (async () => {
   try { await main(); }
   catch (e) { log('ERRO: ' + (e.stderr ? e.stderr.toString() : '') + e.message); process.exitCode = 1; }
-  finally { try { if (fs.readFileSync(PIDFILE, 'utf8') === String(process.pid)) fs.rmSync(PIDFILE); } catch {} }
+  finally {
+    try { if (fs.readFileSync(PIDFILE, 'utf8') === String(process.pid)) fs.rmSync(PIDFILE); } catch {}
+    // o bot não começou o vídeo do rascunho novo para não parar este: começa agora
+    try {
+      let ix = {};
+      try { ix = JSON.parse(fs.readFileSync(path.join(VIDEOS, 'indice.json'), 'utf8')); } catch {}
+      if (aprovado && fs.existsSync(draftPath) && hash(draftPath) !== hashInicio && !ix[hash(draftPath)] && !fs.existsSync(PIDFILE)) {
+        const p = spawn(process.execPath, [__filename, draftPath, ...args.slice(1)], {
+          detached: true, windowsHide: true, cwd: PROJ,
+          stdio: ['ignore', fs.openSync(path.join(BASE, 'logs', 'video.log'), 'a'), fs.openSync(path.join(BASE, 'logs', 'video.log.err'), 'a')],
+        });
+        fs.writeFileSync(PIDFILE, String(p.pid));
+        p.unref();
+        log('vídeo do rascunho atual começou: job ' + p.pid);
+      }
+    } catch (e) { log('não consegui começar o vídeo do rascunho atual: ' + e.message); }
+  }
 })();

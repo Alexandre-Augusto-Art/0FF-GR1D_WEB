@@ -282,11 +282,16 @@ telegram-w4k3.ps1 Show-Draft → Start-Video (segundo plano)
 - Ajuste, outra notícia, link novo ou descarte interrompem o vídeo em andamento; se o rascunho mudar
   durante o render, o vídeo velho não é enviado. Publicar não interrompe.
 - **No site:** ao publicar, o `automation/video-site.js` (chamado pelo `run-w4k3.ps1`) acha o vídeo
-  vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3ideos\indice.json`, que o
+  vertical da versão aprovada pelo hash do rascunho (`%USERPROFILE%\.w4k3\videos\indice.json`, que o
   `gerar.js` grava), recomprime para a web (540x960, uns 4 MB por 50 s) em
   `assets/videos/w4k3/<data>.mp4` com uma capa `.jpg` e grava `video: { src, poster }` na entrada. A
-  página do W4K3 mostra o player acima do texto. Se o render ainda estiver rodando, espera até 12 min;
-  sem vídeo desta versão, publica só o texto.
+  página do W4K3 mostra o player acima do texto. Sem vídeo desta versão, publica só o texto.
+- **Aprovado antes do vídeo ficar pronto** (o vídeo leva uns 30 min, só a voz uns 20): o texto sai na
+  hora e o `video-site.js` anota o render em `%USERPROFILE%\.w4k3\video-pendente.json`. Quando o
+  vertical fica pronto, o `gerar.js` chama `run-w4k3.ps1 -VideoPendente`, que põe o vídeo na entrada
+  daquele dia, faz o commit e avisa no Telegram. Uma aprovação nova apaga o pendente, para um vídeo
+  velho não cair no texto novo. Enquanto esse render roda, o bot não o interrompe: o vídeo de um
+  rascunho novo começa sozinho quando ele termina.
 - Cada vídeo soma uns 2 MB ao repositório (uns 700 MB por ano publicando todo dia); se crescer
   demais, apague os vídeos antigos de `assets/videos/w4k3` (a página só mostra o da entrada mais nova).
 - Log: `%USERPROFILE%\.w4k3\logs\video.log`. Testar à mão:
