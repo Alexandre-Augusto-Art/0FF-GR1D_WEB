@@ -9,6 +9,7 @@ conversa com ela, e cada pessoa escolhe ali o que quer receber:
 | Motivação Diária | frase nova |
 | Organize-se | atos **convocados** que ainda vão acontecer, numa mensagem por rodada. A pessoa pode escolher os estados; atos nacionais também chegam |
 | Fact Check | resumo das checagens novas das agências (as 10 mais recentes) |
+| Eventos | evento novo na agenda (`data/eventos.json`) e um lembrete na véspera (ou no dia, se o PC estava desligado na véspera) |
 
 Comandos: `/avisos` muda as escolhas, `/parar` desliga tudo e apaga os dados, `/ajuda` explica.
 
@@ -51,6 +52,34 @@ Depois de mudar algo em `automation/bot-2b/`, rode o `install.ps1` de novo. Para
 | `core.js` | menu, escolhas e regras de quem recebe o quê |
 | `bot.js` | conversa com o Telegram e o site |
 | `install.ps1` | instala neste PC |
+
+## Adicionar um evento
+
+Edite `data/eventos.json` e faça o push. A página `eventos.html` mostra na hora e a 2B avisa em até 5 min.
+
+```json
+{
+  "atualizadoEm": "2026-12-01",
+  "eventos": [
+    {
+      "id": "2026-12-10-feira-hacker",
+      "titulo": "Feira Hacker",
+      "data": "2026-12-10", "fim": "2026-12-12",
+      "hora": "14:00", "horaFim": "20:00",
+      "local": "Centro Cultural X, Rua Y 123",
+      "cidade": "São Paulo", "uf": "SP",
+      "papel": "Palestra",
+      "descricao": "O que vai rolar.",
+      "link": "https://..."
+    }
+  ]
+}
+```
+
+Obrigatórios: `id`, `titulo`, `data` e `local`. O resto é opcional. **Não mude o `id` depois de publicar**: para a
+2B é outro evento e ela avisa de novo. Mudar data ou local não gera aviso novo (o lembrete da véspera segue a data
+nova). Evento que já passou pode ficar no arquivo: o site mostra em "Já rolou". `node automation/validate.js` confere
+o formato, e a Action "Validar feeds" também.
 
 ## Privacidade
 

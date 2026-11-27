@@ -111,11 +111,11 @@ function handleUpdate(state, u) {
 function collect(state, datas, now = Date.now()) {
   let queued = 0;
   for (const [key, feed] of Object.entries(FEEDS)) {
-    const list = datas[key] === undefined ? null : feed.list(datas[key]);
+    const list = datas[key] === undefined ? null : feed.list(datas[key], now);
     if (!list) continue;
     const entries = list.filter(e => e && feed.id(e));
     if (!state.seen[key]) {
-      if (entries.length) state.seen[key] = entries.map(feed.id).slice(0, MAX_SEEN);
+      if (entries.length || feed.emptyOk) state.seen[key] = entries.map(feed.id).slice(0, MAX_SEEN);
       continue;
     }
     const seen = new Set(state.seen[key]);
