@@ -1,191 +1,191 @@
 {
- "updatedAt": "2026-11-26T19:00:49.764Z",
+ "updatedAt": "2026-11-27T01:56:53.886Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 46,
-   "atos": 5
+   "manchetes": 45,
+   "atos": 4
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 42,
-   "atos": 1
+   "manchetes": 37,
+   "atos": 2
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 37,
-   "atos": 1
+   "manchetes": 14,
+   "atos": 0
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 18,
-   "atos": 4
+   "manchetes": 49,
+   "atos": 7
   },
   {
    "busca": "BA",
    "ok": true,
-   "manchetes": 59,
+   "manchetes": 57,
    "atos": 3
   },
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 28,
-   "atos": 1
+   "manchetes": 60,
+   "atos": 2
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 29,
-   "atos": 0
+   "manchetes": 23,
+   "atos": 1
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 28,
-   "atos": 1
+   "manchetes": 58,
+   "atos": 0
   },
   {
    "busca": "GO",
    "ok": true,
-   "manchetes": 15,
+   "manchetes": 17,
    "atos": 0
   },
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 46,
+   "manchetes": 45,
    "atos": 1
   },
   {
    "busca": "MT",
    "ok": true,
-   "manchetes": 24,
-   "atos": 1
+   "manchetes": 43,
+   "atos": 0
   },
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 25,
-   "atos": 1
+   "manchetes": 48,
+   "atos": 0
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 41,
+   "manchetes": 40,
    "atos": 2
   },
   {
    "busca": "PA",
-   "ok": true,
-   "manchetes": 22,
-   "atos": 3
+   "ok": false,
+   "manchetes": 0,
+   "atos": 0
   },
   {
    "busca": "PB",
    "ok": true,
-   "manchetes": 41,
+   "manchetes": 42,
    "atos": 0
   },
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 41,
+   "manchetes": 39,
    "atos": 0
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 54,
-   "atos": 1
+   "manchetes": 56,
+   "atos": 0
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 45,
-   "atos": 2
+   "manchetes": 17,
+   "atos": 0
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 27,
+   "manchetes": 70,
    "atos": 4
   },
   {
    "busca": "RN",
    "ok": true,
    "manchetes": 30,
-   "atos": 3
+   "atos": 2
   },
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 55,
    "atos": 1
   },
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 38,
+   "manchetes": 13,
    "atos": 1
   },
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 13,
+   "manchetes": 40,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
-   "manchetes": 59,
+   "manchetes": 31,
    "atos": 0
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 44,
-   "atos": 3
+   "manchetes": 46,
+   "atos": 2
   },
   {
    "busca": "SE",
    "ok": true,
-   "manchetes": 41,
+   "manchetes": 14,
    "atos": 0
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 18,
+   "manchetes": 40,
    "atos": 1
   },
   {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 31,
-   "atos": 3
+   "manchetes": 30,
+   "atos": 2
   },
   {
    "busca": "movimentos",
    "ok": true,
    "manchetes": 27,
-   "atos": 3
+   "atos": 4
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 45,
-   "atos": 9
+   "manchetes": 47,
+   "atos": 13
   },
   {
    "busca": "pautas",
    "ok": true,
-   "manchetes": 29,
-   "atos": 2
+   "manchetes": 59,
+   "atos": 4
   }
  ],
  "eventos": [
@@ -226,6 +226,19 @@
    },
    "cidade": "Porto Alegre",
    "data": "2026-11-27"
+  },
+  {
+   "id": "48c4fe150d91",
+   "titulo": "Brasília recebe caminhada pelo fim da violência contra mulheres e meninas neste sábado (29)",
+   "tipo": "convocacao",
+   "uf": "DF",
+   "publicadoEm": "2026-11-26T19:53:55.000Z",
+   "fonte": {
+    "nome": "Jornal de Brasília",
+    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaFFsWXhpdWdIN1lwQml4M1RoZVJya19BY0Z6SDFHU1ZPc1A4aTc0VThPT3hpbmhkNG5rOVJhUGNHMWRwY3BxYWJXdzE0MVVqbVpWckVzaXBPczdBVVVadUZPem03ei14LVlYSmNGWngxalUxTWpmUTRaVUtZV2dic21FMDdaRFI4d1ExTU4xSG9aZVRhUFZnVU1XbmNQTWdSb2xpdFMwVjR6WktKQjEwbXZzZ2JEUUZsTWFHd2ZqOU1UaDlidU5QWU1kWQ?oc=5"
+   },
+   "cidade": "Brasília",
+   "data": "2026-11-29"
   },
   {
    "id": "fa161141d376",
@@ -279,6 +292,42 @@
    "data": "2026-11-30"
   },
   {
+   "id": "dc497ef69d97",
+   "titulo": "Sindicatos deflagram greve geral com início em 12 de janeiro e servidores tomam as ruas em protesto contra Aurélio Goiano",
+   "tipo": "convocacao",
+   "uf": "GO",
+   "publicadoEm": "2026-11-26T20:40:00.000Z",
+   "fonte": {
+    "nome": "Portal Pebinha de Açúcar",
+    "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPT3lha1JxWTktbjhRUEU4ekQ5S1dhcUVuRDFXZzVGZXJBRFVkbk5ncXZMS283SEV1emFvYWg4d3FESnBYT1F0cHY0RmtNajBTM2NKT1hWRm95WE9yQzRBLUVYNElVYk5yclVvM2xoMzl5d21NdDZZSTRwcU8yYmdNZWU0N2luNWptYmNPMXFYVzZzbWVWWkJFOHkxR081c2R6Tkk0ZEg3enVrS3J3aklTeVBsU2k5ZWw0dXRlZkpfMGlEWHhoZnFzSkdhZWxQSEdYQjAtX0lZTV9RWkZ5QTFROEQzcnRHR2lP?oc=5"
+   },
+   "data": "2027-01-12"
+  },
+  {
+   "id": "324b972d8b2b",
+   "titulo": "Manifestação de trabalhadores do MST interditam a BR-155, em Marabá",
+   "tipo": "cobertura",
+   "uf": "PA",
+   "publicadoEm": "2026-11-26T21:53:25.000Z",
+   "fonte": {
+    "nome": "G1",
+    "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQOVBnVUhKR29mUnlyZHNFS2luZkJEZTRPbkh2ellMNFpPTGdtR21oMXNjWFlDWkpwMzJfUVQwbkhRVkhIdnVlbENUa0FkVEZwWGhXUU5JUjM3WXAzTWxFdGFaMTA0TGExV19LMHpxVG9tQUUzYm85N1AtV0RnVVd4UV9DcGpaMGJ6VDJYb0tRWjk3WUFmMWtUdEdpTFN6aGh2TEZyTlBZTU1jbEMzbnhxdHRuRHZVZ2FrOGxoV0NwS2plbjBVZUE2bWZPX3NXVmpiZ1BOMHN0eEVibWZRT0s2aFZPMWVmWjVCV1BRYzZTY9IB7wFBVV95cUxQOVBnVUhKR29mUnlyZHNFS2luZkJEZTRPbkh2ellMNFpPTGdtR21oMXNjWFlDWkpwMzJfUVQwbkhRVkhIdnVlbENUa0FkVEZwWGhXUU5JUjM3WXAzTWxFdGFaMTA0TGExV19LMHpxVG9tQUUzYm85N1AtV0RnVVd4UV9DcGpaMGJ6VDJYb0tRWjk3WUFmMWtUdEdpTFN6aGh2TEZyTlBZTU1jbEMzbnhxdHRuRHZVZ2FrOGxoV0NwS2plbjBVZUE2bWZPX3NXVmpiZ1BOMHN0eEVibWZRT0s2aFZPMWVmWjVCV1BRYzZTYw?oc=5"
+   },
+   "cidade": "Marabá"
+  },
+  {
+   "id": "c32c1e7984ef",
+   "titulo": "Motoboys depredam caminhonete em protesto após morte de colega em Porto Velho",
+   "tipo": "cobertura",
+   "uf": "RO",
+   "publicadoEm": "2026-11-26T19:26:24.000Z",
+   "fonte": {
+    "nome": "News Rondônia",
+    "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOZzNneC1kbXBESVdrd24xMjk4Q1pqVlZSdUk5RkhNSTljX0xwbGNDQ3llbGNpQUJZTmRVZERiQ25RZUZTd2g3ZVVHU3ZLZkhLWlBKVHNIYmtqUnp1Q0UzS1p3Y2xuMnBOSVpzM0Itdm9EYXoxLXp4VXhQOTBMMUFDaEJsQnJvLThKWl8wWTQ4Zk01bGxpMFQwRVdxWnkwWEJ2LVpqbTBoVHRna1JxMmtWdllPSkJPbVhJOGRZaktwZEM0a3c?oc=5"
+   },
+   "cidade": "Porto Velho"
+  },
+  {
    "id": "e2dbb3966965",
    "titulo": "Justiça e Polícia avançam contra grupo que espancou professor em ato homofóbico no Rio",
    "tipo": "cobertura",
@@ -291,6 +340,17 @@
    "cidade": "Rio de Janeiro"
   },
   {
+   "id": "4c1dfc9fedfc",
+   "titulo": "Instituições promovem ato em memória as 29 vítimas de feminicídio em Alagoas",
+   "tipo": "cobertura",
+   "uf": "AL",
+   "publicadoEm": "2026-11-26T18:34:49.000Z",
+   "fonte": {
+    "nome": "G1",
+    "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQYnlzNFlfTE5rOTg5a2lxQUh3T3Blc3BtMnRKbUI3RVByVmxBV0liMkw5clBPdWRIek1NQTJqUzM1b0RkZGlPN2p5dExjN0VnalNLQ2ZGOVpEb3ZlVFFWS2psQzE5eEYyLUxJT3hUUHk5UmRCMUM1WE9NSHhTQmhiMHJ4M0Yxb2NFUGFlZFRjaGRTa0lQNy1XN1lSVjdGc0lhYkdpTUhFRGd3VkpqcTVPM3l1bDBWajRYS1VQSnpRaGJTZG5wM280SDZoS3AzaWZJS1U4R05qdDZuTXhscUF0UW9ENkdTWnMtaXVvOTNyeWLSAfABQVVfeXFMUGJ5czRZX0xOazk4OWtpcUFId09wZXNwbTJ0Sm1CN0VQclZsQVdJYjJMOXJQT3VkSHpNTUEyalMzNW9EZGRpTzdqeXRMYzdFZ2pTS0NmRjlaRG92ZVRRVktqbEMxOXhGMi1MSU94VFB5OVJkQjFDNVhPTUh4U0JoYjByeDNGMW9jRVBhZWRUY2hkU2tJUDctVzdZUlY3RnNJYWJHaU1IRURnd1ZKanE1TzN5dWwwVmo0WEtVUEp6UWhiU2RucDNvNEg2aEtwM2lmSUtVOEdOanQ2bk14bHFBdFFvRDZHU1pzLWl1bzkzcnli?oc=5"
+   }
+  },
+  {
    "id": "a8abe28c4ccb",
    "titulo": "Sampi Campinas: Servidores miram vereadores e convocam novo ato contra reforma",
    "tipo": "convocacao",
@@ -301,6 +361,18 @@
     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOGtQcU5DWEpOMFZEaUJacEQzQWU3UjJNZUJVRVlWLVM1U1RhWV9GTmI1eVpMbjJZSGNSd3JlNll3N1Z0WjZLbXU0Mzg3VlpNYlhTcnk5dWlEbVdibVM0TUpXV215WmJzRjhvRDBUY1VKVUxVVVRDTkM3cWpNemZmcFRRcW1jMUFRaFZ2N0J5d2JIdFdpU093ckl0dFlKZm5ybzdtYWo1Z1plTVpscmZnSFVkSUFWT3FlN0RYZFpXME9fOHVU?oc=5"
    },
    "cidade": "Campinas"
+  },
+  {
+   "id": "2a0088db284e",
+   "titulo": "Dia Internacional de Solidariedade ao Povo Palestino terá ato em Porto Alegre",
+   "tipo": "cobertura",
+   "uf": "RS",
+   "publicadoEm": "2026-11-26T15:21:46.000Z",
+   "fonte": {
+    "nome": "Assufrgs",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQM3ZRVk10X3dENTJYUlJJak1LN2hMZWZjaTUtZksxWWVLaFhpUjhqbmhveFFiaGJFZ2FQVHZvTjBvY2ROMU9keVItekdUS1JSNnRJNHo1Sl8yUjNjckZtSGYwdUdnMFdEc1Aza2tqS2hRLV9rTnRCNW5OSkhQbFRLWXBlMHQzY3NqUzlvRnlQUHNDVWFXcjRKOGVNMWNtOUZ2bjVqTmFpLXBTeG9FYXp1LV83S3NBVlgx?oc=5"
+   },
+   "cidade": "Porto Alegre"
   },
   {
    "id": "77e6f549be3d",
@@ -428,8 +500,16 @@
    "cidade": "Manaus",
    "outrasFontes": [
     {
+     "nome": "Portal Mário Adolfo",
+     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNNXZfSEtuOUoyVm5hSjNaWUFUVGJSZk1pdEJIdnROVm51Sk1LMFVQUWdOZUxsdGZia1I3R3NwZEhjMW9MdXAxV3o4ZmxXRmhMcFFET1NYRlNzU1JxSDdFSkFWZk44S0U1aEpyM0Ixdnp1ZUEzSWlTNGZlY0dfZnA3aWlZY3FkbG9wSlhUVU1jdGhoYmpN?oc=5"
+    },
+    {
      "nome": "A Crítica",
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNVExkZ3RHYlVXMVlKSXctY0dIWTViMjA3U05WSk1aVm96ZXlpajZyZ2dJcW42dVg1SVoxZEw4cVJ1RXNxOVlWeVJNVkhIYjcwd0JURXkyZEs1MWJMWmFTaE9ZeWEwSl9yUFcyV1hFOVBpRWdPZU04U1RvQ2w3c2Z5TVhfNHh2S3QzQV9YVkZ3WHBnbnhNX0dIcXJxSGxKVWpWQ3hqTEpR?oc=5"
+    },
+    {
+     "nome": "Portal Mário Adolfo",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcS1BZEFFN1BIMjR6NWF5cmZJQVJKUldXaDlEWmdDYlNWeDk0bGEyX0wwcW5EZHBXQlNaZjNSUDZFWk1ydUxyR3ByQ1luYzFGTi1EQTg0RUVsSTF3NTFpOE16Z1pzRU5CZFJPM3FlMzViQk9QeEU2NUNqN0tHSHVibkhiczcwYkNxTjFCR1gzLXQ2cHNwRHNydlhEa1JGYUY5Z2l6OTMxSE9IV0txallUbmJhaGZZT05CRERCSUJjd3FRcDQ?oc=5"
     }
    ]
   },
@@ -500,8 +580,8 @@
      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQRE82cVFkdG5SN0dIMnV2elFTV1R1M1dFUXRac2lFcXNyNEpfR0tYRkZLZlF0akFpLXliM3AwWEhvTm1SR2luOHlYX0J5MlQ5ZU1SM3N1QTQ1QlFIbGJMc2pkTS04VDE5WE1HWlhybVh6NFdJbDVrdmRDejVVXzZidTJlY1JtcXpvTHlieDdPUmNEMEg2dUJod2h5OWNieUJlcktYZ3BkXy01YVRLUUF0Um0ySmVTNndIOFlBNkhMYm9pMjVJdDZmX1ZmaERsejcyX19OaWtRZEhabFZfdnc?oc=5"
     },
     {
-     "nome": "AcreNews",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMXJlc1otWGo4VEFVYWZndXhFUnhMQ3p6ZG5EaFYzZzVqenVNWVJxTjJESGVBVXhFRnZRSmM4SnpueDlneU8xMXhfZ2JyNi1yak85bS1zRTc0SUNsOXpnZUJRZEVBdjlfR0ZSc1hqYzVoTkFyc0JielFZeVhLaFlEZ0NfcWRjQXd4RUdRT2k1bVprX1VXM1NpMHRRSm03QmdMQk95WU9TRjFmdHVOLUZWaUJ6alJiXzNxdE5uOWlRejk?oc=5"
+     "nome": "ac24horas",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPU21nRlpEbUFBUDdldEpXMi1JbUhsb0kzLTVBUldJdXlQVmw4aTZrVzFETnpEckJmTE11cUJPcGg5VlBLNUhCTk4wd1pHcTRBaEVjOU5qQ241aC1NYkoxZ01pSkFQMmxVRmt5SDdkWEw4ZzZjbkxXNzRUUTVuZXhrRm5vZkdpcmZ2WkFDekx4aDFPTTFISHBuS3kyRDhrcnBa0gGmAUFVX3lxTFBrYVREeDdKcnFoaHpjR0FZdkZyQVFTWjlyLUFtMG5ybTAtRDJYU185VlB2MGNBZWk4cUVkcUhqeWlZY3Q5MlVvSVp4MzBSRHhlU2FVcDM2bHp2VWtDSjFEQWhKR0txcXcwci12eUNDME51Z01QX2RYNGRQS28xRHBJZmpzX180NmRFUDI0bE95aXUwM01EN2VjempPdThIM3RZYlRLRkE?oc=5"
     },
     {
      "nome": "A Gazeta do Acre",
@@ -532,6 +612,18 @@
     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9QYTYyZm1YNmJYcGRpcm12NzJuS2hrVDgtVVpDcS1qajcwR2tBbFRjMnBsMlpaZWtBWDlRMDVVR3FiUTd4aVlkeUxmbEFuUm04ZzUyUEQta2x5aXYzTkEzVlU0NUNtSlpITHJzNmU2cTNacmI4X2d6VS16NGNYeEE?oc=5"
    },
    "cidade": "Salvador"
+  },
+  {
+   "id": "df458235b461",
+   "titulo": "Major condenado pela morte de Marielle é demitido da PM, com perdas de patente e condecorações, em ato assinado pelo governador interino do Rio",
+   "tipo": "cobertura",
+   "uf": "RJ",
+   "publicadoEm": "2026-11-24T18:53:00.000Z",
+   "fonte": {
+    "nome": "Repórter Maceió",
+    "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPT09JQTZFaUVtQWUwNk5qQ2RLWXRWdnY0NDJidUJMaVczSzVZRXkwejRaa2xPXzd1TGJKcFdqVmhVMjZ6ZEhJRUJPZGR3OTVNNXM5SFRYekpXSVpKRWxOREFUZ3pVTU9OWHhPeXZuVWRrNExVZ1dmcUF6RjMyVlk0dW1sU1IwYUMxeWFsQjRpd2w3ZU1lbzBqTFJnQmF0Q3dqcmtyckE4TjNYREczTm5oMnhERVlBX1dISmhUdV9tVlViLUZGd0pjMml1ckhKMmdVaXB1YWNjbGRIWmFxdUpRZGxDMDBUQktWbl9sR1lBRDVwMDA4Uks4aFE2STUzOVJFbkE?oc=5"
+   },
+   "cidade": "Rio de Janeiro"
   },
   {
    "id": "52904747f1f2",
@@ -581,6 +673,29 @@
    }
   },
   {
+   "id": "9318a2e5f096",
+   "titulo": "Metalúrgicos Antirracistas participam da Marcha Preta em Sorocaba",
+   "tipo": "cobertura",
+   "uf": "SP",
+   "publicadoEm": "2026-11-23T20:59:54.000Z",
+   "fonte": {
+    "nome": "SMETAL",
+    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNDFLNGVEelJuaGtmXzloeE1Ma3NNblg0akxmYkI5OVVjOUsybUV6enROTEFZUVI5Vkg3V2cwb3hsNThNWkE0b1BSRjhaTzVUdEFTZ0FibWNvTlJzeE5kWjBQQW1DN0hTNjdrM0VnYlZyeUI3TDZncnN2LWU2RWRDcmZEZ2RYUGhCMHh2dlZnbVFBS25RQWFPTHBpTVF3dw?oc=5"
+   },
+   "cidade": "Sorocaba"
+  },
+  {
+   "id": "afefd86daf02",
+   "titulo": "Servidores da carreira de ATPE realizam ato pela regulamentação da GDATE",
+   "tipo": "cobertura",
+   "uf": "DF",
+   "publicadoEm": "2026-11-23T20:47:45.000Z",
+   "fonte": {
+    "nome": "Sindsep-DF",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaXplcXcxTi1IUnJaUzUxc3hEc044YjlLcjdZdWpRQVZITHV3SnIzMHJUdDlZeDk3d0JBY3U1V1JWUEMwcURnUFBiQ2o0cXl1b3F3UUFqS3ZNMFJ0UWxSY0JnenJoRVZ6RTEwX1dCbS1SMnhBRG5XaDZSZDB0TTVpYzdVbEF1SWVoS2R3WG5WLWdndGdvaWVjTDRna080NVM4?oc=5"
+   }
+  },
+  {
    "id": "104b88d3e6be",
    "titulo": "Protesto do MST, que interdita a BR-155 no sudeste do Pará, cobra compra de fazenda para assentamento",
    "tipo": "cobertura",
@@ -589,13 +704,7 @@
    "fonte": {
     "nome": "G1",
     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOZUNDeDJYOW82S1BEYVRKcUgyUk94T3kxWjZPUGlJNDM1RlE0QjZjVy1kcEVMUDFsTkdKZ1lNN0p5bTlxYm40SExWR0QyNHFQY3U0M3hfb3VmaEx2ZzhxclM5WU53NE1VdGpsZFVfOGc3cjNwbDVUQmFHSEJkWEE2cGplNW5FSUFwdEhDMC1EdmJvNDN0azRsUEF6VGxjS1ZJVjQtSGNIOE1oVGZSMmRYNFlfT04xUlo1NkRCX3VIUzlmTmZoZUEyeTdQcFhvNlF0YlVkbFhiamR1azhoSFduclNZQllTVDRM0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
-   },
-   "outrasFontes": [
-    {
-     "nome": "G1",
-     "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNQzhVZFhtbldyZHFCcFdOdEZqWFEwbjZWbGZzTnNlWlg5ZEFRVThORExHVmlBb1ExNDVqXzlDY3pOUWpENkl0VEhFZUQ0akNXcXlJYkpJQWdRN3FLT3NiM2ZZYUNLOE0wYVpla1MzQjlzb2NsamtCbWpydVpPY2FnRW4xZE45amU1T24zT3lDUEwteHF0Y0xQVk1fWHA5X19HanlvaUFRZlNsNE1penZDSlVxamlvSU1uZDNSU2NKZXhSY2lWWGFNU1N3NU9FN3hVR0h1WlhDSEZFWHZQalc2UUowSUNvRzRqckxLSHp1UUNjc0JPN3lN0gH3AUFVX3lxTE1DOFVkWG1uV3JkcUJwV050RmpYUTBuNlZsZnNOc2VaWDlkQVFVOE5ETEdWaUFvUTE0NWpfOUNjek5RakQ2SXRUSEVlRDRqQ1dxeUliSklBZ1E3cUtPc2IzZllhQ0s4TTBhWmVrUzNCOXNvY2xqa0JtanJ1Wk9jYWdFbjFkTjlqZTVPbjNPeUNQTC14cXRjTFBWTV9YcDlfX0dqeW9pQVFmU2w0TWl6dkNKVXFqaW9JTW5kM1JTY0pleFJjaVZYYU1TU3c1T0U3eFVHSHVaWENIRkVYdlBqVzZRSjBJQ29HNGpyTEtIenVRQ2NzQk83eU0?oc=5"
-    }
-   ]
+   }
   },
   {
    "id": "2dd2004c2e4e",
