@@ -1,191 +1,191 @@
 {
- "updatedAt": "2026-11-27T18:59:44.219Z",
+ "updatedAt": "2026-11-28T01:41:22.561Z",
  "buscas": [
   {
    "busca": "AC",
    "ok": true,
-   "manchetes": 45,
-   "atos": 6
+   "manchetes": 44,
+   "atos": 5
   },
   {
    "busca": "AL",
    "ok": true,
-   "manchetes": 41,
+   "manchetes": 15,
    "atos": 2
   },
   {
    "busca": "AP",
    "ok": true,
-   "manchetes": 12,
+   "manchetes": 33,
    "atos": 1
   },
   {
    "busca": "AM",
    "ok": true,
-   "manchetes": 18,
-   "atos": 1
+   "manchetes": 47,
+   "atos": 5
   },
   {
    "busca": "BA",
    "ok": true,
-   "manchetes": 54,
-   "atos": 4
+   "manchetes": 29,
+   "atos": 5
   },
   {
    "busca": "CE",
    "ok": true,
-   "manchetes": 61,
-   "atos": 2
+   "manchetes": 59,
+   "atos": 3
   },
   {
    "busca": "DF",
    "ok": true,
-   "manchetes": 22,
-   "atos": 1
+   "manchetes": 29,
+   "atos": 2
   },
   {
    "busca": "ES",
    "ok": true,
-   "manchetes": 61,
-   "atos": 0
+   "manchetes": 60,
+   "atos": 1
   },
   {
    "busca": "GO",
    "ok": true,
-   "manchetes": 49,
+   "manchetes": 50,
    "atos": 0
   },
   {
    "busca": "MA",
    "ok": true,
-   "manchetes": 53,
+   "manchetes": 55,
    "atos": 1
   },
   {
    "busca": "MT",
    "ok": true,
-   "manchetes": 47,
+   "manchetes": 23,
    "atos": 1
   },
   {
    "busca": "MS",
    "ok": true,
-   "manchetes": 22,
-   "atos": 0
+   "manchetes": 45,
+   "atos": 1
   },
   {
    "busca": "MG",
    "ok": true,
-   "manchetes": 30,
-   "atos": 3
+   "manchetes": 43,
+   "atos": 2
   },
   {
    "busca": "PA",
    "ok": true,
-   "manchetes": 57,
+   "manchetes": 52,
    "atos": 2
   },
   {
    "busca": "PB",
    "ok": true,
-   "manchetes": 14,
-   "atos": 0
+   "manchetes": 15,
+   "atos": 1
   },
   {
    "busca": "PR",
    "ok": true,
-   "manchetes": 16,
-   "atos": 1
+   "manchetes": 19,
+   "atos": 2
   },
   {
    "busca": "PE",
    "ok": true,
-   "manchetes": 29,
+   "manchetes": 27,
    "atos": 0
   },
   {
    "busca": "PI",
    "ok": true,
-   "manchetes": 47,
-   "atos": 0
+   "manchetes": 44,
+   "atos": 1
   },
   {
    "busca": "RJ",
    "ok": true,
-   "manchetes": 70,
-   "atos": 7
+   "manchetes": 36,
+   "atos": 10
   },
   {
    "busca": "RN",
    "ok": true,
-   "manchetes": 63,
+   "manchetes": 30,
    "atos": 3
   },
   {
    "busca": "RS",
    "ok": true,
-   "manchetes": 31,
+   "manchetes": 58,
    "atos": 2
   },
   {
    "busca": "RO",
    "ok": true,
-   "manchetes": 37,
-   "atos": 3
+   "manchetes": 33,
+   "atos": 2
   },
   {
    "busca": "RR",
    "ok": true,
-   "manchetes": 13,
+   "manchetes": 31,
    "atos": 0
   },
   {
    "busca": "SC",
    "ok": true,
-   "manchetes": 28,
+   "manchetes": 60,
    "atos": 0
   },
   {
    "busca": "SP",
    "ok": true,
-   "manchetes": 19,
-   "atos": 1
+   "manchetes": 50,
+   "atos": 4
   },
   {
    "busca": "SE",
    "ok": true,
-   "manchetes": 18,
+   "manchetes": 19,
    "atos": 0
   },
   {
    "busca": "TO",
    "ok": true,
-   "manchetes": 20,
-   "atos": 0
+   "manchetes": 19,
+   "atos": 1
   },
   {
    "busca": "convocações",
    "ok": true,
-   "manchetes": 57,
+   "manchetes": 53,
    "atos": 2
   },
   {
    "busca": "movimentos",
    "ok": true,
-   "manchetes": 55,
-   "atos": 4
+   "manchetes": 27,
+   "atos": 3
   },
   {
    "busca": "sindicatos",
    "ok": true,
-   "manchetes": 51,
-   "atos": 12
+   "manchetes": 48,
+   "atos": 18
   },
   {
    "busca": "pautas",
    "ok": true,
-   "manchetes": 30,
-   "atos": 4
+   "manchetes": 63,
+   "atos": 5
   }
  ],
  "eventos": [
@@ -292,6 +292,70 @@
    "data": "2027-01-12"
   },
   {
+   "id": "838d6c4a711a",
+   "titulo": "Tarcísio ameaça fechar escola centenária e estudantes vão às ruas defender a EE São Paulo",
+   "tipo": "convocacao",
+   "uf": "SP",
+   "publicadoEm": "2026-11-27T23:36:20.000Z",
+   "fonte": {
+    "nome": "Hora do Povo",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQODdUelE2bkJvUnVHNHFtc0hkVE5uaHFMWGZZbkl1YTZjbUxRb01hTE5BSV8yb2QxdS1BMzNyaW9BdlpXZ2FfNm9kVmNrNVF4UVNrckxUbGY0YUJ0TTUwWVR5a2o2OFAySnBQaG9ZeGVhc193WWFRd28zaUtWMHhmSnFDcnNzMEJNSE5BYk9DV0hRU1Q4UWNJY0RpZHN1M0pzU3Rja0pFTjlBWktoRy1hVk1HR2txNkk?oc=5"
+   },
+   "cidade": "São Paulo"
+  },
+  {
+   "id": "dcedd9286df2",
+   "titulo": "VÍDEO: Manifestação contra privatização da Bahiagás reúne trabalhadores em Salvador",
+   "tipo": "cobertura",
+   "uf": "BA",
+   "publicadoEm": "2026-11-27T21:15:00.000Z",
+   "fonte": {
+    "nome": "Bahia Notícias",
+    "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOcUhQbTNpWEZIZFVUeXFYeFZwRlJTVmFUcmd0VmhYZzBnRVZNM1g4Yy1JU2J2emg1U2xlNFI5Rm00THR2ZWZPaEJMSWJjYzlLdm5VaGRqZ1dBaGZCMGt1STZJSF9FZ0V5RW9YdGhHeHlmOE41Q0xjSnRsS0hHVmNTR1RnUEt4QmZBZWFRN0VreUdvV19hcXlOc0duVnFmRkQwUHZuZ0hsRlV1LTlObGt0ZXhMUHBSVXd0RjNka21sem5INkxYeDRRZnB3?oc=5"
+   },
+   "cidade": "Salvador",
+   "outrasFontes": [
+    {
+     "nome": "Voz da Bahia",
+     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPUno1UHdIMUt3dGY4bkhmNlU2T21CWXNXMTJxalZHd1ViZnN4WEpRc1VSTlptN1ZkdkdtUVNtY3Z4N21PMmI1YmJ5Tm9JNjhJYWd5U3RsVDI4bHRBY0pDQ3J3MFNucktOSURwYjJtSEVPYU9fTjBhMXN5cmhuWXVwRUpmWDZDRTA1elNGQ2xydUZTSmlFcWFwRXdoeWRocmpYUS1Ua2hHbDg3UHphSXFiUXVIRllLcXNOc1hpbkk1RlZXYXk4eVllQmZfSy1Udw?oc=5"
+    }
+   ]
+  },
+  {
+   "id": "e2e501172964",
+   "titulo": "Protesto de servidores termina em confusão e interrompe sessão no RS",
+   "tipo": "cobertura",
+   "uf": "RS",
+   "publicadoEm": "2026-11-27T20:40:51.000Z",
+   "fonte": {
+    "nome": "UOL Notícias",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOVVp6QnJGSHB5OWpnRDQxR1pnWnVfWGQ5Q3NNZ3ZFZUF5RlNYa2lHVkQ4Q0drZjJvcFk3aWpvMHp4MVZwQnpONkpvLXI4RnBKZ2RYYjdEWHliZVIwUTZzLWlIWk1KWW9Sd25DNTJ6eFVfUGhDRS0yR0t4dEh2cnU4dGVBZ3EwU2Z6WXhwaldHSVBVQTJIb0xJa0h5Y3NzdDZ0X0dQcEhTY08wOWxnOE12MElVU3dvbTNweUlHQzBuNVBGRWo3SXJmSmlndXk4M2pqU1FWaDNn?oc=5"
+   }
+  },
+  {
+   "id": "775f948b420b",
+   "titulo": "Trabalhadores dos Correios na Paraíba aprovam estado de greve e preparam mobilização nacional",
+   "tipo": "convocacao",
+   "uf": "PB",
+   "publicadoEm": "2026-11-27T19:18:00.000Z",
+   "fonte": {
+    "nome": "Brasil de Fato",
+    "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQdWFLWV92TGhnbEEyWk1LRG5aZmIyZU4tcWc4QVV4VWxDVW9XVVNROW5JX002TGdUTTh6VEh3eFIzdjYzVmxoWUd6UDJReFEzZ21BSU41UEFSOHBfMFQ0QmozTW5TQ2FiTWczY1ZmNjVqa2xNY29HRmVKNUNuMU1lNko0elh1dHpVYk5vaXgzZWRXNHRoVEhtYXJDQXg2eHZ6LXZHRjJoS3VJNVQ5QzVZSWpQQmdHS0hMSUt2S0FBSEpIaVRNaFJNQm5JeTFKUDJneFU3Zm8tNWx6MjNuM29vaDdOOHVIM2VnVldHaFdQY2h6UzVfQXc?oc=5"
+   }
+  },
+  {
+   "id": "7096f16da9bf",
+   "titulo": "Sampi Campinas: Camprev: sindicato critica PT, PCdoB e PSOL por manifestação",
+   "tipo": "cobertura",
+   "uf": "SP",
+   "publicadoEm": "2026-11-27T17:11:21.000Z",
+   "fonte": {
+    "nome": "sampi.net.br",
+    "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQXzhBa3FZOHB5SFA0dHhCMEhhOHBrb0Y3WF8xTG1acHR6U193R2hNaUxmVW5tQW1JMVZoczFUNlA4S2NLY1B2eGp5NzRiVWJyenFwelV1N3Bib3RTLXZnRzE4N1YzSWZlTUN6QURuVnBKQ2ZRY1YxX1otRFB3RTZwWXhELXBtMXFTd2ZQb1hGbjV2cUwzSDR1WEFKVS1QQjZlMENQcFplSlZYMXhsZUpqS0taaVYtZWNMTmJWX2NIVQ?oc=5"
+   },
+   "cidade": "Campinas"
+  },
+  {
    "id": "87ba31565c54",
    "titulo": "Ato lembra duplo feminicídio no CEFET-RJ",
    "tipo": "cobertura",
@@ -311,7 +375,30 @@
    "fonte": {
     "nome": "Agência Brasil",
     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPcHVSTlJGd0p1bGVvbjBNcnQ5VnJhcEotRzhBRG9uOWpOb3NnNzlDblVOQkQ0Yko1N0VNUHJ1Tkp6OFFQQUp0Tk5jTHl1NXg4YVJVQUhwNjBRYll2bmZ0bE5OUm9zRl9JZUEzdTJmVjlwSzNCaEdUZlU4QTI2NnlXcDYwQTJFSmF3LTQ4ZTd4RW5Ma2VEN3F2akxVNUpmU0l2UUFzZDVwQWxLRFNhb3JwNTNsZG1lQk1hcUk4Vkpadnl2Ny1SZ3gxakhaaVg?oc=5"
-   }
+   },
+   "outrasFontes": [
+    {
+     "nome": "Rio Verde News",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUldmQ0VTMHM4TG1MZ3VOSTNTOWxEWkhJdUJlU2c4M25fV2ZVY0NFYUpaV0ZkaUlwZzU2TGJTb3dqMDJiM0ZKWm1RY2lNUzY0WGx1QXBaU1NlQ2k4U2RqQ3Q3QUVqUVlZUU5walA1THFKSlBnMU56a3FqRnU2OEZRUFNJblJnbGZUVUQ5MU5kaTZsMHZCWWFfV2NLU0VjVkM0SnowNmd6Nlh5dw?oc=5"
+    },
+    {
+     "nome": "Agência Brasil",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOSW96SWtqck42NW9FN3F5YVNNaDA3REd4VzJTcmR2cjktN1R6MHFibkFGektFN1N5eF9TRldQcGZqSTRnVG1LZkZrSTI0Q0tFemtIZ3RWNUhHVXRNRVYyX1dOR0FLZDNLWHV0R0QtaDNfNGtISHFaRENCN0xPRXdzTFRVV01FMEFpS1NNNGZmZHF2ekFRQkhxRV82aE51UXBPdFdibVpIMnZfLW1Jd3BjVGw0VGJHTS1fMWZRSm9YSHVRRkotWVJTYQ?oc=5"
+    },
+    {
+     "nome": "conexaoes.com.br",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbV9Cd0lqWmVEcEF1N0R1WTkwV2FjZ2JNdXJSakdCNlZvT0tvcG5NeE4yX3FJcGtZRU9jNUpVbDhFZDJ2R3VMYVk0S2hhVzRsVmVTdEJhaUlxVUdlNGNvVjRRU1VnRDNOeWRObHp6UUx0czl5LUYwNFl4WDAwZ2VnaGhZRnZhaHJsOG1lY2pjWU1UaTltejhDRWpXRzVZOTNqcVVvLXJiN1RVVjdDMDNVZ1o3QQ?oc=5"
+    },
+    {
+     "nome": "Diário Goianiense",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQckVKVWFFR20yUXduR2Z0eVpkRVAyaTFKQjhNd2cwUEFobWFNQWI0bGpCT1J2TW5sdmRpdWdTWGt5aU1YRkQzc2l3MUF6LThIajBNTDJkd3hxMDBMN1BpUHB6aWNxenlXZmNaVzJQZnRCcUtuU2dCdnlHWEpMOUV4TS1QVzhtb3hpcTdRWG9CNDZxY0c1RXVqSGJwUGdnWTlzSHc1bWNTelBoaVU?oc=5"
+    },
+    {
+     "nome": "mrnews.com.br",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPLWc0Q05xUzRuSVFua3lLOGRhbURVeG5mREplOFlWV0hxQTY2dXJqZE05ek8wdkgwTFd5RGVUUVl2VEUyc0NobkdkUWZWZjg2cUtxanNRTmFQNUZxRFV4dERsWnVvNUNwdFl6VlhHT0RJQmszX3dtS0F3NUxxaEFhNE56RFZINGc1ZVdTdUZiNXJJVmY3SS1RYTV6R3g5TnJyT3p4ckdLbUd1aWpZM19wZFE5TFU?oc=5"
+    }
+   ],
+   "cidade": "Rio de Janeiro"
   },
   {
    "id": "c4c607e94bd3",
@@ -362,6 +449,10 @@
     {
      "nome": "G1",
      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeXdlU1lnRkJfU3pIUUFmUnQyeTBYTjU4N0RMUnl2MXNta3k5OV9la2FsWU1qNFdqeXdWR242Qk9IcWNzVmtWaDVCc3N1ckpQdUZQb1ppbzc4Skc4Tndpbk1NRkpnMk11NElxNE1RNUd0dTRVb1VmUExBWDZyR0lWY0xEaGdINklGRWNtdXFmSUl5SUxNTzZkTHIwLXdsMUt3Y2E3aE9HeTdxZ2ZQUU9CVkxyOWk5aEdwVkxFNtIBywFBVV95cUxPMUZ6amJvdU9wRDBqRHlKcUJ0bkRpNU0yQ0l1czc2cUk3eUxuaWdVQ1VxelQwYVh6QXRkekUtdmN5SDRFZWthaFNUTGJFQjBYRHJZNkZhU05OYS1HRVp0T0wxX0c0Skx6UlZaWjJycDVMQ2Zqdk1BMlNvX2xkUDJEZGt4WUhXc09DQVhHTEFoN0ZOTm85UDlrRGVVc2VLSGlMNk1Gd3h1TVloWVc4cnE1bHN5ZXlpdEVFNVg5Nkw4ZGVxM2M1SEwyMjFyMA?oc=5"
+    },
+    {
+     "nome": "Estadão",
+     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNUFMSjM1eHpZRkVDS3hqM2tkdG43U1NlYTZvVWphZVVzQXdSemFFRk11eXFSem9KMFg3UU5UakpfR2VoQm9pQ2l3X0Y4Q0pOdHFsX0dLTEo1REZSWjdrVFRqejBUck1fTzd1Z2dzYUZwUEQxazZvMUhaeXIzd1F4bmhoQlZFRG9WaHgtRThNYmUtTllrQ0lrd0hsS1dhai0xX09zV2JKZWtLOWJodV9VQmpscklNczFEa2JwREM1YWRPaXN5TTNnMDRoMVQ?oc=5"
     }
    ]
   },
@@ -411,10 +502,6 @@
    "cidade": "Porto Velho",
    "outrasFontes": [
     {
-     "nome": "Portal de Rondônia",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNTEdpQTNGdjBMXzNZRWJnY0p5QVQ4cjdSY3RBb3hLVTJ6b0R4T0R0NkxFMndyYVc5eU5lRlQ0Z3lDSGdnSElNVWtRNDBkTXdGUmNjSmFncWNJc2w0bGtjZlBoYV9JNDRiellESy0yMzBpS3pmeTNKbGQ5TnoyeTB4Y3ctWFAzUkdjQkRzekdwYWxZdllYUGJnUUhwU1VlZjRJQnlIblhXRnZwQlpDOFpYYVNkWk8zSFNzNUFmYmNTd2dPYklkRXlnSXJnRQ?oc=5"
-    },
-    {
      "nome": "Jornal Rondônia",
      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPQnhTSmNnU0ZvdXc4cDlHV3dtZkgzM2xpQi15VFhKSU5IV3pKWFc2ZDRXRGJhcTd1dGF3VklhaU1VSnp2SVJTS1huYXV4S1RaNlowM1RtSTdMcUVEWjRuZmxIYUctandFRWp5SVAxTmRiTFhWSTJWaVA0U3hFV3NSaXM2aURGaFRMdzY5Ri1DNUhSS2Nrd3FoTjFSbVdmcGh0TmZxU2NhMWZSN09UY0RjMTJxVkxROGUzVTdPanJtRVZBREluRnV3Rw?oc=5"
     }
@@ -441,7 +528,13 @@
    "fonte": {
     "nome": "G1",
     "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQYnlzNFlfTE5rOTg5a2lxQUh3T3Blc3BtMnRKbUI3RVByVmxBV0liMkw5clBPdWRIek1NQTJqUzM1b0RkZGlPN2p5dExjN0VnalNLQ2ZGOVpEb3ZlVFFWS2psQzE5eEYyLUxJT3hUUHk5UmRCMUM1WE9NSHhTQmhiMHJ4M0Yxb2NFUGFlZFRjaGRTa0lQNy1XN1lSVjdGc0lhYkdpTUhFRGd3VkpqcTVPM3l1bDBWajRYS1VQSnpRaGJTZG5wM280SDZoS3AzaWZJS1U4R05qdDZuTXhscUF0UW9ENkdTWnMtaXVvOTNyeWLSAfABQVVfeXFMUGJ5czRZX0xOazk4OWtpcUFId09wZXNwbTJ0Sm1CN0VQclZsQVdJYjJMOXJQT3VkSHpNTUEyalMzNW9EZGRpTzdqeXRMYzdFZ2pTS0NmRjlaRG92ZVRRVktqbEMxOXhGMi1MSU94VFB5OVJkQjFDNVhPTUh4U0JoYjByeDNGMW9jRVBhZWRUY2hkU2tJUDctVzdZUlY3RnNJYWJHaU1IRURnd1ZKanE1TzN5dWwwVmo0WEtVUEp6UWhiU2RucDNvNEg2aEtwM2lmSUtVOEdOanQ2bk14bHFBdFFvRDZHU1pzLWl1bzkzcnli?oc=5"
-   }
+   },
+   "outrasFontes": [
+    {
+     "nome": "G1",
+     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPS0dZU1JwdHNxVnJWNm5PSWdpWWlIeVJGVmpqWnp2T2xEZHNIUV9Sa1R4MVhEM3lGWlU5a2ZMZDRzMFNrZHdXQzVnekFHcDQ2UGlLZHZTbUM3enhxUm9nLVlCTFdoLXpzNkNMakJJYm1WcXFRaU9QMVZkamJQQnpScWZNZlo1Mnd6eXc4d19TdThxU2NVa1ctR2J4YlFpZXRJUC00VlJyR3BLUVRXdGRqdDE4c3Y3NTI1WHAxeU1DNExUTXN6eF9qSDVIamtMcUpMQnBFUWp4eXUwdmdmMjByM2530gHwAUFVX3lxTFBieXM0WV9MTms5ODlraXFBSHdPcGVzcG0ydEptQjdFUHJWbEFXSWIyTDlyUE91ZEh6TU1BMmpTMzVvRGRkaU83anl0TGM3RWdqU0tDZkY5WkRvdmVUUVZLamxDMTl4RjItTElPeFRQeTlSZEIxQzVYT01IeFNCaGIwcngzRjFvY0VQYWVkVGNoZFNrSVA3LVc3WVJWN0ZzSWFiR2lNSEVEZ3dWSmpxNU8zeXVsMFZqNFhLVVBKelFoYlNkbnAzbzRINmhLcDNpZklLVThHTmp0Nm5NeGxxQXRRb0Q2R1Nacy1pdW85M3J5Yg?oc=5"
+    }
+   ]
   },
   {
    "id": "a8abe28c4ccb",
@@ -512,7 +605,13 @@
     "nome": "G1",
     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOZm5XeXNWQzhHSHoxZUlMV0E3YkJzWDlpRDVfZ0xMUk8xdV81YkItdmdJZjZtMWVhZXdXMjd3TUVJNlBWT2M3Y2FTVVA2R1I3ekFUVEZyMDQ2MjRYVTFqdW03MmJnY01EZ1ExcEZVLXhHN3AzNW13emFpQ2tERnA4TnBVWklKeGd2STdLUW5WMFZ0cE51clpaWjVWbnRncndsS05XV0FxVlhiRXBXOURYbnRQZXAyamxySGNpWTZ4cWZDT3N2S2tqNkJJam9WOHZT0gHfAUFVX3lxTE1JaE8yanVCU1ZlMG1GUmwyWFdZeDR3TG80NnpPNS1RVnk1bHpYZVgxSWEzWFN5QUhKZXNlYkk3N0hrVUJpVGgyeWdaQVZLZFNMUERDTXB5bGN2Y0p3MDJydVF2NUJ0S1lZYnR1SUdFOUQ3amxHZjk1SVU0NU5UUzd0ZWhpZGpJM2ZkVVI2aFRZQXFXS0U3dHNEckhrMXRGVlJ1YlNVcXFDRzF3Tks4TFdWaWdFcWgyM09ERUR5ZndUREcxQThteVNTNzRXWUpvdWNLU3N4YllhTlV3eHNXS2c?oc=5"
    },
-   "cidade": "Manaus"
+   "cidade": "Manaus",
+   "outrasFontes": [
+    {
+     "nome": "G1",
+     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNSWhPMmp1QlNWZTBtRlJsMlhXWXg0d0xvNDZ6TzUtUVZ5NWx6WGVYMUlhM1hTeUFISmVzZWJJNzdIa1VCaVRoMnlnWkFWS2RTTFBEQ01weWxjdmNKdzAycnVRdjVCdEtZWWJ0dUlHRTlEN2psR2Y5NUlVNDVOVFM3dGVoaWRqSTNmZFVSNmhUWUFxV0tFN3RzRHJIazF0RlZSdWJTVXFxQ0cxd05LOExXVmlnRXFoMjNPREVEeWZ3VERHMUE4bXlTUzc0V1lKb3VjS1NzeGJZYU5Vd3hzV0tn0gHfAUFVX3lxTE1JaE8yanVCU1ZlMG1GUmwyWFdZeDR3TG80NnpPNS1RVnk1bHpYZVgxSWEzWFN5QUhKZXNlYkk3N0hrVUJpVGgyeWdaQVZLZFNMUERDTXB5bGN2Y0p3MDJydVF2NUJ0S1lZYnR1SUdFOUQ3amxHZjk1SVU0NU5UUzd0ZWhpZGpJM2ZkVVI2aFRZQXFXS0U3dHNEckhrMXRGVlJ1YlNVcXFDRzF3Tks4TFdWaWdFcWgyM09ERUR5ZndUREcxQThteVNTNzRXWUpvdWNLU3N4YllhTlV3eHNXS2c?oc=5"
+    }
+   ]
   },
   {
    "id": "9d9b1a76e105",
@@ -593,10 +692,6 @@
     {
      "nome": "A Crítica",
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNVExkZ3RHYlVXMVlKSXctY0dIWTViMjA3U05WSk1aVm96ZXlpajZyZ2dJcW42dVg1SVoxZEw4cVJ1RXNxOVlWeVJNVkhIYjcwd0JURXkyZEs1MWJMWmFTaE9ZeWEwSl9yUFcyV1hFOVBpRWdPZU04U1RvQ2w3c2Z5TVhfNHh2S3QzQV9YVkZ3WHBnbnhNX0dIcXJxSGxKVWpWQ3hqTEpR?oc=5"
-    },
-    {
-     "nome": "Portal Mário Adolfo",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNcS1BZEFFN1BIMjR6NWF5cmZJQVJKUldXaDlEWmdDYlNWeDk0bGEyX0wwcW5EZHBXQlNaZjNSUDZFWk1ydUxyR3ByQ1luYzFGTi1EQTg0RUVsSTF3NTFpOE16Z1pzRU5CZFJPM3FlMzViQk9QeEU2NUNqN0tHSHVibkhiczcwYkNxTjFCR1gzLXQ2cHNwRHNydlhEa1JGYUY5Z2l6OTMxSE9IV0txallUbmJhaGZZT05CRERCSUJjd3FRcDQ?oc=5"
     }
    ]
   },
@@ -673,10 +768,6 @@
     {
      "nome": "AcreNews",
      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMXJlc1otWGo4VEFVYWZndXhFUnhMQ3p6ZG5EaFYzZzVqenVNWVJxTjJESGVBVXhFRnZRSmM4SnpueDlneU8xMXhfZ2JyNi1yak85bS1zRTc0SUNsOXpnZUJRZEVBdjlfR0ZSc1hqYzVoTkFyc0JielFZeVhLaFlEZ0NfcWRjQXd4RUdRT2k1bVprX1VXM1NpMHRRSm03QmdMQk95WU9TRjFmdHVOLUZWaUJ6alJiXzNxdE5uOWlRejk?oc=5"
-    },
-    {
-     "nome": "A Gazeta do Acre",
-     "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQNXpjUUNEeDJmbW1aWG1SZGVIZUpPaEk0bWpYYTdZX2Y5QWtnWmJ0YVdzc284RC1mcm9MbmtEeEc4YUVrNk45WlEyaFR2UkktLTRwR0ZXakR1emVNOENmQmxsMVhZSHhiRWQ5SXBwNEp2V2doTEZZeDBoUVFOVXdNcXlwdkxpdWI2Rjd5WkZ0STgxNnhGaWJIWnptWFIxZFdsX0VEcTkyU2tYQmdHc1pYSkVSQlFJdjd6TXdBT1lnN012VVhnUDB4TGdmRUVoN0pYSlIzTjZ2Skdla0otSjBWUTJWT1RrQTczS3ZrSkxSOWFVTDBWVnlOUExLRFJTdw?oc=5"
     }
    ]
   },
@@ -743,6 +834,10 @@
     {
      "nome": "Band",
      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPRl9uWFBWYk5ZUFg5LUtNZUtELWg3em5zMm9hRnlWZ1RWdXhDWHo4YXJla1NmM3ZVTHhiRGlucnI5YV9VWEduYTRBUldrV1VQekFKN3FNenZ2Z3dWQmU3djhhdGh0eDZrSWZ3aGRzTXR5TEtQY3M1Smp5V0ZFUkNwUFJlc1F6aVlRZmNlZGs5OGlNWm1wVVN6aWoxMXV6ME5wU0YyQQ?oc=5"
+    },
+    {
+     "nome": "Hora Campinas",
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQTUxhQVRjWWVlVFVhRjFkOE1RUkZuM2R6MUFKM3RHdVAtNjlSZm5rTGZTd2RUcUNnSlZlS3I4TWJsdGRhWlFJTEhtOFVwZVRUTDNIbjk0RlpjU3hqR2k3LUNmekIxWDMzM2VtOWlEOWQ2VGxhT1hNVV9Xbk1OcTg4UFdkUTh1eGdWOHU4OGNnTG5Fd0lGSHNkczdHYnUxcEtFY2FpUm1CSUd3Vnk1dHZVTm5ZUDBROHE1MTlVN3hyb214SEVfUWN5M0d4NmppQVNw?oc=5"
     }
    ]
   },
